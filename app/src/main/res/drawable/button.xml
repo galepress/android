@@ -16,7 +16,7 @@
 	</item>
 	<item>
 		<shape>
-			<solid android:color="@color/button_normal" />
+			<solid android:color="@color/text_color_cyan" />
 			<padding android:left="8dp" android:top="8dp" android:right="8dp" android:bottom="8dp" />
 		</shape>
 	</item>

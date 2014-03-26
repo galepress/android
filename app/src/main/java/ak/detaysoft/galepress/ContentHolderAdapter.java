@@ -66,14 +66,13 @@ public class ContentHolderAdapter extends BaseAdapter  {
 
         @Override
         public void onClick(View v) {
+            v.setEnabled(false);
+            v.setClickable(false);
             if(v == downloadButton){
-                v.setEnabled(true);
-                v.setClickable(false);
-//                v.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
-                GalePressApplication.getInstance().getDataApi().getPdf(content.getId());
+                GalePressApplication.getInstance().getDataApi().getPdf(content);
             }
             else if(v == cancelButton){
-                GalePressApplication.getInstance().getDataApi().cancelDownload();
+                GalePressApplication.getInstance().getDataApi().cancelDownload(false);
             }
             else if(v == deleteButton){
                 GalePressApplication.getInstance().getDataApi().deletePdf(content.getId());
@@ -85,9 +84,6 @@ public class ContentHolderAdapter extends BaseAdapter  {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         final L_Content content = (L_Content) contents.get(position);
-
-        Log.e("Adem", "View is creating for content:"+content.toString());
-
         if (convertView == null) {  // if it's not recycled, initialize some attributes
             viewHolder = new ViewHolder();
             convertView = activity.getLayoutInflater().inflate(R.layout.grid_cell, null);
@@ -118,29 +114,35 @@ public class ContentHolderAdapter extends BaseAdapter  {
         viewHolder.nameLabel.setText(content.getName());
         viewHolder.detailLabel.setText(content.getDetail());
         viewHolder.monthLabel.setText(content.getMonthlyName());
+
+        viewHolder.progressBar.setVisibility(View.INVISIBLE);
+        viewHolder.progressLabel.setVisibility(View.INVISIBLE);
+        viewHolder.viewButton.setVisibility(View.INVISIBLE);
+        viewHolder.deleteButton.setVisibility(View.INVISIBLE);
+
+
+        if(content.isPdfDownloaded()){
+            viewHolder.downloadButton.setVisibility(View.INVISIBLE);
+            viewHolder.viewButton.setVisibility(View.VISIBLE);
+            viewHolder.viewButton.setEnabled(true);
+            viewHolder.deleteButton.setVisibility(View.VISIBLE);
+            viewHolder.deleteButton.setEnabled(true);
+            viewHolder.deleteButton.setOnClickListener(viewHolder);
+        }
+        else{
+            viewHolder.downloadButton.setVisibility(View.VISIBLE);
+            viewHolder.downloadButton.setOnClickListener(viewHolder);
+            if(content.isPdfDownloading())
+                viewHolder.downloadButton.setEnabled(false);
+            else
+                viewHolder.downloadButton.setEnabled(true);
+        }
+
         if(content.isPdfUpdateAvailable()){
             viewHolder.updateButton.setVisibility(View.VISIBLE);
         }
         else{
             viewHolder.updateButton.setVisibility(View.INVISIBLE);
-        }
-
-        if(content.isPdfDownloaded()){
-            viewHolder.downloadButton.setVisibility(View.INVISIBLE);
-            viewHolder.viewButton.setVisibility(View.VISIBLE);
-            viewHolder.deleteButton.setVisibility(View.VISIBLE);
-            viewHolder.progressBar.setVisibility(View.INVISIBLE);
-            viewHolder.progressLabel.setVisibility(View.INVISIBLE);
-            viewHolder.deleteButton.setOnClickListener(viewHolder);
-        }
-        else{
-            viewHolder.downloadButton.setVisibility(View.VISIBLE);
-            viewHolder.downloadButton.setEnabled(true);
-            viewHolder.viewButton.setVisibility(View.INVISIBLE);
-            viewHolder.deleteButton.setVisibility(View.INVISIBLE);
-            viewHolder.progressBar.setVisibility(View.INVISIBLE);
-            viewHolder.progressLabel.setVisibility(View.INVISIBLE);
-            viewHolder.downloadButton.setOnClickListener(viewHolder);
         }
 
         viewHolder.cancelButton.setVisibility(View.INVISIBLE);

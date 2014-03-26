@@ -28,6 +28,7 @@ public class L_Content {
     @DatabaseField private String dirName;
     @DatabaseField private boolean isPdfUpdateAvailable;
     @DatabaseField private boolean isPdfDownloaded;
+    @DatabaseField private boolean isPdfDownloading;
     @DatabaseField private boolean isCoverImageUpdateAvailable;
     @DatabaseField private String coverImageFileName;
     @DatabaseField private boolean isBuyable;
@@ -38,10 +39,12 @@ public class L_Content {
     @DatabaseField private Integer coverImageVersion;
     @DatabaseField private Integer status;
     @DatabaseField private Integer version;
+
     private ArrayList<L_Category> categories;
     private String pdfPath;
     private String gridThumbCoverImagePath;
     private String bigCoverImagePath;
+
 
     public L_Content(){
 
@@ -90,6 +93,7 @@ public class L_Content {
         this.status = status;
         this.version = version;
         this.categories = categories;
+        this.isPdfDownloading = false;
     }
 
     public boolean isCoverImageUpdateAvailable() {
@@ -283,6 +287,10 @@ public class L_Content {
     public void setPdfPath(String pdfPath) {
         this.pdfPath = pdfPath;
     }
+
+    public boolean isPdfDownloading() { return isPdfDownloading; }
+
+    public void setPdfDownloading(boolean isPdfDownloading) { this.isPdfDownloading = isPdfDownloading;}
 
     // Model Methods
 
