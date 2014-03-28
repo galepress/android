@@ -20,6 +20,7 @@ import java.io.File;
 import java.util.List;
 
 import ak.detaysoft.galepress.database_models.L_Content;
+import ak.detaysoft.galepress.test.Logout;
 
 public class LibraryActivity extends Activity {
     static private File downloadsDirectory;
@@ -50,10 +51,12 @@ public class LibraryActivity extends Activity {
         this.contentHolderAdapter = new ContentHolderAdapter(this, contents);
         gridview.setAdapter(this.contentHolderAdapter);
 
+        Logout.e("Adem", "OnRotate fonksiyonu tekrar calisti.");
+
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 if (samplePdfFile.exists()) {
-                    Log.v("Adem", "Opening pdf at location :" + samplePdfFile.getAbsolutePath());
+//                    Log.v("Adem", "Opening pdf at location :" + samplePdfFile.getAbsolutePath());
                     Toast.makeText(LibraryActivity.this, "Button Clicked", Toast.LENGTH_LONG).show();
                     Uri uri = Uri.parse(samplePdfFile.getAbsolutePath());
                     Intent intent = new Intent(LibraryActivity.this, MuPDFActivity.class);
@@ -83,11 +86,13 @@ public class LibraryActivity extends Activity {
                 updateGridView();
             }
         });
+        updateGridView();
     }
 
     public void updateGridView(){
         contentHolderAdapter.contents = GalePressApplication.getInstance().getDatabaseApi().getAllContents();
         gridview.invalidateViews();
+        Logout.e("Adem","Gridview updated");
     }
 
     public ContentHolderAdapter getContentHolderAdapter() {

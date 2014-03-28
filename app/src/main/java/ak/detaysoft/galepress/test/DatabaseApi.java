@@ -113,7 +113,7 @@ public class DatabaseApi {
         }
         return 0;
     }
-    public int updateContent(L_Content content)
+    public int updateContent(L_Content content, boolean updateUI)
     {
         int result = 0 ;
         try {
@@ -123,7 +123,8 @@ public class DatabaseApi {
             result = 0;
             e.printStackTrace();
         } finally {
-            GalePressApplication.getInstance().getLibraryActivity().updateGridView();
+            if(updateUI)
+                GalePressApplication.getInstance().getLibraryActivity().updateGridView();
         }
         return result;
     }

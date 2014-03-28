@@ -137,7 +137,13 @@ public class ContentHolderAdapter extends BaseAdapter  {
         else{
             viewHolder.downloadButton.setVisibility(View.VISIBLE);
             viewHolder.downloadButton.setOnClickListener(viewHolder);
-            if(content.isPdfDownloading() && GalePressApplication.getInstance().getDataApi().downloadPdfTask !=null)
+            if(
+                content.isPdfDownloading()
+                && GalePressApplication.getInstance().getDataApi().downloadPdfTask !=null
+                && GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() == AsyncTask.Status.RUNNING
+                && GalePressApplication.getInstance().getDataApi().downloadPdfTask.content !=null
+                && GalePressApplication.getInstance().getDataApi().downloadPdfTask.content.getId().compareTo(content.getId()) == 0
+              )
                 viewHolder.downloadButton.setEnabled(false);
             else
                 viewHolder.downloadButton.setEnabled(true);

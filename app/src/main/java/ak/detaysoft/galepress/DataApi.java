@@ -205,7 +205,7 @@ public class DataApi extends Object {
 
     public void getPdf(final L_Content content) {
         content.setPdfDownloading(true);
-        getDatabaseApi().updateContent(content);
+        getDatabaseApi().updateContent(content,false);
         if (downloadPdfTask != null && (downloadPdfTask.getStatus() == AsyncTask.Status.RUNNING)) {
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(GalePressApplication.getInstance().getLibraryActivity());
             alertDialog.setTitle(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.UYARI));
@@ -252,7 +252,7 @@ public class DataApi extends Object {
                     deleteFolder(directory);
                     L_Content content = getDatabaseApi().getContent(id);
                     content.setPdfDownloaded(false);
-                    getDatabaseApi().updateContent(content);
+                    getDatabaseApi().updateContent(content,true);
                     GalePressApplication.getInstance().getLibraryActivity().updateGridView();
                 }
             });
@@ -328,7 +328,7 @@ public class DataApi extends Object {
                             L_Content localContent = getDatabaseApi().getContent(remoteContent.getContentID());
                             localContent.setCoverImageVersion(remoteContent.getContentCoverImageVersion());
                             localContent.setVersion(remoteContent.getContentVersion());
-                            getDatabaseApi().updateContent(localContent);
+                            getDatabaseApi().updateContent(localContent,true);
                             Logout.e("Adem", "Cover image updated:" + localContent.getCoverImageVersion().toString() + " Remote version:" + remoteContent.getContentCoverImageVersion().toString() + "L.ID:" + localContent.getId() + " R.ID:" + remoteContent.getContentID());
 
                         } catch (Exception e) {
@@ -399,7 +399,7 @@ public class DataApi extends Object {
                                 Logout.e("Adem", "New Content created. content id: " + localContent.getId().toString());
                             } else {
                                 localContent.updateWithRemoteContent(remoteContent);
-                                getDatabaseApi().updateContent(localContent);
+                                getDatabaseApi().updateContent(localContent,true);
                                 removeAllConCatsForContent(localContent);
                                 createConCat(remoteContent, localContent);
                                 Logout.e("Adem", "Content updated. content id: " + localContent.getId().toString());
@@ -410,7 +410,7 @@ public class DataApi extends Object {
                                     localContent.setPdfUpdateAvailable(true);
                                 }
                                 localContent.setPdfVersion(remoteContent.getContentPdfVersion());
-                                getDatabaseApi().updateContent(localContent);
+                                getDatabaseApi().updateContent(localContent,true);
                             }
 
                             if (localContent.getCoverImageVersion() < remoteContent.getContentCoverImageVersion()) {
@@ -802,13 +802,11 @@ public class DataApi extends Object {
         return null;
     }
 
-    private class DownloadPdfTask extends AsyncTask<ArrayList<String>, Integer, String> {
+    public class DownloadPdfTask extends AsyncTask<ArrayList<String>, Integer, String> {
         File tempDirectory = null;
         File directory = null;
         L_Content content = null;
         private Activity context;
-        //        List<RowItem> rowItems;
-        int noOfURLs;
 
         public DownloadPdfTask(Activity context, L_Content c) {
             this.context = context;
@@ -903,7 +901,7 @@ public class DataApi extends Object {
 
         @Override
         protected void onPreExecute() {
-
+            GalePressApplication.getInstance().getLibraryActivity().updateGridView();
         }
 
         @Override
@@ -914,8 +912,7 @@ public class DataApi extends Object {
                 deleteFolder(tempDirectory);
             }
             content.setPdfDownloading(false);
-            getDatabaseApi().updateContent(content);
-            GalePressApplication.getInstance().getLibraryActivity().updateGridView();
+            getDatabaseApi().updateContent(content,true);
             super.onCancelled();
         }
 
@@ -924,8 +921,7 @@ public class DataApi extends Object {
         protected void onPostExecute(String a) {
             this.content.setPdfDownloaded(true);
             this.content.setPdfDownloading(false);
-            getDatabaseApi().updateContent(this.content);
-            GalePressApplication.getInstance().getLibraryActivity().updateGridView();
+            getDatabaseApi().updateContent(this.content,true);
         }
 
     }
