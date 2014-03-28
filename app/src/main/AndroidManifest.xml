@@ -4,6 +4,7 @@
     <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <supports-screens
         android:smallScreens="true"
         android:normalScreens="true"
@@ -91,7 +92,7 @@
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"
             android:label="@string/print">
         </activity>
-        <service android:enabled="true" android:name="Downloader" />
+        <service android:enabled="true" android:name=".CoverImageDownloader" />
     </application>
 
 </manifest>

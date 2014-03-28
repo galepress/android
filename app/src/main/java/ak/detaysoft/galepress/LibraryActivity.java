@@ -47,7 +47,7 @@ public class LibraryActivity extends Activity {
 
         gridview = (GridView) findViewById(R.id.gridview);
         List contents = GalePressApplication.getInstance().getDatabaseApi().getAllContents();
-        this.contentHolderAdapter = new ContentHolderAdapter(this, this, contents);
+        this.contentHolderAdapter = new ContentHolderAdapter(this, contents);
         gridview.setAdapter(this.contentHolderAdapter);
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -80,7 +80,7 @@ public class LibraryActivity extends Activity {
         syncButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GalePressApplication.getInstance().getDataApi().updateApplication();
+                updateGridView();
             }
         });
     }

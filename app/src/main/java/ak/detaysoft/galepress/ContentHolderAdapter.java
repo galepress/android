@@ -2,8 +2,8 @@ package ak.detaysoft.galepress;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.PorterDuff;
-import android.util.Log;
+import android.os.AsyncTask;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -22,12 +22,10 @@ import ak.detaysoft.galepress.database_models.L_Content;
  */
 
 public class ContentHolderAdapter extends BaseAdapter  {
-    private Context mContext;
     private Activity activity;
     public List contents;
 
-    public ContentHolderAdapter(Context c, Activity activity, List contents) {
-        mContext = c;
+    public ContentHolderAdapter(Activity activity, List contents) {
         this.activity = activity;
         this.contents = contents;
     }
@@ -66,17 +64,24 @@ public class ContentHolderAdapter extends BaseAdapter  {
 
         @Override
         public void onClick(View v) {
-            v.setEnabled(false);
-            v.setClickable(false);
-            if(v == downloadButton){
-                GalePressApplication.getInstance().getDataApi().getPdf(content);
-            }
-            else if(v == cancelButton){
-                GalePressApplication.getInstance().getDataApi().cancelDownload(false);
-            }
-            else if(v == deleteButton){
-                GalePressApplication.getInstance().getDataApi().deletePdf(content.getId());
-            }
+
+
+                if(v == downloadButton){
+                    if(DataApi.isConnectedToInternet()){
+                        v.setEnabled(false);
+                        GalePressApplication.getInstance().getDataApi().getPdf(content);
+                    }
+                }
+                else if(v == cancelButton){
+                    v.setEnabled(false);
+                    GalePressApplication.getInstance().getDataApi().cancelDownload(false);
+                }
+                else if(v == deleteButton){
+                    v.setEnabled(false);
+                    GalePressApplication.getInstance().getDataApi().deletePdf(content.getId());
+                }
+
+
         }
     }
 
@@ -132,7 +137,7 @@ public class ContentHolderAdapter extends BaseAdapter  {
         else{
             viewHolder.downloadButton.setVisibility(View.VISIBLE);
             viewHolder.downloadButton.setOnClickListener(viewHolder);
-            if(content.isPdfDownloading())
+            if(content.isPdfDownloading() && GalePressApplication.getInstance().getDataApi().downloadPdfTask !=null)
                 viewHolder.downloadButton.setEnabled(false);
             else
                 viewHolder.downloadButton.setEnabled(true);

@@ -30,12 +30,12 @@ import android.os.Messenger;
 import android.util.Log;
 import ak.detaysoft.galepress.service_models.ByteArrayResponseHandler;
 
-public class Downloader extends IntentService {
+public class CoverImageDownloader extends IntentService {
     public static final String EXTRA_MESSENGER = "ak.detaysoft.galepress.downloader.EXTRA_MESSENGER";
     private HttpClient client = null;
 
-    public Downloader() {
-        super("Downloader");
+    public CoverImageDownloader() {
+        super("CoverImageDownloader");
     }
 
     @Override
