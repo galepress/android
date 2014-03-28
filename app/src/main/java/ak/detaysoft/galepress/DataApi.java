@@ -13,6 +13,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Messenger;
@@ -105,7 +106,7 @@ public class DataApi extends Object {
             }
             return result;
         }catch (Exception e){
-            Logout.e("Adem", "Checking internet connection");
+            Logout.e("Adem", "Error on Checking internet connection");
             return false;
         }
 
@@ -127,13 +128,17 @@ public class DataApi extends Object {
     }
 
     private void downloadFile(String remoteUrl, L_Content content) {
-        Logout.e("ADEM", "PDF Download Url : " + remoteUrl);
         ArrayList<String> parameters = new ArrayList<String>();
         parameters.add(remoteUrl);
         parameters.add(content.getId().toString());
         parameters.add(content.getPdfFileName());
         downloadPdfTask = new DownloadPdfTask(GalePressApplication.getInstance().getLibraryActivity(), content);
-        downloadPdfTask.execute(parameters);
+
+        if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB ) {
+            downloadPdfTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,parameters);
+        } else {
+            downloadPdfTask.execute(parameters);
+        }
     }
 
     private void getCoverImage(Integer id) {
@@ -176,7 +181,6 @@ public class DataApi extends Object {
                 params.put("Content-Type", "application/x-www-form-urlencoded");
                 return params;
             }
-
         };
         requestQueue.add(request);
     }
@@ -197,6 +201,7 @@ public class DataApi extends Object {
             alertDialog.setNegativeButton(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.HAYIR), new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.cancel();
+                    GalePressApplication.getInstance().getLibraryActivity().updateGridView();
                 }
             });
             alertDialog.show();
@@ -214,16 +219,13 @@ public class DataApi extends Object {
             alertDialog.setPositiveButton(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.EVET), new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     cancelDownload(true);
-                    Logout.e("Adem", " New download will be started");
                     ContentHolderAdapter.ViewHolder vh = getViewHolderForContent(content);
-                    Logout.e("Adem", "ViewHolder:" + vh);
                     if (content.isPdfUpdateAvailable()) {
                         vh.updateButton.setEnabled(false);
                     } else {
                         vh.downloadButton.setEnabled(false);
                     }
                     vh.downloadButton.setEnabled(false);
-                    Logout.e("Adem", "VHolder Download button : " + vh.downloadButton.isEnabled());
                     downloadPdf(content);
                 }
             });
@@ -259,6 +261,7 @@ public class DataApi extends Object {
             alertDialog.setNegativeButton(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.HAYIR), new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.cancel();
+                    GalePressApplication.getInstance().getLibraryActivity().updateGridView();
                 }
             });
             alertDialog.show();
@@ -329,8 +332,6 @@ public class DataApi extends Object {
                             localContent.setCoverImageVersion(remoteContent.getContentCoverImageVersion());
                             localContent.setVersion(remoteContent.getContentVersion());
                             getDatabaseApi().updateContent(localContent,true);
-                            Logout.e("Adem", "Cover image updated:" + localContent.getCoverImageVersion().toString() + " Remote version:" + remoteContent.getContentCoverImageVersion().toString() + "L.ID:" + localContent.getId() + " R.ID:" + remoteContent.getContentID());
-
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -396,13 +397,11 @@ public class DataApi extends Object {
                                 localContent = new L_Content(remoteContent);
                                 getDatabaseApi().createContent(localContent);
                                 createConCat(remoteContent, localContent);
-                                Logout.e("Adem", "New Content created. content id: " + localContent.getId().toString());
                             } else {
                                 localContent.updateWithRemoteContent(remoteContent);
-                                getDatabaseApi().updateContent(localContent,true);
+                                getDatabaseApi().updateContent(localContent, true);
                                 removeAllConCatsForContent(localContent);
                                 createConCat(remoteContent, localContent);
-                                Logout.e("Adem", "Content updated. content id: " + localContent.getId().toString());
                             }
                             if (localContent.getPdfVersion() < remoteContent.getContentPdfVersion()) {
                                 // PDF Must be updated
@@ -417,10 +416,8 @@ public class DataApi extends Object {
                                 // cover image must be updated.
                                 // localContent.setCoverImageUpdateAvailable(true);
                                 getCoverImage(localContent.getId());
-                                Logout.e("Adem","content cover image must be updated. localCoverImageVersion:" + localContent.getCoverImageVersion().toString() + " Remote version:" + remoteContent.getContentCoverImageVersion().toString());
                             } else {
                                 // Content Detail update edildi.
-                                Logout.e("Adem", "Content version updated. L.V:" + localContent.getVersion() + " R.V:" + remoteContent.getContentVersion());
                                 localContent.setVersion(remoteContent.getContentVersion());
                             }
                             GalePressApplication.getInstance().getLibraryActivity().getContentHolderAdapter().notifyDataSetChanged();
@@ -467,9 +464,7 @@ public class DataApi extends Object {
                     public void onResponse(JSONObject response) {
                         try {
                             R_AppCategories rAppCategories = new R_AppCategories(response);
-                            Logout.e("Adem","rAppCAtegories downloaded : " + rAppCategories.toString());
                             for (R_Category category : rAppCategories.getCategories()) {
-                                Logout.e("Adem", "Remote Category : ." + category.getCategoryID() + " / " + category.getCategoryName());
                                 L_Category localCategory = getDatabaseApi().getCategory(category.getCategoryID());
                                 if (localCategory == null) {
                                     localCategory = new L_Category(category);
@@ -564,11 +559,6 @@ public class DataApi extends Object {
                                         if (localContent == null || (localContent.getVersion() < remoteContentVersion)) {
                                             // Content updating
                                             numberOfContentWillBeUpdated++;
-                                            if (localContent == null) {
-                                                Logout.e(TAG + "getRemoteAppContents", "Content is being created because not in local.");
-                                            } else {
-                                                Logout.e(TAG + "getRemoteAppContents", "Content is updating LV:" + localContent.getVersion().toString() + " R.V:" + remoteContentVersion.toString());
-                                            }
                                             getRemoteContent(content.getContentID());
                                         }
                                     } else {
@@ -584,7 +574,6 @@ public class DataApi extends Object {
                             for (L_Content l_content : localContents) {
                                 Boolean deletedInServer = true;
                                 for (R_Content r_content : RAppContents.getContents()) {
-                                    Logout.e("Adem", r_content.getContentID().toString() + " - " + l_content.getId().toString());
                                     if (l_content.getId().compareTo(r_content.getContentID()) == 0) {
                                         deletedInServer = false;
                                         break;
@@ -597,7 +586,6 @@ public class DataApi extends Object {
 
                             // Content'lerin hic biri update olmamissa. Uygulamanin local versiyonunu update ediyorum.
                             if (numberOfContentWillBeUpdated == 0) {
-                                Logout.e(TAG + "getRemoteAppContents", "Application version must be updated.");
                                 updateApplicationVersion();
                             }
 
@@ -656,10 +644,8 @@ public class DataApi extends Object {
                             L_Application application = getDatabaseApi().getApplication(GalePressApplication.getInstance().getApplicationId());
                             if (r_appVersion.getApplicationVersion() != null && application.getVersion() != null) {
                                 if (application.getVersion() < r_appVersion.getApplicationVersion()) {
-                                    Logout.e(TAG + "getRemoteApplicationVersion", "App must be updated. L.V : " + application.getVersion().toString() + " R.V :" + r_appVersion.getApplicationVersion() + toString());
                                     getRemoteAppCategories();
-                                } else
-                                    Logout.e(TAG, "Application doesn't need to be updated.");
+                                }
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -715,7 +701,6 @@ public class DataApi extends Object {
                             L_Application application = getDatabaseApi().getApplication(GalePressApplication.getInstance().getApplicationId());
                             application.setVersion(r_appVersion.getApplicationVersion());
                             getDatabaseApi().updateApplication(application);
-                            Logout.e(TAG + "updateApplicationVersion", "ApplicationVersion updated with:" + Integer.toString(r_appVersion.getApplicationVersion()));
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -741,7 +726,6 @@ public class DataApi extends Object {
     }
 
     private void deleteContent(L_Content content) {
-        Logout.e(TAG + "getRemoteAppContents", "Content status is deleted from server. Deleted in local. ContentId:" + content.getId());
         File coverImage = new File(GalePressApplication.getInstance().getFilesDir(), content.getCoverImageFileName());
         if (coverImage.exists()) {
             coverImage.delete();
@@ -769,6 +753,7 @@ public class DataApi extends Object {
 
     private void progressUpdate(L_Content content, long total, long fileLength) {
         ContentHolderAdapter.ViewHolder viewHolder = getViewHolderForContent(content);
+
         if(viewHolder!=null){
             if (viewHolder.content.getId().compareTo(content.getId()) == 0) {
                 if (viewHolder.progressBar.getVisibility() == View.INVISIBLE) {
@@ -787,10 +772,10 @@ public class DataApi extends Object {
     }
 
     private ContentHolderAdapter.ViewHolder getViewHolderForContent(L_Content content) {
+
         GridView gridView = GalePressApplication.getInstance().getLibraryActivity().gridview;
-        int firstVisiblePosition = gridView.getFirstVisiblePosition();
-        int lastVisiblePosition = gridView.getLastVisiblePosition() + 1;
-        for (int i = firstVisiblePosition; i < lastVisiblePosition; i++) {
+        int childCount= gridView.getChildCount();
+        for (int i = 0 ; i < childCount; i++) {
             View view = gridView.getChildAt(i);
             if (view != null) {
                 ContentHolderAdapter.ViewHolder viewHolder = (ContentHolderAdapter.ViewHolder) view.getTag();
@@ -850,7 +835,7 @@ public class DataApi extends Object {
                 long total = 0;
                 int count;
                 long lastCtm = System.currentTimeMillis();
-                long ctm = System.currentTimeMillis();
+                long ctm;
                 while ((count = input.read(data)) != -1) {
                     // allow canceling with back button
                     if (isCancelled()) {
@@ -906,8 +891,6 @@ public class DataApi extends Object {
 
         @Override
         protected void onCancelled() {
-
-            Logout.e("Adem", "OnCancelled invoked. ");
             if (tempDirectory != null) {
                 deleteFolder(tempDirectory);
             }

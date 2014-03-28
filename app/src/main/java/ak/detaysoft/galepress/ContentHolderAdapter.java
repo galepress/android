@@ -3,6 +3,7 @@ package ak.detaysoft.galepress;
 import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.provider.ContactsContract;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import java.io.File;
 import java.util.List;
 
 import ak.detaysoft.galepress.database_models.L_Content;
+import ak.detaysoft.galepress.test.Logout;
 
 /**
  * Created by adem on 13/01/14.
@@ -108,12 +110,16 @@ public class ContentHolderAdapter extends BaseAdapter  {
         } else {
             viewHolder = (ViewHolder)convertView.getTag();
         }
-
         if(viewHolder.coverImageView.getTag() != null) {
             ((ImageGetter) viewHolder.coverImageView.getTag()).cancel(true);
         }
         ImageGetter task = new ImageGetter(viewHolder.coverImageView) ;
-        task.execute(new File(GalePressApplication.getInstance().getFilesDir(), content.getCoverImageFileName()));
+        if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB ) {
+            task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,new File(GalePressApplication.getInstance().getFilesDir(), content.getCoverImageFileName()));
+        } else {
+            task.execute(new File(GalePressApplication.getInstance().getFilesDir(), content.getCoverImageFileName()));
+        }
+
         viewHolder.coverImageView.setTag(task);
 
         viewHolder.nameLabel.setText(content.getName());
@@ -124,6 +130,8 @@ public class ContentHolderAdapter extends BaseAdapter  {
         viewHolder.progressLabel.setVisibility(View.INVISIBLE);
         viewHolder.viewButton.setVisibility(View.INVISIBLE);
         viewHolder.deleteButton.setVisibility(View.INVISIBLE);
+        viewHolder.cancelButton.setVisibility(View.INVISIBLE);
+        viewHolder.cancelButton.setOnClickListener(viewHolder);
 
 
         if(content.isPdfDownloaded()){
@@ -135,6 +143,7 @@ public class ContentHolderAdapter extends BaseAdapter  {
             viewHolder.deleteButton.setOnClickListener(viewHolder);
         }
         else{
+            // Content is not downloaded.
             viewHolder.downloadButton.setVisibility(View.VISIBLE);
             viewHolder.downloadButton.setOnClickListener(viewHolder);
             if(
@@ -143,10 +152,21 @@ public class ContentHolderAdapter extends BaseAdapter  {
                 && GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() == AsyncTask.Status.RUNNING
                 && GalePressApplication.getInstance().getDataApi().downloadPdfTask.content !=null
                 && GalePressApplication.getInstance().getDataApi().downloadPdfTask.content.getId().compareTo(content.getId()) == 0
-              )
+              ){
+                // Content is downloading now.
+                viewHolder.cancelButton.setVisibility(View.VISIBLE);
+                viewHolder.cancelButton.setEnabled(true);
+                viewHolder.progressBar.setVisibility(View.VISIBLE);
+                viewHolder.progressLabel.setVisibility(View.VISIBLE);
                 viewHolder.downloadButton.setEnabled(false);
-            else
+                viewHolder.downloadButton.setVisibility(View.INVISIBLE);
+            }
+            else {
+                // Content is not downloading.
                 viewHolder.downloadButton.setEnabled(true);
+                viewHolder.cancelButton.setVisibility(View.INVISIBLE);
+                viewHolder.cancelButton.setOnClickListener(viewHolder);
+            }
         }
 
         if(content.isPdfUpdateAvailable()){
@@ -156,8 +176,7 @@ public class ContentHolderAdapter extends BaseAdapter  {
             viewHolder.updateButton.setVisibility(View.INVISIBLE);
         }
 
-        viewHolder.cancelButton.setVisibility(View.INVISIBLE);
-        viewHolder.cancelButton.setOnClickListener(viewHolder);
+
         viewHolder.content = content;
 
         return convertView;
