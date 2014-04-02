@@ -21,7 +21,7 @@ public class GalePressApplication extends Application {
     public static final String TAG = "VolleyPatterns";
     private static DatabaseApi databaseApi = null;
     private static DataApi dataApi;
-    private LibraryFragmentActivity libraryFragmentActivity;
+    private LibraryFragment libraryFragmentActivity;
 
      //Global request queue for Volley
     private RequestQueue mRequestQueue;
@@ -136,11 +136,11 @@ public class GalePressApplication extends Application {
         }
     }
 
-    public LibraryFragmentActivity getLibraryActivity() {
+    public LibraryFragment getLibraryActivity() {
         return libraryFragmentActivity;
     }
 
-    public void setLibraryActivity(LibraryFragmentActivity libraryFragmentActivity) {
+    public void setLibraryActivity(LibraryFragment libraryFragmentActivity) {
         this.libraryFragmentActivity = libraryFragmentActivity;
     }
 }

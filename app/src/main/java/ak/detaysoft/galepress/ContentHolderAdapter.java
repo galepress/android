@@ -20,10 +20,10 @@ import ak.detaysoft.galepress.database_models.L_Content;
  */
 
 public class ContentHolderAdapter extends BaseAdapter  {
-    private LibraryFragmentActivity libraryFragment;
+    private LibraryFragment libraryFragment;
     public List contents;
 
-    public ContentHolderAdapter(LibraryFragmentActivity activity, List contents) {
+    public ContentHolderAdapter(LibraryFragment activity, List contents) {
         this.libraryFragment = activity;
         this.contents = contents;
     }

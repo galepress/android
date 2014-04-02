@@ -23,9 +23,9 @@ import ak.detaysoft.galepress.view.TabBitmap;
  */
 public class MainActivity extends FragmentActivity {
 
-    private static final String TAG_1 = "LIBRARY_TAB";
-    private static final String TAG_2 = "DOWNLOADED_TAB";
-    private static final String TAG_3 = "INFO_TAB";
+    public static final String LIBRARY_TAB_TAG = "LIBRARY_TAB";
+    public static final String DOWNLOADED_LIBRARY_TAG = "DOWNLOADED_TAB";
+    private static final String INFO_TAB_TAG = "INFO_TAB";
 
     public FragmentTabHost mTabHost;
 
@@ -39,9 +39,9 @@ public class MainActivity extends FragmentActivity {
         mTabHost = (FragmentTabHost) findViewById(R.id.tabhost);
         mTabHost.setup(this,getSupportFragmentManager(), android.R.id.tabcontent);
 
-        addTab(getString(R.string.LIBRARY),TAG_1,createTabDrawable(R.drawable.library_tabbar_icon),LibraryFragmentActivity.class);
-        addTab(getString(R.string.DOWNLOADED),TAG_2,createTabDrawable(R.drawable.downloaded_tabbar_icon),LibraryFragmentActivity.class);
-        addTab(getString(R.string.INFO),TAG_3,createTabDrawable(R.drawable.info_tabbar_icon),LibraryFragmentActivity.class);
+        addTab(getString(R.string.LIBRARY), LIBRARY_TAB_TAG,createTabDrawable(R.drawable.library_tabbar_icon),LibraryFragment.class);
+        addTab(getString(R.string.DOWNLOADED), DOWNLOADED_LIBRARY_TAG,createTabDrawable(R.drawable.downloaded_tabbar_icon),LibraryFragment.class);
+        addTab(getString(R.string.INFO), INFO_TAB_TAG,createTabDrawable(R.drawable.info_tabbar_icon),InfoPageFragment.class);
     }
 
     private Drawable createTabDrawable(int resId) {

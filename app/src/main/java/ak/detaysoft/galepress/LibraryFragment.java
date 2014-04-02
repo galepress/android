@@ -1,11 +1,8 @@
 package ak.detaysoft.galepress;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
-import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +22,7 @@ import ak.detaysoft.galepress.database_models.L_Content;
 /**
  * Created by adem on 31/03/14.
  */
-public class LibraryFragmentActivity extends Fragment {
+public class LibraryFragment extends Fragment {
     static private File downloadsDirectory;
     static private File samplePdfFile;
     public ContentHolderAdapter contentHolderAdapter;
@@ -44,7 +41,13 @@ public class LibraryFragmentActivity extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        isOnlyDownloaded = ((MainActivity)getActivity()).mTabHost.getCurrentTab()==1;
+        try{
+            MainActivity activity = (MainActivity)getActivity();
+            isOnlyDownloaded = this.getTag().compareTo(MainActivity.DOWNLOADED_LIBRARY_TAG)==0;
+        }catch (NullPointerException exception){
+            isOnlyDownloaded = false;
+        }
+
         super.onCreate(savedInstanceState);
     }
 
