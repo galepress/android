@@ -17,4 +17,15 @@
     <color name="text_color_cyan">#00D0FF</color>
     <color name="text_color_white">#FFFFFFFF</color>
     <color name="clear_color">#00000000</color>
+
+    <!-- Colors for tabbar-->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <color name="tab_line">#60FFFFFF</color>
+    <color name="tab_transparent_highlight">#28FFFFFF</color>
+    <color name="tab_transparent_dark">#16FFFFFF</color>
+    <color name="tab_transparent_light">#38FFFFFF</color>
+
+
 </resources>

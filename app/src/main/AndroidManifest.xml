@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:name="GalePressApplication">
         <activity
-            android:name=".LibraryActivity"
+            android:name=".MainActivity"
             android:theme="@android:style/Theme.Light"
             android:label="@string/app_name">
             <intent-filter>

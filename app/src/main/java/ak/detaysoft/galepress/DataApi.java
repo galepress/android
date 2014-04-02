@@ -17,7 +17,6 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Messenger;
-import android.util.Log;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.Toast;
@@ -57,8 +56,6 @@ import ak.detaysoft.galepress.service_models.R_Category;
 import ak.detaysoft.galepress.service_models.R_Content;
 import ak.detaysoft.galepress.service_models.R_ContentDetail;
 import ak.detaysoft.galepress.service_models.R_ContentFileUrl;
-import ak.detaysoft.galepress.test.DatabaseApi;
-import ak.detaysoft.galepress.test.Logout;
 
 
 public class DataApi extends Object {
@@ -132,7 +129,7 @@ public class DataApi extends Object {
         parameters.add(remoteUrl);
         parameters.add(content.getId().toString());
         parameters.add(content.getPdfFileName());
-        downloadPdfTask = new DownloadPdfTask(GalePressApplication.getInstance().getLibraryActivity(), content);
+        downloadPdfTask = new DownloadPdfTask(null, content);
 
         if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB ) {
             downloadPdfTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,parameters);
@@ -189,7 +186,7 @@ public class DataApi extends Object {
         if (confirmed) {
             downloadPdfTask.cancel(true);
         } else {
-            AlertDialog.Builder alertDialog = new AlertDialog.Builder(GalePressApplication.getInstance().getLibraryActivity());
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(GalePressApplication.getInstance().getLibraryActivity().getActivity());
             alertDialog.setTitle(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.UYARI));
             alertDialog.setMessage(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.CONFIRM_3));
 
@@ -212,7 +209,7 @@ public class DataApi extends Object {
         content.setPdfDownloading(true);
         getDatabaseApi().updateContent(content,false);
         if (downloadPdfTask != null && (downloadPdfTask.getStatus() == AsyncTask.Status.RUNNING)) {
-            AlertDialog.Builder alertDialog = new AlertDialog.Builder(GalePressApplication.getInstance().getLibraryActivity());
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(GalePressApplication.getInstance().getLibraryActivity().getActivity());
             alertDialog.setTitle(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.UYARI));
             alertDialog.setMessage(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.CONFIRM_2));
 
@@ -244,7 +241,7 @@ public class DataApi extends Object {
     public void deletePdf(final Integer id) {
         L_Content content = getDatabaseApi().getContent(id);
         if (content.isPdfDownloaded()) {
-            AlertDialog.Builder alertDialog = new AlertDialog.Builder(GalePressApplication.getInstance().getLibraryActivity());
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(GalePressApplication.getInstance().getLibraryActivity().getActivity());
             alertDialog.setTitle(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.UYARI));
             alertDialog.setMessage(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.CONFIRM_1));
 
@@ -791,10 +788,8 @@ public class DataApi extends Object {
         File tempDirectory = null;
         File directory = null;
         L_Content content = null;
-        private Activity context;
 
-        public DownloadPdfTask(Activity context, L_Content c) {
-            this.context = context;
+        public DownloadPdfTask(Activity cosntext, L_Content c) {
             this.content = c;
         }
 

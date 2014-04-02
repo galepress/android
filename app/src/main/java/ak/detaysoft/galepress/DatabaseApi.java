@@ -1,4 +1,4 @@
-package ak.detaysoft.galepress.test;
+package ak.detaysoft.galepress;
 
 import android.content.Context;
 import android.util.Log;
@@ -11,7 +11,6 @@ import com.j256.ormlite.stmt.SelectArg;
 import java.sql.SQLException;
 import java.util.List;
 
-import ak.detaysoft.galepress.GalePressApplication;
 import ak.detaysoft.galepress.database_models.L_Application;
 import ak.detaysoft.galepress.database_models.L_Category;
 import ak.detaysoft.galepress.database_models.L_Content;
@@ -30,6 +29,7 @@ public class DatabaseApi {
     private Dao<L_Application, Integer> applicationsDao;
     private Dao<L_Statistic, Integer> statisticsDao;
     private PreparedQuery<L_Content> contentsByCategoryQuery = null;
+    private PreparedQuery<L_Content> contentsDownloadedQuery = null;
     private PreparedQuery<L_ContentCategory> contentCategoryByContentQuery = null;
 
 
@@ -162,6 +162,20 @@ public class DatabaseApi {
         return null;
     }
 
+    public List getAllDownloadedContents()
+    {
+        try {
+            if (contentsDownloadedQuery == null) {
+                contentsDownloadedQuery= makeDownloadedContentsQuery();
+            }
+            return contentsDao.query(contentsDownloadedQuery);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
     public List getAllContentsByCategory(L_Category category)
     {
         try {
@@ -183,6 +197,12 @@ public class DatabaseApi {
         categoryContent.where().eq(L_ContentCategory.CATEGORY_ID_FIELD_NAME, userSelectArg);
         QueryBuilder<L_Content, Integer> contentObj = contentsDao.queryBuilder();
         contentObj.where().in(L_Content.ID_FIELD_NAME, categoryContent);
+        return contentObj.prepare();
+    }
+
+    private PreparedQuery<L_Content> makeDownloadedContentsQuery() throws SQLException {
+        QueryBuilder<L_Content, Integer> contentObj = contentsDao.queryBuilder();
+        contentObj.where().eq(L_Content.IS_PDF_DOWNLOADED_FIELD_NAME, true);
         return contentObj.prepare();
     }
     /**

@@ -1,4 +1,4 @@
-package ak.detaysoft.galepress.test;
+package ak.detaysoft.galepress;
 
 /**
  * Created by adem on 26/03/14.

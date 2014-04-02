@@ -9,7 +9,6 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.Volley;
 
 import ak.detaysoft.galepress.database_models.TestApplicationInf;
-import ak.detaysoft.galepress.test.DatabaseApi;
 
 /**
  * Created by adem on 11/02/14.
@@ -22,7 +21,7 @@ public class GalePressApplication extends Application {
     public static final String TAG = "VolleyPatterns";
     private static DatabaseApi databaseApi = null;
     private static DataApi dataApi;
-    private LibraryActivity libraryActivity;
+    private LibraryFragmentActivity libraryFragmentActivity;
 
      //Global request queue for Volley
     private RequestQueue mRequestQueue;
@@ -137,11 +136,11 @@ public class GalePressApplication extends Application {
         }
     }
 
-    public LibraryActivity getLibraryActivity() {
-        return libraryActivity;
+    public LibraryFragmentActivity getLibraryActivity() {
+        return libraryFragmentActivity;
     }
 
-    public void setLibraryActivity(LibraryActivity libraryActivity) {
-        this.libraryActivity = libraryActivity;
+    public void setLibraryActivity(LibraryFragmentActivity libraryFragmentActivity) {
+        this.libraryFragmentActivity = libraryFragmentActivity;
     }
 }

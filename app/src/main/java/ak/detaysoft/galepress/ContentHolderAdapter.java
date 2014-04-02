@@ -1,10 +1,7 @@
 package ak.detaysoft.galepress;
 
-import android.app.Activity;
-import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Build;
-import android.provider.ContactsContract;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -17,18 +14,17 @@ import java.io.File;
 import java.util.List;
 
 import ak.detaysoft.galepress.database_models.L_Content;
-import ak.detaysoft.galepress.test.Logout;
 
 /**
  * Created by adem on 13/01/14.
  */
 
 public class ContentHolderAdapter extends BaseAdapter  {
-    private Activity activity;
+    private LibraryFragmentActivity libraryFragment;
     public List contents;
 
-    public ContentHolderAdapter(Activity activity, List contents) {
-        this.activity = activity;
+    public ContentHolderAdapter(LibraryFragmentActivity activity, List contents) {
+        this.libraryFragment = activity;
         this.contents = contents;
     }
 
@@ -93,7 +89,7 @@ public class ContentHolderAdapter extends BaseAdapter  {
         final L_Content content = (L_Content) contents.get(position);
         if (convertView == null) {  // if it's not recycled, initialize some attributes
             viewHolder = new ViewHolder();
-            convertView = activity.getLayoutInflater().inflate(R.layout.grid_cell, null);
+            convertView = libraryFragment.getLayoutInflater().inflate(R.layout.grid_cell, null);
             viewHolder.coverImageView= (ImageView)convertView.findViewById(R.id.coverImage);
             viewHolder.nameLabel = (TextView)convertView.findViewById(R.id.nameLabel);
             viewHolder.detailLabel = (TextView)convertView.findViewById(R.id.detailLabel);

@@ -1,4 +1,4 @@
-package ak.detaysoft.galepress.test;
+package ak.detaysoft.galepress;
 
 import android.content.Context;
 

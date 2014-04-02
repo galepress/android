@@ -16,6 +16,7 @@ import ak.detaysoft.galepress.service_models.R_ContentDetail;
 @DatabaseTable(tableName = "Content")
 public class L_Content {
     public final static  String ID_FIELD_NAME= "id";
+    public final static  String IS_PDF_DOWNLOADED_FIELD_NAME= "isPdfDownloaded";
 
     @DatabaseField(id = true, columnName = ID_FIELD_NAME) private Integer id;
     @DatabaseField private String name;
@@ -27,7 +28,7 @@ public class L_Content {
     @DatabaseField private String pdfFileName;
     @DatabaseField private String dirName;
     @DatabaseField private boolean isPdfUpdateAvailable;
-    @DatabaseField private boolean isPdfDownloaded;
+    @DatabaseField(columnName = IS_PDF_DOWNLOADED_FIELD_NAME) private boolean isPdfDownloaded;
     @DatabaseField private boolean isPdfDownloading;
     @DatabaseField private boolean isCoverImageUpdateAvailable;
     @DatabaseField private String coverImageFileName;
