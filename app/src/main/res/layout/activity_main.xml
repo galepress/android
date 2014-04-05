@@ -4,7 +4,8 @@
     android:id="@+id/tabhost"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    tools:ignore="HardcodedText" >
+    tools:ignore="HardcodedText"
+    >
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -20,7 +21,14 @@
         <TabWidget
             android:id="@android:id/tabs"
             android:layout_width="fill_parent"
-            android:layout_height="50dp" />
+            android:layout_height="50dp"
+            android:background="@drawable/tab_background"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:tabStripEnabled="false"
+            android:layout_weight="0"
+            />
     </LinearLayout>
 
 </android.support.v4.app.FragmentTabHost>

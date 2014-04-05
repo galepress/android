@@ -1,5 +1,9 @@
 package ak.detaysoft.galepress;
 
+import android.app.ActionBar;
+import android.app.SearchManager;
+import android.app.SearchableInfo;
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -7,31 +11,43 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
+import java.util.List;
 
 import ak.detaysoft.galepress.view.TabBitmap;
 
 /**
  * Created by adem on 31/03/14.
  */
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends ActionBarActivity {
 
     public static final String LIBRARY_TAB_TAG = "LIBRARY_TAB";
     public static final String DOWNLOADED_LIBRARY_TAG = "DOWNLOADED_TAB";
     private static final String INFO_TAB_TAG = "INFO_TAB";
 
     public FragmentTabHost mTabHost;
+    private android.support.v7.widget.SearchView mSearchView;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        getSupportActionBar().setDisplayUseLogoEnabled(false);
+//        getSupportActionBar().setDisplayShowHomeEnabled(false);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+
         setContentView(R.layout.activity_main);
+//        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+//        getSupportActionBar().setCustomView(R.layout.actionbar);
         setTabs();
     }
 
@@ -83,4 +99,27 @@ public class MainActivity extends FragmentActivity {
         spec.setIndicator(createTabIndicator(label, drawable));
         mTabHost.addTab(spec,classy,null);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.searchview_in_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+
+    }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle presses on the action bar items
+        switch (item.getItemId()) {
+            case R.id.action_search:
+                Logout.e("Adem", "Search clicked");
+                return true;
+            case R.id.action_settings:
+                Logout.e("Adem", "Settings clicked");
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 }

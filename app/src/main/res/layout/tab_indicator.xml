@@ -16,32 +16,35 @@
 -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="50dip"
-    android:layout_height="50dp"
+    android:layout_width="200dip"
+    android:layout_height="50dip"
     android:layout_weight="1"
     android:background="@drawable/tab_indicator"
     android:gravity="center"
+    android:layout_gravity="center"
     android:orientation="vertical"
     android:paddingTop="3dp"
     android:paddingLeft="5dp"
     android:paddingRight="5dp"
-    android:paddingBottom="1dp" >
+    android:paddingBottom="1dp"
+    android:layout_margin="0dp"
+   >
 
     <ImageView
         android:id="@+id/image_view_tab_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="0dip"
+        android:layout_width="100dip"
+        android:layout_height="80dip"
         android:layout_weight="1"
         android:scaleType="fitCenter"
-        android:src="@drawable/library_tabbar_icon" />
+        android:src="@drawable/library_tabbar_icon"/>
 
     <TextView
         android:id="@+id/text_view_tab_title"
-        android:layout_width="wrap_content"
+        android:layout_width="200dip"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textColor="@drawable/tab_text_indicator"
-        android:textSize="9.5dp"
-        android:textStyle="bold" />
+        android:textSize="12dp"
+        android:textStyle="normal" />
 
 </LinearLayout>
