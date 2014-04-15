@@ -567,7 +567,7 @@ public class DataApi extends Object {
                                 }
                             }
                             // Content'in sunucudan silinmis olmasi durumu icin local content'lerin sunucudan gelenler icinde olup olmadigini kontrol ediyoruz.
-                            List<L_Content> localContents = databaseApi.getAllContents();
+                            List<L_Content> localContents = databaseApi.getAllContents(null);
                             for (L_Content l_content : localContents) {
                                 Boolean deletedInServer = true;
                                 for (R_Content r_content : RAppContents.getContents()) {

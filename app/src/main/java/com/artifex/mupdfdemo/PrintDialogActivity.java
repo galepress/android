@@ -30,7 +30,7 @@ public class PrintDialogActivity extends Activity {
 	private static final String CLOSE_POST_MESSAGE_NAME = "cp-dialog-on-close";
 
 	/**
-	 * Web view element to show the printing dialog in.
+	 * web view element to show the printing dialog in.
 	 */
 	private WebView dialogWebView;
 

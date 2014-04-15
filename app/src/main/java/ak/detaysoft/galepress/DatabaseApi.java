@@ -4,11 +4,13 @@ import android.content.Context;
 import android.util.Log;
 
 import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.field.SqlType;
 import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.SelectArg;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import ak.detaysoft.galepress.database_models.L_Application;
@@ -29,7 +31,8 @@ public class DatabaseApi {
     private Dao<L_Application, Integer> applicationsDao;
     private Dao<L_Statistic, Integer> statisticsDao;
     private PreparedQuery<L_Content> contentsByCategoryQuery = null;
-    private PreparedQuery<L_Content> contentsDownloadedQuery = null;
+    private PreparedQuery<L_Content> contentsQuery = null;
+    private PreparedQuery<L_Content> downloadedContentsQuery = null;
     private PreparedQuery<L_ContentCategory> contentCategoryByContentQuery = null;
 
 
@@ -99,8 +102,6 @@ public class DatabaseApi {
         return null;
     }
 
-
-
     /**
      * Methods for CONTENT
      */
@@ -152,28 +153,71 @@ public class DatabaseApi {
         return null;
     }
 
-    public List getAllContents()
+
+
+    public List getAllContents(String searchQuery)
     {
         try {
-            return contentsDao.queryForAll();
+            if (contentsQuery == null) {
+                contentsQuery= makeContentsQuery(false);
+            }
+            String nameParameter = searchQuery == null ? "%%" : "%"+searchQuery.trim()+"%";
+            contentsQuery.setArgumentHolderValue(0,nameParameter);
+            return contentsDao.query(contentsQuery);
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return null;
     }
 
-    public List getAllDownloadedContents()
+    public List getAllContents(boolean isOnlyDownloaded, String searchQuery, L_Category category)
     {
+        List contents = null;
+        List resultContents = new ArrayList();
         try {
-            if (contentsDownloadedQuery == null) {
-                contentsDownloadedQuery= makeDownloadedContentsQuery();
+            if(category == null){
+                L_Category generalCategory = getCategory(MainActivity.GENEL_CATEGORY_ID);
+                if(generalCategory != null){
+                    // Genel kategorisine ait contentler listelenecek.
+                    contents = getAllContentsByCategory(generalCategory);
+                }
+                else {
+                    // Genel kategorisinin olmadigi durumlarda butun contentler listelenir.
+                    contents = contentsDao.queryForAll();
+                }
             }
-            return contentsDao.query(contentsDownloadedQuery);
+            else if(category.getCategoryID().compareTo(-1)==0){
+                // Show all categories.
+                contents = contentsDao.queryForAll();
+            }
+            else{
+                contents = getAllContentsByCategory(category);
+            }
+
+            for(int i=0; i<contents.size(); i++){
+                L_Content content = (L_Content )contents.get(i);
+
+                if(isOnlyDownloaded){
+                    // Download Status Filter must be applied.
+                    if(!content.isPdfDownloaded()){
+                        continue;
+                    }
+                }
+
+                if(searchQuery!=null && searchQuery.compareTo("")!=0){
+                    // Search Query Filter must be applied.
+                    if(!content.getName().toLowerCase().contains(searchQuery.toLowerCase())){
+                        continue;
+                    }
+                }
+                resultContents.add(content);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+            return null;
         }
-
-        return null;
+        return resultContents;
     }
 
     public List getAllContentsByCategory(L_Category category)
@@ -200,11 +244,12 @@ public class DatabaseApi {
         return contentObj.prepare();
     }
 
-    private PreparedQuery<L_Content> makeDownloadedContentsQuery() throws SQLException {
+    private PreparedQuery<L_Content> makeContentsQuery(boolean justDownloaded) throws SQLException {
         QueryBuilder<L_Content, Integer> contentObj = contentsDao.queryBuilder();
-        contentObj.where().eq(L_Content.IS_PDF_DOWNLOADED_FIELD_NAME, true);
+        contentObj.where().like(L_Content.NAME_FIELD_NAME,new SelectArg());
         return contentObj.prepare();
     }
+
     /**
      * Methods for Application
      * */

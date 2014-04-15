@@ -16,10 +16,11 @@ import ak.detaysoft.galepress.service_models.R_ContentDetail;
 @DatabaseTable(tableName = "Content")
 public class L_Content {
     public final static  String ID_FIELD_NAME= "id";
+    public final static  String NAME_FIELD_NAME= "name";
     public final static  String IS_PDF_DOWNLOADED_FIELD_NAME= "isPdfDownloaded";
 
     @DatabaseField(id = true, columnName = ID_FIELD_NAME) private Integer id;
-    @DatabaseField private String name;
+    @DatabaseField(columnName = NAME_FIELD_NAME) private String name;
     @DatabaseField private boolean autoDownload;
     @DatabaseField private boolean blocked;
     @DatabaseField private Integer pdfVersion;

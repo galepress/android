@@ -17,6 +17,7 @@ import com.artifex.mupdfdemo.MuPDFActivity;
 import java.io.File;
 import java.util.List;
 
+import ak.detaysoft.galepress.database_models.L_Category;
 import ak.detaysoft.galepress.database_models.L_Content;
 
 /**
@@ -30,6 +31,8 @@ public class LibraryFragment extends Fragment {
     private LayoutInflater layoutInflater;
     private boolean isOnlyDownloaded;
     private List contents;
+    public String searchQuery = new String("");
+    L_Category selectedCategory = null;
 
     public LayoutInflater getLayoutInflater() {
         return layoutInflater;
@@ -48,6 +51,8 @@ public class LibraryFragment extends Fragment {
             isOnlyDownloaded = false;
         }
 
+
+
         super.onCreate(savedInstanceState);
     }
 
@@ -56,26 +61,18 @@ public class LibraryFragment extends Fragment {
         this.setLayoutInflater(inflater);
         View v = inflater.inflate(R.layout.library_layout, container, false);
         Button tv = (Button) v.findViewById(R.id.sync_button);
-        tv.setText(" Adem Library Fragment Activity");
+        tv.setText("Reload UI");
 
-        /////
         GalePressApplication.getInstance().getDataApi().updateApplication();
         GalePressApplication.getInstance().setLibraryActivity(this);
-//        setContentView(R.layout.activity_main);
         if (downloadsDirectory == null) {
             downloadsDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
             samplePdfFile = new File(downloadsDirectory + "/20.pdf");
         }
 
         gridview = (GridView) v.findViewById(R.id.gridview);
-        if(isOnlyDownloaded) {
-            // Downloaded Library tab selected.
-            contents = GalePressApplication.getInstance().getDatabaseApi().getAllDownloadedContents();
-        }
-        else {
-            // Library tab bar.
-            contents = GalePressApplication.getInstance().getDatabaseApi().getAllContents();
-        }
+
+        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContents(isOnlyDownloaded, searchQuery, selectedCategory);
 
         this.contentHolderAdapter = new ContentHolderAdapter(this, contents);
         gridview.setAdapter(this.contentHolderAdapter);
@@ -119,14 +116,7 @@ public class LibraryFragment extends Fragment {
         return v;
     }
     public void updateGridView(){
-        if(isOnlyDownloaded) {
-            // Downloaded Library tab selected.
-            contentHolderAdapter.contents = GalePressApplication.getInstance().getDatabaseApi().getAllDownloadedContents();
-        }
-        else {
-            // Library tab bar.
-            contentHolderAdapter.contents  = GalePressApplication.getInstance().getDatabaseApi().getAllContents();
-        }
+        contentHolderAdapter.contents = GalePressApplication.getInstance().getDatabaseApi().getAllContents(isOnlyDownloaded,this.searchQuery,this.selectedCategory);
         gridview.invalidateViews();
         Logout.e("Adem","Gridview updated");
     }
