@@ -22,4 +22,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:+'
     compile 'com.j256.ormlite:ormlite-android:4.45@jar'
     compile 'com.j256.ormlite:ormlite-core:4.45@jar'
+    compile files('/Users/adem/Workspace/GalePress/Android Project/dd-plist.jar')
 }

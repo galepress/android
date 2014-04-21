@@ -7,6 +7,13 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.Volley;
+import com.dd.plist.NSDictionary;
+import com.dd.plist.PropertyListParser;
+
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import ak.detaysoft.galepress.database_models.TestApplicationInf;
 
@@ -26,6 +33,9 @@ public class GalePressApplication extends Application {
      //Global request queue for Volley
     private RequestQueue mRequestQueue;
 
+    public static HashMap applicationPlist;
+    public static LinkedHashMap extrasHashMap;
+
     /**
      * A singleton instance of the application class for easy access in other places
      */
@@ -35,6 +45,27 @@ public class GalePressApplication extends Application {
     public void onCreate() {
         super.onCreate();
         sInstance = this;
+        parseApplicationPlist();
+    }
+
+    public void parseApplicationPlist(){
+        applicationPlist = new HashMap();
+        extrasHashMap = new LinkedHashMap();
+        Object[] extras;
+        try {
+            InputStream is = getResources().openRawResource(R.raw.application);
+            NSDictionary rootDict = (NSDictionary) PropertyListParser.parse(is);
+            applicationPlist = (HashMap)rootDict.toJavaObject();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        extras= (Object[])applicationPlist.get("Extras");
+
+        for(int i=0; i<extras.length; i++){
+            HashMap extra = (HashMap)extras[i];
+            extrasHashMap.putAll(extra);
+        }
     }
 
     /**
@@ -116,7 +147,8 @@ public class GalePressApplication extends Application {
 
     public Integer getApplicationId(){
         // TODO: ApplicationID burada application.plist'den alinmali..
-        return 10;
+        String applicationId = (String)applicationPlist.get("ApplicationID");
+        return Integer.valueOf(applicationId);
     }
 
     public TestApplicationInf getTestApplicationLoginInf(){

@@ -2,6 +2,7 @@ package ak.detaysoft.galepress;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -25,9 +26,31 @@ import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.dd.plist.NSDictionary;
+import com.dd.plist.PropertyListFormatException;
+import com.dd.plist.PropertyListParser;
+
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.Array;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 
 import ak.detaysoft.galepress.database_models.L_Category;
 import ak.detaysoft.galepress.view.TabBitmap;
@@ -80,13 +103,26 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             }
         };
         searchView.setOnQueryTextListener(queryTextListener);
-
         categoriesButton = (Button)findViewById(R.id.categories_button);
         categoriesButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 showCategoriesPopUp();
             }
         });
+
+        LinkedHashMap extras = GalePressApplication.getInstance().extrasHashMap;
+
+        try {
+            SAXParserFactory spf = SAXParserFactory.newInstance();
+            SAXParser sp = spf.newSAXParser();
+            XMLReader xr = sp.getXMLReader();
+            Resources resources = Resources.getSystem();
+            InputStream is = resources.openRawResource(R.raw.application);
+            xr.parse(new InputSource(is));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -181,35 +217,64 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        menu.clear();
+        HashMap extrasHashMap = GalePressApplication.getInstance().extrasHashMap;
+        int i = 0;
+        Iterator it = extrasHashMap.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pairs = (Map.Entry)it.next();
+            menu.add(0, Menu.FIRST+i, Menu.FIRST+i,pairs.getKey().toString());
+            i++;
+        }
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.extras, menu);
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.extras, menu);
         return super.onCreateOptionsMenu(menu);
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle presses on the action bar items
-        switch (item.getItemId()) {
-            case R.id.action_extras_web:
-                Logout.e("Adem", "web clicked");
-                return true;
-            case R.id.action_extras_facebook:
-                Logout.e("Adem", "facebook clicked");
-                return true;
-            case R.id.action_extras_twitter:
-                Logout.e("Adem", "twitter clicked");
-                item.setChecked(true);
-                openOptionsMenu();
-                return true;
-            case R.id.action_extras_email:
-                Logout.e("Adem", "Email clicked");
-                item.setChecked(true);
-                return true;
-            default:
-                Logout.e("Adem","Default Runned");
-                return super.onOptionsItemSelected(item);
+        Logout.e("Adem", "Clicked item id : "+item.getItemId());
+        HashMap extrasHashMap = GalePressApplication.getInstance().extrasHashMap;
+        Map.Entry selectedMenuItemMapEntry = null;
+        int i = 1;
+        Iterator it = extrasHashMap.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pairs = (Map.Entry)it.next();
+            if(item.getItemId() == i){
+                selectedMenuItemMapEntry = pairs;
+                break;
+            }
+            i++;
         }
-    }
+
+        if(selectedMenuItemMapEntry.getKey().toString().toLowerCase().contains("mail")){
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("message/rfc822");
+//            intent.setType("text/html");
+            intent.putExtra(Intent.EXTRA_EMAIL  , new String[]{selectedMenuItemMapEntry.getValue().toString()});
+            intent.putExtra(Intent.EXTRA_SUBJECT, " ");
+            intent.putExtra(Intent.EXTRA_TEXT   , " ");
+            try {
+                startActivity(Intent.createChooser(intent, "Send mail..."));
+            } catch (android.content.ActivityNotFoundException ex) {
+                Toast.makeText(this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+            }
+        }
+        else {
+            Intent intent = new Intent(this, ExtraWebViewActivity.class);
+            intent.putExtra("url",selectedMenuItemMapEntry.getValue().toString());
+            startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
+
+}
 
     public LibraryFragment getCurrentFragment(){
         int count = getSupportFragmentManager().getFragments().size();

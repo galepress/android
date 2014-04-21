@@ -25,6 +25,11 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ExtraWebViewActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"
+            android:label="@string/app_name">
+        </activity>
+        <activity
             android:name="com.artifex.mupdfdemo.ChoosePDFActivity"
             android:theme="@android:style/Theme.Light"
             android:label="@string/app_name">

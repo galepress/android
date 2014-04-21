@@ -1,5 +1,7 @@
 package ak.detaysoft.galepress;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
@@ -82,14 +84,16 @@ public class LibraryFragment extends Fragment {
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 if (samplePdfFile.exists()) {
-                    Toast.makeText(GalePressApplication.getInstance(), "Button Clicked", Toast.LENGTH_LONG).show();
-//                    Uri uri = Uri.parse(samplePdfFile.getAbsolutePath());
-//                    Intent intent = new Intent(LibraryActivity.this, MuPDFActivity.class);
-//                    intent.setAction(Intent.ACTION_VIEW);
-//                    intent.setData(uri);
+                    Toast.makeText(getActivity(), "Button Clicked", Toast.LENGTH_LONG).show();
+                    Uri uri = Uri.parse(samplePdfFile.getAbsolutePath());
+                    Intent intent = new Intent(getActivity(), MuPDFActivity.class);
+                    intent.setAction(Intent.ACTION_VIEW);
+                    intent.setData(uri);
 
                     ContentHolderAdapter contentHolderAdapter =  (ContentHolderAdapter)parent.getAdapter();
-                    Toast.makeText(GalePressApplication.getInstance(), "Content Name : "+((L_Content)contentHolderAdapter.contents.get(position)).getName(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Content Name : "+((L_Content)contentHolderAdapter.contents.get(position)).getName(), Toast.LENGTH_SHORT).show();
+
+                    startActivity(intent);
 
                     GalePressApplication.getInstance().getDataApi().updateApplication();
 
