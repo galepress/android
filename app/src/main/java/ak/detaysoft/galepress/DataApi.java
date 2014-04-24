@@ -253,6 +253,12 @@ public class DataApi extends Object {
                     content.setPdfDownloaded(false);
                     getDatabaseApi().updateContent(content,true);
                     GalePressApplication.getInstance().getLibraryActivity().updateGridView();
+
+                    L_Application application = getDatabaseApi().getApplication(GalePressApplication.getInstance().getApplicationId());
+                    application.setVersion(application.getVersion()-1);
+                    getDatabaseApi().updateApplication(application);
+                    updateApplication();
+
                 }
             });
             alertDialog.setNegativeButton(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.HAYIR), new DialogInterface.OnClickListener() {
@@ -576,7 +582,7 @@ public class DataApi extends Object {
                                         break;
                                     }
                                 }
-                                if (deletedInServer) {
+                                if (deletedInServer && !l_content.isPdfDownloaded()) {
                                     deleteContent(l_content);
                                 }
                             }
@@ -727,9 +733,9 @@ public class DataApi extends Object {
         if (coverImage.exists()) {
             coverImage.delete();
         }
-        File pdfFile = new File(GalePressApplication.getInstance().getFilesDir(), content.getPdfPath());
-        if (pdfFile.exists()) {
-            pdfFile.delete();
+        File contentFolder = new File(GalePressApplication.getInstance().getFilesDir(), content.getId().toString());
+        if(contentFolder.exists()){
+            deleteFolder(contentFolder);
         }
         getDatabaseApi().deleteContent(content);
     }
@@ -802,7 +808,6 @@ public class DataApi extends Object {
             InputStream input = null;
             OutputStream output = null;
             HttpURLConnection connection = null;
-
             try {
                 directory = new File(GalePressApplication.getInstance().getFilesDir() + "/" + contentId);
                 tempDirectory = new File(GalePressApplication.getInstance().getFilesDir() + "/" + UUID.randomUUID().toString());

@@ -191,7 +191,7 @@ public class L_Content {
     }
 
     public String getPdfPath() {
-        return this.dirName+"/"+this.pdfFileName;
+        return GalePressApplication.getInstance().getFilesDir()+"/"+getId().toString();
     }
 
     public String getGridThumbCoverImagePath() {

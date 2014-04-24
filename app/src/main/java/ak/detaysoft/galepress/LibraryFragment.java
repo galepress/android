@@ -13,12 +13,9 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
-
 import com.artifex.mupdfdemo.MuPDFActivity;
-
 import java.io.File;
 import java.util.List;
-
 import ak.detaysoft.galepress.database_models.L_Category;
 import ak.detaysoft.galepress.database_models.L_Content;
 
@@ -52,8 +49,7 @@ public class LibraryFragment extends Fragment {
         }catch (NullPointerException exception){
             isOnlyDownloaded = false;
         }
-
-
+        GalePressApplication.getInstance().setLibraryActivity(this);
 
         super.onCreate(savedInstanceState);
     }
@@ -66,46 +62,11 @@ public class LibraryFragment extends Fragment {
         tv.setText("Reload UI");
 
         GalePressApplication.getInstance().getDataApi().updateApplication();
-        GalePressApplication.getInstance().setLibraryActivity(this);
-        if (downloadsDirectory == null) {
-            downloadsDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-            samplePdfFile = new File(downloadsDirectory + "/20.pdf");
-        }
-
         gridview = (GridView) v.findViewById(R.id.gridview);
-
         contents = GalePressApplication.getInstance().getDatabaseApi().getAllContents(isOnlyDownloaded, searchQuery, selectedCategory);
 
         this.contentHolderAdapter = new ContentHolderAdapter(this, contents);
         gridview.setAdapter(this.contentHolderAdapter);
-
-        Logout.e("Adem", "OnRotate fonksiyonu tekrar calisti.");
-
-        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                if (samplePdfFile.exists()) {
-                    Toast.makeText(getActivity(), "Button Clicked", Toast.LENGTH_LONG).show();
-                    Uri uri = Uri.parse(samplePdfFile.getAbsolutePath());
-                    Intent intent = new Intent(getActivity(), MuPDFActivity.class);
-                    intent.setAction(Intent.ACTION_VIEW);
-                    intent.setData(uri);
-
-                    ContentHolderAdapter contentHolderAdapter =  (ContentHolderAdapter)parent.getAdapter();
-                    Toast.makeText(getActivity(), "Content Name : "+((L_Content)contentHolderAdapter.contents.get(position)).getName(), Toast.LENGTH_SHORT).show();
-
-                    startActivity(intent);
-
-                    GalePressApplication.getInstance().getDataApi().updateApplication();
-
-                } else {
-                    Log.e("Adem", "PDF doesn't exist in location :" + samplePdfFile.getAbsolutePath());
-//                    Toast.makeText(LibraryActivity.this, "PDF Not Exist at Location:" + samplePdfFile.getAbsolutePath(), Toast.LENGTH_LONG).show();
-                }
-                ContentHolderAdapter contentHolderAdapter =  (ContentHolderAdapter)parent.getAdapter();
-                Toast.makeText(GalePressApplication.getInstance(), "Content Name : "+((L_Content)contentHolderAdapter.contents.get(position)).getName(), Toast.LENGTH_SHORT).show();
-                GalePressApplication.getInstance().getDataApi().updateApplication();
-            }
-        });
 
         Button syncButton = (Button) v.findViewById(R.id.sync_button);
         syncButton.setOnClickListener( new View.OnClickListener() {
@@ -115,7 +76,6 @@ public class LibraryFragment extends Fragment {
             }
         });
         updateGridView();
-        /////
 
         return v;
     }
@@ -128,4 +88,18 @@ public class LibraryFragment extends Fragment {
     public ContentHolderAdapter getContentHolderAdapter() {
         return contentHolderAdapter;
     }
+
+    public void viewContent(L_Content content){
+        File samplePdfFile = new File(content.getPdfPath(),"file.pdf");
+        if(content!=null && content.isPdfDownloaded() && samplePdfFile.exists()){
+            Uri uri = Uri.parse(samplePdfFile.getAbsolutePath());
+            Intent intent = new Intent(getActivity(), MuPDFActivity.class);
+            intent.setAction(Intent.ACTION_VIEW);
+            intent.setData(uri);
+            startActivity(intent);
+            GalePressApplication.getInstance().getDataApi().updateApplication();
+        }
+    }
+
+
 }

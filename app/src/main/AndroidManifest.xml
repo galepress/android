@@ -3,6 +3,7 @@
     package="ak.detaysoft.galepress" >
     <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_USER_DICTIONARY" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <supports-screens
@@ -29,16 +30,17 @@
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"
             android:label="@string/app_name">
         </activity>
+        <!--
         <activity
             android:name="com.artifex.mupdfdemo.ChoosePDFActivity"
             android:theme="@android:style/Theme.Light"
             android:label="@string/app_name">
-            <!--
+
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>
 				<category android:name="android.intent.category.LAUNCHER"/>
 			</intent-filter>
-			-->
+
         </activity>
         <activity
             android:name="com.artifex.mupdfdemo.MuPDFActivity"
@@ -97,6 +99,7 @@
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"
             android:label="@string/print">
         </activity>
+        -->
         <service android:enabled="true" android:name=".CoverImageDownloader" />
     </application>
 

@@ -1,5 +1,7 @@
 package ak.detaysoft.galepress;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.view.View;
@@ -9,6 +11,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.artifex.mupdfdemo.MuPDFActivity;
 
 import java.io.File;
 import java.util.List;
@@ -62,22 +66,24 @@ public class ContentHolderAdapter extends BaseAdapter  {
 
         @Override
         public void onClick(View v) {
-
-
-                if(v == downloadButton){
-                    if(DataApi.isConnectedToInternet()){
-                        v.setEnabled(false);
-                        GalePressApplication.getInstance().getDataApi().getPdf(content);
-                    }
-                }
-                else if(v == cancelButton){
+            Logout.e("Adem", v.toString());
+            if(v == downloadButton){
+                if(DataApi.isConnectedToInternet()){
                     v.setEnabled(false);
-                    GalePressApplication.getInstance().getDataApi().cancelDownload(false);
+                    GalePressApplication.getInstance().getDataApi().getPdf(content);
                 }
-                else if(v == deleteButton){
-                    v.setEnabled(false);
-                    GalePressApplication.getInstance().getDataApi().deletePdf(content.getId());
-                }
+            }
+            else if(v == cancelButton){
+                v.setEnabled(false);
+                GalePressApplication.getInstance().getDataApi().cancelDownload(false);
+            }
+            else if(v == deleteButton){
+                v.setEnabled(false);
+                GalePressApplication.getInstance().getDataApi().deletePdf(content.getId());
+            }
+            else{
+                GalePressApplication.getInstance().getLibraryActivity().viewContent(content);
+            }
 
 
         }
@@ -134,9 +140,11 @@ public class ContentHolderAdapter extends BaseAdapter  {
             viewHolder.downloadButton.setVisibility(View.INVISIBLE);
             viewHolder.viewButton.setVisibility(View.VISIBLE);
             viewHolder.viewButton.setEnabled(true);
+            viewHolder.viewButton.setOnClickListener(viewHolder);
             viewHolder.deleteButton.setVisibility(View.VISIBLE);
             viewHolder.deleteButton.setEnabled(true);
             viewHolder.deleteButton.setOnClickListener(viewHolder);
+            convertView.setOnClickListener(viewHolder);
         }
         else{
             // Content is not downloaded.
