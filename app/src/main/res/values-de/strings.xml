@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GalePress</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="version">1.3 (git build)</string>
+    <string name="no_media_warning">Storage media not present</string>
+    <string name="no_media_hint">Sharing the storage media with a PC can make it inaccessible</string>
+    <string name="cancel">Cancel</string>
+    <string name="search_backwards">Search backwards</string>
+    <string name="search_forwards">Search forwards</string>
+    <string name="search_document">Search document</string>
+    <string name="picker_title_App_Ver_Dir">%1$s %2$s: %3$s</string>
+    <string name="outline_title">Table of Contents</string>
+    <string name="enter_password">Enter password</string>
+    <string name="text_not_found">Text not found</string>
+    <string name="searching_">Searching&#8230;</string>
+    <string name="toggle_links">Highlight and enable links</string>
+    <string name="no_further_occurrences_found">No further occurrences found</string>
+    <string name="select">Select</string>
+    <string name="search">Search</string>
+    <string name="copy">Copy</string>
+    <string name="strike_out">Strike-out</string>
+    <string name="delete">Delete</string>
+    <string name="highlight">Highlight</string>
+    <string name="underline">Underline</string>
+    <string name="edit_annotations">Edit annotations</string>
+    <string name="ink">Ink</string>
+    <string name="save">Save</string>
+    <string name="print">Print</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="parent_directory">[Up one level]</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="entering_reflow_mode">Entering reflow mode</string>
+    <string name="leaving_reflow_mode">Leaving reflow mode</string>
+    <string name="print_failed">Print failed</string>
+    <string name="select_text">Select text</string>
+    <string name="copied_to_clipboard">Copied to clipboard</string>
+    <string name="no_text_selected">No text selected</string>
+    <string name="draw_annotation">Draw annotation</string>
+    <string name="nothing_to_save">Nothing to save</string>
+    <string name="document_has_changes_save_them_">Document has changes. Save them?</string>
+    <string name="cannot_open_document">Cannot open document</string>
+    <string name="cannot_open_document_Reason">Cannot open document: %1$s</string>
+    <string name="cannot_open_file_Path">Cannot open file: %1$s</string>
+    <string name="cannot_open_buffer">Cannot open buffer</string>
+    <string name="fill_out_text_field">Fill out text field</string>
+    <string name="okay">Okay</string>
+    <string name="choose_value">Choose value</string>
+    <string name="not_supported">Not supported</string>
+    <string name="copy_text_to_the_clipboard">Copy text to the clipboard</string>
+    <string name="more">More</string>
+    <string name="accept">Accept</string>
+    <string name="copy_text">copy text</string>
+    <string name="format_currently_not_supported">Format currently not supported</string>
+    <string name="toggle_reflow_mode">Toggle reflow mode</string>
+
+    <!-- From iOS -->
+    <string name="OKU">Lesen</string>
+    <string name="SIL">Löschen</string>
+    <string name="INDIR">Herunterladen</string>
+    <string name="GUNCELLE">Aktualisieren</string>
+    <string name="IPTAL">Cancel</string>
+    <string name="KATEGORILER">Kategorien</string>
+    <string name="EXTRA">Extras</string>
+    <string name="SETTINGS">Einstellungen</string>
+    <string name="ONAY">Bestätigung</string>
+    <string name="EVET">Ja</string>
+    <string name="HAYIR">Nein</string>
+    <string name="TAMAM">OK</string>
+    <string name="UYARI">Hinweis</string>
+    <string name="SIFRE">Passwort</string>
+    <string name="HATA">Fehler</string>
+    <string name="AC">Öffnen</string>
+    <string name="ARA">Suchen..</string>
+    <string name="ARIYOR">Suche läuft..</string>
+
+    <string name="LIBRARY">Bibliothek</string>
+    <string name="DOWNLOADED">Downloads</string>
+    <string name="INFO">Info</string>
+
+    <string name="WARNING_0">Es ist ein unerwarteter Fehler aufgetreten.</string>
+    <string name="WARNING_1">Sie haben keinen Internet-Zugang.</string>
+    <string name="WARNING_2">Bitte geben Sie ihr Passwort ein.</string>
+
+    <string name="WARNING_101">Passwort wurde nicht angenommen.</string>
+    <string name="WARNING_102">Kein Inhalt gefunden.</string>
+    <string name="WARNING_103">Inhalt ist nicht aktiv. Inhalt kann blockiert oder inaktiviert sein.</string>
+    <string name="WARNING_104">Interaktive Datei wurde noch nicht erstellt.</string>
+    <string name="WARNING_120">Kein Kunde gefunden.</string>
+    <string name="WARNING_120_2">Fehlerhafte Applikations-ID</string>
+    <string name="WARNING_130">Keine Applikation gefunden.</string>
+    <string name="WARNING_131">Applikation ist nicht aktiv. Sie kann abgelaufen oder blockiert sein</string>
+    <string name="WARNING_140">Benutzerdaten sind fehlerhaft.</string>
+
+    <string name="CONFIRM_1">Sind Sie sicher, dass Sie löschen möchten?</string>
+    <string name="CONFIRM_2">Sind Sie sicher, dass Sie die anderen Downloads canceln möchten?</string>
+    <string name="CONFIRM_3">Sind Sie sicher, dass Sie das Download canceln möchten?</string>
+
+    <string name="ERROR_1">Katalogdatei ist defekt..</string>
+
+    <string name="INFO_1">%1$d Treffer gefunden.</string>
+    <string name="INFO_2">Suche vollständig</string>
+    <string name="INFO_3">Seite %1$d</string>
+    <string name="INFO_4">Wird geladen</string>
+
+    <string name="PLACEHOLDER1">Suche nach der Inhaltsbezeichnung</string>
+
+
+    // General
+    <string name="Done">Fertig</string>
+
+    // Page Toolbar
+    <string name="pageOfpage">%1$d / %2$d</string>
+    <string name="Page">Seite %d</string>
+
+
+    // PDF Viewer
+    <string name="Document_is_not_valid">Der Inhalt ist keine regelrechte PDF-Datei.</string>
+    <string name="Document_is_password_protected">Inhalt ist passwortgeschützt!</string>
+
+
+    // Search
+    <string name="Search_Document">Suchen</string>
+    <string name="Searching">Suche läuft </string>
+    <string name="Search_Completed">Suche vollständig</string>
+    <string name="results_found">%1$d Treffer gefunden</string>
+
+    <string name="show_all">Alle Anzeigen</string>
+</resources>
