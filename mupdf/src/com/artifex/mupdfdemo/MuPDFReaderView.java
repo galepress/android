@@ -62,7 +62,8 @@ public class MuPDFReaderView extends ReaderView {
 					link.acceptVisitor(new LinkInfoVisitor() {
 						@Override
 						public void visitInternal(LinkInfoInternal li) {
-							// Clicked on an internal (GoTo) link
+							// Clicked on an internal (GoTo) link c
+
 							setDisplayedViewIndex(li.pageNumber);
 						}
 

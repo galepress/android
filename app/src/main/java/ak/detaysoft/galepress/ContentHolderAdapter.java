@@ -1,7 +1,5 @@
 package ak.detaysoft.galepress;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.view.View;
@@ -12,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.artifex.mupdfdemo.MuPDFActivity;
 
 import java.io.File;
 import java.util.List;

@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -82,6 +83,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 	private AsyncTask<Void,Void,MuPDFAlert> mAlertTask;
 	private AlertDialog mAlertDialog;
 	private FilePicker mFilePicker;
+    private int mOrientation;
 
 	public void createAlertWaiter() {
 		mAlertsActive = true;
@@ -332,6 +334,13 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 			alert.show();
 			return;
 		}
+        mOrientation = getResources().getConfiguration().orientation;
+
+        if(mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+            core.setDisplayPages(2);
+        } else {
+            core.setDisplayPages(1);
+        }
 
 		createUI(savedInstanceState);
 	}
@@ -589,8 +598,12 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		switch (requestCode) {
 		case OUTLINE_REQUEST:
-			if (resultCode >= 0)
+			if (resultCode >= 0){
+                if (core.getDisplayPages() == 2) {
+                    resultCode = (resultCode + 1) / 2;
+                }
 				mDocView.setDisplayedViewIndex(resultCode);
+            }
 			break;
 		case PRINT_REQUEST:
 			if (resultCode == RESULT_CANCELED)
@@ -1034,7 +1047,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 		int displayPage = mDocView.getDisplayedViewIndex();
 		SearchTaskResult r = SearchTaskResult.get();
 		int searchPage = r != null ? r.pageNumber : -1;
-		mSearchTask.go(mSearchText.getText().toString(), direction, displayPage, searchPage);
+		mSearchTask.go(mSearchText.getText().toString(), direction, displayPage, searchPage );
 	}
 
 	@Override
