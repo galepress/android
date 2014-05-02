@@ -123,7 +123,6 @@ public class MuPDFCore
 	/* Shim function */
 	private void gotoPage(int page)
 	{
-        Log.e("Adem", "gotoPage : "+page);
 		if (page > numPages-1)
 			page = numPages-1;
 		else if (page < 0)
@@ -449,7 +448,7 @@ public class MuPDFCore
 	}
 
 	public synchronized RectF [] searchPage(int page, String text) {
-		gotoPage(page);
+        gotoPage(page);
 		return searchPage(text);
 	}
 
@@ -542,5 +541,9 @@ public class MuPDFCore
             throw new IllegalStateException("MuPDFCore can only handle 1 or 2 pages per screen!");
         }
         displayPages = pages;
+    }
+
+    public int getNumPages() {
+        return numPages;
     }
 }
