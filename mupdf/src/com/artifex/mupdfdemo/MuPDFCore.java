@@ -134,7 +134,7 @@ public class MuPDFCore
 	}
 
 	public synchronized PointF getPageSize(int page) {
-        if (displayPages == 1 || page==0 || (displayPages==2 && page == numPages/2)) {
+        if (displayPages == 1 || page==0 || (displayPages==2 && page == numPages/2 && numPages%2==0)) {
             gotoPage(page);
             return new PointF(pageWidth, pageHeight);
         }
@@ -189,7 +189,7 @@ public class MuPDFCore
             gotoPage(page);
             drawPage(bm, pageW, pageH, patchX, patchY, patchW, patchH);
             // If we are on two pages mode (landscape), and at the last page, we show only one page (centered).
-        } else if (displayPages==2 && page == numPages/2) {
+        } else if (displayPages==2 && page == numPages/2 && numPages%2==0) {
             gotoPage(page*2+1); // need to multiply per 2, because page counting is being divided by 2 (landscape mode)
             drawPage(bm, pageW, pageH, patchX, patchY, patchW, patchH);
         } else {
@@ -215,9 +215,7 @@ public class MuPDFCore
                 if (leftBmWidth > 0) {
                     Bitmap leftBm = Bitmap.createBitmap(leftBmWidth, patchH, bm.getConfig());
                     gotoPage(drawPage);
-                    drawPage(bm, leftPageW, pageH,
-                            (leftBmWidth == 0) ? patchX - leftPageW : 0,
-                            patchY, leftBmWidth, patchH);
+                    drawPage(bm, leftPageW, pageH,(leftBmWidth == 0) ? patchX - leftPageW : 0,patchY, leftBmWidth, patchH);
                     Paint paint = new Paint(Paint.FILTER_BITMAP_FLAG);
                     canvas.drawBitmap(leftBm, 0, 0, paint);
 //                    leftBm.recycle();
