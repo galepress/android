@@ -395,7 +395,7 @@ public class MuPDFCore
 
 	public synchronized LinkInfo [] getPageLinks(int page) {
         String TAG = "Adem2Pages";
-        if(displayPages==1) {
+        if(displayPages==1 || page == 0) {
             return getPageLinksInternal(page);
         }
         LinkInfo[] leftPageLinkInfo = new LinkInfo[0];
@@ -545,5 +545,14 @@ public class MuPDFCore
 
     public int getNumPages() {
         return numPages;
+    }
+
+    public int convertIndexesForLandscape2Page(int index ){
+        if(getDisplayPages() == 1 || index == 0){
+            return index;
+        }
+        else{
+            return ((index-1)/2)+1;
+        }
     }
 }

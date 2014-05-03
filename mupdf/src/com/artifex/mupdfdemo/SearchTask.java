@@ -95,7 +95,7 @@ public abstract class SearchTask {
                             return new SearchTaskResult(text, index, searchHits);
                     }
                     else{
-                        // Searching landscape mode double pages. 
+                        // Searching landscape mode double pages.
                         int index2 = (index*2)-1;
                         publishProgress(index2);
                         RectF searchHits1[] = mCore.searchPage(index2, text);

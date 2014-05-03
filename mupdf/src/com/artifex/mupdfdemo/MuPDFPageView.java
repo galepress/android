@@ -606,7 +606,8 @@ public class MuPDFPageView extends PageView implements MuPDFView {
 
 			@Override
 			protected void onPostExecute(RectF[] result) {
-				mWidgetAreas = result;
+
+                mWidgetAreas = result;
 			}
 		};
 

@@ -50,7 +50,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 	private final int    OUTLINE_REQUEST=0;
 	private final int    PRINT_REQUEST=1;
 	private final int    FILEPICK_REQUEST=2;
-	private MuPDFCore    core;
+	public MuPDFCore    core;
 	private String       mFileName;
 	private MuPDFReaderView mDocView;
 	private View         mButtonsView;

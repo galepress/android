@@ -63,8 +63,8 @@ public class MuPDFReaderView extends ReaderView {
 						@Override
 						public void visitInternal(LinkInfoInternal li) {
 							// Clicked on an internal (GoTo) link c
-
-							setDisplayedViewIndex(li.pageNumber);
+                            MuPDFCore core =((MuPDFActivity)mContext).core;
+                            setDisplayedViewIndex(core.convertIndexesForLandscape2Page(li.pageNumber));
 						}
 
 						@Override
