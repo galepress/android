@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -49,7 +51,6 @@ public class LibraryFragment extends Fragment {
         }catch (NullPointerException exception){
             isOnlyDownloaded = false;
         }
-        GalePressApplication.getInstance().setLibraryActivity(this);
 
         super.onCreate(savedInstanceState);
     }
@@ -57,6 +58,8 @@ public class LibraryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.setLayoutInflater(inflater);
+        GalePressApplication.getInstance().setLibraryActivity(this);
+
         View v = inflater.inflate(R.layout.library_layout, container, false);
         Button tv = (Button) v.findViewById(R.id.sync_button);
         tv.setText("Reload UI");
@@ -80,9 +83,15 @@ public class LibraryFragment extends Fragment {
         return v;
     }
     public void updateGridView(){
-        contentHolderAdapter.contents = GalePressApplication.getInstance().getDatabaseApi().getAllContents(isOnlyDownloaded,this.searchQuery,this.selectedCategory);
-        gridview.invalidateViews();
-        Logout.e("Adem","Gridview updated");
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                contentHolderAdapter.contents = GalePressApplication.getInstance().getDatabaseApi().getAllContents(isOnlyDownloaded,searchQuery,selectedCategory);
+                contentHolderAdapter.notifyDataSetChanged();
+                gridview.invalidateViews();
+            }
+        });
+
     }
 
     public ContentHolderAdapter getContentHolderAdapter() {

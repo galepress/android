@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.Log;
 
 import com.j256.ormlite.dao.Dao;
-import com.j256.ormlite.field.SqlType;
 import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.SelectArg;
@@ -124,8 +123,9 @@ public class DatabaseApi {
             result = 0;
             e.printStackTrace();
         } finally {
-            if(updateUI)
+            if(updateUI) {
                 GalePressApplication.getInstance().getLibraryActivity().updateGridView();
+            }
         }
         return result;
     }

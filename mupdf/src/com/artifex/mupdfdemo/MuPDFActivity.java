@@ -76,7 +76,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 	private EditText     mSearchText;
 	private SearchTask   mSearchTask;
 	private AlertDialog.Builder mAlertBuilder;
-	private boolean    mLinkHighlight = false;
+	private boolean    mLinkHighlight = true;
 	private final Handler mHandler = new Handler();
 	private boolean mAlertsActive= false;
 	private boolean mReflow = false;

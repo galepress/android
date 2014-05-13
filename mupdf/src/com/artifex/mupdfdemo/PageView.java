@@ -16,10 +16,17 @@ import android.graphics.PointF;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.Handler;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebChromeClient;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 class PatchInfo {
 	public Point patchViewSize;
@@ -230,7 +237,7 @@ public abstract class PageView extends ViewGroup {
 		setBackgroundColor(BACKGROUND_COLOR);
 	}
 
-	public void setPage(int page, PointF size) {
+	public void setPage(final int page, PointF size) {
 		// Cancel pending render task
 		if (mDrawEntire != null) {
 			mDrawEntire.cancel(true);
@@ -266,6 +273,52 @@ public abstract class PageView extends ViewGroup {
 
 			protected void onPostExecute(LinkInfo[] v) {
 				mLinks = v;
+                final float scale = mSourceScale*(float)getWidth()/(float)mSize.x;
+                for(int i=0; i < getChildCount(); i++){
+                    View view = (View)getChildAt(i);
+                    if(view instanceof WebView){
+                        removeView(view);
+                    }
+                }
+                for (LinkInfo link : mLinks){
+                    Log.e("Adem", "Link added for page : "+page+" Link : "+link);
+                    boolean insOf = link instanceof LinkInfoExternal;
+                    boolean insOf2 = link.getClass().isAssignableFrom(LinkInfoExternal.class);
+                    if(link instanceof LinkInfoExternal){
+                        LinkInfoExternal linkInfoExternal = (LinkInfoExternal)link;
+                        WebView web = new WebView(mContext);
+                        web.setId(1);
+                        web.setEnabled(true);
+                        int w = (int)((linkInfoExternal.rect.right - linkInfoExternal.rect.left)*scale);
+                        int h = (int)((linkInfoExternal.rect.bottom - linkInfoExternal.rect.top)*scale);
+//                                web.setLayoutParams(new LinearLayout.LayoutParams((int)(w*scale), (int)(h*scale)));
+                        web.layout((int)(linkInfoExternal.rect.left*scale), (int)(linkInfoExternal.rect.top*scale), (int)(linkInfoExternal.rect.right*scale), (int)(linkInfoExternal.rect.bottom*scale));
+//                        web.setWebViewClient(new WebViewClient(){
+//                            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+//                                view.loadUrl(url);
+//                                return false; // then it is not handled by default action
+//                            }
+//                        });
+                        web.setBackgroundColor(Color.TRANSPARENT);
+                        web.getSettings().setLoadWithOverviewMode(true);
+                        web.getSettings().setJavaScriptEnabled(true);
+                        web.clearCache(true);
+                        web.setWebChromeClient(new WebChromeClient());
+//                        web.getSettings().setAppCacheEnabled(false);
+//                        web.getSettings().setDatabaseEnabled(true);
+//                        web.getSettings().setDomStorageEnabled(true);
+
+
+
+                        if(linkInfoExternal.annotationType == linkInfoExternal.ANNOTATION_TYPE_WEB || linkInfoExternal.annotationType == linkInfoExternal.ANNOTATION_TYPE_WEBLINK ){
+                            web.loadUrl(linkInfoExternal.sourceUrl);
+                        }
+                        addView(web);
+//                              layout.addView(web, new LayoutParams(LayoutParams.FILL_PARENT,LayoutParams.FILL_PARENT));
+//                        canvas.drawRect(link.rect.left*scale, link.rect.top*scale,link.rect.right*scale, link.rect.bottom*scale,paint);
+                    }
+
+                }
 				if (mSearchView != null)
 					mSearchView.invalidate();
 			}
@@ -312,7 +365,7 @@ public abstract class PageView extends ViewGroup {
 		mDrawEntire.execute();
 
 		if (mSearchView == null) {
-			mSearchView = new View(mContext) {
+			mSearchView = new ViewGroup(mContext) {
 				@Override
 				protected void onDraw(final Canvas canvas) {
 					super.onDraw(canvas);
@@ -331,10 +384,36 @@ public abstract class PageView extends ViewGroup {
 
 					if (!mIsBlank && mLinks != null && mHighlightLinks) {
 						paint.setColor(LINK_COLOR);
-						for (LinkInfo link : mLinks)
-							canvas.drawRect(link.rect.left*scale, link.rect.top*scale,
-									        link.rect.right*scale, link.rect.bottom*scale,
-									        paint);
+						for (LinkInfo link : mLinks){
+                            boolean insOf = link instanceof LinkInfoExternal;
+                            boolean insOf2 = link.getClass().isAssignableFrom(LinkInfoExternal.class);
+                            if(link instanceof LinkInfoExternal){
+                                LinkInfoExternal linkInfoExternal = (LinkInfoExternal)link;
+                                ViewGroup viewGroup = (ViewGroup)this.getParent();
+//                                WebView web = new WebView(mContext);
+//                                web.setId(1);
+//                                web.setEnabled(true);
+//                                int w = (int)(linkInfoExternal.rect.right - linkInfoExternal.rect.left);
+//                                int h = (int)(linkInfoExternal.rect.bottom - linkInfoExternal.rect.top);
+////                                web.setLayoutParams(new LinearLayout.LayoutParams((int)(w*scale), (int)(h*scale)));
+//                                web.layout((int)(linkInfoExternal.rect.left*scale), (int)(linkInfoExternal.rect.top*scale), (int)(linkInfoExternal.rect.right*scale), (int)(linkInfoExternal.rect.bottom*scale));
+//                                web.setWebViewClient(new WebViewClient() {
+//                                    public boolean shouldOverrideUrlLoading(WebView view, String url){
+//                                        view.loadUrl(url);
+//                                        return false; // then it is not handled by default action
+//                                    }
+//                                });
+//                                web.getSettings().setUseWideViewPort(false);
+//                                web.getSettings().setLoadWithOverviewMode(true);
+//                                web.getSettings().setJavaScriptEnabled(true);
+//                                web.loadUrl(linkInfoExternal.sourceUrl);
+//                                int width = web.getWidth();
+//                                viewGroup.addView(web);
+//                              layout.addView(web, new LayoutParams(LayoutParams.FILL_PARENT,LayoutParams.FILL_PARENT));
+							    canvas.drawRect(link.rect.left*scale, link.rect.top*scale,link.rect.right*scale, link.rect.bottom*scale,paint);
+                            }
+
+                        }
 					}
 
 					if (mSelectBox != null && mText != null) {
@@ -404,7 +483,12 @@ public abstract class PageView extends ViewGroup {
 						canvas.drawPath(path, paint);
 					}
 				}
-			};
+
+                @Override
+                protected void onLayout(boolean changed, int l, int t, int r, int b) {
+
+                }
+            };
 
 			addView(mSearchView);
 		}

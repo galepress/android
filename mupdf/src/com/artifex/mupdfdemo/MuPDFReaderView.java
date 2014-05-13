@@ -12,7 +12,7 @@ import android.view.View;
 public class MuPDFReaderView extends ReaderView {
 	enum Mode {Viewing, Selecting, Drawing}
 	private final Context mContext;
-	private boolean mLinksEnabled = false;
+	private boolean mLinksEnabled = true;
 	private Mode mMode = Mode.Viewing;
 	private boolean tapDisabled = false;
 	private int tapPageMargin;

@@ -2,6 +2,7 @@ package ak.detaysoft.galepress;
 
 import android.os.AsyncTask;
 import android.os.Build;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -70,6 +71,13 @@ public class ContentHolderAdapter extends BaseAdapter  {
                     GalePressApplication.getInstance().getDataApi().getPdf(content);
                 }
             }
+            else if(v == updateButton){
+                if(DataApi.isConnectedToInternet()){
+                    v.setEnabled(false);
+                    v.setVisibility(View.INVISIBLE);
+                    GalePressApplication.getInstance().getDataApi().getPdf(content);
+                }
+            }
             else if(v == cancelButton){
                 v.setEnabled(false);
                 GalePressApplication.getInstance().getDataApi().cancelDownload(false);
@@ -132,52 +140,78 @@ public class ContentHolderAdapter extends BaseAdapter  {
         viewHolder.cancelButton.setVisibility(View.INVISIBLE);
         viewHolder.cancelButton.setOnClickListener(viewHolder);
 
+        boolean downloaded = content.isPdfDownloaded();
+        boolean updateAvailable = content.isPdfUpdateAvailable();
+        boolean downloading = content.isPdfDownloading() && GalePressApplication.getInstance().getDataApi().downloadPdfTask !=null && GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() == AsyncTask.Status.RUNNING && GalePressApplication.getInstance().getDataApi().downloadPdfTask.content !=null && GalePressApplication.getInstance().getDataApi().downloadPdfTask.content.getId().compareTo(content.getId()) == 0;
 
-        if(content.isPdfDownloaded()){
+        viewHolder.cancelButton.setOnClickListener(viewHolder);
+        viewHolder.viewButton.setOnClickListener(viewHolder);
+        viewHolder.deleteButton.setOnClickListener(viewHolder);
+        viewHolder.downloadButton.setOnClickListener(viewHolder);
+        viewHolder.updateButton.setOnClickListener(viewHolder);
+
+
+        if(downloaded){
+            // Content is downloaded and ready to view.
             viewHolder.downloadButton.setVisibility(View.INVISIBLE);
+
             viewHolder.viewButton.setVisibility(View.VISIBLE);
             viewHolder.viewButton.setEnabled(true);
-            viewHolder.viewButton.setOnClickListener(viewHolder);
+
             viewHolder.deleteButton.setVisibility(View.VISIBLE);
             viewHolder.deleteButton.setEnabled(true);
-            viewHolder.deleteButton.setOnClickListener(viewHolder);
+
+            viewHolder.cancelButton.setVisibility(View.INVISIBLE);
             convertView.setOnClickListener(viewHolder);
+
+            if(updateAvailable){
+                viewHolder.updateButton.setVisibility(View.VISIBLE);
+                viewHolder.updateButton.setEnabled(true);
+
+                if(downloading){
+                    // update downloading
+                    viewHolder.updateButton.setVisibility(View.INVISIBLE);
+                    viewHolder.viewButton.setVisibility(View.INVISIBLE);
+                    viewHolder.deleteButton.setVisibility(View.INVISIBLE);
+
+                    viewHolder.cancelButton.setEnabled(true);
+                    viewHolder.cancelButton.setVisibility(View.VISIBLE);
+                    viewHolder.progressBar.setVisibility(View.VISIBLE);
+                    viewHolder.progressLabel.setVisibility(View.VISIBLE);
+
+                }
+            }
+            else{
+                // update not available
+                viewHolder.updateButton.setVisibility(View.INVISIBLE);
+            }
         }
         else{
-            // Content is not downloaded.
-            viewHolder.downloadButton.setVisibility(View.VISIBLE);
-            viewHolder.downloadButton.setOnClickListener(viewHolder);
-            if(
-                content.isPdfDownloading()
-                && GalePressApplication.getInstance().getDataApi().downloadPdfTask !=null
-                && GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() == AsyncTask.Status.RUNNING
-                && GalePressApplication.getInstance().getDataApi().downloadPdfTask.content !=null
-                && GalePressApplication.getInstance().getDataApi().downloadPdfTask.content.getId().compareTo(content.getId()) == 0
-              ){
-                // Content is downloading now.
+            // not downloaded
+            if(downloading){
+                // Content is not downloaded but downloading
                 viewHolder.cancelButton.setVisibility(View.VISIBLE);
                 viewHolder.cancelButton.setEnabled(true);
+
                 viewHolder.progressBar.setVisibility(View.VISIBLE);
                 viewHolder.progressLabel.setVisibility(View.VISIBLE);
+
                 viewHolder.downloadButton.setEnabled(false);
                 viewHolder.downloadButton.setVisibility(View.INVISIBLE);
+
+                viewHolder.viewButton.setVisibility(View.INVISIBLE);
             }
-            else {
-                // Content is not downloading.
+            else{
+                // Content Download edilmemis. ilk acildigi durum.
+                viewHolder.downloadButton.setVisibility(View.VISIBLE);
                 viewHolder.downloadButton.setEnabled(true);
+
+                viewHolder.deleteButton.setVisibility(View.INVISIBLE);
+                viewHolder.updateButton.setVisibility(View.INVISIBLE);
+
                 viewHolder.cancelButton.setVisibility(View.INVISIBLE);
-                viewHolder.cancelButton.setOnClickListener(viewHolder);
             }
         }
-
-        if(content.isPdfUpdateAvailable()){
-            viewHolder.updateButton.setVisibility(View.VISIBLE);
-        }
-        else{
-            viewHolder.updateButton.setVisibility(View.INVISIBLE);
-        }
-
-
         viewHolder.content = content;
 
         return convertView;

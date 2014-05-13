@@ -15,6 +15,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
 import android.view.View;
@@ -206,6 +207,7 @@ public class DataApi extends Object {
     }
 
     public void getPdf(final L_Content content) {
+        GalePressApplication.getInstance().getLibraryActivity().updateGridView();
         content.setPdfDownloading(true);
         getDatabaseApi().updateContent(content,false);
         if (downloadPdfTask != null && (downloadPdfTask.getStatus() == AsyncTask.Status.RUNNING)) {
@@ -251,8 +253,8 @@ public class DataApi extends Object {
                     deleteFolder(directory);
                     L_Content content = getDatabaseApi().getContent(id);
                     content.setPdfDownloaded(false);
+                    content.setPdfUpdateAvailable(false);
                     getDatabaseApi().updateContent(content,true);
-                    GalePressApplication.getInstance().getLibraryActivity().updateGridView();
 
                     L_Application application = getDatabaseApi().getApplication(GalePressApplication.getInstance().getApplicationId());
                     application.setVersion(application.getVersion()-1);
@@ -759,12 +761,10 @@ public class DataApi extends Object {
 
         if(viewHolder!=null){
             if (viewHolder.content.getId().compareTo(content.getId()) == 0) {
-                if (viewHolder.progressBar.getVisibility() == View.INVISIBLE) {
-                    viewHolder.progressBar.setVisibility(View.VISIBLE);
-                    viewHolder.progressLabel.setVisibility(View.VISIBLE);
-                    viewHolder.cancelButton.setVisibility(View.VISIBLE);
-                    viewHolder.cancelButton.setEnabled(true);
-                }
+                viewHolder.progressBar.setVisibility(View.VISIBLE);
+                viewHolder.progressLabel.setVisibility(View.VISIBLE);
+                viewHolder.cancelButton.setVisibility(View.VISIBLE);
+                viewHolder.cancelButton.setEnabled(true);
                 viewHolder.downloadButton.setVisibility(View.INVISIBLE);
                 viewHolder.progressBar.setProgress((int) (total * 100 / fileLength));
                 String progressLabelText1 = String.format("%.2f", total / (1024.00 * 1024.00));
@@ -794,6 +794,7 @@ public class DataApi extends Object {
         File tempDirectory = null;
         File directory = null;
         L_Content content = null;
+        long total;
 
         public DownloadPdfTask(Activity cosntext, L_Content c) {
             this.content = c;
@@ -825,14 +826,14 @@ public class DataApi extends Object {
 
                 // this will be useful to display download percentage
                 // might be -1: server did not report the length
-                long fileLength = connection.getContentLength();
+                final long fileLength = connection.getContentLength();
 
                 // download the file
                 input = connection.getInputStream();
                 output = new FileOutputStream(outputFile.getPath());
 
                 byte data[] = new byte[1024];
-                long total = 0;
+                total = 0;
                 int count;
                 long lastCtm = System.currentTimeMillis();
                 long ctm;
@@ -868,6 +869,17 @@ public class DataApi extends Object {
                 Decompress decompressor = new Decompress(directory + "/" + pdfFileName, directory + "/");
                 decompressor.unzip();
                 new File(directory + "/" + pdfFileName).delete();
+
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        content.setPdfUpdateAvailable(false);
+                        getDatabaseApi().updateContent(content,true);
+                    }
+                });
+
+
+
             } catch (Exception e) {
                 Logout.e("Error", e.getLocalizedMessage());
                 if (tempDirectory != null) {
