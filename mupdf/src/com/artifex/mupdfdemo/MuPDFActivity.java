@@ -576,7 +576,15 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
 		// Reenstate last state if it was recorded
 		SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
-		mDocView.setDisplayedViewIndex(prefs.getInt("page"+mFileName, 0));
+        int viewIndex = prefs.getInt("page"+mFileName, 0);
+
+        if(mOrientation == Configuration.ORIENTATION_LANDSCAPE){
+            mDocView.setDisplayedViewIndex(core.convertIndexes(viewIndex, true));
+        }
+        else{
+            mDocView.setDisplayedViewIndex(viewIndex);
+        }
+
 
 		if (savedInstanceState == null || !savedInstanceState.getBoolean("ButtonsHidden", false))
 			showButtons();
@@ -654,7 +662,12 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 			// so it can go in the bundle
 			SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
 			SharedPreferences.Editor edit = prefs.edit();
-			edit.putInt("page"+mFileName, mDocView.getDisplayedViewIndex());
+            int viewIndex = mDocView.getDisplayedViewIndex();
+            if(mOrientation == Configuration.ORIENTATION_LANDSCAPE){
+                viewIndex = core.convertIndexes(viewIndex, false);
+            }
+
+            edit.putInt("page"+mFileName, viewIndex);
 			edit.commit();
 		}
 
@@ -678,7 +691,13 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 		if (mFileName != null && mDocView != null) {
 			SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
 			SharedPreferences.Editor edit = prefs.edit();
-			edit.putInt("page"+mFileName, mDocView.getDisplayedViewIndex());
+
+            int viewIndex = mDocView.getDisplayedViewIndex();
+            if(mOrientation == Configuration.ORIENTATION_LANDSCAPE){
+                viewIndex = core.convertIndexes(viewIndex, false);
+            }
+
+			edit.putInt("page"+mFileName, viewIndex);
 			edit.commit();
 		}
 	}

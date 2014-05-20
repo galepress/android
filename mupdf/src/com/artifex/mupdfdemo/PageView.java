@@ -293,17 +293,36 @@ public abstract class PageView extends ViewGroup {
                         int h = (int)((linkInfoExternal.rect.bottom - linkInfoExternal.rect.top)*scale);
 //                                web.setLayoutParams(new LinearLayout.LayoutParams((int)(w*scale), (int)(h*scale)));
                         web.layout((int)(linkInfoExternal.rect.left*scale), (int)(linkInfoExternal.rect.top*scale), (int)(linkInfoExternal.rect.right*scale), (int)(linkInfoExternal.rect.bottom*scale));
-//                        web.setWebViewClient(new WebViewClient(){
-//                            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-//                                view.loadUrl(url);
-//                                return false; // then it is not handled by default action
-//                            }
-//                        });
-                        web.setBackgroundColor(Color.TRANSPARENT);
-                        web.getSettings().setLoadWithOverviewMode(true);
-                        web.getSettings().setJavaScriptEnabled(true);
-                        web.clearCache(true);
+                        Log.e("Adem", "WebView on PDF Scale ratio: "+String.valueOf(scale));
+                        web.setWebViewClient(new WebViewClient(){
+                            @Override
+                            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                                view.loadUrl(url);
+                                return false; // then it is not handled by default action
+                            }
+
+                            @Override
+                            public void onScaleChanged(WebView view, float oldScale, float newScale) {
+                                super.onScaleChanged(view, oldScale, newScale);
+                                Log.e("Adem", "Webview OldScale: "+String.valueOf(oldScale)+" NewScale: "+String.valueOf(oldScale));
+                            }
+                        });
                         web.setWebChromeClient(new WebChromeClient());
+                        web.setInitialScale(1);
+                        web.setBackgroundColor(Color.TRANSPARENT);
+                        // web.setBackgroundColor(0x00000000);
+                        web.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null); // Android eski versiyonlarda da webviewer transparan yapar.
+                        web.getSettings().setLoadWithOverviewMode(true);
+                        web.getSettings().setUseWideViewPort(true);
+                        web.getSettings().setJavaScriptEnabled(true);
+                        web.setVerticalScrollBarEnabled(false); // Webviewer'da kontrol edilecek.
+                        web.setHorizontalScrollBarEnabled(false); // Webviewer'da kontrol edilecek.
+
+//                        web.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
+//                        web.setScrollbarFadingEnabled(false);
+//                        web.getSettings().setLayoutAlgorithm(new );
+                        web.clearCache(true);
+
 //                        web.getSettings().setAppCacheEnabled(false);
 //                        web.getSettings().setDatabaseEnabled(true);
 //                        web.getSettings().setDomStorageEnabled(true);

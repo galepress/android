@@ -53,18 +53,27 @@ public class MuPDFReaderView extends ReaderView {
 		LinkInfo link = null;
 
 		if (mMode == Mode.Viewing && !tapDisabled) {
-			MuPDFView pageView = (MuPDFView) getDisplayedView();
+			final MuPDFView pageView = (MuPDFView) getDisplayedView();
 			Hit item = pageView.passClickEvent(e.getX(), e.getY());
 			onHit(item);
 			if (item == Hit.Nothing) {
-				if (mLinksEnabled && pageView != null
-				&& (link = pageView.hitLink(e.getX(), e.getY())) != null) {
-					link.acceptVisitor(new LinkInfoVisitor() {
+				if (mLinksEnabled && pageView != null && (link = pageView.hitLink(e.getX(), e.getY())) != null) {
+                    link.acceptVisitor(new LinkInfoVisitor() {
 						@Override
 						public void visitInternal(LinkInfoInternal li) {
 							// Clicked on an internal (GoTo) link c
+                            // MuPDF'in kodu burada sacmaliyordu. Bir sonraki sayfaya verilen pagelinkler calismiyordu. Iki sayfa sonrasina gidiyordu.
+                            // Asagidaki sekilde bir sonraki sayfa olup olmadigini kontrol ederek bunu cozdum. (Adem)
                             MuPDFCore core =((MuPDFActivity)mContext).core;
-                            setDisplayedViewIndex(core.convertIndexesForLandscape2Page(li.pageNumber));
+                            if(getDisplayedViewIndex() + 1 == li.pageNumber){
+                                moveToNext();
+                            }
+                            else if (getDisplayedViewIndex() - 1 == li.pageNumber){
+                                moveToPrevious();
+                            }
+                            else {
+                                setDisplayedViewIndex(core.convertIndexesForLandscape2Page(li.pageNumber));
+                            }
 						}
 
 						@Override

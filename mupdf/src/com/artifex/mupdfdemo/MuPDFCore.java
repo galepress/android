@@ -548,11 +548,25 @@ public class MuPDFCore
     }
 
     public int convertIndexesForLandscape2Page(int index ){
+        int result = 0;
         if(getDisplayPages() == 1 || index == 0){
-            return index;
+            result = index;
         }
         else{
+            result  = ((index-1)/2)+1;
+        }
+        return result;
+    }
+
+    public int convertIndexes(int index, boolean portrait2landscape ){
+        if(index == 0 ) return index;
+        if(portrait2landscape){
+            // Portrait'den Landscape'e index cevirisi
             return ((index-1)/2)+1;
+        }
+        else{
+            // Landscape'den Portrait'e index cevirisi
+            return ((index -1)*2)+1;
         }
     }
 }
