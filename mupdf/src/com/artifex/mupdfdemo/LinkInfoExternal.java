@@ -7,10 +7,10 @@ public class LinkInfoExternal extends LinkInfo {
 	final public String url;
 	public String sourceUrl;
 
-    public final int  ANNOTATION_TYPE_PAGELINK = 0;
-    public final int  ANNOTATION_TYPE_WEBLINK = 1;
-    public final int  ANNOTATION_TYPE_WEB = 2;
-    public final int  ANNOTATION_TYPE_MAP = 3;
+    public static final int  ANNOTATION_TYPE_PAGELINK = 0;
+    public static final int  ANNOTATION_TYPE_WEBLINK = 1;
+    public static final int  ANNOTATION_TYPE_WEB = 2;
+    public static final int  ANNOTATION_TYPE_MAP = 3;
 
     public int annotationType = -1;
     public boolean isModal = false;

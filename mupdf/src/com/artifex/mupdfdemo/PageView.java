@@ -219,6 +219,10 @@ public abstract class PageView extends ViewGroup {
 
 	public void releaseBitmaps() {
 		reinit();
+        // Outofmemory hatasi aliyordum. Onun cozumu icin ekledim. (ak_)
+        mEntireBm.recycle();
+        mPatchBm.recycle();
+        //
 		mEntireBm = null;
 		mPatchBm = null;
 	}
@@ -281,10 +285,8 @@ public abstract class PageView extends ViewGroup {
                     }
                 }
                 for (LinkInfo link : mLinks){
-                    Log.e("Adem", "Link added for page : "+page+" Link : "+link);
-                    boolean insOf = link instanceof LinkInfoExternal;
-                    boolean insOf2 = link.getClass().isAssignableFrom(LinkInfoExternal.class);
-                    if(link instanceof LinkInfoExternal){
+                    if(link instanceof LinkInfoExternal && (((LinkInfoExternal) link).annotationType == LinkInfoExternal.ANNOTATION_TYPE_WEB) ){
+                        Log.e("Adem", "Link added for page : "+page+" Link : "+link.toString());
                         LinkInfoExternal linkInfoExternal = (LinkInfoExternal)link;
                         WebView web = new WebView(mContext);
                         web.setId(1);
@@ -329,7 +331,7 @@ public abstract class PageView extends ViewGroup {
 
 
 
-                        if(linkInfoExternal.annotationType == linkInfoExternal.ANNOTATION_TYPE_WEB || linkInfoExternal.annotationType == linkInfoExternal.ANNOTATION_TYPE_WEBLINK ){
+                        if(linkInfoExternal.annotationType == linkInfoExternal.ANNOTATION_TYPE_WEB){
                             web.loadUrl(linkInfoExternal.sourceUrl);
                         }
                         addView(web);

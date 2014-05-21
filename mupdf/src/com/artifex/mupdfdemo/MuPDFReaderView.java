@@ -78,9 +78,11 @@ public class MuPDFReaderView extends ReaderView {
 
 						@Override
 						public void visitExternal(LinkInfoExternal li) {
-							Intent intent = new Intent(Intent.ACTION_VIEW, Uri
-									.parse(li.url));
-							mContext.startActivity(intent);
+                            if(li.annotationType == LinkInfoExternal.ANNOTATION_TYPE_WEBLINK){
+                                Intent intent = new Intent(mContext, ModalWebViewActivity.class);
+                                intent.putExtra("url",li.url);
+                                mContext.startActivity(intent);
+                            }
 						}
 
 						@Override
