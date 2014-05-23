@@ -602,25 +602,7 @@ public class MuPDFPageView extends PageView implements MuPDFView {
 	public void setPage(final int page, PointF size) {
 		loadAnnotations();
 
-        for(int i=0; i < getChildCount(); i++){
-            View view = (View)getChildAt(i);
-            if(view instanceof WebView){
-                Logout.e("Adem","Deleted WebView : "+view.toString());
-                removeView(view);
-            }
-            else if(view instanceof MuPDFPageView){
-                ViewGroup vg = (ViewGroup) view;
-                for(int j=0; j < vg.getChildCount(); j++){
-                    View v = (View)getChildAt(i);
-                    if(v instanceof WebView){
-                        Logout.e("Adem","Deleted WebView : "+v.toString());
-                        vg.removeView(v);
-                    }
-                    Logout.e("Adem","ChildView : "+v.toString());
-                }
-            }
-//                    Logout.e("Adem","ChildView : "+view.toString());
-        }
+        clearWebAnnotations(this);
 
 		mLoadWidgetAreas = new AsyncTask<Void,Void,RectF[]> () {
 			@Override

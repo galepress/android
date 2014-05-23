@@ -243,6 +243,30 @@ public abstract class PageView extends ViewGroup {
 		setBackgroundColor(BACKGROUND_COLOR);
 	}
 
+    public void clearWebAnnotations(PageView pageView){
+        // pageView icindeki webView'leri kaldirir. PageView'ler tekrar ettigi icin eski webView ler yeni sayfalara biniyordu.
+        // Bu method MuPDFPageView icinden de cagiriliyor. Sadece buradan cagrilmasi butun webviewleri kaldirmiyordu.
+        for(int i=0; i < pageView.getChildCount(); i++){
+            View view = (View)pageView.getChildAt(i);
+            if(view instanceof WebView){
+                Logout.e("Adem","Deleted WebView : "+view.toString());
+                pageView.removeView(view);
+            }
+//            else if(view instanceof MuPDFPageView){
+//                ViewGroup vg = (ViewGroup) view;
+//                for(int j=0; j < vg.getChildCount(); j++){
+//                    View v = (View).pageView.getChildAt(i);
+//                    if(v instanceof WebView){
+//                        Logout.e("Adem","Deleted WebView : "+v.toString());
+//                        vg.removeView(v);
+//                    }
+//                    Logout.e("Adem","ChildView : "+v.toString());
+//                }
+//            }
+////                    Logout.e("Adem","ChildView : "+view.toString());
+        }
+    }
+
 	public void setPage(final int page, PointF size) {
         Logout.e("Adem", "Object : "+this.toString()+" page no: "+page);
 
@@ -275,31 +299,14 @@ public abstract class PageView extends ViewGroup {
 
 
 
+
+
 		// Get the link info in the background
 		mGetLinkInfo = new AsyncTask<Void,Void,LinkInfo[]>() {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                for(int i=0; i < getChildCount(); i++){
-                    View view = (View)getChildAt(i);
-                    if(view instanceof WebView){
-                        Logout.e("Adem","Deleted WebView : "+view.toString());
-                        removeView(view);
-                    }
-                    else if(view instanceof MuPDFPageView){
-                        ViewGroup vg = (ViewGroup) view;
-                        for(int j=0; j < vg.getChildCount(); j++){
-                            View v = (View)getChildAt(i);
-                            if(v instanceof WebView){
-                                Logout.e("Adem","Deleted WebView : "+v.toString());
-                                vg.removeView(v);
-                            }
-                            Logout.e("Adem","ChildView : "+v.toString());
-                        }
-                    }
-//                    Logout.e("Adem","ChildView : "+view.toString());
-                }
-
+                clearWebAnnotations(PageView.this);
             }
 
             protected LinkInfo[] doInBackground(Void... v) {
