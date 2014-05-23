@@ -239,7 +239,6 @@ public class MuPDFCore
                     Bitmap leftBm = Bitmap.createBitmap(leftBmWidth,patchH, bm.getConfig());
                     gotoPage(drawPage);
                     drawPage(leftBm, leftPageW, pageH, patchX, patchY,leftBmWidth, patchH);
-                    Log.e("Adem",leftBmWidth + " - " + pageH + " - " + patchX + " - " + patchY + " - " + leftBmWidth + " - " + patchH);
                     canvas.drawBitmap(leftBm, 0, 0, paint);
                     leftBm.recycle();
 //                    bm.recycle();
@@ -248,7 +247,6 @@ public class MuPDFCore
                     Bitmap rightBm = Bitmap.createBitmap(rightBmWidth,patchH, bm.getConfig());
                     gotoPage(drawPage+1);
                     drawPage(rightBm, rightPageW, pageH,(leftBmWidth == 0) ? patchX - leftPageW : 0,patchY, rightBmWidth, patchH);
-                    Log.e("Adem",leftBmWidth + " - " + pageH + " - " + patchX + " - " + patchY + " - " + leftBmWidth + " - " + patchH);
                     canvas.drawBitmap(rightBm, (float) leftBmWidth, 0,paint);
                     rightBm.recycle();
 //                    bm.recycle();
@@ -265,6 +263,7 @@ public class MuPDFCore
 			int pageW, int pageH,
 			int patchX, int patchY,
 			int patchW, int patchH) {
+        Logout.e("Adem", "page no: "+page);
 //		updatePageInternal(bm, page, pageW, pageH, patchX, patchY, patchW, patchH);
         String TAG = "Adem2Pages";
         Bitmap bitmap = bm;

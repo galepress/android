@@ -28,6 +28,8 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
+import org.apache.http.impl.conn.LoggingSessionOutputBuffer;
+
 class PatchInfo {
 	public Point patchViewSize;
 	public Rect  patchArea;
@@ -242,6 +244,8 @@ public abstract class PageView extends ViewGroup {
 	}
 
 	public void setPage(final int page, PointF size) {
+        Logout.e("Adem", "Object : "+this.toString()+" page no: "+page);
+
 		// Cancel pending render task
 		if (mDrawEntire != null) {
 			mDrawEntire.cancel(true);
@@ -269,24 +273,44 @@ public abstract class PageView extends ViewGroup {
 		mEntire.setImageBitmap(null);
 		mEntire.invalidate();
 
+
+
 		// Get the link info in the background
 		mGetLinkInfo = new AsyncTask<Void,Void,LinkInfo[]>() {
-			protected LinkInfo[] doInBackground(Void... v) {
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                for(int i=0; i < getChildCount(); i++){
+                    View view = (View)getChildAt(i);
+                    if(view instanceof WebView){
+                        Logout.e("Adem","Deleted WebView : "+view.toString());
+                        removeView(view);
+                    }
+                    else if(view instanceof MuPDFPageView){
+                        ViewGroup vg = (ViewGroup) view;
+                        for(int j=0; j < vg.getChildCount(); j++){
+                            View v = (View)getChildAt(i);
+                            if(v instanceof WebView){
+                                Logout.e("Adem","Deleted WebView : "+v.toString());
+                                vg.removeView(v);
+                            }
+                            Logout.e("Adem","ChildView : "+v.toString());
+                        }
+                    }
+//                    Logout.e("Adem","ChildView : "+view.toString());
+                }
+
+            }
+
+            protected LinkInfo[] doInBackground(Void... v) {
 				return getLinkInfo();
 			}
 
 			protected void onPostExecute(LinkInfo[] v) {
 				mLinks = v;
-                final float scale = mSourceScale*(float)getWidth()/(float)mSize.x;
-                for(int i=0; i < getChildCount(); i++){
-                    View view = (View)getChildAt(i);
-                    if(view instanceof WebView){
-                        removeView(view);
-                    }
-                }
+                final float scale = mSourceScale*(float)getWidth()/(float)mSize.x;//
                 for (LinkInfo link : mLinks){
                     if(link instanceof LinkInfoExternal && (((LinkInfoExternal) link).annotationType == LinkInfoExternal.ANNOTATION_TYPE_WEB) ){
-                        Log.e("Adem", "Link added for page : "+page+" Link : "+link.toString());
                         LinkInfoExternal linkInfoExternal = (LinkInfoExternal)link;
                         WebView web = new WebView(mContext);
                         web.setId(1);
@@ -295,7 +319,6 @@ public abstract class PageView extends ViewGroup {
                         int h = (int)((linkInfoExternal.rect.bottom - linkInfoExternal.rect.top)*scale);
 //                                web.setLayoutParams(new LinearLayout.LayoutParams((int)(w*scale), (int)(h*scale)));
                         web.layout((int)(linkInfoExternal.rect.left*scale), (int)(linkInfoExternal.rect.top*scale), (int)(linkInfoExternal.rect.right*scale), (int)(linkInfoExternal.rect.bottom*scale));
-                        Log.e("Adem", "WebView on PDF Scale ratio: "+String.valueOf(scale));
                         web.setWebViewClient(new WebViewClient(){
                             @Override
                             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -306,10 +329,9 @@ public abstract class PageView extends ViewGroup {
                             @Override
                             public void onScaleChanged(WebView view, float oldScale, float newScale) {
                                 super.onScaleChanged(view, oldScale, newScale);
-                                Log.e("Adem", "Webview OldScale: "+String.valueOf(oldScale)+" NewScale: "+String.valueOf(oldScale));
                             }
                         });
-                        web.setWebChromeClient(new WebChromeClient());
+//                        web.setWebChromeClient(new WebChromeClient());
                         web.setInitialScale(1);
                         web.setBackgroundColor(Color.TRANSPARENT);
                         // web.setBackgroundColor(0x00000000);
@@ -323,8 +345,7 @@ public abstract class PageView extends ViewGroup {
 //                        web.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
 //                        web.setScrollbarFadingEnabled(false);
 //                        web.getSettings().setLayoutAlgorithm(new );
-                        web.clearCache(true);
-
+                        web.clearCache(false);
 //                        web.getSettings().setAppCacheEnabled(false);
 //                        web.getSettings().setDatabaseEnabled(true);
 //                        web.getSettings().setDomStorageEnabled(true);
@@ -335,6 +356,7 @@ public abstract class PageView extends ViewGroup {
                             web.loadUrl(linkInfoExternal.sourceUrl);
                         }
                         addView(web);
+                        Logout.e("Adem2", "WebView added for page : "+page+" WebView : "+web.toString()+" Link : "+((LinkInfoExternal) link).sourceUrl+ " PageView:"+this.toString());
 //                              layout.addView(web, new LayoutParams(LayoutParams.FILL_PARENT,LayoutParams.FILL_PARENT));
 //                        canvas.drawRect(link.rect.left*scale, link.rect.top*scale,link.rect.right*scale, link.rect.bottom*scale,paint);
                     }
@@ -409,29 +431,7 @@ public abstract class PageView extends ViewGroup {
                             boolean insOf = link instanceof LinkInfoExternal;
                             boolean insOf2 = link.getClass().isAssignableFrom(LinkInfoExternal.class);
                             if(link instanceof LinkInfoExternal){
-                                LinkInfoExternal linkInfoExternal = (LinkInfoExternal)link;
-                                ViewGroup viewGroup = (ViewGroup)this.getParent();
-//                                WebView web = new WebView(mContext);
-//                                web.setId(1);
-//                                web.setEnabled(true);
-//                                int w = (int)(linkInfoExternal.rect.right - linkInfoExternal.rect.left);
-//                                int h = (int)(linkInfoExternal.rect.bottom - linkInfoExternal.rect.top);
-////                                web.setLayoutParams(new LinearLayout.LayoutParams((int)(w*scale), (int)(h*scale)));
-//                                web.layout((int)(linkInfoExternal.rect.left*scale), (int)(linkInfoExternal.rect.top*scale), (int)(linkInfoExternal.rect.right*scale), (int)(linkInfoExternal.rect.bottom*scale));
-//                                web.setWebViewClient(new WebViewClient() {
-//                                    public boolean shouldOverrideUrlLoading(WebView view, String url){
-//                                        view.loadUrl(url);
-//                                        return false; // then it is not handled by default action
-//                                    }
-//                                });
-//                                web.getSettings().setUseWideViewPort(false);
-//                                web.getSettings().setLoadWithOverviewMode(true);
-//                                web.getSettings().setJavaScriptEnabled(true);
-//                                web.loadUrl(linkInfoExternal.sourceUrl);
-//                                int width = web.getWidth();
-//                                viewGroup.addView(web);
-//                              layout.addView(web, new LayoutParams(LayoutParams.FILL_PARENT,LayoutParams.FILL_PARENT));
-							    canvas.drawRect(link.rect.left*scale, link.rect.top*scale,link.rect.right*scale, link.rect.bottom*scale,paint);
+                                canvas.drawRect(link.rect.left*scale, link.rect.top*scale,link.rect.right*scale, link.rect.bottom*scale,paint);
                             }
 
                         }
@@ -757,7 +757,8 @@ public abstract class PageView extends ViewGroup {
 	}
 
 	public void update() {
-		// Cancel pending render task
+
+        // Cancel pending render task
 		if (mDrawEntire != null) {
 			mDrawEntire.cancel(true);
 			mDrawEntire = null;
@@ -771,7 +772,7 @@ public abstract class PageView extends ViewGroup {
 		// Render the page in the background
 		mDrawEntire = new AsyncTask<Void,Void,Void>() {
 			protected Void doInBackground(Void... v) {
-				updatePage(mEntireBm, mSize.x, mSize.y, 0, 0, mSize.x, mSize.y);
+                updatePage(mEntireBm, mSize.x, mSize.y, 0, 0, mSize.x, mSize.y);
 				return null;
 			}
 

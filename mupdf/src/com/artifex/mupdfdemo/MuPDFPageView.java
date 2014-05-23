@@ -13,8 +13,11 @@ import android.graphics.RectF;
 import android.net.Uri;
 import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
+import android.webkit.WebView;
 import android.widget.EditText;
 
 /* This enum should be kept in line with the cooresponding C enum in mupdf.c */
@@ -557,6 +560,7 @@ public class MuPDFPageView extends PageView implements MuPDFView {
 	@Override
 	protected void updatePage(Bitmap bm, int sizeX, int sizeY,
 			int patchX, int patchY, int patchWidth, int patchHeight) {
+
 		mCore.updatePage(bm, mPageNumber, sizeX, sizeY, patchX, patchY, patchWidth, patchHeight);
 	}
 
@@ -598,6 +602,26 @@ public class MuPDFPageView extends PageView implements MuPDFView {
 	public void setPage(final int page, PointF size) {
 		loadAnnotations();
 
+        for(int i=0; i < getChildCount(); i++){
+            View view = (View)getChildAt(i);
+            if(view instanceof WebView){
+                Logout.e("Adem","Deleted WebView : "+view.toString());
+                removeView(view);
+            }
+            else if(view instanceof MuPDFPageView){
+                ViewGroup vg = (ViewGroup) view;
+                for(int j=0; j < vg.getChildCount(); j++){
+                    View v = (View)getChildAt(i);
+                    if(v instanceof WebView){
+                        Logout.e("Adem","Deleted WebView : "+v.toString());
+                        vg.removeView(v);
+                    }
+                    Logout.e("Adem","ChildView : "+v.toString());
+                }
+            }
+//                    Logout.e("Adem","ChildView : "+view.toString());
+        }
+
 		mLoadWidgetAreas = new AsyncTask<Void,Void,RectF[]> () {
 			@Override
 			protected RectF[] doInBackground(Void... arg0) {
@@ -606,7 +630,6 @@ public class MuPDFPageView extends PageView implements MuPDFView {
 
 			@Override
 			protected void onPostExecute(RectF[] result) {
-
                 mWidgetAreas = result;
 			}
 		};

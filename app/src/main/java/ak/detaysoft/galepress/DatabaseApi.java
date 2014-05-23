@@ -117,7 +117,6 @@ public class DatabaseApi {
     {
         int result = 0 ;
         try {
-            Log.i("Adem","Content updated (dba) Content:"+content.toString());
             result = contentsDao.update(content);
         } catch (SQLException e) {
             result = 0;

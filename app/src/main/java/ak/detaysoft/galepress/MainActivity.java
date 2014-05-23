@@ -227,7 +227,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle presses on the action bar items
-        Logout.e("Adem", "Clicked item id : "+item.getItemId());
         HashMap extrasHashMap = GalePressApplication.getInstance().extrasHashMap;
         Map.Entry selectedMenuItemMapEntry = null;
         int i = 1;
