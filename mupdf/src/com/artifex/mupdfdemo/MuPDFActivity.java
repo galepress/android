@@ -84,6 +84,13 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 	private AlertDialog mAlertDialog;
 	private FilePicker mFilePicker;
     private int mOrientation;
+    public ak.detaysoft.galepress.database_models.L_Content content;
+
+    private static MuPDFActivity mInstance = null;
+
+    public static MuPDFActivity getInstance(){
+            return mInstance;
+    };
 
 	public void createAlertWaiter() {
 		mAlertsActive = true;
@@ -246,6 +253,8 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
+        mInstance = this;
+        content = (ak.detaysoft.galepress.database_models.L_Content) getIntent().getSerializableExtra("content");
 
 		mAlertBuilder = new AlertDialog.Builder(this);
 

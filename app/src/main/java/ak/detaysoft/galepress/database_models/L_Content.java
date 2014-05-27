@@ -1,8 +1,11 @@
 package ak.detaysoft.galepress.database_models;
 
+import android.os.Parcelable;
+
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -14,7 +17,7 @@ import ak.detaysoft.galepress.service_models.R_ContentDetail;
  * Created by adem on 13/02/14.
  */
 @DatabaseTable(tableName = "Content")
-public class L_Content {
+public class L_Content implements Serializable {
     public final static  String ID_FIELD_NAME= "id";
     public final static  String NAME_FIELD_NAME= "name";
     public final static  String IS_PDF_DOWNLOADED_FIELD_NAME= "isPdfDownloaded";

@@ -103,7 +103,7 @@ public class LibraryFragment extends Fragment {
         if(content!=null && content.isPdfDownloaded() && samplePdfFile.exists()){
             Uri uri = Uri.parse(samplePdfFile.getAbsolutePath());
             Intent intent = new Intent(getActivity(), MuPDFActivity.class);
-//            intent.putExtra("Content", content);
+            intent.putExtra("Content", content);
             intent.setAction(Intent.ACTION_VIEW);
             intent.setData(uri);
             startActivity(intent);

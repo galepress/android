@@ -867,6 +867,7 @@ public class DataApi extends Object {
                 tempDirectory.renameTo(directory);
 
                 Decompress decompressor = new Decompress(directory + "/" + pdfFileName, directory + "/");
+                Logout.e("Adem","Content Directory : "+directory.getPath());
                 decompressor.unzip();
                 new File(directory + "/" + pdfFileName).delete();
 

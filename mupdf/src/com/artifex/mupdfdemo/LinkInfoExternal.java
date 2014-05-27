@@ -1,7 +1,13 @@
 package com.artifex.mupdfdemo;
 
-import java.net.MalformedURLException;
-import java.net.URL;
+import android.content.Context;
+import android.content.ContextWrapper;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.os.Environment;
+import android.util.Log;
+
+import java.io.IOException;
 
 public class LinkInfoExternal extends LinkInfo {
 	final public String url;
@@ -38,6 +44,10 @@ public class LinkInfoExternal extends LinkInfo {
             }
             else if (url.substring(0,17).equals("ylweb://localhost")){
                 isInternal = true;
+                Log.e("Adem","MuPDFActivity.getInstance().getFilesDir() : "+MuPDFActivity.getInstance().getFilesDir());
+                Log.e("Adem","MuPDFActivity.getInstance().getFilesDir() : "+MuPDFActivity.getInstance().content.getId());
+                Log.e("Adem","Annotation Url : "+url);
+
                 sourceUrl = url.substring(18);
             }
         }
