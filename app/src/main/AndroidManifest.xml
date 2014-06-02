@@ -31,7 +31,6 @@
             android:label="@string/app_name">
         </activity>
 
-        <!--
         <activity
             android:name="com.artifex.mupdfdemo.ChoosePDFActivity"
             android:theme="@android:style/Theme.Light"
@@ -100,7 +99,6 @@
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"
             android:label="@string/print">
         </activity>
-        -->
         <service android:enabled="true" android:name=".CoverImageDownloader" />
     </application>
 

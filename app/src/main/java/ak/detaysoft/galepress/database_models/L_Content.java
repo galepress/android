@@ -297,6 +297,10 @@ public class L_Content implements Serializable {
 
     public void setPdfDownloading(boolean isPdfDownloading) { this.isPdfDownloading = isPdfDownloading;}
 
+    public String getPdfFilePath(){
+        return this.getPdfPath()+"/file.pdf";
+    }
+
     // Model Methods
 
     public L_Content(R_ContentDetail remoteContent){

@@ -24,5 +24,6 @@ dependencies {
     compile 'com.j256.ormlite:ormlite-core:4.45@jar'
     compile files('/Users/adem/Workspace/GalePress/Android Project/dd-plist.jar')
     compile files('/Users/adem/Workspace/GalePress/Android/dd-plist.jar')
-    compile project(':mupdf')
+    compile fileTree(dir: 'src/main/lib', include: '*.*')
+
 }
