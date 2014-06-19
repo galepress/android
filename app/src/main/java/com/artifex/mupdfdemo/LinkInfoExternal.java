@@ -20,7 +20,7 @@ public class LinkInfoExternal extends LinkInfo {
     public int annotationType = -1;
     public boolean isModal = false;
     public boolean isInternal = true;
-
+    public int webViewId = -1;
 
 	public LinkInfoExternal(float l, float t, float r, float b, String u) {
 		super(l, t, r, b);
@@ -42,7 +42,6 @@ public class LinkInfoExternal extends LinkInfo {
                 sourceUrl = "http://"+url.substring(8);
             }
             else if (url.substring(0,17).equals("ylweb://localhost")){
-//                GalePressApplication.getInstance().getFilesDir()
                 isInternal = true;
                 sourceUrl = url.substring(18);
             }

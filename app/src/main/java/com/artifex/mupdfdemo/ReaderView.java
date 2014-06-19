@@ -435,7 +435,7 @@ public class ReaderView
 		float max_scale = MAX_SCALE * scale_factor;
 		mScale = Math.min(Math.max(mScale * detector.getScaleFactor(), min_scale), max_scale);
 
-		if (mReflow) {
+		if (!mReflow) {
 			View v = mChildViews.get(mCurrent);
 			if (v != null)
 				onScaleChild(v, mScale);
@@ -469,7 +469,7 @@ public class ReaderView
 	}
 
 	public void onScaleEnd(ScaleGestureDetector detector) {
-		if (mReflow) {
+		if (!mReflow) {
 			applyToChildren(new ViewMapper() {
 				@Override
 				void applyToView(View view) {

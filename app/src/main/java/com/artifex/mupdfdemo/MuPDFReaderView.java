@@ -8,6 +8,10 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
+import android.view.ViewGroup;
+import android.webkit.WebView;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class MuPDFReaderView extends ReaderView {
 	enum Mode {Viewing, Selecting, Drawing}
@@ -269,5 +273,34 @@ public class MuPDFReaderView extends ReaderView {
 	@Override
 	protected void onScaleChild(View v, Float scale) {
 		((MuPDFView) v).setScale(scale);
+        MuPDFPageView pageView = (MuPDFPageView)v;
+        for(int i=0; i < pageView.getChildCount(); i++){
+            View view = pageView.getChildAt(i);
+            if(view instanceof WebView){
+                float original_x = -1;
+                float original_y = -1;
+                WebView webView = (WebView) view;
+                LinkInfo[] links = pageView.mLinks;
+                if (links!=null){
+                    for (LinkInfo link : links) {
+                        if (link instanceof LinkInfoExternal){
+                            if(((LinkInfoExternal) link).webViewId == webView.getId()){
+                                original_x = link.rect.left * pageView.mSourceScale;
+                                original_y = link.rect.top * pageView.mSourceScale;
+
+                                webView.setScaleX(scale);
+                                webView.setScaleY(scale);
+
+                                webView.setX(original_x*scale);
+                                webView.setY(original_y*scale);
+
+                                webView.setPivotX(0);
+                                webView.setPivotY(0);
+                            }
+                        }
+                    }
+                }
+            }
+        }
 	}
 }

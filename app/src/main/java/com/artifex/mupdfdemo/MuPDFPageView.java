@@ -625,8 +625,7 @@ public class MuPDFPageView extends PageView implements MuPDFView {
 	}
 
 	public void setScale(float scale) {
-		// This type of view scales automatically to fit the size
-		// determined by the parent view groups during layout
+        Logout.e("Adem", String.valueOf(scale));
 	}
 
 	@Override

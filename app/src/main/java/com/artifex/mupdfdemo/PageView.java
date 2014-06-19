@@ -2,6 +2,9 @@ package com.artifex.mupdfdemo;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import java.util.UUID;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -22,6 +25,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
@@ -149,6 +153,7 @@ public abstract class PageView extends ViewGroup {
 	private       ProgressBar mBusyIndicator;
 	private final Handler   mHandler = new Handler();
     public MuPDFCore core = null;
+    AtomicInteger atomicInteger = new AtomicInteger();
 
 	public PageView(Context c, Point parentSize, Bitmap sharedHqBm) {
 		super(c);
@@ -250,6 +255,18 @@ public abstract class PageView extends ViewGroup {
     public void clearWebAnnotations(PageView pageView){
         // pageView icindeki webView'leri kaldirir. PageView'ler tekrar ettigi icin eski webView ler yeni sayfalara biniyordu.
         // Bu method MuPDFPageView icinden de cagiriliyor. Sadece buradan cagrilmasi butun webviewleri kaldirmiyordu.
+        ArrayList<View> gpAnnotations = getGPAnnotations(pageView);
+        for(int i=0; i < gpAnnotations.size(); i++){
+            View view = gpAnnotations.get(i);
+            pageView.removeView(view);
+        }
+    }
+
+    /*
+
+    public void clearWebAnnotations(PageView pageView){
+        // pageView icindeki webView'leri kaldirir. PageView'ler tekrar ettigi icin eski webView ler yeni sayfalara biniyordu.
+        // Bu method MuPDFPageView icinden de cagiriliyor. Sadece buradan cagrilmasi butun webviewleri kaldirmiyordu.
         for(int i=0; i < pageView.getChildCount(); i++){
             View view = (View)pageView.getChildAt(i);
             if(view instanceof WebView){
@@ -270,9 +287,24 @@ public abstract class PageView extends ViewGroup {
 ////                    Logout.e("Adem","ChildView : "+view.toString());
         }
     }
+    */
+
+    public ArrayList<View> getGPAnnotations(PageView pageView){
+        ArrayList<View> gpAnnotations = new ArrayList<View>();
+        for(int i=0; i < pageView.getChildCount(); i++){
+            View view = (View)pageView.getChildAt(i);
+            if(view instanceof WebView){
+                gpAnnotations.add(view);
+            }
+        }
+        return gpAnnotations;
+    }
+
+
 
 	public void setPage(final int page, PointF size) {
         Logout.e("Adem", "Object : "+this.toString()+" page no: "+page);
+
 
 		// Cancel pending render task
 		if (mDrawEntire != null) {
@@ -301,7 +333,43 @@ public abstract class PageView extends ViewGroup {
 		mEntire.setImageBitmap(null);
 		mEntire.invalidate();
 
+// Render the page in the background
+        mDrawEntire = new AsyncTask<Void,Void,Void>() {
+            protected Void doInBackground(Void... v) {
+                drawPage(mEntireBm, mSize.x, mSize.y, 0, 0, mSize.x, mSize.y);
+                return null;
+            }
 
+            protected void onPreExecute() {
+                setBackgroundColor(BACKGROUND_COLOR);
+                mEntire.setImageBitmap(null);
+                mEntire.invalidate();
+
+                if (mBusyIndicator == null) {
+                    mBusyIndicator = new ProgressBar(mContext);
+                    mBusyIndicator.setIndeterminate(true);
+                    mBusyIndicator.setBackgroundResource(R.drawable.busy);
+                    addView(mBusyIndicator);
+                    mBusyIndicator.setVisibility(INVISIBLE);
+                    mHandler.postDelayed(new Runnable() {
+                        public void run() {
+                            if (mBusyIndicator != null)
+                                mBusyIndicator.setVisibility(VISIBLE);
+                        }
+                    }, PROGRESS_DIALOG_DELAY);
+                }
+            }
+
+            protected void onPostExecute(Void v) {
+                removeView(mBusyIndicator);
+                mBusyIndicator = null;
+                mEntire.setImageBitmap(mEntireBm);
+                mEntire.invalidate();
+                setBackgroundColor(Color.TRANSPARENT);
+            }
+        };
+
+        mDrawEntire.execute();
 		// Get the link info in the background
 		mGetLinkInfo = new AsyncTask<Void,Void,LinkInfo[]>() {
             @Override
@@ -325,8 +393,13 @@ public abstract class PageView extends ViewGroup {
                         int w = (int)((linkInfoExternal.rect.right - linkInfoExternal.rect.left)*scale);
                         int h = (int)((linkInfoExternal.rect.bottom - linkInfoExternal.rect.top)*scale);
 //                                web.setLayoutParams(new LinearLayout.LayoutParams((int)(w*scale), (int)(h*scale)));
-                        web.layout((int)(linkInfoExternal.rect.left*scale), (int)(linkInfoExternal.rect.top*scale), (int)(linkInfoExternal.rect.right*scale), (int)(linkInfoExternal.rect.bottom*scale));
-                        web.setWebViewClient(new WebViewClient(){
+                        int left = (int)(linkInfoExternal.rect.left * scale);
+                        int top = (int) (linkInfoExternal.rect.top * scale);
+                        int right = (int) (linkInfoExternal.rect.right * scale);
+                        int bottom = (int) (linkInfoExternal.rect.bottom * scale);
+                        web.layout(left, top, right, bottom);
+                        Logout.e("Adem", "LayoutParams(" + (right - left) + "): Left:" + left + " Top:" + top + " Right:" + right + " Bottom: " + bottom);
+                        web.setWebViewClient(new WebViewClient() {
                             @Override
                             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                                 view.loadUrl(url);
@@ -338,7 +411,7 @@ public abstract class PageView extends ViewGroup {
                                 super.onScaleChanged(view, oldScale, newScale);
                             }
                         });
-//                        web.setWebChromeClient(new WebChromeClient());
+                        web.setWebChromeClient(new WebChromeClient());
                         web.setInitialScale(1);
                         web.setBackgroundColor(Color.TRANSPARENT);
                         // web.setBackgroundColor(0x00000000);
@@ -348,11 +421,22 @@ public abstract class PageView extends ViewGroup {
                         web.getSettings().setJavaScriptEnabled(true);
                         web.setVerticalScrollBarEnabled(false); // Webviewer'da kontrol edilecek.
                         web.setHorizontalScrollBarEnabled(false); // Webviewer'da kontrol edilecek.
+                        web.getSettings().setDomStorageEnabled(true);
+                        web.getSettings().setBuiltInZoomControls(false);
+                        web.getSettings().setPluginState(WebSettings.PluginState.ON);
+                        web.getSettings().setAllowFileAccess(true);
+                        web.getSettings().setAppCacheEnabled(true);
+                        web.getSettings().setDomStorageEnabled(true);
 
+                        web.setId(atomicInteger.incrementAndGet());
+                        linkInfoExternal.webViewId = web.getId();
+
+//                        web.setScaleX(2);
+//                        web.setScaleY(2);
 //                        web.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
 //                        web.setScrollbarFadingEnabled(false);
 //                        web.getSettings().setLayoutAlgorithm(new );
-                        web.clearCache(false);
+//                        web.clearCache(false);
 //                        web.getSettings().setAppCacheEnabled(false);
 //                        web.getSettings().setDatabaseEnabled(true);
 //                        web.getSettings().setDomStorageEnabled(true);
@@ -379,43 +463,7 @@ public abstract class PageView extends ViewGroup {
 
 		mGetLinkInfo.execute();
 
-		// Render the page in the background
-		mDrawEntire = new AsyncTask<Void,Void,Void>() {
-			protected Void doInBackground(Void... v) {
-				drawPage(mEntireBm, mSize.x, mSize.y, 0, 0, mSize.x, mSize.y);
-				return null;
-			}
 
-			protected void onPreExecute() {
-				setBackgroundColor(BACKGROUND_COLOR);
-				mEntire.setImageBitmap(null);
-				mEntire.invalidate();
-
-				if (mBusyIndicator == null) {
-					mBusyIndicator = new ProgressBar(mContext);
-					mBusyIndicator.setIndeterminate(true);
-					mBusyIndicator.setBackgroundResource(R.drawable.busy);
-					addView(mBusyIndicator);
-					mBusyIndicator.setVisibility(INVISIBLE);
-					mHandler.postDelayed(new Runnable() {
-						public void run() {
-							if (mBusyIndicator != null)
-								mBusyIndicator.setVisibility(VISIBLE);
-						}
-					}, PROGRESS_DIALOG_DELAY);
-				}
-			}
-
-			protected void onPostExecute(Void v) {
-				removeView(mBusyIndicator);
-				mBusyIndicator = null;
-				mEntire.setImageBitmap(mEntireBm);
-				mEntire.invalidate();
-				setBackgroundColor(Color.TRANSPARENT);
-			}
-		};
-
-		mDrawEntire.execute();
 
 		if (mSearchView == null) {
 			mSearchView = new ViewGroup(mContext) {
@@ -758,7 +806,13 @@ public abstract class PageView extends ViewGroup {
 					//requestLayout();
 					// Calling requestLayout here doesn't lead to a later call to layout. No idea
 					// why, but apparently others have run into the problem.
+
 					mPatch.layout(mPatchArea.left, mPatchArea.top, mPatchArea.right, mPatchArea.bottom);
+                    PageView pageView = PageView.this;
+                    ArrayList<View> gpAnnotations = pageView.getGPAnnotations(pageView);
+                    for (View view : gpAnnotations){
+                        view.bringToFront();
+                    }
 				}
 			};
 
