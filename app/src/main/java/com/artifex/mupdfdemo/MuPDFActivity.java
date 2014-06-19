@@ -1,5 +1,9 @@
 package com.artifex.mupdfdemo;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.concurrent.Executor;
 
@@ -14,9 +18,12 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -33,6 +40,7 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewAnimator;
 
 import ak.detaysoft.galepress.R;
@@ -65,8 +73,9 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 	private TextView     mPageNumberView;
 	private TextView     mInfoView;
 	private ImageButton  mSearchButton;
-	private ImageButton  mReflowButton;
 	private ImageButton  mOutlineButton;
+    private ImageButton mailButton;
+    private ImageButton  mReflowButton;
 	private ImageButton	mMoreButton;
 	private TextView     mAnnotTypeText;
 	private ImageButton mAnnotButton;
@@ -484,6 +493,14 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 			}
 		});
 
+        mailButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                 Activity activity = MuPDFActivity.this;
+                String filePath = Environment.getExternalStorageDirectory()+ File.separator + "Pictures/screenshot.png";
+                sendMail(activity, filePath);
+            }
+        });
+
 		// Activate the reflow button
 		mReflowButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -741,87 +758,215 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 		mDocView.setLinksEnabled(highlight);
 	}
 
-	private void showButtons() {
-		if (core == null)
-			return;
-		if (!mButtonsVisible) {
-			mButtonsVisible = true;
-			// Update page number text and slider
-			int index = mDocView.getDisplayedViewIndex();
-			updatePageNumView(index);
-			mPageSlider.setMax((core.countPages()-1)*mPageSliderRes);
-			mPageSlider.setProgress(index*mPageSliderRes);
-			if (mTopBarMode == TopBarMode.Search) {
-				mSearchText.requestFocus();
-				showKeyboard();
-			}
+    private void showButtons() {
+        if (core == null)
+            return;
+        if (!mButtonsVisible) {
+            mButtonsVisible = true;
+            // Update page number text and slider
+            int index = mDocView.getDisplayedViewIndex();
+            updatePageNumView(index);
+            mPageSlider.setMax((core.countPages()-1)*mPageSliderRes);
+            mPageSlider.setProgress(index*mPageSliderRes);
+            if (mTopBarMode == TopBarMode.Search) {
+                mSearchText.requestFocus();
+                showKeyboard();
+            }
 
-			Animation anim = new TranslateAnimation(0, 0, -mTopBarSwitcher.getHeight(), 0);
-			anim.setDuration(200);
-			anim.setAnimationListener(new Animation.AnimationListener() {
-				public void onAnimationStart(Animation animation) {
-					mTopBarSwitcher.setVisibility(View.VISIBLE);
-				}
-				public void onAnimationRepeat(Animation animation) {}
-				public void onAnimationEnd(Animation animation) {}
-			});
-			mTopBarSwitcher.startAnimation(anim);
+            Animation anim = new TranslateAnimation(0, 0, -mTopBarSwitcher.getHeight(), 0);
+            anim.setDuration(200);
+            anim.setAnimationListener(new Animation.AnimationListener() {
+                public void onAnimationStart(Animation animation) {
+                    mTopBarSwitcher.setVisibility(View.VISIBLE);
+                }
+                public void onAnimationRepeat(Animation animation) {}
+                public void onAnimationEnd(Animation animation) {}
+            });
+            mTopBarSwitcher.startAnimation(anim);
 
-			anim = new TranslateAnimation(0, 0, mPageSlider.getHeight(), 0);
-			anim.setDuration(200);
-			anim.setAnimationListener(new Animation.AnimationListener() {
-				public void onAnimationStart(Animation animation) {
-					mPageSlider.setVisibility(View.VISIBLE);
-				}
-				public void onAnimationRepeat(Animation animation) {}
-				public void onAnimationEnd(Animation animation) {
-					mPageNumberView.setVisibility(View.VISIBLE);
-				}
-			});
-			mPageSlider.startAnimation(anim);
-		}
-	}
+            anim = new TranslateAnimation(0, 0, mPageSlider.getHeight(), 0);
+            anim.setDuration(200);
+            anim.setAnimationListener(new Animation.AnimationListener() {
+                public void onAnimationStart(Animation animation) {
+                    mPageSlider.setVisibility(View.VISIBLE);
+                }
+                public void onAnimationRepeat(Animation animation) {}
+                public void onAnimationEnd(Animation animation) {
+                    mPageNumberView.setVisibility(View.VISIBLE);
+                }
+            });
+            mPageSlider.startAnimation(anim);
+        }
+    }
 
-	private void hideButtons() {
-		if (mButtonsVisible) {
-			mButtonsVisible = false;
-			hideKeyboard();
+    private void showButtonsFast() {
+        if (core == null)
+            return;
+        if (!mButtonsVisible) {
+            mButtonsVisible = true;
+            // Update page number text and slider
+            int index = mDocView.getDisplayedViewIndex();
+            updatePageNumView(index);
+            mPageSlider.setMax((core.countPages()-1)*mPageSliderRes);
+            mPageSlider.setProgress(index*mPageSliderRes);
+            if (mTopBarMode == TopBarMode.Search) {
+                mSearchText.requestFocus();
+                showKeyboard();
+            }
 
-			Animation anim = new TranslateAnimation(0, 0, 0, -mTopBarSwitcher.getHeight());
-			anim.setDuration(200);
-			anim.setAnimationListener(new Animation.AnimationListener() {
-				public void onAnimationStart(Animation animation) {}
-				public void onAnimationRepeat(Animation animation) {}
-				public void onAnimationEnd(Animation animation) {
-					mTopBarSwitcher.setVisibility(View.INVISIBLE);
-				}
-			});
-			mTopBarSwitcher.startAnimation(anim);
+            Animation anim = new TranslateAnimation(0, 0, -mTopBarSwitcher.getHeight(), 0);
+            anim.setDuration(0);
+            anim.setAnimationListener(new Animation.AnimationListener() {
+                public void onAnimationStart(Animation animation) {
+                    mTopBarSwitcher.setVisibility(View.VISIBLE);
+                }
+                public void onAnimationRepeat(Animation animation) {}
+                public void onAnimationEnd(Animation animation) {}
+            });
+            mTopBarSwitcher.startAnimation(anim);
 
-			anim = new TranslateAnimation(0, 0, 0, mPageSlider.getHeight());
-			anim.setDuration(200);
-			anim.setAnimationListener(new Animation.AnimationListener() {
-				public void onAnimationStart(Animation animation) {
-					mPageNumberView.setVisibility(View.INVISIBLE);
-				}
-				public void onAnimationRepeat(Animation animation) {}
-				public void onAnimationEnd(Animation animation) {
-					mPageSlider.setVisibility(View.INVISIBLE);
-				}
-			});
-			mPageSlider.startAnimation(anim);
-		}
-	}
+            anim = new TranslateAnimation(0, 0, mPageSlider.getHeight(), 0);
+            anim.setDuration(0);
+            anim.setAnimationListener(new Animation.AnimationListener() {
+                public void onAnimationStart(Animation animation) {
+                    mPageSlider.setVisibility(View.VISIBLE);
+                }
+                public void onAnimationRepeat(Animation animation) {}
+                public void onAnimationEnd(Animation animation) {
+                    mPageNumberView.setVisibility(View.VISIBLE);
+                }
+            });
+            mPageSlider.startAnimation(anim);
+        }
+    }
 
-	private void searchModeOn() {
-		if (mTopBarMode != TopBarMode.Search) {
-			mTopBarMode = TopBarMode.Search;
-			//Focus on EditTextWidget
-			mSearchText.requestFocus();
-			showKeyboard();
-			mTopBarSwitcher.setDisplayedChild(mTopBarMode.ordinal());
-		}
-	}
+    private void hideButtons() {
+        if (mButtonsVisible) {
+            mButtonsVisible = false;
+            hideKeyboard();
+
+            Animation anim = new TranslateAnimation(0, 0, 0, -mTopBarSwitcher.getHeight());
+            anim.setDuration(200);
+            anim.setAnimationListener(new Animation.AnimationListener() {
+                public void onAnimationStart(Animation animation) {}
+                public void onAnimationRepeat(Animation animation) {}
+                public void onAnimationEnd(Animation animation) {
+                    mTopBarSwitcher.setVisibility(View.INVISIBLE);
+                }
+            });
+            mTopBarSwitcher.startAnimation(anim);
+
+            anim = new TranslateAnimation(0, 0, 0, mPageSlider.getHeight());
+            anim.setDuration(200);
+            anim.setAnimationListener(new Animation.AnimationListener() {
+                public void onAnimationStart(Animation animation) {
+                    mPageNumberView.setVisibility(View.INVISIBLE);
+                }
+                public void onAnimationRepeat(Animation animation) {}
+                public void onAnimationEnd(Animation animation) {
+                    mPageSlider.setVisibility(View.INVISIBLE);
+                }
+            });
+            mPageSlider.startAnimation(anim);
+        }
+    }
+    private void hideButtonsFast() {
+        if (mButtonsVisible) {
+            mButtonsVisible = false;
+            hideKeyboard();
+
+            Animation anim = new TranslateAnimation(0, 0, 0, -mTopBarSwitcher.getHeight());
+            anim.setDuration(0);
+            anim.setAnimationListener(new Animation.AnimationListener() {
+                public void onAnimationStart(Animation animation) {}
+                public void onAnimationRepeat(Animation animation) {}
+                public void onAnimationEnd(Animation animation) {
+                    mTopBarSwitcher.setVisibility(View.INVISIBLE);
+                }
+            });
+            mTopBarSwitcher.startAnimation(anim);
+
+            anim = new TranslateAnimation(0, 0, 0, mPageSlider.getHeight());
+            anim.setDuration(0);
+            anim.setAnimationListener(new Animation.AnimationListener() {
+                public void onAnimationStart(Animation animation) {
+                    mPageNumberView.setVisibility(View.INVISIBLE);
+                }
+                public void onAnimationRepeat(Animation animation) {}
+                public void onAnimationEnd(Animation animation) {
+                    mPageSlider.setVisibility(View.INVISIBLE);
+                }
+            });
+            mPageSlider.startAnimation(anim);
+        }
+    }
+
+    private void searchModeOn() {
+        if (mTopBarMode != TopBarMode.Search) {
+            mTopBarMode = TopBarMode.Search;
+            //Focus on EditTextWidget
+            mSearchText.requestFocus();
+            showKeyboard();
+            mTopBarSwitcher.setDisplayedChild(mTopBarMode.ordinal());
+        }
+    }
+
+
+    private static void savePic(Bitmap b, String strFileName) {
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(strFileName);
+            if (null != fos) {
+                b.compress(Bitmap.CompressFormat.PNG, 90, fos);
+                System.out.println("b is:"+b);
+                fos.flush();
+                fos.close();
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void sendMail(Activity a, String b) {
+        hideButtonsFast();
+        savePic(takeScreenShot(a), b);
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("message/rfc822");
+        intent.putExtra(Intent.EXTRA_EMAIL  , "");
+        intent.putExtra(Intent.EXTRA_SUBJECT, " ");
+        intent.putExtra(Intent.EXTRA_TEXT   , " ");
+        Uri myUri = Uri.parse("file://" + b);
+        intent.putExtra(Intent.EXTRA_STREAM, myUri);
+        try {
+            startActivity(Intent.createChooser(intent, "Send mail..."));
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+        }
+        showButtonsFast();
+    }
+
+
+    private static Bitmap takeScreenShot(Activity activity) {
+        View view = activity.getWindow().getDecorView();
+        view.setDrawingCacheEnabled(true);
+        view.buildDrawingCache();
+        Bitmap b1 = view.getDrawingCache();
+        Rect frame = new Rect();
+        activity.getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);
+
+        int statusBarHeight = frame.top;
+        int width = activity.getWindowManager().getDefaultDisplay().getWidth();
+        int height = activity.getWindowManager().getDefaultDisplay()
+                .getHeight();
+        // Bitmap b = Bitmap.createBitmap(b1, 0, 25, 320, 455);
+        Bitmap b = Bitmap.createBitmap(b1, 0, statusBarHeight, width, height
+                - statusBarHeight);
+        view.destroyDrawingCache();
+        return b;
+    }
+
 
 	private void searchModeOff() {
 		if (mTopBarMode == TopBarMode.Search) {
@@ -886,8 +1031,9 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 		mPageNumberView = (TextView)mButtonsView.findViewById(R.id.pageNumber);
 		mInfoView = (TextView)mButtonsView.findViewById(R.id.info);
 		mSearchButton = (ImageButton)mButtonsView.findViewById(R.id.searchButton);
-		mReflowButton = (ImageButton)mButtonsView.findViewById(R.id.reflowButton);
-		mOutlineButton = (ImageButton)mButtonsView.findViewById(R.id.outlineButton);
+        mOutlineButton = (ImageButton)mButtonsView.findViewById(R.id.outlineButton);
+        mailButton = (ImageButton)mButtonsView.findViewById(R.id.mailButton);
+        mReflowButton = (ImageButton)mButtonsView.findViewById(R.id.reflowButton);
 		mAnnotButton = (ImageButton)mButtonsView.findViewById(R.id.editAnnotButton);
 		mAnnotTypeText = (TextView)mButtonsView.findViewById(R.id.annotType);
 		mTopBarSwitcher = (ViewAnimator)mButtonsView.findViewById(R.id.switcher);
