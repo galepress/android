@@ -10,12 +10,16 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.SearchView;
+import android.util.AttributeSet;
+import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -220,9 +224,11 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.extras, menu);
-        return super.onCreateOptionsMenu(menu);
+        boolean result = true;
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.extras, menu);
+        result = super.onCreateOptionsMenu(menu);
+        return result;
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

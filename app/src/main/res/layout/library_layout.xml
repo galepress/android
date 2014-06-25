@@ -18,12 +18,4 @@ tools:ignore="MergeRootFrame">
     android:stretchMode="columnWidth"
     android:gravity="center"
     android:background="@color/canvas"/>
-
-<Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Sync DB"
-    android:id="@+id/sync_button"
-    android:layout_gravity="right|top" />
-
 </FrameLayout>

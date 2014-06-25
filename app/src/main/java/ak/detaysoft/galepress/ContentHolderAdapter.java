@@ -121,10 +121,12 @@ public class ContentHolderAdapter extends BaseAdapter  {
             ((ImageGetter) viewHolder.coverImageView.getTag()).cancel(true);
         }
         ImageGetter task = new ImageGetter(viewHolder.coverImageView) ;
+        File coverImageFile = new File(GalePressApplication.getInstance().getFilesDir(), content.getCoverImageFileName());
+
         if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB ) {
-            task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,new File(GalePressApplication.getInstance().getFilesDir(), content.getCoverImageFileName()));
+            task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,coverImageFile);
         } else {
-            task.execute(new File(GalePressApplication.getInstance().getFilesDir(), content.getCoverImageFileName()));
+            task.execute(coverImageFile);
         }
 
         viewHolder.coverImageView.setTag(task);

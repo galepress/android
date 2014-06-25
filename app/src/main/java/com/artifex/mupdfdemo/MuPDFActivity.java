@@ -28,6 +28,7 @@ import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
@@ -707,6 +708,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
 	@Override
 	protected void onPause() {
+        Logout.e("Adem","onPause");
 		super.onPause();
 
 		if (mSearchTask != null)
@@ -728,6 +730,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
 	public void onDestroy()
 	{
+
 		if (mDocView != null) {
 			mDocView.applyToChildren(new ViewMapper() {
 				void applyToView(View view) {
@@ -735,6 +738,11 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 				}
 			});
 		}
+
+        for(int i =0; i < mDocView.getChildCount(); i++){
+            MuPDFPageView muPDFPageView = (MuPDFPageView) mDocView.getChildAt(i);
+            muPDFPageView.clearWebAnnotations(muPDFPageView);
+        }
 		if (core != null)
 			core.onDestroy();
 		if (mAlertTask != null) {

@@ -10,7 +10,7 @@
         android:id="@+id/categories_button"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:text="Categories"
+        android:text="@string/KATEGORILER"
         android:background="@android:color/transparent"
         android:layout_weight="5"
     />

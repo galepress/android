@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
     <item
         android:id="@+id/action_extras_web"
-        android:title="Web" />
+        android:title="Web"
+        android:icon="@drawable/mail2"
+        />
     <item
         android:id="@+id/action_extras_facebook"
-        android:title="Facebook" />
+        android:title="Facebook"
+        android:icon="@drawable/search_icon"/>
     <item
         android:id="@+id/action_extras_twitter"
-        android:title="Twitter" />
+        android:title="Twitter"
+        android:icon="@drawable/slider_pointer"/>
     <item
         android:id="@+id/action_extras_email"
-        android:title="Mail" />
+        android:title="Mail"
+        android:icon="@drawable/downloaded_tabbar_icon"/>
 </menu>

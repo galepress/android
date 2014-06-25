@@ -61,8 +61,6 @@ public class LibraryFragment extends Fragment {
         GalePressApplication.getInstance().setLibraryActivity(this);
 
         View v = inflater.inflate(R.layout.library_layout, container, false);
-        Button tv = (Button) v.findViewById(R.id.sync_button);
-        tv.setText("Reload UI");
 
         GalePressApplication.getInstance().getDataApi().updateApplication();
         gridview = (GridView) v.findViewById(R.id.gridview);
@@ -71,13 +69,6 @@ public class LibraryFragment extends Fragment {
         this.contentHolderAdapter = new ContentHolderAdapter(this, contents);
         gridview.setAdapter(this.contentHolderAdapter);
 
-        Button syncButton = (Button) v.findViewById(R.id.sync_button);
-        syncButton.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                updateGridView();
-            }
-        });
         updateGridView();
 
         return v;

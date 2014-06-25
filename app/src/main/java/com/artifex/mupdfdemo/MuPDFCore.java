@@ -435,10 +435,6 @@ public class MuPDFCore
             temp.rect.right += pageWidth;
             combinedLinkInfo[j] = temp;
         }
-        for (LinkInfo linkInfo: combinedLinkInfo) {
-            if(linkInfo instanceof LinkInfoExternal)
-                Log.d(TAG, "return " + ((LinkInfoExternal)linkInfo).url);
-        }
         return combinedLinkInfo;
 	}
 

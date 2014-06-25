@@ -10,7 +10,8 @@
         <item name="android:textAppearanceSmallPopupMenu">@style/PopupMenu.MenuItemTextAppearance</item>
     </style>
     <style name="AppBaseTheme" parent="@android:style/Theme.NoTitleBar.Fullscreen">
-        <item name="android:windowBackground">@drawable/tiled_background</item>
+        <!--<item name="android:windowBackground">@drawable/tiled_background</item>-->
+        <item name="android:windowBackground">@color/black</item>
     </style>
     <style name="PopupMenu" parent="@android:style/Widget.Holo.PopupMenu">
     </style>

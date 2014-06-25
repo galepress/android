@@ -1,5 +1,6 @@
 package com.artifex.mupdfdemo;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -245,7 +246,11 @@ public abstract class PageView extends ViewGroup {
 		if (mBusyIndicator == null) {
 			mBusyIndicator = new ProgressBar(mContext);
 			mBusyIndicator.setIndeterminate(true);
-			mBusyIndicator.setBackgroundResource(R.drawable.busy);
+//			mBusyIndicator.setBackgroundResource(R.drawable.busy);
+//            mBusyIndicator.setProgressDrawable(mContext.getResources().getDrawable(R.drawable.loading1));
+//
+//            0xFFFF0000
+            mBusyIndicator.getIndeterminateDrawable().setColorFilter(0xFF00D0FF, android.graphics.PorterDuff.Mode.MULTIPLY);
 			addView(mBusyIndicator);
 		}
 
@@ -255,39 +260,19 @@ public abstract class PageView extends ViewGroup {
     public void clearWebAnnotations(PageView pageView){
         // pageView icindeki webView'leri kaldirir. PageView'ler tekrar ettigi icin eski webView ler yeni sayfalara biniyordu.
         // Bu method MuPDFPageView icinden de cagiriliyor. Sadece buradan cagrilmasi butun webviewleri kaldirmiyordu.
+//        pageView.is
         ArrayList<View> gpAnnotations = getGPAnnotations(pageView);
         for(int i=0; i < gpAnnotations.size(); i++){
             View view = gpAnnotations.get(i);
+            WebView webView = (WebView)view;
+            webView.loadUrl("");
+            webView.stopLoading();
+            Logout.e("Adem", "WebView removed for page : " + pageView.getPage() + " WebView : " + ((WebView) view).getUrl());
             pageView.removeView(view);
         }
     }
 
-    /*
 
-    public void clearWebAnnotations(PageView pageView){
-        // pageView icindeki webView'leri kaldirir. PageView'ler tekrar ettigi icin eski webView ler yeni sayfalara biniyordu.
-        // Bu method MuPDFPageView icinden de cagiriliyor. Sadece buradan cagrilmasi butun webviewleri kaldirmiyordu.
-        for(int i=0; i < pageView.getChildCount(); i++){
-            View view = (View)pageView.getChildAt(i);
-            if(view instanceof WebView){
-                Logout.e("Adem","Deleted WebView : "+view.toString());
-                pageView.removeView(view);
-            }
-//            else if(view instanceof MuPDFPageView){
-//                ViewGroup vg = (ViewGroup) view;
-//                for(int j=0; j < vg.getChildCount(); j++){
-//                    View v = (View).pageView.getChildAt(i);
-//                    if(v instanceof WebView){
-//                        Logout.e("Adem","Deleted WebView : "+v.toString());
-//                        vg.removeView(v);
-//                    }
-//                    Logout.e("Adem","ChildView : "+v.toString());
-//                }
-//            }
-////                    Logout.e("Adem","ChildView : "+view.toString());
-        }
-    }
-    */
 
     public ArrayList<View> getGPAnnotations(PageView pageView){
         ArrayList<View> gpAnnotations = new ArrayList<View>();
@@ -348,7 +333,8 @@ public abstract class PageView extends ViewGroup {
                 if (mBusyIndicator == null) {
                     mBusyIndicator = new ProgressBar(mContext);
                     mBusyIndicator.setIndeterminate(true);
-                    mBusyIndicator.setBackgroundResource(R.drawable.busy);
+                    mBusyIndicator.setProgressDrawable(mContext.getResources().getDrawable(R.drawable.loading1));
+//                    mBusyIndicator.setBackgroundResource(R.drawable.busy);
                     addView(mBusyIndicator);
                     mBusyIndicator.setVisibility(INVISIBLE);
                     mHandler.postDelayed(new Runnable() {
@@ -398,7 +384,6 @@ public abstract class PageView extends ViewGroup {
                         int right = (int) (linkInfoExternal.rect.right * scale);
                         int bottom = (int) (linkInfoExternal.rect.bottom * scale);
                         web.layout(left, top, right, bottom);
-                        Logout.e("Adem", "LayoutParams(" + (right - left) + "): Left:" + left + " Top:" + top + " Right:" + right + " Bottom: " + bottom);
                         web.setWebViewClient(new WebViewClient() {
                             @Override
                             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -421,32 +406,24 @@ public abstract class PageView extends ViewGroup {
                         web.getSettings().setJavaScriptEnabled(true);
                         web.setVerticalScrollBarEnabled(false); // Webviewer'da kontrol edilecek.
                         web.setHorizontalScrollBarEnabled(false); // Webviewer'da kontrol edilecek.
-                        web.getSettings().setDomStorageEnabled(true);
                         web.getSettings().setBuiltInZoomControls(false);
                         web.getSettings().setPluginState(WebSettings.PluginState.ON);
                         web.getSettings().setAllowFileAccess(true);
-                        web.getSettings().setAppCacheEnabled(true);
-                        web.getSettings().setDomStorageEnabled(true);
+                        web.getSettings().setAppCacheEnabled(false);
+                        web.getSettings().setDomStorageEnabled(false);
+                        final String url2 = linkInfoExternal.getSourceUrlPath(mContext);
+                        web.setOnSystemUiVisibilityChangeListener(new OnSystemUiVisibilityChangeListener() {
+                            @Override
+                            public void onSystemUiVisibilityChange(int visibility) {
+                                Logout.e("Adem", "Visibility changed : "+visibility+" Url : "+url2);
+                            }
+                        });
 
                         web.setId(atomicInteger.incrementAndGet());
                         linkInfoExternal.webViewId = web.getId();
 
-//                        web.setScaleX(2);
-//                        web.setScaleY(2);
-//                        web.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
-//                        web.setScrollbarFadingEnabled(false);
-//                        web.getSettings().setLayoutAlgorithm(new );
-//                        web.clearCache(false);
-//                        web.getSettings().setAppCacheEnabled(false);
-//                        web.getSettings().setDatabaseEnabled(true);
-//                        web.getSettings().setDomStorageEnabled(true);
-
-
-
                         String url = linkInfoExternal.getSourceUrlPath(mContext);
                         if(linkInfoExternal.annotationType == linkInfoExternal.ANNOTATION_TYPE_WEB){
-
-//                            web.loadUrl(linkInfoExternal.getSourceUrl(mContext, ((MuPDFPageView)PageView.this.super).getmCore()));
                             web.loadUrl(url);
                         }
                         addView(web);
