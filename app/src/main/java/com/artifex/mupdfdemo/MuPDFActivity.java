@@ -64,7 +64,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 	private final int    FILEPICK_REQUEST=2;
 	public MuPDFCore    core;
 	private String       mFileName;
-	private MuPDFReaderView mDocView;
+	public MuPDFReaderView mDocView;
 	private View         mButtonsView;
 	private boolean      mButtonsVisible;
 	private EditText     mPasswordView;
@@ -405,6 +405,12 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 						core.countPages()));
 				mPageSlider.setMax((core.countPages() - 1) * mPageSliderRes);
 				mPageSlider.setProgress(i * mPageSliderRes);
+                MuPDFPageView muPDFPageView = (MuPDFPageView) mDocView.getDisplayedView();
+                if(muPDFPageView!=null){
+                    if(muPDFPageView.mGetLinkInfo.getStatus() != AsyncTask.Status.FINISHED){
+                        muPDFPageView.mGetLinkInfo.execute();
+                    }
+                }
 				super.onMoveToChild(i);
 			}
 
@@ -456,6 +462,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 				SearchTaskResult.set(result);
 				// Ask the ReaderView to move to the resulting page
 				mDocView.setDisplayedViewIndex(result.pageNumber);
+
 				// Make the ReaderView act on the change to SearchTaskResult
 				// via overridden onChildSetup method.
 				mDocView.resetupChildren();

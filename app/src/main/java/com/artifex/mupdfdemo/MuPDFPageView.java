@@ -246,9 +246,11 @@ public class MuPDFPageView extends PageView implements MuPDFView {
 		float docRelX = (x - getLeft())/scale;
 		float docRelY = (y - getTop())/scale;
 
-		for (LinkInfo l: mLinks)
-			if (l.rect.contains(docRelX, docRelY))
-				return l;
+        if(mLinks!=null) {
+            for (LinkInfo l : mLinks)
+                if (l.rect.contains(docRelX, docRelY))
+                    return l;
+        }
 
 		return null;
 	}

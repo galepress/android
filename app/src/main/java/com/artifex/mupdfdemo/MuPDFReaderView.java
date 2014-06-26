@@ -239,8 +239,7 @@ public class MuPDFReaderView extends ReaderView {
 	}
 
 	protected void onMoveToChild(int i) {
-		if (SearchTaskResult.get() != null
-				&& SearchTaskResult.get().pageNumber != i) {
+		if (SearchTaskResult.get() != null && SearchTaskResult.get().pageNumber != i) {
 			SearchTaskResult.set(null);
 			resetupChildren();
 		}

@@ -1,5 +1,6 @@
 package com.artifex.mupdfdemo;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -36,6 +37,7 @@ import android.widget.RelativeLayout;
 
 import org.apache.http.impl.conn.LoggingSessionOutputBuffer;
 
+import ak.detaysoft.galepress.GalePressApplication;
 import ak.detaysoft.galepress.R;
 
 class PatchInfo {
@@ -133,7 +135,7 @@ public abstract class PageView extends ViewGroup {
 	private       Bitmap    mEntireBm;
 	private       Matrix    mEntireMat;
 	private       AsyncTask<Void,Void,TextWord[][]> mGetText;
-	private       AsyncTask<Void,Void,LinkInfo[]> mGetLinkInfo;
+	public        AsyncTask<Void,Void,LinkInfo[]> mGetLinkInfo;
 	private       AsyncTask<Void,Void,Void> mDrawEntire;
 
 	private       Point     mPatchViewSize; // View size on the basis of which the patch was created
@@ -153,7 +155,7 @@ public abstract class PageView extends ViewGroup {
 
 	private       ProgressBar mBusyIndicator;
 	private final Handler   mHandler = new Handler();
-    public MuPDFCore core = null;
+    private MuPDFCore core = null;
     AtomicInteger atomicInteger = new AtomicInteger();
 
 	public PageView(Context c, Point parentSize, Bitmap sharedHqBm) {
@@ -267,6 +269,21 @@ public abstract class PageView extends ViewGroup {
             WebView webView = (WebView)view;
             webView.loadUrl("");
             webView.stopLoading();
+//            webView.onPause();
+//            webView.pauseTimers();
+            /*
+            try {
+                Class.forName("android.webkit.WebView").getMethod("onPause", (Class[]) null).invoke(webView, (Object[]) null);
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            */
             Logout.e("Adem", "WebView removed for page : " + pageView.getPage() + " WebView : " + ((WebView) view).getUrl());
             pageView.removeView(view);
         }
@@ -284,8 +301,6 @@ public abstract class PageView extends ViewGroup {
         }
         return gpAnnotations;
     }
-
-
 
 	public void setPage(final int page, PointF size) {
         Logout.e("Adem", "Object : "+this.toString()+" page no: "+page);
@@ -357,7 +372,7 @@ public abstract class PageView extends ViewGroup {
 
         mDrawEntire.execute();
 		// Get the link info in the background
-		mGetLinkInfo = new AsyncTask<Void,Void,LinkInfo[]>() {
+        mGetLinkInfo = new AsyncTask<Void,Void,LinkInfo[]>() {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
@@ -365,20 +380,17 @@ public abstract class PageView extends ViewGroup {
             }
 
             protected LinkInfo[] doInBackground(Void... v) {
-				return getLinkInfo();
-			}
+                return getLinkInfo();
+            }
 
-			protected void onPostExecute(LinkInfo[] v) {
-				mLinks = v;
+            protected void onPostExecute(LinkInfo[] v) {
+                mLinks = v;
                 final float scale = mSourceScale*(float)getWidth()/(float)mSize.x;//
                 for (LinkInfo link : mLinks){
                     if(link instanceof LinkInfoExternal && (((LinkInfoExternal) link).annotationType == LinkInfoExternal.ANNOTATION_TYPE_WEB) ){
                         LinkInfoExternal linkInfoExternal = (LinkInfoExternal)link;
                         WebView web = new WebView(mContext);
                         web.setEnabled(true);
-                        int w = (int)((linkInfoExternal.rect.right - linkInfoExternal.rect.left)*scale);
-                        int h = (int)((linkInfoExternal.rect.bottom - linkInfoExternal.rect.top)*scale);
-//                                web.setLayoutParams(new LinearLayout.LayoutParams((int)(w*scale), (int)(h*scale)));
                         int left = (int)(linkInfoExternal.rect.left * scale);
                         int top = (int) (linkInfoExternal.rect.top * scale);
                         int right = (int) (linkInfoExternal.rect.right * scale);
@@ -395,6 +407,19 @@ public abstract class PageView extends ViewGroup {
                             public void onScaleChanged(WebView view, float oldScale, float newScale) {
                                 super.onScaleChanged(view, oldScale, newScale);
                             }
+
+                            @Override
+                            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                                Logout.e("Adem", "Page Started for url : "+view.getUrl());
+                                super.onPageStarted(view, url, favicon);
+                            }
+
+                            @Override
+                            public void onPageFinished(WebView view, String url) {
+                                Logout.e("Adem", "Page Finished for url : "+view.getUrl());
+                                super.onPageFinished(view, url);
+                            }
+
                         });
                         web.setWebChromeClient(new WebChromeClient());
                         web.setInitialScale(1);
@@ -409,8 +434,11 @@ public abstract class PageView extends ViewGroup {
                         web.getSettings().setBuiltInZoomControls(false);
                         web.getSettings().setPluginState(WebSettings.PluginState.ON);
                         web.getSettings().setAllowFileAccess(true);
-                        web.getSettings().setAppCacheEnabled(false);
-                        web.getSettings().setDomStorageEnabled(false);
+                        web.getSettings().setAppCacheEnabled(true);
+                        web.getSettings().setDomStorageEnabled(true);
+                        web.setHorizontalScrollBarEnabled(false);
+
+                        web.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
                         final String url2 = linkInfoExternal.getSourceUrlPath(mContext);
                         web.setOnSystemUiVisibilityChangeListener(new OnSystemUiVisibilityChangeListener() {
                             @Override
@@ -428,19 +456,14 @@ public abstract class PageView extends ViewGroup {
                         }
                         addView(web);
                         Logout.e("Adem2", "WebView added for page : "+page+" WebView : "+web.toString()+" Link : "+url+ " PageView:"+this.toString());
-//                              layout.addView(web, new LayoutParams(LayoutParams.FILL_PARENT,LayoutParams.FILL_PARENT));
-//                        canvas.drawRect(link.rect.left*scale, link.rect.top*scale,link.rect.right*scale, link.rect.bottom*scale,paint);
                     }
 
                 }
-				if (mSearchView != null)
-					mSearchView.invalidate();
-			}
-		};
-
-		mGetLinkInfo.execute();
-
-
+                if (mSearchView != null)
+                    mSearchView.invalidate();
+            }
+        };
+//        mGetLinkInfo.execute();
 
 		if (mSearchView == null) {
 			mSearchView = new ViewGroup(mContext) {
@@ -852,4 +875,6 @@ public abstract class PageView extends ViewGroup {
 	public boolean isOpaque() {
 		return true;
 	}
+
+
 }
