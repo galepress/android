@@ -37,14 +37,15 @@ public class LinkInfoExternal extends LinkInfo {
         }
         else if(url.substring(0,5).equals("ylweb")){
             annotationType = ANNOTATION_TYPE_WEB;
-            if(url.substring(0,11).equals("ylweb://www")){
-                isInternal = false;
-                sourceUrl = "http://"+url.substring(8);
-            }
-            else if (url.substring(0,17).equals("ylweb://localhost")){
+            if (url.substring(0,17).equals("ylweb://localhost")){
                 isInternal = true;
                 sourceUrl = url.substring(18);
             }
+            else{
+                isInternal = false;
+                sourceUrl = "http://"+url.substring(8);
+            }
+
         }
 
 	}
