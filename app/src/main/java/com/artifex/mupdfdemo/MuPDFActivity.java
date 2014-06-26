@@ -405,13 +405,36 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 						core.countPages()));
 				mPageSlider.setMax((core.countPages() - 1) * mPageSliderRes);
 				mPageSlider.setProgress(i * mPageSliderRes);
-                MuPDFPageView muPDFPageView = (MuPDFPageView) mDocView.getDisplayedView();
+
+
+
+                final MuPDFPageView muPDFPageView = (MuPDFPageView) mDocView.getDisplayedView();
                 if(muPDFPageView!=null){
                     if(muPDFPageView.mGetLinkInfo.getStatus() != AsyncTask.Status.FINISHED){
                         muPDFPageView.mGetLinkInfo.execute();
                     }
                 }
-				super.onMoveToChild(i);
+                else{
+                    // Eger muPDFpageView null ise (Content ilk acildigi durumlarda oluyor) 1 sn sonra webView'leri load ediyorum.
+
+                    Runnable mMyRunnable = new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            final MuPDFPageView muPDFPageView2 = (MuPDFPageView) mDocView.getDisplayedView();
+                            if(muPDFPageView2!=null){
+                                if(muPDFPageView2.mGetLinkInfo.getStatus() != AsyncTask.Status.FINISHED){
+                                    muPDFPageView2.mGetLinkInfo.execute();
+                                }
+                            }
+                        }
+                    };
+                    Handler myHandler = new Handler();
+                    myHandler.postDelayed(mMyRunnable, 500);
+                }
+
+                super.onMoveToChild(i);
 			}
 
 			@Override
