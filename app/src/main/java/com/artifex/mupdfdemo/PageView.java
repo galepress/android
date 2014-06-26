@@ -24,6 +24,7 @@ import android.graphics.pdf.PdfDocument;
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
@@ -437,6 +438,13 @@ public abstract class PageView extends ViewGroup {
                         web.getSettings().setAppCacheEnabled(true);
                         web.getSettings().setDomStorageEnabled(true);
                         web.setHorizontalScrollBarEnabled(false);
+                        web.setOnTouchListener(new OnTouchListener() {
+                            @Override
+                            public boolean onTouch(View v, MotionEvent event) {
+                                return false;
+                            }
+
+                        });
 
                         web.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
                         final String url2 = linkInfoExternal.getSourceUrlPath(mContext);

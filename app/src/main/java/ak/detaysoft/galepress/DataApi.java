@@ -73,10 +73,8 @@ public class DataApi extends Object {
         @Override
         public void handleMessage(Message msg) {
             if (msg.what == MESSAGE_TYPE_COVER_IMAGE) {
-                Toast.makeText(GalePressApplication.getInstance(), "Cover image " + Integer.toString(msg.arg1) + " for content =" + Integer.toString(msg.arg2), Toast.LENGTH_LONG).show();
                 getCoverImageVersionToUpdate(msg.arg2);
             } else if (msg.what == MESSAGE_TYPE_COVER_PDF_DOWNLOAD) {
-                Toast.makeText(GalePressApplication.getInstance(), "PDF Downloaded Result" + Integer.toString(msg.arg1) + " for content =" + Integer.toString(msg.arg2), Toast.LENGTH_LONG).show();
             }
 
         }
