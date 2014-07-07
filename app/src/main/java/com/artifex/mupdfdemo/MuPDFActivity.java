@@ -25,6 +25,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
@@ -98,6 +99,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 	private FilePicker mFilePicker;
     private int mOrientation;
     public L_Content content;
+    public Bundle savedInstanceState;
 
 
 
@@ -261,6 +263,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
+        this.savedInstanceState = savedInstanceState;
 		super.onCreate(savedInstanceState);
 
 		mAlertBuilder = new AlertDialog.Builder(this);
@@ -424,7 +427,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                         {
                             final MuPDFPageView muPDFPageView2 = (MuPDFPageView) mDocView.getDisplayedView();
                             if(muPDFPageView2!=null){
-                                if(muPDFPageView2.mGetLinkInfo.getStatus() != AsyncTask.Status.FINISHED){
+                                if(muPDFPageView2.mGetLinkInfo!= null && muPDFPageView2.mGetLinkInfo.getStatus() != AsyncTask.Status.FINISHED){
                                     muPDFPageView2.mGetLinkInfo.execute();
                                 }
                             }

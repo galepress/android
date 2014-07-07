@@ -1,14 +1,7 @@
 package com.artifex.mupdfdemo;
 
-import java.lang.reflect.Array;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.UUID;
-import java.util.concurrent.atomic.AtomicInteger;
-
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
@@ -20,10 +13,8 @@ import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.graphics.pdf.PdfDocument;
 import android.os.Handler;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,15 +22,34 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
+import android.widget.Toast;
 
-import org.apache.http.impl.conn.LoggingSessionOutputBuffer;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMapOptions;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
 
-import ak.detaysoft.galepress.GalePressApplication;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.atomic.AtomicInteger;
+
+import ak.detaysoft.galepress.ExtraWebViewActivity;
 import ak.detaysoft.galepress.R;
+
+
 
 class PatchInfo {
 	public Point patchViewSize;
@@ -388,83 +398,108 @@ public abstract class PageView extends ViewGroup {
                 mLinks = v;
                 final float scale = mSourceScale*(float)getWidth()/(float)mSize.x;//
                 for (LinkInfo link : mLinks){
-                    if(link instanceof LinkInfoExternal && (((LinkInfoExternal) link).annotationType == LinkInfoExternal.ANNOTATION_TYPE_WEB) ){
-                        LinkInfoExternal linkInfoExternal = (LinkInfoExternal)link;
-                        WebView web = new WebView(mContext);
-                        web.setEnabled(true);
+                    if(link instanceof LinkInfoExternal ){
+                        final LinkInfoExternal linkInfoExternal = (LinkInfoExternal)link;
                         int left = (int)(linkInfoExternal.rect.left * scale);
                         int top = (int) (linkInfoExternal.rect.top * scale);
                         int right = (int) (linkInfoExternal.rect.right * scale);
                         int bottom = (int) (linkInfoExternal.rect.bottom * scale);
-                        web.layout(left, top, right, bottom);
-                        web.setWebViewClient(new WebViewClient() {
-                            @Override
-                            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                                view.loadUrl(url);
-                                return false; // then it is not handled by default action
+
+                        if((linkInfoExternal.annotationType == LinkInfoExternal.ANNOTATION_TYPE_WEB)){
+                            if(linkInfoExternal.isModal){
+                                Logout.e("Adem","Modal WebView : "+linkInfoExternal);
+                                Button modalButton = new Button(mContext);
+                                modalButton.layout(left,top,right,bottom);
+                                modalButton.setBackgroundColor(Color.TRANSPARENT);
+                                modalButton.setOnClickListener(new OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent intent = new Intent(mContext, ExtraWebViewActivity.class);
+                                        intent.putExtra("url",linkInfoExternal.sourceUrl);
+                                        mContext.startActivity(intent);
+                                    }
+                                });
+                                addView(modalButton);
                             }
+                            else{
+                                // Web Annotations
+                                WebView web = new WebView(mContext);
+                                web.setEnabled(true);
+                                web.layout(left, top, right, bottom);
+                                web.setWebViewClient(new WebViewClient() {
+                                    @Override
+                                    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                                        view.loadUrl(url);
+                                        return false; // then it is not handled by default action
+                                    }
+                                });
+                                web.setWebChromeClient(new WebChromeClient());
+                                web.setInitialScale(1);
+                                web.setBackgroundColor(Color.TRANSPARENT);
+                                web.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null); // Android eski versiyonlarda da webviewer transparan yapar.
+                                web.getSettings().setLoadWithOverviewMode(true);
+                                web.getSettings().setUseWideViewPort(true);
+                                web.getSettings().setJavaScriptEnabled(true);
+                                web.setVerticalScrollBarEnabled(false); // Webviewer'da kontrol edilecek.
+                                web.setHorizontalScrollBarEnabled(false); // Webviewer'da kontrol edilecek.
+                                web.getSettings().setBuiltInZoomControls(false);
+                                web.getSettings().setPluginState(WebSettings.PluginState.ON);
+                                web.getSettings().setAllowFileAccess(true);
+                                web.getSettings().setAppCacheEnabled(true);
+                                web.getSettings().setDomStorageEnabled(true);
+                                web.setHorizontalScrollBarEnabled(false);
+                                web.setOnTouchListener(new OnTouchListener() {
+                                    @Override
+                                    public boolean onTouch(View v, MotionEvent event) {
+                                        return false;
+                                    }
+                                });
 
-                            @Override
-                            public void onScaleChanged(WebView view, float oldScale, float newScale) {
-                                super.onScaleChanged(view, oldScale, newScale);
+                                web.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
+                                final String url2 = linkInfoExternal.getSourceUrlPath(mContext);
+
+                                web.setId(atomicInteger.incrementAndGet());
+                                linkInfoExternal.webViewId = web.getId();
+
+                                String url = linkInfoExternal.getSourceUrlPath(mContext);
+                                if(linkInfoExternal.annotationType == linkInfoExternal.ANNOTATION_TYPE_WEB){
+                                    web.loadUrl(url);
+                                }
+                                addView(web);
                             }
-
-                            @Override
-                            public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                                Logout.e("Adem", "Page Started for url : "+view.getUrl());
-                                super.onPageStarted(view, url, favicon);
-                            }
-
-                            @Override
-                            public void onPageFinished(WebView view, String url) {
-                                Logout.e("Adem", "Page Finished for url : "+view.getUrl());
-                                super.onPageFinished(view, url);
-                            }
-
-                        });
-                        web.setWebChromeClient(new WebChromeClient());
-                        web.setInitialScale(1);
-                        web.setBackgroundColor(Color.TRANSPARENT);
-                        // web.setBackgroundColor(0x00000000);
-                        web.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null); // Android eski versiyonlarda da webviewer transparan yapar.
-                        web.getSettings().setLoadWithOverviewMode(true);
-                        web.getSettings().setUseWideViewPort(true);
-                        web.getSettings().setJavaScriptEnabled(true);
-                        web.setVerticalScrollBarEnabled(false); // Webviewer'da kontrol edilecek.
-                        web.setHorizontalScrollBarEnabled(false); // Webviewer'da kontrol edilecek.
-                        web.getSettings().setBuiltInZoomControls(false);
-                        web.getSettings().setPluginState(WebSettings.PluginState.ON);
-                        web.getSettings().setAllowFileAccess(true);
-                        web.getSettings().setAppCacheEnabled(true);
-                        web.getSettings().setDomStorageEnabled(true);
-                        web.setHorizontalScrollBarEnabled(false);
-                        web.setOnTouchListener(new OnTouchListener() {
-                            @Override
-                            public boolean onTouch(View v, MotionEvent event) {
-                                return false;
-                            }
-
-                        });
-
-                        web.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
-                        final String url2 = linkInfoExternal.getSourceUrlPath(mContext);
-                        web.setOnSystemUiVisibilityChangeListener(new OnSystemUiVisibilityChangeListener() {
-                            @Override
-                            public void onSystemUiVisibilityChange(int visibility) {
-                                Logout.e("Adem", "Visibility changed : "+visibility+" Url : "+url2);
-                            }
-                        });
-
-                        web.setId(atomicInteger.incrementAndGet());
-                        linkInfoExternal.webViewId = web.getId();
-
-                        String url = linkInfoExternal.getSourceUrlPath(mContext);
-                        if(linkInfoExternal.annotationType == linkInfoExternal.ANNOTATION_TYPE_WEB){
-                            web.loadUrl(url);
                         }
-                        addView(web);
-                        Logout.e("Adem2", "WebView added for page : "+page+" WebView : "+web.toString()+" Link : "+url+ " PageView:"+this.toString());
+                        else if((((LinkInfoExternal) link).annotationType == LinkInfoExternal.ANNOTATION_TYPE_MAP) ){
+//                            Map Annotations
+
+                            /*
+                            GoogleMapOptions options = new GoogleMapOptions();
+                            options.camera(new CameraPosition(linkInfoExternal.location, 10, 0, 0));
+                            options.zoomControlsEnabled(true);
+
+                            MapView mapView = new MapView(mContext,options);
+                            mapView.setBackgroundColor(Color.YELLOW);
+                            mapView.layout(left,top,right,bottom);
+
+
+//                            mapView.setBackgroundColor(Color.BLACK);
+//                            ((MuPDFActivity)mContext).setContentView(mapView);
+                            mapView.onCreate(((MuPDFActivity)mContext).savedInstanceState);
+                            addView(mapView);
+                            try {
+                                MapsInitializer.initialize(mContext);
+                            } catch (GooglePlayServicesNotAvailableException e) {
+                                Logout.e("Adem Map",e.getLocalizedMessage());
+                            }
+                            GoogleMap map = mapView.getMap();
+
+                            map.getUiSettings().setMyLocationButtonEnabled(true);
+                            map.setMyLocationEnabled(true);
+
+                            Logout.e("Adem",map == null ? "Null":map.toString());
+                            */
+                        }
                     }
+
 
                 }
                 if (mSearchView != null)

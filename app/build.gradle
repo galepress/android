@@ -1,6 +1,8 @@
 apply plugin: 'android'
 
 android {
+    signingConfigs {
+    }
     compileSdkVersion 19
     buildToolsVersion '19.1.0'
     defaultConfig {
@@ -14,13 +16,16 @@ android {
             runProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
+        debug {
+        }
     }
     productFlavors {
     }
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:+'
+    compile 'com.google.android.gms:play-services:4.0.30'
+    compile 'com.android.support:appcompat-v7:20.+'
     compile 'com.j256.ormlite:ormlite-android:4.45@jar'
     compile 'com.j256.ormlite:ormlite-core:4.45@jar'
     compile files('../dd-plist.jar')

@@ -1,7 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:alpha="0.8"
+        android:background="@color/black">
 
-<WebView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/webview"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-</WebView>
+        <ImageButton
+            android:id="@+id/extra_web_view_close_button"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/close"
+            android:background="@android:color/transparent"
+            android:layout_marginRight="5dp"
+            />
+        <TextView
+            android:id="@+id/extra_web_view_title"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:text=""
+            android:textColor="@color/white"
+            android:gravity="center_horizontal|center_vertical"
+            android:alpha="1"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@id/extra_web_view_close_button"
+            android:singleLine="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+        </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <WebView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/webview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </WebView>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/extra_web_view_close_progress_bar"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:visibility="visible"/>
+    </RelativeLayout>
+
+
+</LinearLayout>
+
+
