@@ -13,6 +13,7 @@ import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.net.Uri;
 import android.os.Handler;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -42,6 +43,7 @@ import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -470,33 +472,62 @@ public abstract class PageView extends ViewGroup {
                         }
                         else if((((LinkInfoExternal) link).annotationType == LinkInfoExternal.ANNOTATION_TYPE_MAP) ){
 //                            Map Annotations
+//                            http://adem.me/map/index.html?lat=41.033621&lon=28.952785&zoom=16&w=400&h=300&mapType=0
+                            Uri.Builder builder = new Uri.Builder();
+                            builder.scheme("http");
+                            builder.authority("www.galepress.com");
+                            builder.appendPath("files");
+                            builder.appendPath("map_html");
+                            builder.appendPath("index.html");
+                            builder.appendQueryParameter("lat",String.valueOf(linkInfoExternal.location.latitude));
+                            builder.appendQueryParameter("lon",String.valueOf(linkInfoExternal.location.longitude));
+                            builder.appendQueryParameter("zoom",String.valueOf(linkInfoExternal.zoom));
+                            builder.appendQueryParameter("w",String.valueOf(right-left));
+                            builder.appendQueryParameter("h",String.valueOf(bottom-top));
+                            builder.appendQueryParameter("mapType",String.valueOf(linkInfoExternal.mapType));
+                            String mapUrl = builder.build().toString();
 
-                            /*
-                            GoogleMapOptions options = new GoogleMapOptions();
-                            options.camera(new CameraPosition(linkInfoExternal.location, 10, 0, 0));
-                            options.zoomControlsEnabled(true);
 
-                            MapView mapView = new MapView(mContext,options);
-                            mapView.setBackgroundColor(Color.YELLOW);
-                            mapView.layout(left,top,right,bottom);
+                            WebView web = new WebView(mContext);
+                            web.setEnabled(true);
+                            web.layout(left, top, right, bottom);
+                            web.setWebViewClient(new WebViewClient() {
+                                @Override
+                                public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                                    view.loadUrl(url);
+                                    return false; // then it is not handled by default action
+                                }
+                            });
+                            web.setWebChromeClient(new WebChromeClient());
+                            web.setInitialScale(1);
+                            web.setBackgroundColor(Color.TRANSPARENT);
+                            web.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null); // Android eski versiyonlarda da webviewer transparan yapar.
+                            web.getSettings().setLoadWithOverviewMode(true);
+                            web.getSettings().setUseWideViewPort(true);
+                            web.getSettings().setJavaScriptEnabled(true);
+                            web.setVerticalScrollBarEnabled(false); // Webviewer'da kontrol edilecek.
+                            web.setHorizontalScrollBarEnabled(false); // Webviewer'da kontrol edilecek.
+                            web.getSettings().setBuiltInZoomControls(false);
+                            web.getSettings().setPluginState(WebSettings.PluginState.ON);
+                            web.getSettings().setAllowFileAccess(true);
+                            web.getSettings().setAppCacheEnabled(true);
+                            web.getSettings().setDomStorageEnabled(true);
+                            web.setHorizontalScrollBarEnabled(false);
+                            web.setOnTouchListener(new OnTouchListener() {
+                                @Override
+                                public boolean onTouch(View v, MotionEvent event) {
+                                    return false;
+                                }
+                            });
 
+                            web.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
+                            final String url2 = linkInfoExternal.getSourceUrlPath(mContext);
 
-//                            mapView.setBackgroundColor(Color.BLACK);
-//                            ((MuPDFActivity)mContext).setContentView(mapView);
-                            mapView.onCreate(((MuPDFActivity)mContext).savedInstanceState);
-                            addView(mapView);
-                            try {
-                                MapsInitializer.initialize(mContext);
-                            } catch (GooglePlayServicesNotAvailableException e) {
-                                Logout.e("Adem Map",e.getLocalizedMessage());
-                            }
-                            GoogleMap map = mapView.getMap();
+                            web.setId(atomicInteger.incrementAndGet());
+                            linkInfoExternal.webViewId = web.getId();
 
-                            map.getUiSettings().setMyLocationButtonEnabled(true);
-                            map.setMyLocationEnabled(true);
-
-                            Logout.e("Adem",map == null ? "Null":map.toString());
-                            */
+                            web.loadUrl(mapUrl);
+                            addView(web);
                         }
                     }
 

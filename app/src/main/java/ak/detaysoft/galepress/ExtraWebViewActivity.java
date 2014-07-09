@@ -19,14 +19,42 @@ public class ExtraWebViewActivity extends Activity {
     private WebView webView;
     public String url = "http://www.google.com";
     ProgressBar progressBar;
+    ImageButton ileriButton,geriButton,refreshButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.extra_web_view_layout);
         progressBar = (ProgressBar) findViewById(R.id.extra_web_view_close_progress_bar);
 
-        ImageButton imageButton = (ImageButton) findViewById(R.id.extra_web_view_close_button);
-        imageButton.setOnClickListener(new View.OnClickListener() {
+        ileriButton = (ImageButton) findViewById(R.id.extra_web_view_ileri_button);
+        geriButton = (ImageButton) findViewById(R.id.extra_web_view_geri_button);
+        refreshButton = (ImageButton) findViewById(R.id.extra_web_view_refresh_button);
+
+        ileriButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (webView.canGoForward()) {
+                    webView.goForward();
+                }
+            }
+        });
+        geriButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(webView.canGoBack()){
+                    webView.goBack();
+                }
+            }
+        });
+        refreshButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                webView.reload();
+            }
+        });
+
+        ImageButton closeButton = (ImageButton) findViewById(R.id.extra_web_view_close_button);
+        closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -53,12 +81,14 @@ public class ExtraWebViewActivity extends Activity {
                 progressBar.setIndeterminate(true);
                 progressBar.getIndeterminateDrawable().setColorFilter(0xFF00D0FF, android.graphics.PorterDuff.Mode.MULTIPLY);
                 progressBar.setVisibility(View.VISIBLE);
+                refreshButton.setImageDrawable(getResources().getDrawable(R.drawable.extra_web_refresh_disable));
             }
 
             @Override
             public void onPageFinished(WebView view, String url) {
-                progressBar.setVisibility(View.GONE);
                 super.onPageFinished(view, url);
+                progressBar.setVisibility(View.GONE);
+                enableDisableNavigationButtons(view);
             }
 
             @Override
@@ -68,6 +98,23 @@ public class ExtraWebViewActivity extends Activity {
             }
         });
         webView.loadUrl(url);
+    }
+    public void enableDisableNavigationButtons(WebView webView) {
+        // if has previous page, enable the back button
+        if(webView.canGoBack()){
+                geriButton.setImageDrawable(getResources().getDrawable(R.drawable.extra_web_geri));
+        }else{
+                geriButton.setImageDrawable(getResources().getDrawable(R.drawable.extra_web_geri_disable));
+        }
+        // if has next page, enable the next button
+        if(webView.canGoForward()){
+                ileriButton.setImageDrawable(getResources().getDrawable(R.drawable.extra_web_ileri));
+        }else{
+                ileriButton.setImageDrawable(getResources().getDrawable(R.drawable.extra_web_ileri_disable));
+        }
+        refreshButton.setImageDrawable(getResources().getDrawable(R.drawable.extra_web_refresh));
+
+
     }
 
 

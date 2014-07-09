@@ -22,12 +22,17 @@ public class LinkInfoExternal extends LinkInfo {
     public static final int  ANNOTATION_TYPE_WEB = 2;
     public static final int  ANNOTATION_TYPE_MAP = 3;
 
+    public static final int  MAP_TYPE_STANDART = 0;
+    public static final int  MAP_TYPE_HYBRID = 1;
+    public static final int  MAP_TYPE_SATELLITE = 2;
+
     public int annotationType = -1;
     public boolean isModal = false;
     public boolean isInternal = true;
     public int webViewId = -1;
     public LatLng location;
     public float zoom;
+    public int mapType = 0;
 
 	public LinkInfoExternal(float l, float t, float r, float b, String u) {
 		super(l, t, r, b);
@@ -52,8 +57,17 @@ public class LinkInfoExternal extends LinkInfo {
             Double lon = new Double(uri.getQueryParameter("lon"));
             location = new LatLng(lat,lon);
             Double zoomValue = new Double(uri.getQueryParameter("slon"));
-            float zoomlevel = (int)(zoomValue / new Double("0.01"));
-            zoom = (zoomlevel * 1.9f)+2.0f;
+            float zoomlevel = 12 - (int)(zoomValue / new Double("0.01"));
+            zoom = (zoomlevel / 2) + 12;
+            if(url.contains("standard")){
+                mapType = MAP_TYPE_STANDART;
+            }
+            else if(url.contains("hybrid")){
+                mapType = MAP_TYPE_HYBRID;
+            }
+            else if(url.contains("satellite")){
+                mapType = MAP_TYPE_SATELLITE;
+            }
         }
         else if(url.substring(0,5).equals("ylweb")){
             annotationType = ANNOTATION_TYPE_WEB;
