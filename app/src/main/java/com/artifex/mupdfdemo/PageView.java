@@ -15,7 +15,6 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.net.Uri;
 import android.os.Handler;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,26 +23,9 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
-import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.maps.CameraUpdate;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.GoogleMapOptions;
-import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.MapsInitializer;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.CameraPosition;
-
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -450,6 +432,7 @@ public abstract class PageView extends ViewGroup {
                                 web.getSettings().setAppCacheEnabled(true);
                                 web.getSettings().setDomStorageEnabled(true);
                                 web.setHorizontalScrollBarEnabled(false);
+                                web.setBackgroundColor(Color.YELLOW);
                                 web.setOnTouchListener(new OnTouchListener() {
                                     @Override
                                     public boolean onTouch(View v, MotionEvent event) {
@@ -479,8 +462,8 @@ public abstract class PageView extends ViewGroup {
                             builder.appendPath("files");
                             builder.appendPath("map_html");
                             builder.appendPath("index.html");
-                            builder.appendQueryParameter("lat",String.valueOf(linkInfoExternal.location.latitude));
-                            builder.appendQueryParameter("lon",String.valueOf(linkInfoExternal.location.longitude));
+                            builder.appendQueryParameter("lat",String.valueOf(linkInfoExternal.location.getLatitude()));
+                            builder.appendQueryParameter("lon",String.valueOf(linkInfoExternal.location.getLongitude()));
                             builder.appendQueryParameter("zoom",String.valueOf(linkInfoExternal.zoom));
                             builder.appendQueryParameter("w",String.valueOf(right-left));
                             builder.appendQueryParameter("h",String.valueOf(bottom-top));

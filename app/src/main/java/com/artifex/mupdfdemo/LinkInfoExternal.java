@@ -1,17 +1,9 @@
 package com.artifex.mupdfdemo;
 
 import android.content.Context;
-import android.location.Geocoder;
+import android.location.Location;
 import android.net.Uri;
 import android.util.Log;
-
-import com.google.android.gms.location.Geofence;
-import com.google.android.gms.maps.model.LatLng;
-
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import ak.detaysoft.galepress.GalePressApplication;
 
 public class LinkInfoExternal extends LinkInfo {
 	 public String url;
@@ -30,7 +22,7 @@ public class LinkInfoExternal extends LinkInfo {
     public boolean isModal = false;
     public boolean isInternal = true;
     public int webViewId = -1;
-    public LatLng location;
+    public Location location;
     public float zoom;
     public int mapType = 0;
 
@@ -55,7 +47,8 @@ public class LinkInfoExternal extends LinkInfo {
             Uri uri=Uri.parse(url);
             Double lat = new Double(uri.getQueryParameter("lat"));
             Double lon = new Double(uri.getQueryParameter("lon"));
-            location = new LatLng(lat,lon);
+            location.setLatitude(lat);
+            location.setLongitude(lon);
             Double zoomValue = new Double(uri.getQueryParameter("slon"));
             float zoomlevel = 12 - (int)(zoomValue / new Double("0.01"));
             zoom = (zoomlevel / 2) + 12;
