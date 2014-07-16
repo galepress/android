@@ -17,5 +17,6 @@ tools:ignore="MergeRootFrame">
     android:horizontalSpacing="10dp"
     android:stretchMode="columnWidth"
     android:gravity="center"
-    android:background="@color/canvas"/>
+    android:background="@color/canvas"
+    android:listSelector="@android:color/transparent"/>
 </FrameLayout>
