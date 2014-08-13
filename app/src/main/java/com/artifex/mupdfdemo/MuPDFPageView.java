@@ -627,7 +627,6 @@ public class MuPDFPageView extends PageView implements MuPDFView {
 	}
 
 	public void setScale(float scale) {
-        Logout.e("Adem", String.valueOf(scale));
 	}
 
 	@Override

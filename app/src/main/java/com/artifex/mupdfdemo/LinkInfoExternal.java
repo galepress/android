@@ -45,6 +45,7 @@ public class LinkInfoExternal extends LinkInfo {
         else if(url.substring(0,5).equals("ylmap")){
             annotationType = ANNOTATION_TYPE_MAP;
             Uri uri=Uri.parse(url);
+            location = new Location("");
             Double lat = new Double(uri.getQueryParameter("lat"));
             Double lon = new Double(uri.getQueryParameter("lon"));
             location.setLatitude(lat);

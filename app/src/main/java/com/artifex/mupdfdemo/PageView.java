@@ -18,6 +18,7 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.GeolocationPermissions;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -32,7 +33,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import ak.detaysoft.galepress.ExtraWebViewActivity;
 import ak.detaysoft.galepress.R;
-
+import ak.detaysoft.galepress.WebViewAnnotation;
 
 
 class PatchInfo {
@@ -162,6 +163,12 @@ public abstract class PageView extends ViewGroup {
 		mPatchBm = sharedHqBm;
 		mEntireMat = new Matrix();
 	}
+//    public boolean onInterceptTouchEvent(MotionEvent ev) {
+//        Logout.e("Adem","Intercepted touch event : "+ev.getAction());
+//        return true;
+//    }
+
+
 
 	protected abstract void drawPage(Bitmap bm, int sizeX, int sizeY, int patchX, int patchY, int patchWidth, int patchHeight);
 	protected abstract void updatePage(Bitmap bm, int sizeX, int sizeY, int patchX, int patchY, int patchWidth, int patchHeight);
@@ -279,7 +286,6 @@ public abstract class PageView extends ViewGroup {
                 e.printStackTrace();
             }
             */
-            Logout.e("Adem", "WebView removed for page : " + pageView.getPage() + " WebView : " + ((WebView) view).getUrl());
             pageView.removeView(view);
         }
     }
@@ -298,9 +304,6 @@ public abstract class PageView extends ViewGroup {
     }
 
 	public void setPage(final int page, PointF size) {
-        Logout.e("Adem", "Object : "+this.toString()+" page no: "+page);
-
-
 		// Cancel pending render task
 		if (mDrawEntire != null) {
 			mDrawEntire.cancel(true);
@@ -384,14 +387,13 @@ public abstract class PageView extends ViewGroup {
                 for (LinkInfo link : mLinks){
                     if(link instanceof LinkInfoExternal ){
                         final LinkInfoExternal linkInfoExternal = (LinkInfoExternal)link;
-                        int left = (int)(linkInfoExternal.rect.left * scale);
-                        int top = (int) (linkInfoExternal.rect.top * scale);
+                        final int left = (int)(linkInfoExternal.rect.left * scale);
+                        final int top = (int) (linkInfoExternal.rect.top * scale);
                         int right = (int) (linkInfoExternal.rect.right * scale);
                         int bottom = (int) (linkInfoExternal.rect.bottom * scale);
 
                         if((linkInfoExternal.annotationType == LinkInfoExternal.ANNOTATION_TYPE_WEB)){
                             if(linkInfoExternal.isModal){
-                                Logout.e("Adem","Modal WebView : "+linkInfoExternal);
                                 Button modalButton = new Button(mContext);
                                 modalButton.layout(left,top,right,bottom);
                                 modalButton.setBackgroundColor(Color.TRANSPARENT);
@@ -407,39 +409,10 @@ public abstract class PageView extends ViewGroup {
                             }
                             else{
                                 // Web Annotations
-                                WebView web = new WebView(mContext);
-                                web.setEnabled(true);
-                                web.layout(left, top, right, bottom);
-                                web.setWebViewClient(new WebViewClient() {
-                                    @Override
-                                    public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                                        view.loadUrl(url);
-                                        return false; // then it is not handled by default action
-                                    }
-                                });
-                                web.setWebChromeClient(new WebChromeClient());
-                                web.setInitialScale(1);
-                                web.setBackgroundColor(Color.TRANSPARENT);
-                                web.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null); // Android eski versiyonlarda da webviewer transparan yapar.
-                                web.getSettings().setLoadWithOverviewMode(true);
-                                web.getSettings().setUseWideViewPort(true);
-                                web.getSettings().setJavaScriptEnabled(true);
-                                web.setVerticalScrollBarEnabled(false); // Webviewer'da kontrol edilecek.
-                                web.setHorizontalScrollBarEnabled(false); // Webviewer'da kontrol edilecek.
-                                web.getSettings().setBuiltInZoomControls(false);
-                                web.getSettings().setPluginState(WebSettings.PluginState.ON);
-                                web.getSettings().setAllowFileAccess(true);
-                                web.getSettings().setAppCacheEnabled(true);
-                                web.getSettings().setDomStorageEnabled(true);
-                                web.setHorizontalScrollBarEnabled(false);
-                                web.setBackgroundColor(Color.YELLOW);
-                                web.setOnTouchListener(new OnTouchListener() {
-                                    @Override
-                                    public boolean onTouch(View v, MotionEvent event) {
-                                        return false;
-                                    }
-                                });
 
+                                final WebViewAnnotation web = new WebViewAnnotation(mContext);
+                                web.readerView = ((MuPDFActivity) mContext).mDocView;
+                                web.layout(left, top, right, bottom);
                                 web.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
                                 final String url2 = linkInfoExternal.getSourceUrlPath(mContext);
 
@@ -481,21 +454,28 @@ public abstract class PageView extends ViewGroup {
                                     return false; // then it is not handled by default action
                                 }
                             });
-                            web.setWebChromeClient(new WebChromeClient());
+                            web.setWebChromeClient(new WebChromeClient(){
+                                @Override
+                                public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
+                                    // Always grant permission since the app itself requires location
+                                    // permission and the user has therefore already granted it
+                                    callback.invoke(origin, true, false);
+                                }
+                            });
                             web.setInitialScale(1);
-                            web.setBackgroundColor(Color.TRANSPARENT);
-                            web.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null); // Android eski versiyonlarda da webviewer transparan yapar.
-                            web.getSettings().setLoadWithOverviewMode(true);
-                            web.getSettings().setUseWideViewPort(true);
+//                            web.setBackgroundColor(Color.TRANSPARENT);
+//                            web.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null); // Android eski versiyonlarda da webviewer transparan yapar.
+//                            web.getSettings().setLoadWithOverviewMode(true);
+//                            web.getSettings().setUseWideViewPort(true);
                             web.getSettings().setJavaScriptEnabled(true);
-                            web.setVerticalScrollBarEnabled(false); // Webviewer'da kontrol edilecek.
-                            web.setHorizontalScrollBarEnabled(false); // Webviewer'da kontrol edilecek.
-                            web.getSettings().setBuiltInZoomControls(false);
-                            web.getSettings().setPluginState(WebSettings.PluginState.ON);
-                            web.getSettings().setAllowFileAccess(true);
-                            web.getSettings().setAppCacheEnabled(true);
-                            web.getSettings().setDomStorageEnabled(true);
-                            web.setHorizontalScrollBarEnabled(false);
+//                            web.setVerticalScrollBarEnabled(false); // Webviewer'da kontrol edilecek.
+//                            web.setHorizontalScrollBarEnabled(false); // Webviewer'da kontrol edilecek.
+//                            web.getSettings().setBuiltInZoomControls(false);
+//                            web.getSettings().setPluginState(WebSettings.PluginState.ON);
+//                            web.getSettings().setAllowFileAccess(true);
+//                            web.getSettings().setAppCacheEnabled(true);
+//                            web.getSettings().setDomStorageEnabled(true);
+                            web.getSettings().setGeolocationEnabled(true);
                             web.setOnTouchListener(new OnTouchListener() {
                                 @Override
                                 public boolean onTouch(View v, MotionEvent event) {

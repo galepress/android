@@ -50,7 +50,7 @@ public class ReaderView
 	private int               mYScroll;    // and then accounted for in onLayout
 	private boolean           mReflow = false;
 	private boolean           mReflowChanged = false;
-	private final GestureDetector
+	public final GestureDetector
 				  mGestureDetector;
 	private final ScaleGestureDetector
 				  mScaleGestureDetector;
