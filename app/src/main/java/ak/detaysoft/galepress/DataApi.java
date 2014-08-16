@@ -18,7 +18,10 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
+import android.provider.DocumentsContract;
+import android.text.InputType;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Toast;
 
@@ -32,6 +35,10 @@ import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -44,6 +51,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 import ak.detaysoft.galepress.database_models.L_Application;
 import ak.detaysoft.galepress.database_models.L_Category;
@@ -123,7 +133,7 @@ public class DataApi extends Object {
         GalePressApplication.getInstance().startService(i);
     }
 
-    private void downloadFile(String remoteUrl, L_Content content) {
+    private void downloadFile(final String remoteUrl, L_Content content) {
         ArrayList<String> parameters = new ArrayList<String>();
         parameters.add(remoteUrl);
         parameters.add(content.getId().toString());
@@ -233,7 +243,32 @@ public class DataApi extends Object {
             });
             alertDialog.show();
         } else {
-            downloadPdf(content);
+            if(content.isProtected()){
+                final AlertDialog.Builder alert = new AlertDialog.Builder(GalePressApplication.getInstance().getLibraryActivity().getActivity());
+                alert.setTitle(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.SIFRE));
+                alert.setMessage(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.WARNING_2));
+                final EditText input = new EditText(GalePressApplication.getInstance().getLibraryActivity().getActivity());
+                input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                alert.setView(input);
+                alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        content.setPassword(input.getText().toString());
+                        GalePressApplication.getInstance().getDatabaseApi().updateContent(content,false);
+                        dialog.cancel();
+                        downloadPdf(content);
+                    }
+                });
+
+                alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        dialog.cancel();
+                    }
+                });
+                alert.show();
+            }
+            else{
+                downloadPdf(content);
+            }
         }
 
     }
@@ -289,7 +324,10 @@ public class DataApi extends Object {
                             R_ContentFileUrl contentPdfFile = new R_ContentFileUrl(response);
                             if (contentPdfFile.getError() != "") {
                                 L_Content content = getDatabaseApi().getContent(contentPdfFile.getContentID());
-                                downloadFile(contentPdfFile.getUrl(), content);
+                                if(content.isProtected() && content.getPassword()!=null)
+                                    downloadFile(contentPdfFile.getUrl()+content.getPassword(), content);
+                                else
+                                    downloadFile(contentPdfFile.getUrl(), content);
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -816,7 +854,7 @@ public class DataApi extends Object {
                 URL url = new URL(remoteUrl);
                 connection = (HttpURLConnection) url.openConnection();
                 connection.connect();
-
+Logout.e("Adem","Response Code : "+connection.getResponseCode() + " Response Message : "+connection.getResponseMessage());
                 if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
                     return "Server returned HTTP " + connection.getResponseCode()
                             + " " + connection.getResponseMessage();
@@ -863,22 +901,34 @@ public class DataApi extends Object {
                 }
 
                 tempDirectory.renameTo(directory);
-
                 Decompress decompressor = new Decompress(directory + "/" + pdfFileName, directory + "/");
-                Logout.e("Adem","Content Directory : "+directory.getPath());
+                Logout.e("Adem","Content Directory : "+directory.getPath()+"");
                 decompressor.unzip();
-                new File(directory + "/" + pdfFileName).delete();
-
-                new Handler(Looper.getMainLooper()).post(new Runnable() {
-                    @Override
-                    public void run() {
-                        content.setPdfUpdateAvailable(false);
-                        getDatabaseApi().updateContent(content,true);
+                if(checkDownloadSuccessfull(directory)){
+                    new File(directory + "/" + pdfFileName).delete();
+                    new Handler(Looper.getMainLooper()).post(new Runnable() {
+                        @Override
+                        public void run() {
+                            content.setPdfUpdateAvailable(false);
+                            getDatabaseApi().updateContent(content,true);
+                        }
+                    });
+                }
+                else{
+                    final String errorMessage = getErrorMessageFromXMLFile(directory,pdfFileName);
+                    if (directory != null) {
+                        deleteFolder(directory);
                     }
-                });
+                    cancel(true);
+                    new Handler(Looper.getMainLooper()).post(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(GalePressApplication.getInstance(), errorMessage, Toast.LENGTH_LONG).show();
+                        }
+                    });
 
-
-
+                }
+                return null;
             } catch (Exception e) {
                 Logout.e("Error", e.getLocalizedMessage());
                 if (tempDirectory != null) {
@@ -889,6 +939,12 @@ public class DataApi extends Object {
             return null;
 
         }
+
+        private boolean checkDownloadSuccessfull(File directory) {
+            int fileCount = directory.list().length;
+            return fileCount > 1;
+        }
+
 
         @Override
         protected void onProgressUpdate(Integer... progress) {
@@ -918,6 +974,40 @@ public class DataApi extends Object {
             getDatabaseApi().updateContent(this.content,true);
         }
 
+    }
+
+    private String getErrorMessageFromXMLFile(File directory, String pdfFileName) {
+        String errorMessage = null;
+        try {
+            File fXmlFile = new File(directory, pdfFileName);
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(fXmlFile);
+            doc.getDocumentElement().normalize();
+            NodeList nList = doc.getElementsByTagName("Response");
+            Node nNode = nList.item(0);
+            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                Element eElement = (Element) nNode;
+                Node errorElementNode = eElement.getElementsByTagName("Error").item(0);
+                Element errorElement = (Element) errorElementNode;
+                String errorCodeString = errorElement.getAttribute("code");
+                if(errorCodeString.equalsIgnoreCase("101")){
+                    errorMessage = GalePressApplication.getInstance().getLibraryActivity().getString(R.string.WARNING_101);
+                }
+                else if(errorCodeString.equalsIgnoreCase("102")){
+                    errorMessage = GalePressApplication.getInstance().getLibraryActivity().getString(R.string.WARNING_102);
+                }
+                else if(errorCodeString.equalsIgnoreCase("103")){
+                    errorMessage = GalePressApplication.getInstance().getLibraryActivity().getString(R.string.WARNING_103);
+                }
+                else if(errorCodeString.equalsIgnoreCase("104")){
+                    errorMessage = GalePressApplication.getInstance().getLibraryActivity().getString(R.string.WARNING_104);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return errorMessage;
     }
 
 }

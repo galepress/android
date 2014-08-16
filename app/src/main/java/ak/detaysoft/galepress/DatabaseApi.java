@@ -10,6 +10,8 @@ import com.j256.ormlite.stmt.SelectArg;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import ak.detaysoft.galepress.database_models.L_Application;
@@ -216,8 +218,31 @@ public class DatabaseApi {
             e.printStackTrace();
             return null;
         }
+        // Sort contents
+        Collections.sort(resultContents, new Comparator() {
+            @Override
+            public int compare(Object lhs, Object rhs) {
+                L_Content l_content = (L_Content) lhs;
+                L_Content r_content = (L_Content) rhs;
+                Integer leftIntegerPart  = Integer.parseInt(l_content.getMonthlyName().replaceAll("[^0-9]", ""));
+                String leftStringPart   = l_content.getMonthlyName().replaceAll("[0-9]", "");
+
+                Integer rightIntegerPart = Integer.parseInt(r_content.getMonthlyName().replaceAll("[^0-9]", ""));
+                String rightStringPart  = r_content.getMonthlyName().replaceAll("[0-9]", "");
+
+                int resultOfStrings = rightStringPart.compareTo(leftStringPart);
+                if(resultOfStrings == 0){
+                    int resultsOfIntegers = rightIntegerPart.compareTo(leftIntegerPart);
+                    return resultsOfIntegers;
+                }
+                else{
+                    return resultOfStrings;
+                }
+            }
+        });
         return resultContents;
     }
+
 
     public List getAllContentsByCategory(L_Category category)
     {
