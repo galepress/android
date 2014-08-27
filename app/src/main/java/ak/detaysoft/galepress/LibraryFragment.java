@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,8 +46,7 @@ public class LibraryFragment extends Fragment {
             isOnlyDownloaded = false;
         }
         super.onCreate(savedInstanceState);
-        Button categoriesButton = (Button)getActivity().findViewById(R.id.categories_button);
-        categoriesButton.setVisibility(View.VISIBLE);
+
     }
 
     @Override
@@ -54,6 +54,11 @@ public class LibraryFragment extends Fragment {
         this.setLayoutInflater(inflater);
         GalePressApplication.getInstance().setLibraryActivity(this);
         View v = inflater.inflate(R.layout.library_layout, container, false);
+
+        Button categoriesButton = (Button)getActivity().findViewById(R.id.categories_button);
+        categoriesButton.setVisibility(View.VISIBLE);
+        SearchView searchView = (SearchView)getActivity().findViewById(R.id.search_view);
+        searchView.setVisibility(View.VISIBLE);
 
         GalePressApplication.getInstance().getDataApi().updateApplication();
         gridview = (GridView) v.findViewById(R.id.gridview);
