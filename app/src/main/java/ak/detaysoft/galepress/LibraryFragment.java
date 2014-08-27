@@ -3,18 +3,14 @@ package ak.detaysoft.galepress;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
-import android.widget.Toast;
 import com.artifex.mupdfdemo.MuPDFActivity;
 import java.io.File;
 import java.util.List;
@@ -25,8 +21,6 @@ import ak.detaysoft.galepress.database_models.L_Content;
  * Created by adem on 31/03/14.
  */
 public class LibraryFragment extends Fragment {
-    static private File downloadsDirectory;
-    static private File samplePdfFile;
     public ContentHolderAdapter contentHolderAdapter;
     public GridView gridview;
     private LayoutInflater layoutInflater;
@@ -46,20 +40,19 @@ public class LibraryFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         try{
-            MainActivity activity = (MainActivity)getActivity();
             isOnlyDownloaded = this.getTag().compareTo(MainActivity.DOWNLOADED_LIBRARY_TAG)==0;
         }catch (NullPointerException exception){
             isOnlyDownloaded = false;
         }
-
         super.onCreate(savedInstanceState);
+        Button categoriesButton = (Button)getActivity().findViewById(R.id.categories_button);
+        categoriesButton.setVisibility(View.VISIBLE);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.setLayoutInflater(inflater);
         GalePressApplication.getInstance().setLibraryActivity(this);
-
         View v = inflater.inflate(R.layout.library_layout, container, false);
 
         GalePressApplication.getInstance().getDataApi().updateApplication();
@@ -94,8 +87,6 @@ public class LibraryFragment extends Fragment {
         if(content!=null && content.isPdfDownloaded() && samplePdfFile.exists()){
             Uri uri = Uri.parse(samplePdfFile.getAbsolutePath());
             Intent intent = new Intent(getActivity(), MuPDFActivity.class);
-//            Bundle bundle = new Bundle();
-//            bundle.putSerializable("");
             intent.putExtra("content", content);
             intent.setAction(Intent.ACTION_VIEW);
             intent.setData(uri);

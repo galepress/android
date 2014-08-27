@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * Created by adem on 02/04/14.
@@ -12,8 +13,9 @@ import android.view.ViewGroup;
 public class InfoPageFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
+        Button categoriesButton = (Button)getActivity().findViewById(R.id.categories_button);
+        categoriesButton.setVisibility(View.INVISIBLE);
     }
 
     @Override
