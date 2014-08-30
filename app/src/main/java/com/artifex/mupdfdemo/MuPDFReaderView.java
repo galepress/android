@@ -3,15 +3,13 @@ package com.artifex.mupdfdemo;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
-import android.view.ViewGroup;
 import android.webkit.WebView;
 
-import java.util.concurrent.atomic.AtomicInteger;
+import ak.detaysoft.galepress.ExtraWebViewActivity;
 
 public class MuPDFReaderView extends ReaderView {
 	enum Mode {Viewing, Selecting, Drawing}
@@ -82,8 +80,8 @@ public class MuPDFReaderView extends ReaderView {
 
 						@Override
 						public void visitExternal(LinkInfoExternal li) {
-                            if(li.annotationType == LinkInfoExternal.ANNOTATION_TYPE_WEBLINK){
-                                Intent intent = new Intent(mContext, ModalWebViewActivity.class);
+                            if(li.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_LINK){
+                                Intent intent = new Intent(mContext, ExtraWebViewActivity.class);
                                 intent.putExtra("url",li.url);
                                 mContext.startActivity(intent);
                             }

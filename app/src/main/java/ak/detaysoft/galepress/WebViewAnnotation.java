@@ -2,6 +2,7 @@ package ak.detaysoft.galepress;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebChromeClient;
@@ -19,12 +20,29 @@ public class WebViewAnnotation extends WebView {
     public float left, top ;
     public MuPDFReaderView readerView;
 
+    private class MyWebChromeClient extends WebChromeClient implements MediaPlayer.OnCompletionListener, MediaPlayer.OnBufferingUpdateListener, MediaPlayer.OnSeekCompleteListener{
+
+        @Override
+        public void onCompletion(MediaPlayer mp) {
+            mp.release();
+        }
+
+        @Override
+        public void onBufferingUpdate(MediaPlayer mp, int percent) {
+            Logout.e("Adem", "Buffer cakildi : "+percent);
+        }
+
+        @Override
+        public void onSeekComplete(MediaPlayer mp) {
+            Logout.e("Adem", "Seek cakildi : ");
+        }
+    }
 
     public boolean isHorizontalScrolling, isDummyAction;
     private MotionEvent previousMotionEvent;
     public WebViewAnnotation(Context context) {
         super(context);
-        this.setWebChromeClient(new WebChromeClient());
+        this.setWebChromeClient(new MyWebChromeClient());
         this.setInitialScale(1);
         this.setBackgroundColor(Color.TRANSPARENT);
         this.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null); // Android eski versiyonlarda da webviewer transparan yapar.

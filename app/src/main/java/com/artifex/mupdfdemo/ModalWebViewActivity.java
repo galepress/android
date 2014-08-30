@@ -10,6 +10,7 @@ import ak.detaysoft.galepress.R;
 /**
  * Created by adem on 21/05/14.
  */
+/** TODO: Bunun yerine ExtraWebView'i kullandim. Enes le gorusup barsiz kullanim gerekmiyorsa bu activity'yi silecegim.*/
 public class ModalWebViewActivity extends Activity {
     private WebView webView;
     public String url = "http://www.google.com";

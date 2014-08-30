@@ -9,16 +9,23 @@ public class LinkInfoExternal extends LinkInfo {
 	 public String url;
 	public String sourceUrl;
 
-    public static final int  ANNOTATION_TYPE_PAGELINK = 0;
-    public static final int  ANNOTATION_TYPE_WEBLINK = 1;
-    public static final int  ANNOTATION_TYPE_WEB = 2;
-    public static final int  ANNOTATION_TYPE_MAP = 3;
+    public static final int COMPONENT_TYPE_ID_VIDEO 		=1;
+    public static final int COMPONENT_TYPE_ID_SES 			=2;
+    public static final int COMPONENT_TYPE_ID_HARİTA 		=3;
+    public static final int COMPONENT_TYPE_ID_LINK			=4;
+    public static final int COMPONENT_TYPE_ID_WEB			=5;
+    public static final int COMPONENT_TYPE_ID_TOOLTIP		=6;
+    public static final int COMPONENT_TYPE_ID_SCROLLER		=7;
+    public static final int COMPONENT_TYPE_ID_SLIDESHOW		=8;
+    public static final int COMPONENT_TYPE_ID_360			=9;
+    public static final int COMPONENT_TYPE_ID_BOOKMARK		=10;
+    public static final int COMPONENT_TYPE_ID_ANIMATION		=11;
 
     public static final int  MAP_TYPE_STANDART = 0;
     public static final int  MAP_TYPE_HYBRID = 1;
     public static final int  MAP_TYPE_SATELLITE = 2;
 
-    public int annotationType = -1;
+    public int componentAnnotationTypeId = -1;
     public boolean isModal = false;
     public boolean isInternal = true;
     public int webViewId = -1;
@@ -29,22 +36,25 @@ public class LinkInfoExternal extends LinkInfo {
 	public LinkInfoExternal(float l, float t, float r, float b, String u) {
 		super(l, t, r, b);
 		url = u;
+        Uri uri = Uri.parse(url);
 
-        if(url.contains("modal=1")){
-            isModal = true;
-            if(url.contains("?modal=1")){
-                url = url.replace("?modal=1", "");
+        String modalQueryParameterValue = uri.getQueryParameter("modal");
+        if(modalQueryParameterValue!=null && !modalQueryParameterValue.isEmpty()){
+            int modalValue = Integer.parseInt(modalQueryParameterValue);
+            if(modalValue == 1){
+                isModal = true;
             }
-            else if(url.contains("modal=1")){
-                url = url.replace("modal=1", "");
-            }
+            removeQueryParameter("modal", modalQueryParameterValue);
         }
-        if(url.substring(0,4).equals("http")){
-            annotationType = ANNOTATION_TYPE_WEBLINK;
+
+        String componentTypeQueryParameterValue = uri.getQueryParameter("componentTypeID");
+        if(componentTypeQueryParameterValue!=null && !componentTypeQueryParameterValue.isEmpty()){
+            componentAnnotationTypeId = Integer.parseInt(componentTypeQueryParameterValue);
+            removeQueryParameter("componentTypeID", componentTypeQueryParameterValue);
         }
-        else if(url.substring(0,5).equals("ylmap")){
-            annotationType = ANNOTATION_TYPE_MAP;
-            Uri uri=Uri.parse(url);
+
+        if(componentAnnotationTypeId == COMPONENT_TYPE_ID_HARİTA){
+            uri = Uri.parse(url);
             location = new Location("");
             Double lat = new Double(uri.getQueryParameter("lat"));
             Double lon = new Double(uri.getQueryParameter("lon"));
@@ -63,8 +73,7 @@ public class LinkInfoExternal extends LinkInfo {
                 mapType = MAP_TYPE_SATELLITE;
             }
         }
-        else if(url.substring(0,5).equals("ylweb")){
-            annotationType = ANNOTATION_TYPE_WEB;
+        else if(isWebAnnotation()){
             if (url.substring(0,17).equals("ylweb://localhost")){
                 isInternal = true;
                 sourceUrl = url.substring(18);
@@ -77,6 +86,35 @@ public class LinkInfoExternal extends LinkInfo {
         }
 
 	}
+
+    public boolean isWebAnnotation(){
+        switch (componentAnnotationTypeId){
+            case COMPONENT_TYPE_ID_HARİTA:
+                return false;
+            case COMPONENT_TYPE_ID_LINK:
+                return false;
+            default:
+                return true;
+        }
+    }
+
+    private void removeQueryParameter(String paramName, String paramValue) {
+        String temp = paramName+"="+paramValue;
+        if(url.contains(temp)){
+            if(url.contains("?"+temp+"&")){
+                url = url.replace("?"+temp+"&", "?");
+            }
+            else if(url.contains("&"+temp+"&")){
+                url = url.replace("&"+temp+"&", "&");
+            }
+            else if(url.contains("?"+temp)){
+                url = url.replace("?"+temp, "");
+            }
+            else if(url.contains("&"+temp)){
+                url = url.replace("&"+temp, "");
+            }
+        }
+    }
 
     public String getSourceUrlPath(Context context){
         if(isInternal){

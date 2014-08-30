@@ -392,7 +392,7 @@ public abstract class PageView extends ViewGroup {
                         int right = (int) (linkInfoExternal.rect.right * scale);
                         int bottom = (int) (linkInfoExternal.rect.bottom * scale);
 
-                        if((linkInfoExternal.annotationType == LinkInfoExternal.ANNOTATION_TYPE_WEB)){
+                        if((linkInfoExternal.isWebAnnotation())){
                             if(linkInfoExternal.isModal){
                                 Button modalButton = new Button(mContext);
                                 modalButton.layout(left,top,right,bottom);
@@ -409,7 +409,6 @@ public abstract class PageView extends ViewGroup {
                             }
                             else{
                                 // Web Annotations
-
                                 final WebViewAnnotation web = new WebViewAnnotation(mContext);
                                 web.readerView = ((MuPDFActivity) mContext).mDocView;
                                 web.layout(left, top, right, bottom);
@@ -420,13 +419,13 @@ public abstract class PageView extends ViewGroup {
                                 linkInfoExternal.webViewId = web.getId();
 
                                 String url = linkInfoExternal.getSourceUrlPath(mContext);
-                                if(linkInfoExternal.annotationType == linkInfoExternal.ANNOTATION_TYPE_WEB){
+                                if(linkInfoExternal.isWebAnnotation()){
                                     web.loadUrl(url);
                                 }
                                 addView(web);
                             }
                         }
-                        else if((((LinkInfoExternal) link).annotationType == LinkInfoExternal.ANNOTATION_TYPE_MAP) ){
+                        else if((((LinkInfoExternal) link).componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_HARİTA) ){
 //                            Map Annotations
 //                            http://adem.me/map/index.html?lat=41.033621&lon=28.952785&zoom=16&w=400&h=300&mapType=0
                             Uri.Builder builder = new Uri.Builder();
