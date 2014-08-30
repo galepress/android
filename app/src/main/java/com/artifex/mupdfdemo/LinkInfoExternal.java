@@ -142,4 +142,15 @@ public class LinkInfoExternal extends LinkInfo {
 	public void acceptVisitor(LinkInfoVisitor visitor) {
 		visitor.visitExternal(this);
 	}
+
+    public boolean mustHorizontalScrollLock() {
+        if(
+                componentAnnotationTypeId == COMPONENT_TYPE_ID_HARİTA ||
+                componentAnnotationTypeId == COMPONENT_TYPE_ID_360 ||
+                componentAnnotationTypeId == COMPONENT_TYPE_ID_SLIDESHOW
+                ){
+            return false;
+        }
+        return true;
+    }
 }

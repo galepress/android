@@ -409,7 +409,7 @@ public abstract class PageView extends ViewGroup {
                             }
                             else{
                                 // Web Annotations
-                                final WebViewAnnotation web = new WebViewAnnotation(mContext);
+                                final WebViewAnnotation web = new WebViewAnnotation(mContext, linkInfoExternal);
                                 web.readerView = ((MuPDFActivity) mContext).mDocView;
                                 web.layout(left, top, right, bottom);
                                 web.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
@@ -462,18 +462,7 @@ public abstract class PageView extends ViewGroup {
                                 }
                             });
                             web.setInitialScale(1);
-//                            web.setBackgroundColor(Color.TRANSPARENT);
-//                            web.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null); // Android eski versiyonlarda da webviewer transparan yapar.
-//                            web.getSettings().setLoadWithOverviewMode(true);
-//                            web.getSettings().setUseWideViewPort(true);
                             web.getSettings().setJavaScriptEnabled(true);
-//                            web.setVerticalScrollBarEnabled(false); // Webviewer'da kontrol edilecek.
-//                            web.setHorizontalScrollBarEnabled(false); // Webviewer'da kontrol edilecek.
-//                            web.getSettings().setBuiltInZoomControls(false);
-//                            web.getSettings().setPluginState(WebSettings.PluginState.ON);
-//                            web.getSettings().setAllowFileAccess(true);
-//                            web.getSettings().setAppCacheEnabled(true);
-//                            web.getSettings().setDomStorageEnabled(true);
                             web.getSettings().setGeolocationEnabled(true);
                             web.setOnTouchListener(new OnTouchListener() {
                                 @Override

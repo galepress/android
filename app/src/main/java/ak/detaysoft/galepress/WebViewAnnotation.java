@@ -19,6 +19,7 @@ public class WebViewAnnotation extends WebView {
     public float x1 , x2, y1 , y2, dx, dy;
     public float left, top ;
     public MuPDFReaderView readerView;
+    public LinkInfoExternal linkInfoExternal;
 
     private class MyWebChromeClient extends WebChromeClient implements MediaPlayer.OnCompletionListener, MediaPlayer.OnBufferingUpdateListener, MediaPlayer.OnSeekCompleteListener{
 
@@ -40,8 +41,9 @@ public class WebViewAnnotation extends WebView {
 
     public boolean isHorizontalScrolling, isDummyAction;
     private MotionEvent previousMotionEvent;
-    public WebViewAnnotation(Context context) {
+    public WebViewAnnotation(Context context, LinkInfoExternal lie) {
         super(context);
+        this.linkInfoExternal = lie;
         this.setWebChromeClient(new MyWebChromeClient());
         this.setInitialScale(1);
         this.setBackgroundColor(Color.TRANSPARENT);
@@ -66,76 +68,77 @@ public class WebViewAnnotation extends WebView {
         });
         this.setEnabled(true);
         final WebViewAnnotation web = this;
-        this.setOnTouchListener(new OnTouchListener() {
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                float dx,dy;
-                if(event.getAction() == MotionEvent.ACTION_DOWN){
-                    // Action DOWN
-                    web.x1 = event.getX();
-                    web.y1 = event.getY();
-                    web.setPreviousMotionEvent(event);
-                    web.isHorizontalScrolling = false;
-                    if(web.isDummyAction){
-                        return false;
-                    }
-                    else{
-                        return true;
-                    }
-
-                }
-                else if(event.getAction() == MotionEvent.ACTION_MOVE){
-                    // Action MOVE
-                    web.x2 = event.getX();
-                    web.y2 = event.getY();
-                    dx = web.x2 - web.x1;
-                    dy = web.y2 - web.y1;
-                    if(Math.abs(dx) > 10 || Math.abs(dy) > 10){
-                        if(!(Math.abs(dx) >  Math.abs(dy))) {
-                            // vertical
-                            web.isHorizontalScrolling = false;
+        if(linkInfoExternal.mustHorizontalScrollLock()){
+            this.setOnTouchListener(new OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    float dx,dy;
+                    if(event.getAction() == MotionEvent.ACTION_DOWN){
+                        // Action DOWN
+                        web.x1 = event.getX();
+                        web.y1 = event.getY();
+                        web.setPreviousMotionEvent(event);
+                        web.isHorizontalScrolling = false;
+                        if(web.isDummyAction){
                             return false;
-                        }else {
-                            // horizontal
-                            web.isHorizontalScrolling = true;
-                            if(web.getPreviousMotionEvent()!=null && web.getPreviousMotionEvent().getAction() != MotionEvent.ACTION_MOVE) {
-                                MotionEvent previousEvent = web.getPreviousMotionEvent();
-                                web.setPreviousMotionEvent(null);
-                                previousEvent.setLocation(previousEvent.getX() + left, previousEvent.getY() + top);
-                                readerView.onTouchEvent(previousEvent);
+                        }
+                        else{
+                            return true;
+                        }
+
+                    }
+                    else if(event.getAction() == MotionEvent.ACTION_MOVE){
+                        // Action MOVE
+                        web.x2 = event.getX();
+                        web.y2 = event.getY();
+                        dx = web.x2 - web.x1;
+                        dy = web.y2 - web.y1;
+                        if(Math.abs(dx) > 10 || Math.abs(dy) > 10){
+                            if(!(Math.abs(dx) >  Math.abs(dy))) {
+                                // vertical
+                                web.isHorizontalScrolling = false;
+                                return false;
+                            }else {
+                                // horizontal
+                                web.isHorizontalScrolling = true;
+                                if(web.getPreviousMotionEvent()!=null && web.getPreviousMotionEvent().getAction() != MotionEvent.ACTION_MOVE) {
+                                    MotionEvent previousEvent = web.getPreviousMotionEvent();
+                                    web.setPreviousMotionEvent(null);
+                                    previousEvent.setLocation(previousEvent.getX() + left, previousEvent.getY() + top);
+                                    readerView.onTouchEvent(previousEvent);
+                                }
+                                event.setLocation(event.getX() + left, event.getY() + top); // Webview size is not equal to page size. Optimize the location for page.
+                                readerView.onTouchEvent(event);
+                                return true;
                             }
+                        }
+                    }
+                    else if(event.getAction() == MotionEvent.ACTION_UP){
+                        // Action UP
+                        if(web.isHorizontalScrolling){
+                            web.isHorizontalScrolling = false;
                             event.setLocation(event.getX() + left, event.getY() + top); // Webview size is not equal to page size. Optimize the location for page.
                             readerView.onTouchEvent(event);
                             return true;
                         }
-                    }
-                }
-                else if(event.getAction() == MotionEvent.ACTION_UP){
-                    // Action UP
-                    if(web.isHorizontalScrolling){
-                        web.isHorizontalScrolling = false;
-                        event.setLocation(event.getX() + left, event.getY() + top); // Webview size is not equal to page size. Optimize the location for page.
-                        readerView.onTouchEvent(event);
-                        return true;
-                    }
-                    else{
-                        if(web.getPreviousMotionEvent()!=null) {
-                            MotionEvent previousEvent = web.getPreviousMotionEvent();
-                            web.setPreviousMotionEvent(null);
-                            web.isDummyAction = true;
-                            web.onTouchEvent(previousEvent);
+                        else{
+                            if(web.getPreviousMotionEvent()!=null) {
+                                MotionEvent previousEvent = web.getPreviousMotionEvent();
+                                web.setPreviousMotionEvent(null);
+                                web.isDummyAction = true;
+                                web.onTouchEvent(previousEvent);
+                            }
+                            return false;
                         }
-                        return false;
+
                     }
 
+
+
+                    return false;
                 }
-
-
-
-                return false;
-            }
-        });
+            });
+        }
     }
 
     public MotionEvent getPreviousMotionEvent() {
