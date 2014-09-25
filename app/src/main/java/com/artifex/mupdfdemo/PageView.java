@@ -412,7 +412,7 @@ public abstract class PageView extends ViewGroup {
                                 final WebViewAnnotation web = new WebViewAnnotation(mContext, linkInfoExternal);
                                 web.readerView = ((MuPDFActivity) mContext).mDocView;
                                 web.layout(left, top, right, bottom);
-                                web.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
+                                web.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
                                 final String url2 = linkInfoExternal.getSourceUrlPath(mContext);
 
                                 web.setId(atomicInteger.incrementAndGet());

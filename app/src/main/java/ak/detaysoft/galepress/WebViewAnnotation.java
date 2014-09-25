@@ -1,8 +1,8 @@
 package ak.detaysoft.galepress;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.media.MediaPlayer;
+import android.graphics.Paint;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebChromeClient;
@@ -21,21 +21,17 @@ public class WebViewAnnotation extends WebView {
     public MuPDFReaderView readerView;
     public LinkInfoExternal linkInfoExternal;
 
-    private class MyWebChromeClient extends WebChromeClient implements MediaPlayer.OnCompletionListener, MediaPlayer.OnBufferingUpdateListener, MediaPlayer.OnSeekCompleteListener{
+    private class MyWebChromeClient extends WebChromeClient {
 
-        @Override
-        public void onCompletion(MediaPlayer mp) {
-            mp.release();
-        }
+    }
 
+    private class MyWebViewClient extends WebViewClient {
         @Override
-        public void onBufferingUpdate(MediaPlayer mp, int percent) {
-            Logout.e("Adem", "Buffer cakildi : "+percent);
-        }
-
-        @Override
-        public void onSeekComplete(MediaPlayer mp) {
-            Logout.e("Adem", "Seek cakildi : ");
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            Logout.e("Adem WebView", "shouldOverrideUrlLoading: " + url);
+            // don't override URL so that stuff within iframe can work properly
+            // view.loadUrl(url);
+            return false;
         }
     }
 
@@ -45,29 +41,27 @@ public class WebViewAnnotation extends WebView {
         super(context);
         this.linkInfoExternal = lie;
         this.setWebChromeClient(new MyWebChromeClient());
-        this.setInitialScale(1);
-        this.setBackgroundColor(Color.TRANSPARENT);
-        this.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null); // Android eski versiyonlarda da webviewer transparan yapar.
-        this.getSettings().setLoadWithOverviewMode(true);
-        this.getSettings().setUseWideViewPort(true);
-        this.getSettings().setJavaScriptEnabled(true);
-        this.setVerticalScrollBarEnabled(false);     // Webviewer'da kontrol edilecek.
-        this.setHorizontalScrollBarEnabled(false);   // Webviewer'da kontrol edilecek.
-        this.getSettings().setBuiltInZoomControls(false);
-        this.getSettings().setPluginState(WebSettings.PluginState.ON);
-        this.getSettings().setAllowFileAccess(true);
-        this.getSettings().setAppCacheEnabled(true);
-        this.getSettings().setDomStorageEnabled(true);
+        this.setWebViewClient(new MyWebViewClient());
+        if(lie.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_VIDEO){
+            this.setLayerType(WebView.LAYER_TYPE_NONE, null);
+        }
+        else{
+            this.setLayerType(WebView.LAYER_TYPE_SOFTWARE,null);
+        }
+        WebSettings s = getSettings();
+        s.setBuiltInZoomControls(true);
+        s.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
+        s.setUseWideViewPort(true);
+        s.setLoadWithOverviewMode(true);
+        s.setSaveFormData(true);
+        s.setJavaScriptEnabled(true);
+        s.setDomStorageEnabled(true);
         this.setHorizontalScrollBarEnabled(false);
-        this.setWebViewClient(new WebViewClient() {
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
-                return false; // then it is not handled by default action
-            }
-        });
-        this.setEnabled(true);
+        this.setVerticalScrollBarEnabled(false);
+        s.setSupportZoom(false);
         final WebViewAnnotation web = this;
+
+
         if(linkInfoExternal.mustHorizontalScrollLock()){
             this.setOnTouchListener(new OnTouchListener() {
                 @Override
@@ -151,4 +145,5 @@ public class WebViewAnnotation extends WebView {
         else
             this.previousMotionEvent = MotionEvent.obtain(event);
     }
+
 }

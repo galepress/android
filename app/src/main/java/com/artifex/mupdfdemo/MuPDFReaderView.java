@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.FrameLayout;
 
 import ak.detaysoft.galepress.ExtraWebViewActivity;
 
@@ -273,6 +275,7 @@ public class MuPDFReaderView extends ReaderView {
         MuPDFPageView pageView = (MuPDFPageView)v;
         for(int i=0; i < pageView.getChildCount(); i++){
             View view = pageView.getChildAt(i);
+
             if(view instanceof WebView){
                 float original_x = -1;
                 float original_y = -1;
@@ -284,15 +287,12 @@ public class MuPDFReaderView extends ReaderView {
                             if(((LinkInfoExternal) link).webViewId == webView.getId()){
                                 original_x = link.rect.left * pageView.mSourceScale;
                                 original_y = link.rect.top * pageView.mSourceScale;
-
-                                webView.setScaleX(scale);
-                                webView.setScaleY(scale);
-
-                                webView.setX(original_x*scale);
-                                webView.setY(original_y*scale);
-
                                 webView.setPivotX(0);
                                 webView.setPivotY(0);
+                                webView.setX(original_x*scale);
+                                webView.setY(original_y*scale);
+                                webView.setScaleX(scale);
+                                webView.setScaleY(scale);
                             }
                         }
                     }

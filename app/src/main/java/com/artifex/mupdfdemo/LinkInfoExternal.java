@@ -147,7 +147,9 @@ public class LinkInfoExternal extends LinkInfo {
         if(
                 componentAnnotationTypeId == COMPONENT_TYPE_ID_HARİTA ||
                 componentAnnotationTypeId == COMPONENT_TYPE_ID_360 ||
-                componentAnnotationTypeId == COMPONENT_TYPE_ID_SLIDESHOW
+                componentAnnotationTypeId == COMPONENT_TYPE_ID_SLIDESHOW ||
+                componentAnnotationTypeId == COMPONENT_TYPE_ID_VIDEO
+
                 ){
             return false;
         }
