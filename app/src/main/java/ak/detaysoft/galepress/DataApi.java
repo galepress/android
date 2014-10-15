@@ -188,6 +188,7 @@ public class DataApi extends Object {
                 return params;
             }
         };
+        request.setShouldCache(Boolean.FALSE);
         requestQueue.add(request);
     }
 
@@ -350,6 +351,7 @@ public class DataApi extends Object {
             }
 
         };
+        request.setShouldCache(Boolean.FALSE);
         requestQueue.add(request);
     }
 
@@ -394,7 +396,7 @@ public class DataApi extends Object {
             }
 
         };
-        requestQueue.add(request);
+        request.setShouldCache(Boolean.FALSE);requestQueue.add(request);
     }
 
     private void removeAllConCatsForContent(L_Content content) {
@@ -417,7 +419,6 @@ public class DataApi extends Object {
     }
 
     private void getRemoteContent(Integer contentID) {
-
         GalePressApplication application = GalePressApplication.getInstance();
         RequestQueue requestQueue = application.getRequestQueue();
         JsonObjectRequest request;
@@ -460,6 +461,7 @@ public class DataApi extends Object {
                             } else {
                                 // Content Detail update edildi.
                                 localContent.setVersion(remoteContent.getContentVersion());
+                                getDatabaseApi().updateContent(localContent,true);
                             }
                             GalePressApplication.getInstance().getLibraryActivity().getContentHolderAdapter().notifyDataSetChanged();
 
@@ -483,6 +485,7 @@ public class DataApi extends Object {
             }
 
         };
+        request.setShouldCache(Boolean.FALSE);
         requestQueue.add(request);
 
     }
@@ -553,7 +556,7 @@ public class DataApi extends Object {
             }
 
         };
-        requestQueue.add(request);
+        request.setShouldCache(Boolean.FALSE);requestQueue.add(request);
     }
 
 
@@ -651,7 +654,7 @@ public class DataApi extends Object {
             }
 
         };
-        requestQueue.add(request);
+        request.setShouldCache(Boolean.FALSE);requestQueue.add(request);
     }
 
 
@@ -709,7 +712,7 @@ public class DataApi extends Object {
             }
 
         };
-        requestQueue.add(request);
+        request.setShouldCache(Boolean.FALSE);requestQueue.add(request);
     }
 
     public void updateApplicationVersion() {
@@ -763,7 +766,7 @@ public class DataApi extends Object {
             }
 
         };
-        requestQueue.add(request);
+        request.setShouldCache(Boolean.FALSE);requestQueue.add(request);
     }
 
     private void deleteContent(L_Content content) {
