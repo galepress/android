@@ -18,7 +18,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
-import android.provider.DocumentsContract;
 import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
@@ -32,6 +31,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.gcm.GCMRegistrar;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -62,6 +62,7 @@ import ak.detaysoft.galepress.database_models.L_ContentCategory;
 import ak.detaysoft.galepress.database_models.TestApplicationInf;
 import ak.detaysoft.galepress.service_models.R_AppCategories;
 import ak.detaysoft.galepress.service_models.R_AppContents;
+import ak.detaysoft.galepress.service_models.R_AppDetail;
 import ak.detaysoft.galepress.service_models.R_AppVersion;
 import ak.detaysoft.galepress.service_models.R_Category;
 import ak.detaysoft.galepress.service_models.R_Content;
@@ -70,14 +71,27 @@ import ak.detaysoft.galepress.service_models.R_ContentFileUrl;
 
 
 public class DataApi extends Object {
+    //http://galepress.com/ws/v100/applications/20/detail
     private static final String domainUrl = "http://www.galepress.com";
+    private static final String webServisVersion = "v100";
     private static final String webServiceUrl = domainUrl + "/rest/";
     public static final Integer MESSAGE_TYPE_COVER_IMAGE = 1;
     public static final Integer MESSAGE_TYPE_COVER_PDF_DOWNLOAD = 2;
+
+    static final String GCM_SENDER_ID = "151896860923";  // Place here your Google project id
+
     private DatabaseApi databaseApi = null;
     public DownloadPdfTask downloadPdfTask;
 
-    private static final String TAG = "Adem - " + DataApi.class.getSimpleName() + " ";
+
+    private Uri.Builder getWebServiceUrlBuilder (){
+        Uri.Builder builder = new Uri.Builder();
+        builder.scheme("http")
+                .authority("www.galepress.com")
+                .appendPath("ws")
+                .appendPath(webServisVersion);
+        return builder;
+    }
 
     private Handler handler = new Handler() {
         @Override
@@ -118,10 +132,100 @@ public class DataApi extends Object {
 
     }
 
+    public String getDeviceName() {
+        String manufacturer = Build.MANUFACTURER;
+        String model = Build.MODEL;
+        if (model.startsWith(manufacturer)) {
+            return capitalize(model);
+        } else {
+            return capitalize(manufacturer) + " " + model;
+        }
+    }
+
+
+    private String capitalize(String s) {
+        if (s == null || s.length() == 0) {
+            return "";
+        }
+        char first = s.charAt(0);
+        if (Character.isUpperCase(first)) {
+            return s;
+        } else {
+            return Character.toUpperCase(first) + s.substring(1);
+        }
+    }
+
     public void updateApplication() {
         if(isConnectedToInternet()){
             getRemoteApplicationVersion();
         }
+    }
+
+    public void getAppDetail() {
+        GalePressApplication application = GalePressApplication.getInstance();
+        RequestQueue requestQueue = application.getRequestQueue();
+
+        Integer applicationID;
+        if (GalePressApplication.getInstance().isTestApplication()) {
+            applicationID = new Integer(application.getTestApplicationLoginInf().getApplicationId());
+        } else {
+            applicationID = application.getApplicationId();
+        }
+
+        String osVersion = "";
+        String release = Build.VERSION.RELEASE;
+        int sdkVersion = Build.VERSION.SDK_INT;
+        osVersion = sdkVersion + "_" + release;
+
+        final String gcmRegisterId = GCMRegistrar.getRegistrationId(GalePressApplication.getInstance().getApplicationContext());
+
+        JsonObjectRequest request;
+
+        //http://www.galepress.com/ws/v100/applications/20/detail?deviceType=android&osVersion=19_4.4.4&deviceDetail=LG Nexus 5&deviceToken=a;lskdfjla;skjdf;laksjdf;laksdf;
+        Uri.Builder uriBuilder = getWebServiceUrlBuilder();
+        uriBuilder.appendPath("applications");
+        uriBuilder.appendPath(applicationID.toString());
+        uriBuilder.appendPath("detail");
+        uriBuilder.appendQueryParameter("deviceType", "android");
+        uriBuilder.appendQueryParameter("osVersion", osVersion);
+        uriBuilder.appendQueryParameter("deviceDetail", getDeviceName());
+        uriBuilder.appendQueryParameter("deviceToken", gcmRegisterId);
+
+        request = new JsonObjectRequest(Request.Method.GET, uriBuilder.build().toString(), null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            R_AppDetail appDetial= new R_AppDetail(response);
+                            // TODO:
+                            // 1 Do nothing
+                            // 2 Warn User
+                            // 3 Force Update
+                            // 4 Lock Application
+                            // 5 Lock & Delete Application
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        VolleyLog.e("Error: ", error.getMessage());
+                    }
+                }
+        )/* {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Content-Type", "application/x-www-form-urlencoded");
+                return params;
+            }
+
+        }*/;
+        request.setShouldCache(Boolean.FALSE);
+        requestQueue.add(request);
+
     }
 
     private void downloadCoverImage(String remoteUrl, L_Content content) {
@@ -151,14 +255,17 @@ public class DataApi extends Object {
         GalePressApplication application = GalePressApplication.getInstance();
         RequestQueue requestQueue = application.getRequestQueue();
         JsonObjectRequest request;
-        JSONObject parameters = new JSONObject();
-        try {
-            parameters.put("contentID", id);
-            parameters.put("size", 1);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        request = new JsonObjectRequest(Request.Method.POST, webServiceUrl + "getContentCoverImage", parameters,
+
+
+        Uri.Builder uriBuilder = getWebServiceUrlBuilder();
+        uriBuilder.appendPath("contents");
+        uriBuilder.appendPath(id.toString());
+        uriBuilder.appendPath("cover-image");
+        // TODO: cover image size'ini da gondermeliyim. Thumbnail mi buyuk mu istedigime dair.
+
+
+
+        request = new JsonObjectRequest(Request.Method.GET, uriBuilder.build().toString(), null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -180,14 +287,14 @@ public class DataApi extends Object {
                         VolleyLog.e("Error: ", error.getMessage());
                     }
                 }
-        ) {
+        )/* {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("Content-Type", "application/x-www-form-urlencoded");
                 return params;
             }
-        };
+        }*/;
         request.setShouldCache(Boolean.FALSE);
         requestQueue.add(request);
     }
@@ -311,13 +418,14 @@ public class DataApi extends Object {
         GalePressApplication application = GalePressApplication.getInstance();
         RequestQueue requestQueue = application.getRequestQueue();
         JsonObjectRequest request;
-        JSONObject parameters = new JSONObject();
-        try {
-            parameters.put("contentID", content.getId());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        request = new JsonObjectRequest(Request.Method.POST, webServiceUrl + "getContentFile", parameters,
+
+        //http://www.galepress.com/ws/v100/contents/1075/file
+        Uri.Builder uriBuilder = getWebServiceUrlBuilder();
+        uriBuilder.appendPath("contents");
+        uriBuilder.appendPath(content.getId().toString());
+        uriBuilder.appendPath("file");
+
+        request = new JsonObjectRequest(Request.Method.GET, uriBuilder.build().toString(), null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -342,7 +450,8 @@ public class DataApi extends Object {
                         VolleyLog.e("Error: ", error.getMessage());
                     }
                 }
-        ) {
+        ) /*
+        {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
@@ -350,7 +459,8 @@ public class DataApi extends Object {
                 return params;
             }
 
-        };
+        }
+        */;
         request.setShouldCache(Boolean.FALSE);
         requestQueue.add(request);
     }
@@ -365,7 +475,12 @@ public class DataApi extends Object {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        request = new JsonObjectRequest(Request.Method.POST, webServiceUrl + "getContentDetail", parameters,
+        Uri.Builder uriBuilder = getWebServiceUrlBuilder();
+        uriBuilder.appendPath("contents");
+        uriBuilder.appendPath(id.toString());
+        uriBuilder.appendPath("detail");
+
+        request = new JsonObjectRequest(Request.Method.POST, uriBuilder.build().toString() , null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -387,7 +502,7 @@ public class DataApi extends Object {
                         VolleyLog.e("Error: ", error.getMessage());
                     }
                 }
-        ) {
+        )/* {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
@@ -395,7 +510,7 @@ public class DataApi extends Object {
                 return params;
             }
 
-        };
+        }*/;
         request.setShouldCache(Boolean.FALSE);requestQueue.add(request);
     }
 
@@ -423,11 +538,14 @@ public class DataApi extends Object {
         RequestQueue requestQueue = application.getRequestQueue();
         JsonObjectRequest request;
         JSONObject parameters = new JSONObject();
-        try {
-            parameters.put("contentID", contentID);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+
+        Uri.Builder uriBuilder = getWebServiceUrlBuilder();
+        uriBuilder.appendPath("contents");
+        uriBuilder.appendPath(contentID.toString());
+        uriBuilder.appendPath("cover-image");
+
+        // TODO: Contentlerin icinde kategoriler eskisi gibi single category geliyor. Kategoriler multiple gelmeli ama eski kalmis bu.
+
         request = new JsonObjectRequest(Request.Method.POST, webServiceUrl + "getContentDetailWithCategories", parameters,
                 new Response.Listener<JSONObject>() {
                     @Override

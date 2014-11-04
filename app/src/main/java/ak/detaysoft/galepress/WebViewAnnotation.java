@@ -1,6 +1,7 @@
 package ak.detaysoft.galepress;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -58,6 +59,7 @@ public class WebViewAnnotation extends WebView {
         s.setDomStorageEnabled(true);
         this.setHorizontalScrollBarEnabled(false);
         this.setVerticalScrollBarEnabled(false);
+        this.setBackgroundColor(Color.TRANSPARENT);
         s.setSupportZoom(false);
         final WebViewAnnotation web = this;
 
