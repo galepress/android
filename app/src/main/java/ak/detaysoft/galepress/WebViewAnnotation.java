@@ -1,8 +1,7 @@
 package ak.detaysoft.galepress;
 
 import android.content.Context;
-import android.graphics.Paint;
-import android.util.Log;
+import android.graphics.Color;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebChromeClient;
@@ -16,7 +15,7 @@ import com.artifex.mupdfdemo.*;
  * Created by adem on 08/08/14.
  */
 public class WebViewAnnotation extends WebView {
-    public float x1 , x2, y1 , y2, dx, dy;
+    public float x1 , x2, y1 , y2;
     public float left, top ;
     public MuPDFReaderView readerView;
     public LinkInfoExternal linkInfoExternal;
@@ -58,6 +57,7 @@ public class WebViewAnnotation extends WebView {
         s.setDomStorageEnabled(true);
         this.setHorizontalScrollBarEnabled(false);
         this.setVerticalScrollBarEnabled(false);
+        this.setBackgroundColor(Color.TRANSPARENT);
         s.setSupportZoom(false);
         final WebViewAnnotation web = this;
 
