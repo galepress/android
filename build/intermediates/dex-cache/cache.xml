@@ -8,6 +8,12 @@
         revision="19.1.0"
         sha1="077d9c6a8e4b8f98411f33e10234f750e9698a15"/>
     <item
+        dex="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/pre-dexed/debug/support-annotations-20.0.0-c3ecb059b4be970270c35c0e755380f025cab153.jar"
+        jar="/Applications/android-sdk/extras/android/m2repository/com/android/support/support-annotations/20.0.0/support-annotations-20.0.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa"/>
+    <item
         dex="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/pre-dexed/debug/classes-d9ad7f88669936f608e058498d6a03b65bc05c94.jar"
         jar="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/20.0.0/classes.jar"
         jumboMode="false"
@@ -37,12 +43,6 @@
         jumboMode="false"
         revision="19.1.0"
         sha1="8ff8c21e8d0162333559f35cafd6a2238a33e5ba"/>
-    <item
-        dex="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/pre-dexed/debug/support-annotations-20.0.0-bca9cd8c8082330ef7549e0398af852faae531fd.jar"
-        jar="/Applications/Android Studio.app/sdk/extras/android/m2repository/com/android/support/support-annotations/20.0.0/support-annotations-20.0.0.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa"/>
     <item
         dex="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/pre-dexed/debug/dd-plist-ba6c79ab2d47cc8551fe2bc0ae7d1fa73590b80c.jar"
         jar="/Users/adem/Workspace/GalePress/Android/dd-plist.jar"

@@ -31,9 +31,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import ak.detaysoft.galepress.ExtraWebViewActivity;
-import ak.detaysoft.galepress.R;
-import ak.detaysoft.galepress.WebViewAnnotation;
+import ak.detaysoft.galepress.*;
 
 
 class PatchInfo {
@@ -480,10 +478,52 @@ public abstract class PageView extends ViewGroup {
                             web.loadUrl(mapUrl);
                             addView(web);
                         }
+                        else if(((LinkInfoExternal) link).componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_WEBLINK){
+                            View view = new View(mContext);
+                            view.layout(left,top,right,bottom);
+                            view.setBackgroundColor(Color.TRANSPARENT);
+                            view.setOnClickListener(new OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent intent = new Intent(mContext, ExtraWebViewActivity.class);
+                                    intent.putExtra("url",linkInfoExternal.url);
+                                    mContext.startActivity(intent);
+                                }
+                            });
+                            addView(view);
+
+                        }
                     }
-
-
+                    else{
+                        // LinkInfo Internal - Burada pagelinkler icin webView olusturacagiz.
+                        final LinkInfoInternal linkInfoInternal = (LinkInfoInternal)link;
+                        final int left = (int)(linkInfoInternal.rect.left * scale);
+                        final int top = (int) (linkInfoInternal.rect.top * scale);
+                        int right = (int) (linkInfoInternal.rect.right * scale);
+                        int bottom = (int) (linkInfoInternal.rect.bottom * scale);
+                        View view = new View(mContext);
+                        view.layout(left,top,right,bottom);
+                        view.setBackgroundColor(Color.TRANSPARENT);
+                        view.setOnClickListener(new OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                MuPDFCore core =((MuPDFActivity)mContext).core;
+                                MuPDFReaderView readerView = ((MuPDFActivity) mContext).mDocView;
+                                if(readerView.getDisplayedViewIndex() + 1 == linkInfoInternal.pageNumber){
+                                    readerView.moveToNext();
+                                }
+                                else if (readerView.getDisplayedViewIndex() - 1 == linkInfoInternal.pageNumber){
+                                    readerView.moveToPrevious();
+                                }
+                                else {
+                                    readerView.setDisplayedViewIndex(core.convertIndexesForLandscape2Page(linkInfoInternal.pageNumber));
+                                }
+                            }
+                        });
+                        addView(view);
+                    }
                 }
+
                 if (mSearchView != null)
                     mSearchView.invalidate();
             }

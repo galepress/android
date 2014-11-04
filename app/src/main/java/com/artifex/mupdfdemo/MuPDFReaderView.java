@@ -4,12 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.webkit.WebView;
-import android.widget.FrameLayout;
 
 import ak.detaysoft.galepress.ExtraWebViewActivity;
 
@@ -68,6 +66,8 @@ public class MuPDFReaderView extends ReaderView {
 							// Clicked on an internal (GoTo) link c
                             // MuPDF'in kodu burada sacmaliyordu. Bir sonraki sayfaya verilen pagelinkler calismiyordu. Iki sayfa sonrasina gidiyordu.
                             // Asagidaki sekilde bir sonraki sayfa olup olmadigini kontrol ederek bunu cozdum. (Adem)
+                            // PageLinklerde ki mantik PageView icine tasindi. Ustuste binen durumlarda page link eziliyordu ve calismiyordu. View ekleyerek bunu engelliyorum.
+                            /*
                             MuPDFCore core =((MuPDFActivity)mContext).core;
                             if(getDisplayedViewIndex() + 1 == li.pageNumber){
                                 moveToNext();
@@ -78,15 +78,19 @@ public class MuPDFReaderView extends ReaderView {
                             else {
                                 setDisplayedViewIndex(core.convertIndexesForLandscape2Page(li.pageNumber));
                             }
+                            */
 						}
 
 						@Override
 						public void visitExternal(LinkInfoExternal li) {
-                            if(li.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_LINK){
+                            /*
+                             Linklerde ki mantik PageView icine tasindi. Ustuste binen durumlarda page link eziliyordu ve calismiyordu. View ekleyerek bunu engelliyorum.
+                            if(li.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_WEBLINK){
                                 Intent intent = new Intent(mContext, ExtraWebViewActivity.class);
                                 intent.putExtra("url",li.url);
                                 mContext.startActivity(intent);
                             }
+                            */
 						}
 
 						@Override

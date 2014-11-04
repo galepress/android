@@ -12,7 +12,7 @@ public class LinkInfoExternal extends LinkInfo {
     public static final int COMPONENT_TYPE_ID_VIDEO 		=1;
     public static final int COMPONENT_TYPE_ID_SES 			=2;
     public static final int COMPONENT_TYPE_ID_HARİTA 		=3;
-    public static final int COMPONENT_TYPE_ID_LINK			=4;
+    public static final int COMPONENT_TYPE_ID_WEBLINK       =4;
     public static final int COMPONENT_TYPE_ID_WEB			=5;
     public static final int COMPONENT_TYPE_ID_TOOLTIP		=6;
     public static final int COMPONENT_TYPE_ID_SCROLLER		=7;
@@ -91,7 +91,7 @@ public class LinkInfoExternal extends LinkInfo {
         switch (componentAnnotationTypeId){
             case COMPONENT_TYPE_ID_HARİTA:
                 return false;
-            case COMPONENT_TYPE_ID_LINK:
+            case COMPONENT_TYPE_ID_WEBLINK:
                 return false;
             default:
                 return true;
