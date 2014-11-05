@@ -32,6 +32,7 @@ import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import ak.detaysoft.galepress.*;
+import ak.detaysoft.galepress.Logout;
 
 
 class PatchInfo {
@@ -419,6 +420,12 @@ public abstract class PageView extends ViewGroup {
                                 String url = linkInfoExternal.getSourceUrlPath(mContext);
                                 if(linkInfoExternal.isWebAnnotation()){
                                     web.loadUrl(url);
+                                }
+                                if(((LinkInfoExternal) link).componentAnnotationTypeId != LinkInfoExternal.COMPONENT_TYPE_ID_VIDEO){
+                                    setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+                                }
+                                else{
+                                    setLayerType(View.LAYER_TYPE_HARDWARE, null);
                                 }
                                 addView(web);
                             }
