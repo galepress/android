@@ -34,23 +34,8 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: ak.detaysoft.galepress" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4272a91b-e20d-476c-9f23-fd491d5d43e7" name="Default" comment="Merge branch 'PushNotificationsAndForceUpdate'&#10;&#10;Conflicts:&#10;&#9;.gradle/1.12/taskArtifacts/cache.properties&#10;&#9;.gradle/1.12/taskArtifacts/cache.properties.lock&#10;&#9;.gradle/1.12/taskArtifacts/fileHashes.bin&#10;&#9;.gradle/1.12/taskArtifacts/fileSnapshots.bin&#10;&#9;.gradle/1.12/taskArtifacts/outputFileStates.bin&#10;&#9;.gradle/1.12/taskArtifacts/taskArtifacts.bin&#10;&#9;.idea/workspace.xml&#10;&#9;app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java&#10;&#9;build/intermediates/dex-cache/cache.xml&#10;&#9;build/intermediates/model_data.bin&#10;&#9;local.properties&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/lib/gcm.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GCMIntentService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_AppDetail.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/gcm.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_4_0_30.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/model_data.bin" afterPath="$PROJECT_DIR$/build/intermediates/model_data.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+    <list default="true" id="4272a91b-e20d-476c-9f23-fd491d5d43e7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFAlert.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFAlert.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Android.iws" />
@@ -126,34 +111,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataApi.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="DataApi.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-27.73077" vertical-offset="1124" max-vertical-offset="14190">
-              <caret line="188" column="53" selection-start-line="188" selection-start-column="53" selection-end-line="188" selection-end-column="53" />
+            <state vertical-scroll-proportion="0.903769" vertical-offset="5443" max-vertical-offset="14160">
+              <caret line="542" column="17" selection-start-line="542" selection-start-column="17" selection-end-line="542" selection-end-column="17" />
               <folding>
                 <element signature="e#20759#21071#0" expanded="true" />
                 <element signature="e#21052#21053#0" expanded="true" />
-                <element signature="e#22784#25312#0" expanded="true" />
-                <element signature="e#25293#25294#0" expanded="true" />
-                <element signature="e#25330#25567#0" expanded="true" />
-                <element signature="e#25548#25549#0" expanded="true" />
-                <element signature="e#26282#28428#0" expanded="true" />
-                <element signature="e#28409#28410#0" expanded="true" />
-                <element signature="e#28446#28758#0" expanded="true" />
-                <element signature="e#28739#28740#0" expanded="true" />
-                <element signature="e#30072#33799#0" expanded="true" />
-                <element signature="e#33780#33781#0" expanded="true" />
-                <element signature="e#33817#34129#0" expanded="true" />
-                <element signature="e#34110#34111#0" expanded="true" />
-                <element signature="e#35065#36042#0" expanded="true" />
-                <element signature="e#36023#36024#0" expanded="true" />
-                <element signature="e#36060#36372#0" expanded="true" />
-                <element signature="e#36353#36354#0" expanded="true" />
-                <element signature="e#37280#38079#0" expanded="true" />
-                <element signature="e#38060#38061#0" expanded="true" />
-                <element signature="e#38097#38409#0" expanded="true" />
-                <element signature="e#38390#38391#0" expanded="true" />
+                <element signature="e#22648#25176#0" expanded="true" />
+                <element signature="e#25157#25158#0" expanded="true" />
+                <element signature="e#25194#25431#0" expanded="true" />
+                <element signature="e#25412#25413#0" expanded="true" />
+                <element signature="e#26146#28292#0" expanded="true" />
+                <element signature="e#28273#28274#0" expanded="true" />
+                <element signature="e#28310#28622#0" expanded="true" />
+                <element signature="e#28603#28604#0" expanded="true" />
+                <element signature="e#29936#33663#0" expanded="true" />
+                <element signature="e#33644#33645#0" expanded="true" />
+                <element signature="e#33681#33993#0" expanded="true" />
+                <element signature="e#33974#33975#0" expanded="true" />
+                <element signature="e#34929#35906#0" expanded="true" />
+                <element signature="e#35887#35888#0" expanded="true" />
+                <element signature="e#35924#36236#0" expanded="true" />
+                <element signature="e#36217#36218#0" expanded="true" />
+                <element signature="e#37144#37943#0" expanded="true" />
+                <element signature="e#37924#37925#0" expanded="true" />
+                <element signature="e#37961#38273#0" expanded="true" />
+                <element signature="e#38254#38255#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -162,9 +147,13 @@
       <file leaf-file-name="workspace.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="7920" max-vertical-offset="43425">
-              <caret line="551" column="33" selection-start-line="551" selection-start-column="33" selection-end-line="551" selection-end-column="33" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="7740" max-vertical-offset="43665">
+              <caret line="539" column="33" selection-start-line="539" selection-start-column="33" selection-end-line="539" selection-end-column="33" />
+              <folding>
+                <marker date="1415374821000" expanded="true" signature="215994:216042" placeholder="..." />
+                <marker date="1415374821000" expanded="true" signature="215994:216029" placeholder="..." />
+                <marker date="1415374821000" expanded="true" signature="215994:216011" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -211,10 +200,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="local.properties" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="local.properties" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/local.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.24" vertical-offset="0" max-vertical-offset="750">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
               <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding />
             </state>
@@ -1540,8 +1529,8 @@
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java" />
         <option value="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" />
       </list>
     </option>
   </component>
@@ -2328,12 +2317,36 @@
       <created>1415363350250</created>
       <updated>1415363350250</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Merge branch 'PushNotificationsAndForceUpdate'&#10;&#10;Conflicts:&#10;&#9;.gradle/1.12/taskArtifacts/cache.properties&#10;&#9;.gradle/1.12/taskArtifacts/cache.properties.lock&#10;&#9;.gradle/1.12/taskArtifacts/fileHashes.bin&#10;&#9;.gradle/1.12/taskArtifacts/fileSnapshots.bin&#10;&#9;.gradle/1.12/taskArtifacts/outputFileStates.bin&#10;&#9;.gradle/1.12/taskArtifacts/taskArtifacts.bin&#10;&#9;.idea/workspace.xml&#10;&#9;app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java&#10;&#9;build/intermediates/dex-cache/cache.xml&#10;&#9;build/intermediates/model_data.bin&#10;&#9;local.properties&#10;">
+      <created>1415374801502</created>
+      <updated>1415374801502</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
+  </component>
+  <component name="TodoView" selected-index="4">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-2518" y="-264" width="2518" height="1417" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32820907" sideWeight="0.49958915" order="0" side_tool="false" content_ui="tabs" />
@@ -2348,15 +2361,15 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32820907" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42275172" sideWeight="0.50041085" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17400081" sideWeight="0.38004485" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.40199846" sideWeight="0.49876747" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40199846" sideWeight="0.49876747" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34127593" sideWeight="0.49876747" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.33481243" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16074313" sideWeight="0.37275064" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32974634" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16074313" sideWeight="0.37275064" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16074313" sideWeight="0.62724936" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16074313" sideWeight="0.62724936" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32052267" sideWeight="0.49876747" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32820907" sideWeight="0.62119967" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32997176" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -2402,9 +2415,9 @@
     <MESSAGE value="+ PageLinklerin altina web olan herhangi bir komponent geldiginde linkler calismiyordu. Duzeltildi." />
     <MESSAGE value="+ İçeriklerde Sayfaya Eklenen Kompenentlerin Aşırı Boyutlandırılması durumunda hata olusuyordu. Duzeltildi." />
     <MESSAGE value="+ Push Notification ve RESTFull update merge den once master'i commit ediyorum." />
-    <MESSAGE value="Merge branch 'PushNotificationsAndForceUpdate'&#10;&#10;Conflicts:&#10;&#9;.gradle/1.12/taskArtifacts/cache.properties&#10;&#9;.gradle/1.12/taskArtifacts/cache.properties.lock&#10;&#9;.gradle/1.12/taskArtifacts/fileHashes.bin&#10;&#9;.gradle/1.12/taskArtifacts/fileSnapshots.bin&#10;&#9;.gradle/1.12/taskArtifacts/outputFileStates.bin&#10;&#9;.gradle/1.12/taskArtifacts/taskArtifacts.bin&#10;&#9;.idea/workspace.xml&#10;&#9;app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java&#10;&#9;build/intermediates/dex-cache/cache.xml&#10;&#9;build/intermediates/model_data.bin&#10;&#9;local.properties&#10;" />
     <MESSAGE value="RestFul url ler guncellendi. &#10;&#10;Merge branch 'PushNotificationsAndForceUpdate'&#10;&#10;Conflicts:&#10;&#9;.gradle/1.12/taskArtifacts/cache.properties&#10;&#9;.gradle/1.12/taskArtifacts/cache.properties.lock&#10;&#9;.gradle/1.12/taskArtifacts/fileHashes.bin&#10;&#9;.gradle/1.12/taskArtifacts/fileSnapshots.bin&#10;&#9;.gradle/1.12/taskArtifacts/outputFileStates.bin&#10;&#9;.gradle/1.12/taskArtifacts/taskArtifacts.bin&#10;&#9;.idea/workspace.xml&#10;&#9;app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java&#10;&#9;build/intermediates/dex-cache/cache.xml&#10;&#9;build/intermediates/model_data.bin&#10;&#9;local.properties&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="RestFul url ler guncellendi. &#10;&#10;Merge branch 'PushNotificationsAndForceUpdate'&#10;&#10;Conflicts:&#10;&#9;.gradle/1.12/taskArtifacts/cache.properties&#10;&#9;.gradle/1.12/taskArtifacts/cache.properties.lock&#10;&#9;.gradle/1.12/taskArtifacts/fileHashes.bin&#10;&#9;.gradle/1.12/taskArtifacts/fileSnapshots.bin&#10;&#9;.gradle/1.12/taskArtifacts/outputFileStates.bin&#10;&#9;.gradle/1.12/taskArtifacts/taskArtifacts.bin&#10;&#9;.idea/workspace.xml&#10;&#9;app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java&#10;&#9;build/intermediates/dex-cache/cache.xml&#10;&#9;build/intermediates/model_data.bin&#10;&#9;local.properties&#10;" />
+    <MESSAGE value="Merge branch 'PushNotificationsAndForceUpdate'&#10;&#10;Conflicts:&#10;&#9;.gradle/1.12/taskArtifacts/cache.properties&#10;&#9;.gradle/1.12/taskArtifacts/cache.properties.lock&#10;&#9;.gradle/1.12/taskArtifacts/fileHashes.bin&#10;&#9;.gradle/1.12/taskArtifacts/fileSnapshots.bin&#10;&#9;.gradle/1.12/taskArtifacts/outputFileStates.bin&#10;&#9;.gradle/1.12/taskArtifacts/taskArtifacts.bin&#10;&#9;.idea/workspace.xml&#10;&#9;app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java&#10;&#9;build/intermediates/dex-cache/cache.xml&#10;&#9;build/intermediates/model_data.bin&#10;&#9;local.properties&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'PushNotificationsAndForceUpdate'&#10;&#10;Conflicts:&#10;&#9;.gradle/1.12/taskArtifacts/cache.properties&#10;&#9;.gradle/1.12/taskArtifacts/cache.properties.lock&#10;&#9;.gradle/1.12/taskArtifacts/fileHashes.bin&#10;&#9;.gradle/1.12/taskArtifacts/fileSnapshots.bin&#10;&#9;.gradle/1.12/taskArtifacts/outputFileStates.bin&#10;&#9;.gradle/1.12/taskArtifacts/taskArtifacts.bin&#10;&#9;.idea/workspace.xml&#10;&#9;app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java&#10;&#9;build/intermediates/dex-cache/cache.xml&#10;&#9;build/intermediates/model_data.bin&#10;&#9;local.properties&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2441,7 +2454,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java</url>
-          <line>512</line>
+          <line>510</line>
           <properties />
           <option name="timeStamp" value="519" />
         </line-breakpoint>
@@ -2818,37 +2831,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-27.73077" vertical-offset="1124" max-vertical-offset="14190">
-          <caret line="188" column="53" selection-start-line="188" selection-start-column="53" selection-end-line="188" selection-end-column="53" />
-          <folding>
-            <element signature="e#20759#21071#0" expanded="true" />
-            <element signature="e#21052#21053#0" expanded="true" />
-            <element signature="e#22784#25312#0" expanded="true" />
-            <element signature="e#25293#25294#0" expanded="true" />
-            <element signature="e#25330#25567#0" expanded="true" />
-            <element signature="e#25548#25549#0" expanded="true" />
-            <element signature="e#26282#28428#0" expanded="true" />
-            <element signature="e#28409#28410#0" expanded="true" />
-            <element signature="e#28446#28758#0" expanded="true" />
-            <element signature="e#28739#28740#0" expanded="true" />
-            <element signature="e#30072#33799#0" expanded="true" />
-            <element signature="e#33780#33781#0" expanded="true" />
-            <element signature="e#33817#34129#0" expanded="true" />
-            <element signature="e#34110#34111#0" expanded="true" />
-            <element signature="e#35065#36042#0" expanded="true" />
-            <element signature="e#36023#36024#0" expanded="true" />
-            <element signature="e#36060#36372#0" expanded="true" />
-            <element signature="e#36353#36354#0" expanded="true" />
-            <element signature="e#37280#38079#0" expanded="true" />
-            <element signature="e#38060#38061#0" expanded="true" />
-            <element signature="e#38097#38409#0" expanded="true" />
-            <element signature="e#38390#38391#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2250">
@@ -2861,9 +2843,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="7920" max-vertical-offset="43425">
-          <caret line="551" column="33" selection-start-line="551" selection-start-column="33" selection-end-line="551" selection-end-column="33" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="7740" max-vertical-offset="43665">
+          <caret line="539" column="33" selection-start-line="539" selection-start-column="33" selection-end-line="539" selection-end-column="33" />
+          <folding>
+            <marker date="1415374821000" expanded="true" signature="215994:216042" placeholder="..." />
+            <marker date="1415374821000" expanded="true" signature="215994:216029" placeholder="..." />
+            <marker date="1415374821000" expanded="true" signature="215994:216011" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2877,9 +2863,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/local.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24" vertical-offset="0" max-vertical-offset="750">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.903769" vertical-offset="5443" max-vertical-offset="14160">
+          <caret line="542" column="17" selection-start-line="542" selection-start-column="17" selection-end-line="542" selection-end-column="17" />
+          <folding>
+            <element signature="e#20759#21071#0" expanded="true" />
+            <element signature="e#21052#21053#0" expanded="true" />
+            <element signature="e#22648#25176#0" expanded="true" />
+            <element signature="e#25157#25158#0" expanded="true" />
+            <element signature="e#25194#25431#0" expanded="true" />
+            <element signature="e#25412#25413#0" expanded="true" />
+            <element signature="e#26146#28292#0" expanded="true" />
+            <element signature="e#28273#28274#0" expanded="true" />
+            <element signature="e#28310#28622#0" expanded="true" />
+            <element signature="e#28603#28604#0" expanded="true" />
+            <element signature="e#29936#33663#0" expanded="true" />
+            <element signature="e#33644#33645#0" expanded="true" />
+            <element signature="e#33681#33993#0" expanded="true" />
+            <element signature="e#33974#33975#0" expanded="true" />
+            <element signature="e#34929#35906#0" expanded="true" />
+            <element signature="e#35887#35888#0" expanded="true" />
+            <element signature="e#35924#36236#0" expanded="true" />
+            <element signature="e#36217#36218#0" expanded="true" />
+            <element signature="e#37144#37943#0" expanded="true" />
+            <element signature="e#37924#37925#0" expanded="true" />
+            <element signature="e#37961#38273#0" expanded="true" />
+            <element signature="e#38254#38255#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -503,8 +503,6 @@ public class DataApi extends Object {
         uriBuilder.appendPath(contentID.toString());
         uriBuilder.appendPath("detail");
 
-        // TODO: Contentlerin icinde kategoriler eskisi gibi single category geliyor. Kategoriler multiple gelmeli ama eski kalmis bu.
-
         request = new JsonObjectRequest(Request.Method.GET, uriBuilder.build().toString(), null,
                 new Response.Listener<JSONObject>() {
                     @Override
