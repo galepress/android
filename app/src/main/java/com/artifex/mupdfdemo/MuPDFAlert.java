@@ -18,4 +18,15 @@ public class MuPDFAlert {
 		title = aTitle;
 		buttonPressed = aButtonPressed;
 	}
+
+    @Override
+    public String toString() {
+        return "MuPDFAlert{" +
+                "message='" + message + '\'' +
+                ", iconType=" + iconType +
+                ", buttonGroupType=" + buttonGroupType +
+                ", title='" + title + '\'' +
+                ", buttonPressed=" + buttonPressed +
+                '}';
+    }
 }

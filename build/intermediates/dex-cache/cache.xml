@@ -44,6 +44,18 @@
         revision="19.1.0"
         sha1="8ff8c21e8d0162333559f35cafd6a2238a33e5ba"/>
     <item
+        dex="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/pre-dexed/debug/classes-d15463704fa7e32f1e420538abf1dba7c06e6063.jar"
+        jar="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.0.30/classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="cebe8e4a3a469c4623addcca1dc571407ff3a08e"/>
+    <item
+        dex="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/pre-dexed/debug/gcm-1379dc55a191b939925c02b731e4643ba9819d96.jar"
+        jar="/Users/adem/Workspace/GalePress/Android/app/src/main/lib/gcm.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="a6d7bce795a14c7f86111756c4ceb44b79de14aa"/>
+    <item
         dex="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/pre-dexed/debug/dd-plist-ba6c79ab2d47cc8551fe2bc0ae7d1fa73590b80c.jar"
         jar="/Users/adem/Workspace/GalePress/Android/dd-plist.jar"
         jumboMode="false"

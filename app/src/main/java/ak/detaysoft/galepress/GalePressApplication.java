@@ -1,6 +1,9 @@
 package ak.detaysoft.galepress;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.Intent;
+import android.os.PowerManager;
 import android.text.TextUtils;
 
 import com.android.volley.Request;
@@ -46,6 +49,7 @@ public class GalePressApplication extends Application {
         super.onCreate();
         sInstance = this;
         parseApplicationPlist();
+        getDataApi().getAppDetail();
     }
 
     public void parseApplicationPlist(){
@@ -174,5 +178,60 @@ public class GalePressApplication extends Application {
 
     public void setLibraryActivity(LibraryFragment libraryFragmentActivity) {
         this.libraryFragmentActivity = libraryFragmentActivity;
+    }
+
+    void displayMessageOnScreen(Context context, String message) {
+
+        Intent intent = new Intent("ak.detaysoft.galepress.DISPLAY_MESSAGE");
+        intent.putExtra("Message", message);
+
+        // Send Broadcast to Broadcast receiver with message
+        context.sendBroadcast(intent);
+
+    }
+
+
+    //Function to display simple Alert Dialog
+//    public void showAlertDialog(Context context, String title, String message,
+//                                Boolean status) {
+//        AlertDialog alertDialog = new AlertDialog.Builder(context).create();
+//
+//        // Set Dialog Title
+//        alertDialog.setTitle(title);
+//
+//        // Set Dialog Message
+//        alertDialog.setMessage(message);
+//
+//        if(status != null)
+//            // Set alert dialog icon
+//            alertDialog.setIcon((status) ? R.drawable.success : R.drawable.fail);
+//
+//        // Set OK Button
+//        alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+//            public void onClick(DialogInterface dialog, int which) {
+//
+//            }
+//        });
+//
+//        // Show Alert Message
+//        alertDialog.show();
+//    }
+
+    private PowerManager.WakeLock wakeLock;
+
+    public  void acquireWakeLock(Context context) {
+        if (wakeLock != null) wakeLock.release();
+
+        PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+
+        wakeLock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK |
+                PowerManager.ACQUIRE_CAUSES_WAKEUP |
+                PowerManager.ON_AFTER_RELEASE, "WakeLock");
+
+        wakeLock.acquire();
+    }
+
+    public  void releaseWakeLock() {
+        if (wakeLock != null) wakeLock.release(); wakeLock = null;
     }
 }

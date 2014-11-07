@@ -1,14 +1,17 @@
 package ak.detaysoft.galepress;
 
 import android.app.SearchManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentTabHost;
@@ -16,6 +19,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.SearchView;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -30,6 +34,8 @@ import android.widget.PopupMenu;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gcm.GCMRegistrar;
 
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
@@ -61,6 +67,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     public FragmentTabHost mTabHost;
     private android.support.v7.widget.SearchView searchView;
     private Button categoriesButton;
+    AsyncTask<Void, Void, Void> mRegisterTask;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,6 +121,45 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        GCMRegistrar.checkManifest(this);
+        registerReceiver(mHandleMessageReceiver, new IntentFilter("ak.detaysoft.galepress.DISPLAY_MESSAGE"));
+
+        // Get GCM registration id
+        final String regId = GCMRegistrar.getRegistrationId(this);
+
+        // Check if regid already presents
+        if (regId.equals("")) {
+            // Register with GCM
+            GCMRegistrar.register(GalePressApplication.getInstance().getApplicationContext(), DataApi.GCM_SENDER_ID);
+        } else {
+            if (!GCMRegistrar.isRegisteredOnServer(this)) {
+                // Try to register again, but not in the UI thread.
+                // It's also necessary to cancel the thread onDestroy(),
+                // hence the use of AsyncTask instead of a raw thread.
+
+                final Context context = this;
+                mRegisterTask = new AsyncTask<Void, Void, Void>() {
+
+                    @Override
+                    protected Void doInBackground(Void... params) {
+                        GCMRegistrar.register(GalePressApplication.getInstance().getApplicationContext(), DataApi.GCM_SENDER_ID);
+                        // Register on our server
+                        // On server creates a new user
+//                        aController.register(context, name, email, regId);
+                        return null;
+                    }
+
+                    @Override
+                    protected void onPostExecute(Void result) {
+                        mRegisterTask = null;
+                    }
+
+                };
+
+                // execute AsyncTask
+                mRegisterTask.execute(null, null, null);
+            }
         }
 
     }
@@ -278,5 +324,45 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             }
         }
         return null;
+    }
+
+    // Create a broadcast receiver to get message and show on screen
+    private final BroadcastReceiver mHandleMessageReceiver = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            String newMessage = intent.getExtras().getString("Message");
+
+            // Waking up mobile if it is sleeping
+            GalePressApplication.getInstance().acquireWakeLock(getApplicationContext());
+
+            // Display message on the screen
+//            lblMessage.append(newMessage + "\n.");
+
+//            Toast.makeText(getApplicationContext(), "Got Message: " + newMessage, Toast.LENGTH_LONG).show();
+
+            // Releasing wake lock
+//            aController.releaseWakeLock();
+            GalePressApplication.getInstance().releaseWakeLock();
+        }
+    };
+    @Override
+    protected void onDestroy() {
+        // Cancel AsyncTask
+        if (mRegisterTask != null) {
+            mRegisterTask.cancel(true);
+        }
+        try {
+            // Unregister Broadcast Receiver
+            unregisterReceiver(mHandleMessageReceiver);
+
+            //Clear internal resources.
+            GCMRegistrar.onDestroy(this);
+
+        } catch (Exception e) {
+            Logout.e("UnRegister Receiver Error", "> " + e.getMessage());
+        }
+        super.onDestroy();
     }
 }
