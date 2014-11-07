@@ -41,7 +41,9 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -50,6 +52,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.UUID;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -72,8 +75,10 @@ import ak.detaysoft.galepress.service_models.R_ContentFileUrl;
 
 public class DataApi extends Object {
     //http://galepress.com/ws/v100/applications/20/detail
+
+    private static final String webServisVersion = "v101";
+    private static final String buildVersion = "v101";
     private static final String domainUrl = "http://www.galepress.com";
-    private static final String webServisVersion = "v100";
     private static final String webServiceUrl = domainUrl + "/rest/";
     public static final Integer MESSAGE_TYPE_COVER_IMAGE = 1;
     public static final Integer MESSAGE_TYPE_COVER_PDF_DOWNLOAD = 2;
@@ -82,6 +87,11 @@ public class DataApi extends Object {
 
     private DatabaseApi databaseApi = null;
     public DownloadPdfTask downloadPdfTask;
+
+    public String getBuildVersion(){
+        return String.valueOf(BuildConfig.VERSION_CODE);
+    }
+
 
 
     private Uri.Builder getWebServiceUrlBuilder (){
@@ -162,6 +172,8 @@ public class DataApi extends Object {
     }
 
     public void getAppDetail() {
+        getBuildVersion();
+
         GalePressApplication application = GalePressApplication.getInstance();
         RequestQueue requestQueue = application.getRequestQueue();
 
@@ -190,6 +202,7 @@ public class DataApi extends Object {
         uriBuilder.appendQueryParameter("osVersion", osVersion);
         uriBuilder.appendQueryParameter("deviceDetail", getDeviceName());
         uriBuilder.appendQueryParameter("deviceToken", gcmRegisterId);
+        uriBuilder.appendQueryParameter("buildVersion", getBuildVersion());
 
         request = new JsonObjectRequest(Request.Method.GET, uriBuilder.build().toString(), null,
                 new Response.Listener<JSONObject>() {
