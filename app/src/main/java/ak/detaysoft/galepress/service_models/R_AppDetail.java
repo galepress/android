@@ -9,6 +9,12 @@ import org.json.JSONObject;
 
 
 public class R_AppDetail {
+
+    public static Integer FORCE_DO_NOTHING = 0;
+    public static Integer FORCE_WARN = 1;
+    public static Integer FORCE_BLOCK_APP = 2;
+    public static Integer FORCE_BLOCK_AND_DELETE= 3;
+
     private boolean status;
     private Integer customerId;
     private String customerName;
@@ -23,6 +29,7 @@ public class R_AppDetail {
     private boolean applicationBlocked;
     private boolean applicationStatus;
     private Integer applicationVersion;
+    private Integer force;
 
     public R_AppDetail() {
 
@@ -43,6 +50,7 @@ public class R_AppDetail {
         this.applicationBlocked = json.optBoolean("ApplicationBlocked");
         this.applicationStatus = json.optBoolean("ApplicationStatus");
         this.applicationVersion = json.optInt("ApplicationVersion");
+        this.force = json.optInt("Force");
     }
 
     public boolean isStatus() {
@@ -155,5 +163,13 @@ public class R_AppDetail {
 
     public void setApplicationVersion(Integer applicationVersion) {
         this.applicationVersion = applicationVersion;
+    }
+
+    public Integer getForce() {
+        return force;
+    }
+
+    public void setForce(Integer force) {
+        this.force = force;
     }
 }

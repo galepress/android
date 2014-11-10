@@ -24,7 +24,6 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -32,8 +31,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.gcm.GCMRegistrar;
-
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -41,18 +38,13 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Properties;
 import java.util.UUID;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -82,6 +74,7 @@ public class DataApi extends Object {
     private static final String webServiceUrl = domainUrl + "/rest/";
     public static final Integer MESSAGE_TYPE_COVER_IMAGE = 1;
     public static final Integer MESSAGE_TYPE_COVER_PDF_DOWNLOAD = 2;
+    public boolean isBlockedFromWS = false;
 
     static final String GCM_SENDER_ID = "151896860923";  // Place here your Google project id
 
@@ -115,7 +108,6 @@ public class DataApi extends Object {
     };
 
     public DataApi() {
-
     }
 
     public DatabaseApi getDatabaseApi() {
@@ -166,71 +158,154 @@ public class DataApi extends Object {
     }
 
     public void updateApplication() {
-        if(isConnectedToInternet()){
+        if(isConnectedToInternet() && !isBlockedFromWS){
             getRemoteApplicationVersion();
         }
     }
 
     public void getAppDetail() {
-        getBuildVersion();
+        if(isConnectedToInternet()){
+            getBuildVersion();
 
-        GalePressApplication application = GalePressApplication.getInstance();
-        RequestQueue requestQueue = application.getRequestQueue();
+            GalePressApplication application = GalePressApplication.getInstance();
+            RequestQueue requestQueue = application.getRequestQueue();
 
-        Integer applicationID;
-        if (GalePressApplication.getInstance().isTestApplication()) {
-            applicationID = new Integer(application.getTestApplicationLoginInf().getApplicationId());
-        } else {
-            applicationID = application.getApplicationId();
-        }
+            Integer applicationID;
+            if (GalePressApplication.getInstance().isTestApplication()) {
+                applicationID = new Integer(application.getTestApplicationLoginInf().getApplicationId());
+            } else {
+                applicationID = application.getApplicationId();
+            }
 
-        String osVersion = "";
-        String release = Build.VERSION.RELEASE;
-        int sdkVersion = Build.VERSION.SDK_INT;
-        osVersion = sdkVersion + "_" + release;
+            String osVersion = "";
+            String release = Build.VERSION.RELEASE;
+            int sdkVersion = Build.VERSION.SDK_INT;
+            osVersion = sdkVersion + "_" + release;
 
-        final String gcmRegisterId = GCMRegistrar.getRegistrationId(GalePressApplication.getInstance().getApplicationContext());
+            final String gcmRegisterId = GCMRegistrar.getRegistrationId(GalePressApplication.getInstance().getApplicationContext());
 
-        JsonObjectRequest request;
+            JsonObjectRequest request;
 
-        //http://www.galepress.com/ws/v100/applications/20/detail?deviceType=android&osVersion=19_4.4.4&deviceDetail=LG Nexus 5&deviceToken=a;lskdfjla;skjdf;laksjdf;laksdf;
-        Uri.Builder uriBuilder = getWebServiceUrlBuilder();
-        uriBuilder.appendPath("applications");
-        uriBuilder.appendPath(applicationID.toString());
-        uriBuilder.appendPath("detail");
-        uriBuilder.appendQueryParameter("deviceType", "android");
-        uriBuilder.appendQueryParameter("osVersion", osVersion);
-        uriBuilder.appendQueryParameter("deviceDetail", getDeviceName());
-        uriBuilder.appendQueryParameter("deviceToken", gcmRegisterId);
-        uriBuilder.appendQueryParameter("buildVersion", getBuildVersion());
+            //http://www.galepress.com/ws/v100/applications/20/detail?deviceType=android&osVersion=19_4.4.4&deviceDetail=LG Nexus 5&deviceToken=a;lskdfjla;skjdf;laksjdf;laksdf;
+            Uri.Builder uriBuilder = getWebServiceUrlBuilder();
+            uriBuilder.appendPath("applications");
+            uriBuilder.appendPath(applicationID.toString());
+            uriBuilder.appendPath("detail");
+            uriBuilder.appendQueryParameter("deviceType", "android");
+            uriBuilder.appendQueryParameter("osVersion", osVersion);
+            uriBuilder.appendQueryParameter("deviceDetail", getDeviceName());
+            uriBuilder.appendQueryParameter("deviceToken", gcmRegisterId);
+            uriBuilder.appendQueryParameter("buildVersion", getBuildVersion());
 
-        request = new JsonObjectRequest(Request.Method.GET, uriBuilder.build().toString(), null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            R_AppDetail appDetial= new R_AppDetail(response);
-                            // TODO:
-                            // 1 Do nothing
-                            // 2 Warn User
-                            // 3 Force Update
-                            // 4 Lock Application
-                            // 5 Lock & Delete Application
-                        } catch (Exception e) {
-                            e.printStackTrace();
+            request = new JsonObjectRequest(Request.Method.GET, uriBuilder.build().toString(), null,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                R_AppDetail appDetail= new R_AppDetail(response);
+                                if(appDetail.getForce() == R_AppDetail.FORCE_WARN){
+                                    // Warn user to update app.
+                                    final String marketUrl = appDetail.getAndroidLink();
+                                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(GalePressApplication.getInstance().getLibraryActivity().getActivity());
+                                    alertDialog.setTitle(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.UYARI));
+                                    alertDialog.setMessage(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.forceUpdateWarnMessage));
+
+                                    alertDialog.setPositiveButton(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.TAMAM), new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            if(marketUrl!=null && !marketUrl.isEmpty()){
+                                                try{
+                                                    String packageName = marketUrl.substring(marketUrl.indexOf("?id=")+4, marketUrl.length());
+                                                    Uri marketUri = Uri.parse("market://details?id=" + packageName);
+                                                    Intent marketIntent = new Intent(Intent.ACTION_VIEW, marketUri);
+                                                    GalePressApplication.getInstance().getLibraryActivity().startActivity(marketIntent);
+                                                }
+                                                catch (Exception e){
+                                                    e.printStackTrace();
+                                                }
+
+                                            }
+
+                                        }
+                                    });
+                                    alertDialog.setNegativeButton(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.HAYIR), new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+
+                                        }
+                                    });
+                                    alertDialog.show();
+                                }
+                                else if(appDetail.getForce() == R_AppDetail.FORCE_BLOCK_APP || appDetail.getForce() == R_AppDetail.FORCE_BLOCK_AND_DELETE){
+                                    // App is blocked. Lock all content features.
+                                    isBlockedFromWS = true;
+                                    final String marketUrl = appDetail.getAndroidLink();
+                                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(GalePressApplication.getInstance().getLibraryActivity().getActivity());
+                                    alertDialog.setTitle(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.UYARI));
+                                    alertDialog.setMessage(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.forceUpdateBlockMessage));
+
+                                    alertDialog.setPositiveButton(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.goToMarket), new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            if(marketUrl!=null && !marketUrl.isEmpty()){
+                                                try{
+                                                    String packageName = marketUrl.substring(marketUrl.indexOf("?id=")+4, marketUrl.length());
+                                                    Uri marketUri = Uri.parse("market://details?id=" + packageName);
+                                                    Intent marketIntent = new Intent(Intent.ACTION_VIEW, marketUri);
+                                                    GalePressApplication.getInstance().getLibraryActivity().startActivity(marketIntent);
+                                                }
+                                                catch (Exception e){
+                                                    e.printStackTrace();
+                                                }
+
+                                            }
+
+                                        }
+                                    });
+                                    alertDialog.setNegativeButton(GalePressApplication.getInstance().getString(R.string.IPTAL), new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.cancel();
+                                        }
+                                    });
+                                    alertDialog.show();
+                                    if(appDetail.getForce() == R_AppDetail.FORCE_BLOCK_AND_DELETE){
+                                        // Delete all content
+                                        deleteEverything();
+                                    }
+                                }
+
+                                else{
+                                    Logout.e("Adem", "Do Nothing with : "+appDetail.getForce().toString());
+                                }
+                            } catch (Exception e) {
+                                Logout.e("Adem", e.getMessage() + e.getLocalizedMessage() );
+                                e.printStackTrace();
+                            }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            VolleyLog.e("Error: ", error.getMessage());
                         }
                     }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        VolleyLog.e("Error: ", error.getMessage());
-                    }
-                }
-        );
-        request.setShouldCache(Boolean.FALSE);
-        requestQueue.add(request);
+            );
+            request.setShouldCache(Boolean.FALSE);
+            requestQueue.add(request);
+        }
+    }
 
+    private void deleteEverything() {
+        List categories = getDatabaseApi().getAllCategories();
+        for(int i=0; i<categories.size(); i++){
+            L_Category category = (L_Category) categories.get(i);
+            List contents = getDatabaseApi().getAllContentsByCategory(category);
+            for (int j = 0; j < contents.size(); j++) {
+                L_Content content = (L_Content) contents.get(j);
+                deleteContent(content);
+            }
+            deleteCategory(category);
+        }
+        L_Application application = getDatabaseApi().getApplication(GalePressApplication.getInstance().getApplicationId());
+        application.setVersion(-1);
+        getDatabaseApi().updateApplication(application);
     }
 
     private void downloadCoverImage(String remoteUrl, L_Content content) {

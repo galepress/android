@@ -64,33 +64,32 @@ public class ContentHolderAdapter extends BaseAdapter  {
 
         @Override
         public void onClick(View v) {
-            Logout.e("Adem", v.toString());
-            if(v == downloadButton){
-                if(DataApi.isConnectedToInternet()){
+            if(!GalePressApplication.getInstance().getDataApi().isBlockedFromWS){
+                if(v == downloadButton){
+                    if(DataApi.isConnectedToInternet()){
+                        v.setEnabled(false);
+                        GalePressApplication.getInstance().getDataApi().getPdf(content);
+                    }
+                }
+                else if(v == updateButton){
+                    if(DataApi.isConnectedToInternet()){
+                        v.setEnabled(false);
+                        v.setVisibility(View.INVISIBLE);
+                        GalePressApplication.getInstance().getDataApi().getPdf(content);
+                    }
+                }
+                else if(v == cancelButton){
                     v.setEnabled(false);
-                    GalePressApplication.getInstance().getDataApi().getPdf(content);
+                    GalePressApplication.getInstance().getDataApi().cancelDownload(false);
+                }
+                else if(v == deleteButton){
+                    v.setEnabled(false);
+                    GalePressApplication.getInstance().getDataApi().deletePdf(content.getId());
+                }
+                else{
+                    GalePressApplication.getInstance().getLibraryActivity().viewContent(content);
                 }
             }
-            else if(v == updateButton){
-                if(DataApi.isConnectedToInternet()){
-                    v.setEnabled(false);
-                    v.setVisibility(View.INVISIBLE);
-                    GalePressApplication.getInstance().getDataApi().getPdf(content);
-                }
-            }
-            else if(v == cancelButton){
-                v.setEnabled(false);
-                GalePressApplication.getInstance().getDataApi().cancelDownload(false);
-            }
-            else if(v == deleteButton){
-                v.setEnabled(false);
-                GalePressApplication.getInstance().getDataApi().deletePdf(content.getId());
-            }
-            else{
-                GalePressApplication.getInstance().getLibraryActivity().viewContent(content);
-            }
-
-
         }
     }
 

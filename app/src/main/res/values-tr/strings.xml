@@ -133,6 +133,7 @@
 
     <string name="show_all">Tümünü Göster</string>
     <string name="backDescription">Kütüphane ekranı</string>
-
-
+    <string name="forceUpdateWarnMessage" >Güncel uygulamayı marketten indirmek ister misiniz ?</string>
+    <string name="forceUpdateBlockMessage">Uygulama engellenmiştir. Lütfen uygulamayı güncelleyiniz.</string>
+    <string name="goToMarket">Markete Git</string>
 </resources>

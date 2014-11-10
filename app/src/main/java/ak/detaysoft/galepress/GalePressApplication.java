@@ -49,7 +49,6 @@ public class GalePressApplication extends Application {
         super.onCreate();
         sInstance = this;
         parseApplicationPlist();
-        getDataApi().getAppDetail();
     }
 
     public void parseApplicationPlist(){

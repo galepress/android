@@ -161,6 +161,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 mRegisterTask.execute(null, null, null);
             }
         }
+        GalePressApplication.getInstance().getDataApi().getAppDetail();
 
     }
 

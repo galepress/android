@@ -139,7 +139,12 @@ public class DatabaseApi {
             result = 0;
             e.printStackTrace();
         } finally {
-            GalePressApplication.getInstance().getLibraryActivity().updateGridView();
+            try{
+                GalePressApplication.getInstance().getLibraryActivity().updateGridView();
+            }
+            catch (Exception e){
+
+            }
         }
         return result;
     }
