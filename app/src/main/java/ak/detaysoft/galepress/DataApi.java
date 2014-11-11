@@ -69,9 +69,7 @@ public class DataApi extends Object {
     //http://galepress.com/ws/v100/applications/20/detail
 
     private static final String webServisVersion = "v101";
-    private static final String buildVersion = "v101";
     private static final String domainUrl = "http://www.galepress.com";
-    private static final String webServiceUrl = domainUrl + "/rest/";
     public static final Integer MESSAGE_TYPE_COVER_IMAGE = 1;
     public static final Integer MESSAGE_TYPE_COVER_PDF_DOWNLOAD = 2;
     public boolean isBlockedFromWS = false;
@@ -204,6 +202,7 @@ public class DataApi extends Object {
                             try {
                                 R_AppDetail appDetail= new R_AppDetail(response);
                                 if(appDetail.getForce() == R_AppDetail.FORCE_WARN){
+                                    isBlockedFromWS = false;
                                     // Warn user to update app.
                                     final String marketUrl = appDetail.getAndroidLink();
                                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(GalePressApplication.getInstance().getLibraryActivity().getActivity());
@@ -272,6 +271,7 @@ public class DataApi extends Object {
                                 }
 
                                 else{
+                                    isBlockedFromWS = false;
                                     Logout.e("Adem", "Do Nothing with : "+appDetail.getForce().toString());
                                 }
                             } catch (Exception e) {

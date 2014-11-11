@@ -131,9 +131,10 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         // Check if regid already presents
         if (regId.equals("")) {
             // Register with GCM
+            Logout.e("Adem","Is Registered " + (GCMRegistrar.isRegisteredOnServer(GalePressApplication.getInstance().getApplicationContext()) ? "YES" : "NO"));
             GCMRegistrar.register(GalePressApplication.getInstance().getApplicationContext(), DataApi.GCM_SENDER_ID);
         } else {
-            if (!GCMRegistrar.isRegisteredOnServer(this)) {
+            if (!GCMRegistrar.isRegisteredOnServer(GalePressApplication.getInstance().getApplicationContext())) {
                 // Try to register again, but not in the UI thread.
                 // It's also necessary to cancel the thread onDestroy(),
                 // hence the use of AsyncTask instead of a raw thread.

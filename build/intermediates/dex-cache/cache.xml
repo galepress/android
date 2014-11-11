@@ -1,65 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<pre-dex-items>
+<items version="2" >
 
     <item
-        dex="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/pre-dexed/debug/lib-5e2c73baa95a21e94578c797127cb415916919e0.jar"
-        jar="/Users/adem/Workspace/GalePress/Android/app/src/main/lib/lib.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="077d9c6a8e4b8f98411f33e10234f750e9698a15"/>
-    <item
-        dex="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/pre-dexed/debug/support-annotations-20.0.0-c3ecb059b4be970270c35c0e755380f025cab153.jar"
-        jar="/Applications/android-sdk/extras/android/m2repository/com/android/support/support-annotations/20.0.0/support-annotations-20.0.0.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa"/>
-    <item
-        dex="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/pre-dexed/debug/classes-d9ad7f88669936f608e058498d6a03b65bc05c94.jar"
-        jar="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/20.0.0/classes.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="f21927d22fe31889ecce94dd697a2e75b137e0ef"/>
-    <item
-        dex="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/pre-dexed/debug/ormlite-core-4.45-b29cccd0f53e983d533aafcbfc42f634bcf397ae.jar"
-        jar="/Users/adem/.gradle/caches/modules-2/files-2.1/com.j256.ormlite/ormlite-core/4.45/3db7b73aecea723803e10b068777cf09ed42d4be/ormlite-core-4.45.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="3db7b73aecea723803e10b068777cf09ed42d4be"/>
-    <item
-        dex="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-80e9e780521c6e5371b96a809c9609ed5d041329.jar"
-        jar="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/libs/internal_impl-20.0.0.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d"/>
-    <item
-        dex="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/pre-dexed/debug/classes-7256a7a59d076c4a100637002badcc10953d3bfa.jar"
-        jar="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/classes.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
-    <item
-        dex="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/pre-dexed/debug/ormlite-android-4.45-3f76eebc4e283f1c4ea8692c36ad40be5ea62eab.jar"
         jar="/Users/adem/.gradle/caches/modules-2/files-2.1/com.j256.ormlite/ormlite-android/4.45/8ff8c21e8d0162333559f35cafd6a2238a33e5ba/ormlite-android-4.45.jar"
         jumboMode="false"
         revision="19.1.0"
-        sha1="8ff8c21e8d0162333559f35cafd6a2238a33e5ba"/>
+        sha1="8ff8c21e8d0162333559f35cafd6a2238a33e5ba">
+        <dex dex="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/pre-dexed/debug/ormlite-android-4.45-3f76eebc4e283f1c4ea8692c36ad40be5ea62eab.jar" />
+    </item>
     <item
-        dex="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/pre-dexed/debug/classes-d15463704fa7e32f1e420538abf1dba7c06e6063.jar"
+        jar="/Applications/android-sdk/extras/android/m2repository/com/android/support/support-annotations/20.0.0/support-annotations-20.0.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa">
+        <dex dex="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/pre-dexed/debug/support-annotations-20.0.0-c3ecb059b4be970270c35c0e755380f025cab153.jar" />
+    </item>
+    <item
+        jar="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/20.0.0/classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="f21927d22fe31889ecce94dd697a2e75b137e0ef">
+        <dex dex="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/pre-dexed/debug/classes-d9ad7f88669936f608e058498d6a03b65bc05c94.jar" />
+    </item>
+    <item
+        jar="/Users/adem/.gradle/caches/modules-2/files-2.1/com.j256.ormlite/ormlite-core/4.45/3db7b73aecea723803e10b068777cf09ed42d4be/ormlite-core-4.45.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="3db7b73aecea723803e10b068777cf09ed42d4be">
+        <dex dex="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/pre-dexed/debug/ormlite-core-4.45-b29cccd0f53e983d533aafcbfc42f634bcf397ae.jar" />
+    </item>
+    <item
         jar="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.0.30/classes.jar"
         jumboMode="false"
         revision="19.1.0"
-        sha1="cebe8e4a3a469c4623addcca1dc571407ff3a08e"/>
+        sha1="cebe8e4a3a469c4623addcca1dc571407ff3a08e">
+        <dex dex="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/pre-dexed/debug/classes-d15463704fa7e32f1e420538abf1dba7c06e6063.jar" />
+    </item>
     <item
-        dex="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/pre-dexed/debug/gcm-1379dc55a191b939925c02b731e4643ba9819d96.jar"
-        jar="/Users/adem/Workspace/GalePress/Android/app/src/main/lib/gcm.jar"
+        jar="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/libs/internal_impl-20.0.0.jar"
         jumboMode="false"
         revision="19.1.0"
-        sha1="a6d7bce795a14c7f86111756c4ceb44b79de14aa"/>
+        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d">
+        <dex dex="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-80e9e780521c6e5371b96a809c9609ed5d041329.jar" />
+    </item>
     <item
-        dex="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/pre-dexed/debug/dd-plist-ba6c79ab2d47cc8551fe2bc0ae7d1fa73590b80c.jar"
+        jar="/Users/adem/Workspace/GalePress/Android/app/src/main/lib/lib.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="077d9c6a8e4b8f98411f33e10234f750e9698a15">
+        <dex dex="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/pre-dexed/debug/lib-5e2c73baa95a21e94578c797127cb415916919e0.jar" />
+    </item>
+    <item
+        jar="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="8694693636ab36910c8100ce527c258ff3ebece0">
+        <dex dex="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/pre-dexed/debug/classes-7256a7a59d076c4a100637002badcc10953d3bfa.jar" />
+    </item>
+    <item
         jar="/Users/adem/Workspace/GalePress/Android/dd-plist.jar"
         jumboMode="false"
         revision="19.1.0"
-        sha1="d39b131d5aaf8bf6e53ff8dfd28f5cf2521c6d10"/>
+        sha1="d39b131d5aaf8bf6e53ff8dfd28f5cf2521c6d10">
+        <dex dex="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/pre-dexed/debug/dd-plist-ba6c79ab2d47cc8551fe2bc0ae7d1fa73590b80c.jar" />
+    </item>
+    <item
+        jar="/Users/adem/Workspace/GalePress/Android/app/src/main/lib/gcm.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="a6d7bce795a14c7f86111756c4ceb44b79de14aa">
+        <dex dex="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/pre-dexed/debug/gcm-1379dc55a191b939925c02b731e4643ba9819d96.jar" />
+    </item>
 
-</pre-dex-items>
+</items>
