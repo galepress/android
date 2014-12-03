@@ -12,21 +12,33 @@ import java.util.Date;
 @DatabaseTable(tableName = "Statistic")
 public class L_Statistic {
 
-    @DatabaseField(generatedId = true) private Integer id;
+    @DatabaseField (id = true, columnName = "id") private String id;
     @DatabaseField private Integer contentId;
     @DatabaseField private Double lat;
     @DatabaseField private Double lon;
     @DatabaseField private Integer page;
-    @DatabaseField private Date time;
+    @DatabaseField private String time;
     @DatabaseField private Integer type;
     @DatabaseField private String param5;
     @DatabaseField private String param6;
     @DatabaseField private String param7;
 
+    public final static int STATISTIC_applicationActive = 1;
+    public final static int STATISTIC_applicationPassive = 2;
+    public final static int STATISTIC_applicationTerminated = 3;
+    public final static int STATISTIC_contentDownloaded = 10;
+    public final static int STATISTIC_contentUpdated = 11;
+    public final static int STATISTIC_contentOpened = 12;
+    public final static int STATISTIC_contentClosed = 13;
+    public final static int STATISTIC_contentDeleted = 14;
+    public final static int STATISTIC_pageOpenedPortrait = 21;
+    public final static int STATISTIC_pageOpenedLandscape = 22;
+
     public L_Statistic() {
+        this.param5 = "android";
     }
 
-    public L_Statistic(Integer id, Integer contentId, Double lat, Double lon, Integer page, Date time, Integer type, String param5, String param6, String param7) {
+    public L_Statistic(String id, Integer contentId, Double lat, Double lon, Integer page, String time, Integer type, String param5, String param6, String param7) {
         this.id = id;
         this.contentId = contentId;
         this.lat = lat;
@@ -34,16 +46,16 @@ public class L_Statistic {
         this.page = page;
         this.time = time;
         this.type = type;
-        this.param5 = param5;
+        this.param5 = "android";
         this.param6 = param6;
         this.param7 = param7;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -79,11 +91,11 @@ public class L_Statistic {
         this.page = page;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
@@ -117,5 +129,53 @@ public class L_Statistic {
 
     public void setParam7(String param7) {
         this.param7 = param7;
+    }
+
+    @Override
+    public String toString() {
+        String resultString = "";
+        String typeString = "";
+        switch (type){
+            case STATISTIC_applicationActive:
+                typeString = "STATISTIC_applicationActive";
+                break;
+            case STATISTIC_applicationPassive:
+                typeString = "STATISTIC_applicationPassive";
+                break;
+            case STATISTIC_contentClosed:
+                typeString = "STATISTIC_contentClosed";
+                break;
+            case STATISTIC_contentDeleted:
+                typeString = "STATISTIC_contentDeleted";
+                break;
+            case STATISTIC_contentDownloaded:
+                typeString = "STATISTIC_contentDownloaded";
+                break;
+            case STATISTIC_contentOpened:
+                typeString = "STATISTIC_contentOpened";
+                break;
+            case STATISTIC_contentUpdated:
+                typeString = "STATISTIC_contentUpdated";
+                break;
+            case STATISTIC_pageOpenedLandscape:
+                typeString = "STATISTIC_pageOpenedLandscape";
+                break;
+            case STATISTIC_pageOpenedPortrait:
+                typeString = "STATISTIC_pageOpenedPortrait";
+                break;
+            default:
+                typeString = "unkonwn";
+
+        }
+        resultString =  "\nid: "+id;
+        resultString += "\ntype:"+typeString;
+        resultString += "\ncontent:"+contentId;
+        resultString += "\nPage : "+page;
+        resultString += "\ntime: "+time;
+        resultString += "\nlat:"+(lat!=null ?lat.toString():"null");
+        resultString += "\nlon:"+(lon!=null ?lon.toString():"null");
+        resultString += "\n--------------------------------\n";
+
+        return resultString;
     }
 }

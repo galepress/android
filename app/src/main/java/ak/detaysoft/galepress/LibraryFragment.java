@@ -1,10 +1,12 @@
 package ak.detaysoft.galepress;
 
 import android.content.Intent;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
@@ -14,9 +16,16 @@ import android.widget.Button;
 import android.widget.GridView;
 import com.artifex.mupdfdemo.MuPDFActivity;
 import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
+import java.util.TimeZone;
+import java.util.UUID;
+
 import ak.detaysoft.galepress.database_models.L_Category;
 import ak.detaysoft.galepress.database_models.L_Content;
+import ak.detaysoft.galepress.database_models.L_Statistic;
 
 /**
  * Created by adem on 31/03/14.
@@ -90,6 +99,16 @@ public class LibraryFragment extends Fragment {
     public void viewContent(L_Content content){
         File samplePdfFile = new File(content.getPdfPath(),"file.pdf");
         if(content!=null && content.isPdfDownloaded() && samplePdfFile.exists()){
+
+            Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+            String udid = UUID.randomUUID().toString();
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Calendar cal = Calendar.getInstance();
+            dateFormat .setTimeZone(TimeZone.getTimeZone("GMT"));
+            Location location = GalePressApplication.getInstance().location;
+            L_Statistic statistic = new L_Statistic(udid, content.getId(), location!=null?location.getLatitude():null,location!=null?location.getLongitude():null, null, dateFormat.format(cal.getTime()),L_Statistic.STATISTIC_contentOpened, null,null,null);
+            GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
+
             Uri uri = Uri.parse(samplePdfFile.getAbsolutePath());
             Intent intent = new Intent(getActivity(), MuPDFActivity.class);
             intent.putExtra("content", content);

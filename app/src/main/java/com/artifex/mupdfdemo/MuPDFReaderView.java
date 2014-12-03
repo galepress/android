@@ -2,14 +2,25 @@ package com.artifex.mupdfdemo;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
+import android.location.Location;
+import android.provider.Settings;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.webkit.WebView;
 
+import java.lang.reflect.Array;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.TimeZone;
+import java.util.UUID;
+
 import ak.detaysoft.galepress.ExtraWebViewActivity;
+import ak.detaysoft.galepress.GalePressApplication;
+import ak.detaysoft.galepress.database_models.L_Statistic;
 
 public class MuPDFReaderView extends ReaderView {
 	enum Mode {Viewing, Selecting, Drawing}
@@ -243,11 +254,61 @@ public class MuPDFReaderView extends ReaderView {
 	}
 
 	protected void onMoveToChild(int i) {
+        MuPDFCore core = ((MuPDFActivity)this.mContext).core;
+        int[] pages = getDisplayedPageNumbers(i);
+        for(int j=0; j < pages.length; j++){
+            if(pages[j]!=-1){
+                Logout.e("Adem","Goruntulenen sayfa : "+pages[j]);
+
+                if(core.getDisplayPages() ==1){
+                    // Portrait
+                    Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+                    String udid = UUID.randomUUID().toString();
+                    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    Calendar cal = Calendar.getInstance();
+                    dateFormat .setTimeZone(TimeZone.getTimeZone("GMT"));
+                    Location location = GalePressApplication.getInstance().location;
+                    L_Statistic statistic = new L_Statistic(udid, core.content.getId(), location!=null?location.getLatitude():null,location!=null?location.getLongitude():null, pages[j], dateFormat.format(cal.getTime()),L_Statistic.STATISTIC_pageOpenedPortrait, null,null,null);
+                    GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
+                }
+                else{
+                    Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+                    String udid = UUID.randomUUID().toString();
+                    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    Calendar cal = Calendar.getInstance();
+                    dateFormat .setTimeZone(TimeZone.getTimeZone("GMT"));
+                    Location location = GalePressApplication.getInstance().location;
+                    L_Statistic statistic = new L_Statistic(udid, core.content.getId(), location!=null?location.getLatitude():null,location!=null?location.getLongitude():null, pages[j], dateFormat.format(cal.getTime()),L_Statistic.STATISTIC_pageOpenedLandscape, null,null,null);
+                    GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
+                }
+            }
+        }
+
 		if (SearchTaskResult.get() != null && SearchTaskResult.get().pageNumber != i) {
 			SearchTaskResult.set(null);
 			resetupChildren();
 		}
 	}
+
+    public int[] getDisplayedPageNumbers(int index){
+        MuPDFCore core = ((MuPDFActivity)this.mContext).core;
+        int[] pages = {-1, -1};
+
+        if(core.getDisplayPages() == 1 || index == 0){
+            // portrait mode
+            pages[0] = index+1;
+        }
+        else{
+            // landscape mode
+            pages[0] = index*2;
+            pages[1] = (index*2)+1;
+            if(core.getNumPages()%2 == 0 && pages[1] > core.getNumPages()){
+                // last page is double
+                pages[1] = -1;
+            }
+        }
+        return pages;
+    }
 
 	@Override
 	protected void onMoveOffChild(int i) {

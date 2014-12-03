@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -18,6 +19,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
+import android.provider.Settings;
 import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
@@ -30,7 +32,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.RequestFuture;
 import com.google.android.gcm.GCMRegistrar;
+
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -43,9 +48,14 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.UUID;
+import java.util.concurrent.ExecutionException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -54,6 +64,7 @@ import ak.detaysoft.galepress.database_models.L_Application;
 import ak.detaysoft.galepress.database_models.L_Category;
 import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.database_models.L_ContentCategory;
+import ak.detaysoft.galepress.database_models.L_Statistic;
 import ak.detaysoft.galepress.database_models.TestApplicationInf;
 import ak.detaysoft.galepress.service_models.R_AppCategories;
 import ak.detaysoft.galepress.service_models.R_AppContents;
@@ -78,6 +89,207 @@ public class DataApi extends Object {
 
     private DatabaseApi databaseApi = null;
     public DownloadPdfTask downloadPdfTask;
+    public StatisticSendTask statisticSendTask;
+
+    public class DownloadPdfTask extends AsyncTask<ArrayList<String>, Integer, String> {
+        File tempDirectory = null;
+        File directory = null;
+        L_Content content = null;
+        long total;
+
+        public DownloadPdfTask(Activity cosntext, L_Content c) {
+            this.content = c;
+        }
+
+        @Override
+        protected String doInBackground(ArrayList<String>... params) {
+            String remoteUrl = params[0].get(0);
+            String contentId = params[0].get(1);
+            this.content = getDatabaseApi().getContent(Integer.valueOf(contentId));
+            String pdfFileName = params[0].get(2);
+            InputStream input = null;
+            OutputStream output = null;
+            HttpURLConnection connection = null;
+            try {
+                directory = new File(GalePressApplication.getInstance().getFilesDir() + "/" + contentId);
+                tempDirectory = new File(GalePressApplication.getInstance().getFilesDir() + "/" + UUID.randomUUID().toString());
+                tempDirectory.mkdir();
+
+                File outputFile = new File(tempDirectory.getPath(), pdfFileName);
+                URL url = new URL(remoteUrl);
+                connection = (HttpURLConnection) url.openConnection();
+                connection.connect();
+                Logout.e("Adem","Response Code : "+connection.getResponseCode() + " Response Message : "+connection.getResponseMessage());
+                if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
+                    return "Server returned HTTP " + connection.getResponseCode()
+                            + " " + connection.getResponseMessage();
+                }
+
+                // this will be useful to display download percentage
+                // might be -1: server did not report the length
+                final long fileLength = connection.getContentLength();
+
+                // download the file
+                input = connection.getInputStream();
+                output = new FileOutputStream(outputFile.getPath());
+
+                byte data[] = new byte[1024];
+                total = 0;
+                int count;
+                long lastCtm = System.currentTimeMillis();
+                long ctm;
+                while ((count = input.read(data)) != -1) {
+                    // allow canceling with back button
+                    if (isCancelled()) {
+                        input.close();
+                        if (tempDirectory != null) {
+                            deleteFolder(tempDirectory);
+                        }
+                        content.setPdfDownloading(false);
+                        return null;
+                    }
+                    total += count;
+                    // publishing the progress....
+                    if (fileLength > 0) { // only if total length is known
+//                        publishProgress((int) (total * 100 / fileLength));
+                        ctm = System.currentTimeMillis();
+                        if (lastCtm + 1000 < ctm) {
+                            lastCtm = ctm;
+                            publishProgress((int) total, (int) fileLength);
+                        }
+                    }
+                    output.write(data, 0, count);
+                }
+
+                publishProgress((int) total, (int) fileLength);
+                if (directory.exists()) {
+                    deleteFolder(directory);
+                }
+                final boolean isUpdate = content.isPdfDownloaded() ? true: false;
+
+                tempDirectory.renameTo(directory);
+                Decompress decompressor = new Decompress(directory + "/" + pdfFileName, directory + "/");
+                Logout.e("Adem","Content Directory : "+directory.getPath()+"");
+                decompressor.unzip();
+                if(checkDownloadSuccessfull(directory)){
+                    new File(directory + "/" + pdfFileName).delete();
+                    new Handler(Looper.getMainLooper()).post(new Runnable() {
+                        @Override
+                        public void run() {
+                            content.setPdfUpdateAvailable(false);
+                            getDatabaseApi().updateContent(content,true);
+                            if(isUpdate){
+                                Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+                                String udid = UUID.randomUUID().toString();
+                                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                                Calendar cal = Calendar.getInstance();
+                                dateFormat .setTimeZone(TimeZone.getTimeZone("GMT"));
+                                Location location = GalePressApplication.getInstance().location;
+                                L_Statistic statistic = new L_Statistic(udid, content.getId(), location!=null?location.getLatitude():null,location!=null?location.getLongitude():null, null, dateFormat.format(cal.getTime()),L_Statistic.STATISTIC_contentUpdated, null,null,null);
+                                GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
+                            }
+                            else{
+                                Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+                                String udid = UUID.randomUUID().toString();
+                                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                                Calendar cal = Calendar.getInstance();
+                                dateFormat .setTimeZone(TimeZone.getTimeZone("GMT"));
+                                Location location = GalePressApplication.getInstance().location;
+                                L_Statistic statistic = new L_Statistic(udid, content.getId(), location!=null ? location.getLatitude():null,location != null ? location.getLongitude() : null, null, dateFormat.format(cal.getTime()),L_Statistic.STATISTIC_contentDownloaded, null,null,null);
+                                GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
+                            }
+                        }
+                    });
+                }
+                else{
+                    final String errorMessage = getErrorMessageFromXMLFile(directory,pdfFileName);
+                    if (directory != null) {
+                        deleteFolder(directory);
+                    }
+                    cancel(true);
+                    new Handler(Looper.getMainLooper()).post(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(GalePressApplication.getInstance(), errorMessage, Toast.LENGTH_LONG).show();
+                        }
+                    });
+
+                }
+                return null;
+            } catch (Exception e) {
+                Logout.e("Error", e.getLocalizedMessage());
+                if (tempDirectory != null) {
+                    deleteFolder(tempDirectory);
+                }
+            }
+
+            return null;
+
+        }
+
+        private boolean checkDownloadSuccessfull(File directory) {
+            int fileCount = directory.list().length;
+            return fileCount > 1;
+        }
+
+
+        @Override
+        protected void onProgressUpdate(Integer... progress) {
+            progressUpdate(content, progress[0], progress[1]);
+        }
+
+        @Override
+        protected void onPreExecute() {
+            GalePressApplication.getInstance().getLibraryActivity().updateGridView();
+        }
+
+        @Override
+        protected void onCancelled() {
+            if (tempDirectory != null) {
+                deleteFolder(tempDirectory);
+            }
+            content.setPdfDownloading(false);
+            getDatabaseApi().updateContent(content,true);
+            super.onCancelled();
+        }
+
+
+        @Override
+        protected void onPostExecute(String a) {
+            this.content.setPdfDownloaded(true);
+            this.content.setPdfDownloading(false);
+            getDatabaseApi().updateContent(this.content,true);
+        }
+
+    }
+
+    public class StatisticSendTask extends AsyncTask<Void,Void,Void>{
+        @Override
+        protected Void doInBackground(Void... params) {
+            List<L_Statistic> statistics = getDatabaseApi().getAllStatistics();
+            for(L_Statistic statistic : statistics){
+                if(isCancelled() == false){
+                    postStatistic(statistic);
+                }
+                else{
+                    break;
+                }
+            }
+            return null;
+        }
+
+        @Override
+        protected void onCancelled(Void aVoid) {
+            super.onCancelled(aVoid);
+            cancel(true);
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+            cancel(true);
+        }
+    }
 
     public String getBuildVersion(){
         return String.valueOf(BuildConfig.VERSION_CODE);
@@ -159,6 +371,11 @@ public class DataApi extends Object {
         if(isConnectedToInternet() && !isBlockedFromWS){
             getRemoteApplicationVersion();
         }
+    }
+
+    public void commitStatisticsToDB(L_Statistic statistic){
+        getDatabaseApi().createStatistic(statistic);
+        Logout.e("Adem","Commited Statistic : "+statistic.toString());
     }
 
     public void getAppDetail() {
@@ -312,7 +529,7 @@ public class DataApi extends Object {
         Intent i = new Intent(GalePressApplication.getInstance(), CoverImageDownloader.class);
         i.setData(Uri.parse(remoteUrl));
         i.putExtra(CoverImageDownloader.EXTRA_MESSENGER, new Messenger(handler));
-        i.putExtra("id", Integer.toString(content.getId()));
+        i.putExtra("id", content.getId().toString());
         i.putExtra("coverImageName", content.getCoverImageFileName());
         GalePressApplication.getInstance().startService(i);
     }
@@ -468,6 +685,16 @@ public class DataApi extends Object {
                     content.setPdfUpdateAvailable(false);
                     getDatabaseApi().updateContent(content,true);
 
+                    Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+                    String udid = UUID.randomUUID().toString();
+                    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    Calendar cal = Calendar.getInstance();
+                    dateFormat .setTimeZone(TimeZone.getTimeZone("GMT"));
+                    Location location = GalePressApplication.getInstance().location;
+                    L_Statistic statistic = new L_Statistic(udid, content.getId(), location!=null?location.getLatitude():null,location!=null?location.getLongitude():null, null, dateFormat.format(cal.getTime()),L_Statistic.STATISTIC_contentDeleted, null,null,null);
+                    GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
+
+
                     L_Application application = getDatabaseApi().getApplication(GalePressApplication.getInstance().getApplicationId());
                     application.setVersion(application.getVersion()-1);
                     getDatabaseApi().updateApplication(application);
@@ -560,6 +787,84 @@ public class DataApi extends Object {
                 }
         );
         request.setShouldCache(Boolean.FALSE);requestQueue.add(request);
+    }
+
+
+    public void startStatisticSend(){
+        if(statisticSendTask == null || statisticSendTask.getStatus() != AsyncTask.Status.RUNNING){
+            statisticSendTask = new StatisticSendTask();
+            statisticSendTask.execute();
+        }
+    }
+
+    public void stopStatisticSend(){
+        if(statisticSendTask!= null &&  statisticSendTask.getStatus() == AsyncTask.Status.RUNNING){
+            statisticSendTask.cancel(true);
+        }
+    }
+
+    private void postStatistic(final L_Statistic statistic) {
+        GalePressApplication application = GalePressApplication.getInstance();
+        Integer applicationId = null;
+        RequestQueue requestQueue = application.getRequestQueue4Statistic();
+        JsonObjectRequest request;
+        RequestFuture<JSONObject> future = RequestFuture.newFuture();
+
+        if (GalePressApplication.getInstance().isTestApplication()) {
+            applicationId = new Integer(application.getTestApplicationLoginInf().getApplicationId());
+        } else {
+            applicationId = application.getApplicationId();
+        }
+
+        Uri.Builder uriBuilder = getWebServiceUrlBuilder();
+        uriBuilder.appendPath("statistics");
+
+        if (GalePressApplication.getInstance().isTestApplication()) {
+            TestApplicationInf testApplicationInf = GalePressApplication.getInstance().getTestApplicationLoginInf();
+            uriBuilder.appendQueryParameter("username",testApplicationInf.getUsername());
+            uriBuilder.appendQueryParameter("password",testApplicationInf.getPassword());
+        }
+
+        final String gcmRegisterId = GCMRegistrar.getRegistrationId(GalePressApplication.getInstance().getApplicationContext());
+
+        final String id =  UUID.randomUUID().toString();
+        uriBuilder.appendQueryParameter("id",id);
+        uriBuilder.appendQueryParameter("type",statistic.getType().toString());
+        uriBuilder.appendQueryParameter("time",statistic.getTime());
+        uriBuilder.appendQueryParameter("lat",statistic.getLat()!=null?statistic.getLat().toString(): "");
+        uriBuilder.appendQueryParameter("long",statistic.getLon()!=null?statistic.getLon().toString(): "");
+        uriBuilder.appendQueryParameter("deviceID",gcmRegisterId);
+        uriBuilder.appendQueryParameter("applicationID",applicationId.toString());
+        uriBuilder.appendQueryParameter("contentID", statistic.getContentId() != null ? statistic.getContentId().toString() : "");
+        uriBuilder.appendQueryParameter("page", statistic.getPage() != null ? statistic.getPage().toString() : "");
+        uriBuilder.appendQueryParameter("param5",statistic.getParam5()!=null?statistic.getParam5():"");
+        uriBuilder.appendQueryParameter("param6",statistic.getParam6()!=null?statistic.getParam6():"");
+        uriBuilder.appendQueryParameter("param7",statistic.getParam7()!=null?statistic.getParam7():"");
+
+        request = new JsonObjectRequest(Request.Method.POST, uriBuilder.build().toString(), null, future, future);
+        request.setShouldCache(Boolean.FALSE);
+        requestQueue.add(request);
+        try {
+            JSONObject response = future.get(); // this will block
+            String error = response.getString("error");
+            if(error!=null && error.isEmpty()){
+                String response_id = response.getString("id");
+                if(response_id != null && !response_id.isEmpty()){
+                    if(response_id.compareTo(id)==0){
+                        Logout.e("Adem", "Statistics sent and deleting : "+statistic.getId());
+                        Logout.e("Adem", "Statistics size : "+getDatabaseApi().getAllStatistics().size());
+                        int a = getDatabaseApi().deleteStatistic(statistic);
+                        Logout.e("Adem", "Statistics size : "+getDatabaseApi().getAllStatistics().size());
+                    }
+                }
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     private void removeAllConCatsForContent(L_Content content) {
@@ -686,9 +991,7 @@ public class DataApi extends Object {
                                     deleteCategory(l_category);
                                 }
                             }
-
-                            getRemoteAppConents();
-
+                            getRemoteAppContents();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -706,7 +1009,7 @@ public class DataApi extends Object {
     }
 
 
-    private void getRemoteAppConents() {
+    private void getRemoteAppContents() {
         GalePressApplication application = GalePressApplication.getInstance();
         Integer applicationId = null;
         RequestQueue requestQueue = application.getRequestQueue();
@@ -950,156 +1253,6 @@ public class DataApi extends Object {
             }
         }
         return null;
-    }
-
-    public class DownloadPdfTask extends AsyncTask<ArrayList<String>, Integer, String> {
-        File tempDirectory = null;
-        File directory = null;
-        L_Content content = null;
-        long total;
-
-        public DownloadPdfTask(Activity cosntext, L_Content c) {
-            this.content = c;
-        }
-
-        @Override
-        protected String doInBackground(ArrayList<String>... params) {
-            String remoteUrl = params[0].get(0);
-            String contentId = params[0].get(1);
-            this.content = getDatabaseApi().getContent(Integer.valueOf(contentId));
-            String pdfFileName = params[0].get(2);
-            InputStream input = null;
-            OutputStream output = null;
-            HttpURLConnection connection = null;
-            try {
-                directory = new File(GalePressApplication.getInstance().getFilesDir() + "/" + contentId);
-                tempDirectory = new File(GalePressApplication.getInstance().getFilesDir() + "/" + UUID.randomUUID().toString());
-                tempDirectory.mkdir();
-
-                File outputFile = new File(tempDirectory.getPath(), pdfFileName);
-                URL url = new URL(remoteUrl);
-                connection = (HttpURLConnection) url.openConnection();
-                connection.connect();
-Logout.e("Adem","Response Code : "+connection.getResponseCode() + " Response Message : "+connection.getResponseMessage());
-                if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
-                    return "Server returned HTTP " + connection.getResponseCode()
-                            + " " + connection.getResponseMessage();
-                }
-
-                // this will be useful to display download percentage
-                // might be -1: server did not report the length
-                final long fileLength = connection.getContentLength();
-
-                // download the file
-                input = connection.getInputStream();
-                output = new FileOutputStream(outputFile.getPath());
-
-                byte data[] = new byte[1024];
-                total = 0;
-                int count;
-                long lastCtm = System.currentTimeMillis();
-                long ctm;
-                while ((count = input.read(data)) != -1) {
-                    // allow canceling with back button
-                    if (isCancelled()) {
-                        input.close();
-                        if (tempDirectory != null) {
-                            deleteFolder(tempDirectory);
-                        }
-                        content.setPdfDownloading(false);
-                        return null;
-                    }
-                    total += count;
-                    // publishing the progress....
-                    if (fileLength > 0) { // only if total length is known
-//                        publishProgress((int) (total * 100 / fileLength));
-                        ctm = System.currentTimeMillis();
-                        if (lastCtm + 1000 < ctm) {
-                            lastCtm = ctm;
-                            publishProgress((int) total, (int) fileLength);
-                        }
-                    }
-                    output.write(data, 0, count);
-                }
-                publishProgress((int) total, (int) fileLength);
-                if (directory.exists()) {
-                    deleteFolder(directory);
-                }
-
-                tempDirectory.renameTo(directory);
-                Decompress decompressor = new Decompress(directory + "/" + pdfFileName, directory + "/");
-                Logout.e("Adem","Content Directory : "+directory.getPath()+"");
-                decompressor.unzip();
-                if(checkDownloadSuccessfull(directory)){
-                    new File(directory + "/" + pdfFileName).delete();
-                    new Handler(Looper.getMainLooper()).post(new Runnable() {
-                        @Override
-                        public void run() {
-                            content.setPdfUpdateAvailable(false);
-                            getDatabaseApi().updateContent(content,true);
-                        }
-                    });
-                }
-                else{
-                    final String errorMessage = getErrorMessageFromXMLFile(directory,pdfFileName);
-                    if (directory != null) {
-                        deleteFolder(directory);
-                    }
-                    cancel(true);
-                    new Handler(Looper.getMainLooper()).post(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(GalePressApplication.getInstance(), errorMessage, Toast.LENGTH_LONG).show();
-                        }
-                    });
-
-                }
-                return null;
-            } catch (Exception e) {
-                Logout.e("Error", e.getLocalizedMessage());
-                if (tempDirectory != null) {
-                    deleteFolder(tempDirectory);
-                }
-            }
-
-            return null;
-
-        }
-
-        private boolean checkDownloadSuccessfull(File directory) {
-            int fileCount = directory.list().length;
-            return fileCount > 1;
-        }
-
-
-        @Override
-        protected void onProgressUpdate(Integer... progress) {
-            progressUpdate(content, progress[0], progress[1]);
-        }
-
-        @Override
-        protected void onPreExecute() {
-            GalePressApplication.getInstance().getLibraryActivity().updateGridView();
-        }
-
-        @Override
-        protected void onCancelled() {
-            if (tempDirectory != null) {
-                deleteFolder(tempDirectory);
-            }
-            content.setPdfDownloading(false);
-            getDatabaseApi().updateContent(content,true);
-            super.onCancelled();
-        }
-
-
-        @Override
-        protected void onPostExecute(String a) {
-            this.content.setPdfDownloaded(true);
-            this.content.setPdfDownloading(false);
-            getDatabaseApi().updateContent(this.content,true);
-        }
-
     }
 
     private String getErrorMessageFromXMLFile(File directory, String pdfFileName) {

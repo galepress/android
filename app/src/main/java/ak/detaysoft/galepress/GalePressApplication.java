@@ -1,29 +1,48 @@
 package ak.detaysoft.galepress;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
-import android.os.PowerManager;
-import android.text.TextUtils;
+import android.content.SharedPreferences;
+import android.location.Location;
 
+import com.android.volley.Cache;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
+import android.os.Bundle;
+import android.os.PowerManager;
+import android.provider.Settings;
+import android.text.TextUtils;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.Volley;
 import com.dd.plist.NSDictionary;
 import com.dd.plist.PropertyListParser;
-
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesClient;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.location.LocationClient;
 import java.io.InputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.TimeZone;
+import java.util.UUID;
 
+import ak.detaysoft.galepress.database_models.L_Statistic;
 import ak.detaysoft.galepress.database_models.TestApplicationInf;
 
 /**
  * Created by adem on 11/02/14.
  */
-public class GalePressApplication extends Application {
+public class GalePressApplication
+        extends Application
+        implements LocationListener,GooglePlayServicesClient.ConnectionCallbacks,GooglePlayServicesClient.OnConnectionFailedListener
+{
 
     /**
      * Log or request TAG
@@ -35,6 +54,7 @@ public class GalePressApplication extends Application {
 
      //Global request queue for Volley
     private RequestQueue mRequestQueue;
+    private RequestQueue mRequestQueue4Statistic;
 
     public static HashMap applicationPlist;
     public static LinkedHashMap extrasHashMap;
@@ -43,12 +63,142 @@ public class GalePressApplication extends Application {
      * A singleton instance of the application class for easy access in other places
      */
     private static GalePressApplication sInstance;
+    public String provider;
 
+
+    public Location location;
+    private LocationRequest mLocationRequest;
+    private LocationClient mLocationClient;SharedPreferences mPrefs;
+    SharedPreferences.Editor mEditor;
+    boolean mUpdatesRequested = false;
+
+    Foreground.Listener myListener = new Foreground.Listener(){
+        public void onBecameForeground(){
+            mLocationClient.connect();
+            startUpdates();
+
+            Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+            String udid = UUID.randomUUID().toString();
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Calendar cal = Calendar.getInstance();
+            dateFormat .setTimeZone(TimeZone.getTimeZone("GMT"));
+            L_Statistic statistic = new L_Statistic(udid, null, location!=null?location.getLatitude():null,location!=null?location.getLongitude():null, null, dateFormat.format(cal.getTime()),L_Statistic.STATISTIC_applicationActive, null,null,null);
+            GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
+            GalePressApplication.getInstance().getDataApi().startStatisticSend();
+
+
+        }
+        public void onBecameBackground(){
+            // ... whatever you want to do
+
+            // If the client is connected
+            if (mLocationClient.isConnected()) {
+                stopUpdates();
+            }
+
+            // After disconnect() is called, the client is considered "dead".
+            mLocationClient.disconnect();
+
+            Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+            String udid = UUID.randomUUID().toString();
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Calendar cal = Calendar.getInstance();
+            dateFormat .setTimeZone(TimeZone.getTimeZone("GMT"));
+            L_Statistic statistic = new L_Statistic(udid, null, location!=null?location.getLatitude():null,location!=null?location.getLongitude():null, null, dateFormat.format(cal.getTime()),L_Statistic.STATISTIC_applicationPassive, null,null,null);
+            GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
+            GalePressApplication.getInstance().getDataApi().stopStatisticSend();
+        }
+    };
     @Override
     public void onCreate() {
         super.onCreate();
         sInstance = this;
         parseApplicationPlist();
+        Foreground.get(this).addListener(myListener);
+
+        mLocationRequest = LocationRequest.create();
+        mLocationRequest.setInterval(LocationUtils.UPDATE_INTERVAL_IN_MILLISECONDS);
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        mLocationRequest.setFastestInterval(LocationUtils.FAST_INTERVAL_CEILING_IN_MILLISECONDS);
+        mUpdatesRequested = false;
+        mPrefs = getSharedPreferences(LocationUtils.SHARED_PREFERENCES, Context.MODE_PRIVATE);
+        mEditor = mPrefs.edit();
+        mLocationClient = new LocationClient(this, this, this);
+
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        switch (requestCode) {
+            case LocationUtils.CONNECTION_FAILURE_RESOLUTION_REQUEST :
+                switch (resultCode) {
+                    case Activity.RESULT_OK:
+                        Logout.e(LocationUtils.APPTAG, getString(R.string.resolved));
+                        break;
+                    default:
+                        Logout.e(LocationUtils.APPTAG, getString(R.string.no_resolution));
+                        break;
+                }
+            default:
+                Logout.e(LocationUtils.APPTAG,getString(R.string.unknown_activity_request_code, requestCode));
+                break;
+        }
+    }
+
+    private boolean servicesConnected() {
+        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
+        if (ConnectionResult.SUCCESS == resultCode) {
+            Logout.e(LocationUtils.APPTAG, getString(R.string.play_services_available));
+            return true;
+        } else {
+            Logout.e(LocationUtils.APPTAG, "Google Play services is not available");
+            return false;
+        }
+    }
+
+    public Location getLocation() {
+        if (servicesConnected()) {
+            location = mLocationClient.getLastLocation();
+        }
+        return location;
+    }
+
+    public void startUpdates() {
+        mUpdatesRequested = true;
+        if (servicesConnected() && mLocationClient.isConnected()) {
+            startPeriodicUpdates();
+        }
+    }
+
+    public void stopUpdates() {
+        mUpdatesRequested = false;
+        if (servicesConnected()) {
+            stopPeriodicUpdates();
+        }
+    }
+
+
+    @Override
+    public void onLocationChanged(Location location) {
+        this.location = location;
+    }
+
+    private void startPeriodicUpdates() {
+        mLocationClient.requestLocationUpdates(mLocationRequest,this);
+    }
+
+    private void stopPeriodicUpdates() {
+        mLocationClient.removeLocationUpdates(this);
+    }
+
+    @Override
+    public void onConnected(Bundle bundle) {
+        if (mUpdatesRequested) {
+            startPeriodicUpdates();
+        }
+    }
+
+    @Override
+    public void onDisconnected() {
     }
 
     public void parseApplicationPlist(){
@@ -109,6 +259,16 @@ public class GalePressApplication extends Application {
         return mRequestQueue;
     }
 
+    public RequestQueue getRequestQueue4Statistic() {
+        // lazy initialize the request queue, the queue instance will be
+        // created when it is accessed for the first time
+        if (mRequestQueue4Statistic == null) {
+            mRequestQueue4Statistic = Volley.newRequestQueue(getApplicationContext());
+        }
+
+        return mRequestQueue4Statistic;
+    }
+
     /**
      * Adds the specified request to the global queue, if tag is specified
      * then it is used else Default TAG is used.
@@ -148,8 +308,13 @@ public class GalePressApplication extends Application {
         }
     }
 
+    public void cancelPendingRequests4Statistic(Object tag) {
+        if (mRequestQueue4Statistic != null) {
+            mRequestQueue4Statistic.cancelAll(tag);
+        }
+    }
+
     public Integer getApplicationId(){
-        // TODO: ApplicationID burada application.plist'den alinmali..
         String applicationId = (String)applicationPlist.get("ApplicationID");
         return Integer.valueOf(applicationId);
     }
@@ -189,33 +354,6 @@ public class GalePressApplication extends Application {
 
     }
 
-
-    //Function to display simple Alert Dialog
-//    public void showAlertDialog(Context context, String title, String message,
-//                                Boolean status) {
-//        AlertDialog alertDialog = new AlertDialog.Builder(context).create();
-//
-//        // Set Dialog Title
-//        alertDialog.setTitle(title);
-//
-//        // Set Dialog Message
-//        alertDialog.setMessage(message);
-//
-//        if(status != null)
-//            // Set alert dialog icon
-//            alertDialog.setIcon((status) ? R.drawable.success : R.drawable.fail);
-//
-//        // Set OK Button
-//        alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-//            public void onClick(DialogInterface dialog, int which) {
-//
-//            }
-//        });
-//
-//        // Show Alert Message
-//        alertDialog.show();
-//    }
-
     private PowerManager.WakeLock wakeLock;
 
     public  void acquireWakeLock(Context context) {
@@ -233,4 +371,21 @@ public class GalePressApplication extends Application {
     public  void releaseWakeLock() {
         if (wakeLock != null) wakeLock.release(); wakeLock = null;
     }
+
+
+
+    /*
+     * Called by Location Services if the attempt to
+     * Location Services fails.
+     */
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+        if (connectionResult.hasResolution()) {
+                //connectionResult.startResolutionForResult(this.getLibraryActivity(),LocationUtils.CONNECTION_FAILURE_RESOLUTION_REQUEST);
+            Logout.e("Adem", "startResolutionForResult: ");
+        } else {
+            Logout.e("Adem", "Error Code : "+connectionResult.getErrorCode());
+        }
+    }
+
 }

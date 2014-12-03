@@ -5,6 +5,11 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.TimeZone;
+import java.util.UUID;
 import java.util.concurrent.Executor;
 
 import com.artifex.mupdfdemo.ReaderView.ViewMapper;
@@ -21,15 +26,15 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Rect;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.support.v4.app.Fragment;
+import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
@@ -45,8 +50,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewAnimator;
 
+import ak.detaysoft.galepress.GalePressApplication;
 import ak.detaysoft.galepress.R;
 import ak.detaysoft.galepress.database_models.L_Content;
+import ak.detaysoft.galepress.database_models.L_Statistic;
 
 class ThreadPerTaskExecutor implements Executor {
 	public void execute(Runnable r) {
@@ -1292,7 +1299,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 			core.startAlerts();
 			createAlertWaiter();
 		}
-
 		super.onStart();
 	}
 
@@ -1303,12 +1309,22 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 			destroyAlertWaiter();
 			core.stopAlerts();
 		}
-
 		super.onStop();
 	}
 
 	@Override
 	public void onBackPressed() {
+
+        Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+        String udid = UUID.randomUUID().toString();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Calendar cal = Calendar.getInstance();
+        dateFormat .setTimeZone(TimeZone.getTimeZone("GMT"));
+        Location location = GalePressApplication.getInstance().location;
+        L_Statistic statistic = new L_Statistic(udid, this.content.getId(), location!=null?location.getLatitude():null,location!=null?location.getLongitude():null, null, dateFormat.format(cal.getTime()),L_Statistic.STATISTIC_contentClosed, null,null,null);
+        GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
+
+        /*
 		if (core.hasChanges()) {
 			DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
@@ -1327,6 +1343,8 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 		} else {
 			super.onBackPressed();
 		}
+		*/
+        super.onBackPressed();
 	}
 
 	@Override

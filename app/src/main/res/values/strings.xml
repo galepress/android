@@ -136,5 +136,12 @@
     <string name="forceUpdateWarnMessage">Do you want to update application from Google Play.</string>
     <string name="forceUpdateBlockMessage">Application is blocked. Please update application.</string>
     <string name="goToMarket">Go to Store</string>
+    <string name="latitude_longitude"><![CDATA[<string name=\"latitude_longitude\">%1$.8f, %2$.8f</string>]]></string>
+    <string name="resolved">Error resolved. Please re-try operation.</string>
+    <string name="connected">Client connected</string>
+    <string name="no_resolution">Google Play services: unable to resolve connection error.</string>
+    <string name="disconnected">Client disconnected</string>
+    <string name="unknown_activity_request_code">Received an unknown activity request code %1$d in onActivityResult.</string>
+    <string name="play_services_available">Google Play services is available</string>
 
 </resources>

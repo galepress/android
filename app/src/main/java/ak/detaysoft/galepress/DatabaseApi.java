@@ -230,15 +230,16 @@ public class DatabaseApi {
                 L_Content l_content = (L_Content) lhs;
                 L_Content r_content = (L_Content) rhs;
 
-                Integer leftIntegerPart = 0, rightIntegerPart = 0;
+                Long leftIntegerPart = new Long(0);
+                Long rightIntegerPart = new Long(0);
                 String leftStringPart;
 
                 String temp = l_content.getMonthlyName().replaceAll("[^0-9]", "");
-                if(!temp.isEmpty()) leftIntegerPart  = Integer.parseInt(temp);
+                if(!temp.isEmpty()) leftIntegerPart  = Long.parseLong(temp);
                 leftStringPart   = l_content.getMonthlyName().replaceAll("[0-9]", "");
 
                 temp = r_content.getMonthlyName().replaceAll("[^0-9]", "");
-                if(!temp.isEmpty()) rightIntegerPart  = Integer.parseInt(temp);
+                if(!temp.isEmpty()) rightIntegerPart  = Long.parseLong(temp);
                 String rightStringPart  = r_content.getMonthlyName().replaceAll("[0-9]", "");
 
                 int resultOfStrings = rightStringPart.compareTo(leftStringPart);

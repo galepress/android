@@ -11,16 +11,16 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.SearchView;
-import android.util.AttributeSet;
-import android.util.Log;
-import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -47,6 +47,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.xml.datatype.Duration;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
@@ -68,6 +69,8 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     private android.support.v7.widget.SearchView searchView;
     private Button categoriesButton;
     AsyncTask<Void, Void, Void> mRegisterTask;
+
+
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -164,6 +167,33 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         }
         GalePressApplication.getInstance().getDataApi().getAppDetail();
 
+
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        GalePressApplication.getInstance().onActivityResult(requestCode,resultCode,data);
+    }
+
+    @Override
+    protected void onDestroy() {
+        // Cancel AsyncTask
+        if (mRegisterTask != null) {
+            mRegisterTask.cancel(true);
+        }
+        try {
+            // Unregister Broadcast Receiver
+            unregisterReceiver(mHandleMessageReceiver);
+
+            //Clear internal resources.
+            GCMRegistrar.onDestroy(this);
+
+        } catch (Exception e) {
+            Logout.e("UnRegister Receiver Error", "> " + e.getMessage());
+        }
+        super.onDestroy();
     }
 
     private void setTabs() {
@@ -349,22 +379,4 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             GalePressApplication.getInstance().releaseWakeLock();
         }
     };
-    @Override
-    protected void onDestroy() {
-        // Cancel AsyncTask
-        if (mRegisterTask != null) {
-            mRegisterTask.cancel(true);
-        }
-        try {
-            // Unregister Broadcast Receiver
-            unregisterReceiver(mHandleMessageReceiver);
-
-            //Clear internal resources.
-            GCMRegistrar.onDestroy(this);
-
-        } catch (Exception e) {
-            Logout.e("UnRegister Receiver Error", "> " + e.getMessage());
-        }
-        super.onDestroy();
-    }
 }
