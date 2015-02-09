@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.TimeZone;
 import java.util.UUID;
 import java.util.concurrent.Executor;
@@ -665,6 +666,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 		layout.addView(mDocView);
 		layout.addView(mButtonsView);
 		setContentView(layout);
+        hideButtonsFast();
 	}
 
 	@Override
@@ -1315,36 +1317,20 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 	@Override
 	public void onBackPressed() {
 
-        Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
-        String udid = UUID.randomUUID().toString();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Calendar cal = Calendar.getInstance();
-        dateFormat .setTimeZone(TimeZone.getTimeZone("GMT"));
-        Location location = GalePressApplication.getInstance().location;
-        L_Statistic statistic = new L_Statistic(udid, this.content.getId(), location!=null?location.getLatitude():null,location!=null?location.getLongitude():null, null, dateFormat.format(cal.getTime()),L_Statistic.STATISTIC_contentClosed, null,null,null);
-        GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
-
-        /*
-		if (core.hasChanges()) {
-			DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int which) {
-					if (which == AlertDialog.BUTTON_POSITIVE)
-						core.save();
-
-					finish();
-				}
-			};
-			AlertDialog alert = mAlertBuilder.create();
-			alert.setTitle("MuPDF");
-			alert.setMessage(getString(R.string.document_has_changes_save_them_));
-			alert.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.yes), listener);
-			alert.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.no), listener);
-			alert.show();
-		} else {
-			super.onBackPressed();
-		}
-		*/
-        super.onBackPressed();
+        if(GalePressApplication.getInstance().getDataApi().isLibraryMustBeEnabled()){
+            Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+            String udid = UUID.randomUUID().toString();
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Calendar cal = Calendar.getInstance();
+            dateFormat .setTimeZone(TimeZone.getTimeZone("GMT"));
+            Location location = GalePressApplication.getInstance().location;
+            L_Statistic statistic = new L_Statistic(udid, this.content.getId(), location!=null?location.getLatitude():null,location!=null?location.getLongitude():null, null, dateFormat.format(cal.getTime()),L_Statistic.STATISTIC_contentClosed, null,null,null);
+            GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
+            super.onBackPressed();
+        }
+        else{
+            return;
+        }
 	}
 
 	@Override

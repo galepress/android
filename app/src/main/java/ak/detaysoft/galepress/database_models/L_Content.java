@@ -38,6 +38,7 @@ public class L_Content implements Serializable {
     @DatabaseField private String coverImageFileName;
     @DatabaseField private boolean isBuyable;
     @DatabaseField private boolean isProtected;
+    @DatabaseField private boolean isMaster;
     @DatabaseField private String password;
     @DatabaseField private double currency;
     @DatabaseField private String price;
@@ -53,52 +54,6 @@ public class L_Content implements Serializable {
 
     public L_Content(){
 
-    }
-
-    public L_Content(
-            Integer id,
-            String name,
-            boolean autoDownload,
-            boolean blocked,
-            Integer pdfVersion,
-            String monthlyName,
-            String detail,
-            String pdfFileName,
-            String dirName,
-            boolean isPdfUpdateAvailable,
-            boolean isPdfDownloaded,
-            String coverImageFileName,
-            boolean isBuyable,
-            boolean isProtected,
-            String password,
-            double currency,
-            String price,
-            Integer coverImageVersion,
-            Integer status,
-            Integer version,
-            ArrayList<L_Category> categories) {
-        this.blocked = blocked;
-        this.autoDownload = autoDownload;
-        this.pdfVersion = pdfVersion;
-        this.monthlyName = monthlyName;
-        this.detail = detail;
-        this.pdfFileName = pdfFileName;
-        this.dirName = dirName;
-        this.isPdfUpdateAvailable = isPdfUpdateAvailable;
-        this.isPdfDownloaded = isPdfDownloaded;
-        this.coverImageFileName = coverImageFileName;
-        this.id = id;
-        this.isBuyable = isBuyable;
-        this.isProtected = isProtected;
-        this.name = name;
-        this.password = password;
-        this.currency = currency;
-        this.price = price;
-        this.coverImageVersion = coverImageVersion;
-        this.status = status;
-        this.version = version;
-        this.categories = categories;
-        this.isPdfDownloading = false;
     }
 
     public boolean isCoverImageUpdateAvailable() {
@@ -301,6 +256,14 @@ public class L_Content implements Serializable {
         return this.getPdfPath()+"/file.pdf";
     }
 
+    public boolean isMaster() {
+        return isMaster;
+    }
+
+    public void setMaster(boolean isMaster) {
+        this.isMaster = isMaster;
+    }
+
     // Model Methods
 
     public L_Content(R_ContentDetail remoteContent){
@@ -333,6 +296,7 @@ public class L_Content implements Serializable {
         this.currency = remoteContent.getContentCurrency();
         this.price = remoteContent.getContentPrice();
         this.status = remoteContent.getStatus();
+        this.isMaster = remoteContent.isContentIsMaster();
     }
 
     public void updateWithRemoteContent(R_ContentDetail remoteContent){
@@ -357,6 +321,7 @@ public class L_Content implements Serializable {
         this.currency = remoteContent.getContentCurrency();
         this.price = remoteContent.getContentPrice();
         this.status = remoteContent.getStatus();
+        this.isMaster = remoteContent.isContentIsMaster();
     }
 
     @Override
@@ -387,6 +352,7 @@ public class L_Content implements Serializable {
                 ", pdfPath='" + pdfPath + '\'' +
                 ", gridThumbCoverImagePath='" + gridThumbCoverImagePath + '\'' +
                 ", bigCoverImagePath='" + bigCoverImagePath + '\'' +
+                ", isMaster='" + isMaster + '\'' +
                 '}';
     }
 }

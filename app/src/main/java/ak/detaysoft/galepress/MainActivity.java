@@ -1,5 +1,6 @@
 package ak.detaysoft.galepress;
 
+import android.app.Activity;
 import android.app.SearchManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -69,11 +70,21 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     private android.support.v7.widget.SearchView searchView;
     private Button categoriesButton;
     AsyncTask<Void, Void, Void> mRegisterTask;
+    public Integer content_id = null;
 
 
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
+        if(intent.hasExtra("content_id")){
+            this.content_id = Integer.valueOf(intent.getStringExtra("content_id"));
+        }
+        else{
+            this.content_id = null;
+        }
+
+
         getSupportActionBar().setDisplayUseLogoEnabled(false);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
@@ -165,9 +176,8 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 mRegisterTask.execute(null, null, null);
             }
         }
+        GalePressApplication.getInstance().setCurrentActivity(this);
         GalePressApplication.getInstance().getDataApi().getAppDetail();
-
-
 
     }
 
@@ -175,6 +185,16 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         GalePressApplication.getInstance().onActivityResult(requestCode,resultCode,data);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        GalePressApplication.getInstance().setCurrentActivity(this);
+    }
+    protected void onPause() {
+        clearReferences();
+        super.onPause();
     }
 
     @Override
@@ -193,6 +213,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         } catch (Exception e) {
             Logout.e("UnRegister Receiver Error", "> " + e.getMessage());
         }
+        clearReferences();
         super.onDestroy();
     }
 
@@ -379,4 +400,10 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             GalePressApplication.getInstance().releaseWakeLock();
         }
     };
+
+    private void clearReferences(){
+        Activity currActivity = GalePressApplication.getInstance().getCurrentActivity();
+        if (currActivity != null && currActivity.equals(this))
+            GalePressApplication.getInstance().setCurrentActivity(null);
+    }
 }

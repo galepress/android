@@ -2,18 +2,18 @@
 <items version="2" >
 
     <item
-        jar="/Applications/android-sdk/extras/android/m2repository/com/android/support/support-annotations/20.0.0/support-annotations-20.0.0.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa">
-        <dex dex="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/pre-dexed/debug/support-annotations-20.0.0-c3ecb059b4be970270c35c0e755380f025cab153.jar" />
-    </item>
-    <item
         jar="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/libs/internal_impl-20.0.0.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d">
         <dex dex="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-80e9e780521c6e5371b96a809c9609ed5d041329.jar" />
+    </item>
+    <item
+        jar="/Applications/android-sdk/extras/android/m2repository/com/android/support/support-annotations/20.0.0/support-annotations-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa">
+        <dex dex="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/pre-dexed/debug/support-annotations-20.0.0-c3ecb059b4be970270c35c0e755380f025cab153.jar" />
     </item>
     <item
         jar="/Users/adem/Workspace/GalePress/Android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/20.0.0/classes.jar"

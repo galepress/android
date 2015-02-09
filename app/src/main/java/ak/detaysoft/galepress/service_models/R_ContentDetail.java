@@ -28,6 +28,7 @@ public class R_ContentDetail {
     private Integer contentCoverImageVersion;
     private String contentCategoryName;
     private Integer status;
+    private boolean contentIsMaster;
 
 
 
@@ -56,7 +57,9 @@ public class R_ContentDetail {
         this.contentCoverImageVersion = json.optInt("ContentCoverImageVersion");
         this.contentCategoryName = json.optString("ContentCategoryName");
         this.status = json.optInt("status");
+        this.contentIsMaster = json.optBoolean("ContentIsMaster");
         this.contentCategories = new ArrayList<R_Category>();
+
 
         JSONArray arrayContentCategories = json.optJSONArray("ContentCategories");
         if (null != arrayContentCategories) {
@@ -237,4 +240,11 @@ public class R_ContentDetail {
         this.contentCategories = contentCategories;
     }
 
+    public boolean isContentIsMaster() {
+        return contentIsMaster;
+    }
+
+    public void setContentIsMaster(boolean contentIsMaster) {
+        this.contentIsMaster = contentIsMaster;
+    }
 }

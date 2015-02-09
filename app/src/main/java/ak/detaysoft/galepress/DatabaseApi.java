@@ -125,7 +125,9 @@ public class DatabaseApi {
             e.printStackTrace();
         } finally {
             if(updateUI) {
-                GalePressApplication.getInstance().getLibraryActivity().updateGridView();
+                if(GalePressApplication.getInstance().getLibraryActivity()!=null){
+                    GalePressApplication.getInstance().getLibraryActivity().updateGridView();
+                }
             }
         }
         return result;
@@ -140,7 +142,9 @@ public class DatabaseApi {
             e.printStackTrace();
         } finally {
             try{
-                GalePressApplication.getInstance().getLibraryActivity().updateGridView();
+                if(GalePressApplication.getInstance().getLibraryActivity()!=null){
+                    GalePressApplication.getInstance().getLibraryActivity().updateGridView();
+                }
             }
             catch (Exception e){
 
@@ -164,17 +168,21 @@ public class DatabaseApi {
     public List getAllContents(String searchQuery)
     {
         try {
-            if (contentsQuery == null) {
-                contentsQuery= makeContentsQuery(false);
+            if (searchQuery == null) {
+                return contentsDao.queryForAll();
+            } else {
+                if (contentsQuery == null) {
+                    contentsQuery= makeContentsQuery(false);
+                }
+                String nameParameter = searchQuery == null ? "%%" : "%"+searchQuery.trim()+"%";
+                contentsQuery.setArgumentHolderValue(0,nameParameter);
+                return contentsDao.query(contentsQuery);
             }
-            String nameParameter = searchQuery == null ? "%%" : "%"+searchQuery.trim()+"%";
-            contentsQuery.setArgumentHolderValue(0,nameParameter);
-            return contentsDao.query(contentsQuery);
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
-
-        return null;
+        catch (SQLException e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public List getAllContents(boolean isOnlyDownloaded, String searchQuery, L_Category category)

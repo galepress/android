@@ -1,7 +1,9 @@
 package ak.detaysoft.galepress;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.Application;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +16,8 @@ import android.os.Bundle;
 import android.os.PowerManager;
 import android.provider.Settings;
 import android.text.TextUtils;
+import android.util.Log;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyLog;
@@ -30,6 +34,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.TimeZone;
 import java.util.UUID;
 
@@ -51,6 +56,7 @@ public class GalePressApplication
     private static DatabaseApi databaseApi = null;
     private static DataApi dataApi;
     private LibraryFragment libraryFragmentActivity;
+    private int requestCount;
 
      //Global request queue for Volley
     private RequestQueue mRequestQueue;
@@ -71,6 +77,8 @@ public class GalePressApplication
     private LocationClient mLocationClient;SharedPreferences mPrefs;
     SharedPreferences.Editor mEditor;
     boolean mUpdatesRequested = false;
+
+    private Activity currentActivity = null;
 
     Foreground.Listener myListener = new Foreground.Listener(){
         public void onBecameForeground(){
@@ -124,7 +132,7 @@ public class GalePressApplication
         mPrefs = getSharedPreferences(LocationUtils.SHARED_PREFERENCES, Context.MODE_PRIVATE);
         mEditor = mPrefs.edit();
         mLocationClient = new LocationClient(this, this, this);
-
+        requestCount = -101;
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
@@ -255,7 +263,6 @@ public class GalePressApplication
         if (mRequestQueue == null) {
             mRequestQueue = Volley.newRequestQueue(getApplicationContext());
         }
-
         return mRequestQueue;
     }
 
@@ -388,4 +395,37 @@ public class GalePressApplication
         }
     }
 
+    public int getRequestCount() {
+        return requestCount;
+    }
+
+    public void setRequestCount(int requestCount) {
+        if(requestCount == 0){
+//            Logout.e("Adem", "***Requestler bitmis olmali");
+            dataApi.updateCompleted();
+        }
+        if(requestCount == -100) {
+            requestCount = 1;
+//            Logout.e("Adem", "***Requestler yeni basliyor.");
+            // requestCount ilk kez initialize ediliyor. O olsaydi bitmis gibi gorunebilirdi. -101 ile initialize ettim.
+        }
+        this.requestCount = requestCount;
+        Logout.e("Adem", "***Requestler count : "+this.requestCount);
+
+    }
+
+    public void incrementRequestCount() {
+        setRequestCount(getRequestCount()+1);
+    }
+    public void decrementRequestCount() {
+        setRequestCount(getRequestCount()-1);
+    }
+
+    public Activity getCurrentActivity() {
+        return currentActivity;
+    }
+
+    public void setCurrentActivity(Activity currentActivity) {
+        this.currentActivity = currentActivity;
+    }
 }

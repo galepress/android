@@ -55,7 +55,10 @@ public class LibraryFragment extends Fragment {
             isOnlyDownloaded = false;
         }
         super.onCreate(savedInstanceState);
-
+        if(((MainActivity)this.getActivity()).content_id !=null){
+            viewContent(GalePressApplication.getInstance().getDatabaseApi().getContent(((MainActivity)this.getActivity()).content_id));
+            ((MainActivity)this.getActivity()).content_id = null;
+        }
     }
 
     @Override
