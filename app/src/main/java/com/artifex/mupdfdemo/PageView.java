@@ -421,12 +421,16 @@ public abstract class PageView extends ViewGroup {
                                 if(linkInfoExternal.isWebAnnotation()){
                                     web.loadUrl(url);
                                 }
-                                if(((LinkInfoExternal) link).componentAnnotationTypeId != LinkInfoExternal.COMPONENT_TYPE_ID_VIDEO){
-                                    setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-                                }
-                                else{
-                                    setLayerType(View.LAYER_TYPE_HARDWARE, null);
-                                }
+//                                if((
+//                                        ((LinkInfoExternal) link).componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_VIDEO)
+//                                        || ((LinkInfoExternal) link).componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_WEB
+//                                   )
+//                                {
+//                                    setLayerType(View.LAYER_TYPE_HARDWARE, null);
+//                                }
+//                                else{
+//                                    setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+//                                }
                                 addView(web);
                             }
                         }

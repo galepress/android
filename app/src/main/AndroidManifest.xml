@@ -2,57 +2,56 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ak.detaysoft.galepress"
     android:versionCode="1"
-    android:versionName="1.0"
-    >
+    android:versionName="1.0">
+
     <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_USER_DICTIONARY" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="myapp.permission.MAPS_RECEIVE"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="myapp.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <permission android:name="ak.detaysoft.galepress.permission.C2D_MESSAGE" android:protectionLevel="signature" />
-    <!--<uses-permission android:name="ak.detaysoft.galepress.permission.C2D_MESSAGE" />-->
+
+    <permission
+        android:name="ak.detaysoft.galepress.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <supports-screens
-        android:smallScreens="true"
-        android:normalScreens="true"
+        android:anyDensity="true"
         android:largeScreens="true"
-        android:anyDensity="true" />
+        android:normalScreens="true"
+        android:smallScreens="true" />
     <application
+        android:name="ak.detaysoft.galepress.GalePressApplication"
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
         android:hardwareAccelerated="true"
-        android:name="ak.detaysoft.galepress.GalePressApplication">
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name">
 
         <activity
             android:name="ak.detaysoft.galepress.LaunchActivity"
             android:label="@string/app_name"
-            android:theme="@style/LibraryTheme"
-            >
+            android:theme="@style/LibraryTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name="ak.detaysoft.galepress.MainActivity"
-            android:theme="@style/LibraryTheme"
-            android:label="@string/app_name">
-        </activity>
+            android:label="@string/app_name"
+            android:theme="@style/LibraryTheme"></activity>
         <activity
             android:name="ak.detaysoft.galepress.ExtraWebViewActivity"
-            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"
-            android:label="@string/app_name">
-        </activity>
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"></activity>
 
         <!--<activity-->
         <!--android:name="com.artifex.mupdfdemo.ChoosePDFActivity"-->
@@ -67,65 +66,70 @@
         <!--</activity>-->
         <activity
             android:name="com.artifex.mupdfdemo.MuPDFActivity"
-            android:theme="@style/AppBaseTheme"
             android:hardwareAccelerated="true"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:theme="@style/AppBaseTheme">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="application/vnd.ms-xpsdocument"/>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="application/vnd.ms-xpsdocument" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="application/pdf"/>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="application/pdf" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="application/x-cbz"/>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="application/x-cbz" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:scheme="file"/>
-                <data android:mimeType="*/*"/>
-                <data android:pathPattern=".*\\.xps"/>
-                <data android:host="*"/>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="file" />
+                <data android:mimeType="*/*" />
+                <data android:pathPattern=".*\\.xps" />
+                <data android:host="*" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:scheme="file"/>
-                <data android:mimeType="*/*"/>
-                <data android:pathPattern=".*\\.pdf"/>
-                <data android:host="*"/>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="file" />
+                <data android:mimeType="*/*" />
+                <data android:pathPattern=".*\\.pdf" />
+                <data android:host="*" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:scheme="file"/>
-                <data android:mimeType="*/*"/>
-                <data android:pathPattern=".*\\.cbz"/>
-                <data android:host="*"/>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="file" />
+                <data android:mimeType="*/*" />
+                <data android:pathPattern=".*\\.cbz" />
+                <data android:host="*" />
             </intent-filter>
         </activity>
         <activity
             android:name="com.artifex.mupdfdemo.OutlineActivity"
-            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"
-            android:label="@string/outline_title">
-        </activity>
+            android:label="@string/outline_title"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"></activity>
         <activity
             android:name="com.artifex.mupdfdemo.PrintDialogActivity"
-            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"
-            android:label="@string/print">
-        </activity>
+            android:label="@string/print"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"></activity>
+
         <receiver
             android:name="com.google.android.gcm.GCMBroadcastReceiver"
-            android:permission="com.google.android.c2dm.permission.SEND" >
+            android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
 
                 <!-- Receives the actual messages. -->
@@ -136,12 +140,18 @@
                 <category android:name="ak.detaysoft.galepress" />
             </intent-filter>
         </receiver>
+
         <service android:name="ak.detaysoft.galepress.GCMIntentService" />
-        <service android:enabled="true" android:name="ak.detaysoft.galepress.CoverImageDownloader" />
+        <service
+            android:name="ak.detaysoft.galepress.CoverImageDownloader"
+            android:enabled="true" />
         <service
             android:name="ak.detaysoft.galepress.ReceiveUpdatesIntentService"
-            android:label="@string/app_name"
-            android:exported="false"></service>
-        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+            android:exported="false"
+            android:label="@string/app_name"></service>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 </manifest>

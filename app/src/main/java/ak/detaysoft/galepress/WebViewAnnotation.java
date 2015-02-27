@@ -21,7 +21,17 @@ public class WebViewAnnotation extends WebView {
     public LinkInfoExternal linkInfoExternal;
 
     private class MyWebChromeClient extends WebChromeClient {
+        @Override
+        public void onShowCustomView(View view, CustomViewCallback callback) {
+            Logout.e("Adem","onShowCustomView");
+            super.onShowCustomView(view, callback);
+        }
 
+        @Override
+        public void onHideCustomView() {
+            Logout.e("Adem","onHideCustomView");
+            super.onHideCustomView();
+        }
     }
 
     private class MyWebViewClient extends WebViewClient {
@@ -41,24 +51,35 @@ public class WebViewAnnotation extends WebView {
         this.linkInfoExternal = lie;
         this.setWebChromeClient(new MyWebChromeClient());
         this.setWebViewClient(new MyWebViewClient());
+
         if(lie.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_VIDEO){
-            this.setLayerType(WebView.LAYER_TYPE_NONE, null);
+            this.setLayerType(WebView.LAYER_TYPE_HARDWARE,null);
+        }
+        else if(lie.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_WEB){
+            this.setLayerType(WebView.LAYER_TYPE_HARDWARE,null);
         }
         else{
             this.setLayerType(WebView.LAYER_TYPE_SOFTWARE,null);
         }
+
         WebSettings s = getSettings();
         s.setBuiltInZoomControls(true);
+        s.setPluginState(WebSettings.PluginState.ON);
         s.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
         s.setUseWideViewPort(true);
         s.setLoadWithOverviewMode(true);
         s.setSaveFormData(true);
         s.setJavaScriptEnabled(true);
         s.setDomStorageEnabled(true);
+        s.setAllowFileAccess(true);
+        s.setAppCacheEnabled(true);
+        s.setAllowFileAccessFromFileURLs(true);
+        s.setAllowUniversalAccessFromFileURLs(true);
+        s.setSupportZoom(false);
+
         this.setHorizontalScrollBarEnabled(false);
         this.setVerticalScrollBarEnabled(false);
-        this.setBackgroundColor(Color.TRANSPARENT);
-        s.setSupportZoom(false);
+        this.setBackgroundColor(Color.RED);
         final WebViewAnnotation web = this;
 
 
@@ -145,5 +166,7 @@ public class WebViewAnnotation extends WebView {
         else
             this.previousMotionEvent = MotionEvent.obtain(event);
     }
+
+
 
 }
