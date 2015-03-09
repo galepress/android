@@ -61,7 +61,6 @@ public class WebViewAnnotationWithChromium extends WebView {
 
         this.setHorizontalScrollBarEnabled(false);
         this.setVerticalScrollBarEnabled(false);
-        this.setBackgroundColor(Color.YELLOW);
         final WebViewAnnotationWithChromium web = this;
 
         if(linkInfoExternal.mustHorizontalScrollLock()){

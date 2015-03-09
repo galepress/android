@@ -79,7 +79,6 @@ public class WebViewAnnotation extends WebView {
 
         this.setHorizontalScrollBarEnabled(false);
         this.setVerticalScrollBarEnabled(false);
-        this.setBackgroundColor(Color.RED);
         final WebViewAnnotation web = this;
 
 
