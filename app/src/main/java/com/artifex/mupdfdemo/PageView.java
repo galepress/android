@@ -32,7 +32,6 @@ import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import ak.detaysoft.galepress.*;
-import ak.detaysoft.galepress.Logout;
 
 
 class PatchInfo {
@@ -266,10 +265,14 @@ public abstract class PageView extends ViewGroup {
 //        pageView.is
         ArrayList<View> gpAnnotations = getGPAnnotations(pageView);
         for(int i=0; i < gpAnnotations.size(); i++){
+
             View view = gpAnnotations.get(i);
-            WebView webView = (WebView)view;
-            webView.loadUrl("");
-            webView.stopLoading();
+
+            if(view instanceof WebView){
+                WebView webView = (WebView)view;
+                webView.loadUrl("");
+                webView.stopLoading();
+
 //            webView.onPause();
 //            webView.pauseTimers();
             /*
@@ -285,10 +288,33 @@ public abstract class PageView extends ViewGroup {
                 e.printStackTrace();
             }
             */
-            pageView.removeView(view);
+                pageView.removeView(view);
+            } if(view instanceof com.mogoweb.chrome.WebView){
+                com.mogoweb.chrome.WebView webView = (com.mogoweb.chrome.WebView)view;
+                webView.loadUrl("");
+                webView.stopLoading();
+
+//            webView.onPause();
+//            webView.pauseTimers();
+            /*
+            try {
+                Class.forName("android.webkit.WebView").getMethod("onPause", (Class[]) null).invoke(webView, (Object[]) null);
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            */
+                pageView.removeView(view);
+            }
+
+
         }
     }
-
 
 
     public ArrayList<View> getGPAnnotations(PageView pageView){
@@ -296,6 +322,8 @@ public abstract class PageView extends ViewGroup {
         for(int i=0; i < pageView.getChildCount(); i++){
             View view = (View)pageView.getChildAt(i);
             if(view instanceof WebView){
+                gpAnnotations.add(view);
+            } else if(view instanceof com.mogoweb.chrome.WebView) {
                 gpAnnotations.add(view);
             }
         }
@@ -407,31 +435,56 @@ public abstract class PageView extends ViewGroup {
                                 addView(modalButton);
                             }
                             else{
-                                // Web Annotations
-                                final WebViewAnnotation web = new WebViewAnnotation(mContext, linkInfoExternal);
-                                web.readerView = ((MuPDFActivity) mContext).mDocView;
-                                web.layout(left, top, right, bottom);
-                                web.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
-                                final String url2 = linkInfoExternal.getSourceUrlPath(mContext);
 
-                                web.setId(atomicInteger.incrementAndGet());
-                                linkInfoExternal.webViewId = web.getId();
+                                final int LOLLIPOP = 21;
+                                if (android.os.Build.VERSION.SDK_INT >= LOLLIPOP) {
+                                    String url = linkInfoExternal.getSourceUrlPath(mContext);
+                                    // Web Annotations
+                                    final WebViewAnnotation web = new WebViewAnnotation(mContext, linkInfoExternal);
+                                    web.layout(left,top,right,bottom);
+                                    web.readerView = ((MuPDFActivity) mContext).mDocView;
+                                    web.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+                                    final String url2 = linkInfoExternal.getSourceUrlPath(mContext);
 
-                                String url = linkInfoExternal.getSourceUrlPath(mContext);
-                                if(linkInfoExternal.isWebAnnotation()){
-                                    web.loadUrl(url);
+                                    web.setId(atomicInteger.incrementAndGet());
+                                    linkInfoExternal.webViewId = web.getId();
+
+
+                                    if(linkInfoExternal.isWebAnnotation()){
+                                        web.loadUrl(url);
+                                    }
+                                    addView(web);
+                                } else {
+                                    String url = linkInfoExternal.getSourceUrlPath(mContext);
+                                    // Web Annotations
+                                    final WebViewAnnotationWithChromium web = new WebViewAnnotationWithChromium(mContext, linkInfoExternal);
+                                    web.layout(left,top,right,bottom);
+                                    web.readerView = ((MuPDFActivity) mContext).mDocView;
+                                    web.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+                                    final String url2 = linkInfoExternal.getSourceUrlPath(mContext);
+
+                                    web.setId(atomicInteger.incrementAndGet());
+                                    linkInfoExternal.webViewId = web.getId();
+
+
+                                    if(linkInfoExternal.isWebAnnotation()){
+                                        web.loadUrl(url);
+                                    }
+
+                                    /*if((((LinkInfoExternal) link).componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_VIDEO)
+                                        || ((LinkInfoExternal) link).componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_WEB
+                                    ) {
+                                        setLayerType(View.LAYER_TYPE_HARDWARE, null);
+                                    }
+                                    else {
+                                        setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+                                    }*/
+
+                                    addView(web);
                                 }
-//                                if((
-//                                        ((LinkInfoExternal) link).componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_VIDEO)
-//                                        || ((LinkInfoExternal) link).componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_WEB
-//                                   )
-//                                {
-//                                    setLayerType(View.LAYER_TYPE_HARDWARE, null);
-//                                }
-//                                else{
-//                                    setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-//                                }
-                                addView(web);
+
+
+
                             }
                         }
                         else if((((LinkInfoExternal) link).componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_HARİTA) ){
@@ -452,24 +505,11 @@ public abstract class PageView extends ViewGroup {
                             String mapUrl = builder.build().toString();
 
 
-                            WebView web = new WebView(mContext);
+                            com.mogoweb.chrome.WebView web = new com.mogoweb.chrome.WebView(mContext);
                             web.setEnabled(true);
                             web.layout(left, top, right, bottom);
-                            web.setWebViewClient(new WebViewClient() {
-                                @Override
-                                public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                                    view.loadUrl(url);
-                                    return false; // then it is not handled by default action
-                                }
-                            });
-                            web.setWebChromeClient(new WebChromeClient(){
-                                @Override
-                                public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
-                                    // Always grant permission since the app itself requires location
-                                    // permission and the user has therefore already granted it
-                                    callback.invoke(origin, true, false);
-                                }
-                            });
+                            web.setWebViewClient(new com.mogoweb.chrome.WebViewClient());
+                            web.setWebChromeClient(new com.mogoweb.chrome.WebChromeClient());
                             web.setInitialScale(1);
                             web.getSettings().setJavaScriptEnabled(true);
                             web.getSettings().setGeolocationEnabled(true);
@@ -480,7 +520,7 @@ public abstract class PageView extends ViewGroup {
                                 }
                             });
 
-                            web.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
+                            web.getSettings().setCacheMode(com.mogoweb.chrome.WebSettings.LOAD_DEFAULT);
                             final String url2 = linkInfoExternal.getSourceUrlPath(mContext);
 
                             web.setId(atomicInteger.incrementAndGet());

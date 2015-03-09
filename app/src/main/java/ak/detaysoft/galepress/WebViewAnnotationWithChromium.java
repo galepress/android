@@ -2,69 +2,51 @@ package ak.detaysoft.galepress;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Build;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import android.webkit.WebChromeClient;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
 import com.artifex.mupdfdemo.*;
+import com.mogoweb.chrome.WebSettings;
+import com.mogoweb.chrome.WebView;
 
 /**
  * Created by adem on 08/08/14.
  */
-public class WebViewAnnotation extends WebView {
+public class WebViewAnnotationWithChromium extends WebView {
     public float x1 , x2, y1 , y2;
     public float left, top ;
     public MuPDFReaderView readerView;
     public LinkInfoExternal linkInfoExternal;
 
-    private class MyWebChromeClient extends WebChromeClient {
-        @Override
-        public void onShowCustomView(View view, CustomViewCallback callback) {
-            Logout.e("Adem","onShowCustomView");
-            super.onShowCustomView(view, callback);
-        }
-
-        @Override
-        public void onHideCustomView() {
-            Logout.e("Adem","onHideCustomView");
-            super.onHideCustomView();
-        }
-    }
-
-    private class MyWebViewClient extends WebViewClient {
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            Logout.e("Adem WebView", "shouldOverrideUrlLoading: " + url);
-            // don't override URL so that stuff within iframe can work properly
-            // view.loadUrl(url);
-            return false;
-        }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        return super.onKeyDown(keyCode, event);
     }
 
     public boolean isHorizontalScrolling, isDummyAction;
     private MotionEvent previousMotionEvent;
-    public WebViewAnnotation(Context context, LinkInfoExternal lie) {
+    public WebViewAnnotationWithChromium(Context context, LinkInfoExternal lie) {
         super(context);
-        this.linkInfoExternal = lie;
-        this.setWebChromeClient(new MyWebChromeClient());
-        this.setWebViewClient(new MyWebViewClient());
 
-        if(lie.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_VIDEO){
-            this.setLayerType(WebView.LAYER_TYPE_HARDWARE,null);
-        }
-        else if(lie.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_WEB){
-            this.setLayerType(WebView.LAYER_TYPE_HARDWARE,null);
+        this.linkInfoExternal = lie;
+        this.setWebChromeClient(new com.mogoweb.chrome.WebChromeClient());
+        this.setWebViewClient(new com.mogoweb.chrome.WebViewClient());
+
+        /*if(lie.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_VIDEO || lie.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_WEB)
+        {
+            setLayerType(View.LAYER_TYPE_HARDWARE, null);
         }
         else{
-            this.setLayerType(WebView.LAYER_TYPE_SOFTWARE,null);
-        }
+            setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        }*/
 
         WebSettings s = getSettings();
         s.setBuiltInZoomControls(true);
-        s.setPluginState(WebSettings.PluginState.ON);
+        if (Build.VERSION.SDK_INT < 8) {
+            s.setPluginsEnabled(true);
+        }
         s.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
         s.setUseWideViewPort(true);
         s.setLoadWithOverviewMode(true);
@@ -74,14 +56,13 @@ public class WebViewAnnotation extends WebView {
         s.setAllowFileAccess(true);
         s.setAppCacheEnabled(true);
         s.setAllowFileAccessFromFileURLs(true);
-        s.setAllowUniversalAccessFromFileURLs(true);
+        s.setAllowUniversalAccessFromFileURLs(true);s.setDefaultTextEncodingName("utf-8");
         s.setSupportZoom(false);
 
         this.setHorizontalScrollBarEnabled(false);
         this.setVerticalScrollBarEnabled(false);
-        this.setBackgroundColor(Color.RED);
-        final WebViewAnnotation web = this;
-
+        this.setBackgroundColor(Color.YELLOW);
+        final WebViewAnnotationWithChromium web = this;
 
         if(linkInfoExternal.mustHorizontalScrollLock()){
             this.setOnTouchListener(new OnTouchListener() {
@@ -119,10 +100,10 @@ public class WebViewAnnotation extends WebView {
                                 if(web.getPreviousMotionEvent()!=null && web.getPreviousMotionEvent().getAction() != MotionEvent.ACTION_MOVE) {
                                     MotionEvent previousEvent = web.getPreviousMotionEvent();
                                     web.setPreviousMotionEvent(null);
-                                    previousEvent.setLocation(previousEvent.getX() + left, previousEvent.getY() + top);
+                                    previousEvent.setLocation(previousEvent.getX() + WebViewAnnotationWithChromium.this.left, previousEvent.getY() + WebViewAnnotationWithChromium.this.top);
                                     readerView.onTouchEvent(previousEvent);
                                 }
-                                event.setLocation(event.getX() + left, event.getY() + top); // Webview size is not equal to page size. Optimize the location for page.
+                                event.setLocation(event.getX() + WebViewAnnotationWithChromium.this.left, event.getY() + WebViewAnnotationWithChromium.this.top); // Webview size is not equal to page size. Optimize the location for page.
                                 readerView.onTouchEvent(event);
                                 return true;
                             }
@@ -132,7 +113,7 @@ public class WebViewAnnotation extends WebView {
                         // Action UP
                         if(web.isHorizontalScrolling){
                             web.isHorizontalScrolling = false;
-                            event.setLocation(event.getX() + left, event.getY() + top); // Webview size is not equal to page size. Optimize the location for page.
+                            event.setLocation(event.getX() + WebViewAnnotationWithChromium.this.left, event.getY() + WebViewAnnotationWithChromium.this.top); // Webview size is not equal to page size. Optimize the location for page.
                             readerView.onTouchEvent(event);
                             return true;
                         }
@@ -154,6 +135,7 @@ public class WebViewAnnotation extends WebView {
                 }
             });
         }
+
     }
 
     public MotionEvent getPreviousMotionEvent() {
@@ -166,7 +148,4 @@ public class WebViewAnnotation extends WebView {
         else
             this.previousMotionEvent = MotionEvent.obtain(event);
     }
-
-
-
 }

@@ -34,4 +34,5 @@ dependencies {
     compile files('../dd-plist.jar')
     compile fileTree(dir: 'src/main/lib', include: '*.*')
     compile files('src/main/lib/gcm.jar')
+    compile project(':ChromiumLibrary')
 }

@@ -10,15 +10,12 @@ import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.webkit.WebView;
 
-import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.TimeZone;
 import java.util.UUID;
 
-import ak.detaysoft.galepress.ExtraWebViewActivity;
 import ak.detaysoft.galepress.GalePressApplication;
 import ak.detaysoft.galepress.database_models.L_Statistic;
 
@@ -362,7 +359,31 @@ public class MuPDFReaderView extends ReaderView {
                         }
                     }
                 }
+            } else if(view instanceof com.mogoweb.chrome.WebView){ //Chromium webview kontrol
+                float original_x = -1;
+                float original_y = -1;
+                com.mogoweb.chrome.WebView webView = (com.mogoweb.chrome.WebView) view;
+                LinkInfo[] links = pageView.mLinks;
+                if (links!=null){
+                    for (LinkInfo link : links) {
+                        if (link instanceof LinkInfoExternal){
+                            if(((LinkInfoExternal) link).webViewId == webView.getId()){
+                                original_x = link.rect.left * pageView.mSourceScale;
+                                original_y = link.rect.top * pageView.mSourceScale;
+                                webView.setPivotX(0);
+                                webView.setPivotY(0);
+                                webView.setX(original_x * scale);
+                                webView.setY(original_y * scale);
+                                webView.setScaleX(scale);
+                                webView.setScaleY(scale);
+                                webView.invalidate();
+                            }
+                        }
+                    }
+                }
             }
         }
+
 	}
+
 }
