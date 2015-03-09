@@ -1,0 +1,77 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* chromium_webview-master.iml
+* proguard-project.txt
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:19.+
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => ChromiumLibrary\src\main\AndroidManifest.xml
+* assets\ => ChromiumLibrary\src\main\assets\
+* libs\armeabi-v7a\libchromeview.so => ChromiumLibrary\src\main\jniLibs\armeabi-v7a\libchromeview.so
+* libs\guava_javalib.jar => ChromiumLibrary\libs\guava_javalib.jar
+* libs\jsr_305_javalib.jar => ChromiumLibrary\libs\jsr_305_javalib.jar
+* res\ => ChromiumLibrary\src\main\res\
+* src\ => ChromiumLibrary\src\main\java\
+* src\com\googlecode\eyesfree\braille\display\BrailleDisplayProperties.aidl => ChromiumLibrary\src\main\aidl\com\googlecode\eyesfree\braille\display\BrailleDisplayProperties.aidl
+* src\com\googlecode\eyesfree\braille\display\BrailleInputEvent.aidl => ChromiumLibrary\src\main\aidl\com\googlecode\eyesfree\braille\display\BrailleInputEvent.aidl
+* src\com\googlecode\eyesfree\braille\display\IBrailleService.aidl => ChromiumLibrary\src\main\aidl\com\googlecode\eyesfree\braille\display\IBrailleService.aidl
+* src\com\googlecode\eyesfree\braille\display\IBrailleServiceCallback.aidl => ChromiumLibrary\src\main\aidl\com\googlecode\eyesfree\braille\display\IBrailleServiceCallback.aidl
+* src\com\googlecode\eyesfree\braille\selfbraille\ISelfBrailleService.aidl => ChromiumLibrary\src\main\aidl\com\googlecode\eyesfree\braille\selfbraille\ISelfBrailleService.aidl
+* src\com\googlecode\eyesfree\braille\selfbraille\WriteData.aidl => ChromiumLibrary\src\main\aidl\com\googlecode\eyesfree\braille\selfbraille\WriteData.aidl
+* src\com\googlecode\eyesfree\braille\translate\ITranslatorService.aidl => ChromiumLibrary\src\main\aidl\com\googlecode\eyesfree\braille\translate\ITranslatorService.aidl
+* src\com\googlecode\eyesfree\braille\translate\ITranslatorServiceCallback.aidl => ChromiumLibrary\src\main\aidl\com\googlecode\eyesfree\braille\translate\ITranslatorServiceCallback.aidl
+* src\org\chromium\content\common\IChildProcessCallback.aidl => ChromiumLibrary\src\main\aidl\org\chromium\content\common\IChildProcessCallback.aidl
+* src\org\chromium\content\common\IChildProcessService.aidl => ChromiumLibrary\src\main\aidl\org\chromium\content\common\IChildProcessService.aidl
+* src\org\chromium\net\IRemoteAndroidKeyStore.aidl => ChromiumLibrary\src\main\aidl\org\chromium\net\IRemoteAndroidKeyStore.aidl
+* src\org\chromium\net\IRemoteAndroidKeyStoreCallbacks.aidl => ChromiumLibrary\src\main\aidl\org\chromium\net\IRemoteAndroidKeyStoreCallbacks.aidl
+
+Missing Android Support Repository:
+-----------------------------------
+Some useful libraries, such as the Android Support Library, are
+installed from a special Maven repository, which should be installed
+via the SDK manager.
+
+It looks like this library is missing from your SDK installation at:
+null
+
+To install it, open the SDK manager, and in the Extras category,
+select "Android Support Repository". You may also want to install the
+"Google Repository" if you want to use libraries like Google Play
+Services.
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

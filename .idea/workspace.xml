@@ -44,8 +44,466 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4272a91b-e20d-476c-9f23-fd491d5d43e7" name="Default" comment="WebView video play bug fix with chromium webview library">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotationWithChromium.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotationWithChromium.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/mipmap-hdpi/app_icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/mipmap-mdpi/app_icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/mipmap-xhdpi/app_icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/mipmap-xxhdpi/app_icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable/autofill_popup_background_down.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-hdpi/autofill_popup_background_down.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-xhdpi/autofill_popup_background_down.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable/autofill_popup_background_up.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-hdpi/autofill_popup_background_up.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-xhdpi/autofill_popup_background_up.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable/bubble.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-hdpi/bubble.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-xhdpi/bubble.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable/bubble_arrow_up.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-hdpi/bubble_arrow_up.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-xhdpi/bubble_arrow_up.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable/color_picker_advanced_select_handle.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-hdpi/color_picker_advanced_select_handle.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-xhdpi/color_picker_advanced_select_handle.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/libs/guava_javalib.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-hdpi/ic_find_next_holo_light.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-mdpi/ic_find_next_holo_light.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-xhdpi/ic_find_next_holo_light.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-hdpi/ic_find_previous_holo_light.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-mdpi/ic_find_previous_holo_light.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-xhdpi/ic_find_previous_holo_light.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-hdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-mdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-xhdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-hdpi/ic_media_video_poster.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-ldpi/ic_media_video_poster.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-mdpi/ic_media_video_poster.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-xhdpi/ic_media_video_poster.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable/ic_menu_search_holo_light.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-hdpi/ic_menu_search_holo_light.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-xhdpi/ic_menu_search_holo_light.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable/ic_menu_share_holo_light.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-hdpi/ic_menu_share_holo_light.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-xhdpi/ic_menu_share_holo_light.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/libs/jsr_305_javalib.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/jniLibs/armeabi-v7a/libchromeview.so" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable/ondemand_overlay.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-hdpi/ondemand_overlay.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-xhdpi/ondemand_overlay.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable/pageinfo_warning_major.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-hdpi/pageinfo_warning_major.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-xhdpi/pageinfo_warning_major.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/AccessedByNative.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/accessibility/AccessibilityInjector.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ActivityContentVideoViewClient.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/ActivityState.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/ActivityState.template" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/ActivityStatus.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/base/ActivityWindowAndroid.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/AdapterInputConnection.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/AndroidCertVerifyResult.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/AndroidKeyStore.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/AndroidManifest.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/AndroidNetworkLibrary.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/AndroidPrivateKey.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AndroidProtocolHandler.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/ApiCompatibilityUtils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/media/AudioManagerAndroid.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/media/AudioRecordInput.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/autofill/AutofillDividerDrawable.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/autofill/AutofillListAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/autofill/AutofillPopup.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/autofill/AutofillSuggestion.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwAutofillManagerDelegate.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwBrowserContext.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwBrowserProcess.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwContentViewClient.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwContents.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwContentsClient.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwContentsClientBridge.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwContentsClientCallbackHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwContentsIoThreadClient.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwCookieManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwDevToolsServer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwFormDatabase.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwGeolocationPermissions.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwHttpAuthHandler.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwLayoutSizer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwPdfExporter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwPicture.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwPrintDocumentAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwQuotaManagerBridge.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwResource.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwScrollOffsetManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwSettings.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwWebContentsDelegate.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwWebContentsDelegateAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwZoomControls.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/BaseChromiumApplication.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/BaseSwitches.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/BindingManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/BindingManagerImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/gfx/BitmapHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/aidl/com/googlecode/eyesfree/braille/display/BrailleDisplayProperties.aidl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/googlecode/eyesfree/braille/display/BrailleDisplayProperties.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/aidl/com/googlecode/eyesfree/braille/display/BrailleInputEvent.aidl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/googlecode/eyesfree/braille/display/BrailleInputEvent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/googlecode/eyesfree/braille/display/BrailleKeyBinding.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/googlecode/eyesfree/braille/translate/BrailleTranslator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/accessibility/BrowserAccessibilityManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/BrowserStartupController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/buildConfig/debug/com/mogoweb/chrome/BuildConfig.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/buildConfig/release/com/mogoweb/chrome/BuildConfig.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/buildConfig/test/debug/com/mogoweb/chrome/test/BuildConfig.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/BuildInfo.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/CalledByNative.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/CalledByNativeUnchecked.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/CertVerifyResultAndroid.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/CertVerifyStatusAndroid.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/CertificateMimeType.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ChildProcessConnection.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ChildProcessConnectionImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ChildProcessLauncher.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/ChildProcessService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/ChromiumApplication.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/ChromiumLinkerParams.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/common/CleanupReference.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/Clipboard.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/base/Clipboard.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/CollectionUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/components/web_contents_delegate_android/ColorChooserAndroid.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/ColorPickerAdvanced.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/ColorPickerAdvancedComponent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/ColorPickerDialog.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/ColorPickerMoreButton.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/ColorPickerSimple.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/ColorSuggestion.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/ColorSuggestionListAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/CommandLine.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/common/CommandLine.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/ContentApplication.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/ContentMain.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentSettings.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/ContentSettingsAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/common/ContentSwitches.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/ContentUriUtils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentVideoView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentVideoViewClient.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentVideoViewControls.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentVideoViewLegacy.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentViewClient.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentViewCore.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentViewDownloadDelegate.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentViewGestureHandler.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentViewRenderView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentViewStatics.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/ContextTypes.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/CookieManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/CookieManagerAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/CpuFeatures.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/CursorController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content_public/DEPS" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/DateDialogNormalizer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/DateTimeChooserAndroid.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/DateTimePickerDialog.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/DateTimeSuggestion.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/DateTimeSuggestionListAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/DebugFlags.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/DefaultAndroidKeyStore.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/DefaultVideoPosterRequestHandler.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/gfx/DeviceDisplayInfo.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/DeviceMotionAndOrientation.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/common/DeviceTelephonyInfo.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/DeviceUtils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/googlecode/eyesfree/braille/display/Display.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/DownloadController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/DownloadInfo.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/DownloadListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/DrawGLFunctor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/ErrorCodeConversionHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/FileDescriptorInfo.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/FindActionModeCallback.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/GURLUtils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/GenericTouchGesture.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/GeolocationPermissions.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/GeolocationPermissionsAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/third_party/GestureDetector.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/GestureEventType.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/GestureEventType.template" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content_public/browser/GestureStateListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/HandleView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/HeapStatsLogger.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/HttpAuthDatabase.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/HttpAuthHandler.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/aidl/com/googlecode/eyesfree/braille/display/IBrailleService.aidl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/debug/com/googlecode/eyesfree/braille/display/IBrailleService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/release/com/googlecode/eyesfree/braille/display/IBrailleService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/aidl/com/googlecode/eyesfree/braille/display/IBrailleServiceCallback.aidl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/debug/com/googlecode/eyesfree/braille/display/IBrailleServiceCallback.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/release/com/googlecode/eyesfree/braille/display/IBrailleServiceCallback.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/aidl/org/chromium/content/common/IChildProcessCallback.aidl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/debug/org/chromium/content/common/IChildProcessCallback.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/release/org/chromium/content/common/IChildProcessCallback.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/aidl/org/chromium/content/common/IChildProcessService.aidl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/debug/org/chromium/content/common/IChildProcessService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/release/org/chromium/content/common/IChildProcessService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/aidl/org/chromium/net/IRemoteAndroidKeyStore.aidl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/debug/org/chromium/net/IRemoteAndroidKeyStore.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/release/org/chromium/net/IRemoteAndroidKeyStore.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/aidl/org/chromium/net/IRemoteAndroidKeyStoreCallbacks.aidl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/debug/org/chromium/net/IRemoteAndroidKeyStoreCallbacks.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/release/org/chromium/net/IRemoteAndroidKeyStoreCallbacks.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/aidl/com/googlecode/eyesfree/braille/selfbraille/ISelfBrailleService.aidl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/debug/com/googlecode/eyesfree/braille/selfbraille/ISelfBrailleService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/release/com/googlecode/eyesfree/braille/selfbraille/ISelfBrailleService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/aidl/com/googlecode/eyesfree/braille/translate/ITranslatorService.aidl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/debug/com/googlecode/eyesfree/braille/translate/ITranslatorService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/release/com/googlecode/eyesfree/braille/translate/ITranslatorService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/aidl/com/googlecode/eyesfree/braille/translate/ITranslatorServiceCallback.aidl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/debug/com/googlecode/eyesfree/braille/translate/ITranslatorServiceCallback.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/release/com/googlecode/eyesfree/braille/translate/ITranslatorServiceCallback.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/media/ImageFormat.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/media/ImageFormat.template" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/ImeAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/ImportantFileWriterAndroid.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/InputDialogContainer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/InputMethodManagerWrapper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/InsertionHandleController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/components/navigation_interception/InterceptNavigationDelegate.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/InterceptedRequestData.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/InterstitialPageDelegateAndroid.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/JNINamespace.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/JavaBrowserViewRendererHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/JavaHandlerThread.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/JavascriptInterface.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/JavascriptInterface.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/accessibility/JellyBeanAccessibilityInjector.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/accessibility/JellyBeanBrowserAccessibilityManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/JellyBeanContentView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/JsDialogHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/JsPromptResult.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/JsPromptResultReceiver.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/JsResult.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/JsResultHandler.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/JsResultReceiver.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/accessibility/KitKatBrowserAccessibilityManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/library_loader/LibraryLoader.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/library_loader/LibraryLoaderHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/library_loader/Linker.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/LinkerParams.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/LoadUrlParams.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/library_loader/LoaderErrors.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/LocalizationUtils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/base/LocalizationUtils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/LocationProvider.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/LocationProviderAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/LocationProviderFactory.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/LongPressDetector.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/media/MediaCodecBridge.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/media/MediaDrmBridge.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/MediaDrmCredentialManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/media/MediaPlayerBridge.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/media/MediaPlayerListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/MediaResourceGetter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/MemoryPressureLevelList.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/MemoryPressureLevelList.template" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/MemoryPressureListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/chrome/browser/sync/ModelTypeSelection.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/MonthPicker.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/MonthPickerDialog.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/MultiFieldTimePickerDialog.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/MustOverrideException.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/NativeClassQualifiedName.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/library_loader/NativeLibraries.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/NavigationClient.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content_public/browser/NavigationController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/framehost/NavigationControllerImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/NavigationEntry.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/NavigationHistory.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/components/navigation_interception/NavigationParams.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/NetError.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/NetworkChangeNotifier.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/NetworkChangeNotifierAutoDetect.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/OWNERS" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/OWNERS" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/ObserverList.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/OnColorChangedListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/OverScrollGlow.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/PageInfo.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/PageTransitionTypes.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/PageTransitionTypes.template" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/PathService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/PathUtils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/PepperPluginManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/PerfTraceEvent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/common/PerfTraceEvent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/PopupItemType.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/PopupItemType.template" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/PopupZoomer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/PositionObserver.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/PowerMonitor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/PowerSaveBlocker.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/PowerStatusReceiver.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/PrivateKeyType.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/PrivilegedProcessService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/PrivilegedProcessService0.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/PrivilegedProcessService1.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/PrivilegedProcessService2.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/library_loader/ProcessInitException.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/ProxyChangeListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/r/debug/com/mogoweb/chrome/R.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/r/release/com/mogoweb/chrome/R.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/r/test/debug/com/mogoweb/chrome/R.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/r/test/debug/com/mogoweb/chrome/test/R.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/chrome/R.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/R.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/R.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/RemoteAndroidKeyStore.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/RenderCoordinates.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ResourceExtractor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/chrome/browser/ResourceId.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/ResourceProvider.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/common/ResultCodes.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/common/ResultCodes.template" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/SandboxedProcessService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/SandboxedProcessService0.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/SandboxedProcessService1.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/SandboxedProcessService10.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/SandboxedProcessService11.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/SandboxedProcessService12.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/SandboxedProcessService2.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/SandboxedProcessService3.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/SandboxedProcessService4.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/SandboxedProcessService5.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/SandboxedProcessService6.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/SandboxedProcessService7.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/SandboxedProcessService8.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/SandboxedProcessService9.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/ScrollAccessibilityHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/SelectActionModeCallback.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/SelectFileDialog.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/base/SelectFileDialog.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/SelectPopupAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/SelectPopupDialog.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/SelectPopupItem.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/SelectionHandleController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/googlecode/eyesfree/braille/selfbraille/SelfBrailleClient.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/SnapScrollController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/SpeechRecognition.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/SpeechRecognitionError.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/SpeechRecognitionError.template" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/SslErrorHandler.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/SslUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/gfx/SurfaceTextureListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/gl/SurfaceTextureListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/gfx/SurfaceTexturePlatformWrapper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/gl/SurfaceTexturePlatformWrapper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/SysUtils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/SystemMessageHandler.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/ThreadUtils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/chrome/browser/ui/toolbar/ToolbarModelSecurityLevel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/common/TopControlsState.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/common/TopControlsState.template" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/TouchEventSynthesizer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/TouchPoint.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/TraceEvent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/common/TraceEvent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/TracingControllerAndroid.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/TracingIntentHandler.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/googlecode/eyesfree/braille/translate/TranslatorManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/TwoFieldDatePicker.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/TwoFieldDatePickerDialog.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/UiUtils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/UnimplementedWebViewApi.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/media/UsbMidiDeviceAndroid.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/media/UsbMidiDeviceFactoryAndroid.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/VSyncManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/VSyncMonitor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/components/web_contents_delegate_android/ValidationMessageBubble.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/VibrationMessageFilter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/VibrationProvider.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/media/VideoCapture.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/ViewAndroid.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/base/ViewAndroid.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/ViewAndroidDelegate.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/base/ViewAndroidDelegate.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ViewPositionObserver.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/WeakContext.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/media/WebAudioMediaCodecBridge.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/WebBackForwardList.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/WebBackForwardListChromium.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/WebChromeClient.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content_public/browser/WebContents.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/components/web_contents_delegate_android/WebContentsDelegateAndroid.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/webcontents/WebContentsImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/WebContentsObserverAndroid.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/WebHistoryItem.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/WebHistoryItemChromium.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/WebIconDatabase.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/WebIconDatabaseAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/WebSettings.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/WebStorage.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/WebStorageAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/WebView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/WebViewChromium.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/WebViewChromiumFactoryProvider.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/WebViewClient.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/WebViewContentsClientAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/WebViewDatabase.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/WebViewDatabaseAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/WebViewFactory.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/WebViewFactoryProvider.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/WebViewFragment.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/WebViewProvider.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/WeekPicker.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/WeekPickerDialog.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/WindowAndroid.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/base/WindowAndroid.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/WindowOpenDisposition.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/aidl/com/googlecode/eyesfree/braille/selfbraille/WriteData.aidl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/googlecode/eyesfree/braille/selfbraille/WriteData.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/X509Util.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values/android_content_strings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values-zh-rCN/android_content_strings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values/android_ui_strings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values-zh-rCN/android_ui_strings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values/attrs_content.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable/autofill_popup_background.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/layout/autofill_text.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build.gradle" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable/color_button_background.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/layout/color_picker_advanced_component.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable/color_picker_border.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/layout/color_picker_dialog_content.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/layout/color_picker_dialog_title.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values/colors_ui.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/layout/date_time_picker_dialog.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/layout-land/date_time_picker_dialog.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/layout/date_time_suggestion.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values/dimens_content.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values/dimens_ui.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import-summary.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/layout/js_prompt.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/raw/loaderror.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/raw-zh-rCN/loaderror.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/layout/multi_field_time_picker_dialog.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/raw/nodomain.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/raw-zh-rCN/nodomain.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/menu/select_action_menu.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values/strings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values-zh-rCN/strings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values/strings_content.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values/strings_ui.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values/styles.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values-v11/styles.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values-v14/styles.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values-v17/styles_content.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values-v17/styles_ui.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/layout/two_field_date_picker.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/layout/validation_message_bubble.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values/values_ui.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/layout/webview_find.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/menu/webview_find.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/assets/webviewchromium.pak" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -148,14 +606,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WebViewAnnotation.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="WebViewAnnotation.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.41871166" vertical-offset="1087" max-vertical-offset="2907">
-              <caret line="80" column="47" selection-start-line="80" selection-start-column="47" selection-end-line="80" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1087" max-vertical-offset="2907">
+              <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PopupZoomer.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/PopupZoomer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.87150836" vertical-offset="2201" max-vertical-offset="8840">
+              <caret line="184" column="39" selection-start-line="184" selection-start-column="39" selection-end-line="184" selection-end-column="39" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1946,7 +2414,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
+              <option name="myItemId" value="ChromiumLibrary" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1961,40 +2429,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GalePress" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2568,7 +3002,11 @@
       <created>1425913042712</created>
       <updated>1425913042712</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="WebView video play bug fix with chromium webview library">
+      <created>1425915100072</created>
+      <updated>1425915100072</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -2602,13 +3040,13 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32872504" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31276596" sideWeight="0.4983845" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31382978" sideWeight="0.49840087" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27659574" sideWeight="0.4610874" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39893618" sideWeight="0.50159913" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18869936" sideWeight="0.35658914" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32667178" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27759197" sideWeight="0.46066564" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17400081" sideWeight="0.38004485" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39893618" sideWeight="0.49840087" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27659574" sideWeight="0.5389126" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39893618" sideWeight="0.49840087" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27659574" sideWeight="0.5389126" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.33481422" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289777" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18901454" sideWeight="0.47976878" order="9" side_tool="false" content_ui="tabs" />
@@ -3120,11 +3558,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41871166" vertical-offset="1087" max-vertical-offset="2907">
-          <caret line="80" column="47" selection-start-line="80" selection-start-column="47" selection-end-line="80" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1087" max-vertical-offset="2907">
+          <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/PopupZoomer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.87150836" vertical-offset="2201" max-vertical-offset="8840">
+          <caret line="184" column="39" selection-start-line="184" selection-start-column="39" selection-end-line="184" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>
