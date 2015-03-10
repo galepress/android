@@ -29,6 +29,7 @@ public class R_ContentDetail {
     private String contentCategoryName;
     private Integer status;
     private boolean contentIsMaster;
+    private Integer contentOrientation;
 
 
 
@@ -58,6 +59,7 @@ public class R_ContentDetail {
         this.contentCategoryName = json.optString("ContentCategoryName");
         this.status = json.optInt("status");
         this.contentIsMaster = json.optBoolean("ContentIsMaster");
+        this.contentOrientation = json.optInt("ContentOrientation");
         this.contentCategories = new ArrayList<R_Category>();
 
 
@@ -246,5 +248,13 @@ public class R_ContentDetail {
 
     public void setContentIsMaster(boolean contentIsMaster) {
         this.contentIsMaster = contentIsMaster;
+    }
+
+    public Integer getContentOrientation() {
+        return contentOrientation;
+    }
+
+    public void setContentOrientation(Integer contentOrientation) {
+        this.contentOrientation = contentOrientation;
     }
 }

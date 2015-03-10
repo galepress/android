@@ -44,466 +44,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4272a91b-e20d-476c-9f23-fd491d5d43e7" name="Default" comment="WebView video play bug fix with chromium webview library">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/mipmap-hdpi/app_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/mipmap-mdpi/app_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/mipmap-xhdpi/app_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/mipmap-xxhdpi/app_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable/autofill_popup_background_down.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-hdpi/autofill_popup_background_down.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-xhdpi/autofill_popup_background_down.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable/autofill_popup_background_up.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-hdpi/autofill_popup_background_up.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-xhdpi/autofill_popup_background_up.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable/bubble.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-hdpi/bubble.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-xhdpi/bubble.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable/bubble_arrow_up.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-hdpi/bubble_arrow_up.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-xhdpi/bubble_arrow_up.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable/color_picker_advanced_select_handle.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-hdpi/color_picker_advanced_select_handle.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-xhdpi/color_picker_advanced_select_handle.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/libs/guava_javalib.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-hdpi/ic_find_next_holo_light.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-mdpi/ic_find_next_holo_light.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-xhdpi/ic_find_next_holo_light.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-hdpi/ic_find_previous_holo_light.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-mdpi/ic_find_previous_holo_light.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-xhdpi/ic_find_previous_holo_light.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-hdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-mdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-xhdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-hdpi/ic_media_video_poster.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-ldpi/ic_media_video_poster.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-mdpi/ic_media_video_poster.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-xhdpi/ic_media_video_poster.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable/ic_menu_search_holo_light.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-hdpi/ic_menu_search_holo_light.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-xhdpi/ic_menu_search_holo_light.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable/ic_menu_share_holo_light.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-hdpi/ic_menu_share_holo_light.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-xhdpi/ic_menu_share_holo_light.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/libs/jsr_305_javalib.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/jniLibs/armeabi-v7a/libchromeview.so" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable/ondemand_overlay.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-hdpi/ondemand_overlay.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-xhdpi/ondemand_overlay.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable/pageinfo_warning_major.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-hdpi/pageinfo_warning_major.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable-xhdpi/pageinfo_warning_major.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/AccessedByNative.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/accessibility/AccessibilityInjector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ActivityContentVideoViewClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/ActivityState.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/ActivityState.template" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/ActivityStatus.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/base/ActivityWindowAndroid.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/AdapterInputConnection.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/AndroidCertVerifyResult.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/AndroidKeyStore.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/AndroidManifest.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/AndroidNetworkLibrary.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/AndroidPrivateKey.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AndroidProtocolHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/ApiCompatibilityUtils.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/media/AudioManagerAndroid.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/media/AudioRecordInput.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/autofill/AutofillDividerDrawable.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/autofill/AutofillListAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/autofill/AutofillPopup.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/autofill/AutofillSuggestion.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwAutofillManagerDelegate.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwBrowserContext.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwBrowserProcess.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwContentViewClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwContents.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwContentsClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwContentsClientBridge.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwContentsClientCallbackHelper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwContentsIoThreadClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwCookieManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwDevToolsServer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwFormDatabase.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwGeolocationPermissions.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwHttpAuthHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwLayoutSizer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwPdfExporter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwPicture.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwPrintDocumentAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwQuotaManagerBridge.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwResource.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwScrollOffsetManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwSettings.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwWebContentsDelegate.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwWebContentsDelegateAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwZoomControls.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/BaseChromiumApplication.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/BaseSwitches.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/BindingManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/BindingManagerImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/gfx/BitmapHelper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/aidl/com/googlecode/eyesfree/braille/display/BrailleDisplayProperties.aidl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/googlecode/eyesfree/braille/display/BrailleDisplayProperties.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/aidl/com/googlecode/eyesfree/braille/display/BrailleInputEvent.aidl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/googlecode/eyesfree/braille/display/BrailleInputEvent.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/googlecode/eyesfree/braille/display/BrailleKeyBinding.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/googlecode/eyesfree/braille/translate/BrailleTranslator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/accessibility/BrowserAccessibilityManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/BrowserStartupController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/buildConfig/debug/com/mogoweb/chrome/BuildConfig.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/buildConfig/release/com/mogoweb/chrome/BuildConfig.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/buildConfig/test/debug/com/mogoweb/chrome/test/BuildConfig.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/BuildInfo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/CalledByNative.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/CalledByNativeUnchecked.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/CertVerifyResultAndroid.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/CertVerifyStatusAndroid.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/CertificateMimeType.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ChildProcessConnection.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ChildProcessConnectionImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ChildProcessLauncher.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/ChildProcessService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/ChromiumApplication.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/ChromiumLinkerParams.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/common/CleanupReference.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/Clipboard.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/base/Clipboard.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/CollectionUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/components/web_contents_delegate_android/ColorChooserAndroid.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/ColorPickerAdvanced.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/ColorPickerAdvancedComponent.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/ColorPickerDialog.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/ColorPickerMoreButton.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/ColorPickerSimple.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/ColorSuggestion.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/ColorSuggestionListAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/CommandLine.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/common/CommandLine.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/ContentApplication.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/ContentMain.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentSettings.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/ContentSettingsAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/common/ContentSwitches.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/ContentUriUtils.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentVideoView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentVideoViewClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentVideoViewControls.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentVideoViewLegacy.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentViewClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentViewCore.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentViewDownloadDelegate.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentViewGestureHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentViewRenderView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentViewStatics.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/ContextTypes.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/CookieManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/CookieManagerAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/CpuFeatures.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/CursorController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content_public/DEPS" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/DateDialogNormalizer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/DateTimeChooserAndroid.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/DateTimePickerDialog.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/DateTimeSuggestion.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/DateTimeSuggestionListAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/DebugFlags.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/DefaultAndroidKeyStore.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/DefaultVideoPosterRequestHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/gfx/DeviceDisplayInfo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/DeviceMotionAndOrientation.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/common/DeviceTelephonyInfo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/DeviceUtils.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/googlecode/eyesfree/braille/display/Display.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/DownloadController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/DownloadInfo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/DownloadListener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/DrawGLFunctor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/ErrorCodeConversionHelper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/FileDescriptorInfo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/FindActionModeCallback.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/GURLUtils.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/GenericTouchGesture.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/GeolocationPermissions.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/GeolocationPermissionsAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/third_party/GestureDetector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/GestureEventType.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/GestureEventType.template" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content_public/browser/GestureStateListener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/HandleView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/HeapStatsLogger.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/HttpAuthDatabase.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/HttpAuthHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/aidl/com/googlecode/eyesfree/braille/display/IBrailleService.aidl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/debug/com/googlecode/eyesfree/braille/display/IBrailleService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/release/com/googlecode/eyesfree/braille/display/IBrailleService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/aidl/com/googlecode/eyesfree/braille/display/IBrailleServiceCallback.aidl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/debug/com/googlecode/eyesfree/braille/display/IBrailleServiceCallback.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/release/com/googlecode/eyesfree/braille/display/IBrailleServiceCallback.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/aidl/org/chromium/content/common/IChildProcessCallback.aidl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/debug/org/chromium/content/common/IChildProcessCallback.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/release/org/chromium/content/common/IChildProcessCallback.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/aidl/org/chromium/content/common/IChildProcessService.aidl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/debug/org/chromium/content/common/IChildProcessService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/release/org/chromium/content/common/IChildProcessService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/aidl/org/chromium/net/IRemoteAndroidKeyStore.aidl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/debug/org/chromium/net/IRemoteAndroidKeyStore.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/release/org/chromium/net/IRemoteAndroidKeyStore.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/aidl/org/chromium/net/IRemoteAndroidKeyStoreCallbacks.aidl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/debug/org/chromium/net/IRemoteAndroidKeyStoreCallbacks.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/release/org/chromium/net/IRemoteAndroidKeyStoreCallbacks.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/aidl/com/googlecode/eyesfree/braille/selfbraille/ISelfBrailleService.aidl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/debug/com/googlecode/eyesfree/braille/selfbraille/ISelfBrailleService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/release/com/googlecode/eyesfree/braille/selfbraille/ISelfBrailleService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/aidl/com/googlecode/eyesfree/braille/translate/ITranslatorService.aidl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/debug/com/googlecode/eyesfree/braille/translate/ITranslatorService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/release/com/googlecode/eyesfree/braille/translate/ITranslatorService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/aidl/com/googlecode/eyesfree/braille/translate/ITranslatorServiceCallback.aidl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/debug/com/googlecode/eyesfree/braille/translate/ITranslatorServiceCallback.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/aidl/release/com/googlecode/eyesfree/braille/translate/ITranslatorServiceCallback.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/media/ImageFormat.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/media/ImageFormat.template" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/ImeAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/ImportantFileWriterAndroid.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/InputDialogContainer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/InputMethodManagerWrapper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/InsertionHandleController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/components/navigation_interception/InterceptNavigationDelegate.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/InterceptedRequestData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/InterstitialPageDelegateAndroid.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/JNINamespace.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/JavaBrowserViewRendererHelper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/JavaHandlerThread.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/JavascriptInterface.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/JavascriptInterface.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/accessibility/JellyBeanAccessibilityInjector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/accessibility/JellyBeanBrowserAccessibilityManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/JellyBeanContentView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/JsDialogHelper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/JsPromptResult.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/JsPromptResultReceiver.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/JsResult.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/JsResultHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/JsResultReceiver.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/accessibility/KitKatBrowserAccessibilityManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/library_loader/LibraryLoader.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/library_loader/LibraryLoaderHelper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/library_loader/Linker.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/LinkerParams.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/LoadUrlParams.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/library_loader/LoaderErrors.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/LocalizationUtils.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/base/LocalizationUtils.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/LocationProvider.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/LocationProviderAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/LocationProviderFactory.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/LongPressDetector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/media/MediaCodecBridge.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/media/MediaDrmBridge.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/MediaDrmCredentialManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/media/MediaPlayerBridge.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/media/MediaPlayerListener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/MediaResourceGetter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/MemoryPressureLevelList.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/MemoryPressureLevelList.template" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/MemoryPressureListener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/chrome/browser/sync/ModelTypeSelection.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/MonthPicker.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/MonthPickerDialog.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/MultiFieldTimePickerDialog.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/MustOverrideException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/NativeClassQualifiedName.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/library_loader/NativeLibraries.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/NavigationClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content_public/browser/NavigationController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/framehost/NavigationControllerImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/NavigationEntry.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/NavigationHistory.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/components/navigation_interception/NavigationParams.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/NetError.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/NetworkChangeNotifier.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/NetworkChangeNotifierAutoDetect.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/OWNERS" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/OWNERS" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/ObserverList.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/OnColorChangedListener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/OverScrollGlow.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/PageInfo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/PageTransitionTypes.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/PageTransitionTypes.template" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/PathService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/PathUtils.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/PepperPluginManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/PerfTraceEvent.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/common/PerfTraceEvent.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/PopupItemType.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/PopupItemType.template" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/PopupZoomer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/PositionObserver.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/PowerMonitor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/PowerSaveBlocker.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/PowerStatusReceiver.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/PrivateKeyType.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/PrivilegedProcessService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/PrivilegedProcessService0.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/PrivilegedProcessService1.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/PrivilegedProcessService2.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/library_loader/ProcessInitException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/ProxyChangeListener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/r/debug/com/mogoweb/chrome/R.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/r/release/com/mogoweb/chrome/R.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/r/test/debug/com/mogoweb/chrome/R.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build/generated/source/r/test/debug/com/mogoweb/chrome/test/R.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/chrome/R.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/R.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/R.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/RemoteAndroidKeyStore.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/RenderCoordinates.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ResourceExtractor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/chrome/browser/ResourceId.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/ResourceProvider.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/common/ResultCodes.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/common/ResultCodes.template" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/SandboxedProcessService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/SandboxedProcessService0.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/SandboxedProcessService1.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/SandboxedProcessService10.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/SandboxedProcessService11.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/SandboxedProcessService12.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/SandboxedProcessService2.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/SandboxedProcessService3.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/SandboxedProcessService4.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/SandboxedProcessService5.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/SandboxedProcessService6.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/SandboxedProcessService7.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/SandboxedProcessService8.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/app/SandboxedProcessService9.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/ScrollAccessibilityHelper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/SelectActionModeCallback.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/SelectFileDialog.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/base/SelectFileDialog.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/SelectPopupAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/SelectPopupDialog.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/SelectPopupItem.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/SelectionHandleController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/googlecode/eyesfree/braille/selfbraille/SelfBrailleClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/SnapScrollController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/SpeechRecognition.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/SpeechRecognitionError.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/SpeechRecognitionError.template" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/SslErrorHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/SslUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/gfx/SurfaceTextureListener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/gl/SurfaceTextureListener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/gfx/SurfaceTexturePlatformWrapper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/gl/SurfaceTexturePlatformWrapper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/SysUtils.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/SystemMessageHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/ThreadUtils.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/chrome/browser/ui/toolbar/ToolbarModelSecurityLevel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/common/TopControlsState.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/common/TopControlsState.template" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/TouchEventSynthesizer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/TouchPoint.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/TraceEvent.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/common/TraceEvent.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/TracingControllerAndroid.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/TracingIntentHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/googlecode/eyesfree/braille/translate/TranslatorManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/TwoFieldDatePicker.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/TwoFieldDatePickerDialog.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/UiUtils.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/UnimplementedWebViewApi.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/media/UsbMidiDeviceAndroid.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/media/UsbMidiDeviceFactoryAndroid.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/VSyncManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/VSyncMonitor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/components/web_contents_delegate_android/ValidationMessageBubble.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/VibrationMessageFilter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/VibrationProvider.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/media/VideoCapture.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/ViewAndroid.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/base/ViewAndroid.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/ViewAndroidDelegate.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/base/ViewAndroidDelegate.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ViewPositionObserver.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/WeakContext.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/media/WebAudioMediaCodecBridge.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/WebBackForwardList.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/WebBackForwardListChromium.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/WebChromeClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content_public/browser/WebContents.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/components/web_contents_delegate_android/WebContentsDelegateAndroid.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/webcontents/WebContentsImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/WebContentsObserverAndroid.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/WebHistoryItem.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/WebHistoryItemChromium.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/WebIconDatabase.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/WebIconDatabaseAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/WebSettings.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/WebStorage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/WebStorageAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/WebView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/WebViewChromium.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/WebViewChromiumFactoryProvider.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/WebViewClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/WebViewContentsClientAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/WebViewDatabase.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/WebViewDatabaseAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/WebViewFactory.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/WebViewFactoryProvider.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/WebViewFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/WebViewProvider.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/WeekPicker.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/input/WeekPickerDialog.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/WindowAndroid.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/base/WindowAndroid.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/WindowOpenDisposition.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/aidl/com/googlecode/eyesfree/braille/selfbraille/WriteData.aidl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/googlecode/eyesfree/braille/selfbraille/WriteData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/net/X509Util.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values/android_content_strings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values-zh-rCN/android_content_strings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values/android_ui_strings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values-zh-rCN/android_ui_strings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values/attrs_content.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable/autofill_popup_background.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/layout/autofill_text.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/build.gradle" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable/color_button_background.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/layout/color_picker_advanced_component.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/drawable/color_picker_border.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/layout/color_picker_dialog_content.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/layout/color_picker_dialog_title.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values/colors_ui.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/layout/date_time_picker_dialog.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/layout-land/date_time_picker_dialog.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/layout/date_time_suggestion.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values/dimens_content.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values/dimens_ui.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import-summary.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/layout/js_prompt.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/raw/loaderror.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/raw-zh-rCN/loaderror.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/layout/multi_field_time_picker_dialog.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/raw/nodomain.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/raw-zh-rCN/nodomain.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/menu/select_action_menu.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values/strings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values-zh-rCN/strings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values/strings_content.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values/strings_ui.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values/styles.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values-v11/styles.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values-v14/styles.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values-v17/styles_content.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values-v17/styles_ui.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/layout/two_field_date_picker.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/layout/validation_message_bubble.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/values/values_ui.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/layout/webview_find.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/res/menu/webview_find.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChromiumLibrary/src/main/assets/webviewchromium.pak" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseHelper.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_Content.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_Content.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_ContentDetail.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_ContentDetail.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -571,58 +117,99 @@
       <file leaf-file-name="PageView.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PageView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="6853" max-vertical-offset="15997">
-              <caret line="459" column="52" selection-start-line="459" selection-start-column="52" selection-end-line="459" selection-end-column="52" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="6838" max-vertical-offset="15997">
+              <caret line="468" column="0" selection-start-line="468" selection-start-column="0" selection-end-line="468" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <file leaf-file-name="MuPDFActivity.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2102" max-vertical-offset="2754">
-              <caret line="150" column="0" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
-              <folding>
-                <element signature="e#6860#6878#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WebViewAnnotationWithChromium.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotationWithChromium.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.857143" vertical-offset="834" max-vertical-offset="2652">
-              <caret line="62" column="48" selection-start-line="62" selection-start-column="48" selection-end-line="62" selection-end-column="48" />
+            <state vertical-scroll-proportion="0.35515547" vertical-offset="3982" max-vertical-offset="21080">
+              <caret line="399" column="36" selection-start-line="399" selection-start-column="36" selection-end-line="399" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2341#5974#0" expanded="true" />
-                <element signature="e#5959#5960#0" expanded="true" />
-                <element signature="e#6043#6044#0" expanded="true" />
-                <element signature="e#6085#6086#0" expanded="true" />
+                <element signature="method#createAlertWaiter#0;class#MuPDFActivity#0" expanded="false" />
+                <element signature="method#destroyAlertWaiter#0;class#MuPDFActivity#0" expanded="false" />
+                <element signature="method#openFile#0;class#MuPDFActivity#0" expanded="false" />
+                <element signature="method#openBuffer#0;class#MuPDFActivity#0" expanded="false" />
+                <element signature="e#11140#11169#0" expanded="true" />
+                <element signature="e#11254#11388#0" expanded="true" />
+                <element signature="e#11380#11381#0" expanded="true" />
+                <element signature="e#13481#13504#0" expanded="true" />
+                <element signature="e#13586#13610#0" expanded="true" />
+                <element signature="e#13616#13893#0" expanded="true" />
+                <element signature="e#13888#13889#0" expanded="true" />
+                <element signature="e#13943#13969#0" expanded="true" />
+                <element signature="e#13975#14098#0" expanded="true" />
+                <element signature="e#14093#14094#0" expanded="true" />
+                <element signature="e#15129#15762#0" expanded="true" />
+                <element signature="e#15739#15740#0" expanded="true" />
+                <element signature="e#16177#16178#0" expanded="true" />
+                <element signature="e#16201#16202#0" expanded="true" />
+                <element signature="e#18096#18097#0" expanded="true" />
+                <element signature="e#18168#18169#0" expanded="true" />
+                <element signature="e#18254#18344#0" expanded="true" />
+                <element signature="e#18339#18340#0" expanded="true" />
+                <element signature="e#18386#18704#0" expanded="true" />
+                <element signature="e#18693#18694#0" expanded="true" />
+                <element signature="e#18775#18865#0" expanded="true" />
+                <element signature="e#18860#18861#0" expanded="true" />
+                <element signature="e#18951#19124#0" expanded="true" />
+                <element signature="e#19118#19119#0" expanded="true" />
+                <element signature="e#20238#20445#0" expanded="true" />
+                <element signature="e#20440#20441#0" expanded="true" />
+                <element signature="e#20480#20700#0" expanded="true" />
+                <element signature="e#20695#20696#0" expanded="true" />
+                <element signature="e#20775#20861#0" expanded="true" />
+                <element signature="e#20856#20857#0" expanded="true" />
+                <element signature="e#20896#20981#0" expanded="true" />
+                <element signature="e#20976#20977#0" expanded="true" />
+                <element signature="e#21018#21127#0" expanded="true" />
+                <element signature="e#21122#21123#0" expanded="true" />
+                <element signature="e#21195#21532#0" expanded="true" />
+                <element signature="e#21526#21527#0" expanded="true" />
+                <element signature="e#23010#23042#0" expanded="true" />
+                <element signature="e#23963#24003#0" expanded="true" />
+                <element signature="e#24006#24045#0" expanded="true" />
+                <element signature="e#25778#25882#0" expanded="true" />
+                <element signature="e#25876#25877#0" expanded="true" />
+                <element signature="e#35958#36008#0" expanded="true" />
+                <element signature="e#36158#36190#0" expanded="true" />
+                <element signature="e#36898#36995#0" expanded="true" />
+                <element signature="e#36989#36990#0" expanded="true" />
+                <element signature="e#38818#38819#0" expanded="true" />
+                <element signature="e#38835#38836#0" expanded="true" />
+                <element signature="e#39092#39121#0" expanded="true" />
+                <element signature="e#39135#39166#0" expanded="true" />
+                <element signature="e#39718#39736#0" expanded="true" />
+                <element signature="e#39750#39781#0" expanded="true" />
+                <element signature="e#40044#40062#0" expanded="true" />
+                <element signature="e#40076#40107#0" expanded="true" />
+                <element signature="e#40370#40389#0" expanded="true" />
+                <element signature="e#40403#40434#0" expanded="true" />
+                <element signature="e#40683#40695#0" expanded="true" />
+                <element signature="e#40709#40744#0" expanded="true" />
+                <element signature="e#41503#41542#0" expanded="true" />
+                <element signature="e#41543#41579#0" expanded="true" />
+                <element signature="e#41768#41804#0" expanded="true" />
+                <element signature="e#41993#42029#0" expanded="true" />
+                <element signature="e#42218#42254#0" expanded="true" />
+                <element signature="e#42405#42440#0" expanded="true" />
+                <element signature="e#42618#42619#0" expanded="true" />
+                <element signature="e#42640#42641#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WebViewAnnotation.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java">
+      <file leaf-file-name="DatabaseManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1087" max-vertical-offset="2907">
-              <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PopupZoomer.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/PopupZoomer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.87150836" vertical-offset="2201" max-vertical-offset="8840">
-              <caret line="184" column="39" selection-start-line="184" selection-start-column="39" selection-end-line="184" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629">
+              <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -2224,7 +1811,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-tr/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentHolderAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/Foreground.java" />
@@ -2243,13 +1829,9 @@
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/view/ProgressWheel.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_launch.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_Content.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseHelper.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_ContentDetail.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseApi.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ColorFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_Content.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LaunchActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GcmBroadcastReceiver.java" />
@@ -2262,7 +1844,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/view/PlayerView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/VideoEnabledWebChromeClient.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/HTML5WebView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/custom_screen.xml" />
         <option value="$PROJECT_DIR$/ChromiumLibrary/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
@@ -2272,9 +1853,15 @@
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation2.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PageView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFReaderView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotationWithChromium.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_ContentDetail.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_Content.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseHelper.java" />
       </list>
     </option>
   </component>
@@ -2414,7 +2001,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ChromiumLibrary" />
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2429,6 +2016,70 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GalePress" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GalePress" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="galepress" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2452,7 +2103,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="591c6a8b" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="05c388e5002df79a" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="203" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="208" />
@@ -3006,7 +2657,11 @@
       <created>1425915100072</created>
       <updated>1425915100072</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="WebView video play bug fix with chromium webview library">
+      <created>1425915832221</created>
+      <updated>1425915832221</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -3038,15 +2693,15 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18457189" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32872504" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31276596" sideWeight="0.4983845" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31382978" sideWeight="0.49840087" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39893618" sideWeight="0.50159913" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31276596" sideWeight="0.4978678" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31382978" sideWeight="0.6007463" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27659574" sideWeight="0.24786781" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18869936" sideWeight="0.35658914" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32667178" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27759197" sideWeight="0.46066564" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27659574" sideWeight="0.24786781" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17400081" sideWeight="0.38004485" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39893618" sideWeight="0.49840087" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27659574" sideWeight="0.5389126" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39893618" sideWeight="0.49840087" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27659574" sideWeight="0.7521322" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.33481422" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289777" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18901454" sideWeight="0.47976878" order="9" side_tool="false" content_ui="tabs" />
@@ -3167,279 +2822,14 @@
           <properties />
           <option name="timeStamp" value="729" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java</url>
-          <line>277</line>
-          <properties />
-          <option name="timeStamp" value="739" />
-        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="872" />
+      <option name="time" value="904" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentHolderAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="399" max-vertical-offset="3030">
-          <caret line="75" column="5" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/app/src/main/lib/gcm.jar!/com/google/android/gcm/GCMBaseIntentService.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.107913665" vertical-offset="0" max-vertical-offset="780">
-          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="20573" max-vertical-offset="41670">
-          <caret line="1383" column="60" selection-start-line="1383" selection-start-column="60" selection-end-line="1383" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="5437" max-vertical-offset="6360">
-          <caret line="434" column="56" selection-start-line="434" selection-start-column="56" selection-end-line="434" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GCMIntentService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.85468245" vertical-offset="1081" max-vertical-offset="2145">
-          <caret line="134" column="31" selection-start-line="134" selection-start-column="31" selection-end-line="134" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/LinkInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LaunchActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1740" max-vertical-offset="1890">
-          <caret line="116" column="38" selection-start-line="116" selection-start-column="38" selection-end-line="116" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6096939" vertical-offset="6102" max-vertical-offset="6494">
-          <caret line="428" column="0" selection-start-line="428" selection-start-column="0" selection-end-line="428" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/AK_WebViewClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33580247" vertical-offset="0" max-vertical-offset="595">
-          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-19/android/webkit/WebView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3322785" vertical-offset="26687" max-vertical-offset="38250">
-          <caret line="1648" column="16" selection-start-line="1648" selection-start-column="16" selection-end-line="1648" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/LinkInfoExternal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="1277" max-vertical-offset="2703">
-          <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFCore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6802" max-vertical-offset="9095">
-          <caret line="440" column="33" selection-start-line="440" selection-start-column="33" selection-end-line="440" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4134" max-vertical-offset="18377">
-          <caret line="490" column="38" selection-start-line="490" selection-start-column="38" selection-end-line="490" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="314" max-vertical-offset="1224">
-          <caret line="67" column="37" selection-start-line="67" selection-start-column="37" selection-end-line="67" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-19/android/os/Looper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="1908" max-vertical-offset="4675">
-          <caret line="144" column="0" selection-start-line="144" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-19/android/os/Handler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="1177" max-vertical-offset="12563">
-          <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/AsyncTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6125356" vertical-offset="9923" max-vertical-offset="10625">
-          <caret line="660" column="30" selection-start-line="660" selection-start-column="30" selection-end-line="660" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-19/android/view/ViewGroup.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33282444" vertical-offset="55202" max-vertical-offset="113118">
-          <caret line="3334" column="16" selection-start-line="3334" selection-start-column="16" selection-end-line="3334" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17011128" vertical-offset="5027" max-vertical-offset="8568">
-          <caret line="318" column="0" selection-start-line="318" selection-start-column="0" selection-end-line="318" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/ByteArrayResponseHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15525115" vertical-offset="0" max-vertical-offset="657">
-          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_AppCategories.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18112633" vertical-offset="0" max-vertical-offset="1105">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/ArrayDeque.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25080907" vertical-offset="7529" max-vertical-offset="13855">
-          <caret line="478" column="16" selection-start-line="478" selection-start-column="16" selection-end-line="478" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36092716" vertical-offset="7024" max-vertical-offset="21777">
-          <caret line="513" column="29" selection-start-line="513" selection-start-column="29" selection-end-line="513" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53236246" vertical-offset="28" max-vertical-offset="646">
-          <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-19/java/util/concurrent/atomic/AtomicInteger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33225283" vertical-offset="2515" max-vertical-offset="3978">
-          <caret line="172" column="21" selection-start-line="172" selection-start-column="21" selection-end-line="172" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-19/android/view/ScaleGestureDetector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31202435" vertical-offset="3025" max-vertical-offset="9809">
-          <caret line="213" column="0" selection-start-line="213" selection-start-column="0" selection-end-line="213" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/ReaderView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="11202" max-vertical-offset="13277">
-          <caret line="702" column="0" selection-start-line="702" selection-start-column="0" selection-end-line="702" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/import-summary.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46092504" vertical-offset="0" max-vertical-offset="1411">
-          <caret line="17" column="55" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ChromiumLibrary/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44320297" vertical-offset="0" max-vertical-offset="537">
-          <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="537">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradle.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="537">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_launch.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.4074073" vertical-offset="0" max-vertical-offset="816">
-          <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3482309" vertical-offset="0" max-vertical-offset="537">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22160149" vertical-offset="0" max-vertical-offset="5967">
-          <caret line="60" column="13" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.167939" vertical-offset="1003" max-vertical-offset="2125">
-          <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/InfoPageFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.66480446" vertical-offset="0" max-vertical-offset="544">
@@ -3516,32 +2906,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFReaderView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33206108" vertical-offset="64" max-vertical-offset="6239">
-          <caret line="31" column="34" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PageView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6853" max-vertical-offset="15997">
-          <caret line="459" column="52" selection-start-line="459" selection-start-column="52" selection-end-line="459" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2102" max-vertical-offset="2754">
-          <caret line="150" column="0" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
-          <folding>
-            <element signature="e#6860#6878#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotationWithChromium.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.857143" vertical-offset="834" max-vertical-offset="2652">
@@ -3556,21 +2920,463 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/PopupZoomer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2201" max-vertical-offset="8840">
+          <caret line="168" column="7" selection-start-line="168" selection-start-column="7" selection-end-line="168" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/impl/WebViewContentsClientAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="6604" max-vertical-offset="12954">
+          <caret line="467" column="30" selection-start-line="467" selection-start-column="30" selection-end-line="467" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwScrollOffsetManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5788" max-vertical-offset="7106">
+          <caret line="370" column="71" selection-start-line="370" selection-start-column="71" selection-end-line="370" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwSettings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="15172" max-vertical-offset="25092">
+          <caret line="934" column="45" selection-start-line="934" selection-start-column="45" selection-end-line="934" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwContents.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43871868" vertical-offset="22771" max-vertical-offset="32402">
+          <caret line="1521" column="7" selection-start-line="1521" selection-start-column="7" selection-end-line="1521" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1087" max-vertical-offset="2907">
-          <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+          <caret line="67" column="70" selection-start-line="67" selection-start-column="70" selection-end-line="67" selection-end-column="70" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/PopupZoomer.java">
+    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-19/android/content/Intent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.87150836" vertical-offset="2201" max-vertical-offset="8840">
-          <caret line="184" column="39" selection-start-line="184" selection-start-column="39" selection-end-line="184" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.33282208" vertical-offset="71404" max-vertical-offset="122332">
+          <caret line="4274" column="15" selection-start-line="4274" selection-start-column="15" selection-end-line="4274" selection-end-column="15" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/TestApplicationInf.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27508092" vertical-offset="0" max-vertical-offset="816">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.j256.ormlite/ormlite-core/4.45/b4e2ced3a336685b43133f6f3f9206ea473b003a/ormlite-core-4.45-sources.jar!/com/j256/ormlite/table/TableUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="3874" max-vertical-offset="8602">
+          <caret line="262" column="31" selection-start-line="262" selection-start-column="31" selection-end-line="262" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.j256.ormlite/ormlite-android/4.45/7f9b826980b2d36888e1908f4c0e6d815a50d8b4/ormlite-android-4.45-sources.jar!/com/j256/ormlite/android/apptools/OpenHelperManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="831" max-vertical-offset="4505">
+          <caret line="72" column="69" selection-start-line="72" selection-start-column="69" selection-end-line="72" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFReaderView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="3570">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#onSingleTapUp#0;class#MuPDFReaderView#0" expanded="false" />
+            <element signature="method#onDown#0;class#MuPDFReaderView#0" expanded="false" />
+            <element signature="method#onScroll#0;class#MuPDFReaderView#0" expanded="false" />
+            <element signature="method#onFling#0;class#MuPDFReaderView#0" expanded="false" />
+            <element signature="method#onScaleBegin#0;class#MuPDFReaderView#0" expanded="false" />
+            <element signature="method#onTouchEvent#0;class#MuPDFReaderView#0" expanded="false" />
+            <element signature="method#touch_start#0;class#MuPDFReaderView#0" expanded="false" />
+            <element signature="method#touch_move#0;class#MuPDFReaderView#0" expanded="false" />
+            <element signature="method#touch_up#0;class#MuPDFReaderView#0" expanded="false" />
+            <element signature="method#onChildSetup#0;class#MuPDFReaderView#0" expanded="false" />
+            <element signature="e#7267#7454#0" expanded="true" />
+            <element signature="e#7449#7450#0" expanded="true" />
+            <element signature="method#getDisplayedPageNumbers#0;class#MuPDFReaderView#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.0.30/res/values-en-rGB/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.56198347" vertical-offset="0" max-vertical-offset="629">
+          <caret line="20" column="59" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.0.30/res/values-en-rGB/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23243243" vertical-offset="24" max-vertical-offset="629">
+          <caret line="9" column="51" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3322314" vertical-offset="31963" max-vertical-offset="58463">
+          <caret line="1892" column="36" selection-start-line="1892" selection-start-column="36" selection-end-line="1892" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.4074073" vertical-offset="0" max-vertical-offset="697">
+          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build/generated/source/r/debug/ak/detaysoft/galepress/R.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.24" vertical-offset="29187" max-vertical-offset="65059">
+          <caret line="1734" column="38" selection-start-line="1734" selection-start-column="38" selection-end-line="1734" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/googlecode/eyesfree/braille/display/BrailleDisplayProperties.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.452454" vertical-offset="1082" max-vertical-offset="1785">
+          <caret line="110" column="28" selection-start-line="110" selection-start-column="28" selection-end-line="110" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/app/src/main/lib/gcm.jar!/com/google/android/gcm/GCMRegistrar.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14333895" vertical-offset="0" max-vertical-offset="1275">
+          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GCMIntentService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.5954692" vertical-offset="0" max-vertical-offset="2431">
+          <caret line="67" column="21" selection-start-line="67" selection-start-column="21" selection-end-line="67" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-19/android/content/ContextWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5744" max-vertical-offset="8942">
+          <caret line="488" column="11" selection-start-line="488" selection-start-column="11" selection-end-line="488" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33278146" vertical-offset="1465" max-vertical-offset="6494">
+          <caret line="137" column="19" selection-start-line="137" selection-start-column="19" selection-end-line="137" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_ContentDetail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.081037275" vertical-offset="662" max-vertical-offset="3417">
+          <caret line="39" column="11" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.428572" vertical-offset="1878" max-vertical-offset="6035">
+          <caret line="185" column="45" selection-start-line="185" selection-start-column="45" selection-end-line="185" selection-end-column="45" />
+          <folding>
+            <element signature="e#8438#8465#0" expanded="false" />
+            <element signature="e#15171#15867#0" expanded="false" />
+            <element signature="e#15860#15861#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26134586" vertical-offset="377" max-vertical-offset="2125">
+          <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_Content.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3807" max-vertical-offset="4811">
+          <caret line="337" column="21" selection-start-line="337" selection-start-column="21" selection-end-line="337" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentHolderAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37245697" vertical-offset="561" max-vertical-offset="3434">
+          <caret line="70" column="73" selection-start-line="70" selection-start-column="73" selection-end-line="70" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1071" max-vertical-offset="2771">
+          <caret line="72" column="18" selection-start-line="72" selection-start-column="18" selection-end-line="72" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/AsyncTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4067" max-vertical-offset="10625">
+          <caret line="289" column="0" selection-start-line="289" selection-start-column="0" selection-end-line="289" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8252427" vertical-offset="0" max-vertical-offset="646">
+          <caret line="31" column="25" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PageView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="6838" max-vertical-offset="15997">
+          <caret line="468" column="0" selection-start-line="468" selection-start-column="0" selection-end-line="468" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/LinkInfoExternal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1976" max-vertical-offset="2703">
+          <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.607143" vertical-offset="8202" max-vertical-offset="10251">
+          <caret line="562" column="21" selection-start-line="562" selection-start-column="21" selection-end-line="562" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFCore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2350" max-vertical-offset="9061">
+          <caret line="180" column="23" selection-start-line="180" selection-start-column="11" selection-end-line="180" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LaunchActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="242" max-vertical-offset="1870">
+          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2571" max-vertical-offset="11849">
+          <caret line="466" column="62" selection-start-line="466" selection-start-column="62" selection-end-line="466" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#updateCompleted#0;class#DataApi#0" expanded="false" />
+            <element signature="method#isLibraryMustBeEnabled#0;class#DataApi#0" expanded="false" />
+            <element signature="class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
+            <element signature="method#checkDownloadSuccessfull#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
+            <element signature="method#onProgressUpdate#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
+            <element signature="method#onPreExecute#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
+            <element signature="method#onCancelled#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
+            <element signature="method#onPostExecute#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
+            <element signature="method#getWebServiceUrlBuilder#0;class#DataApi#0" expanded="false" />
+            <element signature="method#DataApi#0;class#DataApi#0" expanded="false" />
+            <element signature="method#getDatabaseApi#0;class#DataApi#0" expanded="false" />
+            <element signature="method#isConnectedToInternet#0;class#DataApi#0" expanded="false" />
+            <element signature="method#getDeviceName#0;class#DataApi#0" expanded="false" />
+            <element signature="method#capitalize#0;class#DataApi#0" expanded="false" />
+            <element signature="method#commitStatisticsToDB#0;class#DataApi#0" expanded="false" />
+            <element signature="method#deleteEverything#0;class#DataApi#0" expanded="false" />
+            <element signature="method#downloadCoverImage#0;class#DataApi#0" expanded="false" />
+            <element signature="method#getCoverImage#0;class#DataApi#0" expanded="false" />
+            <element signature="method#cancelDownload#0;class#DataApi#0" expanded="false" />
+            <element signature="method#getPdf#0;class#DataApi#0" expanded="false" />
+            <element signature="method#deletePdf#0;class#DataApi#0" expanded="false" />
+            <element signature="method#downloadPdf#0;class#DataApi#0" expanded="false" />
+            <element signature="method#startStatisticSend#0;class#DataApi#0" expanded="false" />
+            <element signature="method#stopStatisticSend#0;class#DataApi#0" expanded="false" />
+            <element signature="method#postStatistic#0;class#DataApi#0" expanded="false" />
+            <element signature="method#removeAllConCatsForContent#0;class#DataApi#0" expanded="false" />
+            <element signature="method#updateApplicationVersion#0;class#DataApi#0" expanded="false" />
+            <element signature="method#deleteContent#0;class#DataApi#0" expanded="false" />
+            <element signature="method#deleteFolder#0;class#DataApi#0" expanded="false" />
+            <element signature="method#progressUpdate#0;class#DataApi#0" expanded="false" />
+            <element signature="method#getViewHolderForContent#0;class#DataApi#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.j256.ormlite/ormlite-core/4.45/b4e2ced3a336685b43133f6f3f9206ea473b003a/ormlite-core-4.45-sources.jar!/com/j256/ormlite/dao/Dao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33282208" vertical-offset="616" max-vertical-offset="13209">
+          <caret line="72" column="19" selection-start-line="72" selection-start-column="19" selection-end-line="72" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2316" max-vertical-offset="7208">
+          <caret line="185" column="5" selection-start-line="185" selection-start-column="5" selection-end-line="185" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629">
+          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_Category.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20858896" vertical-offset="0" max-vertical-offset="816">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39110428" vertical-offset="0" max-vertical-offset="3026">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35515547" vertical-offset="3982" max-vertical-offset="21080">
+          <caret line="399" column="36" selection-start-line="399" selection-start-column="36" selection-end-line="399" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#createAlertWaiter#0;class#MuPDFActivity#0" expanded="false" />
+            <element signature="method#destroyAlertWaiter#0;class#MuPDFActivity#0" expanded="false" />
+            <element signature="method#openFile#0;class#MuPDFActivity#0" expanded="false" />
+            <element signature="method#openBuffer#0;class#MuPDFActivity#0" expanded="false" />
+            <element signature="e#11140#11169#0" expanded="true" />
+            <element signature="e#11254#11388#0" expanded="true" />
+            <element signature="e#11380#11381#0" expanded="true" />
+            <element signature="e#13481#13504#0" expanded="true" />
+            <element signature="e#13586#13610#0" expanded="true" />
+            <element signature="e#13616#13893#0" expanded="true" />
+            <element signature="e#13888#13889#0" expanded="true" />
+            <element signature="e#13943#13969#0" expanded="true" />
+            <element signature="e#13975#14098#0" expanded="true" />
+            <element signature="e#14093#14094#0" expanded="true" />
+            <element signature="e#15129#15762#0" expanded="true" />
+            <element signature="e#15739#15740#0" expanded="true" />
+            <element signature="e#16177#16178#0" expanded="true" />
+            <element signature="e#16201#16202#0" expanded="true" />
+            <element signature="e#18096#18097#0" expanded="true" />
+            <element signature="e#18168#18169#0" expanded="true" />
+            <element signature="e#18254#18344#0" expanded="true" />
+            <element signature="e#18339#18340#0" expanded="true" />
+            <element signature="e#18386#18704#0" expanded="true" />
+            <element signature="e#18693#18694#0" expanded="true" />
+            <element signature="e#18775#18865#0" expanded="true" />
+            <element signature="e#18860#18861#0" expanded="true" />
+            <element signature="e#18951#19124#0" expanded="true" />
+            <element signature="e#19118#19119#0" expanded="true" />
+            <element signature="e#20238#20445#0" expanded="true" />
+            <element signature="e#20440#20441#0" expanded="true" />
+            <element signature="e#20480#20700#0" expanded="true" />
+            <element signature="e#20695#20696#0" expanded="true" />
+            <element signature="e#20775#20861#0" expanded="true" />
+            <element signature="e#20856#20857#0" expanded="true" />
+            <element signature="e#20896#20981#0" expanded="true" />
+            <element signature="e#20976#20977#0" expanded="true" />
+            <element signature="e#21018#21127#0" expanded="true" />
+            <element signature="e#21122#21123#0" expanded="true" />
+            <element signature="e#21195#21532#0" expanded="true" />
+            <element signature="e#21526#21527#0" expanded="true" />
+            <element signature="e#23010#23042#0" expanded="true" />
+            <element signature="e#23963#24003#0" expanded="true" />
+            <element signature="e#24006#24045#0" expanded="true" />
+            <element signature="e#25778#25882#0" expanded="true" />
+            <element signature="e#25876#25877#0" expanded="true" />
+            <element signature="e#35958#36008#0" expanded="true" />
+            <element signature="e#36158#36190#0" expanded="true" />
+            <element signature="e#36898#36995#0" expanded="true" />
+            <element signature="e#36989#36990#0" expanded="true" />
+            <element signature="e#38818#38819#0" expanded="true" />
+            <element signature="e#38835#38836#0" expanded="true" />
+            <element signature="e#39092#39121#0" expanded="true" />
+            <element signature="e#39135#39166#0" expanded="true" />
+            <element signature="e#39718#39736#0" expanded="true" />
+            <element signature="e#39750#39781#0" expanded="true" />
+            <element signature="e#40044#40062#0" expanded="true" />
+            <element signature="e#40076#40107#0" expanded="true" />
+            <element signature="e#40370#40389#0" expanded="true" />
+            <element signature="e#40403#40434#0" expanded="true" />
+            <element signature="e#40683#40695#0" expanded="true" />
+            <element signature="e#40709#40744#0" expanded="true" />
+            <element signature="e#41503#41542#0" expanded="true" />
+            <element signature="e#41543#41579#0" expanded="true" />
+            <element signature="e#41768#41804#0" expanded="true" />
+            <element signature="e#41993#42029#0" expanded="true" />
+            <element signature="e#42218#42254#0" expanded="true" />
+            <element signature="e#42405#42440#0" expanded="true" />
+            <element signature="e#42618#42619#0" expanded="true" />
+            <element signature="e#42640#42641#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

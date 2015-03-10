@@ -45,6 +45,7 @@ public class L_Content implements Serializable {
     @DatabaseField private Integer coverImageVersion;
     @DatabaseField private Integer status;
     @DatabaseField private Integer version;
+    @DatabaseField private Integer contentOrientation;
 
     private ArrayList<L_Category> categories;
     private String pdfPath;
@@ -264,7 +265,14 @@ public class L_Content implements Serializable {
         this.isMaster = isMaster;
     }
 
-    // Model Methods
+    public Integer getContentOrientation() {
+        return contentOrientation;
+    }
+
+    public void setContentOrientation(Integer contentOrientation) {
+        this.contentOrientation = contentOrientation;
+    }
+// Model Methods
 
     public L_Content(R_ContentDetail remoteContent){
         this.id = remoteContent.getContentID();
@@ -297,6 +305,7 @@ public class L_Content implements Serializable {
         this.price = remoteContent.getContentPrice();
         this.status = remoteContent.getStatus();
         this.isMaster = remoteContent.isContentIsMaster();
+        this.contentOrientation = remoteContent.getContentOrientation();
     }
 
     public void updateWithRemoteContent(R_ContentDetail remoteContent){
@@ -322,6 +331,7 @@ public class L_Content implements Serializable {
         this.price = remoteContent.getContentPrice();
         this.status = remoteContent.getStatus();
         this.isMaster = remoteContent.isContentIsMaster();
+        this.contentOrientation = remoteContent.getContentOrientation();
     }
 
     @Override
@@ -353,6 +363,7 @@ public class L_Content implements Serializable {
                 ", gridThumbCoverImagePath='" + gridThumbCoverImagePath + '\'' +
                 ", bigCoverImagePath='" + bigCoverImagePath + '\'' +
                 ", isMaster='" + isMaster + '\'' +
+                ", contentOrientation='"+contentOrientation+'\''+
                 '}';
     }
 }

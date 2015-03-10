@@ -559,14 +559,15 @@ public class MuPDFPageView extends PageView implements MuPDFView {
 	@Override
 	protected void drawPage(Bitmap bm, int sizeX, int sizeY,
 			int patchX, int patchY, int patchWidth, int patchHeight) {
-		mCore.drawPage(bm, mPageNumber, sizeX, sizeY, patchX, patchY, patchWidth, patchHeight);
+        if(bm != null)
+		    mCore.drawPage(bm, mPageNumber, sizeX, sizeY, patchX, patchY, patchWidth, patchHeight);
 	}
 
 	@Override
 	protected void updatePage(Bitmap bm, int sizeX, int sizeY,
 			int patchX, int patchY, int patchWidth, int patchHeight) {
-
-		mCore.updatePage(bm, mPageNumber, sizeX, sizeY, patchX, patchY, patchWidth, patchHeight);
+        if(bm != null)
+		    mCore.updatePage(bm, mPageNumber, sizeX, sizeY, patchX, patchY, patchWidth, patchHeight);
 	}
 
 	@Override

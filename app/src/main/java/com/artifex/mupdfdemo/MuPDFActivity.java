@@ -21,6 +21,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -36,9 +37,12 @@ import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
+import android.view.Display;
 import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.Surface;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.view.inputmethod.EditorInfo;
@@ -362,6 +366,22 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 			alert.show();
 			return;
 		}
+
+        if(this.content == null)
+            this.content = (L_Content) getIntent().getSerializableExtra("content");
+
+        /*if(this.content.getContentOrientation() == 1) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+            mOrientation = Configuration.ORIENTATION_LANDSCAPE;
+
+        }
+        else if(this.content.getContentOrientation() == 2) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+            mOrientation = Configuration.ORIENTATION_PORTRAIT;
+        } else {
+            mOrientation = getResources().getConfiguration().orientation;
+        }*/
+
         mOrientation = getResources().getConfiguration().orientation;
 
         if(mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
@@ -373,7 +393,28 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 		createUI(savedInstanceState);
 	}
 
-	public void requestPassword(final Bundle savedInstanceState) {
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(content != null){
+            if(this.content == null)
+                this.content = (L_Content) getIntent().getSerializableExtra("content");
+
+            if(this.content.getContentOrientation() == 1) {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+                mOrientation = Configuration.ORIENTATION_LANDSCAPE;
+
+            }
+            else if(this.content.getContentOrientation() == 2) {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+                mOrientation = Configuration.ORIENTATION_PORTRAIT;
+            } else {
+                mOrientation = getResources().getConfiguration().orientation;
+            }
+        }
+    }
+
+    public void requestPassword(final Bundle savedInstanceState) {
 		mPasswordView = new EditText(this);
 		mPasswordView.setInputType(EditorInfo.TYPE_TEXT_VARIATION_PASSWORD);
 		mPasswordView.setTransformationMethod(new PasswordTransformationMethod());
@@ -716,7 +757,9 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 		showInfo(mReflow ? getString(R.string.entering_reflow_mode) : getString(R.string.leaving_reflow_mode));
 	}
 
-	@Override
+
+
+    @Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
 

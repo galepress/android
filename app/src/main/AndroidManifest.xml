@@ -66,6 +66,7 @@
         <activity
             android:name="com.artifex.mupdfdemo.MuPDFActivity"
             android:hardwareAccelerated="true"
+            android:screenOrientation="sensor"
             android:label="@string/app_name"
             android:theme="@style/AppBaseTheme">
             <intent-filter>
