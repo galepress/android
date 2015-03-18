@@ -5,6 +5,7 @@ import android.content.Context;
 import android.location.Location;
 import android.provider.Settings;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
@@ -252,32 +253,29 @@ public class MuPDFReaderView extends ReaderView {
 
 	protected void onMoveToChild(int i) {
         MuPDFCore core = ((MuPDFActivity)this.mContext).core;
+
         int[] pages = getDisplayedPageNumbers(i);
         for(int j=0; j < pages.length; j++){
             if(pages[j]!=-1){
                 Logout.e("Adem","Goruntulenen sayfa : "+pages[j]);
 
+                Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+                String udid = UUID.randomUUID().toString();
+                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                Calendar cal = Calendar.getInstance();
+                dateFormat .setTimeZone(TimeZone.getTimeZone("GMT"));
+                Location location = GalePressApplication.getInstance().location;
+                L_Statistic statistic;
+
                 if(core.getDisplayPages() ==1){
                     // Portrait
-                    Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
-                    String udid = UUID.randomUUID().toString();
-                    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    Calendar cal = Calendar.getInstance();
-                    dateFormat .setTimeZone(TimeZone.getTimeZone("GMT"));
-                    Location location = GalePressApplication.getInstance().location;
-                    L_Statistic statistic = new L_Statistic(udid, core.content.getId(), location!=null?location.getLatitude():null,location!=null?location.getLongitude():null, pages[j], dateFormat.format(cal.getTime()),L_Statistic.STATISTIC_pageOpenedPortrait, null,null,null);
-                    GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
+                    statistic = new L_Statistic(udid, core.content.getId(), location!=null?location.getLatitude():null,location!=null?location.getLongitude():null, pages[j], dateFormat.format(cal.getTime()),L_Statistic.STATISTIC_pageOpenedPortrait, null,null,null);
                 }
                 else{
-                    Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
-                    String udid = UUID.randomUUID().toString();
-                    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    Calendar cal = Calendar.getInstance();
-                    dateFormat .setTimeZone(TimeZone.getTimeZone("GMT"));
-                    Location location = GalePressApplication.getInstance().location;
-                    L_Statistic statistic = new L_Statistic(udid, core.content.getId(), location!=null?location.getLatitude():null,location!=null?location.getLongitude():null, pages[j], dateFormat.format(cal.getTime()),L_Statistic.STATISTIC_pageOpenedLandscape, null,null,null);
-                    GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
+                    //landscape
+                    statistic = new L_Statistic(udid, core.content.getId(), location!=null?location.getLatitude():null,location!=null?location.getLongitude():null, pages[j], dateFormat.format(cal.getTime()),L_Statistic.STATISTIC_pageOpenedLandscape, null,null,null);
                 }
+                GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
             }
         }
 

@@ -33,10 +33,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.os.PowerManager;
 import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.Display;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -112,6 +114,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
     private int mOrientation;
     public L_Content content;
     public Bundle savedInstanceState;
+    private boolean isActivityActive = false;
 
 
 
@@ -370,18 +373,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         if(this.content == null)
             this.content = (L_Content) getIntent().getSerializableExtra("content");
 
-        /*if(this.content.getContentOrientation() == 1) {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
-            mOrientation = Configuration.ORIENTATION_LANDSCAPE;
-
-        }
-        else if(this.content.getContentOrientation() == 2) {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
-            mOrientation = Configuration.ORIENTATION_PORTRAIT;
-        } else {
-            mOrientation = getResources().getConfiguration().orientation;
-        }*/
-
         mOrientation = getResources().getConfiguration().orientation;
 
         if(mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
@@ -390,6 +381,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             core.setDisplayPages(1);
         }
 
+        isActivityActive = true;
 		createUI(savedInstanceState);
 	}
 
@@ -411,6 +403,13 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             } else {
                 mOrientation = getResources().getConfiguration().orientation;
             }
+        }
+
+        //uygulamaya tekrar açıldığında
+        if(!isActivityActive && (MuPDFPageView)mDocView.getChildAt(0) != null){
+            //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(false, true);
+            ((MuPDFPageView)mDocView.getChildAt(0)).resumeCurrentPageWebAnnotationsMedia();
+            isActivityActive = true;
         }
     }
 
@@ -796,6 +795,16 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         Logout.e("Adem","onPause");
 		super.onPause();
 
+        // If the screen is off then the device has been locked
+        PowerManager powerManager = (PowerManager) getSystemService(POWER_SERVICE);
+        boolean isScreenOn = powerManager.isScreenOn();
+
+        if (!isScreenOn) {
+            isActivityActive = false;
+            //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
+            ((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
+        }
+
 		if (mSearchTask != null)
 			mSearchTask.stop();
 
@@ -824,10 +833,13 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 			});
 		}
 
-        for(int i =0; i < mDocView.getChildCount(); i++){
+        //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
+        ((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
+
+        /*for(int i =0; i < mDocView.getChildCount(); i++){
             MuPDFPageView muPDFPageView = (MuPDFPageView) mDocView.getChildAt(i);
             muPDFPageView.clearWebAnnotations(muPDFPageView);
-        }
+        }*/
 		if (core != null)
 			core.onDestroy();
 		if (mAlertTask != null) {
@@ -838,7 +850,15 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 		super.onDestroy();
 	}
 
-	private void setButtonEnabled(ImageButton button, boolean enabled) {
+    @Override
+    protected void onUserLeaveHint() {
+        //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
+        ((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
+        isActivityActive = false;
+        super.onUserLeaveHint();
+    }
+
+    private void setButtonEnabled(ImageButton button, boolean enabled) {
 		button.setEnabled(enabled);
 		button.setColorFilter(enabled ? Color.argb(255, 255, 255, 255):Color.argb(255, 128, 128, 128));
 	}
@@ -1376,7 +1396,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         }
 	}
 
-	@Override
+    @Override
 	public void performPickFor(FilePicker picker) {
 		mFilePicker = picker;
 		Intent intent = new Intent(this, ChoosePDFActivity.class);

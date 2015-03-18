@@ -2,25 +2,11 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\p1025\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\20.0.0\support-annotations-20.0.0.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa">
-        <dex dex="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-b416363238d411bfbfc4fea9fdadba8ba740e745.jar" />
-    </item>
-    <item
         jar="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\exploded-aar\GalePress\ChromiumLibrary\unspecified\libs\guava_javalib.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="f382d8902ffcc9a5fb77ee18cce92038c17e68c2">
         <dex dex="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\pre-dexed\debug\guava_javalib-673fa3f642413a47fb622f34e9f551f42cd593ca.jar" />
-    </item>
-    <item
-        jar="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\4.0.30\classes.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="cebe8e4a3a469c4623addcca1dc571407ff3a08e">
-        <dex dex="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\pre-dexed\debug\classes-d47a511ce38967050b1bd84924987c5e465172c8.jar" />
     </item>
     <item
         jar="C:\Users\p1025\AndroidStudioProjects\GalePress\app\src\main\lib\lib.jar"
@@ -51,6 +37,34 @@
         <dex dex="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\pre-dexed\debug\classes-3700bb79b9958c4ed3a5f39f1610b55f04540cc5.jar" />
     </item>
     <item
+        jar="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d">
+        <dex dex="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-175827af13da0e38b2510d03c3238fee647f74f1.jar" />
+    </item>
+    <item
+        jar="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\exploded-aar\GalePress\ChromiumLibrary\unspecified\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e304d9bdccffc2d94a74bee92e84a43350316165">
+        <dex dex="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\pre-dexed\debug\classes-83d49c4ec06be8d14dd595d9086ae286ee838c41.jar" />
+    </item>
+    <item
+        jar="C:\Users\p1025\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\20.0.0\support-annotations-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa">
+        <dex dex="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-b416363238d411bfbfc4fea9fdadba8ba740e745.jar" />
+    </item>
+    <item
+        jar="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\4.0.30\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="cebe8e4a3a469c4623addcca1dc571407ff3a08e">
+        <dex dex="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\pre-dexed\debug\classes-d47a511ce38967050b1bd84924987c5e465172c8.jar" />
+    </item>
+    <item
         jar="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\20.0.0\classes.jar"
         jumboMode="false"
         revision="20.0.0"
@@ -63,20 +77,6 @@
         revision="20.0.0"
         sha1="d39b131d5aaf8bf6e53ff8dfd28f5cf2521c6d10">
         <dex dex="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\pre-dexed\debug\dd-plist-3501db71d41714a6d999e391ff88871a1ee3360d.jar" />
-    </item>
-    <item
-        jar="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d">
-        <dex dex="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-175827af13da0e38b2510d03c3238fee647f74f1.jar" />
-    </item>
-    <item
-        jar="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\exploded-aar\GalePress\ChromiumLibrary\unspecified\classes.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="3df86b0644f6d46f62b9391a4dfebabbf9c403e5">
-        <dex dex="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\pre-dexed\debug\classes-83d49c4ec06be8d14dd595d9086ae286ee838c41.jar" />
     </item>
     <item
         jar="C:\Users\p1025\AndroidStudioProjects\GalePress\app\src\main\lib\gcm.jar"

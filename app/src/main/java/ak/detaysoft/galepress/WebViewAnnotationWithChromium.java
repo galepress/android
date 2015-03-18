@@ -6,10 +6,14 @@ import android.os.Build;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import com.artifex.mupdfdemo.*;
+import com.mogoweb.chrome.JavascriptInterface;
 import com.mogoweb.chrome.WebSettings;
 import com.mogoweb.chrome.WebView;
+
+import org.chromium.content.browser.ContentViewCore;
 
 /**
  * Created by adem on 08/08/14.
@@ -25,6 +29,17 @@ public class WebViewAnnotationWithChromium extends WebView {
         return super.onKeyDown(keyCode, event);
     }
 
+    public class StopVideoAndAudioInterface{
+        Context mContext;
+        public StopVideoAndAudioInterface(Context c){
+            mContext = c;
+        }
+        @JavascriptInterface
+        public void stopMedia(String script){
+            Toast.makeText(mContext, script, Toast.LENGTH_SHORT).show();
+        }
+    }
+
     public boolean isHorizontalScrolling, isDummyAction;
     private MotionEvent previousMotionEvent;
     public WebViewAnnotationWithChromium(Context context, LinkInfoExternal lie) {
@@ -34,33 +49,35 @@ public class WebViewAnnotationWithChromium extends WebView {
         this.setWebChromeClient(new com.mogoweb.chrome.WebChromeClient());
         this.setWebViewClient(new com.mogoweb.chrome.WebViewClient());
 
-        /*if(lie.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_VIDEO || lie.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_WEB)
-        {
-            setLayerType(View.LAYER_TYPE_HARDWARE, null);
+        /*if(lie.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_VIDEO){
+            this.setLayerType(WebView.LAYER_TYPE_HARDWARE,null);
+        }
+        else if(lie.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_WEB){
+            this.setLayerType(WebView.LAYER_TYPE_HARDWARE,null);
         }
         else{
-            setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+            this.setLayerType(WebView.LAYER_TYPE_SOFTWARE,null);
         }*/
-
+        //addJavascriptInterface(new StopVideoAndAudioInterface(context), "Script");
         WebSettings s = getSettings();
         s.setBuiltInZoomControls(true);
-        if (Build.VERSION.SDK_INT < 8) {
-            s.setPluginsEnabled(true);
-        }
         s.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
         s.setUseWideViewPort(true);
         s.setLoadWithOverviewMode(true);
         s.setSaveFormData(true);
         s.setJavaScriptEnabled(true);
         s.setDomStorageEnabled(true);
+        s.setMediaPlaybackRequiresUserGesture(false); //false olarak set edilmediği autoplay çalışmıyor.
         s.setAllowFileAccess(true);
         s.setAppCacheEnabled(true);
         s.setAllowFileAccessFromFileURLs(true);
-        s.setAllowUniversalAccessFromFileURLs(true);s.setDefaultTextEncodingName("utf-8");
+        s.setAllowUniversalAccessFromFileURLs(true);
+        //s.setDefaultTextEncodingName("utf-8");
         s.setSupportZoom(false);
 
         this.setHorizontalScrollBarEnabled(false);
         this.setVerticalScrollBarEnabled(false);
+        //this.setBackgroundColor(Color.TRANSPARENT);
         final WebViewAnnotationWithChromium web = this;
 
         if(linkInfoExternal.mustHorizontalScrollLock()){

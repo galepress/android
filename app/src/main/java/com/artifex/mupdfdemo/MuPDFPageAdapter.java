@@ -76,4 +76,5 @@ public class MuPDFPageAdapter extends BaseAdapter {
 		}
 		return pageView;
 	}
+
 }

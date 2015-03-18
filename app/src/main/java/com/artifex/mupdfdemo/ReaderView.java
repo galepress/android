@@ -7,6 +7,7 @@ import android.content.Context;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -59,6 +60,7 @@ public class ReaderView
 	private int               mScrollerLastX;
 	private int               mScrollerLastY;
 	private boolean           mScrollDisabled;
+    private Context mContext;
 
 	static abstract class ViewMapper {
 		abstract void applyToView(View view);
@@ -66,6 +68,7 @@ public class ReaderView
 
 	public ReaderView(Context context) {
 		super(context);
+        mContext = context;
 		mGestureDetector = new GestureDetector(this);
 		mScaleGestureDetector = new ScaleGestureDetector(context, this);
 		mScroller        = new Scroller(context);
@@ -74,6 +77,7 @@ public class ReaderView
 
 	public ReaderView(Context context, AttributeSet attrs) {
 		super(context, attrs);
+        mContext = context;
 		mGestureDetector = new GestureDetector(this);
 		mScaleGestureDetector = new ScaleGestureDetector(context, this);
 		mScroller        = new Scroller(context);
@@ -82,6 +86,7 @@ public class ReaderView
 
 	public ReaderView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
+        mContext = context;
 		mGestureDetector = new GestureDetector(this);
 		mScaleGestureDetector = new ScaleGestureDetector(context, this);
 		mScroller        = new Scroller(context);
@@ -544,9 +549,18 @@ public class ReaderView
 					// where we must set hq area for the new current view
 					mStepper.prod();
 
-					onMoveOffChild(mCurrent);
-					mCurrent++;
-					onMoveToChild(mCurrent);
+
+                    onMoveOffChild(mCurrent);
+                    mCurrent++;
+                    onMoveToChild(mCurrent);
+
+                    try {
+                        //((MuPDFPageView)((MuPDFActivity)this.mContext).mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(false, false);
+                        ((MuPDFPageView)((MuPDFActivity)this.mContext).mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
+                        ((MuPDFPageView)((MuPDFActivity)this.mContext).mDocView.getChildAt(0)).resumeCurrentPageWebAnnotationsMedia();
+                    } catch (Exception e){
+                        Log.e("pdfreader onMoveToChild", e.toString());
+                    }
 				}
 
 				if (cv.getLeft() - cvOffset.x - GAP/2 + mXScroll >= getWidth()/2 && mCurrent > 0) {
@@ -555,9 +569,17 @@ public class ReaderView
 					// where we must set hq area for the new current view
 					mStepper.prod();
 
-					onMoveOffChild(mCurrent);
+                    onMoveOffChild(mCurrent);
 					mCurrent--;
-					onMoveToChild(mCurrent);
+                    onMoveToChild(mCurrent);
+
+                    try {
+                        //((MuPDFPageView)((MuPDFActivity)this.mContext).mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(false, false);
+                        ((MuPDFPageView)((MuPDFActivity)this.mContext).mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
+                        ((MuPDFPageView)((MuPDFActivity)this.mContext).mDocView.getChildAt(0)).resumeCurrentPageWebAnnotationsMedia();
+                    } catch (Exception e){
+                        Log.e("pdfreader onMoveToChild", e.toString());
+                    }
 				}
 			}
 
