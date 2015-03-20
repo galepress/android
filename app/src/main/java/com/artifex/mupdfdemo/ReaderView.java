@@ -549,7 +549,6 @@ public class ReaderView
 					// where we must set hq area for the new current view
 					mStepper.prod();
 
-
                     onMoveOffChild(mCurrent);
                     mCurrent++;
                     onMoveToChild(mCurrent);
@@ -572,6 +571,7 @@ public class ReaderView
                     onMoveOffChild(mCurrent);
 					mCurrent--;
                     onMoveToChild(mCurrent);
+
 
                     try {
                         //((MuPDFPageView)((MuPDFActivity)this.mContext).mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(false, false);

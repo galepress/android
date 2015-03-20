@@ -18,10 +18,12 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.SearchView;
+import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -47,6 +49,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.xml.datatype.Duration;
 import javax.xml.parsers.SAXParser;
@@ -76,6 +79,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         Intent intent = getIntent();
         if(intent.hasExtra("content_id")){
             this.content_id = Integer.valueOf(intent.getStringExtra("content_id"));
@@ -177,7 +181,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             }
         }
         GalePressApplication.getInstance().setCurrentActivity(this);
-        GalePressApplication.getInstance().getDataApi().getAppDetail();
+        GalePressApplication.getInstance().getDataApi().getAppDetail(this);
 
     }
 

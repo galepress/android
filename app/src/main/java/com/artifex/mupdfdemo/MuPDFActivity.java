@@ -452,16 +452,21 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 			protected void onMoveToChild(int i) {
 				if (core == null)
 					return;
-				mPageNumberView.setText(String.format("%d / %d", i + 1,
-						core.countPages()));
-				mPageSlider.setMax((core.countPages() - 1) * mPageSliderRes);
-				mPageSlider.setProgress(i * mPageSliderRes);
+
+                mPageNumberView.setText(String.format("%d / %d", i + 1,
+                        core.countPages()));
+                mPageSlider.setMax((core.countPages() - 1) * mPageSliderRes);
+                mPageSlider.setProgress(i * mPageSliderRes);
 
 
 
                 final MuPDFPageView muPDFPageView = (MuPDFPageView) mDocView.getDisplayedView();
-                if(muPDFPageView!=null){
+                if(muPDFPageView!=null && muPDFPageView.mGetLinkInfo != null){
                     if(muPDFPageView.mGetLinkInfo.getStatus() != AsyncTask.Status.FINISHED){
+                        if(muPDFPageView.mGetLinkInfo.getStatus() == AsyncTask.Status.RUNNING) {
+                            muPDFPageView.mGetLinkInfo.cancel(true);
+                            muPDFPageView.mGetLinkInfo = muPDFPageView.getNewLinkInfoTask();
+                        }
                         muPDFPageView.mGetLinkInfo.execute();
                     }
                 }
@@ -474,8 +479,17 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                         public void run()
                         {
                             final MuPDFPageView muPDFPageView2 = (MuPDFPageView) mDocView.getDisplayedView();
+
                             if(muPDFPageView2!=null){
-                                if(muPDFPageView2.mGetLinkInfo!= null && muPDFPageView2.mGetLinkInfo.getStatus() != AsyncTask.Status.FINISHED){
+                                //AsyncTask null oldugu icin ilk sayfanin annotationlar yuklenmiyordu (MG)
+                                if(muPDFPageView2.mGetLinkInfo == null);
+                                    muPDFPageView2.mGetLinkInfo = muPDFPageView2.getNewLinkInfoTask();
+
+                                if(muPDFPageView2.mGetLinkInfo.getStatus() != AsyncTask.Status.FINISHED){
+                                    if(muPDFPageView2.mGetLinkInfo.getStatus() == AsyncTask.Status.RUNNING) {
+                                        muPDFPageView2.mGetLinkInfo.cancel(true);
+                                        muPDFPageView2.mGetLinkInfo = muPDFPageView2.getNewLinkInfoTask();
+                                    }
                                     muPDFPageView2.mGetLinkInfo.execute();
                                 }
                             }
@@ -556,24 +570,25 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
 		// Activate the seekbar
 		mPageSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-			public void onStopTrackingTouch(SeekBar seekBar) {
-				mDocView.setDisplayedViewIndex((seekBar.getProgress()+mPageSliderRes/2)/mPageSliderRes);
-			}
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                mDocView.setDisplayedViewIndex((seekBar.getProgress() + mPageSliderRes / 2) / mPageSliderRes);
+            }
 
-			public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
 
-			public void onProgressChanged(SeekBar seekBar, int progress,
-					boolean fromUser) {
-				updatePageNumView((progress+mPageSliderRes/2)/mPageSliderRes);
-			}
-		});
+            public void onProgressChanged(SeekBar seekBar, int progress,
+                                          boolean fromUser) {
+                updatePageNumView((progress + mPageSliderRes / 2) / mPageSliderRes);
+            }
+        });
 
 		// Activate the search-preparing button
 		mSearchButton.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				searchModeOn();
-			}
-		});
+            public void onClick(View v) {
+                searchModeOn();
+            }
+        });
 
         mailButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -585,10 +600,10 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
 		// Activate the reflow button
 		mReflowButton.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				toggleReflow();
-			}
-		});
+            public void onClick(View v) {
+                toggleReflow();
+            }
+        });
 
 		if (core.fileFormat().startsWith("PDF"))
 		{
@@ -613,22 +628,26 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 		// React to interaction with the text widget
 		mSearchText.addTextChangedListener(new TextWatcher() {
 
-			public void afterTextChanged(Editable s) {
-				boolean haveText = s.toString().length() > 0;
-				setButtonEnabled(mSearchBack, haveText);
-				setButtonEnabled(mSearchFwd, haveText);
+            public void afterTextChanged(Editable s) {
+                boolean haveText = s.toString().length() > 0;
+                setButtonEnabled(mSearchBack, haveText);
+                setButtonEnabled(mSearchFwd, haveText);
 
-				// Remove any previous search results
-				if (SearchTaskResult.get() != null && !mSearchText.getText().toString().equals(SearchTaskResult.get().txt)) {
-					SearchTaskResult.set(null);
-					mDocView.resetupChildren();
-				}
-			}
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {}
-			public void onTextChanged(CharSequence s, int start, int before,
-					int count) {}
-		});
+                // Remove any previous search results
+                if (SearchTaskResult.get() != null && !mSearchText.getText().toString().equals(SearchTaskResult.get().txt)) {
+                    SearchTaskResult.set(null);
+                    mDocView.resetupChildren();
+                }
+            }
+
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before,
+                                      int count) {
+            }
+        });
 
 		//React to Done button on keyboard
 		mSearchText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -640,12 +659,12 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 		});
 
 		mSearchText.setOnKeyListener(new View.OnKeyListener() {
-			public boolean onKey(View v, int keyCode, KeyEvent event) {
-				if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER)
-					search(1);
-				return false;
-			}
-		});
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER)
+                    search(1);
+                return false;
+            }
+        });
 
 		// Activate search invoking buttons
 		mSearchBack.setOnClickListener(new View.OnClickListener() {
@@ -654,16 +673,16 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 			}
 		});
 		mSearchFwd.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				search(1);
-			}
-		});
+            public void onClick(View v) {
+                search(1);
+            }
+        });
 
 		mLinkButton.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				setLinkHighlight(!mLinkHighlight);
-			}
-		});
+            public void onClick(View v) {
+                setLinkHighlight(!mLinkHighlight);
+            }
+        });
 
 		if (core.hasOutline()) {
 			mOutlineButton.setOnClickListener(new View.OnClickListener() {

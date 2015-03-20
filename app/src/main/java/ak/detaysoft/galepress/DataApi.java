@@ -7,6 +7,7 @@ package ak.detaysoft.galepress;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
@@ -21,6 +22,7 @@ import android.os.Message;
 import android.os.Messenger;
 import android.provider.Settings;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -479,7 +481,7 @@ public class DataApi extends Object {
         getDatabaseApi().createStatistic(statistic);
     }
 
-    public void getAppDetail() {
+    public void getAppDetail(Context mContext) {
         if(isConnectedToInternet()){
             getBuildVersion();
 
@@ -492,6 +494,8 @@ public class DataApi extends Object {
             } else {
                 applicationID = application.getApplicationId();
             }
+
+            String udid = "" + android.provider.Settings.Secure.getString(mContext.getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
 
             String osVersion = "";
             String release = Build.VERSION.RELEASE;
@@ -512,6 +516,7 @@ public class DataApi extends Object {
             uriBuilder.appendQueryParameter("deviceDetail", getDeviceName());
             uriBuilder.appendQueryParameter("deviceToken", gcmRegisterId);
             uriBuilder.appendQueryParameter("buildVersion", getBuildVersion());
+            uriBuilder.appendQueryParameter("udid", udid);
 
             request = new JsonObjectRequest(Request.Method.GET, uriBuilder.build().toString(), null,
                     new Response.Listener<JSONObject>() {

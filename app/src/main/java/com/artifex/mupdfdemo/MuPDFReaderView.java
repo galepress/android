@@ -251,8 +251,9 @@ public class MuPDFReaderView extends ReaderView {
 		});
 	}
 
-	protected void onMoveToChild(int i) {
-        MuPDFCore core = ((MuPDFActivity)this.mContext).core;
+	protected void onMoveToChild(final int i) {
+
+        MuPDFCore core = ((MuPDFActivity)mContext).core;
 
         int[] pages = getDisplayedPageNumbers(i);
         for(int j=0; j < pages.length; j++){
@@ -275,14 +276,18 @@ public class MuPDFReaderView extends ReaderView {
                     //landscape
                     statistic = new L_Statistic(udid, core.content.getId(), location!=null?location.getLatitude():null,location!=null?location.getLongitude():null, pages[j], dateFormat.format(cal.getTime()),L_Statistic.STATISTIC_pageOpenedLandscape, null,null,null);
                 }
+
                 GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
+
+
             }
         }
 
-		if (SearchTaskResult.get() != null && SearchTaskResult.get().pageNumber != i) {
-			SearchTaskResult.set(null);
-			resetupChildren();
-		}
+        if (SearchTaskResult.get() != null && SearchTaskResult.get().pageNumber != i) {
+            SearchTaskResult.set(null);
+            resetupChildren();
+        }
+
 	}
 
     public int[] getDisplayedPageNumbers(int index){

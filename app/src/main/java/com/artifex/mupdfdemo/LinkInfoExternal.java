@@ -56,8 +56,14 @@ public class LinkInfoExternal extends LinkInfo {
         if(componentAnnotationTypeId == COMPONENT_TYPE_ID_HARİTA){
             uri = Uri.parse(url);
             location = new Location("");
-            Double lat = new Double(uri.getQueryParameter("lat"));
-            Double lon = new Double(uri.getQueryParameter("lon"));
+
+            Double lat = 41.0053215;
+            if(uri.getQueryParameter("lat") != null && !uri.getQueryParameter("lat").isEmpty())
+                lat = new Double(uri.getQueryParameter("lat"));
+
+            Double lon = 29.0121795;
+            if(uri.getQueryParameter("lon") != null && !uri.getQueryParameter("lon").isEmpty())
+                lon = new Double(uri.getQueryParameter("lon"));
             location.setLatitude(lat);
             location.setLongitude(lon);
             Double zoomValue = new Double(uri.getQueryParameter("slon"));

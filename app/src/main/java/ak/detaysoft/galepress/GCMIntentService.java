@@ -34,7 +34,7 @@ public class GCMIntentService extends GCMBaseIntentService {
 
         Log.i(TAG, "Device registered: regId = " + registrationId);
         GCMRegistrar.setRegisteredOnServer(GalePressApplication.getInstance().getApplicationContext(),true);
-        GalePressApplication.getInstance().getDataApi().getAppDetail();
+        GalePressApplication.getInstance().getDataApi().getAppDetail(context);
 //        Log.d("NAME", MainActivity.name);
 //        aController.register(context, MainActivity.name, MainActivity.email, registrationId);
     }
