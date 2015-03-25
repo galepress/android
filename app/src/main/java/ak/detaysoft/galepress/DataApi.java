@@ -92,6 +92,7 @@ public class DataApi extends Object {
     private DatabaseApi databaseApi = null;
     public DownloadPdfTask downloadPdfTask;
     public StatisticSendTask statisticSendTask;
+    private Context mContext;
 
     public void updateCompleted() {
         if(GalePressApplication.getInstance().getCurrentActivity()!= null && GalePressApplication.getInstance().getCurrentActivity().getClass().equals(LaunchActivity.class)){
@@ -482,6 +483,7 @@ public class DataApi extends Object {
     }
 
     public void getAppDetail(Context mContext) {
+        this.mContext = mContext;
         if(isConnectedToInternet()){
             getBuildVersion();
 
@@ -839,12 +841,28 @@ public class DataApi extends Object {
                     public void onResponse(JSONObject response) {
                         try {
                             R_ContentFileUrl contentPdfFile = new R_ContentFileUrl(response);
-                            if (contentPdfFile.getError() != "") {
+                            if (contentPdfFile.getError().isEmpty()) {
                                 L_Content content = getDatabaseApi().getContent(contentPdfFile.getContentID());
                                 if(content.isProtected() && content.getPassword()!=null)
                                     downloadFile(contentPdfFile.getUrl()+content.getPassword(), content);
                                 else
                                     downloadFile(contentPdfFile.getUrl(), content);
+                            } else {
+                                if(mContext != null){
+                                    final AlertDialog.Builder alert = new AlertDialog.Builder(
+                                            mContext);
+                                    alert.setTitle(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.UYARI));
+                                    alert.setMessage(contentPdfFile.getError());
+                                    alert.setCancelable(true);
+                                    alert.setPositiveButton(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.TAMAM), new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.cancel();
+                                        }
+                                    });
+                                    alert.show();
+
+                                }
+
                             }
                         } catch (Exception e) {
                             e.printStackTrace();

@@ -388,5 +388,4 @@ public class MuPDFReaderView extends ReaderView {
         }
 
 	}
-
 }

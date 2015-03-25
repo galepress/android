@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.Scroller;
 
 import ak.detaysoft.galepress.R;
+import ak.detaysoft.galepress.WebViewAnnotationWithChromium;
 
 public class ReaderView
 		extends AdapterView<Adapter>
@@ -553,13 +554,9 @@ public class ReaderView
                     mCurrent++;
                     onMoveToChild(mCurrent);
 
-                    try {
-                        //((MuPDFPageView)((MuPDFActivity)this.mContext).mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(false, false);
-                        ((MuPDFPageView)((MuPDFActivity)this.mContext).mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
-                        ((MuPDFPageView)((MuPDFActivity)this.mContext).mDocView.getChildAt(0)).resumeCurrentPageWebAnnotationsMedia();
-                    } catch (Exception e){
-                        Log.e("pdfreader onMoveToChild", e.toString());
-                    }
+                    //((MuPDFPageView)((MuPDFActivity)this.mContext).mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(false, false);
+                    ((MuPDFPageView)((MuPDFActivity)this.mContext).mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
+                    ((MuPDFPageView)((MuPDFActivity)this.mContext).mDocView.getChildAt(0)).resumeCurrentPageWebAnnotationsMedia();
 				}
 
 				if (cv.getLeft() - cvOffset.x - GAP/2 + mXScroll >= getWidth()/2 && mCurrent > 0) {
@@ -573,13 +570,9 @@ public class ReaderView
                     onMoveToChild(mCurrent);
 
 
-                    try {
-                        //((MuPDFPageView)((MuPDFActivity)this.mContext).mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(false, false);
-                        ((MuPDFPageView)((MuPDFActivity)this.mContext).mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
-                        ((MuPDFPageView)((MuPDFActivity)this.mContext).mDocView.getChildAt(0)).resumeCurrentPageWebAnnotationsMedia();
-                    } catch (Exception e){
-                        Log.e("pdfreader onMoveToChild", e.toString());
-                    }
+                    //((MuPDFPageView)((MuPDFActivity)this.mContext).mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(false, false);
+                    ((MuPDFPageView)((MuPDFActivity)this.mContext).mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
+                    ((MuPDFPageView)((MuPDFActivity)this.mContext).mDocView.getChildAt(0)).resumeCurrentPageWebAnnotationsMedia();
 				}
 			}
 
@@ -655,10 +648,9 @@ public class ReaderView
 			// When the current view is as small as the screen in height, clamp
 			// it vertically
 			Point corr = getCorrection(getScrollBounds(cvLeft, cvTop, cvRight, cvBottom));
-			cvTop    += corr.y;
+            cvTop    += corr.y;
 			cvBottom += corr.y;
 		}
-
 		cv.layout(cvLeft, cvTop, cvRight, cvBottom);
 
 		if (mCurrent > 0) {
@@ -669,6 +661,7 @@ public class ReaderView
 					(cvBottom + cvTop - lv.getMeasuredHeight())/2,
 					cvLeft - gap,
 					(cvBottom + cvTop + lv.getMeasuredHeight())/2);
+
 		}
 
 		if (mCurrent + 1 < mAdapter.getCount()) {
@@ -676,9 +669,9 @@ public class ReaderView
 			Point rightOffset = subScreenSizeOffset(rv);
 			int gap = cvOffset.x + GAP + rightOffset.x;
 			rv.layout(cvRight + gap,
-					(cvBottom + cvTop - rv.getMeasuredHeight())/2,
-					cvRight + rv.getMeasuredWidth() + gap,
-					(cvBottom + cvTop + rv.getMeasuredHeight())/2);
+                    (cvBottom + cvTop - rv.getMeasuredHeight()) / 2,
+                    cvRight + rv.getMeasuredWidth() + gap,
+                    (cvBottom + cvTop + rv.getMeasuredHeight()) / 2);
 		}
 
 		invalidate();

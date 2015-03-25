@@ -669,8 +669,10 @@ public class MuPDFPageView extends PageView implements MuPDFView {
 
         String reloadScriptAudio = "var audios = document.querySelectorAll(\"audio\"); for (var i = audios.length - 1; i >= 0; i--) " +
                 "{ if(audios[i].autoplay){audios[i].play();} };";
-        String reloadScriptVideo = "var videos = document.querySelectorAll(\"video\"); for (var i = videos.length - 1; i >= 0; i--) " +
-                "{ videos[i].currentTime = 0; if(videos[i].autoplay){videos[i].play();}};";
+        /*String reloadScriptVideo = "var videos = document.querySelectorAll(\"video\"); for (var i = videos.length - 1; i >= 0; i--) " +
+                "{ videos[i].currentTime = 0; if(videos[i].autoplay){videos[i].play();}};";*/
+        String reloadScriptVideo = "var videos = document.querySelectorAll(\"video\"); if (videos.length > 0) " +
+                "{ window.location.href=window.location.href };";
 
         ArrayList<View> currentPageGpAnnotations = getGPAnnotations((MuPDFPageView) ((MuPDFActivity)(mContext)).mDocView.getDisplayedView());
         //uygulama arka plana atıldığında yada ekran kilitlendiğinde currentPage üzerindeki video ve ses dosyalarından autoplay olanların yüklenmemesi için isActivityPause komtrolü yapılıyor

@@ -24,8 +24,8 @@ public class MuPDFCore
 	/* Readable members */
 	private int numPages = -1;
     private int displayPages = 2;
-	private float pageWidth;
-	private float pageHeight;
+	private float pageWidth = 0;
+	private float pageHeight = 0;
 	private long globals;
 	private byte fileBuffer[];
 	private String file_format;
@@ -132,7 +132,19 @@ public class MuPDFCore
 		else if (page < 0)
 			page = 0;
 		gotoPageInternal(page);
-		this.pageWidth = getPageWidth();
+
+        /*
+        * Portrait moddan lanscape moda gecildigi zaman bazi durumlarda,
+        * getPageWidth ilk degerinden daha kucuk(ilk degerinin yarisi kadar) oluyor.
+        * Bu durumda da sag tarafta ki sayfanin annotatinlari ekranin ortasinda cikiyor.
+        * Bunu engelledim. Workaround cozum oldu. (MG)
+        * */
+
+        if (pageWidth == 0)
+             this.pageWidth = getPageWidth();
+        if(getPageWidth() >= pageWidth )
+		    this.pageWidth = getPageWidth();
+
 		this.pageHeight = getPageHeight();
 	}
 
