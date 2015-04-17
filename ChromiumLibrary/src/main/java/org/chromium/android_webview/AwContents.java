@@ -168,7 +168,7 @@ public class AwContents {
     private final double mDIPScale;
 
     // The base background color, i.e. not accounting for any CSS body from the current page.
-    private int mBaseBackgroundColor = Color.WHITE;
+    private int mBaseBackgroundColor = Color.TRANSPARENT;
 
     // Must call nativeUpdateLastHitTestData first to update this before use.
     private final HitTestData mPossiblyStaleHitTestData = new HitTestData();

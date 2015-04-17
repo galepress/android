@@ -93,7 +93,8 @@ public class ContentViewRenderView extends FrameLayout {
             }
         };
         mSurfaceView.getHolder().addCallback(mSurfaceCallback);
-        setSurfaceViewBackgroundColor(Color.WHITE);
+        setSurfaceViewBackgroundColor(Color.TRANSPARENT);
+
 
         mVSyncAdapter = new VSyncAdapter(getContext());
         addView(mSurfaceView,

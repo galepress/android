@@ -590,6 +590,7 @@ public abstract class PageView extends ViewGroup {
                                     String url = linkInfoExternal.getSourceUrlPath(mContext);
                                     // Web Annotations
                                     final WebViewAnnotationWithChromium web = new WebViewAnnotationWithChromium(mContext, linkInfoExternal);
+                                    web.setDrawingCacheBackgroundColor(Color.TRANSPARENT);
                                     web.layout(left,top,right,bottom);
                                     web.readerView = ((MuPDFActivity) mContext).mDocView;
                                     web.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);

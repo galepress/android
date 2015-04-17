@@ -27,7 +27,7 @@ public class ColorPickerSimple extends ListView implements OnColorSuggestionClic
         Color.MAGENTA,
         Color.YELLOW,
         Color.BLACK,
-        Color.WHITE
+        Color.TRANSPARENT
     };
 
     private static final int[] DEFAULT_COLOR_LABEL_IDS = {

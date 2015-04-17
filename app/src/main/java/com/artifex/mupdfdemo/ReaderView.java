@@ -797,7 +797,7 @@ public class ReaderView
 		Point corr = getCorrection(getScrollBounds(v));
 		if (corr.x != 0 || corr.y != 0) {
 			mScrollerLastX = mScrollerLastY = 0;
-			mScroller.startScroll(0, 0, corr.x, corr.y, 400);
+			mScroller.startScroll(0, 0, corr.x, corr.y, 0); //Linkpagelerde animasyonu kapatmak icin duration 0 yapildi. Eski degeri 400 (MG)
 			mStepper.prod();
 		}
 	}

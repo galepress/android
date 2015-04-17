@@ -1,6 +1,7 @@
 package ak.detaysoft.galepress;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
 import android.view.KeyEvent;
@@ -23,6 +24,21 @@ public class WebViewAnnotationWithChromium extends WebView {
     public float left, top ;
     public MuPDFReaderView readerView;
     public LinkInfoExternal linkInfoExternal;
+
+    private class MyWebClient extends com.mogoweb.chrome.WebViewClient {
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            super.onPageFinished(view, url);
+            view.setBackgroundColor(Color.TRANSPARENT);
+            view.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            super.onPageStarted(view, url, favicon);
+            view.setVisibility(View.INVISIBLE);
+        }
+    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -47,7 +63,7 @@ public class WebViewAnnotationWithChromium extends WebView {
 
         this.linkInfoExternal = lie;
         this.setWebChromeClient(new com.mogoweb.chrome.WebChromeClient());
-        this.setWebViewClient(new com.mogoweb.chrome.WebViewClient());
+        this.setWebViewClient(new MyWebClient());
 
         /*if(lie.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_VIDEO){
             this.setLayerType(WebView.LAYER_TYPE_HARDWARE,null);
@@ -75,9 +91,10 @@ public class WebViewAnnotationWithChromium extends WebView {
         //s.setDefaultTextEncodingName("utf-8");
         s.setSupportZoom(false);
 
+        setVisibility(View.INVISIBLE);
         this.setHorizontalScrollBarEnabled(false);
         this.setVerticalScrollBarEnabled(false);
-        //this.setBackgroundColor(Color.TRANSPARENT);
+        this.setBackgroundColor(Color.parseColor("#00FFFFFF"));
         final WebViewAnnotationWithChromium web = this;
 
         if(linkInfoExternal.mustHorizontalScrollLock()){

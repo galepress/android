@@ -891,7 +891,7 @@ public class ContentViewCore
         if (mNativeContentViewCore != 0) {
             return nativeGetBackgroundColor(mNativeContentViewCore);
         }
-        return Color.WHITE;
+        return Color.TRANSPARENT;
     }
 
     @CalledByNative

@@ -35,7 +35,7 @@ public class ColorPickerMoreButton extends Button {
     public void init() {
         mBorderPaint = new Paint();
         mBorderPaint.setStyle(Paint.Style.STROKE);
-        mBorderPaint.setColor(Color.WHITE);
+        mBorderPaint.setColor(Color.TRANSPARENT);
         // Set the width to one pixel.
         mBorderPaint.setStrokeWidth(1.0f);
         // And make sure the border doesn't bleed into the outside.

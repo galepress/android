@@ -30,6 +30,7 @@ import android.graphics.Color;
 import android.graphics.Rect;
 import android.location.Location;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -382,6 +383,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         }
 
         isActivityActive = true;
+
 		createUI(savedInstanceState);
 	}
 
@@ -1370,7 +1372,8 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 		if (mButtonsVisible && mTopBarMode != TopBarMode.Search) {
 			hideButtons();
 		} else {
-			showButtons();
+            if(content != null && !content.isMaster())
+			    showButtons();
 			searchModeOff();
 		}
 		return super.onPrepareOptionsMenu(menu);
