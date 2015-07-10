@@ -57,11 +57,9 @@ public class AutofillListAdapter extends ArrayAdapter<AutofillSuggestion> {
             height += dividerHeight;
             divider.setHeight(dividerHeight);
             if (mSeparators.contains(position)) {
-                divider.setColor(mContext.getResources().getColor(
-                                 R.color.autofill_dark_divider_color));
+                divider.setColor(Color.TRANSPARENT);
             } else {
-                divider.setColor(mContext.getResources().getColor(
-                                 R.color.autofill_divider_color));
+                divider.setColor(Color.TRANSPARENT);
             }
         }
         layout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, height));

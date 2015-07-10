@@ -108,16 +108,16 @@ public class ReaderView
 		}
 	}
 
-	public void moveToNext() {
+	public void moveToNext(boolean isPageLink) {
 		View v = mChildViews.get(mCurrent+1);
 		if (v != null)
-			slideViewOntoScreen(v);
+			slideViewOntoScreen(v, isPageLink);
 	}
 
-	public void moveToPrevious() {
+	public void moveToPrevious(boolean isPageLink) {
 		View v = mChildViews.get(mCurrent-1);
 		if (v != null)
-			slideViewOntoScreen(v);
+			slideViewOntoScreen(v, isPageLink);
 	}
 
 	// When advancing down the page, we want to advance by about
@@ -216,6 +216,7 @@ public class ReaderView
 		mScrollerLastX = mScrollerLastY = 0;
 		mScroller.startScroll(0, 0, remainingX - xOffset, remainingY - yOffset, 400);
 		mStepper.prod();
+        ((MuPDFActivity)mContext).scrollToLastThumnail(mCurrent+1);
 	}
 
 	public void smartMoveBackwards() {
@@ -288,6 +289,7 @@ public class ReaderView
 		mScrollerLastX = mScrollerLastY = 0;
 		mScroller.startScroll(0, 0, remainingX - xOffset, remainingY - yOffset, 400);
 		mStepper.prod();
+        ((MuPDFActivity)mContext).scrollToLastThumnail(mCurrent-1);
 	}
 
 	public void resetupChildren() {
@@ -374,7 +376,8 @@ public class ReaderView
 					View vl = mChildViews.get(mCurrent+1);
 
 					if (vl != null) {
-						slideViewOntoScreen(vl);
+						slideViewOntoScreen(vl, false);
+                        ((MuPDFActivity)mContext).scrollToLastThumnail(mCurrent+1);
 						return true;
 					}
 				}
@@ -385,7 +388,8 @@ public class ReaderView
 					View vr = mChildViews.get(mCurrent-1);
 
 					if (vr != null) {
-						slideViewOntoScreen(vr);
+						slideViewOntoScreen(vr, false);
+                        ((MuPDFActivity)mContext).scrollToLastThumnail(mCurrent-1);
 						return true;
 					}
 				}
@@ -506,7 +510,8 @@ public class ReaderView
 					// If, at the end of user interaction, there is no
 					// current inertial scroll in operation then animate
 					// the view onto screen if necessary
-					slideViewOntoScreen(v);
+					slideViewOntoScreen(v, false);
+                    ((MuPDFActivity)mContext).scrollToLastThumnail(mCurrent);
 				}
 
 				if (mScroller.isFinished()) {
@@ -793,11 +798,18 @@ public class ReaderView
 		});
 	}
 
-	private void slideViewOntoScreen(View v) {
+	private void slideViewOntoScreen(View v, boolean isPageLink) {
 		Point corr = getCorrection(getScrollBounds(v));
 		if (corr.x != 0 || corr.y != 0) {
 			mScrollerLastX = mScrollerLastY = 0;
+<<<<<<< HEAD
 			mScroller.startScroll(0, 0, corr.x, corr.y, 0); //Linkpagelerde animasyonu kapatmak icin duration 0 yapildi. Eski degeri 400 (MG)
+=======
+            if(isPageLink)
+			    mScroller.startScroll(0, 0, corr.x, corr.y, 0); //Linkpagelerde animasyonu kapatmak icin duration 0 yapildi. Eski degeri 400 (MG)
+            else
+                mScroller.startScroll(0, 0, corr.x, corr.y, 400);
+>>>>>>> origin/UIUpdate
 			mStepper.prod();
 		}
 	}

@@ -33,6 +33,8 @@ import android.graphics.Shader;
 import android.graphics.Shader.TileMode;
 import android.util.TypedValue;
 
+import ak.detaysoft.galepress.util.ApplicationThemeColor;
+
 public class TabBitmap {
 
 	private static final int UNSELECTED_COLOR = 0xFF555555;
@@ -72,7 +74,7 @@ public class TabBitmap {
 
 		Bitmap shadedBitmap = Bitmap.createBitmap(src.getWidth() + ((int) dp * 2), src.getHeight() + ((int) dp * 2), Config.ARGB_8888);
 		Canvas canvas = new Canvas(shadedBitmap);
-		canvas.drawColor(isSelected ? SELECTED_COLOR : UNSELECTED_COLOR);
+		canvas.drawColor(isSelected ? ApplicationThemeColor.getInstance().getThemeTranperentForegroundColor() : ApplicationThemeColor.getInstance().getForegroundColor());
 
 		Shader gradientShader = new LinearGradient(0, 0, src.getWidth() / 4, src.getHeight(), colors, locations, TileMode.CLAMP);
 		

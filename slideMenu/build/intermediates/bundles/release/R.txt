@@ -1,0 +1,26 @@
+int attr edgeSlide 0x7f010005
+int attr edgeSlideWidth 0x7f010006
+int attr interpolator 0x7f010008
+int attr layout_role 0x7f010009
+int attr primaryShadowDrawable 0x7f010003
+int attr primaryShadowWidth 0x7f010001
+int attr secondaryShadowDrawable 0x7f010004
+int attr secondaryShadowWidth 0x7f010002
+int attr slideDirection 0x7f010007
+int attr slideMenuStyle 0x7f010000
+int id content 0x7f020002
+int id left 0x7f020000
+int id primaryMenu 0x7f020003
+int id right 0x7f020001
+int id secondaryMenu 0x7f020004
+int[] styleable SlideMenu { 0x7f010001, 0x7f010002, 0x7f010003, 0x7f010004, 0x7f010005, 0x7f010006, 0x7f010007, 0x7f010008 }
+int styleable SlideMenu_edgeSlide 4
+int styleable SlideMenu_edgeSlideWidth 5
+int styleable SlideMenu_interpolator 7
+int styleable SlideMenu_primaryShadowDrawable 2
+int styleable SlideMenu_primaryShadowWidth 0
+int styleable SlideMenu_secondaryShadowDrawable 3
+int styleable SlideMenu_secondaryShadowWidth 1
+int styleable SlideMenu_slideDirection 6
+int[] styleable SlideMenu_Layout { 0x7f010009 }
+int styleable SlideMenu_Layout_layout_role 0

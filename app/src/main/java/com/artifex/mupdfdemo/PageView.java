@@ -608,7 +608,6 @@ public abstract class PageView extends ViewGroup {
                                 }
 
 
-
                             }
                         }
                         else if((((LinkInfoExternal) link).componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_HARİTA) ){
@@ -687,13 +686,14 @@ public abstract class PageView extends ViewGroup {
                                 MuPDFCore core =((MuPDFActivity)mContext).core;
                                 MuPDFReaderView readerView = ((MuPDFActivity) mContext).mDocView;
                                 if(readerView.getDisplayedViewIndex() + 1 == linkInfoInternal.pageNumber){
-                                    readerView.moveToNext();
+                                    readerView.moveToNext(true);
                                 }
                                 else if (readerView.getDisplayedViewIndex() - 1 == linkInfoInternal.pageNumber){
-                                    readerView.moveToPrevious();
+                                    readerView.moveToPrevious(true);
                                 }
                                 else {
                                     readerView.setDisplayedViewIndex(core.convertIndexesForLandscape2Page(linkInfoInternal.pageNumber));
+                                    ((MuPDFActivity)mContext).scrollToLastThumnail(core.convertIndexesForLandscape2Page(linkInfoInternal.pageNumber));
                                 }
                             }
                         });

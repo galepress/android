@@ -1,22 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent" >
 
-	<ViewAnimator
+
+    <ViewAnimator
 		android:id="@+id/switcher"
 		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
+		android:layout_height="60dp"
 		android:layout_alignParentTop="true"
-		android:layout_centerHorizontal="true" >
+		android:layout_centerHorizontal="true">
 
 		<RelativeLayout
 			android:id="@+id/topBar0Main"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:background="@color/toolbar" >
-			<TextView
+			android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:id="@+id/shadow"
+                android:background="@android:color/transparent"
+                android:alpha="0.2"
+                android:adjustViewBounds="false"
+                android:layout_alignParentBottom="true" />
+
+            <TextView
 				android:id="@+id/docNameText"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
@@ -26,8 +37,6 @@
 				android:paddingLeft="16dp"
 				android:singleLine="true"
 				android:textColor="#FFFFFF"
-				android:textStyle="bold"
-				android:textAppearance="?android:attr/textAppearanceMedium"
                 android:visibility="gone"/>
 
 			<ImageButton
@@ -54,16 +63,15 @@
 
 			<ImageButton
 				android:id="@+id/outlineButton"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
+				android:layout_width="35dp"
+				android:layout_height="35dp"
 				android:layout_centerVertical="true"
                 android:layout_alignParentLeft="true"
 				android:contentDescription="@string/outline_title"
                 android:background="@android:color/transparent"
-                android:paddingRight="10dp"
-                android:paddingLeft="10dp"
-                android:src="@drawable/table_of_contents"
-                android:layout_margin="7dp"/>
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp" />
 
 			<ImageButton
 				android:id="@+id/searchButton"
@@ -73,22 +81,22 @@
 				android:layout_toRightOf="@+id/outlineButton"
 				android:contentDescription="@string/search_document"
 				android:background="@android:color/transparent"
-				android:src="@drawable/search_icon"
+				android:src="@drawable/left_menu_search_icon"
                 android:paddingLeft="10dp"
                 android:layout_margin="7dp"
-                />
+                android:visibility="gone" />
             <ImageButton
                 android:id="@+id/mailButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:contentDescription="@string/email"
                 android:background="@android:color/transparent"
                 android:onClick="OnMoreButtonClick"
-                android:layout_margin="7dp"
-                android:src="@drawable/mail2"
-                />
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp" />
 
             <ImageButton
                 android:id="@+id/moreButton"
@@ -102,13 +110,26 @@
                 android:src="@drawable/ic_more"
                 android:visibility="gone"/>
 
-		</RelativeLayout>
+            <TextView
+                android:id="@+id/reader_title"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:textSize="@dimen/actionbar_text_size"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center"
+                android:layout_toRightOf="@+id/outlineButton"
+                android:layout_marginLeft="10dp" />
+
+        </RelativeLayout>
 
 		<RelativeLayout
 			android:id="@+id/topBar1Search"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:background="@color/toolbar" >
+			android:layout_height="wrap_content">
 
 			<ImageButton
 				android:id="@+id/cancelSearch"
@@ -158,8 +179,7 @@
 		<RelativeLayout
 			android:id="@+id/topBar2Annot"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:background="@color/toolbar" >
+			android:layout_height="wrap_content">
 
 			<ImageButton
 				android:id="@+id/cancelAnnotButton"
@@ -221,8 +241,7 @@
 		<RelativeLayout
 			android:id="@+id/topBar3Delete"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:background="@color/toolbar" >
+			android:layout_height="wrap_content">
 
 			<ImageButton
 				android:id="@+id/cancelDeleteButton"
@@ -265,8 +284,7 @@
 		<RelativeLayout
 			android:id="@+id/topBar4More"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:background="@color/toolbar" >
+			android:layout_height="wrap_content">
 
 			<ImageButton
 				android:id="@+id/cancelMoreButton"
@@ -317,8 +335,7 @@
 		<RelativeLayout
 			android:id="@+id/topBar5Accept"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:background="@color/toolbar" >
+			android:layout_height="wrap_content">
 
 			<ImageButton
 				android:id="@+id/cancelAcceptButton"
@@ -355,7 +372,8 @@
 				android:onClick="OnAcceptButtonClick"
 				android:src="@drawable/ic_check" />
 		</RelativeLayout>
-		</ViewAnimator>
+
+    </ViewAnimator>
 
 	<RelativeLayout
 		android:id="@+id/lowerButtons"
@@ -364,11 +382,79 @@
 		android:layout_alignParentBottom="true"
 		android:layout_centerHorizontal="true" >
 
-		<SeekBar
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="59dp"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/reader_tabbar"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:id="@+id/reader_home_layout">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/reader_home"
+                    android:adjustViewBounds="true" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:id="@+id/reader_library_layout">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/reader_library"
+                    android:adjustViewBounds="true" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:id="@+id/reader_download_layout">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/reader_download"
+                    android:adjustViewBounds="true" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:id="@+id/reader_info_layout">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/reader_info"
+                    android:adjustViewBounds="true" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <SeekBar
 			android:id="@+id/pageSlider"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_alignParentBottom="true"
+			android:layout_alignParentBottom="false"
 			android:layout_centerHorizontal="true"
 			android:layout_margin="0dp"
 			android:thumb="@drawable/seek_thumb"
@@ -378,7 +464,8 @@
 			android:paddingTop="12dp"
 			android:paddingBottom="8dp"
 			android:background="@color/toolbar"
-			/>
+            android:layout_above="@+id/reader_tabbar"
+            android:visibility="gone" />
 
 		<TextView
 			android:id="@+id/pageNumber"
@@ -389,9 +476,36 @@
 			android:layout_marginBottom="16dp"
 			android:background="@drawable/page_num"
 			android:textColor="#FFFFFF"
-			android:textAppearance="?android:attr/textAppearanceMedium" />
+			android:textAppearance="?android:attr/textAppearanceMedium"
+            android:visibility="gone" />
 
-	</RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/PreviewBarHolder"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/reader_bottom_preview_total_height"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@+id/reader_tabbar">
+
+            <ImageView
+                android:id="@+id/reader_preview_bar_divider"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/reader_bottom_preview_divider"
+                android:layout_alignParentTop="false"
+                android:layout_above="@+id/reader_preview_bar_listView" />
+
+            <com.artifex.mupdfdemo.ThumnailHorizontalListView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/reader_bottom_preview_height"
+                android:id="@+id/reader_preview_bar_listView"
+                android:layout_alignParentBottom="true">
+
+            </com.artifex.mupdfdemo.ThumnailHorizontalListView>
+
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
 
 	<TextView
 		android:id="@+id/info"

@@ -1,21 +1,34 @@
 package ak.detaysoft.galepress;
 
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ClipDrawable;
+import android.graphics.drawable.ShapeDrawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.assist.ImageSize;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
 
 import ak.detaysoft.galepress.database_models.L_Content;
+import ak.detaysoft.galepress.util.ApplicationThemeColor;
 
 /**
  * Created by adem on 13/01/14.
@@ -23,11 +36,9 @@ import ak.detaysoft.galepress.database_models.L_Content;
 
 public class ContentHolderAdapter extends BaseAdapter  {
     private LibraryFragment libraryFragment;
-    public List contents;
 
-    public ContentHolderAdapter(LibraryFragment activity, List contents) {
+    public ContentHolderAdapter(LibraryFragment activity) {
         this.libraryFragment = activity;
-        this.contents = contents;
     }
 
     @Override
@@ -36,185 +47,159 @@ public class ContentHolderAdapter extends BaseAdapter  {
     }
 
     public int getCount() {
-        return contents.size();
+        return libraryFragment.getContents().size();
     }
 
     public Object getItem(int position) {
-        return contents.get(position);
+        return libraryFragment.getContents().get(position);
     }
 
     public long getItemId(int position) {
-        return ((L_Content)contents.get(position)).getId();
+        return ((L_Content)libraryFragment.getContents().get(position)).getId();
     }
 
-    public static class ViewHolder implements View.OnClickListener
+    public class ViewHolder
     {
+        public RelativeLayout detailLayout;
         public ImageView coverImageView;
         public TextView nameLabel;
         public TextView detailLabel;
         public TextView monthLabel;
-        public Button downloadButton;
-        public Button updateButton;
-        public Button cancelButton;
-        public Button viewButton;
-        public Button deleteButton;
         public ProgressBar progressBar;
-        public TextView progressLabel;
+        public ProgressBar loading;
         public L_Content content;
 
-        @Override
-        public void onClick(View v) {
-            if(!GalePressApplication.getInstance().getDataApi().isBlockedFromWS){
-                if(v == downloadButton){
-                    if(DataApi.isConnectedToInternet()){
-                        v.setEnabled(false);
-                        GalePressApplication.getInstance().getDataApi().getPdf(content);
-                    }
-                }
-                else if(v == updateButton){
-                    if(DataApi.isConnectedToInternet()){
-                        v.setEnabled(false);
-                        v.setVisibility(View.INVISIBLE);
-                        GalePressApplication.getInstance().getDataApi().getPdf(content);
-                    }
-                }
-                else if(v == cancelButton){
-                    v.setEnabled(false);
-                    GalePressApplication.getInstance().getDataApi().cancelDownload(false);
-                }
-                else if(v == deleteButton){
-                    v.setEnabled(false);
-                    GalePressApplication.getInstance().getDataApi().deletePdf(content.getId());
-                }
-                else{
-                    GalePressApplication.getInstance().getLibraryActivity().viewContent(content);
-                }
-            }
+        public void refreshImageLoading(){
+            displayImage(true, coverImageView, loading, content.getSmallCoverImageDownloadPath(), content);
         }
+
     }
 
     // create a new ImageView for each item referenced by the Adapter
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder;
-        final L_Content content = (L_Content) contents.get(position);
+
+
+        final ViewHolder viewHolder;
+        final L_Content content = (L_Content) libraryFragment.getContents().get(position);
         if (convertView == null) {  // if it's not recycled, initialize some attributes
             viewHolder = new ViewHolder();
             convertView = libraryFragment.getLayoutInflater().inflate(R.layout.grid_cell, null);
+            viewHolder.detailLayout = (RelativeLayout)convertView.findViewById(R.id.detailLayout);
             viewHolder.coverImageView= (ImageView)convertView.findViewById(R.id.coverImage);
+            viewHolder.monthLabel = (TextView)convertView.findViewById(R.id.monthLabel);
             viewHolder.nameLabel = (TextView)convertView.findViewById(R.id.nameLabel);
             viewHolder.detailLabel = (TextView)convertView.findViewById(R.id.detailLabel);
-            viewHolder.monthLabel = (TextView)convertView.findViewById(R.id.monthLabel);
-            viewHolder.downloadButton = (Button)convertView.findViewById(R.id.download_button);
-            viewHolder.updateButton = (Button)convertView.findViewById(R.id.update_button);
-            viewHolder.cancelButton = (Button)convertView.findViewById(R.id.cancel_button);
-            viewHolder.viewButton = (Button)convertView.findViewById(R.id.view_button);
-            viewHolder.deleteButton = (Button)convertView.findViewById(R.id.delete_button);
             viewHolder.progressBar = (ProgressBar)convertView.findViewById(R.id.progress_bar);
-            viewHolder.progressLabel = (TextView)convertView.findViewById(R.id.progress_label);
+            viewHolder.loading = (ProgressBar)convertView.findViewById(R.id.grid_image_loading);
+            viewHolder.loading.setIndeterminate(true);
+            viewHolder.loading.getIndeterminateDrawable().setColorFilter(ApplicationThemeColor.getInstance().getForegroundColor(), android.graphics.PorterDuff.Mode.MULTIPLY);
             convertView.setTag(viewHolder);
-
         } else {
             viewHolder = (ViewHolder)convertView.getTag();
         }
-        if(viewHolder.coverImageView.getTag() != null) {
-            ((ImageGetter) viewHolder.coverImageView.getTag()).cancel(true);
-        }
-        ImageGetter task = new ImageGetter(viewHolder.coverImageView) ;
+
+        ((RelativeLayout)viewHolder.detailLayout.getParent()).setBackgroundColor(ApplicationThemeColor.getInstance().getCoverImageBackgroundColor());
+        viewHolder.nameLabel.setTextColor(ApplicationThemeColor.getInstance().getLibraryItemTextColor());
+        viewHolder.detailLabel.setTextColor(ApplicationThemeColor.getInstance().getLibraryItemTextColor());
+        viewHolder.monthLabel.setTextColor(ApplicationThemeColor.getInstance().getLibraryItemTextColor());
+
         File coverImageFile = new File(GalePressApplication.getInstance().getFilesDir(), content.getCoverImageFileName());
-
-        if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB ) {
-            task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,coverImageFile);
+        if(coverImageFile.exists()){
+            displayImage(false, viewHolder.coverImageView, viewHolder.loading, "file://"+coverImageFile.getPath(), content);
+        } else if (content.getSmallCoverImageDownloadPath() != null){
+            displayImage(true, viewHolder.coverImageView, viewHolder.loading, content.getSmallCoverImageDownloadPath(), content);
         } else {
-            task.execute(coverImageFile);
+            Log.e("imageDisplayed", "noimage");
         }
-
-        viewHolder.coverImageView.setTag(task);
 
         viewHolder.nameLabel.setText(content.getName());
+        viewHolder.nameLabel.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(libraryFragment.getActivity()));
         viewHolder.detailLabel.setText(content.getDetail());
+        viewHolder.detailLabel.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(libraryFragment.getActivity()));
         viewHolder.monthLabel.setText(content.getMonthlyName());
+        viewHolder.monthLabel.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(libraryFragment.getActivity()));
 
         viewHolder.progressBar.setVisibility(View.INVISIBLE);
-        viewHolder.progressLabel.setVisibility(View.INVISIBLE);
-        viewHolder.viewButton.setVisibility(View.INVISIBLE);
-        viewHolder.deleteButton.setVisibility(View.INVISIBLE);
-        viewHolder.cancelButton.setVisibility(View.INVISIBLE);
-        viewHolder.cancelButton.setOnClickListener(viewHolder);
+
+        ShapeDrawable pgDrawable = new ShapeDrawable();
+        pgDrawable.getPaint().setColor(Color.parseColor(ApplicationThemeColor.getInstance().getForegroundHexColor()));
+        ClipDrawable progress = new ClipDrawable(pgDrawable, Gravity.LEFT, ClipDrawable.HORIZONTAL);
+        viewHolder.progressBar.setProgressDrawable(progress);
+        viewHolder.progressBar.setBackgroundColor(ApplicationThemeColor.getInstance().getProgressbarBackgroundColor());
 
         boolean downloaded = content.isPdfDownloaded();
         boolean updateAvailable = content.isPdfUpdateAvailable();
         boolean downloading = content.isPdfDownloading() && GalePressApplication.getInstance().getDataApi().downloadPdfTask !=null && GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() == AsyncTask.Status.RUNNING && GalePressApplication.getInstance().getDataApi().downloadPdfTask.content !=null && GalePressApplication.getInstance().getDataApi().downloadPdfTask.content.getId().compareTo(content.getId()) == 0;
 
-        viewHolder.cancelButton.setOnClickListener(viewHolder);
-        viewHolder.viewButton.setOnClickListener(viewHolder);
-        viewHolder.deleteButton.setOnClickListener(viewHolder);
-        viewHolder.downloadButton.setOnClickListener(viewHolder);
-        viewHolder.updateButton.setOnClickListener(viewHolder);
-
-
         if(downloaded){
             // Content is downloaded and ready to view.
-            viewHolder.downloadButton.setVisibility(View.INVISIBLE);
-
-            viewHolder.viewButton.setVisibility(View.VISIBLE);
-            viewHolder.viewButton.setEnabled(true);
-
-            viewHolder.deleteButton.setVisibility(View.VISIBLE);
-            viewHolder.deleteButton.setEnabled(true);
-
-            viewHolder.cancelButton.setVisibility(View.INVISIBLE);
-            convertView.setOnClickListener(viewHolder);
-
             if(updateAvailable){
-                viewHolder.updateButton.setVisibility(View.VISIBLE);
-                viewHolder.updateButton.setEnabled(true);
 
                 if(downloading){
                     // update downloading
-                    viewHolder.updateButton.setVisibility(View.INVISIBLE);
-                    viewHolder.viewButton.setVisibility(View.INVISIBLE);
-                    viewHolder.deleteButton.setVisibility(View.INVISIBLE);
-
-                    viewHolder.cancelButton.setEnabled(true);
-                    viewHolder.cancelButton.setVisibility(View.VISIBLE);
                     viewHolder.progressBar.setVisibility(View.VISIBLE);
-                    viewHolder.progressLabel.setVisibility(View.VISIBLE);
 
                 }
             }
             else{
                 // update not available
-                viewHolder.updateButton.setVisibility(View.INVISIBLE);
             }
         }
         else{
             // not downloaded
             if(downloading){
                 // Content is not downloaded but downloading
-                viewHolder.cancelButton.setVisibility(View.VISIBLE);
-                viewHolder.cancelButton.setEnabled(true);
 
                 viewHolder.progressBar.setVisibility(View.VISIBLE);
-                viewHolder.progressLabel.setVisibility(View.VISIBLE);
-
-                viewHolder.downloadButton.setEnabled(false);
-                viewHolder.downloadButton.setVisibility(View.INVISIBLE);
-
-                viewHolder.viewButton.setVisibility(View.INVISIBLE);
             }
             else{
                 // Content Download edilmemis. ilk acildigi durum.
-                viewHolder.downloadButton.setVisibility(View.VISIBLE);
-                viewHolder.downloadButton.setEnabled(true);
-
-                viewHolder.deleteButton.setVisibility(View.INVISIBLE);
-                viewHolder.updateButton.setVisibility(View.INVISIBLE);
-
-                viewHolder.cancelButton.setVisibility(View.INVISIBLE);
             }
         }
         viewHolder.content = content;
 
         return convertView;
+    }
+
+    public void displayImage(final boolean isDownload, final ImageView image, final ProgressBar loading, String imagePath, final L_Content content){
+        DisplayImageOptions displayConfig;
+        if (isDownload) {
+            displayConfig = new DisplayImageOptions.Builder()
+                .showImageOnFail(ApplicationThemeColor.getInstance().paintIcons(libraryFragment.getActivity(), ApplicationThemeColor.INTERNET_CONNECTION_ERROR))
+                    .cacheInMemory(true).build();
+        } else {
+            displayConfig = new DisplayImageOptions.Builder()
+                    .cacheInMemory(true).build();
+        }
+
+        ImageLoader.getInstance().displayImage(imagePath, image, displayConfig, new ImageLoadingListener() {
+            @Override
+            public void onLoadingStarted(String s, View view) {
+                image.setImageBitmap(null);
+                loading.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onLoadingFailed(String s, View view, FailReason failReason) {
+                loading.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onLoadingComplete(String s, View view, Bitmap bitmap) {
+                loading.setVisibility(View.GONE);
+                if (isDownload)
+                    GalePressApplication.getInstance().getDataApi().saveImage(bitmap, content.getCoverImageFileName(), content.getCoverImageVersion(), false);
+                else if (content.getRemoteCoverImageVersion() < content.getCoverImageVersion())
+                    GalePressApplication.getInstance().getDataApi().downloadUpdatedImage(content.getSmallCoverImageDownloadPath()
+                            , content.getCoverImageFileName()
+                            , content.getId(), false);
+            }
+
+            @Override
+            public void onLoadingCancelled(String s, View view) {
+                loading.setVisibility(View.GONE);
+                Log.e("loadingCanceled", "");
+            }
+        });
     }
 }

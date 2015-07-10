@@ -49,11 +49,21 @@
         <activity
             android:name="ak.detaysoft.galepress.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/LibraryTheme"></activity>
+            android:theme="@style/LibraryTheme"
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity
+            android:name="ak.detaysoft.galepress.ViewerLoginActivity"
+            android:label="@string/app_name"
+            android:theme="@style/LoginTheme"
+            android:screenOrientation="sensorPortrait"
+            android:windowSoftInputMode="adjustPan"></activity>
         <activity
             android:name="ak.detaysoft.galepress.ExtraWebViewActivity"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"></activity>
+            android:theme="@style/ExtraWebView"></activity>
+        <activity
+            android:name="ak.detaysoft.galepress.ContentDetailPopupActivity"
+            android:theme="@style/ContentPopupTheme"></activity>
 
         <!--<activity-->
         <!--android:name="com.artifex.mupdfdemo.ChoosePDFActivity"-->
@@ -130,6 +140,12 @@
             android:label="@string/print"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"></activity>
 
+        <activity android:name="com.facebook.FacebookActivity"
+            android:configChanges=
+                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:label="@string/app_name" />
+
         <receiver
             android:name="com.google.android.gcm.GCMBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND">
@@ -156,5 +172,7 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
     </application>
 </manifest>

@@ -5,9 +5,13 @@
         <key>ApplicationVersion</key>
         <integer>0</integer>
         <key>ApplicationID</key>
-        <string>10</string>
+        <string>146</string>
         <key>ApplicationName</key>
+<<<<<<< HEAD
         <string>Galepress</string>
+=======
+        <string>MGunes</string>
+>>>>>>> origin/UIUpdate
         <key>isTestApplication</key>
         <false/>
         <key>Extras</key>
@@ -23,6 +27,22 @@
             <dict>
                 <key>Twitter</key>
                 <string>https://twitter.com/nef_style</string>
+            </dict>
+            <dict>
+                <key>Google Plus</key>
+                <string>http://www.plus.google.com</string>
+            </dict>
+            <dict>
+                <key>Pinterest</key>
+                <string>https://tr.pinterest.com/</string>
+            </dict>
+            <dict>
+                <key>Tumblr</key>
+                <string>https://www.tumblr.com/</string>
+            </dict>
+            <dict>
+                <key>Youtube</key>
+                <string>https://www.youtube.com/</string>
             </dict>
             <dict>
                 <key>E-Mail</key>

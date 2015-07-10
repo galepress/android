@@ -2,15 +2,17 @@ package ak.detaysoft.galepress;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import ak.detaysoft.galepress.util.ApplicationThemeColor;
 
 /**
  * Created by adem on 15/04/14.
@@ -18,6 +20,7 @@ import android.widget.TextView;
 public class ExtraWebViewActivity extends Activity {
     private WebView webView;
     public String url = "http://www.google.com";
+    public boolean isMainActivitIntent = false;
     ProgressBar progressBar;
     ImageButton ileriButton,geriButton,refreshButton;
     @Override
@@ -27,8 +30,21 @@ public class ExtraWebViewActivity extends Activity {
         progressBar = (ProgressBar) findViewById(R.id.extra_web_view_close_progress_bar);
 
         ileriButton = (ImageButton) findViewById(R.id.extra_web_view_ileri_button);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+            ileriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT_DISABLE));
+        else
+            ileriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT_DISABLE));
+        ((RelativeLayout)findViewById(R.id.extra_web_view_actionbar)).setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
         geriButton = (ImageButton) findViewById(R.id.extra_web_view_geri_button);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+            geriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK_DISABLE));
+        else
+            geriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK_DISABLE));
         refreshButton = (ImageButton) findViewById(R.id.extra_web_view_refresh_button);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+            refreshButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_REFRESH_DISABLE));
+        else
+            refreshButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_REFRESH_DISABLE));
 
         ileriButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,23 +69,34 @@ public class ExtraWebViewActivity extends Activity {
             }
         });
 
+        TextView titleTextView = (TextView) findViewById(R.id.extra_web_view_title);
+        titleTextView.setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
+        titleTextView.setTypeface(ApplicationThemeColor.getInstance().getFont(ExtraWebViewActivity.this));
+
         ImageButton closeButton = (ImageButton) findViewById(R.id.extra_web_view_close_button);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+            closeButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_CLOSE));
+        else
+            closeButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_CLOSE));
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
+                if(isMainActivitIntent)
+                    overridePendingTransition(0, R.animator.right_to_left_translate);
             }
         });
 
         url = (String)this.getIntent().getExtras().get("url");
+        if(getIntent().getExtras().containsKey("isMainActivitIntent"))
+            isMainActivitIntent = this.getIntent().getExtras().getBoolean("isMainActivitIntent");
+
 
         webView = (WebView) findViewById(R.id.webview);
         webView.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onReceivedTitle(WebView view, String title) {
                 super.onReceivedTitle(view, title);
-                TextView titleTextView = (TextView) findViewById(R.id.extra_web_view_title);
-                titleTextView.setText(title);
             }
         });
         webView.getSettings().setJavaScriptEnabled(true);
@@ -81,7 +108,10 @@ public class ExtraWebViewActivity extends Activity {
                 progressBar.setIndeterminate(true);
                 progressBar.getIndeterminateDrawable().setColorFilter(0xFF00D0FF, android.graphics.PorterDuff.Mode.MULTIPLY);
                 progressBar.setVisibility(View.VISIBLE);
-                refreshButton.setImageDrawable(getResources().getDrawable(R.drawable.extra_web_refresh_disable));
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                    refreshButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(ExtraWebViewActivity.this, ApplicationThemeColor.WEBVIEW_REFRESH_DISABLE));
+                else
+                    refreshButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(ExtraWebViewActivity.this, ApplicationThemeColor.WEBVIEW_REFRESH_DISABLE));
             }
 
             @Override
@@ -102,17 +132,33 @@ public class ExtraWebViewActivity extends Activity {
     public void enableDisableNavigationButtons(WebView webView) {
         // if has previous page, enable the back button
         if(webView.canGoBack()){
-                geriButton.setImageDrawable(getResources().getDrawable(R.drawable.extra_web_geri));
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                geriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK));
+            else
+                geriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK));
         }else{
-                geriButton.setImageDrawable(getResources().getDrawable(R.drawable.extra_web_geri_disable));
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                geriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK_DISABLE));
+            else
+                geriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK_DISABLE));
         }
         // if has next page, enable the next button
         if(webView.canGoForward()){
-                ileriButton.setImageDrawable(getResources().getDrawable(R.drawable.extra_web_ileri));
-        }else{
-                ileriButton.setImageDrawable(getResources().getDrawable(R.drawable.extra_web_ileri_disable));
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                ileriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT));
+            else
+                ileriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT));
+        } else{
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                ileriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT_DISABLE));
+            else
+                ileriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT_DISABLE));
         }
-        refreshButton.setImageDrawable(getResources().getDrawable(R.drawable.extra_web_refresh));
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+            refreshButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_REFRESH));
+        else
+            refreshButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_REFRESH));
 
 
     }

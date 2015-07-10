@@ -11,12 +11,17 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 
+import ak.detaysoft.galepress.database_models.L_Application;
 import ak.detaysoft.galepress.database_models.L_Content;
+import ak.detaysoft.galepress.service_models.R_AppDetail;
+import ak.detaysoft.galepress.util.ApplicationThemeColor;
 import ak.detaysoft.galepress.util.SystemUiHider;
 import ak.detaysoft.galepress.view.ProgressWheel;
 
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+
+import com.facebook.FacebookSdk;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -40,8 +45,27 @@ public class LaunchActivity extends ActionBarActivity {
         pw_two = (ProgressWheel) findViewById(R.id.progressBarTwo);
         pw_two.setVisibility(View.INVISIBLE);
         GalePressApplication.getInstance().setCurrentActivity(this);
-        GalePressApplication.getInstance().getDataApi().updateApplication();
+
+        if(GalePressApplication.getInstance().isTestApplication())
+            FacebookSdk.sdkInitialize(this.getApplicationContext());
+
+        if(GalePressApplication.getInstance().isTestApplication()){
+            if(GalePressApplication.getInstance().getTestApplicationLoginInf().getUsername().isEmpty())
+                openLoginActivity();
+            else
+                GalePressApplication.getInstance().getDataApi().updateApplication();
+        } else {
+            GalePressApplication.getInstance().getDataApi().updateApplication();
+        }
+
         masterContent = GalePressApplication.getInstance().getDataApi().getMasterContent();
+    }
+
+    public void openLoginActivity(){
+        Intent i = new Intent(this,ViewerLoginActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(i);
+        finish();
     }
 
     public void openMasterContent(){
@@ -53,6 +77,7 @@ public class LaunchActivity extends ActionBarActivity {
 
         finish();
     }
+
     public void openLibraryFragment(){
         Intent i = new Intent(this,MainActivity.class);
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -101,6 +126,12 @@ public class LaunchActivity extends ActionBarActivity {
     protected void onResume() {
         super.onResume();
         GalePressApplication.getInstance().setCurrentActivity(this);
+        if(GalePressApplication.getInstance().getDataApi() != null){
+            if(GalePressApplication.getInstance().getDataApi().downloadPdfTask != null
+                    && GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() == AsyncTask.Status.FINISHED){
+                openMasterContent();
+            }
+        }
     }
     protected void onPause() {
         clearReferences();

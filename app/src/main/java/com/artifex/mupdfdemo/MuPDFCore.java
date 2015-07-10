@@ -140,10 +140,14 @@ public class MuPDFCore
         * Bunu engelledim. Workaround cozum oldu. (MG)
         * */
 
-        if (pageWidth == 0)
-             this.pageWidth = getPageWidth();
-        if(getPageWidth() >= pageWidth )
-		    this.pageWidth = getPageWidth();
+        if(displayPages == 1){
+            this.pageWidth = getPageWidth();
+        } else {
+            if (pageWidth == 0)
+                this.pageWidth = getPageWidth();
+            if(getPageWidth() >= pageWidth )
+                this.pageWidth = getPageWidth();
+        }
 
 		this.pageHeight = getPageHeight();
 	}
@@ -579,5 +583,9 @@ public class MuPDFCore
             // Landscape'den Portrait'e index cevirisi
             return ((index -1)*2)+1;
         }
+    }
+
+    public L_Content getContent() {
+        return content;
     }
 }

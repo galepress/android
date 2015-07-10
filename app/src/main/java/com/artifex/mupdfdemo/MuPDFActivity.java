@@ -8,7 +8,6 @@ import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.List;
 import java.util.TimeZone;
 import java.util.UUID;
 import java.util.concurrent.Executor;
@@ -28,6 +27,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Build;
@@ -36,32 +36,44 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.provider.Settings;
+import android.support.v4.app.FragmentActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
-import android.view.Display;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
-import android.view.Surface;
 import android.view.View;
-import android.view.WindowManager;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.DecelerateInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewAnimator;
 
+import net.simonvt.menudrawer.MenuDrawer;
+
 import ak.detaysoft.galepress.GalePressApplication;
 import ak.detaysoft.galepress.R;
+import ak.detaysoft.galepress.StateListDrawableWithColorFilter;
+import ak.detaysoft.galepress.custom_models.TabbarItem;
 import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.database_models.L_Statistic;
+import ak.detaysoft.galepress.util.ApplicationThemeColor;
 
 class ThreadPerTaskExecutor implements Executor {
 	public void execute(Runnable r) {
@@ -85,9 +97,9 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 	private boolean      mButtonsVisible;
 	private EditText     mPasswordView;
 	private TextView     mFilenameView;
-	private SeekBar      mPageSlider;
+	//private SeekBar      mPageSlider;
 	private int          mPageSliderRes;
-	private TextView     mPageNumberView;
+	//private TextView     mPageNumberView;
 	private TextView     mInfoView;
 	private ImageButton  mSearchButton;
 	private ImageButton  mOutlineButton;
@@ -104,6 +116,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 	private ImageButton  mSearchFwd;
 	private EditText     mSearchText;
 	private SearchTask   mSearchTask;
+    private LinearLayout bottomTabBar;
 	private AlertDialog.Builder mAlertBuilder;
 	private boolean    mLinkHighlight = true;
 	private final Handler mHandler = new Handler();
@@ -116,7 +129,21 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
     public L_Content content;
     public Bundle savedInstanceState;
     private boolean isActivityActive = false;
+    private MenuDrawer mDrawer;
 
+    //private ThumnailHorizontalLayout mPreview;
+    private ThumnailHorizontalListView mPreview;
+    private RelativeLayout mPreviewBarHolder;
+    //private CustomThumnailAdapter thumnailAdapter;
+    private ThumnailListAdapter thumnailAdapter;
+
+    private Animation thumnailAnimVisible;
+    private Animation thumnailAnimInvisible;
+    private int thumnailAnimStartPoint;
+    private int thumnailAnimEndPoint;
+    private AnimationSet sInVisible;
+    private AnimationSet sVisible;
+    private boolean isHomeOpen = false;
 
 
 	public void createAlertWaiter() {
@@ -283,6 +310,9 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 		super.onCreate(savedInstanceState);
 
 		mAlertBuilder = new AlertDialog.Builder(this);
+
+        if(getIntent().hasExtra("isHomeOpen"))
+            isHomeOpen = getIntent().getBooleanExtra("isHomeOpen", false);
 
 		if (core == null) {
 			core = (MuPDFCore)getLastNonConfigurationInstance();
@@ -455,10 +485,10 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 				if (core == null)
 					return;
 
-                mPageNumberView.setText(String.format("%d / %d", i + 1,
+                /*mPageNumberView.setText(String.format("%d / %d", i + 1,
                         core.countPages()));
                 mPageSlider.setMax((core.countPages() - 1) * mPageSliderRes);
-                mPageSlider.setProgress(i * mPageSliderRes);
+                mPageSlider.setProgress(i * mPageSliderRes);*/
 
 
 
@@ -544,6 +574,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 				}
 			}
 		};
+        mDocView.setBackgroundColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
 		mDocView.setAdapter(new MuPDFPageAdapter(this, this, core));
 
 		mSearchTask = new SearchTask(this, core) {
@@ -571,7 +602,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 		mFilenameView.setText(mFileName);
 
 		// Activate the seekbar
-		mPageSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+		/*mPageSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             public void onStopTrackingTouch(SeekBar seekBar) {
                 mDocView.setDisplayedViewIndex((seekBar.getProgress() + mPageSliderRes / 2) / mPageSliderRes);
             }
@@ -583,7 +614,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                                           boolean fromUser) {
                 updatePageNumView((progress + mPageSliderRes / 2) / mPageSliderRes);
             }
-        });
+        });*/
 
 		// Activate the search-preparing button
 		mSearchButton.setOnClickListener(new View.OnClickListener() {
@@ -689,12 +720,10 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 		if (core.hasOutline()) {
 			mOutlineButton.setOnClickListener(new View.OnClickListener() {
 				public void onClick(View v) {
-					OutlineItem outline[] = core.getOutline();
-					if (outline != null) {
-						OutlineActivityData.get().items = outline;
-						Intent intent = new Intent(MuPDFActivity.this, OutlineActivity.class);
-						startActivityForResult(intent, OUTLINE_REQUEST);
-					}
+                    if(mDrawer.isMenuVisible())
+                        mDrawer.closeMenu(true);
+                    else
+                        mDrawer.openMenu(true);
 				}
 			});
 		} else {
@@ -722,11 +751,45 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 		if(savedInstanceState != null && savedInstanceState.getBoolean("ReflowMode", false))
 			reflowModeSet(true);
 
-		// Stick the document view and the buttons overlay into a parent view
-		RelativeLayout layout = new RelativeLayout(this);
-		layout.addView(mDocView);
-		layout.addView(mButtonsView);
-		setContentView(layout);
+
+
+        if (core.hasOutline()){
+            mDrawer = MenuDrawer.attach(this, MenuDrawer.MENU_DRAG_WINDOW);
+            RelativeLayout layout = new RelativeLayout(this);
+            layout.addView(mDocView);
+            layout.addView(mButtonsView);
+
+            mDrawer.setContentView(layout);
+            mDrawer.setMenuView(R.layout.reader_left_layout);
+            mDrawer.setDropShadowColor(Color.LTGRAY);
+            mDrawer.setDropShadowSize(2);
+            mDrawer.setMenuSize((int) getResources().getDimension(R.dimen.reader_left_menu_size));
+
+            ListView leftList = (ListView)findViewById(R.id.reader_left_menu_listView);
+            leftList.setBackgroundColor(ApplicationThemeColor.getInstance().getForegroundColor());
+            leftList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    mDrawer.closeMenu();
+                    int resultCode = core.getOutline()[position].page;
+                    if (core.getDisplayPages() == 2) {
+                        resultCode = (core.getOutline()[position].page + 1) / 2;
+                    }
+                    mDocView.setDisplayedViewIndex(resultCode);
+                    scrollToLastThumnail(mDocView.getDisplayedViewIndex());
+                }
+            });
+            leftList.setAdapter(new OutlineAdapter(this, getLayoutInflater(),core.getOutline()));
+
+        } else {
+            // Stick the document view and the buttons overlay into a parent view
+            RelativeLayout layout = new RelativeLayout(this);
+            layout.addView(mDocView);
+            layout.addView(mButtonsView);
+            setContentView(layout);
+        }
+
+
         hideButtonsFast();
 	}
 
@@ -895,13 +958,13 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
     private void showButtons() {
         if (core == null)
             return;
-        if (!mButtonsVisible) {
+        if (!mButtonsVisible && !content.isMaster()) {
             mButtonsVisible = true;
             // Update page number text and slider
             int index = mDocView.getDisplayedViewIndex();
             updatePageNumView(index);
-            mPageSlider.setMax((core.countPages()-1)*mPageSliderRes);
-            mPageSlider.setProgress(index*mPageSliderRes);
+            //mPageSlider.setMax((core.countPages()-1)*mPageSliderRes);
+            //mPageSlider.setProgress(index*mPageSliderRes);
             if (mTopBarMode == TopBarMode.Search) {
                 mSearchText.requestFocus();
                 showKeyboard();
@@ -918,7 +981,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             });
             mTopBarSwitcher.startAnimation(anim);
 
-            anim = new TranslateAnimation(0, 0, mPageSlider.getHeight(), 0);
+            /*anim = new TranslateAnimation(0, 0, mPageSlider.getHeight() + bottomTabBar.getHeight(), 0);
             anim.setDuration(200);
             anim.setAnimationListener(new Animation.AnimationListener() {
                 public void onAnimationStart(Animation animation) {
@@ -929,7 +992,33 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                     mPageNumberView.setVisibility(View.VISIBLE);
                 }
             });
-            mPageSlider.startAnimation(anim);
+            mPageSlider.startAnimation(anim);*/
+
+            anim = new TranslateAnimation(0, 0, bottomTabBar.getHeight(), 0);
+            anim.setDuration(200);
+            anim.setAnimationListener(new Animation.AnimationListener() {
+                public void onAnimationStart(Animation animation) {
+                    bottomTabBar.setVisibility(View.VISIBLE);
+                }
+                public void onAnimationRepeat(Animation animation) {}
+                public void onAnimationEnd(Animation animation) {
+
+                }
+            });
+            bottomTabBar.startAnimation(anim);
+
+            scrollToLastThumnail(mDocView.getDisplayedViewIndex());
+            anim = new TranslateAnimation(0, 0,  bottomTabBar.getHeight() + mPreviewBarHolder.getHeight(), 0);
+            anim.setDuration(200);
+            anim.setAnimationListener(new Animation.AnimationListener() {
+                public void onAnimationStart(Animation animation) {
+                    mPreviewBarHolder.setVisibility(View.VISIBLE);
+                }
+                public void onAnimationRepeat(Animation animation) {}
+                public void onAnimationEnd(Animation animation) {
+                }
+            });
+            mPreviewBarHolder.startAnimation(anim);
         }
     }
 
@@ -941,8 +1030,8 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             // Update page number text and slider
             int index = mDocView.getDisplayedViewIndex();
             updatePageNumView(index);
-            mPageSlider.setMax((core.countPages()-1)*mPageSliderRes);
-            mPageSlider.setProgress(index*mPageSliderRes);
+            //mPageSlider.setMax((core.countPages()-1)*mPageSliderRes);
+            //mPageSlider.setProgress(index*mPageSliderRes);
             if (mTopBarMode == TopBarMode.Search) {
                 mSearchText.requestFocus();
                 showKeyboard();
@@ -959,7 +1048,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             });
             mTopBarSwitcher.startAnimation(anim);
 
-            anim = new TranslateAnimation(0, 0, mPageSlider.getHeight(), 0);
+            /*anim = new TranslateAnimation(0, 0, mPageSlider.getHeight() + bottomTabBar.getHeight(), 0);
             anim.setDuration(0);
             anim.setAnimationListener(new Animation.AnimationListener() {
                 public void onAnimationStart(Animation animation) {
@@ -970,11 +1059,38 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                     mPageNumberView.setVisibility(View.VISIBLE);
                 }
             });
-            mPageSlider.startAnimation(anim);
+            mPageSlider.startAnimation(anim);*/
+
+            anim = new TranslateAnimation(0, 0, bottomTabBar.getHeight(), 0);
+            anim.setDuration(0);
+            anim.setAnimationListener(new Animation.AnimationListener() {
+                public void onAnimationStart(Animation animation) {
+                    bottomTabBar.setVisibility(View.VISIBLE);
+                }
+                public void onAnimationRepeat(Animation animation) {}
+                public void onAnimationEnd(Animation animation) {
+
+                }
+            });
+            bottomTabBar.startAnimation(anim);
+
+
+            scrollToLastThumnail(mDocView.getDisplayedViewIndex());
+            anim = new TranslateAnimation(0, 0, bottomTabBar.getHeight() + mPreviewBarHolder.getHeight(), 0);
+            anim.setDuration(0);
+            anim.setAnimationListener(new Animation.AnimationListener() {
+                public void onAnimationStart(Animation animation) {
+                    mPreviewBarHolder.setVisibility(View.VISIBLE);
+                }
+                public void onAnimationRepeat(Animation animation) {}
+                public void onAnimationEnd(Animation animation) {
+                }
+            });
+            mPreviewBarHolder.startAnimation(anim);
         }
     }
 
-    private void hideButtons() {
+    public void hideButtons() {
         if (mButtonsVisible) {
             mButtonsVisible = false;
             hideKeyboard();
@@ -990,7 +1106,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             });
             mTopBarSwitcher.startAnimation(anim);
 
-            anim = new TranslateAnimation(0, 0, 0, mPageSlider.getHeight());
+            /*anim = new TranslateAnimation(0, 0, 0, mPageSlider.getHeight() + bottomTabBar.getHeight());
             anim.setDuration(200);
             anim.setAnimationListener(new Animation.AnimationListener() {
                 public void onAnimationStart(Animation animation) {
@@ -1001,7 +1117,32 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                     mPageSlider.setVisibility(View.INVISIBLE);
                 }
             });
-            mPageSlider.startAnimation(anim);
+            mPageSlider.startAnimation(anim);*/
+
+            anim = new TranslateAnimation(0, 0, 0, bottomTabBar.getHeight());
+            anim.setDuration(200);
+            anim.setAnimationListener(new Animation.AnimationListener() {
+                public void onAnimationStart(Animation animation) {
+                    bottomTabBar.setVisibility(View.INVISIBLE);
+                }
+                public void onAnimationRepeat(Animation animation) {}
+                public void onAnimationEnd(Animation animation) {
+
+                }
+            });
+            bottomTabBar.startAnimation(anim);
+
+            anim = new TranslateAnimation(0, 0, 0, bottomTabBar.getHeight()+ this.mPreviewBarHolder.getHeight());
+            anim.setDuration(200);
+            anim.setAnimationListener(new Animation.AnimationListener() {
+                public void onAnimationStart(Animation animation) {
+                    mPreviewBarHolder.setVisibility(View.INVISIBLE);
+                }
+                public void onAnimationRepeat(Animation animation) {}
+                public void onAnimationEnd(Animation animation) {
+                }
+            });
+            mPreviewBarHolder.startAnimation(anim);
         }
     }
     private void hideButtonsFast() {
@@ -1020,7 +1161,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             });
             mTopBarSwitcher.startAnimation(anim);
 
-            anim = new TranslateAnimation(0, 0, 0, mPageSlider.getHeight());
+            /*anim = new TranslateAnimation(0, 0, 0, mPageSlider.getHeight() + bottomTabBar.getHeight());
             anim.setDuration(0);
             anim.setAnimationListener(new Animation.AnimationListener() {
                 public void onAnimationStart(Animation animation) {
@@ -1031,7 +1172,32 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                     mPageSlider.setVisibility(View.INVISIBLE);
                 }
             });
-            mPageSlider.startAnimation(anim);
+            mPageSlider.startAnimation(anim);*/
+
+            anim = new TranslateAnimation(0, 0, 0, bottomTabBar.getHeight());
+            anim.setDuration(0);
+            anim.setAnimationListener(new Animation.AnimationListener() {
+                public void onAnimationStart(Animation animation) {
+                    bottomTabBar.setVisibility(View.INVISIBLE);
+                }
+                public void onAnimationRepeat(Animation animation) {}
+                public void onAnimationEnd(Animation animation) {
+
+                }
+            });
+            bottomTabBar.startAnimation(anim);
+
+            anim = new TranslateAnimation(0, 0, 0, bottomTabBar.getHeight()+ this.mPreviewBarHolder.getHeight());
+            anim.setDuration(0);
+            anim.setAnimationListener(new Animation.AnimationListener() {
+                public void onAnimationStart(Animation animation) {
+                    mPreviewBarHolder.setVisibility(View.INVISIBLE);
+                }
+                public void onAnimationRepeat(Animation animation) {}
+                public void onAnimationEnd(Animation animation) {
+                }
+            });
+            mPreviewBarHolder.startAnimation(anim);
         }
     }
 
@@ -1117,7 +1283,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 	private void updatePageNumView(int index) {
 		if (core == null)
 			return;
-		mPageNumberView.setText(String.format("%d / %d", index+1, core.countPages()));
+		//mPageNumberView.setText(String.format("%d / %d", index+1, core.countPages()));
 	}
 
 	private void printDoc() {
@@ -1158,29 +1324,349 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 		}
 	}
 
-	private void makeButtonsView() {
+    public void scrollToLastThumnail(int displayIndex){
+        for(int i = 0; i < thumnailAdapter.getCount(); i++){
+            if(i == displayIndex)
+                thumnailAdapter.pageNumberList.get(i).setVisibility(View.VISIBLE);
+            else
+                thumnailAdapter.pageNumberList.get(i).setVisibility(View.INVISIBLE);
+        }
+        mPreview.scrollToItem(displayIndex);
+    }
+
+    private void setInvisibleAllTextView(int selectedIndex){
+        for(int i = selectedIndex-10; i < selectedIndex+10; i++){
+            if(i >= 0 && i < thumnailAdapter.getCount())
+                thumnailAdapter.pageNumberList.get(i).setVisibility(View.INVISIBLE);
+        }
+    }
+
+    public void startThumnailLeftAnim(final int id){
+
+        final int currentIndex = mDocView.getDisplayedViewIndex();
+        final int selectedIndex = (int) id;
+        int durationTime = 100;
+
+        try{
+
+            sInVisible = new AnimationSet(false);
+            thumnailAnimStartPoint = (((RelativeLayout)thumnailAdapter.pageNumberList.get(currentIndex).getParent()).getWidth()
+                    -thumnailAdapter.pageNumberList.get(currentIndex).getWidth()) / 2;
+            thumnailAnimEndPoint = -(thumnailAnimStartPoint + thumnailAdapter.pageNumberList.get(currentIndex).getWidth());
+
+            thumnailAnimInvisible = new TranslateAnimation(0, thumnailAnimEndPoint, 0, 0);
+            thumnailAnimInvisible.setDuration(100);
+            thumnailAnimInvisible.setInterpolator(new AccelerateInterpolator());
+            thumnailAnimInvisible.setAnimationListener(new Animation.AnimationListener() {
+                public void onAnimationStart(Animation animation) {}
+                public void onAnimationRepeat(Animation animation) {}
+                public void onAnimationEnd(Animation animation) {
+                    thumnailAdapter.pageNumberList.get(currentIndex).setVisibility(View.INVISIBLE);
+
+                }
+            });
+
+            AlphaAnimation alphaAmin = new AlphaAnimation(1, 0);
+            alphaAmin.setDuration(50);
+
+            sInVisible.addAnimation(alphaAmin);
+            sInVisible.addAnimation(thumnailAnimInvisible);
+
+            thumnailAdapter.pageNumberList.get(currentIndex).startAnimation(sInVisible);
+        } catch (Exception e){
+            durationTime = 0;
+        }
+
+        try{
+            sVisible = new AnimationSet(false);
+
+            thumnailAnimStartPoint = ((RelativeLayout)thumnailAdapter.pageNumberList.get(selectedIndex).getParent()).getWidth();
+            thumnailAnimEndPoint  = ((RelativeLayout)thumnailAdapter.pageNumberList.get(selectedIndex).getParent()).getWidth() / 2;
+
+            thumnailAnimVisible = new TranslateAnimation(thumnailAnimStartPoint, 0, 0 ,0);
+            thumnailAnimVisible.setDuration(100);
+            thumnailAnimVisible.setStartOffset(durationTime);
+            thumnailAnimVisible.setInterpolator(new DecelerateInterpolator());
+
+            AlphaAnimation alphaAmin = new AlphaAnimation(0, 1);
+            alphaAmin.setDuration(150);
+            alphaAmin.setStartOffset(thumnailAnimVisible.getStartOffset());
+            alphaAmin.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {}
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    mDocView.setDisplayedViewIndex(selectedIndex);
+                    setInvisibleAllTextView(selectedIndex);
+                    thumnailAdapter.pageNumberList.get(selectedIndex).setVisibility(View.VISIBLE);
+                }
+                @Override
+                public void onAnimationRepeat(Animation animation) {}
+            });
+
+            sVisible.addAnimation(alphaAmin);
+            sVisible.addAnimation(thumnailAnimVisible);
+
+            thumnailAdapter.pageNumberList.get(selectedIndex).startAnimation(sVisible);
+        } catch (Exception e){
+            Log.e("ThumnailleftAnim", e.toString());
+        }
+    }
+
+    public void startThumnailRightAnim(final int id){
+
+        final int currentIndex = mDocView.getDisplayedViewIndex();
+        final int selectedIndex = (int) id;
+        int durationTime = 100;
+
+        try{
+
+            AnimationSet sInVisible = new AnimationSet(false);
+
+            thumnailAnimStartPoint = (((RelativeLayout)thumnailAdapter.pageNumberList.get(currentIndex).getParent()).getWidth()
+                    -thumnailAdapter.pageNumberList.get(currentIndex).getWidth()) / 2;
+            thumnailAnimEndPoint  = ((RelativeLayout)thumnailAdapter.pageNumberList.get(currentIndex).getParent()).getWidth();
+
+
+            thumnailAnimInvisible = new TranslateAnimation(0, thumnailAnimEndPoint, 0, 0);
+            thumnailAnimInvisible.setDuration(100);
+            thumnailAnimInvisible.setInterpolator(new AccelerateInterpolator());
+            thumnailAnimInvisible.setAnimationListener(new Animation.AnimationListener() {
+                public void onAnimationStart(Animation animation) {}
+                public void onAnimationRepeat(Animation animation) {}
+                public void onAnimationEnd(Animation animation) {
+                    thumnailAdapter.pageNumberList.get(currentIndex).setVisibility(View.INVISIBLE);
+                }
+            });
+
+            AlphaAnimation alphaAmin = new AlphaAnimation(1, 0);
+            alphaAmin.setDuration(50);
+
+            sInVisible.addAnimation(alphaAmin);
+            sInVisible.addAnimation(thumnailAnimInvisible);
+
+            thumnailAdapter.pageNumberList.get(currentIndex).clearAnimation();
+            thumnailAdapter.pageNumberList.get(currentIndex).startAnimation(sInVisible);
+        } catch (Exception e){
+            durationTime = 0;
+        }
+
+        try{
+            AnimationSet sVisible = new AnimationSet(false);
+
+            thumnailAnimStartPoint = -((((RelativeLayout)thumnailAdapter.pageNumberList.get(selectedIndex).getParent()).getWidth()
+                    - thumnailAdapter.pageNumberList.get(selectedIndex).getWidth()) / 2
+                    +thumnailAdapter.pageNumberList.get(selectedIndex).getWidth());
+            thumnailAnimEndPoint = (((RelativeLayout)thumnailAdapter.pageNumberList.get(selectedIndex).getParent()).getWidth()
+                    - thumnailAdapter.pageNumberList.get(selectedIndex).getWidth()) / 2;
+
+            thumnailAnimVisible = new TranslateAnimation(thumnailAnimStartPoint, 0, 0 ,0);
+            thumnailAnimVisible.setDuration(100);
+            thumnailAnimVisible.setStartOffset(durationTime);
+            thumnailAnimVisible.setInterpolator(new DecelerateInterpolator());
+
+            AlphaAnimation alphaAmin = new AlphaAnimation(0, 1);
+            alphaAmin.setDuration(150);
+            alphaAmin.setStartOffset(durationTime);
+            alphaAmin.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {}
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    mDocView.setDisplayedViewIndex(selectedIndex);
+                    setInvisibleAllTextView(selectedIndex);
+                    thumnailAdapter.pageNumberList.get(selectedIndex).setVisibility(View.VISIBLE);
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+                }
+            });
+
+            sVisible.addAnimation(alphaAmin);
+            sVisible.addAnimation(thumnailAnimVisible);
+
+            thumnailAdapter.pageNumberList.get(selectedIndex).clearAnimation();
+            thumnailAdapter.pageNumberList.get(selectedIndex).startAnimation(sVisible);
+        } catch (Exception e){
+            Log.e("ThumnailrightAnim", e.toString());
+        }
+
+    }
+
+    private void makeButtonsView() {
 		mButtonsView = getLayoutInflater().inflate(R.layout.buttons,null);
 		mFilenameView = (TextView)mButtonsView.findViewById(R.id.docNameText);
-		mPageSlider = (SeekBar)mButtonsView.findViewById(R.id.pageSlider);
-		mPageNumberView = (TextView)mButtonsView.findViewById(R.id.pageNumber);
+		//mPageSlider = (SeekBar)mButtonsView.findViewById(R.id.pageSlider);
+        mPreviewBarHolder = (RelativeLayout) mButtonsView.findViewById(R.id.PreviewBarHolder);
+        ImageView divider = (ImageView)mButtonsView.findViewById(R.id.reader_preview_bar_divider);
+        divider.setBackgroundColor(ApplicationThemeColor.getInstance().getForegroundColor());
+        divider.setAlpha((float) 0.9);
+        divider.bringToFront();
+        mPreviewBarHolder.setBackgroundColor(Color.TRANSPARENT);
+        mPreview = (ThumnailHorizontalListView)mButtonsView.findViewById(R.id.reader_preview_bar_listView);
+        mPreview.setBackgroundColor(ApplicationThemeColor.getInstance().getActionAndTabBarColor());
+        thumnailAdapter = new ThumnailListAdapter(this,core,mDocView);
+        mPreview.setAdapter(thumnailAdapter);
+        //mPreview.setCenter(mDocView.getDisplayedViewIndex());
+        mPreview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if((int)id > mDocView.getDisplayedViewIndex())
+                    startThumnailRightAnim((int)id);
+                else if((int)id < mDocView.getDisplayedViewIndex())
+                    startThumnailLeftAnim((int)id);
+            }
+        });
+        bottomTabBar = (LinearLayout)mButtonsView.findViewById(R.id.reader_tabbar);
+        bottomTabBar.setBackgroundColor(ApplicationThemeColor.getInstance().getActionAndTabBarColor());
+
+        ((ImageView) mButtonsView.findViewById(R.id.reader_home)).setImageDrawable(createDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.HOME_ICON_SELECTED),
+                ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.HOME_ICON)));
+
+        ((LinearLayout)mButtonsView.findViewById(R.id.reader_home_layout)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tabItemClick(0);
+            }
+        });
+
+        if(GalePressApplication.getInstance().getDataApi().getMasterContent() == null || !GalePressApplication.getInstance().getDataApi().getMasterContent().isPdfDownloaded())
+            ((LinearLayout)mButtonsView.findViewById(R.id.reader_home_layout)).setVisibility(View.GONE);
+
+        ((ImageView)mButtonsView.findViewById(R.id.reader_library)).setImageDrawable(createDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.LIBRARY_ICON_SELECTED),
+                ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.LIBRARY_ICON)));
+
+        ((LinearLayout)mButtonsView.findViewById(R.id.reader_library_layout)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tabItemClick(1);
+            }
+        });
+
+        ((ImageView) mButtonsView.findViewById(R.id.reader_download)).setImageDrawable(createDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.DOWNLOAD_ICON_SELECTED),
+                ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.DOWNLOAD_ICON)));
+
+        ((LinearLayout)mButtonsView.findViewById(R.id.reader_download_layout)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tabItemClick(2);
+            }
+        });
+
+        ((ImageView) mButtonsView.findViewById(R.id.reader_info)).setImageDrawable(createDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.INFO_ICON_SELECTED),
+                ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.INFO_ICON)));
+
+        ((LinearLayout)mButtonsView.findViewById(R.id.reader_info_layout)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tabItemClick(3);
+            }
+        });
+
+        ((LinearLayout)mButtonsView.findViewById(R.id.reader_info_layout)).setVisibility(View.GONE);
+
+        //Custom tabbar buttons
+        if(GalePressApplication.getInstance().getDataApi().isConnectedToInternet() && GalePressApplication.getInstance().getTabList() != null){
+            int index = 0;
+            for(TabbarItem item : GalePressApplication.getInstance().getTabList()){
+                LinearLayout layout = new LinearLayout(this);
+                layout.setLayoutParams(new LinearLayout.LayoutParams((int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 70, getResources().getDisplayMetrics())
+                        ,LinearLayout.LayoutParams.MATCH_PARENT));
+                layout.setGravity(Gravity.CENTER);
+                layout.setId(100+index);
+                layout.setPadding((int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0, getResources().getDisplayMetrics()),
+                        (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0, getResources().getDisplayMetrics()),
+                        (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0, getResources().getDisplayMetrics()),
+                        (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0, getResources().getDisplayMetrics()));
+                layout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        tabItemClick(v.getId());
+                    }
+                });
+
+                ImageView img = new ImageView(this);
+                img.setLayoutParams(new LinearLayout.LayoutParams((int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())
+                        ,LinearLayout.LayoutParams.MATCH_PARENT));
+                ApplicationThemeColor.getInstance().paintRemoteIcon(this,item,img);
+                layout.addView(img);
+
+                ((LinearLayout)mButtonsView.findViewById(R.id.reader_tabbar)).addView(layout);
+                index++;
+
+            }
+        }
+
+
+		//mPageNumberView = (TextView)mButtonsView.findViewById(R.id.pageNumber);
 		mInfoView = (TextView)mButtonsView.findViewById(R.id.info);
 		mSearchButton = (ImageButton)mButtonsView.findViewById(R.id.searchButton);
+
         mOutlineButton = (ImageButton)mButtonsView.findViewById(R.id.outlineButton);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+            mOutlineButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_MENU));
+        else
+            mOutlineButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_MENU));
+
         mailButton = (ImageButton)mButtonsView.findViewById(R.id.mailButton);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+            mailButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_MAIL));
+        else
+            mailButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_MAIL));
+
         mReflowButton = (ImageButton)mButtonsView.findViewById(R.id.reflowButton);
 		mAnnotButton = (ImageButton)mButtonsView.findViewById(R.id.editAnnotButton);
 		mAnnotTypeText = (TextView)mButtonsView.findViewById(R.id.annotType);
+
 		mTopBarSwitcher = (ViewAnimator)mButtonsView.findViewById(R.id.switcher);
+        mTopBarSwitcher.setBackgroundColor(ApplicationThemeColor.getInstance().getActionAndTabBarColor());
+
+        ((TextView)mButtonsView.findViewById(R.id.reader_title)).setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
+        ((TextView)mButtonsView.findViewById(R.id.reader_title)).setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
+        ((TextView)mButtonsView.findViewById(R.id.reader_title)).setText(((TextView)mButtonsView.findViewById(R.id.reader_title)).getText().toString().toUpperCase());
+
 		mSearchBack = (ImageButton)mButtonsView.findViewById(R.id.searchBack);
 		mSearchFwd = (ImageButton)mButtonsView.findViewById(R.id.searchForward);
 		mSearchText = (EditText)mButtonsView.findViewById(R.id.searchText);
 		mLinkButton = (ImageButton)mButtonsView.findViewById(R.id.linkButton);
 		mMoreButton = (ImageButton)mButtonsView.findViewById(R.id.moreButton);
 		mTopBarSwitcher.setVisibility(View.INVISIBLE);
-		mPageNumberView.setVisibility(View.INVISIBLE);
+		//mPageNumberView.setVisibility(View.INVISIBLE);
 		mInfoView.setVisibility(View.INVISIBLE);
-		mPageSlider.setVisibility(View.INVISIBLE);
+		//mPageSlider.setVisibility(View.INVISIBLE);
+        bottomTabBar.setVisibility(View.INVISIBLE);
+        mPreviewBarHolder.setVisibility(View.INVISIBLE);
 	}
+
+    private void tabItemClick(int type){
+        if(GalePressApplication.getInstance().getContentDetailPopupActivity() != null)
+            GalePressApplication.getInstance().getContentDetailPopupActivity().finish();
+
+        if(GalePressApplication.getInstance().getDataApi().isLibraryMustBeEnabled()){
+            Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+            String udid = UUID.randomUUID().toString();
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Calendar cal = Calendar.getInstance();
+            dateFormat .setTimeZone(TimeZone.getTimeZone("GMT"));
+            Location location = GalePressApplication.getInstance().location;
+            L_Statistic statistic = new L_Statistic(udid, this.content.getId(), location!=null?location.getLatitude():null,location!=null?location.getLongitude():null, null, dateFormat.format(cal.getTime()),L_Statistic.STATISTIC_contentClosed, null,null,null);
+            GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
+
+            GalePressApplication.getInstance().setMuPDFActivity(null);
+            Intent intent = getIntent();
+            intent.putExtra("SelectedTab", type);
+            setResult(101, intent);
+            finish();
+        }
+
+    }
+
+    private Drawable createDrawable(Drawable res, Drawable selectedRes) {
+        StateListDrawableWithColorFilter states = new StateListDrawableWithColorFilter(false, res, selectedRes);
+        return states;
+    }
 
 	public void OnMoreButtonClick(View v) {
 		mTopBarMode = TopBarMode.More;
@@ -1381,6 +1867,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
 	@Override
 	protected void onStart() {
+        GalePressApplication.getInstance().setMuPDFActivity(this);
 		if (core != null)
 		{
 			core.startAlerts();
@@ -1391,6 +1878,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
 	@Override
 	protected void onStop() {
+        GalePressApplication.getInstance().setMuPDFActivity(null);
 		if (core != null)
 		{
 			destroyAlertWaiter();
@@ -1411,10 +1899,26 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             Location location = GalePressApplication.getInstance().location;
             L_Statistic statistic = new L_Statistic(udid, this.content.getId(), location!=null?location.getLatitude():null,location!=null?location.getLongitude():null, null, dateFormat.format(cal.getTime()),L_Statistic.STATISTIC_contentClosed, null,null,null);
             GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
-            super.onBackPressed();
+
+            if(content.isMaster() && isHomeOpen){
+                Intent intent = getIntent();
+                intent.putExtra("SelectedTab", 1);
+                setResult(101, intent);
+                finish();
+            } else{
+                super.onBackPressed();
+            }
         }
         else{
-            return;
+            if(content.isMaster() && isHomeOpen){
+                Intent intent = getIntent();
+                intent.putExtra("SelectedTab", 0);
+                setResult(101, intent);
+                finish();
+            } else{
+                return;
+            }
+
         }
 	}
 

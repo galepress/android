@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="actionbar_text_size">17dp</dimen>
+    <dimen name="popup_font_size">20sp</dimen>
+    <dimen name="left_menu_size">300dp</dimen>
+    <dimen name="left_menu_text_size">22dp</dimen>
+    <dimen name="left_menu_scroll_size">300dp</dimen>
+    <dimen name="left_menu_title_size">15dp</dimen>
+    <dimen name="reader_page_textsize">17sp</dimen>
+
+    <dimen name="content_popup_padding">140dp</dimen>
+    <dimen name="content_popup_detail">90dp</dimen>
+    <dimen name="content_popup_button_layer">50dp</dimen>
+    <dimen name="content_popup_button_size">30dp</dimen>
+    <dimen name="content_popup_progress_height">5dp</dimen>
+    <dimen name="content_popup_progress_label_height">15dp</dimen>
+    <dimen name="content_popup_large_textsize">18dp</dimen>
+    <dimen name="content_popup_small_textsize">15dp</dimen>
+    <dimen name="content_popup_progresslabel_textsize">11dp</dimen>
+
+    <dimen name="library_banner_height">240dp</dimen>
+
+    <dimen name="library_grid_cell_width">180dp</dimen>
+    <dimen name="library_grid_cell_height">240dp</dimen>
+
+</resources>

@@ -8,28 +8,40 @@
     tools:ignore="HardcodedText"
     >
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical" >
+        android:layout_height="fill_parent" >
 
         <FrameLayout
             android:id="@android:id/tabcontent"
             android:layout_width="fill_parent"
-            android:layout_height="0dip"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
             android:layout_weight="1" >
         </FrameLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:id="@+id/shadow"
+            android:background="@android:color/darker_gray"
+            android:layout_alignTop="@android:id/tabs"/>
         <TabWidget
             android:id="@android:id/tabs"
             android:layout_width="fill_parent"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:layout_alignParentBottom="true"
             android:background="@drawable/tab_background"
             android:layout_gravity="center"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:orientation="horizontal"
             android:tabStripEnabled="false"
             android:layout_weight="0"
             />
-    </LinearLayout>
+    </RelativeLayout>
 
 </android.support.v4.app.FragmentTabHost>
+

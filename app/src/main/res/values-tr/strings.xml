@@ -58,6 +58,14 @@
     <string name="copy_text">copy text</string>
     <string name="format_currently_not_supported">Format currently not supported</string>
     <string name="toggle_reflow_mode">Toggle reflow mode</string>
+    <string name="user_information_check">Kullanıcı bilgileri kontrol ediliyor...</string>
+    <string name="viewer_login_uname">Kullanıcı Adı...</string>
+    <string name="viewer_login_pass">Şifre...</string>
+    <string name="viewer_login_appId">Uygulama ID...</string>
+    <string name="viewer_login_login">Giriş</string>
+    <string name="viewer_login_logout">Çıkış</string>
+    <string name="no_customer_application">Uygulama bulunamadı</string>
+    <string name="select_customer_application">Lütfen uygulamayı seçin</string>
 
     <!-- From iOS -->
     <string name="OKU">Oku</string>
@@ -86,6 +94,7 @@
     <string name="WARNING_0">Beklenmedik bir hata oluştu</string>
     <string name="WARNING_1">İnternet bağlantınız bulunmuyor.</string>
     <string name="WARNING_2">Lütfen Şifrenizi Giriniz</string>
+    <string name="WARNING_3">Lütfen oturum açma bilgilerinizi kontrol edin</string>
 
     <string name="WARNING_101">Şifre kabul edilmedi</string>
     <string name="WARNING_102">İçerik bulunamadı</string>
@@ -96,10 +105,12 @@
     <string name="WARNING_130">Uygulama bulunamadı.</string>
     <string name="WARNING_131">Uygulama aktif degil, süresi dolmuş veya engellenmiş olabilir.</string>
     <string name="WARNING_140">Kullanici bilgileri hatalı</string>
+    <string name="WARNING_141">www.galepress.com adresinde hesap oluşturmalısınız</string>
 
     <string name="CONFIRM_1">Silmek istediğinizden emin misiniz?</string>
     <string name="CONFIRM_2">Diğer indirme işlemlerini iptal etmek istediğinizden emin misiniz?</string>
     <string name="CONFIRM_3">İndirme işlemini iptal etmek istediğinizden emin misiniz?</string>
+    <string name="CONFIRM_SETTING">Sıfırlamak istediğinize emin misiniz?</string>
 
     <string name="ERROR_1">Katalog Dosyası bozuk.</string>
 
@@ -132,8 +143,14 @@
     <string name="results_found">%1$d sonuç bulundu</string>
 
     <string name="show_all">Tümünü Göster</string>
+    <string name="hide_all">Tümünü Gizle</string>
     <string name="backDescription">Kütüphane ekranı</string>
     <string name="forceUpdateWarnMessage" >Güncel uygulamayı marketten indirmek ister misiniz ?</string>
     <string name="forceUpdateBlockMessage">Uygulama engellenmiştir. Lütfen uygulamayı güncelleyiniz.</string>
     <string name="goToMarket">Markete Git</string>
+    <string name="left_menu_search_hint">Ara...</string>
+    <string name="left_menu_links">Bağlantılar</string>
+    <string name="left_menu_setting">Kullanıcı Bilgileri</string>
+    <string name="viewer_facebook_login_warning">Facebook girişi yapılamadı</string>
+    <string name="viewer_facebook_login_appId_warning">Lütfen uygulama id girin</string>
 </resources>

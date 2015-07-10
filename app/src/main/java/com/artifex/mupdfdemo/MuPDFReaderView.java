@@ -107,16 +107,21 @@ public class MuPDFReaderView extends ReaderView {
 							// Clicked on a remote (GoToR) link
 						}
 					});
-				} else if (e.getX() < tapPageMargin) {
-					super.smartMoveBackwards();
+				} /*else if (e.getX() < tapPageMargin) {
+                    if(!((MuPDFActivity)mContext).content.isMaster())
+					    super.smartMoveBackwards();
 				} else if (e.getX() > super.getWidth() - tapPageMargin) {
-					super.smartMoveForwards();
+                    if(!((MuPDFActivity)mContext).content.isMaster())
+					    super.smartMoveForwards();
 				} else if (e.getY() < tapPageMargin) {
-					super.smartMoveBackwards();
+                    if(!((MuPDFActivity)mContext).content.isMaster())
+					    super.smartMoveBackwards();
 				} else if (e.getY() > super.getHeight() - tapPageMargin) {
-					super.smartMoveForwards();
-				} else {
-					onTapMainDocArea();
+                    if(!((MuPDFActivity)mContext).content.isMaster())
+					    super.smartMoveForwards();
+				}*/ else {
+                    if(!((MuPDFActivity)mContext).content.isMaster())
+					    onTapMainDocArea();
 				}
 			}
 		}

@@ -3,184 +3,114 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/grid_row_content"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="165dp"
+    android:layout_height="268dp"
     android:descendantFocusability="blocksDescendants"
     android:padding="0dp"
+    android:gravity="center"
     >
 
-    <ImageView
-        android:id="@+id/coverImage"
-        android:layout_width="150dp"
-        android:layout_height="198dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentLeft="true"
-        android:layout_margin="10dp"
+    <RelativeLayout
+        android:layout_width="165dp"
+        android:layout_height="268dp"
+        android:orientation="vertical">
 
-        />
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:progressDrawable="@drawable/custom_progressbar"
+            android:layout_height="3dp"
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentTop="true" />
 
-    <TextView
-        android:id="@+id/nameLabel"
-        android:text=""
-        android:layout_height="20dp"
-        android:layout_width="200dp"
-        android:layout_toRightOf="@+id/coverImage"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="2dp"
-        android:editable="false"
-        android:typeface="normal"
-        android:textColor="@color/text_color_white"
-        android:layout_centerHorizontal="true"
-        android:textSize="16sp"
-        android:ellipsize="end"
-        android:minLines="1"
-        android:maxLines="1"
 
-        />
 
-    <TextView
-        android:id="@+id/monthLabel"
-        android:text=""
-        android:layout_height="20dp"
-        android:layout_width="200dp"
-        android:layout_toRightOf="@+id/coverImage"
-        android:layout_below="@+id/nameLabel"
-        android:layout_marginTop="2dp"
-        android:layout_marginLeft="2dp"
-        android:editable="false"
-        android:textColor="@android:color/darker_gray"
-        android:typeface="normal"
-        android:textSize="16sp"
-        android:maxLines="1"
-        android:ellipsize="end"
-        />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="206dp"
+            android:id="@+id/cover_image_layout"
+            android:layout_margin="4dp">
 
-    <TextView
-        android:id="@+id/detailLabel"
-        android:text=""
-        android:layout_height="40dp"
-        android:layout_width="200dp"
-        android:layout_toRightOf="@+id/coverImage"
-        android:layout_below="@+id/monthLabel"
-        android:layout_marginTop="2dp"
-        android:layout_marginLeft="2dp"
-        android:editable="false"
-        android:typeface="normal"
-        android:textColor="@color/text_color_cyan"
-        android:textSize="16sp"
-        android:maxLines="2"
-        android:ellipsize="end"
-        />
+            <ImageView
+                android:id="@+id/coverImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="false"
+                android:scaleType="fitXY"
+                />
 
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        style="@android:style/Widget.ProgressBar.Horizontal"
-        android:layout_height="10dp"
-        android:layout_width="100dp"
-        android:layout_below="@+id/detailLabel"
-        android:layout_toRightOf="@+id/coverImage"
-        android:layout_marginLeft="2dp"
-        android:layout_marginTop="15dp"
-        android:layout_alignRight="@+id/detailLabel"
-        android:layout_alignEnd="@+id/detailLabel" />
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/grid_image_loading"
+                android:visibility="visible"
+                android:layout_centerInParent="true"
+                android:layout_alignParentBottom="false" />
+            </RelativeLayout>
 
-    <TextView
-        android:id="@+id/progress_label"
-        android:text=""
-        android:layout_height="20dp"
-        android:layout_width="220dp"
-        android:layout_toRightOf="@+id/coverImage"
-        android:layout_below="@+id/progress_bar"
-        android:layout_marginTop="2dp"
-        android:layout_marginLeft="2dp"
-        android:editable="false"
-        android:typeface="normal"
-        android:textColor="@color/text_color_cyan"
-        android:textSize="13sp"
-        android:maxLines="1"
-        android:ellipsize="end"
-        android:gravity="center"
-        />
 
-    <Button
-        android:id="@+id/update_button"
-        android:layout_height="30dp"
-        android:layout_width="70dp"
-        android:text="@string/GUNCELLE"
-        android:layout_toRightOf="@+id/coverImage"
-        android:layout_below="@id/progress_label"
-        android:padding="0dp"
-        android:layout_margin="2dp"
-        android:typeface="normal"
-        android:textSize="14sp"
-        android:maxLines="1"
-        android:background="@drawable/ak_button"
-        android:textColor="@drawable/ak_button"
-        />
 
-    <Button
-        android:id="@+id/cancel_button"
-        android:layout_height="30dp"
-        android:layout_width="70dp"
-        android:text="@string/IPTAL"
-        android:layout_toRightOf="@+id/coverImage"
-        android:layout_below="@id/update_button"
-        android:padding="0dp"
-        android:layout_margin="2dp"
-        android:typeface="normal"
-        android:textSize="14sp"
-        android:maxLines="1"
-        android:background="@drawable/ak_button"
-        android:textColor="@drawable/ak_button"
-        />
-    <Button
-        android:id="@+id/view_button"
-        android:layout_height="30dp"
-        android:layout_width="70dp"
-        android:text="@string/OKU"
-        android:layout_toRightOf="@+id/coverImage"
-        android:layout_below="@id/update_button"
-        android:padding="0dp"
-        android:layout_margin="2dp"
-        android:typeface="normal"
-        android:textSize="14sp"
-        android:maxLines="1"
-        android:background="@drawable/ak_button"
-        android:textColor="@drawable/ak_button"
-        />
-    <Button
-        android:id="@+id/download_button"
-        android:layout_height="30dp"
-        android:layout_width="70dp"
-        android:text="@string/INDIR"
-        android:layout_toRightOf="@+id/coverImage"
-        android:layout_below="@id/update_button"
-        android:padding="0dp"
-        android:layout_margin="2dp"
-        android:typeface="normal"
-        android:textSize="14sp"
-        android:maxLines="1"
-        android:background="@drawable/ak_button"
-        android:textColor="@drawable/ak_button"
-        />
+        <RelativeLayout
+            android:id = "@+id/detailLayout"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_alignParentBottom="false"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_alignParentTop="false"
+            android:layout_below="@+id/cover_image_layout">
+            <TextView
+                android:id="@+id/nameLabel"
+                android:text=""
+                android:layout_height="18dp"
+                android:layout_width="match_parent"
+                android:editable="false"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="13dp"
+                android:paddingLeft="2dp"
+                android:gravity="bottom|left"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:paddingRight="2dp"
+                android:layout_alignParentTop="true" />
 
-    <Button
-        android:id="@+id/delete_button"
-        android:layout_height="30dp"
-        android:layout_width="70dp"
-        android:text="@string/SIL"
-        android:layout_toRightOf="@+id/download_button"
-        android:layout_below="@id/update_button"
-        android:padding="0dp"
-        android:paddingLeft="0dp"
-        android:layout_margin="2dp"
-        android:typeface="normal"
-        android:textSize="14sp"
-        android:maxLines="1"
-        android:background="@drawable/ak_button"
-        android:textColor="@drawable/ak_button"
-        android:layout_alignParentStart="false" />
+            <TextView
+                android:id="@+id/detailLabel"
+                android:text=""
+                android:layout_height="18dp"
+                android:layout_width="match_parent"
+                android:editable="false"
+                android:textColor="@color/text_color_cyan"
+                android:textSize="13dp"
+                android:paddingLeft="2dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:paddingRight="2dp"
+                android:layout_below="@+id/nameLabel"
+                android:gravity="center_vertical|left" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:id="@+id/monthLabel"
+                android:maxLines="1"
+                android:textSize="10dp"
+                android:layout_below="@+id/detailLabel"
+                android:paddingLeft="2dp"
+                android:gravity="left|top"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:paddingRight="2dp" />
+
+        </RelativeLayout>
+
+
+
+
+    </RelativeLayout>
 
 
 </RelativeLayout>

@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 import ak.detaysoft.galepress.GalePressApplication;
-import ak.detaysoft.galepress.service_models.R_Category;
 import ak.detaysoft.galepress.service_models.R_ContentDetail;
 
 /**
@@ -36,6 +35,7 @@ public class L_Content implements Serializable {
     @DatabaseField private boolean isPdfDownloading;
     @DatabaseField private boolean isCoverImageUpdateAvailable;
     @DatabaseField private String coverImageFileName;
+    @DatabaseField private String bigCoverImageFileName;
     @DatabaseField private boolean isBuyable;
     @DatabaseField private boolean isProtected;
     @DatabaseField private boolean isMaster;
@@ -43,14 +43,20 @@ public class L_Content implements Serializable {
     @DatabaseField private double currency;
     @DatabaseField private String price;
     @DatabaseField private Integer coverImageVersion;
+    @DatabaseField private Integer remoteCoverImageVersion;
+    @DatabaseField private Integer remoteLargeCoverImageVersion;
     @DatabaseField private Integer status;
     @DatabaseField private Integer version;
     @DatabaseField private Integer contentOrientation;
+    @DatabaseField private Integer contentOrderNo;
+    @DatabaseField private String largeCoverImageDownloadPath;
+    @DatabaseField private String smallCoverImageDownloadPath;
 
     private ArrayList<L_Category> categories;
     private String pdfPath;
     private String gridThumbCoverImagePath;
     private String bigCoverImagePath;
+
 
 
     public L_Content(){
@@ -145,6 +151,22 @@ public class L_Content implements Serializable {
         return version;
     }
 
+    public Integer getRemoteCoverImageVersion() {
+        return remoteCoverImageVersion;
+    }
+
+    public void setCoverImageRemoteVersion(Integer remoteCoverImageVersion) {
+        this.remoteCoverImageVersion = remoteCoverImageVersion;
+    }
+
+    public Integer getRemoteLargeCoverImageVersion() {
+        return remoteLargeCoverImageVersion;
+    }
+
+    public void setRemoteLargeCoverImageVersion(Integer remoteLargeCoverImageVersion) {
+        this.remoteLargeCoverImageVersion = remoteLargeCoverImageVersion;
+    }
+
     public ArrayList<L_Category> getCategories() {
         return categories;
     }
@@ -232,7 +254,6 @@ public class L_Content implements Serializable {
     public void setCoverImageVersion(Integer coverImageVersion) {
         this.coverImageVersion = coverImageVersion;
     }
-
     public void setStatus(Integer status) {
         this.status = status;
     }
@@ -272,6 +293,38 @@ public class L_Content implements Serializable {
     public void setContentOrientation(Integer contentOrientation) {
         this.contentOrientation = contentOrientation;
     }
+
+    public String getBigCoverImageFileName() {
+        return bigCoverImageFileName;
+    }
+
+    public void setBigCoverImagePath(String bigCoverImagePath) {
+        this.bigCoverImagePath = bigCoverImagePath;
+    }
+
+    public Integer getContentOrderNo() {
+        return contentOrderNo;
+    }
+
+    public void setContentOrderNo(Integer contentOrderNo) {
+        this.contentOrderNo = contentOrderNo;
+    }
+
+    public String getLargeCoverImageDownloadPath() {
+        return largeCoverImageDownloadPath;
+    }
+
+    public String getSmallCoverImageDownloadPath() {
+        return smallCoverImageDownloadPath;
+    }
+
+    public void setLargeCoverImageDownloadPath(String largeCoverImageDownloadPath) {
+        this.largeCoverImageDownloadPath = largeCoverImageDownloadPath;
+    }
+
+    public void setSmallCoverImageDownloadPath(String smallCoverImageDownloadPath) {
+        this.smallCoverImageDownloadPath = smallCoverImageDownloadPath;
+    }
 // Model Methods
 
     public L_Content(R_ContentDetail remoteContent){
@@ -279,9 +332,12 @@ public class L_Content implements Serializable {
         this.pdfFileName = UUID.randomUUID().toString();
         this.dirName = UUID.randomUUID().toString();
         this.coverImageFileName = UUID.randomUUID().toString();
+        this.bigCoverImageFileName = UUID.randomUUID().toString();
         this.coverImageVersion  = -1;
         this.pdfVersion = -1;
         this.version = -1;
+        this.remoteCoverImageVersion = -1;
+        this.remoteLargeCoverImageVersion = -1;
         this.isPdfDownloaded = false;
         /*
         for (R_Category remoteCategory : remoteContent.getContentCategories()){
@@ -306,10 +362,10 @@ public class L_Content implements Serializable {
         this.status = remoteContent.getStatus();
         this.isMaster = remoteContent.isContentIsMaster();
         this.contentOrientation = remoteContent.getContentOrientation();
+        this.contentOrderNo = remoteContent.getContentOrderNo();
     }
 
     public void updateWithRemoteContent(R_ContentDetail remoteContent){
-
         /*
         for (R_Category remoteCategory : remoteContent.getContentCategories()){
             L_Category localCategory = GalePressApplication.getInstance().getDatabaseApi().getCategory(remoteCategory.getCategoryID());
@@ -332,8 +388,15 @@ public class L_Content implements Serializable {
         this.status = remoteContent.getStatus();
         this.isMaster = remoteContent.isContentIsMaster();
         this.contentOrientation = remoteContent.getContentOrientation();
+        this.contentOrderNo = remoteContent.getContentOrderNo();
     }
 
+    public void updateWithImageDownloadUrl(String url, boolean isLargeCover){
+        if(isLargeCover)
+            this.largeCoverImageDownloadPath = url;
+        else
+            this.smallCoverImageDownloadPath = url;
+    }
     @Override
     public String toString() {
         return "L_Content{" +
@@ -350,6 +413,7 @@ public class L_Content implements Serializable {
                 ", isPdfDownloaded=" + isPdfDownloaded +
                 ", isCoverImageUpdateAvailable=" + isCoverImageUpdateAvailable +
                 ", coverImageFileName='" + coverImageFileName + '\'' +
+                ", bigCoverImageFileName='" + bigCoverImageFileName + '\'' +
                 ", isBuyable=" + isBuyable +
                 ", isProtected=" + isProtected +
                 ", password='" + password + '\'' +
@@ -358,12 +422,17 @@ public class L_Content implements Serializable {
                 ", coverImageVersion=" + coverImageVersion +
                 ", status=" + status +
                 ", version=" + version +
+                ", remoteCoverImageVersion=" + remoteCoverImageVersion +
+                ", remoteLargeCoverImageVersion=" + remoteLargeCoverImageVersion +
                 ", categories=" + categories +
                 ", pdfPath='" + pdfPath + '\'' +
                 ", gridThumbCoverImagePath='" + gridThumbCoverImagePath + '\'' +
                 ", bigCoverImagePath='" + bigCoverImagePath + '\'' +
                 ", isMaster='" + isMaster + '\'' +
                 ", contentOrientation='"+contentOrientation+'\''+
+                ", contentOrderNo='"+contentOrderNo+'\''+
+                ", largeCoverImageDownloadPath='"+largeCoverImageDownloadPath+'\''+
+                ", smallCoverImageDownloadPath='"+smallCoverImageDownloadPath+'\''+
                 '}';
     }
 }

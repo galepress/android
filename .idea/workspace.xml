@@ -13,6 +13,15 @@
       <config>
         <devices>
           <device id="Nexus 6" />
+          <device id="Nexus 4" />
+          <device id="Nexus 5" />
+          <device id="Nexus 7 2013" />
+          <device id="Nexus 10" />
+          <device id="Nexus 7" />
+          <device id="Nexus S" />
+          <device id="Nexus 9" />
+          <device id="Nexus One" />
+          <device id="Galaxy Nexus" />
         </devices>
       </config>
     </shared>
@@ -20,6 +29,17 @@
       <layout url="file://$PROJECT_DIR$/app/src/main/res/drawable/seek_thumb.xml">
         <config>
           <theme>@android:style/Theme.Holo</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout-land/content_detail_popup_layout.xml">
+        <config>
+          <state>Landscape</state>
+          <theme>@android:style/Theme.Holo</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_launch.xml">
+        <config>
+          <theme>@style/LibraryTheme</theme>
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
@@ -32,6 +52,46 @@
           <theme>@android:style/Theme.Holo</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/content_detail_popup_layout.xml">
+        <config>
+          <theme>@android:style/Theme.Holo</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fixed_content_popup_layout.xml">
+        <config>
+          <theme>@android:style/Theme.Holo</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/grid_cell.xml">
+        <config>
+          <theme>@android:style/Theme.Holo</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/left_menu.xml">
+        <config>
+          <theme>@android:style/Theme.Holo</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/left_menu_category_item.xml">
+        <config>
+          <theme>@android:style/Theme.Holo</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/library_layout.xml">
+        <config>
+          <theme>@android:style/Theme.Holo</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/settings_left_menu_layout.xml">
+        <config>
+          <theme>@android:style/Theme.Holo</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/viewer_login.xml">
+        <config>
+          <theme>@android:style/Theme.Holo</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/menu/extras.xml">
         <config>
           <theme>@android:style/Theme.Holo</theme>
@@ -40,16 +100,21 @@
     </layouts>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="ERROR" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: ak.detaysoft.galepress" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="4272a91b-e20d-476c-9f23-fd491d5d43e7" name="Default" comment="Pagelink sayfa geçişlerinde animasyonların kaldırılması. &#10;Masterpdf de actionbar ve slider'ın kapatılı gelmesi.&#10; Web sayfalarının transparent sorunu.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/model_data.bin" afterPath="$PROJECT_DIR$/build/intermediates/model_data.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
+=======
+    <list default="true" id="4272a91b-e20d-476c-9f23-fd491d5d43e7" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/model_data.bin" afterPath="$PROJECT_DIR$/build/intermediates/model_data.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuCategoryAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuCategoryAdapter.java" />
+>>>>>>> origin/UIUpdate
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Android.iws" />
@@ -113,16 +178,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+<<<<<<< HEAD
       <file leaf-file-name="application.plist" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/raw/application.plist">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="663">
               <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
+=======
+      <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6081301" vertical-offset="5151" max-vertical-offset="14586">
+              <caret line="417" column="0" selection-start-line="417" selection-start-column="0" selection-end-line="417" selection-end-column="0" />
+>>>>>>> origin/UIUpdate
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="WebViewAnnotationWithChromium.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotationWithChromium.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -158,7 +232,27 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="9996" max-vertical-offset="17357">
               <caret line="588" column="40" selection-start-line="588" selection-start-column="40" selection-end-line="588" selection-end-column="40" />
+=======
+      <file leaf-file-name="LeftMenuCategoryAdapter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuCategoryAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="1122">
+              <caret line="70" column="37" selection-start-line="70" selection-start-column="37" selection-end-line="70" selection-end-column="37" />
+>>>>>>> origin/UIUpdate
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LibraryFragment.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3040" max-vertical-offset="4335">
+              <caret line="232" column="27" selection-start-line="232" selection-start-column="27" selection-end-line="232" selection-end-column="27" />
+              <folding>
+                <element signature="e#9365#9806#0" expanded="true" />
+                <element signature="e#9795#9796#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -167,18 +261,19 @@
   </component>
   <component name="FindManager">
     <FindUsagesManager>
-      <setting name="OPEN_NEW_TAB" value="true" />
+      <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
   <component name="GenerateSignedApkSettings">
     <option name="KEY_STORE_PATH" value="$USER_HOME$/Desktop/keystore.jks" />
-    <option name="KEY_ALIAS" value="26762676" />
+    <option name="KEY_ALIAS" value="detay2006" />
+    <option name="REMEMBER_PASSWORDS" value="true" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="PushNotificationsAndForceUpdate" />
+        <entry key="$PROJECT_DIR$" value="UIUpdate" />
       </map>
     </option>
   </component>
@@ -209,6 +304,10 @@
               <ExternalProjectPojo>
                 <option name="name" value=":app" />
                 <option name="path" value="$PROJECT_DIR$/app" />
+              </ExternalProjectPojo>
+              <ExternalProjectPojo>
+                <option name="name" value=":menuDrawer" />
+                <option name="path" value="$PROJECT_DIR$/menuDrawer" />
               </ExternalProjectPojo>
               <ExternalProjectPojo>
                 <option name="name" value="GalePress" />
@@ -1407,9 +1506,14 @@
                 <option name="name" value="prepareComAndroidSupportAppcompatV72000Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Prepare com.android.support:support-v4:20.0.0" />
+                <option name="description" value="Prepare com.android.support:support-v4:21.0.3" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
-                <option name="name" value="prepareComAndroidSupportSupportV42000Library" />
+                <option name="name" value="prepareComAndroidSupportSupportV42103Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.facebook.android:facebook-android-sdk:4.1.1" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareComFacebookAndroidFacebookAndroidSdk411Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Prepare com.google.android.gms:play-services:4.0.30" />
@@ -1428,6 +1532,11 @@
                 <option name="description" value="Prepare GalePress:ChromiumLibrary:unspecified" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="prepareGalePressChromiumLibraryUnspecifiedLibrary" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare GalePress:menuDrawer:unspecified" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareGalePressMenuDrawerUnspecifiedLibrary" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
@@ -1505,12 +1614,436 @@
             </list>
           </value>
         </entry>
+<<<<<<< HEAD
       </map>
     </option>
     <option name="modificationStamps">
       <map>
         <entry key="$USER_HOME$/Android/HelloGridViewProject" value="1389606334000" />
         <entry key="$PROJECT_DIR$" value="5709905911053" />
+        <entry key="$PROJECT_DIR$/Android Project" value="1389126907000" />
+        <entry key="$PROJECT_DIR$/mupdf/platform/android" value="1389602914000" />
+        <entry key="$PROJECT_DIR$/mupdf/platform/android/gradle" value="1389018832000" />
+        <entry key="$USER_HOME$/Desktop/android_volley_examples-master" value="1378586308000" />
+        <entry key="$USER_HOME$/Downloads/VolleyDemo-master" value="1391551400000" />
+        <entry key="$USER_HOME$/Downloads/http_get" value="1391616944000" />
+      </map>
+    </option>
+    <option name="projectBuildClasspath">
+      <map>
+        <entry key="$PROJECT_DIR$">
+=======
+        <entry key="$PROJECT_DIR$/menuDrawer">
+>>>>>>> origin/UIUpdate
+          <value>
+            <list>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the Android dependencies of the project" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="androidDependencies" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles all variants of all applications and secondary packages." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="assemble" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles all Debug builds" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="assembleDebug" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles the Test build for the Debug build" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="assembleDebugTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="assembleDefault" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles all Release builds" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="assembleRelease" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles and tests this project." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="build" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles and tests this project and all projects that depend on it." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="buildDependents" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles and tests this project and all projects it depends on." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="buildNeeded" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles a bundle containing the library in Debug." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="bundleDebug" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles a bundle containing the library in Release." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="bundleRelease" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs all checks." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="check" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="checkDebugManifest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="checkReleaseManifest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Deletes the build directory." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="clean" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="compileDebugAidl" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="compileDebugJava" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="compileDebugNdk" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="compileDebugRenderscript" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="compileDebugSources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="compileDebugTestAidl" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="compileDebugTestJava" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="compileDebugTestNdk" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="compileDebugTestRenderscript" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="compileDebugTestSources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="compileLint" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="compileReleaseAidl" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="compileReleaseJava" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="compileReleaseNdk" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="compileReleaseRenderscript" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="compileReleaseSources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Installs and runs the tests for Build 'debug' on connected devices." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="connectedAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs all device checks on currently connected devices." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="connectedCheck" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="copyDebugLint" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="copyReleaseLint" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs all device checks using Device Providers and Test Servers." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="deviceCheck" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="dexDebugTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="generateDebugAssets" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="generateDebugBuildConfig" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="generateDebugResValues" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="generateDebugResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="generateDebugSources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="generateDebugTestAssets" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="generateDebugTestBuildConfig" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="generateDebugTestResValues" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="generateDebugTestResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="generateDebugTestSources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="generateReleaseAssets" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="generateReleaseBuildConfig" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="generateReleaseResValues" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="generateReleaseResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="generateReleaseSources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Installs the Test build for the Debug build" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="installDebugTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs lint on all variants." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="lint" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs lint on the Debug build" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="lintDebug" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs lint on the Release build" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="lintRelease" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="mergeDebugAssets" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="mergeDebugProguardFiles" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="mergeDebugTestAssets" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="mergeDebugTestResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="mergeReleaseAssets" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="mergeReleaseProguardFiles" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="packageDebugJar" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="packageDebugJniLibs" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="packageDebugLocalJar" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="packageDebugRenderscript" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="packageDebugResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="packageDebugTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="packageReleaseJar" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="packageReleaseJniLibs" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="packageReleaseLocalJar" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="packageReleaseRenderscript" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="packageReleaseResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="preBuild" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="preDebugBuild" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="preDebugTestBuild" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="preDexDebugTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="preReleaseBuild" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="prepareDebugDependencies" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="prepareDebugTestDependencies" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="prepareReleaseDependencies" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="processDebugJavaRes" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="processDebugManifest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="processDebugResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="processDebugTestJavaRes" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="processDebugTestManifest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="processDebugTestResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="processReleaseJavaRes" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="processReleaseManifest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="processReleaseResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the signing info for each variant" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="signingReport" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Uninstall all applications." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="uninstallAll" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Uninstalls the Test build for the Debug build" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="uninstallDebugTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
+                <option name="name" value="validateDebugSigning" />
+              </ExternalTaskPojo>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="modificationStamps">
+      <map>
+        <entry key="$USER_HOME$/Android/HelloGridViewProject" value="1389606334000" />
+        <entry key="$PROJECT_DIR$" value="7143857246523" />
         <entry key="$PROJECT_DIR$/Android Project" value="1389126907000" />
         <entry key="$PROJECT_DIR$/mupdf/platform/android" value="1389602914000" />
         <entry key="$PROJECT_DIR$/mupdf/platform/android/gradle" value="1389018832000" />
@@ -1752,14 +2285,168 @@
                             <option value="$USER_HOME$/AppData/Local/Android/sdk/extras/google/m2repository/com/google/android/gms/play-services/4.0.30/play-services-4.0.30.aar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.j256.ormlite/ormlite-android/4.45/8ff8c21e8d0162333559f35cafd6a2238a33e5ba/ormlite-android-4.45.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.j256.ormlite/ormlite-core/4.45/3db7b73aecea723803e10b068777cf09ed42d4be/ormlite-core-4.45.jar" />
-                            <option value="$USER_HOME$/AppData/Local/Android/sdk/extras/android/m2repository/com/android/support/support-v4/20.0.0/support-v4-20.0.0.aar" />
-                            <option value="$USER_HOME$/AppData/Local/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/20.0.0/support-annotations-20.0.0.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.facebook.android/facebook-android-sdk/4.1.1/c2cb37642a67f59eafbb27d6a440d577158dece0/facebook-android-sdk-4.1.1.aar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.2.0/6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd/bolts-android-1.2.0.jar" />
+                            <option value="$USER_HOME$/AppData/Local/Android/sdk/extras/android/m2repository/com/android/support/support-v4/21.0.3/support-v4-21.0.3.aar" />
+                            <option value="$USER_HOME$/AppData/Local/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar" />
                             <option value="$PROJECT_DIR$/dd-plist.jar" />
                             <option value="$MODULE_DIR$/src/main/lib/gcm.jar" />
                             <option value="$MODULE_DIR$/src/main/lib/lib.jar" />
+                            <option value="$MODULE_DIR$/src/main/lib/universal-image-loader-1.9.3.jar" />
                           </list>
                         </option>
                         <option name="path" value="$PROJECT_DIR$/app" />
+                      </ExternalModuleBuildClasspathPojo>
+                    </value>
+                  </entry>
+                  <entry key="$PROJECT_DIR$/menuDrawer">
+                    <value>
+                      <ExternalModuleBuildClasspathPojo>
+                        <option name="entries">
+                          <list>
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/gradle/1.0.0/gradle-1.0.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/gradle/1.0.0/gradle-1.0.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/lint/lint/24.0.0/lint-24.0.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/lint/lint/24.0.0/lint-24.0.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/builder/1.0.0/builder-1.0.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/builder/1.0.0/builder-1.0.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/net/sf/proguard/proguard-gradle/5.1/proguard-gradle-5.1-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/net/sf/proguard/proguard-gradle/5.1/proguard-gradle-5.1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/eclipse/jdt/core/compiler/ecj/4.2.2/ecj-4.2.2-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/eclipse/jdt/core/compiler/ecj/4.2.2/ecj-4.2.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/lint/lint-checks/24.0.0/lint-checks-24.0.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/lint/lint-checks/24.0.0/lint-checks-24.0.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/sdk-common/24.0.0/sdk-common-24.0.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/sdk-common/24.0.0/sdk-common-24.0.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/bouncycastle/bcprov-jdk15on/1.48/bcprov-jdk15on-1.48-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/bouncycastle/bcprov-jdk15on/1.48/bcprov-jdk15on-1.48.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/sdklib/24.0.0/sdklib-24.0.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/sdklib/24.0.0/sdklib-24.0.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/common/24.0.0/common-24.0.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/common/24.0.0/common-24.0.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/squareup/javawriter/2.5.0/javawriter-2.5.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/squareup/javawriter/2.5.0/javawriter-2.5.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/builder-test-api/1.0.0/builder-test-api-1.0.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/builder-test-api/1.0.0/builder-test-api-1.0.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/ddms/ddmlib/24.0.0/ddmlib-24.0.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/ddms/ddmlib/24.0.0/ddmlib-24.0.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/manifest-merger/24.0.0/manifest-merger-24.0.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/manifest-merger/24.0.0/manifest-merger-24.0.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/builder-model/1.0.0/builder-model-1.0.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/builder-model/1.0.0/builder-model-1.0.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/bouncycastle/bcpkix-jdk15on/1.48/bcpkix-jdk15on-1.48-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/bouncycastle/bcpkix-jdk15on/1.48/bcpkix-jdk15on-1.48.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/net/sf/proguard/proguard-base/5.1/proguard-base-5.1-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/net/sf/proguard/proguard-base/5.1/proguard-base-5.1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/lint/lint-api/24.0.0/lint-api-24.0.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/lint/lint-api/24.0.0/lint-api-24.0.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-analysis/4.0/asm-analysis-4.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-analysis/4.0/asm-analysis-4.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/dvlib/24.0.0/dvlib-24.0.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/dvlib/24.0.0/dvlib-24.0.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/httpcomponents/httpclient/4.1.1/httpclient-4.1.1-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/httpcomponents/httpclient/4.1.1/httpclient-4.1.1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/httpcomponents/httpmime/4.1/httpmime-4.1-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/httpcomponents/httpmime/4.1/httpmime-4.1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/layoutlib/layoutlib-api/24.0.0/layoutlib-api-24.0.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/layoutlib/layoutlib-api/24.0.0/layoutlib-api-24.0.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/google/guava/guava/17.0/guava-17.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/google/guava/guava/17.0/guava-17.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/net/sf/kxml/kxml2/2.3.0/kxml2-2.3.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/net/sf/kxml/kxml2/2.3.0/kxml2-2.3.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm/4.0/asm-4.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm/4.0/asm-4.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/external/lombok/lombok-ast/0.2.2/lombok-ast-0.2.2-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/external/lombok/lombok-ast/0.2.2/lombok-ast-0.2.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-tree/4.0/asm-tree-4.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-tree/4.0/asm-tree-4.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/httpcomponents/httpcore/4.1/httpcore-4.1-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/httpcomponents/httpcore/4.1/httpcore-4.1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-codec/commons-codec/1.4/commons-codec-1.4-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-codec/commons-codec/1.4/commons-codec-1.4.jar" />
+                          </list>
+                        </option>
+                        <option name="path" value="$PROJECT_DIR$/menuDrawer" />
+                      </ExternalModuleBuildClasspathPojo>
+                    </value>
+                  </entry>
+                  <entry key="$PROJECT_DIR$/slideMenu">
+                    <value>
+                      <ExternalModuleBuildClasspathPojo>
+                        <option name="entries">
+                          <list>
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/gradle/1.0.0/gradle-1.0.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/gradle/1.0.0/gradle-1.0.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/lint/lint/24.0.0/lint-24.0.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/lint/lint/24.0.0/lint-24.0.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/builder/1.0.0/builder-1.0.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/builder/1.0.0/builder-1.0.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/net/sf/proguard/proguard-gradle/5.1/proguard-gradle-5.1-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/net/sf/proguard/proguard-gradle/5.1/proguard-gradle-5.1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/eclipse/jdt/core/compiler/ecj/4.2.2/ecj-4.2.2-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/eclipse/jdt/core/compiler/ecj/4.2.2/ecj-4.2.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/lint/lint-checks/24.0.0/lint-checks-24.0.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/lint/lint-checks/24.0.0/lint-checks-24.0.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/sdk-common/24.0.0/sdk-common-24.0.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/sdk-common/24.0.0/sdk-common-24.0.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/bouncycastle/bcprov-jdk15on/1.48/bcprov-jdk15on-1.48-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/bouncycastle/bcprov-jdk15on/1.48/bcprov-jdk15on-1.48.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/sdklib/24.0.0/sdklib-24.0.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/sdklib/24.0.0/sdklib-24.0.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/common/24.0.0/common-24.0.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/common/24.0.0/common-24.0.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/squareup/javawriter/2.5.0/javawriter-2.5.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/squareup/javawriter/2.5.0/javawriter-2.5.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/builder-test-api/1.0.0/builder-test-api-1.0.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/builder-test-api/1.0.0/builder-test-api-1.0.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/ddms/ddmlib/24.0.0/ddmlib-24.0.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/ddms/ddmlib/24.0.0/ddmlib-24.0.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/manifest-merger/24.0.0/manifest-merger-24.0.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/manifest-merger/24.0.0/manifest-merger-24.0.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/builder-model/1.0.0/builder-model-1.0.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/builder-model/1.0.0/builder-model-1.0.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/bouncycastle/bcpkix-jdk15on/1.48/bcpkix-jdk15on-1.48-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/bouncycastle/bcpkix-jdk15on/1.48/bcpkix-jdk15on-1.48.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/net/sf/proguard/proguard-base/5.1/proguard-base-5.1-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/net/sf/proguard/proguard-base/5.1/proguard-base-5.1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/lint/lint-api/24.0.0/lint-api-24.0.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/lint/lint-api/24.0.0/lint-api-24.0.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-analysis/4.0/asm-analysis-4.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-analysis/4.0/asm-analysis-4.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/dvlib/24.0.0/dvlib-24.0.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/dvlib/24.0.0/dvlib-24.0.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/httpcomponents/httpclient/4.1.1/httpclient-4.1.1-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/httpcomponents/httpclient/4.1.1/httpclient-4.1.1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/httpcomponents/httpmime/4.1/httpmime-4.1-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/httpcomponents/httpmime/4.1/httpmime-4.1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/layoutlib/layoutlib-api/24.0.0/layoutlib-api-24.0.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/layoutlib/layoutlib-api/24.0.0/layoutlib-api-24.0.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/google/guava/guava/17.0/guava-17.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/google/guava/guava/17.0/guava-17.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/net/sf/kxml/kxml2/2.3.0/kxml2-2.3.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/net/sf/kxml/kxml2/2.3.0/kxml2-2.3.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm/4.0/asm-4.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm/4.0/asm-4.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/external/lombok/lombok-ast/0.2.2/lombok-ast-0.2.2-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/external/lombok/lombok-ast/0.2.2/lombok-ast-0.2.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-tree/4.0/asm-tree-4.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-tree/4.0/asm-tree-4.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/httpcomponents/httpcore/4.1/httpcore-4.1-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/httpcomponents/httpcore/4.1/httpcore-4.1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-codec/commons-codec/1.4/commons-codec-1.4-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-codec/commons-codec/1.4/commons-codec-1.4.jar" />
+                            <option value="$USER_HOME$/AppData/Local/Android/sdk/extras/android/m2repository/com/android/support/support-v4/19.1.0/support-v4-19.1.0.jar" />
+                          </list>
+                        </option>
+                        <option name="path" value="$PROJECT_DIR$/slideMenu" />
                       </ExternalModuleBuildClasspathPojo>
                     </value>
                   </entry>
@@ -1834,6 +2521,7 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_launch.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_Content.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ColorFragment.java" />
@@ -1885,6 +2573,59 @@
         <option value="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentViewRenderView.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
+=======
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ViewerLoginActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PageView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/left_menu_category_item.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/viewer_login.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuSocialAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values-xlarge/dimens.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout-land/actionbar.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout-large-land/actionbar.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout-large/actionbar.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/library_layout.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout-large/library_layout.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/actionbar.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/attrs.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values-land/dimens.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/left_menu_social_item.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/PopupFixedAspectLayout.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/StateListDrawableWithColorFilter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/OutlineAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/ThumnailListAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/preview_pager_item_layout.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values-normal/dimens.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fixed_content_popup_layout.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/CoverImageFixedAspectLayout.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout-large/grid_cell.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/StateListDrawableForPopupButtons.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/grid_cell.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/left_menu.xml" />
+        <option value="$USER_HOME$/Desktop/pierre/src/tr/com/pierrecardin/VideoPlayActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentHolderAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values-large-land/dimens.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values-large/dimens.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/home_fragment.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/buttons.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_Content.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/ApplicationThemeColor.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/HomeFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseApi.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values-tr/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/raw/application.plist" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuCategoryAdapter.java" />
+>>>>>>> origin/UIUpdate
       </list>
     </option>
   </component>
@@ -1938,13 +2679,14 @@
       <showMembers />
       <showModules />
       <showLibraryContents />
-      <hideEmptyPackages />
+      <hideEmptyPackages ProjectPane="true" />
       <abbreviatePackageNames />
       <autoscrollToSource />
       <autoscrollFromSource />
       <sortByType />
     </navigator>
     <panes>
+<<<<<<< HEAD
       <pane id="AndroidView" />
       <pane id="Scope">
         <subPane subId="Project Files">
@@ -1996,6 +2738,8 @@
           </PATH>
         </subPane>
       </pane>
+=======
+>>>>>>> origin/UIUpdate
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -2050,6 +2794,116 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+<<<<<<< HEAD
+=======
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GalePress" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GalePress" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="galepress" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="AndroidView" />
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Android">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Android">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Android">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Android">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="gradle/wrapper">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+>>>>>>> origin/UIUpdate
         </subPane>
       </pane>
       <pane id="PackagesPane" />
@@ -2062,7 +2916,7 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="options.lastSelected" value="preferences.sourceCode.Groovy" />
+    <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="options.splitter.main.proportions" value="0.18943839" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
@@ -2070,7 +2924,11 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
+<<<<<<< HEAD
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="591c6a8b" />
+=======
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="4d0020215dfc5071" />
+>>>>>>> origin/UIUpdate
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="203" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="208" />
@@ -2088,9 +2946,9 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="586" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FullScreen" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/cute-pets-example-android-app-master" />
     <property name="dir.diff.last.used.directory" value="$PROJECT_DIR$/mupdf" />
-    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager2.WIDTH" value="740" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager2.WIDTH" value="422" />
     <property name="LayoutCode.rearrangeEntriesJava" value="false" />
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
@@ -2101,31 +2959,34 @@
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="AndroidTargetDevices" value="05c388e5002df79a 192.168.56.101:5555 41071a13425f5ff9" />
-    <property name="ExportApk.ApkPath" value="$USER_HOME$/Desktop" />
+    <property name="ExportApk.ApkPath" value="C:\Users\p1025\Desktop" />
     <property name="ExportApk.Flavors" value="" />
     <property name="ExportApk.BuildType" value="release" />
     <property name="LayoutCode.rearrangeEntriesXML" value="true" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_5_API_21_x86" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_6_API_11" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="ak.detaysoft.galepress" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\p1025\AndroidStudioProjects\GalePress\app\src\main\res\layout" />
-      <recent name="C:\Users\p1025\AndroidStudioProjects\GalePress\app\src\main\res" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
-      <recent name="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/view" />
-      <recent name="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress" />
+      <recent name="C:\Users\p1025\AndroidStudioProjects\GalePress\app\src\main\res\drawable" />
+      <recent name="C:\Users\p1025\AndroidStudioProjects\GalePress\app\src\main\assets\fonts" />
+      <recent name="C:\Users\p1025\AndroidStudioProjects\GalePress\app\src\main\res\layout-large" />
+      <recent name="C:\Users\p1025\AndroidStudioProjects\GalePress\app\src\main\res\drawable-xxhdpi" />
+      <recent name="C:\Users\p1025\AndroidStudioProjects\GalePress\app\src\main\res\layout-land" />
     </key>
     <key name="android.template.packageName">
       <recent name="ak.detaysoft.galepress" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
-    </key>
     <key name="android.template.parentActivityClass">
       <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\p1025\AndroidStudioProjects\GalePress\app\src\main\assets" />
+      <recent name="C:\Users\p1025\AndroidStudioProjects\GalePress\app\src\main\assets\fonts" />
+      <recent name="C:\Users\p1025\AndroidStudioProjects\GalePress\app\src\main\res\drawable" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
     </key>
   </component>
   <component name="RunManager" selected="Android Application.app">
@@ -2648,7 +3509,383 @@
       <created>1427282841851</created>
       <updated>1427282841851</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="application.plist düzenlemesi">
+      <created>1427282926270</created>
+      <updated>1427282926270</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Branch">
+      <created>1427285615960</created>
+      <updated>1427285615960</updated>
+    </task>
+    <task id="LOCAL-00064" summary="UI updates">
+      <created>1428390601705</created>
+      <updated>1428390601705</updated>
+    </task>
+    <task id="LOCAL-00065" summary="UI updates">
+      <created>1428942840254</created>
+      <updated>1428942840255</updated>
+    </task>
+    <task id="LOCAL-00066" summary="UI updates">
+      <created>1429102314447</created>
+      <updated>1429102314447</updated>
+    </task>
+    <task id="LOCAL-00067" summary="UI updates">
+      <created>1429167633275</created>
+      <updated>1429167633275</updated>
+    </task>
+    <task id="LOCAL-00068" summary="UI updates">
+      <created>1429168026081</created>
+      <updated>1429168026081</updated>
+    </task>
+    <task id="LOCAL-00069" summary="UI updates">
+      <created>1429168411556</created>
+      <updated>1429168411556</updated>
+    </task>
+    <task id="LOCAL-00070" summary="UI updates">
+      <created>1429173608968</created>
+      <updated>1429173608968</updated>
+    </task>
+    <task id="LOCAL-00071" summary="UI updates">
+      <created>1429199452183</created>
+      <updated>1429199452183</updated>
+    </task>
+    <task id="LOCAL-00072" summary="UI updates Readerview thumnail slider">
+      <created>1429624404394</created>
+      <updated>1429624404394</updated>
+    </task>
+    <task id="LOCAL-00073" summary="UI updates">
+      <created>1429685084027</created>
+      <updated>1429685084027</updated>
+    </task>
+    <task id="LOCAL-00074" summary="UI update reader thumnail slider">
+      <created>1429715787040</created>
+      <updated>1429715787040</updated>
+    </task>
+    <task id="LOCAL-00075" summary="UI updates reader thumnail scroll">
+      <created>1429718631262</created>
+      <updated>1429718631262</updated>
+    </task>
+    <task id="LOCAL-00076" summary="UI updates reader thumnail scroll">
+      <created>1429892977032</created>
+      <updated>1429892977032</updated>
+    </task>
+    <task id="LOCAL-00077" summary="UI updates reader thumnail scroll bug fix">
+      <created>1430063962193</created>
+      <updated>1430063962193</updated>
+    </task>
+    <task id="LOCAL-00078" summary="UI updates reader thumnail scroll finish">
+      <created>1430080160254</created>
+      <updated>1430080160254</updated>
+    </task>
+    <task id="LOCAL-00079" summary="UI updates popup-reader bug fix">
+      <created>1430140475294</created>
+      <updated>1430140475294</updated>
+    </task>
+    <task id="LOCAL-00080" summary="UI updates reader thumnail scroll">
+      <created>1430146098547</created>
+      <updated>1430146098547</updated>
+    </task>
+    <task id="LOCAL-00081" summary="UI updates content order by order no">
+      <created>1430221270925</created>
+      <updated>1430221270925</updated>
+    </task>
+    <task id="LOCAL-00082" summary="UI updates content order reader thumnail scroller fix">
+      <created>1430234494103</created>
+      <updated>1430234494103</updated>
+    </task>
+    <task id="LOCAL-00083" summary="UI updates library banner">
+      <created>1430391857143</created>
+      <updated>1430391857143</updated>
+    </task>
+    <task id="LOCAL-00084" summary="UI updates gridview bug fix">
+      <created>1430404527227</created>
+      <updated>1430404527228</updated>
+    </task>
+    <task id="LOCAL-00085" summary="UI updates content popup animation">
+      <created>1430743206766</created>
+      <updated>1430743206766</updated>
+    </task>
+    <task id="LOCAL-00086" summary="UI updates library banner size fix">
+      <created>1430829708094</created>
+      <updated>1430829708094</updated>
+    </task>
+    <task id="LOCAL-00087" summary="UI updates viewer test">
+      <created>1430911825648</created>
+      <updated>1430911825648</updated>
+    </task>
+    <task id="LOCAL-00088" summary="Viewer">
+      <created>1430913924013</created>
+      <updated>1430913924013</updated>
+    </task>
+    <task id="LOCAL-00089" summary="Viewer app">
+      <created>1431075284664</created>
+      <updated>1431075284664</updated>
+    </task>
+    <task id="LOCAL-00090" summary="UI update banner url">
+      <created>1431095922632</created>
+      <updated>1431095922632</updated>
+    </task>
+    <task id="LOCAL-00091" summary="Viewer plist">
+      <created>1431096902010</created>
+      <updated>1431096902010</updated>
+    </task>
+    <task id="LOCAL-00092" summary="UI update plist">
+      <created>1431097632409</created>
+      <updated>1431097632409</updated>
+    </task>
+    <task id="LOCAL-00093" summary="Viewer giriş ekranı&#10;Banner alanında url load edilemezse static html sayfasının gösterilmesi">
+      <created>1431354268912</created>
+      <updated>1431354268912</updated>
+    </task>
+    <task id="LOCAL-00094" summary="viewer plist">
+      <created>1431354357523</created>
+      <updated>1431354357523</updated>
+    </task>
+    <task id="LOCAL-00095" summary="viewer facebook login">
+      <created>1431510763203</created>
+      <updated>1431510763203</updated>
+    </task>
+    <task id="LOCAL-00096" summary="viewer facebook login plist">
+      <created>1431511033419</created>
+      <updated>1431511033419</updated>
+    </task>
+    <task id="LOCAL-00097" summary="viewer facebook login">
+      <created>1431530196303</created>
+      <updated>1431530196303</updated>
+    </task>
+    <task id="LOCAL-00098" summary="viewer facebook login">
+      <created>1431595010172</created>
+      <updated>1431595010172</updated>
+    </task>
+    <task id="LOCAL-00099" summary="viewer facebook login">
+      <created>1431612094614</created>
+      <updated>1431612094614</updated>
+    </task>
+    <task id="LOCAL-00100" summary="viewer facebook login">
+      <created>1431700012323</created>
+      <updated>1431700012323</updated>
+    </task>
+    <task id="LOCAL-00101" summary="viewer facebook login plist">
+      <created>1431700255045</created>
+      <updated>1431700255045</updated>
+    </task>
+    <task id="LOCAL-00102" summary="viewer facebook login service">
+      <created>1431931709698</created>
+      <updated>1431931709698</updated>
+    </task>
+    <task id="LOCAL-00103" summary="viewer facebook login fix">
+      <created>1431960760877</created>
+      <updated>1431960760877</updated>
+    </task>
+    <task id="LOCAL-00104" summary="viewer facebook login and test app">
+      <created>1432131736013</created>
+      <updated>1432131736013</updated>
+    </task>
+    <task id="LOCAL-00105" summary="custom tabbar">
+      <created>1432219744451</created>
+      <updated>1432219744451</updated>
+    </task>
+    <task id="LOCAL-00106" summary="webview locatipn permission&#10;custom tabbar">
+      <created>1432308025832</created>
+      <updated>1432308025832</updated>
+    </task>
+    <task id="LOCAL-00107" summary="custom tabbar bug fix&#10;custom tab action bar customize">
+      <created>1432566157318</created>
+      <updated>1432566157318</updated>
+    </task>
+    <task id="LOCAL-00108" summary="custom tabbar bug fix&#10;custom tab action bar customize&#10;custom tabbar progress bar">
+      <created>1432629651997</created>
+      <updated>1432629651997</updated>
+    </task>
+    <task id="LOCAL-00109" summary="master background download&#10;custom tab webview">
+      <created>1432647716537</created>
+      <updated>1432647716537</updated>
+    </task>
+    <task id="LOCAL-00110" summary="info tab kaldırıldı">
+      <created>1432712600646</created>
+      <updated>1432712600646</updated>
+    </task>
+    <task id="LOCAL-00111" summary="plist">
+      <created>1432712629028</created>
+      <updated>1432712629028</updated>
+    </task>
+    <task id="LOCAL-00112" summary="custom tab bar bug fix&#10;Main activity telefonlar için landscape kaldırıldı">
+      <created>1432729556821</created>
+      <updated>1432729556821</updated>
+    </task>
+    <task id="LOCAL-00113" summary="page scale bug fix">
+      <created>1432738346701</created>
+      <updated>1432738346701</updated>
+    </task>
+    <task id="LOCAL-00114" summary="parchale loading">
+      <created>1432826324781</created>
+      <updated>1432826324781</updated>
+    </task>
+    <task id="LOCAL-00115" summary="library fix">
+      <created>1432826653196</created>
+      <updated>1432826653196</updated>
+    </task>
+    <task id="LOCAL-00116" summary="partial loading">
+      <created>1432893992864</created>
+      <updated>1432893992864</updated>
+    </task>
+    <task id="LOCAL-00117" summary="partial loading">
+      <created>1432902400101</created>
+      <updated>1432902400101</updated>
+    </task>
+    <task id="LOCAL-00118" summary="universal image loader">
+      <created>1433144570935</created>
+      <updated>1433144570935</updated>
+    </task>
+    <task id="LOCAL-00119" summary="universal image loader">
+      <created>1433172887838</created>
+      <updated>1433172887838</updated>
+    </task>
+    <task id="LOCAL-00120" summary="image loading">
+      <created>1433262425185</created>
+      <updated>1433262425185</updated>
+    </task>
+    <task id="LOCAL-00121" summary="image loading and popup animation">
+      <created>1433327332647</created>
+      <updated>1433327332647</updated>
+    </task>
+    <task id="LOCAL-00122" summary="image loading no internet connection and popup animation">
+      <created>1433330915707</created>
+      <updated>1433330915707</updated>
+    </task>
+    <task id="LOCAL-00123" summary="tabbar image loading bug fix">
+      <created>1433342988593</created>
+      <updated>1433342988593</updated>
+    </task>
+    <task id="LOCAL-00124" summary="no internet connection fix">
+      <created>1433487846900</created>
+      <updated>1433487846900</updated>
+    </task>
+    <task id="LOCAL-00125" summary="bug fix">
+      <created>1433520162870</created>
+      <updated>1433520162870</updated>
+    </task>
+    <task id="LOCAL-00126" summary="content delete, download, update bug">
+      <created>1433762644361</created>
+      <updated>1433762644362</updated>
+    </task>
+    <task id="LOCAL-00127" summary="custom tablist bug fix">
+      <created>1433776459966</created>
+      <updated>1433776459966</updated>
+    </task>
+    <task id="LOCAL-00128" summary="custom tablist connection change fix">
+      <created>1433840614459</created>
+      <updated>1433840614459</updated>
+    </task>
+    <task id="LOCAL-00129" summary="custom tablist connection change fix">
+      <created>1433849222150</created>
+      <updated>1433849222150</updated>
+    </task>
+    <task id="LOCAL-00130" summary="custom tablist connection change fix">
+      <created>1433852118756</created>
+      <updated>1433852118756</updated>
+    </task>
+    <task id="LOCAL-00131" summary="uygulama ilk acildiginda image lar load edilmiyordu">
+      <created>1433861681983</created>
+      <updated>1433861681983</updated>
+    </task>
+    <task id="LOCAL-00132" summary="uygulama ilk acildiginda image lar load edilmiyordu">
+      <created>1433920159770</created>
+      <updated>1433920159770</updated>
+    </task>
+    <task id="LOCAL-00133" summary="webview transparent issue fix">
+      <created>1434096153444</created>
+      <updated>1434096153444</updated>
+    </task>
+    <task id="LOCAL-00134" summary="new ui login">
+      <created>1434127999393</created>
+      <updated>1434127999393</updated>
+    </task>
+    <task id="LOCAL-00135" summary="new ui login and left menu">
+      <created>1434452358877</created>
+      <updated>1434452358877</updated>
+    </task>
+    <task id="LOCAL-00136" summary="new ui login and left menu">
+      <created>1434466486371</created>
+      <updated>1434466486371</updated>
+    </task>
+    <task id="LOCAL-00137" summary="new ui left menu action bar grid">
+      <created>1434553795121</created>
+      <updated>1434553795121</updated>
+    </task>
+    <task id="LOCAL-00138" summary="new ui grid and popup">
+      <created>1434641120841</created>
+      <updated>1434641120841</updated>
+    </task>
+    <task id="LOCAL-00139" summary="new ui grid and popup">
+      <created>1434724889412</created>
+      <updated>1434724889412</updated>
+    </task>
+    <task id="LOCAL-00140" summary="new ui grid, reader and popup">
+      <created>1435060006856</created>
+      <updated>1435060006856</updated>
+    </task>
+    <task id="LOCAL-00141" summary="new ui grid, reader and popup">
+      <created>1435070741207</created>
+      <updated>1435070741207</updated>
+    </task>
+    <task id="LOCAL-00142" summary="new ui grid, reader and popup">
+      <created>1435158524097</created>
+      <updated>1435158524097</updated>
+    </task>
+    <task id="LOCAL-00143" summary="new ui grid, reader and popup">
+      <created>1435243753182</created>
+      <updated>1435243753182</updated>
+    </task>
+    <task id="LOCAL-00144" summary="new ui grid, reader and popup">
+      <created>1435329501005</created>
+      <updated>1435329501005</updated>
+    </task>
+    <task id="LOCAL-00145" summary="new ui grid, reader and popup">
+      <created>1435329681751</created>
+      <updated>1435329681751</updated>
+    </task>
+    <task id="LOCAL-00146" summary="new ui grid, reader and popup">
+      <created>1435587922734</created>
+      <updated>1435587922734</updated>
+    </task>
+    <task id="LOCAL-00147" summary="new ui tabbar">
+      <created>1435675088161</created>
+      <updated>1435675088161</updated>
+    </task>
+    <task id="LOCAL-00148" summary="new ui logout, category">
+      <created>1435846028772</created>
+      <updated>1435846028772</updated>
+    </task>
+    <task id="LOCAL-00149" summary="new ui plist">
+      <created>1435846198037</created>
+      <updated>1435846198037</updated>
+    </task>
+    <task id="LOCAL-00150" summary="new ui home">
+      <created>1436368107069</created>
+      <updated>1436368107069</updated>
+    </task>
+    <task id="LOCAL-00151" summary="new ui home">
+      <created>1436428098440</created>
+      <updated>1436428098440</updated>
+    </task>
+    <task id="LOCAL-00152" summary="new ui home and bug fix">
+      <created>1436442429638</created>
+      <updated>1436442429638</updated>
+    </task>
+    <task id="LOCAL-00153" summary="new ui bug fix">
+      <created>1436444440354</created>
+      <updated>1436444440354</updated>
+    </task>
+    <task id="LOCAL-00154" summary="new ui bug fix">
+      <created>1436444533090</created>
+      <updated>1436444533090</updated>
+    </task>
+    <task id="LOCAL-00155" summary="new ui show all">
+      <created>1436451813952</created>
+      <updated>1436451813952</updated>
+    </task>
+    <option name="localTasksCounter" value="156" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -2679,31 +3916,47 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14065935" sideWeight="0.49958915" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32872504" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26593408" sideWeight="0.6007463" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31208792" sideWeight="0.24840085" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21428572" sideWeight="0.35628742" order="1" side_tool="true" content_ui="tabs" />
+=======
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26813188" sideWeight="0.6007463" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2769231" sideWeight="0.24840085" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23240939" sideWeight="0.35735735" order="1" side_tool="true" content_ui="tabs" />
+>>>>>>> origin/UIUpdate
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32667178" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27659574" sideWeight="0.24786781" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17400081" sideWeight="0.38004485" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2791209" sideWeight="0.49840087" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24725275" sideWeight="0.75159913" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2791209" sideWeight="0.75159913" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.33481422" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289777" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18901454" sideWeight="0.47976878" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20659341" sideWeight="0.47976878" order="17" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21428572" sideWeight="0.64221555" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20549451" sideWeight="0.4968017" order="6" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23240939" sideWeight="0.6411411" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2021978" sideWeight="0.4968017" order="6" side_tool="false" content_ui="tabs" />
+>>>>>>> origin/UIUpdate
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32820907" sideWeight="0.62119967" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" x="646" y="352" width="305" height="214" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" x="154" y="768" width="305" height="214" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18457189" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24615385" sideWeight="0.4978678" order="12" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18457189" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1945055" sideWeight="0.4978678" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17472528" sideWeight="0.49840087" order="8" side_tool="false" content_ui="tabs" />
+>>>>>>> origin/UIUpdate
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32997176" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32872504" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
@@ -2725,6 +3978,7 @@
       <TodoPanelSettings />
     </option>
     <option name="SHOW_FILE_HISTORY_DETAILS" value="false" />
+<<<<<<< HEAD
     <MESSAGE value="+ Tabbar &quot;İnfo&quot; segmesinde, kategori seçildiği zaman uygulama crash oluyor.&#10;+ Tabbar info sayfasinda search butonu crash ediyor." />
     <MESSAGE value="+ Component Type Integration tamamlandi. &#10;+ Content siralamasinda monthlyName bos oldugunda bir sorun olusuyordu. Giderildi. &#10;- Compontent tiplerine gore slide davranisi henuz yapilmadi." />
     <MESSAGE value="+ Compontent tiplerine gore slide davranisi henuz yapilmadi." />
@@ -2751,6 +4005,34 @@
     <MESSAGE value="Cihaz yatay çevrildiği zaman sağ tarafta ki sayfanın kompenentlerinin ekranın ortasında çıkması sorunu düzeltildi." />
     <MESSAGE value="Pagelink sayfa geçişlerinde animasyonların kaldırılması. &#10;Masterpdf de actionbar ve slider'ın kapatılı gelmesi.&#10; Web sayfalarının transparent sorunu." />
     <option name="LAST_COMMIT_MESSAGE" value="Pagelink sayfa geçişlerinde animasyonların kaldırılması. &#10;Masterpdf de actionbar ve slider'ın kapatılı gelmesi.&#10; Web sayfalarının transparent sorunu." />
+=======
+    <MESSAGE value="partial loading" />
+    <MESSAGE value="universal image loader" />
+    <MESSAGE value="image loading" />
+    <MESSAGE value="image loading and popup animation" />
+    <MESSAGE value="image loading no internet connection and popup animation" />
+    <MESSAGE value="tabbar image loading bug fix" />
+    <MESSAGE value="no internet connection fix" />
+    <MESSAGE value="bug fix" />
+    <MESSAGE value="content delete, download, update bug" />
+    <MESSAGE value="custom tablist bug fix" />
+    <MESSAGE value="custom tablist connection change fix" />
+    <MESSAGE value="uygulama ilk acildiginda image lar load edilmiyordu" />
+    <MESSAGE value="webview transparent issue fix" />
+    <MESSAGE value="new ui login" />
+    <MESSAGE value="new ui login and left menu" />
+    <MESSAGE value="new ui left menu action bar grid" />
+    <MESSAGE value="new ui grid and popup" />
+    <MESSAGE value="new ui grid, reader and popup" />
+    <MESSAGE value="new ui tabbar" />
+    <MESSAGE value="new ui logout, category" />
+    <MESSAGE value="new ui plist" />
+    <MESSAGE value="new ui home" />
+    <MESSAGE value="new ui home and bug fix" />
+    <MESSAGE value="new ui bug fix" />
+    <MESSAGE value="new ui show all" />
+    <option name="LAST_COMMIT_MESSAGE" value="new ui show all" />
+>>>>>>> origin/UIUpdate
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2761,6 +4043,7 @@
           <properties />
           <option name="timeStamp" value="474" />
         </line-breakpoint>
+<<<<<<< HEAD
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java</url>
           <line>391</line>
@@ -2791,10 +4074,13 @@
           <properties />
           <option name="timeStamp" value="1177" />
         </line-breakpoint>
+=======
+>>>>>>> origin/UIUpdate
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
+<<<<<<< HEAD
       <option name="time" value="1181" />
     </breakpoint-manager>
   </component>
@@ -2803,122 +4089,67 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.82107025" vertical-offset="563" max-vertical-offset="1275">
           <caret line="90" column="17" selection-start-line="90" selection-start-column="17" selection-end-line="90" selection-end-column="17" />
+=======
+      <option name="time" value="2349" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/StateListDrawableWithColorFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="714">
+          <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="34" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ChromiumLibrary/src/main/AndroidManifest.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/StateListDrawableForPopupButtons.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
-          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.6644951" vertical-offset="0" max-vertical-offset="697">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/popup_download.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-large/grid_cell.xml">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="986" max-vertical-offset="1972">
+          <caret line="84" column="37" selection-start-line="84" selection-start-column="37" selection-end-line="84" selection-end-column="37" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.62541807" vertical-offset="0" max-vertical-offset="731">
-          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-        </state>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/LinkInfoExternal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.583612" vertical-offset="773" max-vertical-offset="2805">
-          <caret line="69" column="25" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/grid_cell.xml">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1037" max-vertical-offset="2057">
+          <caret line="83" column="40" selection-start-line="83" selection-start-column="40" selection-end-line="83" selection-end-column="40" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/AsyncTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27591974" vertical-offset="4170" max-vertical-offset="10625">
-          <caret line="293" column="13" selection-start-line="293" selection-start-column="13" selection-end-line="293" selection-end-column="13" />
-        </state>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-19/android/app/ActivityThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3328125" vertical-offset="35232" max-vertical-offset="82569">
-          <caret line="2247" column="0" selection-start-line="2247" selection-start-column="0" selection-end-line="2247" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/app/src/main/lib/gcm.jar!/com/google/android/gcm/GCMRegistrar.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13821138" vertical-offset="0" max-vertical-offset="1275">
-          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GCMIntentService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="87" max-vertical-offset="2431">
-          <caret line="36" column="76" selection-start-line="36" selection-start-column="76" selection-end-line="36" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-19/android/view/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33225283" vertical-offset="151520" max-vertical-offset="325040">
-          <caret line="9170" column="21" selection-start-line="9170" selection-start-column="21" selection-end-line="9170" selection-end-column="21" />
-          <folding>
-            <element signature="e#357079#357080#0" expanded="false" />
-            <element signature="e#357116#357117#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-19/android/widget/Adapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3328125" vertical-offset="1181" max-vertical-offset="2397">
-          <caret line="98" column="9" selection-start-line="98" selection-start-column="9" selection-end-line="98" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFReflowView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64285713" vertical-offset="53" max-vertical-offset="2703">
-          <caret line="43" column="27" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/SearchTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.4954407" vertical-offset="529" max-vertical-offset="2550">
-          <caret line="108" column="76" selection-start-line="108" selection-start-column="76" selection-end-line="108" selection-end-column="76" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/actionbar.xml">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1122" max-vertical-offset="1887">
+          <caret line="80" column="12" selection-start-line="80" selection-start-column="12" selection-end-line="80" selection-end-column="57" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-19/android/graphics/PointF.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33282673" vertical-offset="53" max-vertical-offset="2380">
-          <caret line="32" column="11" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.74375" vertical-offset="306" max-vertical-offset="1241">
-          <caret line="59" column="33" selection-start-line="59" selection-start-column="33" selection-end-line="59" selection-end-column="33" />
-          <folding>
-            <element signature="e#1951#1952#0" expanded="false" />
-            <element signature="e#1998#1999#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwPdfExporter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33282673" vertical-offset="1328" max-vertical-offset="2074">
-          <caret line="103" column="19" selection-start-line="103" selection-start-column="19" selection-end-line="103" selection-end-column="19" />
-        </state>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46031746" vertical-offset="67" max-vertical-offset="697">
-          <caret line="21" column="15" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
+        <state vertical-scroll-proportion="0.44974446" vertical-offset="314" max-vertical-offset="901">
+          <caret line="34" column="32" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -2926,78 +4157,425 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LaunchActivity.java">
+    <entry file="jar://$PROJECT_DIR$/app/src/main/lib/universal-image-loader-1.9.3.jar!/com/nostra13/universalimageloader/cache/memory/impl/LruMemoryCache.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.20700152" vertical-offset="510" max-vertical-offset="1870">
-          <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.2886248" vertical-offset="0" max-vertical-offset="589">
+          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
         </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/app/src/main/lib/universal-image-loader-1.9.3.jar!/com/nostra13/universalimageloader/core/ImageLoader.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3472222" vertical-offset="531" max-vertical-offset="2108">
+          <caret line="44" column="16" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentHolderAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2102" max-vertical-offset="2958">
+          <caret line="172" column="9" selection-start-line="172" selection-start-column="9" selection-end-line="172" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-xlarge/dimens.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19381107" vertical-offset="0" max-vertical-offset="614">
+          <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.85830617" vertical-offset="2448" max-vertical-offset="3128">
+          <caret line="175" column="99" selection-start-line="175" selection-start-column="99" selection-end-line="175" selection-end-column="99" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="1071">
+          <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-land/dimens.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/left_menu.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6950596" vertical-offset="221" max-vertical-offset="3706">
+          <caret line="37" column="59" selection-start-line="37" selection-start-column="59" selection-end-line="37" selection-end-column="59" />
+          <folding />
+>>>>>>> origin/UIUpdate
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-normal/dimens.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30456027" vertical-offset="0" max-vertical-offset="614">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fixed_content_popup_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state vertical-scroll-proportion="0.62541807" vertical-offset="0" max-vertical-offset="731">
+          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+=======
+        <state vertical-scroll-proportion="0.0" vertical-offset="1088" max-vertical-offset="3536">
+          <caret line="64" column="40" selection-start-line="64" selection-start-column="40" selection-end-line="64" selection-end-column="40" />
+          <folding />
+>>>>>>> origin/UIUpdate
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-large-land/dimens.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+          <caret line="4" column="46" selection-start-line="4" selection-start-column="46" selection-end-line="4" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-large/dimens.xml">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state vertical-scroll-proportion="0.27591974" vertical-offset="4170" max-vertical-offset="10625">
+          <caret line="293" column="13" selection-start-line="293" selection-start-column="13" selection-end-line="293" selection-end-column="13" />
+=======
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
+          <caret line="21" column="53" selection-start-line="21" selection-start-column="53" selection-end-line="21" selection-end-column="53" />
+          <folding />
+>>>>>>> origin/UIUpdate
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_Statistic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9169381" vertical-offset="1494" max-vertical-offset="2414">
+          <caret line="166" column="21" selection-start-line="166" selection-start-column="21" selection-end-line="166" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFReaderView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33236995" vertical-offset="4139" max-vertical-offset="6341">
+          <caret line="284" column="64" selection-start-line="284" selection-start-column="64" selection-end-line="284" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/info_page_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state vertical-scroll-proportion="0.0" vertical-offset="87" max-vertical-offset="2431">
+          <caret line="36" column="76" selection-start-line="36" selection-start-column="76" selection-end-line="36" selection-end-column="76" />
+=======
+        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="425">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="19" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/library_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5014749" vertical-offset="0" max-vertical-offset="678">
+          <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+          <folding />
+>>>>>>> origin/UIUpdate
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/home_fragment.xml">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state vertical-scroll-proportion="0.3328125" vertical-offset="1181" max-vertical-offset="2397">
+          <caret line="98" column="9" selection-start-line="98" selection-start-column="9" selection-end-line="98" selection-end-column="9" />
+=======
+        <state vertical-scroll-proportion="-2.5185184" vertical-offset="0" max-vertical-offset="272">
+          <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/InfoPageFragment.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+>>>>>>> origin/UIUpdate
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/tab_home.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/CustomWebView.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state vertical-scroll-proportion="0.64285713" vertical-offset="53" max-vertical-offset="2703">
+          <caret line="43" column="27" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
+=======
+        <state vertical-scroll-proportion="2.0765471" vertical-offset="0" max-vertical-offset="2074">
+          <caret line="91" column="11" selection-start-line="91" selection-start-column="11" selection-end-line="91" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2801303" vertical-offset="440" max-vertical-offset="1156">
+          <caret line="47" column="23" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/buttons.xml">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="6468" max-vertical-offset="8925">
+          <caret line="403" column="45" selection-start-line="403" selection-start-column="45" selection-end-line="403" selection-end-column="45" />
+          <folding>
+            <element signature="e#1603#1625#0" expanded="false" />
+            <element signature="e#2002#2030#0" expanded="false" />
+            <element signature="e#2399#2422#0" expanded="false" />
+            <element signature="e#2893#2918#0" expanded="false" />
+            <element signature="e#4064#4078#0" expanded="false" />
+            <element signature="e#4650#4678#0" expanded="false" />
+            <element signature="e#5339#5355#0" expanded="false" />
+            <element signature="e#5849#5865#0" expanded="false" />
+            <element signature="e#6151#6177#0" expanded="false" />
+            <element signature="e#6524#6549#0" expanded="false" />
+            <element signature="e#7054#7070#0" expanded="false" />
+            <element signature="e#7460#7479#0" expanded="false" />
+            <element signature="e#7870#7889#0" expanded="false" />
+            <element signature="e#8274#8294#0" expanded="false" />
+            <element signature="e#8668#8681#0" expanded="false" />
+            <element signature="e#9209#9225#0" expanded="false" />
+            <element signature="e#9767#9783#0" expanded="false" />
+            <element signature="e#10099#10115#0" expanded="false" />
+            <element signature="e#10644#10660#0" expanded="false" />
+            <element signature="e#11044#11059#0" expanded="false" />
+            <element signature="e#11492#11528#0" expanded="false" />
+            <element signature="e#11910#11936#0" expanded="false" />
+            <element signature="e#12476#12492#0" expanded="false" />
+            <element signature="e#13330#13346#0" expanded="false" />
+            <element signature="e#17433#17476#0" expanded="false" />
+            <element signature="e#17758#17796#0" expanded="false" />
+            <element signature="e#18079#18116#0" expanded="false" />
+          </folding>
+>>>>>>> origin/UIUpdate
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ViewerLoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39716312" vertical-offset="3613" max-vertical-offset="5236">
+          <caret line="283" column="0" selection-start-line="283" selection-start-column="0" selection-end-line="283" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_Content.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state vertical-scroll-proportion="0.33282673" vertical-offset="53" max-vertical-offset="2380">
+          <caret line="32" column="11" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
+        </state>
+=======
+        <state vertical-scroll-proportion="0.0" vertical-offset="6613" max-vertical-offset="7548">
+          <caret line="389" column="34" selection-start-line="389" selection-start-column="34" selection-end-line="389" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/launch.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+>>>>>>> origin/UIUpdate
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-19/com/android/internal/os/LoggingPrintStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state vertical-scroll-proportion="0.74375" vertical-offset="306" max-vertical-offset="1241">
+          <caret line="59" column="33" selection-start-line="59" selection-start-column="33" selection-end-line="59" selection-end-column="33" />
+          <folding>
+            <element signature="e#1951#1952#0" expanded="false" />
+            <element signature="e#1998#1999#0" expanded="false" />
+          </folding>
+=======
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5151">
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+>>>>>>> origin/UIUpdate
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/volley/toolbox/JsonRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state vertical-scroll-proportion="0.33282673" vertical-offset="1328" max-vertical-offset="2074">
+          <caret line="103" column="19" selection-start-line="103" selection-start-column="19" selection-end-line="103" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+=======
+        <state vertical-scroll-proportion="0.3322884" vertical-offset="536" max-vertical-offset="1377">
+          <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="806" max-vertical-offset="7191">
+          <caret line="94" column="79" selection-start-line="94" selection-start-column="59" selection-end-line="94" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java">
+>>>>>>> origin/UIUpdate
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5349233" vertical-offset="21327" max-vertical-offset="22100">
+          <caret line="1910" column="13" selection-start-line="1910" selection-start-column="13" selection-end-line="1910" selection-end-column="13" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/HomeFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state vertical-scroll-proportion="-0.20700152" vertical-offset="510" max-vertical-offset="1870">
+          <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
+=======
+        <state vertical-scroll-proportion="0.61300814" vertical-offset="456" max-vertical-offset="1088">
+          <caret line="72" column="39" selection-start-line="72" selection-start-column="29" selection-end-line="72" selection-end-column="39" />
+>>>>>>> origin/UIUpdate
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_launch.xml">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="0.18112633" vertical-offset="0" max-vertical-offset="657">
           <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+=======
+        <state vertical-scroll-proportion="0.84858567" vertical-offset="0" max-vertical-offset="816">
+          <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
+          <folding />
+>>>>>>> origin/UIUpdate
         </state>
       </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-19/android/os/AsyncTask.java">
+    <entry file="jar://$USER_HOME$/AppData/Local/Android/sdk/extras/android/m2repository/com/android/support/support-v4/21.0.3/support-v4-21.0.3-sources.jar!/android/support/v4/app/Fragment.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="0.33282673" vertical-offset="8757" max-vertical-offset="10710">
           <caret line="570" column="53" selection-start-line="570" selection-start-column="53" selection-end-line="570" selection-end-column="53" />
+=======
+        <state vertical-scroll-proportion="0.0" vertical-offset="27430" max-vertical-offset="31603">
+          <caret line="1785" column="0" selection-start-line="1785" selection-start-column="0" selection-end-line="1785" selection-end-column="0" />
+          <folding />
+>>>>>>> origin/UIUpdate
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
+    <entry file="jar://$USER_HOME$/AppData/Local/Android/sdk/extras/android/m2repository/com/android/support/support-v4/21.0.3/support-v4-21.0.3-sources.jar!/android/support/v4/app/FragmentManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.5" vertical-offset="2068" max-vertical-offset="5984">
-          <caret line="196" column="66" selection-start-line="196" selection-start-column="64" selection-end-line="196" selection-end-column="66" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="14748" max-vertical-offset="36125">
+          <caret line="960" column="0" selection-start-line="960" selection-start-column="0" selection-end-line="960" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values-th/strings.xml">
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.12796208" vertical-offset="81" max-vertical-offset="1020">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="11.696" vertical-offset="0" max-vertical-offset="9826">
+          <caret line="504" column="0" selection-start-line="504" selection-start-column="0" selection-end-line="504" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LaunchActivity.java">
+>>>>>>> origin/UIUpdate
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.035714" vertical-offset="353" max-vertical-offset="2312">
+          <caret line="55" column="64" selection-start-line="55" selection-start-column="64" selection-end-line="55" selection-end-column="64" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.76" vertical-offset="1039" max-vertical-offset="2669">
-          <caret line="74" column="18" selection-start-line="74" selection-start-column="18" selection-end-line="74" selection-end-column="18" />
+        <state vertical-scroll-proportion="-9.04" vertical-offset="2137" max-vertical-offset="3009">
+          <caret line="139" column="36" selection-start-line="139" selection-start-column="36" selection-end-line="139" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values-tr/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34597155" vertical-offset="1039" max-vertical-offset="2465">
-          <caret line="74" column="18" selection-start-line="74" selection-start-column="18" selection-end-line="74" selection-end-column="18" />
+        <state vertical-scroll-proportion="-14.24" vertical-offset="2109" max-vertical-offset="2754">
+          <caret line="145" column="36" selection-start-line="145" selection-start-column="36" selection-end-line="145" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11605723" vertical-offset="5690" max-vertical-offset="8670">
-          <caret line="843" column="50" selection-start-line="843" selection-start-column="50" selection-end-line="843" selection-end-column="50" />
+        <state vertical-scroll-proportion="-11.964286" vertical-offset="2674" max-vertical-offset="11458">
+          <caret line="404" column="37" selection-start-line="404" selection-start-column="37" selection-end-line="404" selection-end-column="37" />
           <folding>
+<<<<<<< HEAD
             <element signature="imports" expanded="false" />
             <element signature="method#updateCompleted#0;class#DataApi#0" expanded="false" />
+=======
+>>>>>>> origin/UIUpdate
             <element signature="method#isLibraryMustBeEnabled#0;class#DataApi#0" expanded="false" />
             <element signature="method#doInBackground#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
-            <element signature="method#checkDownloadSuccessfull#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
-            <element signature="method#onProgressUpdate#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
-            <element signature="method#onPreExecute#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
-            <element signature="method#onCancelled#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
-            <element signature="method#onPostExecute#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
+            <element signature="e#15334#15503#0" expanded="true" />
+            <element signature="e#15484#15485#0" expanded="true" />
+            <element signature="method#progressUpdate#0;class#DataApi#0" expanded="false" />
             <element signature="class#StatisticSendTask#0;class#DataApi#0" expanded="false" />
             <element signature="method#getWebServiceUrlBuilder#0;class#DataApi#0" expanded="false" />
             <element signature="method#DataApi#0;class#DataApi#0" expanded="false" />
             <element signature="method#getDatabaseApi#0;class#DataApi#0" expanded="false" />
             <element signature="method#isConnectedToInternet#0;class#DataApi#0" expanded="false" />
+<<<<<<< HEAD
             <element signature="e#17262#17347#0" expanded="false" />
             <element signature="method#getDeviceName#0;class#DataApi#0" expanded="false" />
             <element signature="method#capitalize#0;class#DataApi#0" expanded="false" />
@@ -3016,11 +4594,16 @@
             <element signature="e#27135#27136#0" expanded="false" />
             <element signature="e#27180#27437#0" expanded="false" />
             <element signature="e#27414#27415#0" expanded="false" />
+=======
+            <element signature="method#capitalize#0;class#DataApi#0" expanded="false" />
+            <element signature="method#getMasterContent#0;class#DataApi#0" expanded="false" />
+            <element signature="method#commitStatisticsToDB#0;class#DataApi#0" expanded="false" />
+            <element signature="method#getAppDetail#0;class#DataApi#0" expanded="false" />
+>>>>>>> origin/UIUpdate
             <element signature="method#deleteEverything#0;class#DataApi#0" expanded="false" />
-            <element signature="method#downloadCoverImage#0;class#DataApi#0" expanded="false" />
-            <element signature="method#downloadFile#0;class#DataApi#0" expanded="false" />
             <element signature="method#getCoverImage#0;class#DataApi#0" expanded="false" />
             <element signature="method#cancelDownload#0;class#DataApi#0" expanded="false" />
+<<<<<<< HEAD
             <element signature="e#31490#31571#0" expanded="false" />
             <element signature="e#31609#31694#0" expanded="false" />
             <element signature="e#31740#31820#0" expanded="false" />
@@ -3051,6 +4634,12 @@
             <element signature="e#41257#41258#0" expanded="false" />
             <element signature="e#41294#41606#0" expanded="false" />
             <element signature="e#41587#41588#0" expanded="false" />
+=======
+            <element signature="e#55998#57976#0" expanded="true" />
+            <element signature="e#57957#57958#0" expanded="true" />
+            <element signature="method#downloadUpdatedImage#0;class#DataApi#0" expanded="false" />
+            <element signature="method#saveImage#0;class#DataApi#0" expanded="false" />
+>>>>>>> origin/UIUpdate
             <element signature="method#getCoverImageVersionToUpdate#0;class#DataApi#0" expanded="false" />
             <element signature="method#startStatisticSend#0;class#DataApi#0" expanded="false" />
             <element signature="method#stopStatisticSend#0;class#DataApi#0" expanded="false" />
@@ -3060,6 +4649,7 @@
             <element signature="method#getRemoteContent#0;class#DataApi#0" expanded="false" />
             <element signature="method#getRemoteAppCategories#0;class#DataApi#0" expanded="false" />
             <element signature="method#getRemoteAppContents#0;class#DataApi#0" expanded="false" />
+<<<<<<< HEAD
             <element signature="e#62757#63970#0" expanded="false" />
             <element signature="e#63951#63952#0" expanded="false" />
             <element signature="e#63988#64414#0" expanded="false" />
@@ -3073,12 +4663,29 @@
             <element signature="e#71346#71433#0" expanded="false" />
             <element signature="e#71554#71641#0" expanded="false" />
             <element signature="e#71762#71849#0" expanded="false" />
+=======
+            <element signature="method#updateApplicationVersion#0;class#DataApi#0" expanded="false" />
+            <element signature="method#deleteContent#0;class#DataApi#0" expanded="false" />
+            <element signature="method#deleteFolder#0;class#DataApi#0" expanded="false" />
+            <element signature="method#getErrorMessageFromXMLFile#0;class#DataApi#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_AppDetail.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseApi.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33280253" vertical-offset="930" max-vertical-offset="7939">
+          <caret line="90" column="16" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="16" />
+          <folding>
+            <element signature="e#5823#5834#0" expanded="true" />
+>>>>>>> origin/UIUpdate
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/raw/application.plist">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="0.10045662" vertical-offset="682" max-vertical-offset="2261">
           <caret line="44" column="36" selection-start-line="44" selection-start-column="36" selection-end-line="44" selection-end-column="36" />
         </state>
@@ -3111,12 +4718,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.64687973" vertical-offset="0" max-vertical-offset="657">
           <caret line="26" column="33" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="33" />
+=======
+        <state vertical-scroll-proportion="0.843949" vertical-offset="31" max-vertical-offset="935">
+          <caret line="33" column="19" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
+>>>>>>> origin/UIUpdate
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFCore.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="-6.762557" vertical-offset="4494" max-vertical-offset="5151">
           <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
           <folding>
@@ -3130,10 +4742,18 @@
             <element signature="method#updatePage#0;class#MuPDFCore#0" expanded="false" />
             <element signature="method#passClickEvent#0;class#MuPDFCore#0" expanded="false" />
             <element signature="method#setFocusedWidgetText#0;class#MuPDFCore#0" expanded="false" />
+=======
+        <state vertical-scroll-proportion="0.0" vertical-offset="3040" max-vertical-offset="4335">
+          <caret line="232" column="27" selection-start-line="232" selection-start-column="27" selection-end-line="232" selection-end-column="27" />
+          <folding>
+            <element signature="e#9365#9806#0" expanded="true" />
+            <element signature="e#9795#9796#0" expanded="true" />
+>>>>>>> origin/UIUpdate
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/CalledByNative.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3105023" vertical-offset="0" max-vertical-offset="657">
@@ -3220,12 +4840,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="9996" max-vertical-offset="17357">
           <caret line="588" column="40" selection-start-line="588" selection-start-column="40" selection-end-line="588" selection-end-column="40" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/ApplicationThemeColor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1499" max-vertical-offset="11900">
+          <caret line="130" column="85" selection-start-line="130" selection-start-column="85" selection-end-line="130" selection-end-column="85" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/raw/application.plist">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuCategoryAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="1122">
+          <caret line="70" column="37" selection-start-line="70" selection-start-column="37" selection-end-line="70" selection-end-column="37" />
+>>>>>>> origin/UIUpdate
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
           <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
           <folding />
@@ -3325,6 +4960,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7503805" vertical-offset="51" max-vertical-offset="986">
           <caret line="32" column="31" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
+=======
+        <state vertical-scroll-proportion="0.6081301" vertical-offset="5151" max-vertical-offset="14586">
+          <caret line="417" column="0" selection-start-line="417" selection-start-column="0" selection-end-line="417" selection-end-column="0" />
+>>>>>>> origin/UIUpdate
           <folding />
         </state>
       </provider>

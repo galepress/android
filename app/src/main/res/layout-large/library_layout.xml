@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/container"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".GridMainActivity"
+tools:ignore="MergeRootFrame">
+
+    <ak.detaysoft.galepress.HeaderGridView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/gridview"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:columnWidth="180dp"
+        android:numColumns="auto_fit"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="10dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="70dp"
+        android:paddingBottom="70dp"
+        android:clipToPadding="false"
+        android:stretchMode="spacingWidth"
+        android:background="@color/canvas"
+        android:listSelector="@android:color/transparent"
+        android:choiceMode="singleChoice" />
+
+
+</FrameLayout>

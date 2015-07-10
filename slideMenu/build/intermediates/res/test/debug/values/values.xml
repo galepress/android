@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/C:/Users/p1025/AndroidStudioProjects/GalePress/slideMenu/build/intermediates/bundles/debug/res/values/values.xml -->
+    <eat-comment/>
+    <attr format="reference" name="slideMenuStyle"/>
+    <declare-styleable name="SlideMenu"><attr format="dimension" name="primaryShadowWidth"/><attr format="dimension" name="secondaryShadowWidth"/><attr format="reference" name="primaryShadowDrawable"/><attr format="reference" name="secondaryShadowDrawable"/><attr format="boolean" name="edgeSlide"/><attr format="dimension" name="edgeSlideWidth"/><attr format="flags" name="slideDirection"><flag name="left" value="1"/><flag name="right" value="2"/></attr><attr format="reference" name="interpolator"/></declare-styleable>
+    <declare-styleable name="SlideMenu_Layout"><attr format="enum" name="layout_role"><enum name="content" value="0"/><enum name="primaryMenu" value="1"/><enum name="secondaryMenu" value="2"/></attr></declare-styleable>
+</resources>

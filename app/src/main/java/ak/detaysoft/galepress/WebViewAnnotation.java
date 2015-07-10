@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.view.MotionEvent;
 import android.view.View;
+import android.webkit.GeolocationPermissions;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -31,6 +32,10 @@ public class WebViewAnnotation extends WebView {
         public void onHideCustomView() {
             Logout.e("Adem","onHideCustomView");
             super.onHideCustomView();
+        }
+        @Override
+        public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
+            callback.invoke(origin, true, false);
         }
     }
 

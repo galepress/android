@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/left_menu_size" android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:id="@+id/left_menu_layout"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:layout_above="@+id/left_menu_logout">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="10dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/left_menu_app_icon"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/app_logo"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/login_input_height"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:gravity="bottom">
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="20dp"
+                        android:adjustViewBounds="true"
+                        android:id="@+id/left_menu_search_icon"
+                        android:layout_alignParentLeft="false"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/left_menu_search_edit_text"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:singleLine="true"
+                        android:hint="@string/left_menu_search_hint"
+                        android:textColorHint="@color/black"
+                        android:layout_marginRight="25dp"
+                        android:textSize="@dimen/left_menu_search_size"
+                        android:layout_alignParentBottom="false" />
+
+                    <ImageView
+                        android:id="@+id/left_menu_search_clear"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:visibility="invisible"
+                        android:adjustViewBounds="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/left_categories_layout"
+                    android:layout_width="@dimen/left_menu_size"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:padding="5dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="21dp"
+                        android:layout_height="20dp"
+                        android:id="@+id/left_menu_category_icon"
+                        android:adjustViewBounds="true"
+                        android:layout_margin="5dp"
+                        android:layout_alignParentLeft="true"
+                        android:visibility="invisible" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/left_menu_category_text"
+                        android:textSize="@dimen/left_menu_title_size"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="5dp"
+                        android:text="@string/KATEGORILER"
+                        android:background="@android:color/transparent"
+                        android:gravity="center_vertical|left"
+                        android:layout_toRightOf="@+id/left_menu_category_icon"
+                        android:layout_toLeftOf="@+id/left_menu_categories_close" />
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:id="@+id/left_menu_categories_close"
+                        android:adjustViewBounds="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true" />
+
+                </RelativeLayout>
+
+
+
+
+                <ListView
+                    android:id="@+id/left_menu_category_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:divider="@android:color/transparent"
+                    android:visibility="gone">
+
+                </ListView>
+
+                <RelativeLayout
+                    android:id="@+id/left_social_layout"
+                    android:layout_width="@dimen/left_menu_size"
+                    android:layout_height="40dp"
+                    android:padding="5dp"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:adjustViewBounds="true"
+                        android:layout_margin="5dp"
+                        android:focusableInTouchMode="false"
+                        android:id="@+id/left_menu_link_icon"
+                        android:layout_alignParentLeft="true"
+                        android:visibility="invisible" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/left_menu_social_text"
+                        android:textSize="@dimen/left_menu_title_size"
+                        android:textStyle="bold"
+                        android:text="@string/left_menu_links"
+                        android:layout_marginLeft="5dp"
+                        android:background="@android:color/transparent"
+                        android:gravity="center_vertical|left"
+                        android:layout_toRightOf="@+id/left_menu_link_icon"
+                        android:layout_toLeftOf="@+id/left_menu_social_close" />
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="10dp"
+                        android:adjustViewBounds="true"
+                        android:id="@+id/left_menu_social_close"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_alignParentRight="true" />
+
+                </RelativeLayout>
+
+
+                <ListView
+                    android:id="@+id/left_menu_social_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:divider="@android:color/transparent">
+
+                </ListView>
+
+            </LinearLayout>
+        </ScrollView>
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/login_input_height"
+            android:text="@string/viewer_login_logout"
+            android:id="@+id/left_menu_logout"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="25dp"
+            android:textSize="@dimen/login_button_text_size"
+            android:layout_alignParentBottom="true"
+            android:visibility="gone"
+            android:layout_marginTop="15dp" />
+
+        </RelativeLayout>
+
+
+
+
+
+</LinearLayout>

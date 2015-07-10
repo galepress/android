@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal|top">
+
+    <ImageView
+        android:id="@+id/PreviewPageImageView"
+        android:layout_width="@dimen/reader_bottom_preview_width"
+        android:layout_height="@dimen/reader_bottom_preview_height"
+        android:layout_gravity="fill_horizontal"
+        android:src="@drawable/icon"
+        android:adjustViewBounds="false"
+        android:scaleType="fitXY" />
+
+    <TextView
+        android:id="@+id/PreviewPageNumber"
+        android:layout_width="@dimen/reader_bottom_preview_text_width"
+        android:layout_height="@dimen/reader_bottom_preview_text_height"
+        android:layout_gravity="center_horizontal"
+        android:text="999"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/black"
+        android:textSize="@dimen/reader_page_textsize"
+        android:gravity="center_horizontal|top"
+        android:layout_alignTop="@+id/PreviewPageImageView"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="2dp"
+        android:maxLines="1"
+        android:singleLine="true" />
+
+    <ImageView
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:id="@+id/reader_thumnail_divider"
+        android:background="@android:color/darker_gray"
+        android:layout_toRightOf="@+id/PreviewPageImageView" />
+
+</RelativeLayout>

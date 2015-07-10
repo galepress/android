@@ -80,7 +80,7 @@ public class ContentVideoViewLegacy extends ContentVideoView {
     ContentVideoViewLegacy(Context context, long nativeContentVideoView,
             ContentVideoViewClient client) {
         super(context, nativeContentVideoView, client);
-        setBackgroundColor(Color.BLACK);
+        setBackgroundColor(Color.TRANSPARENT);
         mCurrentBufferPercentage = 0;
     }
 

@@ -1,20 +1,20 @@
 package ak.detaysoft.galepress;
 
 import android.app.Activity;
-import android.app.ActivityManager;
 import android.app.Application;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Location;
 
-import com.android.volley.Cache;
+import com.artifex.mupdfdemo.MuPDFActivity;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import android.os.Bundle;
 import android.os.PowerManager;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
+import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -28,18 +28,35 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.LocationClient;
+import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Set;
 import java.util.TimeZone;
 import java.util.UUID;
-
+import ak.detaysoft.galepress.custom_models.ApplicationPlist;
+import ak.detaysoft.galepress.custom_models.TabbarItem;
+import ak.detaysoft.galepress.database_models.L_Application;
 import ak.detaysoft.galepress.database_models.L_Statistic;
 import ak.detaysoft.galepress.database_models.TestApplicationInf;
+import ak.detaysoft.galepress.util.ApplicationThemeColor;
+import ak.detaysoft.galepress.util.MyImageDecoder;
 
 /**
  * Created by adem on 11/02/14.
@@ -56,6 +73,8 @@ public class GalePressApplication
     private static DatabaseApi databaseApi = null;
     private static DataApi dataApi;
     private LibraryFragment libraryFragmentActivity;
+    private WebFragment webFragment;
+    private Fragment currentFragment;
     private int requestCount;
 
      //Global request queue for Volley
@@ -64,6 +83,8 @@ public class GalePressApplication
 
     public static HashMap applicationPlist;
     public static LinkedHashMap extrasHashMap;
+    private MainActivity mainActivity;
+    private MuPDFActivity muPDFActivity;
 
     /**
      * A singleton instance of the application class for easy access in other places
@@ -75,10 +96,15 @@ public class GalePressApplication
     public Location location;
     private LocationRequest mLocationRequest;
     private LocationClient mLocationClient;SharedPreferences mPrefs;
+    private ContentDetailPopupActivity contentDetailPopupActivity;
     SharedPreferences.Editor mEditor;
     boolean mUpdatesRequested = false;
-
     private Activity currentActivity = null;
+    private TestApplicationInf testApplicationInf;
+    private String bannerLink = "";
+    private ArrayList<TabbarItem> tabList;
+    public boolean isTablistChanced = true;
+
 
     Foreground.Listener myListener = new Foreground.Listener(){
         public void onBecameForeground(){
@@ -121,7 +147,28 @@ public class GalePressApplication
     public void onCreate() {
         super.onCreate();
         sInstance = this;
+
+        DisplayImageOptions displayConfig = new DisplayImageOptions.Builder()
+                .cacheInMemory(true).build();
+        ImageLoaderConfiguration loaderConfig = new ImageLoaderConfiguration.Builder(this)
+                .imageDecoder(new MyImageDecoder(true))
+                .defaultDisplayImageOptions(displayConfig).build();
+        ImageLoader.getInstance().init(loaderConfig);
+
         parseApplicationPlist();
+
+        //Uygulama ilk acildiginda localde tutulan renk, banner ve tabbar datalarini alabilmek icin
+        ApplicationThemeColor.getInstance().setParameters(null);
+        setBannerLink(null);
+        setTabList(null);
+
+        if(isTestApplication()){
+            SharedPreferences preferences;
+            preferences= PreferenceManager.getDefaultSharedPreferences(this);
+            setTestApplicationLoginInf(preferences.getString("AppUserName", ""), preferences.getString("AppPassword", ""), preferences.getString("AppId", "0"),
+                                       preferences.getString("FacebookEmail", ""), preferences.getString("FacebookUserId", ""), false);
+        }
+
         Foreground.get(this).addListener(myListener);
 
         mLocationRequest = LocationRequest.create();
@@ -229,6 +276,21 @@ public class GalePressApplication
         }
     }
 
+    public ArrayList<ApplicationPlist> getApplicationPlist(){
+        parseApplicationPlist();
+        ArrayList<ApplicationPlist> list = new ArrayList<ApplicationPlist>();
+        ArrayList<String> keyString = new ArrayList<String>(extrasHashMap.keySet());
+        ArrayList<String> valueString = new ArrayList<String>(extrasHashMap.values());
+
+        ApplicationPlist item;
+        for(int i=0; i<keyString.size(); i++){
+            item = new ApplicationPlist(keyString.get(i).toString(), valueString.get(i).toString());
+            list.add(item);
+
+        }
+        return list;
+    }
+
     /**
      * @return ApplicationController singleton instance
      */
@@ -322,25 +384,47 @@ public class GalePressApplication
     }
 
     public Integer getApplicationId(){
-        String applicationId = (String)applicationPlist.get("ApplicationID");
+
+        String applicationId;
+        if(isTestApplication())
+            applicationId = testApplicationInf.getApplicationId();
+        else
+            applicationId = (String)applicationPlist.get("ApplicationID");
         return Integer.valueOf(applicationId);
     }
 
+    public void setTestApplicationLoginInf(String username, String password, String applicationId, String facebookEmail, String facebookUserId, boolean succeeded){
+
+        SharedPreferences preferences;
+        SharedPreferences.Editor editor;
+        preferences= PreferenceManager.getDefaultSharedPreferences(GalePressApplication.getInstance().getApplicationContext());
+        editor = preferences.edit();
+        editor.putString("AppUserName", username);
+        editor.putString("AppPassword", password);
+        editor.putString("AppId", applicationId);
+        editor.putString("FacebookEmail", facebookEmail);
+        editor.putString("FacebookUserId", facebookUserId);
+        editor.commit();
+
+        testApplicationInf = new TestApplicationInf(username,password,applicationId,facebookEmail, facebookUserId, succeeded);
+    }
+
+    public void reCreateApplicationTableData(String applicationId){
+        if(dataApi != null){
+            dataApi.getDatabaseApi().deleteApplication(dataApi.getDatabaseApi().getApplication(getApplicationId()));
+            dataApi.getDatabaseApi().createApplication(new L_Application(Integer.parseInt(applicationId), -1));
+        }
+    }
+
     public TestApplicationInf getTestApplicationLoginInf(){
-        // TODO: returns testApplicaionLogin informations
-        return new TestApplicationInf();
+        return testApplicationInf;
     }
 
     public boolean isTestApplication(){
-        // TODO: isTest Application flag must be read from application.plist.
-        if(true){
-            // This is not test application.
+        if(applicationPlist != null && applicationPlist.get("isTestApplication") != null)
+            return (Boolean)applicationPlist.get("isTestApplication");
+        else
             return false;
-        }
-        else{
-            // Test Application
-            return true;
-        }
     }
 
     public LibraryFragment getLibraryActivity() {
@@ -349,6 +433,21 @@ public class GalePressApplication
 
     public void setLibraryActivity(LibraryFragment libraryFragmentActivity) {
         this.libraryFragmentActivity = libraryFragmentActivity;
+    }
+    public void setCurrentWebFragment(WebFragment webFragment){
+        this.webFragment = webFragment;
+    }
+
+    public WebFragment getWebFragment(){
+        return this.webFragment;
+    }
+
+    public Fragment getCurrentFragment() {
+        return currentFragment;
+    }
+
+    public void setCurrentFragment(Fragment currentFragment) {
+        this.currentFragment = currentFragment;
     }
 
     void displayMessageOnScreen(Context context, String message) {
@@ -400,6 +499,7 @@ public class GalePressApplication
     }
 
     public void setRequestCount(int requestCount) {
+
         if(requestCount == 0){
 //            Logout.e("Adem", "***Requestler bitmis olmali");
             dataApi.updateCompleted();
@@ -427,5 +527,132 @@ public class GalePressApplication
 
     public void setCurrentActivity(Activity currentActivity) {
         this.currentActivity = currentActivity;
+    }
+
+    public ContentDetailPopupActivity getContentDetailPopupActivity() {
+        return contentDetailPopupActivity;
+    }
+
+    public void setContentDetailPopupActivity(ContentDetailPopupActivity contentDetailPopupActivity) {
+        this.contentDetailPopupActivity = contentDetailPopupActivity;
+    }
+
+    public MainActivity getMainActivity() {
+        return mainActivity;
+    }
+
+    public void setMainActivity(MainActivity mainActivity) {
+        this.mainActivity = mainActivity;
+    }
+
+    public void setBannerLink(JSONObject response) {
+
+        SharedPreferences preferences;
+        SharedPreferences.Editor editor;
+        preferences= PreferenceManager.getDefaultSharedPreferences(GalePressApplication.getInstance().getApplicationContext());
+        editor = preferences.edit();
+        String link = "";
+        try{
+            if(!isTestApplication()) {
+                if (response.getString("BannerActive").compareTo("1") == 0)
+                    link = response.getString("BannerPage");
+            }
+            else
+                    link =  response.getString("BannerPage");
+
+        } catch (Exception e){
+            link = preferences.getString("bannerPage","");
+        }
+        editor.putString("bannerPage", link);
+        editor.commit();
+
+        bannerLink = link;
+
+        if(bannerLink.length() != 0 && getCurrentActivity()!= null && getCurrentActivity().getClass() == MainActivity.class
+                && ((MainActivity)getCurrentActivity()).getCurrentLibraryFragment()  != null)
+            ((MainActivity)getCurrentActivity()).getCurrentLibraryFragment().updateBanner();
+
+
+    }
+
+    public void setTabList(JSONObject response) {
+        ArrayList<TabbarItem> newTabList = new ArrayList<TabbarItem>();
+        try {
+
+            if(response != null){
+                JSONArray arrayTabs = response.optJSONArray("Tabs");
+                int contentsLength = arrayTabs.length();
+                for (int i = 0; i < contentsLength; i++) {
+                    JSONObject item = arrayTabs.optJSONObject(i);
+                    if (null != item) {
+                        TabbarItem tab = new TabbarItem(item);
+                        newTabList.add(tab);
+                    }
+                }
+
+                SharedPreferences preferences;
+                SharedPreferences.Editor editor;
+                preferences= PreferenceManager.getDefaultSharedPreferences(GalePressApplication.getInstance().getApplicationContext());
+                editor = preferences.edit();
+                editor.putString("customTabs", arrayTabs.toString());
+                editor.commit();
+
+            } else {
+                SharedPreferences preferences;
+                preferences= PreferenceManager.getDefaultSharedPreferences(GalePressApplication.getInstance().getApplicationContext());
+                JSONArray arrayTabs = new JSONArray(preferences.getString("customTabs", ""));
+                int contentsLength = arrayTabs.length();
+                for (int i = 0; i < contentsLength; i++) {
+                    JSONObject item = arrayTabs.optJSONObject(i);
+                    if (null != item) {
+                        TabbarItem tab = new TabbarItem(item);
+                        newTabList.add(tab);
+                    }
+                }
+            }
+
+        } catch (Exception e) {
+            newTabList = null;
+        }
+
+        if(tabList != null && tabList.size() == newTabList.size()){
+            int index = 0;
+            for(TabbarItem currentListItem : tabList){
+                for(TabbarItem newListItem : newTabList){
+                    if(currentListItem.toString().compareTo(newListItem.toString()) == 0)
+                        index++;
+                }
+            }
+            if(index == newTabList.size())
+                isTablistChanced = false;
+        } else
+            isTablistChanced = true;
+
+        tabList = newTabList;
+
+        if(getCurrentActivity()!= null && getCurrentActivity().getClass() == MainActivity.class && isTablistChanced)
+            ((MainActivity)getCurrentActivity()).setCustomTabs();
+    }
+
+    public ArrayList<TabbarItem> getTabList(){
+        if(tabList != null)
+            return tabList;
+        else
+            return null;
+    }
+
+    public String getBannerLink() {
+        if(bannerLink != null)
+            return bannerLink;
+        else
+            return "";
+    }
+
+    public MuPDFActivity getMuPDFActivity() {
+        return muPDFActivity;
+    }
+
+    public void setMuPDFActivity(MuPDFActivity muPDFActivity) {
+        this.muPDFActivity = muPDFActivity;
     }
 }

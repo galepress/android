@@ -766,7 +766,7 @@ public class WebViewContentsClientAdapter extends AwContentsClient {
                 result = Bitmap.createBitmap(poster.getWidth(),
                                              poster.getHeight(),
                                              poster.getConfig());
-                result.eraseColor(Color.GRAY);
+                result.eraseColor(Color.TRANSPARENT);
                 Canvas canvas = new Canvas(result);
                 canvas.drawBitmap(poster, 0f, 0f, null);
                 mCachedDefaultVideoPoster = new SoftReference<Bitmap>(result);

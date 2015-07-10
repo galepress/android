@@ -23,7 +23,7 @@ import ak.detaysoft.galepress.database_models.L_Statistic;
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     private static final String DATABASE_NAME = "Galepress.db";
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 7;
 
     // the DAO object we use to access the SimpleData table
     private Dao<L_Category, Integer> categoriesDao = null;

@@ -25,4 +25,16 @@
         <attr name="contourSize" format="dimension"/>
     </declare-styleable>
 
+    <declare-styleable name="PopupFixedAspectLayout">
+        <attr name="aspectRatio" format="float"/>
+    </declare-styleable>
+
+    <declare-styleable name="CoverImageFixedAspectLayout">
+        <attr name="aspectRatioCover" format="float"/>
+    </declare-styleable>
+
+    <declare-styleable name="FixedAspectButton">
+        <attr name="aspectRatioButton" format="float"/>
+    </declare-styleable>
+
 </resources>

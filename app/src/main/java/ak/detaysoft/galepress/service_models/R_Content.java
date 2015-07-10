@@ -12,7 +12,7 @@ public class R_Content {
     private boolean contentStatus;
     private Integer contentVersion;
     private boolean contentIsMaster;
-
+    private Integer contentOrderNo;
 
     public R_Content() {
 
@@ -27,6 +27,7 @@ public class R_Content {
         this.contentStatus = json.optBoolean("ContentStatus");
         this.contentVersion = json.optInt("ContentVersion");
         this.contentIsMaster = json.optBoolean("ContentIsMaster");
+        this.contentOrderNo = json.optInt("ContentOrderNo");
     }
 
     public String getContentName() {
@@ -83,5 +84,13 @@ public class R_Content {
 
     public void setContentIsMaster(boolean contentIsMaster) {
         this.contentIsMaster = contentIsMaster;
+    }
+
+    public void setContentOrderNo(Integer contentOrderNo) {
+        this.contentOrderNo = contentOrderNo;
+    }
+
+    public Integer getContentOrderNo() {
+        return contentOrderNo;
     }
 }

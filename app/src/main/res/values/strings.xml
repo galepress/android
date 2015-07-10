@@ -58,6 +58,8 @@
     <string name="copy_text">copy text</string>
     <string name="format_currently_not_supported">Format currently not supported</string>
     <string name="toggle_reflow_mode">Toggle reflow mode</string>
+    <string name="no_customer_application">Application not found</string>
+    <string name="select_customer_application">Please select application</string>
 
     <!-- From iOS -->
     <string name="OKU">View</string>
@@ -86,6 +88,7 @@
     <string name="WARNING_0">Unexpected error occured</string>
     <string name="WARNING_1">No internet connection.</string>
     <string name="WARNING_2">Please type your password</string>
+    <string name="WARNING_3">Please check your login information</string>
 
     <string name="WARNING_101">Wrong Password</string>
     <string name="WARNING_102">Content couldn\'t found</string>
@@ -96,10 +99,13 @@
     <string name="WARNING_130">No application found</string>
     <string name="WARNING_131">Application is not active or expired</string>
     <string name="WARNING_140">Login infromations are not correct</string>
+    <string name="WARNING_141">You must create an account with www.galepress.com</string>
 
     <string name="CONFIRM_1">Are you sure you want to delete?</string>
     <string name="CONFIRM_2">Are you sure you want to cancel other downloads?</string>
     <string name="CONFIRM_3">Are you sure you want to cancel this download?</string>
+    <string name="CONFIRM_SETTING">Are you sure you want to reset?</string>
+
 
     <string name="ERROR_1">Document is not a valid.</string>
 
@@ -131,6 +137,7 @@
     <string name="results_found">%1$d results found</string>
 
     <string name="show_all">Show All</string>
+    <string name="hide_all">Hide All</string>
     <string name="backDescription">Back to the library</string>
     <string name="email">E-Mail</string>
     <string name="forceUpdateWarnMessage">Do you want to update application from Google Play.</string>
@@ -147,5 +154,18 @@
     <string name="title_activity_launch">LaunchActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="left_menu_search_hint">Search...</string>
+    <string name="left_menu_links">Links</string>
+    <string name="left_menu_setting">Login Informations</string>
+    <string name="user_information_check">Checking user information...</string>
+    <string name="viewer_login_uname">Username...</string>
+    <string name="viewer_login_pass">Password...</string>
+    <string name="viewer_login_appId">Application ID...</string>
+    <string name="viewer_login_login">Login</string>
+    <string name="viewer_login_logout">Logout</string>
+    <string name="viewer_facebook_login_warning">Unable to login with Facebook</string>
+    <string name="viewer_facebook_login_appId_warning">Please enter applicaiton Id</string>
+
+    <string name="facebook_app_id">583822921756369</string>
 
 </resources>
