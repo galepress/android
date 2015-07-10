@@ -94,10 +94,6 @@ public class ContentViewRenderView extends FrameLayout {
         };
         mSurfaceView.getHolder().addCallback(mSurfaceCallback);
         setSurfaceViewBackgroundColor(Color.TRANSPARENT);
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/UIUpdate
 
         mVSyncAdapter = new VSyncAdapter(getContext());
         addView(mSurfaceView,

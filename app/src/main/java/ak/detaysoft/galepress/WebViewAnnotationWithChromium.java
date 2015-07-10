@@ -2,15 +2,12 @@ package ak.detaysoft.galepress;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
-<<<<<<< HEAD
 import android.graphics.Bitmap;
-=======
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.AvoidXfermode;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
->>>>>>> origin/UIUpdate
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.net.ConnectivityManager;
@@ -85,21 +82,6 @@ public class WebViewAnnotationWithChromium extends WebView {
         }
     }
 
-    private class MyWebClient extends com.mogoweb.chrome.WebViewClient {
-        @Override
-        public void onPageFinished(WebView view, String url) {
-            super.onPageFinished(view, url);
-            view.setBackgroundColor(Color.TRANSPARENT);
-            view.setVisibility(View.VISIBLE);
-        }
-
-        @Override
-        public void onPageStarted(WebView view, String url, Bitmap favicon) {
-            super.onPageStarted(view, url, favicon);
-            view.setVisibility(View.INVISIBLE);
-        }
-    }
-
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         return super.onKeyDown(keyCode, event);
@@ -124,11 +106,8 @@ public class WebViewAnnotationWithChromium extends WebView {
         mContext = context;
         //mContext.registerReceiver(mConnReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
         this.linkInfoExternal = lie;
-<<<<<<< HEAD
         this.setWebChromeClient(new com.mogoweb.chrome.WebChromeClient());
-=======
         this.setWebChromeClient(new MyChromeClient());
->>>>>>> origin/UIUpdate
         this.setWebViewClient(new MyWebClient());
 
         /*if(lie.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_VIDEO){
@@ -160,11 +139,8 @@ public class WebViewAnnotationWithChromium extends WebView {
         setVisibility(View.INVISIBLE);
         this.setHorizontalScrollBarEnabled(false);
         this.setVerticalScrollBarEnabled(false);
-<<<<<<< HEAD
         this.setBackgroundColor(Color.parseColor("#00FFFFFF"));
-=======
         this.setBackgroundColor(0x01000000);
->>>>>>> origin/UIUpdate
         final WebViewAnnotationWithChromium web = this;
 
         if(linkInfoExternal != null){
