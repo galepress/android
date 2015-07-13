@@ -93,6 +93,7 @@ public class ApplicationThemeColor {
     public static final int DOWNLOAD_CONTENT = 48;
     public static final int HOME_ICON = 49;
     public static final int HOME_ICON_SELECTED = 50;
+    public static final int READER_MENU_OPEN = 51;
 
     //Servisten gelen iconlar icin
     public static final int CUSTOM_TAB_ICON = 101;
@@ -519,9 +520,12 @@ public class ApplicationThemeColor {
         } else if(resourceType == HOME_ICON){
             myIcon = context.getResources().getDrawable(R.drawable.tab_home);
             myIcon.setColorFilter(getForegroundColorFilter());
-        } else {
+        } else if(resourceType == HOME_ICON_SELECTED){
             myIcon = context.getResources().getDrawable(R.drawable.tab_home);
             myIcon.setColorFilter(getForeGroundColorFilterWithAlpha((float)0.5));
+        } else {
+            myIcon = context.getResources().getDrawable(R.drawable.reader_menu_open);
+            myIcon.setColorFilter(getForeGroundColorFilterWithAlpha((float)0.9));
         }
         return myIcon;
     }

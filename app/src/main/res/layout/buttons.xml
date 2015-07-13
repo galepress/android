@@ -504,10 +504,18 @@
         </RelativeLayout>
 
 
-
     </RelativeLayout>
 
-	<TextView
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="32dp"
+        android:textSize="@dimen/reader_page_textsize"
+        android:id="@+id/reader_bottom_page_number"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal|bottom" />
+
+    <TextView
 		android:id="@+id/info"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
@@ -516,4 +524,5 @@
 		android:background="@drawable/page_num"
 		android:textAppearance="?android:attr/textAppearanceMedium"
 		android:textColor="#FFFFFF" />
+
 </RelativeLayout>
