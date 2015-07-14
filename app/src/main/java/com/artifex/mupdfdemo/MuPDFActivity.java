@@ -1675,7 +1675,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             }
         }
 
-
 		//mPageNumberView = (TextView)mButtonsView.findViewById(R.id.pageNumber);
 		mInfoView = (TextView)mButtonsView.findViewById(R.id.info);
 		mSearchButton = (ImageButton)mButtonsView.findViewById(R.id.searchButton);
