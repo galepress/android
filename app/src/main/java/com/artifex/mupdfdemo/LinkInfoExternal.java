@@ -80,13 +80,18 @@ public class LinkInfoExternal extends LinkInfo {
             }
         }
         else if(isWebAnnotation()){
-            if (url.substring(0,17).equals("ylweb://localhost")){
-                isInternal = true;
-                sourceUrl = url.substring(18);
-            }
-            else{
+            if(url.length() == 8){ // Eger servisten bos url gelmisse "ylweb://"
                 isInternal = false;
-                sourceUrl = "http://"+url.substring(8);
+                sourceUrl = "";
+            } else {
+                if (url.substring(0,17).equals("ylweb://localhost")){
+                    isInternal = true;
+                    sourceUrl = url.substring(18);
+                }
+                else{
+                    isInternal = false;
+                    sourceUrl = "http://"+url.substring(8);
+                }
             }
 
         }

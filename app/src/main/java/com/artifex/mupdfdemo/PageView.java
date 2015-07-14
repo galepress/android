@@ -599,7 +599,6 @@ public abstract class PageView extends ViewGroup {
                                     web.setId(atomicInteger.incrementAndGet());
                                     linkInfoExternal.webViewId = web.getId();
 
-
                                     if(linkInfoExternal.isWebAnnotation()){
                                         web.loadUrl(url);
                                     }
