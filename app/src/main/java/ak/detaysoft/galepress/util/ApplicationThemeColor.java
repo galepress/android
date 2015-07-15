@@ -94,6 +94,8 @@ public class ApplicationThemeColor {
     public static final int HOME_ICON = 49;
     public static final int HOME_ICON_SELECTED = 50;
     public static final int READER_MENU_OPEN = 51;
+    public static final int READER_MENU_OPEN2 = 52;
+    public static final int READER_MENU_OPEN_OK = 53;
 
     //Servisten gelen iconlar icin
     public static final int CUSTOM_TAB_ICON = 101;
@@ -523,9 +525,21 @@ public class ApplicationThemeColor {
         } else if(resourceType == HOME_ICON_SELECTED){
             myIcon = context.getResources().getDrawable(R.drawable.tab_home);
             myIcon.setColorFilter(getForeGroundColorFilterWithAlpha((float)0.5));
+        } else if(resourceType == READER_MENU_OPEN){
+            if(themeType == DARK_THEME_TYPE) {
+                myIcon = context.getResources().getDrawable(R.drawable.reader_bottom_button1_dark);
+            } else {
+                myIcon = context.getResources().getDrawable(R.drawable.reader_bottom_button1_light);
+            }
+        } else if(resourceType == READER_MENU_OPEN2){
+            if(themeType == DARK_THEME_TYPE) {
+                myIcon = context.getResources().getDrawable(R.drawable.reader_bottom_button2_light);
+            } else {
+                myIcon = context.getResources().getDrawable(R.drawable.reader_bottom_button2_dark);
+            }
         } else {
-            myIcon = context.getResources().getDrawable(R.drawable.reader_menu_open);
-            myIcon.setColorFilter(getForeGroundColorFilterWithAlpha((float)0.9));
+            myIcon = context.getResources().getDrawable(R.drawable.reader_bottom_ok);
+            myIcon.setColorFilter(getForegroundColorFilter());
         }
         return myIcon;
     }

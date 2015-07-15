@@ -50,6 +50,8 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
@@ -132,7 +134,9 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
     //private ThumnailHorizontalLayout mPreview;
     private ThumnailHorizontalListView mPreview;
-    private TextView bottomTitle;
+    private RelativeLayout bottomButton;
+    private ImageView bottomButtonImg1;
+    private RelativeLayout bottomButtonImg2;
     private RelativeLayout mPreviewBarHolder;
     //private CustomThumnailAdapter thumnailAdapter;
     private ThumnailListAdapter thumnailAdapter;
@@ -491,9 +495,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                 mPageSlider.setMax((core.countPages() - 1) * mPageSliderRes);
                 mPageSlider.setProgress(i * mPageSliderRes);*/
 
-                bottomTitle.setText(""+(i + 1));
-
-
 
                 final MuPDFPageView muPDFPageView = (MuPDFPageView) mDocView.getDisplayedView();
                 if(muPDFPageView!=null && muPDFPageView.mGetLinkInfo != null){
@@ -745,8 +746,8 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         }
 
 
-		if (savedInstanceState == null || !savedInstanceState.getBoolean("ButtonsHidden", false))
-			showButtons();
+		/*if (savedInstanceState == null || !savedInstanceState.getBoolean("ButtonsHidden", false))
+			showButtons();*/
 
 		if(savedInstanceState != null && savedInstanceState.getBoolean("SearchMode", false))
 			searchModeOn();
@@ -1024,19 +1025,23 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             });
             mPreviewBarHolder.startAnimation(anim);
 
-            TranslateAnimation menuAnim = new TranslateAnimation(0, 0,  0, bottomTitle.getHeight());
-            menuAnim.setDuration(150);
+            TranslateAnimation menuAnim = new TranslateAnimation(0, 0,  0, bottomButton.getHeight());
+            menuAnim.setStartOffset(200);
+            menuAnim.setDuration(250);
             menuAnim.setAnimationListener(new Animation.AnimationListener() {
                 public void onAnimationStart(Animation animation) {
-                    bottomTitle.setVisibility(View.GONE);
+                    bottomButton.setVisibility(View.GONE);
                 }
-                public void onAnimationRepeat(Animation animation) {}
+
+                public void onAnimationRepeat(Animation animation) {
+                }
+
                 public void onAnimationEnd(Animation animation) {
 
 
                 }
             });
-            bottomTitle.startAnimation(menuAnim);
+            bottomButton.startAnimation(menuAnim);
         }
     }
 
@@ -1106,11 +1111,11 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             });
             mPreviewBarHolder.startAnimation(anim);
 
-            TranslateAnimation menuAnim = new TranslateAnimation(0, 0,  0, bottomTitle.getHeight());
-            menuAnim.setDuration(0);
+            TranslateAnimation menuAnim = new TranslateAnimation(0, 0,  0, bottomButton.getHeight());
+            menuAnim.setDuration(250);
             menuAnim.setAnimationListener(new Animation.AnimationListener() {
                 public void onAnimationStart(Animation animation) {
-                    bottomTitle.setVisibility(View.GONE);
+                    bottomButton.setVisibility(View.GONE);
                 }
 
                 public void onAnimationRepeat(Animation animation) {
@@ -1119,7 +1124,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                 public void onAnimationEnd(Animation animation) {
                 }
             });
-            bottomTitle.startAnimation(menuAnim);
+            bottomButton.startAnimation(menuAnim);
         }
     }
 
@@ -1177,18 +1182,153 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             });
             mPreviewBarHolder.startAnimation(anim);
 
-            TranslateAnimation menuAnim = new TranslateAnimation(0, 0,  bottomTitle.getHeight(), 0);
-            menuAnim.setDuration(150);
+            TranslateAnimation menuAnim = new TranslateAnimation(0, 0,  bottomButton.getHeight(), 0);
+            menuAnim.setStartOffset(200);
+            menuAnim.setDuration(250);
             menuAnim.setAnimationListener(new Animation.AnimationListener() {
                 public void onAnimationStart(Animation animation) {
-                    bottomTitle.setVisibility(View.VISIBLE);
+                    bottomButton.setVisibility(View.VISIBLE);
                 }
-                public void onAnimationRepeat(Animation animation) {}
+
+                public void onAnimationRepeat(Animation animation) {
+                }
+
                 public void onAnimationEnd(Animation animation) {
+
+                    scaleAnimation();
                 }
             });
-            bottomTitle.startAnimation(menuAnim);
+            bottomButton.startAnimation(menuAnim);
         }
+    }
+
+    private void scaleAnimation(){
+        final int startTime = 0;
+        final int durationTime = 600;
+
+        ScaleAnimation s11 = new ScaleAnimation(1f, 1.1f, 1f, 1.1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        s11.setFillAfter(true);
+        s11.setStartOffset(startTime);
+        s11.setDuration(durationTime);
+        s11.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                ScaleAnimation s12 = new ScaleAnimation(1.1f, 1f, 1.1f, 1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                s12.setFillAfter(true);
+                s12.setStartOffset(startTime);
+                s12.setDuration(durationTime);
+                s12.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        ScaleAnimation s21 = new ScaleAnimation(1f, 1.1f, 1f, 1.1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                        s21.setFillAfter(true);
+                        s21.setStartOffset(startTime);
+                        s21.setDuration(durationTime);
+                        s21.setAnimationListener(new Animation.AnimationListener() {
+                            @Override
+                            public void onAnimationStart(Animation animation) {
+
+                            }
+
+                            @Override
+                            public void onAnimationEnd(Animation animation) {
+                                ScaleAnimation s22 = new ScaleAnimation(1.1f, 1f, 1.1f, 1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                                s22.setFillAfter(true);
+                                s22.setStartOffset(startTime);
+                                s22.setDuration(durationTime);
+                                s22.setAnimationListener(new Animation.AnimationListener() {
+                                    @Override
+                                    public void onAnimationStart(Animation animation) {
+
+                                    }
+
+                                    @Override
+                                    public void onAnimationEnd(Animation animation) {
+                                        ScaleAnimation s31 = new ScaleAnimation(1f, 1.1f, 1f, 1.1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                                        s31.setFillAfter(true);
+                                        s31.setStartOffset(startTime);
+                                        s31.setDuration(durationTime);
+                                        s31.setAnimationListener(new Animation.AnimationListener() {
+                                            @Override
+                                            public void onAnimationStart(Animation animation) {
+
+                                            }
+
+                                            @Override
+                                            public void onAnimationEnd(Animation animation) {
+                                                ScaleAnimation s32 = new ScaleAnimation(1.1f, 1f, 1.1f, 1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                                                s32.setFillAfter(true);
+                                                s32.setStartOffset(startTime);
+                                                s32.setDuration(durationTime);
+                                                s32.setAnimationListener(new Animation.AnimationListener() {
+                                                    @Override
+                                                    public void onAnimationStart(Animation animation) {
+
+                                                    }
+
+                                                    @Override
+                                                    public void onAnimationEnd(Animation animation) {
+
+                                                    }
+
+                                                    @Override
+                                                    public void onAnimationRepeat(Animation animation) {
+
+                                                    }
+                                                });
+                                                bottomButtonImg2.startAnimation(s32);
+                                            }
+
+                                            @Override
+                                            public void onAnimationRepeat(Animation animation) {
+
+                                            }
+                                        });
+                                        bottomButtonImg2.startAnimation(s31);
+                                    }
+
+                                    @Override
+                                    public void onAnimationRepeat(Animation animation) {
+
+                                    }
+                                });
+                                bottomButtonImg2.startAnimation(s22);
+                            }
+
+                            @Override
+                            public void onAnimationRepeat(Animation animation) {
+
+                            }
+                        });
+                        bottomButtonImg2.startAnimation(s21);
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+                bottomButtonImg2.startAnimation(s12);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+        bottomButtonImg2.startAnimation(s11);
+
+
     }
 
     private void hideButtonsFast() {
@@ -1244,12 +1384,15 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                 }
             });
             mPreviewBarHolder.startAnimation(anim);
+        }
 
-            anim = new TranslateAnimation(0, 0,  bottomTitle.getHeight(), 0);
-            anim.setDuration(0);
-            anim.setAnimationListener(new Animation.AnimationListener() {
+        if(!content.isMaster()){
+            TranslateAnimation menuAnim = new TranslateAnimation(0, 0,  bottomButton.getHeight(), 0);
+            menuAnim.setStartOffset(500);
+            menuAnim.setDuration(250);
+            menuAnim.setAnimationListener(new Animation.AnimationListener() {
                 public void onAnimationStart(Animation animation) {
-                    bottomTitle.setVisibility(View.VISIBLE);
+                    bottomButton.setVisibility(View.VISIBLE);
                 }
 
                 public void onAnimationRepeat(Animation animation) {
@@ -1258,7 +1401,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                 public void onAnimationEnd(Animation animation) {
                 }
             });
-            bottomTitle.startAnimation(anim);
+            bottomButton.startAnimation(menuAnim);
         }
     }
 
@@ -1344,7 +1487,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 		if (core == null)
 			return;
 		//mPageNumberView.setText(String.format("%d / %d", index+1, core.countPages()));
-        bottomTitle.setText(""+(index+1));
 	}
 
 	private void printDoc() {
@@ -1567,19 +1709,36 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         divider.bringToFront();
         mPreviewBarHolder.setBackgroundColor(Color.TRANSPARENT);
 
-        bottomTitle = (TextView)mButtonsView.findViewById(R.id.reader_bottom_page_number);
-        bottomTitle.setTextColor(ApplicationThemeColor.getInstance().getThemeColor());
-        bottomTitle.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
+        bottomButton = (RelativeLayout)mButtonsView.findViewById(R.id.reader_bottom_page_button);
+        bottomButton.setBackgroundColor(Color.TRANSPARENT);
+
+        bottomButtonImg1 = (ImageView)mButtonsView.findViewById(R.id.reader_bottom_page_img1);
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            bottomTitle.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_MENU_OPEN));
+            bottomButtonImg1.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_MENU_OPEN));
         else
-            bottomTitle.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_MENU_OPEN));
-        bottomTitle.setOnClickListener(new View.OnClickListener() {
+            bottomButtonImg1.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_MENU_OPEN));
+        bottomButtonImg1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showButtons();
             }
         });
+
+        bottomButtonImg2 = (RelativeLayout)mButtonsView.findViewById(R.id.reader_bottom_page_img2);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+            bottomButtonImg2.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_MENU_OPEN2));
+        else
+            bottomButtonImg2.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_MENU_OPEN2));
+        bottomButtonImg2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showButtons();
+            }
+        });
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+            ((ImageView)mButtonsView.findViewById(R.id.reader_bottom_page_img_ok)).setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_MENU_OPEN_OK));
+        else
+            ((ImageView)mButtonsView.findViewById(R.id.reader_bottom_page_img_ok)).setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_MENU_OPEN_OK));
 
         mPreview = (ThumnailHorizontalListView)mButtonsView.findViewById(R.id.reader_preview_bar_listView);
         mPreview.setBackgroundColor(ApplicationThemeColor.getInstance().getActionAndTabBarColor());
@@ -1712,8 +1871,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 		mInfoView.setVisibility(View.INVISIBLE);
 		//mPageSlider.setVisibility(View.INVISIBLE);
         bottomTabBar.setVisibility(View.INVISIBLE);
-        if(content.isMaster())
-            bottomTitle.setVisibility(View.GONE);
         mPreviewBarHolder.setVisibility(View.INVISIBLE);
 	}
 
