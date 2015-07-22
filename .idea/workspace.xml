@@ -103,18 +103,13 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: ak.detaysoft.galepress" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
-    <list default="true" id="4272a91b-e20d-476c-9f23-fd491d5d43e7" name="Default" comment="Pagelink sayfa geçişlerinde animasyonların kaldırılması. &#10;Masterpdf de actionbar ve slider'ın kapatılı gelmesi.&#10; Web sayfalarının transparent sorunu.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/model_data.bin" afterPath="$PROJECT_DIR$/build/intermediates/model_data.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
-=======
     <list default="true" id="4272a91b-e20d-476c-9f23-fd491d5d43e7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/model_data.bin" afterPath="$PROJECT_DIR$/build/intermediates/model_data.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuCategoryAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuCategoryAdapter.java" />
->>>>>>> origin/UIUpdate
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ExtraWebViewActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ExtraWebViewActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PageView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PageView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/buttons.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/buttons.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/viewer_login.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/viewer_login.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Android.iws" />
@@ -169,8 +164,8 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <breakpoint_rules converted="true" />
     <ui_properties converted="true" />
+    <breakpoint_rules converted="true" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -178,80 +173,54 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-<<<<<<< HEAD
-      <file leaf-file-name="application.plist" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/raw/application.plist">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="663">
-              <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
-=======
-      <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6081301" vertical-offset="5151" max-vertical-offset="14586">
-              <caret line="417" column="0" selection-start-line="417" selection-start-column="0" selection-end-line="417" selection-end-column="0" />
->>>>>>> origin/UIUpdate
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-<<<<<<< HEAD
-      <file leaf-file-name="WebViewAnnotationWithChromium.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotationWithChromium.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.36" vertical-offset="73" max-vertical-offset="2873">
-              <caret line="35" column="14" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="styles.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7503805" vertical-offset="51" max-vertical-offset="986">
-              <caret line="32" column="31" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="981" max-vertical-offset="2822">
-              <caret line="87" column="46" selection-start-line="87" selection-start-column="46" selection-end-line="87" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="PageView.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PageView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="9996" max-vertical-offset="17357">
-              <caret line="588" column="40" selection-start-line="588" selection-start-column="40" selection-end-line="588" selection-end-column="40" />
-=======
-      <file leaf-file-name="LeftMenuCategoryAdapter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuCategoryAdapter.java">
+            <state vertical-scroll-proportion="0.0" vertical-offset="10040" max-vertical-offset="16269">
+              <caret line="655" column="33" selection-start-line="655" selection-start-column="33" selection-end-line="655" selection-end-column="33" />
+              <folding>
+                <element signature="e#17931#18572#0" expanded="true" />
+                <element signature="e#18537#18538#0" expanded="true" />
+                <element signature="e#24446#24958#0" expanded="true" />
+                <element signature="e#24927#24928#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LinkInfoExternal.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/LinkInfoExternal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="1122">
-              <caret line="70" column="37" selection-start-line="70" selection-start-column="37" selection-end-line="70" selection-end-column="37" />
->>>>>>> origin/UIUpdate
+            <state vertical-scroll-proportion="0.0" vertical-offset="1933" max-vertical-offset="2890">
+              <caret line="125" column="13" selection-start-line="125" selection-start-column="13" selection-end-line="125" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LibraryFragment.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java">
+      <file leaf-file-name="MuPDFActivity.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3040" max-vertical-offset="4335">
-              <caret line="232" column="27" selection-start-line="232" selection-start-column="27" selection-end-line="232" selection-end-column="27" />
+            <state vertical-scroll-proportion="0.47479674" vertical-offset="18850" max-vertical-offset="29257">
+              <caret line="1392" column="21" selection-start-line="1392" selection-start-column="21" selection-end-line="1392" selection-end-column="21" />
               <folding>
-                <element signature="e#9365#9806#0" expanded="true" />
-                <element signature="e#9795#9796#0" expanded="true" />
+                <element signature="e#42733#42734#0" expanded="true" />
+                <element signature="e#42789#42790#0" expanded="true" />
+                <element signature="method#scaleAnimation#0;class#MuPDFActivity#0" expanded="false" />
+                <element signature="method#startThumnailLeftAnim#0;class#MuPDFActivity#0" expanded="false" />
+                <element signature="method#startThumnailRightAnim#0;class#MuPDFActivity#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ExtraWebViewActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ExtraWebViewActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-17.464285" vertical-offset="497" max-vertical-offset="2380">
+              <caret line="81" column="20" selection-start-line="81" selection-start-column="20" selection-end-line="81" selection-end-column="20" />
+              <folding>
+                <element signature="method#enableDisableNavigationButtons#0;class#ExtraWebViewActivity#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -401,11 +370,6 @@
                 <option name="description" value="Installs and runs the tests for Build 'debug' on connected devices." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="connectedAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Prepare com.android.support:support-v4:20.0.0" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="prepareComAndroidSupportSupportV42000Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
@@ -569,6 +533,11 @@
                 <option name="name" value="assembleDebugTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Prepare com.facebook.android:facebook-android-sdk:4.1.1" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareComFacebookAndroidFacebookAndroidSdk411Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="processDebugTestJavaRes" />
               </ExternalTaskPojo>
@@ -729,6 +698,11 @@
                 <option name="name" value="generateDebugBuildConfig" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Prepare com.android.support:support-v4:21.0.3" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareComAndroidSupportSupportV42103Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="mergeDebugTestAssets" />
               </ExternalTaskPojo>
@@ -748,6 +722,11 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="processReleaseJavaRes" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare GalePress:menuDrawer:unspecified" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareGalePressMenuDrawerUnspecifiedLibrary" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Displays the signing info for each variant" />
@@ -1614,27 +1593,7 @@
             </list>
           </value>
         </entry>
-<<<<<<< HEAD
-      </map>
-    </option>
-    <option name="modificationStamps">
-      <map>
-        <entry key="$USER_HOME$/Android/HelloGridViewProject" value="1389606334000" />
-        <entry key="$PROJECT_DIR$" value="5709905911053" />
-        <entry key="$PROJECT_DIR$/Android Project" value="1389126907000" />
-        <entry key="$PROJECT_DIR$/mupdf/platform/android" value="1389602914000" />
-        <entry key="$PROJECT_DIR$/mupdf/platform/android/gradle" value="1389018832000" />
-        <entry key="$USER_HOME$/Desktop/android_volley_examples-master" value="1378586308000" />
-        <entry key="$USER_HOME$/Downloads/VolleyDemo-master" value="1391551400000" />
-        <entry key="$USER_HOME$/Downloads/http_get" value="1391616944000" />
-      </map>
-    </option>
-    <option name="projectBuildClasspath">
-      <map>
-        <entry key="$PROJECT_DIR$">
-=======
         <entry key="$PROJECT_DIR$/menuDrawer">
->>>>>>> origin/UIUpdate
           <value>
             <list>
               <ExternalTaskPojo>
@@ -2043,7 +2002,7 @@
     <option name="modificationStamps">
       <map>
         <entry key="$USER_HOME$/Android/HelloGridViewProject" value="1389606334000" />
-        <entry key="$PROJECT_DIR$" value="7143857246523" />
+        <entry key="$PROJECT_DIR$" value="7160398508851" />
         <entry key="$PROJECT_DIR$/Android Project" value="1389126907000" />
         <entry key="$PROJECT_DIR$/mupdf/platform/android" value="1389602914000" />
         <entry key="$PROJECT_DIR$/mupdf/platform/android/gradle" value="1389018832000" />
@@ -2521,64 +2480,8 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-<<<<<<< HEAD
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_launch.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_Content.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ColorFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LaunchActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GcmBroadcastReceiver.java" />
-        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WbViewAnnotation2.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/custom_webview_screen.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation3.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/VideoEnabledWebView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_example.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/view/PlayerView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/VideoEnabledWebChromeClient.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/HTML5WebView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/custom_screen.xml" />
-        <option value="$PROJECT_DIR$/ChromiumLibrary/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java" />
-        <option value="$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-v11/values.xml" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation2.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_ContentDetail.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_Content.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseHelper.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageAdapter.java" />
-        <option value="$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/WebViewClient.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseApi.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/Decompress.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/CoverImageDownloader.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/LinkInfoExternal.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GCMIntentService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFReaderView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_AppDetail.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFCore.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/ReaderView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PageView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java" />
-        <option value="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwContents.java" />
-        <option value="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentViewCore.java" />
-        <option value="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/ColorPickerMoreButton.java" />
-        <option value="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/ColorPickerSimple.java" />
-        <option value="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/ColorSuggestionListAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/raw/application.plist" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotationWithChromium.java" />
-        <option value="$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentViewRenderView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
-=======
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ViewerLoginActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PageView.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/left_menu_category_item.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/viewer_login.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuSocialAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-xlarge/dimens.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout-land/actionbar.xml" />
@@ -2611,21 +2514,23 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values-large-land/dimens.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-large/dimens.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/home_fragment.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/buttons.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_Content.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/ApplicationThemeColor.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/HomeFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseApi.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-tr/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/raw/application.plist" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuCategoryAdapter.java" />
->>>>>>> origin/UIUpdate
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ExtraWebViewActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/viewer_login.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/raw/application.plist" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/buttons.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PageView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java" />
       </list>
     </option>
   </component>
@@ -2686,60 +2591,6 @@
       <sortByType />
     </navigator>
     <panes>
-<<<<<<< HEAD
-      <pane id="AndroidView" />
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="app">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="app">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Android">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Android">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Android">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Android">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="gradle/wrapper">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-=======
->>>>>>> origin/UIUpdate
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -2794,8 +2645,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-<<<<<<< HEAD
-=======
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="Android" />
@@ -2855,6 +2704,7 @@
         </subPane>
       </pane>
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -2903,10 +2753,8 @@
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
->>>>>>> origin/UIUpdate
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2924,11 +2772,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
-<<<<<<< HEAD
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="591c6a8b" />
-=======
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="4d0020215dfc5071" />
->>>>>>> origin/UIUpdate
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="203" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="208" />
@@ -3915,19 +3759,16 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14065935" sideWeight="0.49958915" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18457189" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32872504" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-<<<<<<< HEAD
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26593408" sideWeight="0.6007463" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31208792" sideWeight="0.24840085" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21428572" sideWeight="0.35628742" order="1" side_tool="true" content_ui="tabs" />
-=======
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1945055" sideWeight="0.4978678" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26813188" sideWeight="0.6007463" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2769231" sideWeight="0.24840085" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23240939" sideWeight="0.35735735" order="1" side_tool="true" content_ui="tabs" />
->>>>>>> origin/UIUpdate
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32667178" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27659574" sideWeight="0.24786781" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17400081" sideWeight="0.38004485" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17472528" sideWeight="0.49840087" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2791209" sideWeight="0.75159913" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.33481422" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289777" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -3935,28 +3776,15 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-<<<<<<< HEAD
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21428572" sideWeight="0.64221555" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20549451" sideWeight="0.4968017" order="6" side_tool="false" content_ui="tabs" />
-=======
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23240939" sideWeight="0.6411411" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2021978" sideWeight="0.4968017" order="6" side_tool="false" content_ui="tabs" />
->>>>>>> origin/UIUpdate
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32820907" sideWeight="0.62119967" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" x="154" y="768" width="305" height="214" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18457189" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-<<<<<<< HEAD
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24615385" sideWeight="0.4978678" order="12" side_tool="false" content_ui="tabs" />
-=======
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18457189" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1945055" sideWeight="0.4978678" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17472528" sideWeight="0.49840087" order="8" side_tool="false" content_ui="tabs" />
->>>>>>> origin/UIUpdate
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32997176" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32872504" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
@@ -3978,34 +3806,6 @@
       <TodoPanelSettings />
     </option>
     <option name="SHOW_FILE_HISTORY_DETAILS" value="false" />
-<<<<<<< HEAD
-    <MESSAGE value="+ Tabbar &quot;İnfo&quot; segmesinde, kategori seçildiği zaman uygulama crash oluyor.&#10;+ Tabbar info sayfasinda search butonu crash ediyor." />
-    <MESSAGE value="+ Component Type Integration tamamlandi. &#10;+ Content siralamasinda monthlyName bos oldugunda bir sorun olusuyordu. Giderildi. &#10;- Compontent tiplerine gore slide davranisi henuz yapilmadi." />
-    <MESSAGE value="+ Compontent tiplerine gore slide davranisi henuz yapilmadi." />
-    <MESSAGE value="+ Android galaxy note 3 ve S2 de cacheleme sorunu oluyordu. Cozuldu." />
-    <MESSAGE value="+ WebView'e background'una transparan ozelligi eklendi. Hakan'in istegi uzerine." />
-    <MESSAGE value="+ PageLinklerin altina web olan herhangi bir komponent geldiginde linkler calismiyordu. Duzeltildi." />
-    <MESSAGE value="+ İçeriklerde Sayfaya Eklenen Kompenentlerin Aşırı Boyutlandırılması durumunda hata olusuyordu. Duzeltildi." />
-    <MESSAGE value="+ Push Notification ve RESTFull update merge den once master'i commit ediyorum." />
-    <MESSAGE value="RestFul url ler guncellendi. &#10;&#10;Merge branch 'PushNotificationsAndForceUpdate'&#10;&#10;Conflicts:&#10;&#9;.gradle/1.12/taskArtifacts/cache.properties&#10;&#9;.gradle/1.12/taskArtifacts/cache.properties.lock&#10;&#9;.gradle/1.12/taskArtifacts/fileHashes.bin&#10;&#9;.gradle/1.12/taskArtifacts/fileSnapshots.bin&#10;&#9;.gradle/1.12/taskArtifacts/outputFileStates.bin&#10;&#9;.gradle/1.12/taskArtifacts/taskArtifacts.bin&#10;&#9;.idea/workspace.xml&#10;&#9;app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java&#10;&#9;build/intermediates/dex-cache/cache.xml&#10;&#9;build/intermediates/model_data.bin&#10;&#9;local.properties&#10;" />
-    <MESSAGE value="Merge branch 'PushNotificationsAndForceUpdate'&#10;&#10;Conflicts:&#10;&#9;.gradle/1.12/taskArtifacts/cache.properties&#10;&#9;.gradle/1.12/taskArtifacts/cache.properties.lock&#10;&#9;.gradle/1.12/taskArtifacts/fileHashes.bin&#10;&#9;.gradle/1.12/taskArtifacts/fileSnapshots.bin&#10;&#9;.gradle/1.12/taskArtifacts/outputFileStates.bin&#10;&#9;.gradle/1.12/taskArtifacts/taskArtifacts.bin&#10;&#9;.idea/workspace.xml&#10;&#9;app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java&#10;&#9;build/intermediates/dex-cache/cache.xml&#10;&#9;build/intermediates/model_data.bin&#10;&#9;local.properties&#10;" />
-    <MESSAGE value="+ Build Version appDetail de gonderiliyor artik." />
-    <MESSAGE value="+ Force Update islemi yapildi. Hakan test edecek." />
-    <MESSAGE value="+ Push notification da ufak duzeltme yapildi." />
-    <MESSAGE value="+ VersionCode 10 dan baslatiliyor." />
-    <MESSAGE value="+ Statistic eklendi." />
-    <MESSAGE value="Android ve gradle guncellemesi" />
-    <MESSAGE value="minifyEnabled duzenlemesi." />
-    <MESSAGE value="MasterContent Buglarinin duzenlenmesi" />
-    <MESSAGE value="WebView video play bug fix with chromium webview library" />
-    <MESSAGE value="Content orientation" />
-    <MESSAGE value="Chromium library assets folder" />
-    <MESSAGE value="Sayfa geçişlerinde video ve seslerin durdurulması." />
-    <MESSAGE value="Push notification için server'a udid gönderimi. Koordinat bilgisi verilmeyen map sorunu. İlk açılan sayfada annotation yüklenmeme sorunu." />
-    <MESSAGE value="Cihaz yatay çevrildiği zaman sağ tarafta ki sayfanın kompenentlerinin ekranın ortasında çıkması sorunu düzeltildi." />
-    <MESSAGE value="Pagelink sayfa geçişlerinde animasyonların kaldırılması. &#10;Masterpdf de actionbar ve slider'ın kapatılı gelmesi.&#10; Web sayfalarının transparent sorunu." />
-    <option name="LAST_COMMIT_MESSAGE" value="Pagelink sayfa geçişlerinde animasyonların kaldırılması. &#10;Masterpdf de actionbar ve slider'ın kapatılı gelmesi.&#10; Web sayfalarının transparent sorunu." />
-=======
     <MESSAGE value="partial loading" />
     <MESSAGE value="universal image loader" />
     <MESSAGE value="image loading" />
@@ -4032,7 +3832,6 @@
     <MESSAGE value="new ui bug fix" />
     <MESSAGE value="new ui show all" />
     <option name="LAST_COMMIT_MESSAGE" value="new ui show all" />
->>>>>>> origin/UIUpdate
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -4043,118 +3842,23 @@
           <properties />
           <option name="timeStamp" value="474" />
         </line-breakpoint>
-<<<<<<< HEAD
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java</url>
-          <line>391</line>
-          <properties />
-          <option name="timeStamp" value="609" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java</url>
-          <line>509</line>
-          <properties />
-          <option name="timeStamp" value="1165" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java</url>
-          <line>526</line>
-          <properties />
-          <option name="timeStamp" value="1166" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentViewRenderView.java</url>
-          <line>306</line>
-          <properties />
-          <option name="timeStamp" value="1175" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentViewRenderView.java</url>
-          <line>295</line>
-          <properties />
-          <option name="timeStamp" value="1177" />
-        </line-breakpoint>
-=======
->>>>>>> origin/UIUpdate
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-<<<<<<< HEAD
-      <option name="time" value="1181" />
+      <option name="time" value="2352" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/CoverImageDownloader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.82107025" vertical-offset="563" max-vertical-offset="1275">
-          <caret line="90" column="17" selection-start-line="90" selection-start-column="17" selection-end-line="90" selection-end-column="17" />
-=======
-      <option name="time" value="2349" />
-    </breakpoint-manager>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/StateListDrawableWithColorFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="714">
-          <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="34" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/StateListDrawableForPopupButtons.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6644951" vertical-offset="0" max-vertical-offset="697">
-          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/popup_download.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-large/grid_cell.xml">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="986" max-vertical-offset="1972">
-          <caret line="84" column="37" selection-start-line="84" selection-start-column="37" selection-end-line="84" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/grid_cell.xml">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1037" max-vertical-offset="2057">
-          <caret line="83" column="40" selection-start-line="83" selection-start-column="40" selection-end-line="83" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/actionbar.xml">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1122" max-vertical-offset="1887">
-          <caret line="80" column="12" selection-start-line="80" selection-start-column="12" selection-end-line="80" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.44974446" vertical-offset="314" max-vertical-offset="901">
           <caret line="34" column="32" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/app/src/main/lib/universal-image-loader-1.9.3.jar!/com/nostra13/universalimageloader/cache/memory/impl/LruMemoryCache.class">
@@ -4212,15 +3916,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/left_menu.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6950596" vertical-offset="221" max-vertical-offset="3706">
           <caret line="37" column="59" selection-start-line="37" selection-start-column="59" selection-end-line="37" selection-end-column="59" />
           <folding />
->>>>>>> origin/UIUpdate
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values-normal/dimens.xml">
@@ -4232,19 +3935,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fixed_content_popup_layout.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state vertical-scroll-proportion="0.62541807" vertical-offset="0" max-vertical-offset="731">
-          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-=======
         <state vertical-scroll-proportion="0.0" vertical-offset="1088" max-vertical-offset="3536">
           <caret line="64" column="40" selection-start-line="64" selection-start-column="40" selection-end-line="64" selection-end-column="40" />
           <folding />
->>>>>>> origin/UIUpdate
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values-large-land/dimens.xml">
@@ -4257,14 +3955,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values-large/dimens.xml">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state vertical-scroll-proportion="0.27591974" vertical-offset="4170" max-vertical-offset="10625">
-          <caret line="293" column="13" selection-start-line="293" selection-start-column="13" selection-end-line="293" selection-end-column="13" />
-=======
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
           <caret line="21" column="53" selection-start-line="21" selection-start-column="53" selection-end-line="21" selection-end-column="53" />
           <folding />
->>>>>>> origin/UIUpdate
         </state>
       </provider>
     </entry>
@@ -4284,52 +3977,42 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/info_page_layout.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state vertical-scroll-proportion="0.0" vertical-offset="87" max-vertical-offset="2431">
-          <caret line="36" column="76" selection-start-line="36" selection-start-column="76" selection-end-line="36" selection-end-column="76" />
-=======
         <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="425">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="19" selection-end-column="14" />
           <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/library_layout.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/library_layout.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5014749" vertical-offset="0" max-vertical-offset="678">
           <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
           <folding />
->>>>>>> origin/UIUpdate
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/home_fragment.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state vertical-scroll-proportion="0.3328125" vertical-offset="1181" max-vertical-offset="2397">
-          <caret line="98" column="9" selection-start-line="98" selection-start-column="9" selection-end-line="98" selection-end-column="9" />
-=======
         <state vertical-scroll-proportion="-2.5185184" vertical-offset="0" max-vertical-offset="272">
           <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/InfoPageFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
           <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
->>>>>>> origin/UIUpdate
         </state>
       </provider>
     </entry>
@@ -4340,13 +4023,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/CustomWebView.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state vertical-scroll-proportion="0.64285713" vertical-offset="53" max-vertical-offset="2703">
-          <caret line="43" column="27" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
-=======
         <state vertical-scroll-proportion="2.0765471" vertical-offset="0" max-vertical-offset="2074">
           <caret line="91" column="11" selection-start-line="91" selection-start-column="11" selection-end-line="91" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4357,60 +4035,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/buttons.xml">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6468" max-vertical-offset="8925">
-          <caret line="403" column="45" selection-start-line="403" selection-start-column="45" selection-end-line="403" selection-end-column="45" />
-          <folding>
-            <element signature="e#1603#1625#0" expanded="false" />
-            <element signature="e#2002#2030#0" expanded="false" />
-            <element signature="e#2399#2422#0" expanded="false" />
-            <element signature="e#2893#2918#0" expanded="false" />
-            <element signature="e#4064#4078#0" expanded="false" />
-            <element signature="e#4650#4678#0" expanded="false" />
-            <element signature="e#5339#5355#0" expanded="false" />
-            <element signature="e#5849#5865#0" expanded="false" />
-            <element signature="e#6151#6177#0" expanded="false" />
-            <element signature="e#6524#6549#0" expanded="false" />
-            <element signature="e#7054#7070#0" expanded="false" />
-            <element signature="e#7460#7479#0" expanded="false" />
-            <element signature="e#7870#7889#0" expanded="false" />
-            <element signature="e#8274#8294#0" expanded="false" />
-            <element signature="e#8668#8681#0" expanded="false" />
-            <element signature="e#9209#9225#0" expanded="false" />
-            <element signature="e#9767#9783#0" expanded="false" />
-            <element signature="e#10099#10115#0" expanded="false" />
-            <element signature="e#10644#10660#0" expanded="false" />
-            <element signature="e#11044#11059#0" expanded="false" />
-            <element signature="e#11492#11528#0" expanded="false" />
-            <element signature="e#11910#11936#0" expanded="false" />
-            <element signature="e#12476#12492#0" expanded="false" />
-            <element signature="e#13330#13346#0" expanded="false" />
-            <element signature="e#17433#17476#0" expanded="false" />
-            <element signature="e#17758#17796#0" expanded="false" />
-            <element signature="e#18079#18116#0" expanded="false" />
-          </folding>
->>>>>>> origin/UIUpdate
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ViewerLoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39716312" vertical-offset="3613" max-vertical-offset="5236">
-          <caret line="283" column="0" selection-start-line="283" selection-start-column="0" selection-end-line="283" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_Content.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state vertical-scroll-proportion="0.33282673" vertical-offset="53" max-vertical-offset="2380">
-          <caret line="32" column="11" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
-        </state>
-=======
         <state vertical-scroll-proportion="0.0" vertical-offset="6613" max-vertical-offset="7548">
           <caret line="389" column="34" selection-start-line="389" selection-start-column="34" selection-end-line="389" selection-end-column="34" />
         </state>
@@ -4419,35 +4045,17 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/launch.png">
       <provider selected="true" editor-type-id="images">
         <state />
->>>>>>> origin/UIUpdate
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-19/com/android/internal/os/LoggingPrintStream.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state vertical-scroll-proportion="0.74375" vertical-offset="306" max-vertical-offset="1241">
-          <caret line="59" column="33" selection-start-line="59" selection-start-column="33" selection-end-line="59" selection-end-column="33" />
-          <folding>
-            <element signature="e#1951#1952#0" expanded="false" />
-            <element signature="e#1998#1999#0" expanded="false" />
-          </folding>
-=======
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5151">
           <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
->>>>>>> origin/UIUpdate
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/volley/toolbox/JsonRequest.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state vertical-scroll-proportion="0.33282673" vertical-offset="1328" max-vertical-offset="2074">
-          <caret line="103" column="19" selection-start-line="103" selection-start-column="19" selection-end-line="103" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-=======
         <state vertical-scroll-proportion="0.3322884" vertical-offset="536" max-vertical-offset="1377">
           <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
         </state>
@@ -4460,55 +4068,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java">
->>>>>>> origin/UIUpdate
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5349233" vertical-offset="21327" max-vertical-offset="22100">
-          <caret line="1910" column="13" selection-start-line="1910" selection-start-column="13" selection-end-line="1910" selection-end-column="13" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/HomeFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state vertical-scroll-proportion="-0.20700152" vertical-offset="510" max-vertical-offset="1870">
-          <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
-=======
         <state vertical-scroll-proportion="0.61300814" vertical-offset="456" max-vertical-offset="1088">
           <caret line="72" column="39" selection-start-line="72" selection-start-column="29" selection-end-line="72" selection-end-column="39" />
->>>>>>> origin/UIUpdate
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_launch.xml">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state vertical-scroll-proportion="0.18112633" vertical-offset="0" max-vertical-offset="657">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-=======
-        <state vertical-scroll-proportion="0.84858567" vertical-offset="0" max-vertical-offset="816">
-          <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
-          <folding />
->>>>>>> origin/UIUpdate
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/AppData/Local/Android/sdk/extras/android/m2repository/com/android/support/support-v4/21.0.3/support-v4-21.0.3-sources.jar!/android/support/v4/app/Fragment.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state vertical-scroll-proportion="0.33282673" vertical-offset="8757" max-vertical-offset="10710">
-          <caret line="570" column="53" selection-start-line="570" selection-start-column="53" selection-end-line="570" selection-end-column="53" />
-=======
         <state vertical-scroll-proportion="0.0" vertical-offset="27430" max-vertical-offset="31603">
           <caret line="1785" column="0" selection-start-line="1785" selection-start-column="0" selection-end-line="1785" selection-end-column="0" />
-          <folding />
->>>>>>> origin/UIUpdate
         </state>
       </provider>
     </entry>
@@ -4516,26 +4086,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="14748" max-vertical-offset="36125">
           <caret line="960" column="0" selection-start-line="960" selection-start-column="0" selection-end-line="960" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-th/strings.xml">
-=======
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="11.696" vertical-offset="0" max-vertical-offset="9826">
           <caret line="504" column="0" selection-start-line="504" selection-start-column="0" selection-end-line="504" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LaunchActivity.java">
->>>>>>> origin/UIUpdate
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.035714" vertical-offset="353" max-vertical-offset="2312">
-          <caret line="55" column="64" selection-start-line="55" selection-start-column="64" selection-end-line="55" selection-end-column="64" />
         </state>
       </provider>
     </entry>
@@ -4560,86 +4118,27 @@
         <state vertical-scroll-proportion="-11.964286" vertical-offset="2674" max-vertical-offset="11458">
           <caret line="404" column="37" selection-start-line="404" selection-start-column="37" selection-end-line="404" selection-end-column="37" />
           <folding>
-<<<<<<< HEAD
-            <element signature="imports" expanded="false" />
-            <element signature="method#updateCompleted#0;class#DataApi#0" expanded="false" />
-=======
->>>>>>> origin/UIUpdate
             <element signature="method#isLibraryMustBeEnabled#0;class#DataApi#0" expanded="false" />
             <element signature="method#doInBackground#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
-            <element signature="e#15334#15503#0" expanded="true" />
-            <element signature="e#15484#15485#0" expanded="true" />
+            <element signature="e#15334#15503#0" expanded="false" />
+            <element signature="e#15484#15485#0" expanded="false" />
             <element signature="method#progressUpdate#0;class#DataApi#0" expanded="false" />
             <element signature="class#StatisticSendTask#0;class#DataApi#0" expanded="false" />
             <element signature="method#getWebServiceUrlBuilder#0;class#DataApi#0" expanded="false" />
             <element signature="method#DataApi#0;class#DataApi#0" expanded="false" />
             <element signature="method#getDatabaseApi#0;class#DataApi#0" expanded="false" />
             <element signature="method#isConnectedToInternet#0;class#DataApi#0" expanded="false" />
-<<<<<<< HEAD
-            <element signature="e#17262#17347#0" expanded="false" />
-            <element signature="method#getDeviceName#0;class#DataApi#0" expanded="false" />
-            <element signature="method#capitalize#0;class#DataApi#0" expanded="false" />
-            <element signature="method#getMasterContent#0;class#DataApi#0" expanded="false" />
-            <element signature="e#20911#27158#0" expanded="false" />
-            <element signature="e#21690#21771#0" expanded="false" />
-            <element signature="e#21833#21931#0" expanded="false" />
-            <element signature="e#22001#22082#0" expanded="false" />
-            <element signature="e#22084#23246#0" expanded="false" />
-            <element signature="e#23207#23208#0" expanded="false" />
-            <element signature="e#23315#23396#0" expanded="false" />
-            <element signature="e#24318#24399#0" expanded="false" />
-            <element signature="e#24461#24560#0" expanded="false" />
-            <element signature="e#24630#24716#0" expanded="false" />
-            <element signature="e#25949#26009#0" expanded="false" />
-            <element signature="e#27135#27136#0" expanded="false" />
-            <element signature="e#27180#27437#0" expanded="false" />
-            <element signature="e#27414#27415#0" expanded="false" />
-=======
             <element signature="method#capitalize#0;class#DataApi#0" expanded="false" />
             <element signature="method#getMasterContent#0;class#DataApi#0" expanded="false" />
             <element signature="method#commitStatisticsToDB#0;class#DataApi#0" expanded="false" />
             <element signature="method#getAppDetail#0;class#DataApi#0" expanded="false" />
->>>>>>> origin/UIUpdate
             <element signature="method#deleteEverything#0;class#DataApi#0" expanded="false" />
             <element signature="method#getCoverImage#0;class#DataApi#0" expanded="false" />
             <element signature="method#cancelDownload#0;class#DataApi#0" expanded="false" />
-<<<<<<< HEAD
-            <element signature="e#31490#31571#0" expanded="false" />
-            <element signature="e#31609#31694#0" expanded="false" />
-            <element signature="e#31740#31820#0" expanded="false" />
-            <element signature="e#32053#32134#0" expanded="false" />
-            <element signature="method#getPdf#0;class#DataApi#0" expanded="false" />
-            <element signature="e#32966#33047#0" expanded="false" />
-            <element signature="e#33085#33170#0" expanded="false" />
-            <element signature="e#33216#33296#0" expanded="false" />
-            <element signature="e#33298#33903#0" expanded="false" />
-            <element signature="e#33888#33889#0" expanded="false" />
-            <element signature="e#33948#34029#0" expanded="false" />
-            <element signature="e#34480#34561#0" expanded="false" />
-            <element signature="e#34597#34682#0" expanded="false" />
-            <element signature="e#34997#35425#0" expanded="false" />
-            <element signature="e#35406#35407#0" expanded="false" />
-            <element signature="e#35479#35682#0" expanded="false" />
-            <element signature="e#35663#35664#0" expanded="false" />
-            <element signature="method#deletePdf#0;class#DataApi#0" expanded="false" />
-            <element signature="e#36140#36221#0" expanded="false" />
-            <element signature="e#36259#36344#0" expanded="false" />
-            <element signature="e#36390#36470#0" expanded="false" />
-            <element signature="e#38279#38360#0" expanded="false" />
-            <element signature="e#39298#41276#0" expanded="false" />
-            <element signature="e#40347#40428#0" expanded="false" />
-            <element signature="e#40635#40716#0" expanded="false" />
-            <element signature="e#40718#40995#0" expanded="false" />
-            <element signature="e#40956#40957#0" expanded="false" />
-            <element signature="e#41257#41258#0" expanded="false" />
-            <element signature="e#41294#41606#0" expanded="false" />
-            <element signature="e#41587#41588#0" expanded="false" />
-=======
-            <element signature="e#55998#57976#0" expanded="true" />
-            <element signature="e#57957#57958#0" expanded="true" />
+            <element signature="e#55998#57976#0" expanded="false" />
+            <element signature="e#57957#57958#0" expanded="false" />
             <element signature="method#downloadUpdatedImage#0;class#DataApi#0" expanded="false" />
             <element signature="method#saveImage#0;class#DataApi#0" expanded="false" />
->>>>>>> origin/UIUpdate
             <element signature="method#getCoverImageVersionToUpdate#0;class#DataApi#0" expanded="false" />
             <element signature="method#startStatisticSend#0;class#DataApi#0" expanded="false" />
             <element signature="method#stopStatisticSend#0;class#DataApi#0" expanded="false" />
@@ -4649,21 +4148,6 @@
             <element signature="method#getRemoteContent#0;class#DataApi#0" expanded="false" />
             <element signature="method#getRemoteAppCategories#0;class#DataApi#0" expanded="false" />
             <element signature="method#getRemoteAppContents#0;class#DataApi#0" expanded="false" />
-<<<<<<< HEAD
-            <element signature="e#62757#63970#0" expanded="false" />
-            <element signature="e#63951#63952#0" expanded="false" />
-            <element signature="e#63988#64414#0" expanded="false" />
-            <element signature="e#64395#64396#0" expanded="false" />
-            <element signature="method#updateApplicationVersion#0;class#DataApi#0" expanded="false" />
-            <element signature="method#deleteContent#0;class#DataApi#0" expanded="false" />
-            <element signature="method#deleteFolder#0;class#DataApi#0" expanded="false" />
-            <element signature="method#progressUpdate#0;class#DataApi#0" expanded="false" />
-            <element signature="method#getViewHolderForContent#0;class#DataApi#0" expanded="false" />
-            <element signature="e#71138#71225#0" expanded="false" />
-            <element signature="e#71346#71433#0" expanded="false" />
-            <element signature="e#71554#71641#0" expanded="false" />
-            <element signature="e#71762#71849#0" expanded="false" />
-=======
             <element signature="method#updateApplicationVersion#0;class#DataApi#0" expanded="false" />
             <element signature="method#deleteContent#0;class#DataApi#0" expanded="false" />
             <element signature="method#deleteFolder#0;class#DataApi#0" expanded="false" />
@@ -4677,170 +4161,19 @@
         <state vertical-scroll-proportion="0.33280253" vertical-offset="930" max-vertical-offset="7939">
           <caret line="90" column="16" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="16" />
           <folding>
-            <element signature="e#5823#5834#0" expanded="true" />
->>>>>>> origin/UIUpdate
+            <element signature="e#5823#5834#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/raw/application.plist">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state vertical-scroll-proportion="0.10045662" vertical-offset="682" max-vertical-offset="2261">
-          <caret line="44" column="36" selection-start-line="44" selection-start-column="36" selection-end-line="44" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6057839" vertical-offset="8646" max-vertical-offset="10234">
-          <caret line="579" column="27" selection-start-line="579" selection-start-column="27" selection-end-line="579" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#16037#16038#0" expanded="false" />
-            <element signature="e#16082#16083#0" expanded="false" />
-            <element signature="method#stopAllWebAnnotationsMedia#0;class#MuPDFPageView#0" expanded="false" />
-            <element signature="method#resumeCurrentPageWebAnnotationsMedia#0;class#MuPDFPageView#0" expanded="false" />
-            <element signature="method#releaseResources#0;class#MuPDFPageView#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentHolderAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42236024" vertical-offset="1241" max-vertical-offset="3434">
-          <caret line="112" column="16" selection-start-line="112" selection-start-column="16" selection-end-line="112" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64687973" vertical-offset="0" max-vertical-offset="657">
-          <caret line="26" column="33" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="33" />
-=======
-        <state vertical-scroll-proportion="0.843949" vertical-offset="31" max-vertical-offset="935">
-          <caret line="33" column="19" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
->>>>>>> origin/UIUpdate
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state vertical-scroll-proportion="-6.762557" vertical-offset="4494" max-vertical-offset="5151">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding>
-            <element signature="method#MuPDFCore#0;class#MuPDFCore#0" expanded="false" />
-            <element signature="method#MuPDFCore#1;class#MuPDFCore#0" expanded="false" />
-            <element signature="method#countPages#0;class#MuPDFCore#0" expanded="false" />
-            <element signature="method#getPageSize#0;class#MuPDFCore#0" expanded="false" />
-            <element signature="method#waitForAlert#0;class#MuPDFCore#0" expanded="false" />
-            <element signature="method#onDestroy#0;class#MuPDFCore#0" expanded="false" />
-            <element signature="method#drawPage#1;class#MuPDFCore#0" expanded="false" />
-            <element signature="method#updatePage#0;class#MuPDFCore#0" expanded="false" />
-            <element signature="method#passClickEvent#0;class#MuPDFCore#0" expanded="false" />
-            <element signature="method#setFocusedWidgetText#0;class#MuPDFCore#0" expanded="false" />
-=======
         <state vertical-scroll-proportion="0.0" vertical-offset="3040" max-vertical-offset="4335">
           <caret line="232" column="27" selection-start-line="232" selection-start-column="27" selection-end-line="232" selection-end-column="27" />
-          <folding>
-            <element signature="e#9365#9806#0" expanded="true" />
-            <element signature="e#9795#9796#0" expanded="true" />
->>>>>>> origin/UIUpdate
-          </folding>
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/CalledByNative.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3105023" vertical-offset="0" max-vertical-offset="657">
-          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/base/ActivityState.template">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29541865" vertical-offset="0" max-vertical-offset="633">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.636646" vertical-offset="1018" max-vertical-offset="1700">
-          <caret line="116" column="31" selection-start-line="116" selection-start-column="31" selection-end-line="116" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFReaderView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.066772655" vertical-offset="841" max-vertical-offset="4114">
-          <caret line="67" column="37" selection-start-line="67" selection-start-column="37" selection-end-line="67" selection-end-column="37" />
-          <folding>
-            <element signature="method#onScroll#0;class#MuPDFReaderView#0" expanded="false" />
-            <element signature="method#onFling#0;class#MuPDFReaderView#0" expanded="false" />
-            <element signature="method#onTouchEvent#0;class#MuPDFReaderView#0" expanded="false" />
-            <element signature="method#touch_start#0;class#MuPDFReaderView#0" expanded="false" />
-            <element signature="method#touch_move#0;class#MuPDFReaderView#0" expanded="false" />
-            <element signature="method#onMoveToChild#0;class#MuPDFReaderView#0" expanded="false" />
-            <element signature="method#getDisplayedPageNumbers#0;class#MuPDFReaderView#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35930046" vertical-offset="879" max-vertical-offset="2771">
-          <caret line="74" column="35" selection-start-line="74" selection-start-column="35" selection-end-line="74" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/ReaderView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41095892" vertical-offset="8859" max-vertical-offset="9758">
-          <caret line="798" column="48" selection-start-line="798" selection-start-column="48" selection-end-line="798" selection-end-column="48" />
-          <folding>
-            <element signature="method#smartAdvanceAmount#0;class#ReaderView#0" expanded="false" />
-            <element signature="method#smartMoveForwards#0;class#ReaderView#0" expanded="false" />
-            <element signature="method#smartMoveBackwards#0;class#ReaderView#0" expanded="false" />
-            <element signature="method#refresh#0;class#ReaderView#0" expanded="false" />
-            <element signature="method#run#0;class#ReaderView#0" expanded="false" />
-            <element signature="method#onTouchEvent#0;class#ReaderView#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/ColorPickerMoreButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="260" max-vertical-offset="918">
-          <caret line="37" column="47" selection-start-line="37" selection-start-column="47" selection-end-line="37" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/ColorPickerSimple.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="155" max-vertical-offset="1377">
-          <caret line="29" column="25" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/android_webview/AwContents.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.785714" vertical-offset="2646" max-vertical-offset="33354">
-          <caret line="182" column="17" selection-start-line="182" selection-start-column="17" selection-end-line="182" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PageView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="9996" max-vertical-offset="17357">
-          <caret line="588" column="40" selection-start-line="588" selection-start-column="40" selection-end-line="588" selection-end-column="40" />
-=======
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/ApplicationThemeColor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1499" max-vertical-offset="11900">
@@ -4853,118 +4186,135 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="1122">
           <caret line="70" column="37" selection-start-line="70" selection-start-column="37" selection-end-line="70" selection-end-column="37" />
->>>>>>> origin/UIUpdate
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
-          <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="5151" max-vertical-offset="14586">
+          <caret line="417" column="0" selection-start-line="417" selection-start-column="0" selection-end-line="417" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ChromiumLibrary/src/main/java/com/mogoweb/chrome/WebViewClient.java">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.46575344" vertical-offset="408" max-vertical-offset="4046">
-          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.08292683" vertical-offset="0" max-vertical-offset="73967">
+          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ExtraWebViewActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.464285" vertical-offset="497" max-vertical-offset="2380">
+          <caret line="81" column="20" selection-start-line="81" selection-start-column="20" selection-end-line="81" selection-end-column="20" />
+          <folding>
+            <element signature="method#enableDisableNavigationButtons#0;class#ExtraWebViewActivity#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_launch.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.7777777" vertical-offset="0" max-vertical-offset="816">
+          <caret line="6" column="46" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/viewer_login.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.57570714" vertical-offset="1422" max-vertical-offset="2278">
+          <caret line="104" column="37" selection-start-line="104" selection-start-column="37" selection-end-line="104" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/raw/application.plist">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4378981" vertical-offset="31" max-vertical-offset="935">
+          <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LaunchActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27070063" vertical-offset="204" max-vertical-offset="2312">
+          <caret line="43" column="42" selection-start-line="43" selection-start-column="42" selection-end-line="43" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ViewerLoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47292992" vertical-offset="553" max-vertical-offset="4590">
+          <caret line="94" column="37" selection-start-line="94" selection-start-column="37" selection-end-line="94" selection-end-column="37" />
+          <folding>
+            <element signature="class#3342:5852" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/button.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="628">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/buttons.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="7480" max-vertical-offset="9571">
+          <caret line="440" column="45" selection-start-line="440" selection-start-column="45" selection-end-line="440" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/LinkInfoExternal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1933" max-vertical-offset="2890">
+          <caret line="125" column="13" selection-start-line="125" selection-start-column="13" selection-end-line="125" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PageView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="10040" max-vertical-offset="16269">
+          <caret line="655" column="33" selection-start-line="655" selection-start-column="33" selection-end-line="655" selection-end-column="33" />
+          <folding>
+            <element signature="e#17931#18572#0" expanded="true" />
+            <element signature="e#18537#18538#0" expanded="true" />
+            <element signature="e#24446#24958#0" expanded="true" />
+            <element signature="e#24927#24928#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2599681" vertical-offset="7742" max-vertical-offset="18224">
-          <caret line="726" column="21" selection-start-line="726" selection-start-column="21" selection-end-line="726" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.47479674" vertical-offset="18850" max-vertical-offset="29257">
+          <caret line="1392" column="21" selection-start-line="1392" selection-start-column="21" selection-end-line="1392" selection-end-column="21" />
           <folding>
-            <element signature="method#createAlertWaiter#0;class#MuPDFActivity#0" expanded="false" />
-            <element signature="method#destroyAlertWaiter#0;class#MuPDFActivity#0" expanded="false" />
-            <element signature="method#openFile#0;class#MuPDFActivity#0" expanded="false" />
-            <element signature="method#openBuffer#0;class#MuPDFActivity#0" expanded="false" />
-            <element signature="method#OnHighlightButtonClick#0;class#MuPDFActivity#0" expanded="false" />
-            <element signature="method#OnUnderlineButtonClick#0;class#MuPDFActivity#0" expanded="false" />
-            <element signature="method#OnStrikeOutButtonClick#0;class#MuPDFActivity#0" expanded="false" />
-            <element signature="method#OnInkButtonClick#0;class#MuPDFActivity#0" expanded="false" />
-            <element signature="method#OnCancelAcceptButtonClick#0;class#MuPDFActivity#0" expanded="false" />
-            <element signature="method#OnAcceptButtonClick#0;class#MuPDFActivity#0" expanded="false" />
+            <element signature="e#42733#42734#0" expanded="true" />
+            <element signature="e#42789#42790#0" expanded="true" />
+            <element signature="method#scaleAnimation#0;class#MuPDFActivity#0" expanded="false" />
+            <element signature="method#startThumnailLeftAnim#0;class#MuPDFActivity#0" expanded="false" />
+            <element signature="method#startThumnailRightAnim#0;class#MuPDFActivity#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/accessibility/AccessibilityInjector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33282673" vertical-offset="308" max-vertical-offset="7225">
-          <caret line="62" column="45" selection-start-line="62" selection-start-column="29" selection-end-line="62" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/menuDrawer/build/intermediates/manifests/test/debug/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27070063" vertical-offset="0" max-vertical-offset="628">
-          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentViewCore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33280253" vertical-offset="879" max-vertical-offset="54808">
-          <caret line="146" column="21" selection-start-line="146" selection-start-column="21" selection-end-line="146" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/ui/ColorSuggestionListAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21337579" vertical-offset="1345" max-vertical-offset="2193">
-          <caret line="100" column="48" selection-start-line="100" selection-start-column="48" selection-end-line="100" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ChromiumLibrary/src/main/java/org/chromium/content/browser/ContentViewRenderView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26236883" vertical-offset="2681" max-vertical-offset="5270">
-          <caret line="194" column="42" selection-start-line="194" selection-start-column="42" selection-end-line="194" selection-end-column="42" />
-          <folding>
-            <element signature="e#11902#12091#0" expanded="true" />
-            <element signature="e#12072#12073#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotationWithChromium.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.36" vertical-offset="73" max-vertical-offset="2873">
-          <caret line="35" column="14" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ChromiumLibrary/src/main/res/values/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15525115" vertical-offset="0" max-vertical-offset="657">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="981" max-vertical-offset="2822">
-          <caret line="87" column="46" selection-start-line="87" selection-start-column="46" selection-end-line="87" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7503805" vertical-offset="51" max-vertical-offset="986">
-          <caret line="32" column="31" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
-=======
-        <state vertical-scroll-proportion="0.6081301" vertical-offset="5151" max-vertical-offset="14586">
-          <caret line="417" column="0" selection-start-line="417" selection-start-column="0" selection-end-line="417" selection-end-column="0" />
->>>>>>> origin/UIUpdate
-          <folding />
         </state>
       </provider>
     </entry>

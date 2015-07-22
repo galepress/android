@@ -21,6 +21,7 @@ public class ExtraWebViewActivity extends Activity {
     private WebView webView;
     public String url = "http://www.google.com";
     public boolean isMainActivitIntent = false;
+    private boolean isModal = false;
     ProgressBar progressBar;
     ImageButton ileriButton,geriButton,refreshButton;
     @Override
@@ -28,6 +29,10 @@ public class ExtraWebViewActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.extra_web_view_layout);
         progressBar = (ProgressBar) findViewById(R.id.extra_web_view_close_progress_bar);
+
+
+        if(getIntent().getExtras().containsKey("isModal"))
+            isModal = this.getIntent().getExtras().getBoolean("isModal");
 
         ileriButton = (ImageButton) findViewById(R.id.extra_web_view_ileri_button);
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
@@ -72,6 +77,14 @@ public class ExtraWebViewActivity extends Activity {
         TextView titleTextView = (TextView) findViewById(R.id.extra_web_view_title);
         titleTextView.setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
         titleTextView.setTypeface(ApplicationThemeColor.getInstance().getFont(ExtraWebViewActivity.this));
+
+
+        if(isModal){
+            ileriButton.setVisibility(View.GONE);
+            geriButton.setVisibility(View.GONE);
+            refreshButton.setVisibility(View.GONE);
+            titleTextView.setVisibility(View.GONE);
+        }
 
         ImageButton closeButton = (ImageButton) findViewById(R.id.extra_web_view_close_button);
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)

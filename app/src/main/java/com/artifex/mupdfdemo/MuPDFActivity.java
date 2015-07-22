@@ -1194,7 +1194,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                 }
 
                 public void onAnimationEnd(Animation animation) {
-
                     scaleAnimation();
                 }
             });
@@ -1399,6 +1398,8 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                 }
 
                 public void onAnimationEnd(Animation animation) {
+
+                    scaleAnimation();
                 }
             });
             bottomButton.startAnimation(menuAnim);

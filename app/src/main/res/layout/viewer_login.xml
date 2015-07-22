@@ -96,14 +96,19 @@
             </FrameLayout>
         </LinearLayout>
 
-
     </LinearLayout>
     <FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/login_proggress_layout"
         android:visibility="gone"
-        android:background="@android:color/transparent">
+        android:background="#FFFFFF">
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:src="@drawable/launch"/>
+
         <ak.detaysoft.galepress.view.ProgressWheel
             android:id="@+id/login_progressBarTwo"
             android:layout_gravity="center_horizontal|center_vertical"

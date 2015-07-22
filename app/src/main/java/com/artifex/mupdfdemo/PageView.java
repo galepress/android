@@ -562,7 +562,8 @@ public abstract class PageView extends ViewGroup {
                                     @Override
                                     public void onClick(View v) {
                                         Intent intent = new Intent(mContext, ExtraWebViewActivity.class);
-                                        intent.putExtra("url",linkInfoExternal.sourceUrl);
+                                        intent.putExtra("url",linkInfoExternal.getSourceUrlPath(mContext)); // daha once linkInfoExternal.sourceurl vardi o nedenle modal acilmiyordu
+                                        intent.putExtra("isModal", true);
                                         mContext.startActivity(intent);
                                     }
                                 });
@@ -605,7 +606,6 @@ public abstract class PageView extends ViewGroup {
 
                                     addView(web);
                                 }
-
 
                             }
                         }
@@ -662,11 +662,11 @@ public abstract class PageView extends ViewGroup {
                                 public void onClick(View v) {
                                     Intent intent = new Intent(mContext, ExtraWebViewActivity.class);
                                     intent.putExtra("url",linkInfoExternal.url);
+                                    intent.putExtra("isModal", true);
                                     mContext.startActivity(intent);
                                 }
                             });
                             addView(view);
-
                         }
                     }
                     else{
