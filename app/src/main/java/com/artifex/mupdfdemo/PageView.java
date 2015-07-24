@@ -553,6 +553,16 @@ public abstract class PageView extends ViewGroup {
                         int right = (int) (linkInfoExternal.rect.right * scale);
                         int bottom = (int) (linkInfoExternal.rect.bottom * scale);
 
+
+                        CustomPulseProgress progressBar;
+                        if(!linkInfoExternal.isInternal && !linkInfoExternal.isModal) {
+                            int progressSize = 40;
+                            progressBar = new CustomPulseProgress(mContext);
+                            progressBar.layout((left+right)/2 - progressSize/2, (top+bottom)/2 - progressSize/2, (left+right)/2+progressSize, (top+bottom)/2+progressSize);
+                        }
+                        else
+                            progressBar = null;
+
                         if((linkInfoExternal.isWebAnnotation())){
                             if(linkInfoExternal.isModal){
                                 Button modalButton = new Button(mContext);
@@ -574,7 +584,7 @@ public abstract class PageView extends ViewGroup {
                                 if (android.os.Build.VERSION.SDK_INT >= LOLLIPOP) {
                                     String url = linkInfoExternal.getSourceUrlPath(mContext);
                                     // Web Annotations
-                                    final WebViewAnnotation web = new WebViewAnnotation(mContext, linkInfoExternal);
+                                    final WebViewAnnotation web = new WebViewAnnotation(mContext, linkInfoExternal, progressBar);
                                     web.layout(left,top,right,bottom);
                                     web.readerView = ((MuPDFActivity) mContext).mDocView;
                                     web.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
@@ -590,7 +600,7 @@ public abstract class PageView extends ViewGroup {
                                 } else {
                                     String url = linkInfoExternal.getSourceUrlPath(mContext);
                                     // Web Annotations
-                                    final WebViewAnnotationWithChromium web = new WebViewAnnotationWithChromium(mContext, linkInfoExternal);
+                                    final WebViewAnnotationWithChromium web = new WebViewAnnotationWithChromium(mContext, linkInfoExternal, progressBar);
                                     web.setDrawingCacheBackgroundColor(Color.TRANSPARENT);
                                     web.layout(left,top,right,bottom);
                                     web.readerView = ((MuPDFActivity) mContext).mDocView;
@@ -630,7 +640,7 @@ public abstract class PageView extends ViewGroup {
                             final int LOLLIPOP = 21; // Android 5.0
                             if (android.os.Build.VERSION.SDK_INT >= LOLLIPOP) {
                                 // Web Annotations
-                                final WebViewAnnotation web = new WebViewAnnotation(mContext, linkInfoExternal);
+                                final WebViewAnnotation web = new WebViewAnnotation(mContext, linkInfoExternal, progressBar);
                                 web.layout(left,top,right,bottom);
                                 web.readerView = ((MuPDFActivity) mContext).mDocView;
                                 web.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
@@ -641,7 +651,7 @@ public abstract class PageView extends ViewGroup {
                                 addView(web);
                             } else {
                                 // Web Annotations
-                                final WebViewAnnotationWithChromium web = new WebViewAnnotationWithChromium(mContext, linkInfoExternal);
+                                final WebViewAnnotationWithChromium web = new WebViewAnnotationWithChromium(mContext, linkInfoExternal, progressBar);
                                 web.layout(left,top,right,bottom);
                                 web.readerView = ((MuPDFActivity) mContext).mDocView;
                                 web.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
@@ -667,6 +677,10 @@ public abstract class PageView extends ViewGroup {
                                 }
                             });
                             addView(view);
+                        }
+
+                        if(!linkInfoExternal.isInternal && !linkInfoExternal.isModal) {
+                            addView(progressBar);
                         }
                     }
                     else{

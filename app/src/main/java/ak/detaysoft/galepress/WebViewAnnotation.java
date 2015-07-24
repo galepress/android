@@ -1,7 +1,9 @@
 package ak.detaysoft.galepress;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.GeolocationPermissions;
@@ -9,6 +11,8 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 import com.artifex.mupdfdemo.*;
 
@@ -20,6 +24,7 @@ public class WebViewAnnotation extends WebView {
     public float left, top ;
     public MuPDFReaderView readerView;
     public LinkInfoExternal linkInfoExternal;
+    private CustomPulseProgress loading;
 
     private class MyWebChromeClient extends WebChromeClient {
         @Override
@@ -47,12 +52,41 @@ public class WebViewAnnotation extends WebView {
             // view.loadUrl(url);
             return false;
         }
+
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            super.onPageFinished(view, url);
+
+            if(loading != null) {
+                loading.stopAnim();
+                try {
+                    ((MuPDFPageView) loading.getParent()).removeView(loading);
+                } catch (Exception e){
+                    Log.e("xx","xx");
+                }
+            }
+
+            if(loading != null) {
+                loading.setVisibility(GONE);
+                loading.stopAnim();
+            }
+        }
+
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            super.onPageStarted(view, url, favicon);
+            if(loading != null) {
+                loading.setVisibility(VISIBLE);
+                loading.startAnim();
+            }
+        }
     }
 
     public boolean isHorizontalScrolling, isDummyAction;
     private MotionEvent previousMotionEvent;
-    public WebViewAnnotation(Context context, LinkInfoExternal lie) {
+    public WebViewAnnotation(Context context, LinkInfoExternal lie, CustomPulseProgress loading) {
         super(context);
+        this.loading = loading;
         this.linkInfoExternal = lie;
         this.setWebChromeClient(new MyWebChromeClient());
         this.setWebViewClient(new MyWebViewClient());

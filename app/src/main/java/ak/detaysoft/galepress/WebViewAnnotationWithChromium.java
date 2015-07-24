@@ -13,11 +13,14 @@ import android.graphics.Paint;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Build;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.GeolocationPermissions;
 import android.widget.FrameLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.artifex.mupdfdemo.*;
@@ -37,6 +40,7 @@ public class WebViewAnnotationWithChromium extends WebView {
     public MuPDFReaderView readerView;
     public LinkInfoExternal linkInfoExternal;
     private Context mContext;
+    private CustomPulseProgress loading;
 
     private BroadcastReceiver mConnReceiver = new BroadcastReceiver() {
         @Override
@@ -55,12 +59,22 @@ public class WebViewAnnotationWithChromium extends WebView {
                 view.setBackgroundColor(0x01000000);
             }
             view.setVisibility(View.VISIBLE);
+
+            if(loading != null) {
+                loading.setVisibility(GONE);
+                loading.stopAnim();
+            }
         }
 
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
             super.onPageStarted(view, url, favicon);
             view.setVisibility(View.INVISIBLE);
+
+            if(loading != null) {
+                loading.setVisibility(VISIBLE);
+                loading.startAnim();
+            }
         }
     }
 
@@ -100,10 +114,11 @@ public class WebViewAnnotationWithChromium extends WebView {
 
     public boolean isHorizontalScrolling, isDummyAction;
     private MotionEvent previousMotionEvent;
-    public WebViewAnnotationWithChromium(Context context, LinkInfoExternal lie) {
+    public WebViewAnnotationWithChromium(Context context, LinkInfoExternal lie, CustomPulseProgress loading) {
         super(context);
 
         mContext = context;
+        this.loading = loading;
         //mContext.registerReceiver(mConnReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
         this.linkInfoExternal = lie;
         this.setWebChromeClient(new com.mogoweb.chrome.WebChromeClient());

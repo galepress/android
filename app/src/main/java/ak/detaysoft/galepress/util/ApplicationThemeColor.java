@@ -96,6 +96,7 @@ public class ApplicationThemeColor {
     public static final int READER_MENU_OPEN = 51;
     public static final int READER_MENU_OPEN2 = 52;
     public static final int READER_MENU_OPEN_OK = 53;
+    public static final int CUSTOM_PROGRESS_PULSE = 54;
 
     //Servisten gelen iconlar icin
     public static final int CUSTOM_TAB_ICON = 101;
@@ -537,8 +538,11 @@ public class ApplicationThemeColor {
             } else {
                 myIcon = context.getResources().getDrawable(R.drawable.reader_bottom_button2_dark);
             }
-        } else {
+        } else if(resourceType == READER_MENU_OPEN_OK){
             myIcon = context.getResources().getDrawable(R.drawable.reader_bottom_ok);
+            myIcon.setColorFilter(getForegroundColorFilter());
+        } else {
+            myIcon = context.getResources().getDrawable(R.drawable.reader_bottom_button1_dark);
             myIcon.setColorFilter(getForegroundColorFilter());
         }
         return myIcon;
