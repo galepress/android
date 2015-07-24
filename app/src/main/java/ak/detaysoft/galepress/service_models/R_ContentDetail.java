@@ -31,6 +31,7 @@ public class R_ContentDetail {
     private boolean contentIsMaster;
     private Integer contentOrientation;
     private Integer contentOrderNo;
+    private boolean isForceDelete;
 
 
     public R_ContentDetail() {
@@ -61,6 +62,7 @@ public class R_ContentDetail {
         this.contentIsMaster = json.optBoolean("ContentIsMaster");
         this.contentOrientation = json.optInt("ContentOrientation");
         this.contentOrderNo = json.optInt("ContentOrderNo");
+        this.isForceDelete = json.optBoolean("RemoveFromMobile");
         this.contentCategories = new ArrayList<R_Category>();
 
 
@@ -265,5 +267,13 @@ public class R_ContentDetail {
 
     public void setContentOrderNo(Integer contentOrderNo) {
         this.contentOrderNo = contentOrderNo;
+    }
+
+    public boolean isForceDelete() {
+        return isForceDelete;
+    }
+
+    public void setForceDelete(boolean isForceDelete) {
+        this.isForceDelete = isForceDelete;
     }
 }

@@ -13,6 +13,7 @@ public class R_Content {
     private Integer contentVersion;
     private boolean contentIsMaster;
     private Integer contentOrderNo;
+    private boolean isForceDelete;
 
     public R_Content() {
 
@@ -28,6 +29,7 @@ public class R_Content {
         this.contentVersion = json.optInt("ContentVersion");
         this.contentIsMaster = json.optBoolean("ContentIsMaster");
         this.contentOrderNo = json.optInt("ContentOrderNo");
+        this.isForceDelete = json.optBoolean("RemoveFromMobile");
     }
 
     public String getContentName() {
@@ -92,5 +94,13 @@ public class R_Content {
 
     public Integer getContentOrderNo() {
         return contentOrderNo;
+    }
+
+    public boolean isForceDelete() {
+        return isForceDelete;
+    }
+
+    public void setForceDelete(boolean isForceDelete) {
+        this.isForceDelete = isForceDelete;
     }
 }

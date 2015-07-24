@@ -51,6 +51,7 @@ public class L_Content implements Serializable {
     @DatabaseField private Integer contentOrderNo;
     @DatabaseField private String largeCoverImageDownloadPath;
     @DatabaseField private String smallCoverImageDownloadPath;
+    @DatabaseField private boolean isForceDetele;
 
     private ArrayList<L_Category> categories;
     private String pdfPath;
@@ -325,6 +326,14 @@ public class L_Content implements Serializable {
     public void setSmallCoverImageDownloadPath(String smallCoverImageDownloadPath) {
         this.smallCoverImageDownloadPath = smallCoverImageDownloadPath;
     }
+
+    public boolean isForceDetele() {
+        return isForceDetele;
+    }
+
+    public void setForceDetele(boolean isForceDetele) {
+        this.isForceDetele = isForceDetele;
+    }
 // Model Methods
 
     public L_Content(R_ContentDetail remoteContent){
@@ -363,6 +372,7 @@ public class L_Content implements Serializable {
         this.isMaster = remoteContent.isContentIsMaster();
         this.contentOrientation = remoteContent.getContentOrientation();
         this.contentOrderNo = remoteContent.getContentOrderNo();
+        this.isForceDetele = remoteContent.isForceDelete();
     }
 
     public void updateWithRemoteContent(R_ContentDetail remoteContent){
@@ -389,6 +399,7 @@ public class L_Content implements Serializable {
         this.isMaster = remoteContent.isContentIsMaster();
         this.contentOrientation = remoteContent.getContentOrientation();
         this.contentOrderNo = remoteContent.getContentOrderNo();
+        this.isForceDetele = remoteContent.isForceDelete();
     }
 
     public void updateWithImageDownloadUrl(String url, boolean isLargeCover){
@@ -433,6 +444,7 @@ public class L_Content implements Serializable {
                 ", contentOrderNo='"+contentOrderNo+'\''+
                 ", largeCoverImageDownloadPath='"+largeCoverImageDownloadPath+'\''+
                 ", smallCoverImageDownloadPath='"+smallCoverImageDownloadPath+'\''+
+                ", isForceDetele=" + isForceDetele +
                 '}';
     }
 }

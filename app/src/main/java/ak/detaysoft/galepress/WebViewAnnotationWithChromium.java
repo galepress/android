@@ -61,8 +61,9 @@ public class WebViewAnnotationWithChromium extends WebView {
             view.setVisibility(View.VISIBLE);
 
             if(loading != null) {
-                loading.setVisibility(GONE);
                 loading.stopAnim();
+                loading.setVisibility(GONE);
+
             }
         }
 

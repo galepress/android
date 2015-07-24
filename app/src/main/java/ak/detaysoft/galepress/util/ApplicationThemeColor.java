@@ -528,21 +528,21 @@ public class ApplicationThemeColor {
             myIcon.setColorFilter(getForeGroundColorFilterWithAlpha((float)0.5));
         } else if(resourceType == READER_MENU_OPEN){
             if(themeType == DARK_THEME_TYPE) {
-                myIcon = context.getResources().getDrawable(R.drawable.reader_bottom_button1_dark);
+                myIcon = context.getResources().getDrawable(R.drawable.b);
             } else {
-                myIcon = context.getResources().getDrawable(R.drawable.reader_bottom_button1_light);
+                myIcon = context.getResources().getDrawable(R.drawable.s);
             }
         } else if(resourceType == READER_MENU_OPEN2){
             if(themeType == DARK_THEME_TYPE) {
-                myIcon = context.getResources().getDrawable(R.drawable.reader_bottom_button2_light);
+                myIcon = context.getResources().getDrawable(R.drawable.ks);
             } else {
-                myIcon = context.getResources().getDrawable(R.drawable.reader_bottom_button2_dark);
+                myIcon = context.getResources().getDrawable(R.drawable.kb);
             }
         } else if(resourceType == READER_MENU_OPEN_OK){
             myIcon = context.getResources().getDrawable(R.drawable.reader_bottom_ok);
             myIcon.setColorFilter(getForegroundColorFilter());
         } else {
-            myIcon = context.getResources().getDrawable(R.drawable.reader_bottom_button1_dark);
+            myIcon = context.getResources().getDrawable(R.drawable.progress_icon);
             myIcon.setColorFilter(getForegroundColorFilter());
         }
         return myIcon;

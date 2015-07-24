@@ -1218,7 +1218,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         final int startTime = 0;
         final int durationTime = 600;
 
-        ScaleAnimation s11 = new ScaleAnimation(1f, 1.1f, 1f, 1.1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        ScaleAnimation s11 = new ScaleAnimation(1f, 0.8f, 1f, 0.8f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         s11.setFillAfter(true);
         s11.setStartOffset(startTime);
         s11.setDuration(durationTime);
@@ -1230,7 +1230,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                ScaleAnimation s12 = new ScaleAnimation(1.1f, 1f, 1.1f, 1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                ScaleAnimation s12 = new ScaleAnimation(0.8f, 1f, 0.8f, 1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
                 s12.setFillAfter(true);
                 s12.setStartOffset(startTime);
                 s12.setDuration(durationTime);
@@ -1242,7 +1242,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
-                        ScaleAnimation s21 = new ScaleAnimation(1f, 1.1f, 1f, 1.1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                        ScaleAnimation s21 = new ScaleAnimation(1f, 0.8f, 1f, 0.8f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
                         s21.setFillAfter(true);
                         s21.setStartOffset(startTime);
                         s21.setDuration(durationTime);
@@ -1254,7 +1254,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
                             @Override
                             public void onAnimationEnd(Animation animation) {
-                                ScaleAnimation s22 = new ScaleAnimation(1.1f, 1f, 1.1f, 1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                                ScaleAnimation s22 = new ScaleAnimation(0.8f, 1f, 0.8f, 1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
                                 s22.setFillAfter(true);
                                 s22.setStartOffset(startTime);
                                 s22.setDuration(durationTime);
@@ -1266,7 +1266,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
                                     @Override
                                     public void onAnimationEnd(Animation animation) {
-                                        ScaleAnimation s31 = new ScaleAnimation(1f, 1.1f, 1f, 1.1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                                        ScaleAnimation s31 = new ScaleAnimation(1f, 0.8f, 1f, 0.8f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
                                         s31.setFillAfter(true);
                                         s31.setStartOffset(startTime);
                                         s31.setDuration(durationTime);
@@ -1278,7 +1278,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
                                             @Override
                                             public void onAnimationEnd(Animation animation) {
-                                                ScaleAnimation s32 = new ScaleAnimation(1.1f, 1f, 1.1f, 1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                                                ScaleAnimation s32 = new ScaleAnimation(0.8f, 1f, 0.8f, 1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
                                                 s32.setFillAfter(true);
                                                 s32.setStartOffset(startTime);
                                                 s32.setDuration(durationTime);

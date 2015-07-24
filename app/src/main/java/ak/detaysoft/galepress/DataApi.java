@@ -588,11 +588,14 @@ public class DataApi extends Object {
     public L_Content getMasterContent(){
         List<L_Content> allContents = getDatabaseApi().getAllContents(null);
 
-        for (L_Content content: allContents){
-            if(content.isMaster()){
-                return content;
+        if(allContents != null){
+            for (L_Content content: allContents){
+                if(content.isMaster()){
+                    return content;
+                }
             }
         }
+
         return null;
     }
 
@@ -1364,42 +1367,54 @@ public class DataApi extends Object {
                             R_ContentDetail remoteContent = new R_ContentDetail(response);
                             L_Content localContent = getDatabaseApi().getContent(remoteContent.getContentID());
                             if (localContent == null) {
-                                localContent = new L_Content(remoteContent);
-                                getDatabaseApi().createContent(localContent);
-                                createConCat(remoteContent, localContent);
-                            } else {
-                                localContent.updateWithRemoteContent(remoteContent);
-                                getDatabaseApi().updateContent(localContent, true);
-                                removeAllConCatsForContent(localContent);
-                                createConCat(remoteContent, localContent);
-                            }
-                            if (localContent.getPdfVersion() < remoteContent.getContentPdfVersion()) {
-                                // PDF Must be updated
-                                if (localContent.isPdfDownloaded()) {
-                                    localContent.setPdfUpdateAvailable(true);
+                                if(!remoteContent.isForceDelete()){
+                                    localContent = new L_Content(remoteContent);
+                                    getDatabaseApi().createContent(localContent);
+                                    createConCat(remoteContent, localContent);
                                 }
-                                localContent.setPdfVersion(remoteContent.getContentPdfVersion());
-                                getDatabaseApi().updateContent(localContent,true);
+                            } else {
+                                if(remoteContent.isForceDelete()){
+                                    deleteContent(localContent);
+                                } else {
+                                    localContent.updateWithRemoteContent(remoteContent);
+                                    getDatabaseApi().updateContent(localContent, true);
+                                    removeAllConCatsForContent(localContent);
+                                    createConCat(remoteContent, localContent);
+                                }
+
                             }
 
-                            if (localContent.getCoverImageVersion() < remoteContent.getContentCoverImageVersion()) {
-                                // cover image must be updated.
-                                // localContent.setCoverImageUpdateAvailable(true);
-                                getCoverImage(localContent, 0, 480, 640);
-                                getCoverImage(localContent, 1, 155, 206);
-                            } else {
-                                // Content Detail update edildi.
-                                localContent.setVersion(remoteContent.getContentVersion());
-                                getDatabaseApi().updateContent(localContent,true);
+                            if(!remoteContent.isForceDelete()){
+                                if (localContent.getPdfVersion() < remoteContent.getContentPdfVersion()) {
+                                    // PDF Must be updated
+                                    if (localContent.isPdfDownloaded()) {
+                                        localContent.setPdfUpdateAvailable(true);
+                                    }
+                                    localContent.setPdfVersion(remoteContent.getContentPdfVersion());
+                                    getDatabaseApi().updateContent(localContent,true);
+                                }
+
+                                if (localContent.getCoverImageVersion() < remoteContent.getContentCoverImageVersion()) {
+                                    // cover image must be updated.
+                                    // localContent.setCoverImageUpdateAvailable(true);
+                                    getCoverImage(localContent, 0, 480, 640);
+                                    getCoverImage(localContent, 1, 155, 206);
+                                } else {
+                                    // Content Detail update edildi.
+                                    localContent.setVersion(remoteContent.getContentVersion());
+                                    getDatabaseApi().updateContent(localContent,true);
+                                }
+                                if(GalePressApplication.getInstance().getLibraryActivity()!=null){
+                                    GalePressApplication.getInstance().getLibraryActivity().getContentHolderAdapter().notifyDataSetChanged();
+                                }
+                                if(GalePressApplication.getInstance().getContentDetailPopupActivity() != null) {
+                                    if(localContent.getId().compareTo(GalePressApplication.getInstance().getContentDetailPopupActivity().getContent().getId()) == 0)
+                                        GalePressApplication.getInstance().getContentDetailPopupActivity().setContent(localContent);
+                                    GalePressApplication.getInstance().getContentDetailPopupActivity().update();
+                                }
                             }
-                            if(GalePressApplication.getInstance().getLibraryActivity()!=null){
-                                GalePressApplication.getInstance().getLibraryActivity().getContentHolderAdapter().notifyDataSetChanged();
-                            }
-                            if(GalePressApplication.getInstance().getContentDetailPopupActivity() != null) {
-                                if(localContent.getId().compareTo(GalePressApplication.getInstance().getContentDetailPopupActivity().getContent().getId()) == 0)
-                                    GalePressApplication.getInstance().getContentDetailPopupActivity().setContent(localContent);
-                                GalePressApplication.getInstance().getContentDetailPopupActivity().update();
-                            }
+
+
                             Logout.e("Adem","DECREMENT"); GalePressApplication.getInstance().decrementRequestCount();
 
                         } catch (Exception e) {
@@ -1530,6 +1545,38 @@ public class DataApi extends Object {
                                 } else {
                                     for (R_Content content : RAppContents.getContents()) {
                                         L_Content localContent = getDatabaseApi().getContent(content.getContentID());
+                                        if(content.isForceDelete()){
+                                            if (localContent != null) {
+                                                removeAllConCatsForContent(localContent);
+                                                deleteContent(localContent);
+                                            }
+                                        } else {
+                                            if (GalePressApplication.getInstance().isTestApplication() || (content.getContentStatus() && !content.getContentBlocked())) {
+                                                Integer remoteContentVersion = content.getContentVersion();
+                                                if (localContent == null || (localContent.getVersion() < remoteContentVersion)) {
+                                                    // Content updating
+                                                    numberOfContentWillBeUpdated++;
+                                                    getRemoteContent(content);
+                                                }
+                                            } else {
+                                                if (localContent != null && !localContent.isPdfDownloaded()) {
+                                                    removeAllConCatsForContent(localContent);
+                                                    deleteContent(localContent);
+                                                }
+                                            }
+                                        }
+
+                                    }
+                                }
+                            } else {
+                                for (R_Content content : RAppContents.getContents()) {
+                                    L_Content localContent = getDatabaseApi().getContent(content.getContentID());
+                                    if(content.isForceDelete()){
+                                        if (localContent != null) {
+                                            removeAllConCatsForContent(localContent);
+                                            deleteContent(localContent);
+                                        }
+                                    } else {
                                         if (GalePressApplication.getInstance().isTestApplication() || (content.getContentStatus() && !content.getContentBlocked())) {
                                             Integer remoteContentVersion = content.getContentVersion();
                                             if (localContent == null || (localContent.getVersion() < remoteContentVersion)) {
@@ -1544,23 +1591,7 @@ public class DataApi extends Object {
                                             }
                                         }
                                     }
-                                }
-                            } else {
-                                for (R_Content content : RAppContents.getContents()) {
-                                    L_Content localContent = getDatabaseApi().getContent(content.getContentID());
-                                    if (GalePressApplication.getInstance().isTestApplication() || (content.getContentStatus() && !content.getContentBlocked())) {
-                                        Integer remoteContentVersion = content.getContentVersion();
-                                        if (localContent == null || (localContent.getVersion() < remoteContentVersion)) {
-                                            // Content updating
-                                            numberOfContentWillBeUpdated++;
-                                            getRemoteContent(content);
-                                        }
-                                    } else {
-                                        if (localContent != null && !localContent.isPdfDownloaded()) {
-                                            removeAllConCatsForContent(localContent);
-                                            deleteContent(localContent);
-                                        }
-                                    }
+
                                 }
                             }
                             // Content'in sunucudan silinmis olmasi durumu icin local content'lerin sunucudan gelenler icinde olup olmadigini kontrol ediyoruz.

@@ -59,16 +59,7 @@ public class WebViewAnnotation extends WebView {
 
             if(loading != null) {
                 loading.stopAnim();
-                try {
-                    ((MuPDFPageView) loading.getParent()).removeView(loading);
-                } catch (Exception e){
-                    Log.e("xx","xx");
-                }
-            }
-
-            if(loading != null) {
                 loading.setVisibility(GONE);
-                loading.stopAnim();
             }
         }
 

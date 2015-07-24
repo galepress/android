@@ -385,8 +385,8 @@
         android:visibility="invisible">
 
         <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
             android:id="@+id/reader_bottom_page_img1"
             android:layout_centerInParent="true" />
 
