@@ -14,28 +14,17 @@ import android.graphics.PointF;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.media.AudioManager;
-import android.media.MediaPlayer;
 import android.net.Uri;
-import android.nfc.Tag;
 import android.os.Handler;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.GeolocationPermissions;
-import android.webkit.WebBackForwardList;
-import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.MediaController;
 import android.widget.ProgressBar;
 
-import com.mogoweb.chrome.WebStorage;
-
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -268,6 +257,15 @@ public abstract class PageView extends ViewGroup {
 		setBackgroundColor(BACKGROUND_COLOR);
 	}
 
+    public void clearCustomProgress(PageView pageView){
+        ArrayList<View> gpAnnotations = getGPCustomProgress(pageView);
+        for(int i=0; i < gpAnnotations.size(); i++){
+            View view = gpAnnotations.get(i);
+            pageView.removeView(view);
+            pageView.invalidate();
+        }
+    }
+
     public void clearWebAnnotations(PageView pageView){
         // pageView icindeki webView'leri kaldirir. PageView'ler tekrar ettigi icin eski webView ler yeni sayfalara biniyordu.
         // Bu method MuPDFPageView icinden de cagiriliyor. Sadece buradan cagrilmasi butun webviewleri kaldirmiyordu.
@@ -342,6 +340,19 @@ public abstract class PageView extends ViewGroup {
             }
         }
         return gpAnnotations;
+    }
+
+    public ArrayList<View> getGPCustomProgress(PageView pageView){
+        ArrayList<View> gpprogress = new ArrayList<View>();
+        for(int i=0; i < pageView.getChildCount(); i++){
+            View view = (View)pageView.getChildAt(i);
+            if(view instanceof CustomPulseProgress){
+                gpprogress.add(view);
+            } else if(view instanceof com.mogoweb.chrome.WebView) {
+                gpprogress.add(view);
+            }
+        }
+        return gpprogress;
     }
 
 	public void setPage(final int page, PointF size) {
@@ -530,6 +541,7 @@ public abstract class PageView extends ViewGroup {
             protected void onPreExecute() {
                 super.onPreExecute();
                 clearWebAnnotations(PageView.this);
+                clearCustomProgress(PageView.this);
             }
 
             protected LinkInfo[] doInBackground(Void... v) {

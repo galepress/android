@@ -2,6 +2,8 @@ package ak.detaysoft.galepress;
 
 import android.content.Context;
 import android.os.Build;
+import android.util.AttributeSet;
+import android.util.Log;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
@@ -28,13 +30,22 @@ public class CustomPulseProgress extends ViewGroup {
 
     public CustomPulseProgress(Context context) {
         super(context);
+        init(context);
+    }
 
+    public CustomPulseProgress(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init(context);
+    }
+
+    public void init(Context context){
         img1 = new ImageView(context);
         img1.layout(0, 15, 10, 25);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
             img1.setBackground(ApplicationThemeColor.getInstance().paintIcons(context, ApplicationThemeColor.CUSTOM_PROGRESS_PULSE));
         else
             img1.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(context, ApplicationThemeColor.CUSTOM_PROGRESS_PULSE));
+        img1.setVisibility(GONE);
         this.addView(img1);
 
 
@@ -44,6 +55,7 @@ public class CustomPulseProgress extends ViewGroup {
             img2.setBackground(ApplicationThemeColor.getInstance().paintIcons(context, ApplicationThemeColor.CUSTOM_PROGRESS_PULSE));
         else
             img2.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(context, ApplicationThemeColor.CUSTOM_PROGRESS_PULSE));
+        img2.setVisibility(GONE);
         this.addView(img2);
 
 
@@ -53,7 +65,10 @@ public class CustomPulseProgress extends ViewGroup {
             img3.setBackground(ApplicationThemeColor.getInstance().paintIcons(context, ApplicationThemeColor.CUSTOM_PROGRESS_PULSE));
         else
             img3.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(context, ApplicationThemeColor.CUSTOM_PROGRESS_PULSE));
+        img3.setVisibility(GONE);
         this.addView(img3);
+
+        startAnim();
     }
 
     @Override
@@ -71,7 +86,6 @@ public class CustomPulseProgress extends ViewGroup {
         scale1.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
-
             }
 
             @Override
@@ -92,7 +106,6 @@ public class CustomPulseProgress extends ViewGroup {
         scale11.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
-
             }
 
             @Override
@@ -113,7 +126,6 @@ public class CustomPulseProgress extends ViewGroup {
         scale2.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
-
             }
 
             @Override
@@ -133,7 +145,6 @@ public class CustomPulseProgress extends ViewGroup {
         scale22.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
-
             }
 
             @Override
@@ -154,7 +165,6 @@ public class CustomPulseProgress extends ViewGroup {
         scale3.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
-
             }
 
             @Override
@@ -175,7 +185,6 @@ public class CustomPulseProgress extends ViewGroup {
         scale33.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
-
             }
 
             @Override
@@ -189,6 +198,10 @@ public class CustomPulseProgress extends ViewGroup {
             }
         });
 
+        img1.setVisibility(VISIBLE);
+        img2.setVisibility(VISIBLE);
+        img3.setVisibility(VISIBLE);
+
         img1.startAnimation(scale1);
         img2.startAnimation(scale2);
         img3.startAnimation(scale3);
@@ -196,7 +209,13 @@ public class CustomPulseProgress extends ViewGroup {
 
     public void stopAnim() {
         img1.clearAnimation();
+        img1.invalidate();
+
         img2.clearAnimation();
+        img2.invalidate();
+
         img3.clearAnimation();
+        img3.invalidate();
+
     }
 }

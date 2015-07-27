@@ -66,7 +66,7 @@ public class ContentHolderAdapter extends BaseAdapter  {
         public TextView detailLabel;
         public TextView monthLabel;
         public ProgressBar progressBar;
-        public ProgressBar loading;
+        public CustomPulseProgress loading;
         public L_Content content;
 
         public void refreshImageLoading(){
@@ -90,9 +90,10 @@ public class ContentHolderAdapter extends BaseAdapter  {
             viewHolder.nameLabel = (TextView)convertView.findViewById(R.id.nameLabel);
             viewHolder.detailLabel = (TextView)convertView.findViewById(R.id.detailLabel);
             viewHolder.progressBar = (ProgressBar)convertView.findViewById(R.id.progress_bar);
-            viewHolder.loading = (ProgressBar)convertView.findViewById(R.id.grid_image_loading);
-            viewHolder.loading.setIndeterminate(true);
-            viewHolder.loading.getIndeterminateDrawable().setColorFilter(ApplicationThemeColor.getInstance().getForegroundColor(), android.graphics.PorterDuff.Mode.MULTIPLY);
+            viewHolder.loading = (CustomPulseProgress)convertView.findViewById(R.id.grid_image_loading);
+            viewHolder.loading.startAnim();
+            //viewHolder.loading.setIndeterminate(true);
+            //viewHolder.loading.getIndeterminateDrawable().setColorFilter(ApplicationThemeColor.getInstance().getForegroundColor(), android.graphics.PorterDuff.Mode.MULTIPLY);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder)convertView.getTag();
@@ -161,7 +162,7 @@ public class ContentHolderAdapter extends BaseAdapter  {
         return convertView;
     }
 
-    public void displayImage(final boolean isDownload, final ImageView image, final ProgressBar loading, String imagePath, final L_Content content){
+    public void displayImage(final boolean isDownload, final ImageView image, final CustomPulseProgress loading, String imagePath, final L_Content content){
         DisplayImageOptions displayConfig;
         if (isDownload) {
             displayConfig = new DisplayImageOptions.Builder()
@@ -177,6 +178,7 @@ public class ContentHolderAdapter extends BaseAdapter  {
             public void onLoadingStarted(String s, View view) {
                 image.setImageBitmap(null);
                 loading.setVisibility(View.VISIBLE);
+                loading.startAnim();
             }
 
             @Override

@@ -53,7 +53,7 @@ public class ContentDetailPopupActivity extends Activity{
     public Button deleteButton;
     public Button downloadButton;
     public ProgressBar progressBar;
-    public ProgressBar loading;
+    public CustomPulseProgress loading;
     public Button cancelButton;
     public ContentHolder contentHolder;
     public boolean isFirstOpen;
@@ -268,9 +268,10 @@ public class ContentDetailPopupActivity extends Activity{
         ClipDrawable progress = new ClipDrawable(shape, Gravity.LEFT, ClipDrawable.HORIZONTAL);
         progressBar.setProgressDrawable(progress);
 
-        loading = (ProgressBar)findViewById(R.id.popup_image_loading);
-        loading.setIndeterminate(true);
-        loading.getIndeterminateDrawable().setColorFilter(ApplicationThemeColor.getInstance().getForegroundColor(), android.graphics.PorterDuff.Mode.MULTIPLY);
+        loading = (CustomPulseProgress)findViewById(R.id.popup_image_loading);
+        loading.startAnim();
+        //loading.setIndeterminate(true);
+        //loading.getIndeterminateDrawable().setColorFilter(ApplicationThemeColor.getInstance().getForegroundColor(), android.graphics.PorterDuff.Mode.MULTIPLY);
 
         update();
 
@@ -347,7 +348,7 @@ public class ContentDetailPopupActivity extends Activity{
         }
     }
 
-    private void displayImage(final boolean isDownload, final boolean isThumnail, final ImageView image, final ProgressBar loading, String imagePath) {
+    private void displayImage(final boolean isDownload, final boolean isThumnail, final ImageView image, final CustomPulseProgress loading, String imagePath) {
         DisplayImageOptions displayConfig;
         if (isThumnail) {
             displayConfig = new DisplayImageOptions.Builder()

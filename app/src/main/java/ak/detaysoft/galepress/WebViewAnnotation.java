@@ -58,7 +58,6 @@ public class WebViewAnnotation extends WebView {
             super.onPageFinished(view, url);
 
             if(loading != null) {
-                loading.stopAnim();
                 loading.setVisibility(GONE);
             }
         }
@@ -68,7 +67,14 @@ public class WebViewAnnotation extends WebView {
             super.onPageStarted(view, url, favicon);
             if(loading != null) {
                 loading.setVisibility(VISIBLE);
-                loading.startAnim();
+            }
+        }
+
+        @Override
+        public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+            super.onReceivedError(view, errorCode, description, failingUrl);
+            if(loading != null) {
+                loading.setVisibility(GONE);
             }
         }
     }

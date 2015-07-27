@@ -61,7 +61,6 @@ public class WebViewAnnotationWithChromium extends WebView {
             view.setVisibility(View.VISIBLE);
 
             if(loading != null) {
-                loading.stopAnim();
                 loading.setVisibility(GONE);
 
             }
@@ -71,12 +70,19 @@ public class WebViewAnnotationWithChromium extends WebView {
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
             super.onPageStarted(view, url, favicon);
             view.setVisibility(View.INVISIBLE);
-
             if(loading != null) {
                 loading.setVisibility(VISIBLE);
-                loading.startAnim();
             }
         }
+
+        @Override
+        public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+            super.onReceivedError(view, errorCode, description, failingUrl);
+            if(loading != null) {
+                loading.setVisibility(GONE);
+            }
+        }
+
     }
 
     private class MyChromeClient extends WebChromeClient {

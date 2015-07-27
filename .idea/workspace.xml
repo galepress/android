@@ -104,24 +104,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4272a91b-e20d-476c-9f23-fd491d5d43e7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/b.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/kb.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ks.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/progress_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/s.png" />
-      <change type="DELETED" beforePath="C:\Users\p1025\AndroidStudioProjects\GalePress\app\src\main\res\drawable\reader_bottom_button1_dark.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\p1025\AndroidStudioProjects\GalePress\app\src\main\res\drawable\reader_bottom_button1_light.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\p1025\AndroidStudioProjects\GalePress\app\src\main\res\drawable\reader_bottom_button2_dark.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\p1025\AndroidStudioProjects\GalePress\app\src\main\res\drawable\reader_bottom_button2_light.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/ApplicationThemeColor.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/ApplicationThemeColor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_Content.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_Content.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_Content.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_Content.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_ContentDetail.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_ContentDetail.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/model_data.bin" afterPath="$PROJECT_DIR$/build/intermediates/model_data.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentHolderAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentHolderAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/CustomPulseProgress.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/CustomPulseProgress.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseApi.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseApi.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PageView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PageView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotationWithChromium.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotationWithChromium.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/buttons.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/buttons.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fixed_content_popup_layout.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fixed_content_popup_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/grid_cell.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/grid_cell.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-large/grid_cell.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-large/grid_cell.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Android.iws" />
@@ -176,8 +171,8 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <breakpoint_rules converted="true" />
     <ui_properties converted="true" />
+    <breakpoint_rules converted="true" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -185,80 +180,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PageView.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PageView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="14603" max-vertical-offset="17578">
-              <caret line="859" column="19" selection-start-line="859" selection-start-column="19" selection-end-line="859" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="CustomPulseProgress.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/CustomPulseProgress.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2617" max-vertical-offset="3332">
-              <caret line="196" column="28" selection-start-line="196" selection-start-column="28" selection-end-line="196" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="buttons.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/buttons.xml">
-          <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="7480" max-vertical-offset="9571">
-              <caret line="440" column="45" selection-start-line="440" selection-start-column="45" selection-end-line="440" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="android-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MuPDFActivity.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7368421" vertical-offset="21224" max-vertical-offset="28747">
-              <caret line="1762" column="0" selection-start-line="1762" selection-start-column="0" selection-end-line="1762" selection-end-column="0" />
-              <folding>
-                <element signature="method#scaleAnimation#0;class#MuPDFActivity#0" expanded="false" />
-                <element signature="method#searchModeOn#0;class#MuPDFActivity#0" expanded="false" />
-                <element signature="method#savePic#0;class#MuPDFActivity#0" expanded="false" />
-                <element signature="method#sendMail#0;class#MuPDFActivity#0" expanded="false" />
-                <element signature="method#takeScreenShot#0;class#MuPDFActivity#0" expanded="false" />
-                <element signature="method#searchModeOff#0;class#MuPDFActivity#0" expanded="false" />
-                <element signature="method#startThumnailLeftAnim#0;class#MuPDFActivity#0" expanded="false" />
-                <element signature="method#startThumnailRightAnim#0;class#MuPDFActivity#0" expanded="false" />
-                <element signature="e#71662#71809#0" expanded="true" />
-                <element signature="e#71798#71799#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LaunchActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LaunchActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="453" max-vertical-offset="2312">
-              <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2603" max-vertical-offset="3485">
+              <caret line="211" column="24" selection-start-line="211" selection-start-column="24" selection-end-line="211" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ApplicationThemeColor.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/ApplicationThemeColor.java">
+      <file leaf-file-name="CustomWebView.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/CustomWebView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="8198" max-vertical-offset="11713">
-              <caret line="533" column="13" selection-start-line="533" selection-start-column="13" selection-end-line="533" selection-end-column="13" />
-              <folding>
-                <element signature="method#paintRemoteIcon#0;class#ApplicationThemeColor#0" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="0.54126984" vertical-offset="322" max-vertical-offset="2074">
+              <caret line="55" column="9" selection-start-line="55" selection-start-column="9" selection-end-line="55" selection-end-column="9" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -2517,7 +2454,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout-large/actionbar.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/library_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout-large/library_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
@@ -2533,41 +2469,42 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/preview_pager_item_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-normal/dimens.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fixed_content_popup_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/CoverImageFixedAspectLayout.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout-large/grid_cell.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/StateListDrawableForPopupButtons.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/grid_cell.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/left_menu.xml" />
         <option value="$USER_HOME$/Desktop/pierre/src/tr/com/pierrecardin/VideoPlayActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentHolderAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-large-land/dimens.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-large/dimens.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/home_fragment.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/HomeFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseApi.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-tr/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuCategoryAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ExtraWebViewActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/viewer_login.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/raw/application.plist" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PageView.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/custom_three_bounce_progress.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_ContentDetail.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_Content.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_Content.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotationWithChromium.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/CustomPulseProgress.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/buttons.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/ApplicationThemeColor.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseApi.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fixed_content_popup_layout.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout-large/grid_cell.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/grid_cell.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentHolderAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/CustomPulseProgress.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotationWithChromium.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PageView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java" />
       </list>
     </option>
   </component>
@@ -2628,58 +2565,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="app">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="app">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Android">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Android">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Android">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Android">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="gradle/wrapper">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -2788,6 +2675,56 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="galepress" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Android">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Android">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Android">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Android">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="gradle/wrapper">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -3774,7 +3711,11 @@
       <created>1437723213554</created>
       <updated>1437723213554</updated>
     </task>
-    <option name="localTasksCounter" value="158" />
+    <task id="LOCAL-00158" summary="reader bottom menu button&#10;annotation progress">
+      <created>1437748904529</created>
+      <updated>1437748904530</updated>
+    </task>
+    <option name="localTasksCounter" value="159" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -3851,7 +3792,6 @@
       <TodoPanelSettings />
     </option>
     <option name="SHOW_FILE_HISTORY_DETAILS" value="false" />
-    <MESSAGE value="image loading" />
     <MESSAGE value="image loading and popup animation" />
     <MESSAGE value="image loading no internet connection and popup animation" />
     <MESSAGE value="tabbar image loading bug fix" />
@@ -3876,7 +3816,8 @@
     <MESSAGE value="new ui show all" />
     <MESSAGE value="login master düzeltildi&#10;modal slider düzeltildi" />
     <MESSAGE value="web annotationlar da three bounce animation kullanıldı" />
-    <option name="LAST_COMMIT_MESSAGE" value="web annotationlar da three bounce animation kullanıldı" />
+    <MESSAGE value="reader bottom menu button&#10;annotation progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="reader bottom menu button&#10;annotation progress" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3891,70 +3832,10 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="2366" />
+      <option name="time" value="2378" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-large-land/dimens.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
-          <caret line="4" column="46" selection-start-line="4" selection-start-column="46" selection-end-line="4" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-large/dimens.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
-          <caret line="21" column="53" selection-start-line="21" selection-start-column="53" selection-end-line="21" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_Statistic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9169381" vertical-offset="1494" max-vertical-offset="2414">
-          <caret line="166" column="21" selection-start-line="166" selection-start-column="21" selection-end-line="166" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFReaderView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33236995" vertical-offset="4139" max-vertical-offset="6341">
-          <caret line="284" column="64" selection-start-line="284" selection-start-column="64" selection-end-line="284" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/info_page_layout.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="425">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="19" selection-end-column="14" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/library_layout.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5014749" vertical-offset="0" max-vertical-offset="678">
-          <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/home_fragment.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.5185184" vertical-offset="0" max-vertical-offset="272">
-          <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/InfoPageFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
@@ -3965,13 +3846,6 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/tab_home.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/CustomWebView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.0765471" vertical-offset="0" max-vertical-offset="2074">
-          <caret line="91" column="11" selection-start-line="91" selection-start-column="11" selection-end-line="91" selection-end-column="11" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebFragment.java">
@@ -3997,13 +3871,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3322884" vertical-offset="536" max-vertical-offset="1377">
           <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="806" max-vertical-offset="7191">
-          <caret line="94" column="79" selection-start-line="94" selection-start-column="59" selection-end-line="94" selection-end-column="79" />
         </state>
       </provider>
     </entry>
@@ -4048,13 +3915,6 @@
         <state vertical-scroll-proportion="-14.24" vertical-offset="2109" max-vertical-offset="2754">
           <caret line="145" column="36" selection-start-line="145" selection-start-column="36" selection-end-line="145" selection-end-column="36" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3040" max-vertical-offset="4335">
-          <caret line="232" column="27" selection-start-line="232" selection-start-column="27" selection-end-line="232" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -4106,13 +3966,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentHolderAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.2933526" vertical-offset="725" max-vertical-offset="2958">
-          <caret line="172" column="9" selection-start-line="172" selection-start-column="9" selection-end-line="172" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/AppData/Local/Android/sdk/platforms/android-19/android.jar!/android/R.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33280253" vertical-offset="26294" max-vertical-offset="34136">
@@ -4150,14 +4003,6 @@
       </provider>
       <provider selected="true" editor-type-id="android-designer">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PageView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="14603" max-vertical-offset="17578">
-          <caret line="859" column="19" selection-start-line="859" selection-start-column="19" selection-end-line="859" selection-end-column="19" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_Content.java">
@@ -4283,12 +4128,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7031746" vertical-offset="577" max-vertical-offset="3672">
           <caret line="63" column="60" selection-start-line="63" selection-start-column="60" selection-end-line="63" selection-end-column="60" />
-          <folding>
-            <element signature="e#8070#8071#0" expanded="true" />
-            <element signature="e#8106#8107#0" expanded="true" />
-            <element signature="e#8163#8164#0" expanded="true" />
-            <element signature="e#8213#8214#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -4296,7 +4135,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6873016" vertical-offset="298" max-vertical-offset="1360">
           <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4308,48 +4146,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7" vertical-offset="392" max-vertical-offset="3196">
-          <caret line="63" column="9" selection-start-line="63" selection-start-column="9" selection-end-line="63" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotationWithChromium.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6612642" vertical-offset="170" max-vertical-offset="3774">
-          <caret line="63" column="27" selection-start-line="63" selection-start-column="27" selection-end-line="63" selection-end-column="27" />
-          <folding>
-            <element signature="e#1378#1534#0" expanded="true" />
-            <element signature="e#1527#1528#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="13260" max-vertical-offset="16456">
-          <caret line="780" column="0" selection-start-line="780" selection-start-column="0" selection-end-line="780" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/button.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/CustomPulseProgress.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2617" max-vertical-offset="3332">
-          <caret line="196" column="28" selection-start-line="196" selection-start-column="28" selection-end-line="196" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -4372,38 +4172,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7650794" vertical-offset="2357" max-vertical-offset="7939">
-          <caret line="190" column="24" selection-start-line="190" selection-start-column="24" selection-end-line="190" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49756888" vertical-offset="8210" max-vertical-offset="26673">
-          <caret line="596" column="9" selection-start-line="596" selection-start-column="9" selection-end-line="596" selection-end-column="9" />
-          <folding>
-            <element signature="method#getRemoteContent#0;class#DataApi#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/ApplicationThemeColor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="8198" max-vertical-offset="11713">
-          <caret line="533" column="13" selection-start-line="533" selection-start-column="13" selection-end-line="533" selection-end-column="13" />
-          <folding>
-            <element signature="method#paintRemoteIcon#0;class#ApplicationThemeColor#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7368421" vertical-offset="21224" max-vertical-offset="28747">
-          <caret line="1762" column="0" selection-start-line="1762" selection-start-column="0" selection-end-line="1762" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="20672" max-vertical-offset="28662">
+          <caret line="1779" column="25" selection-start-line="1779" selection-start-column="25" selection-end-line="1779" selection-end-column="25" />
           <folding>
             <element signature="method#scaleAnimation#0;class#MuPDFActivity#0" expanded="false" />
             <element signature="method#searchModeOn#0;class#MuPDFActivity#0" expanded="false" />
@@ -4413,9 +4185,185 @@
             <element signature="method#searchModeOff#0;class#MuPDFActivity#0" expanded="false" />
             <element signature="method#startThumnailLeftAnim#0;class#MuPDFActivity#0" expanded="false" />
             <element signature="method#startThumnailRightAnim#0;class#MuPDFActivity#0" expanded="false" />
-            <element signature="e#71662#71809#0" expanded="true" />
-            <element signature="e#71798#71799#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/volley/toolbox/RequestFuture.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="1337" max-vertical-offset="2278">
+          <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5786062" vertical-offset="2941" max-vertical-offset="4318">
+          <caret line="232" column="0" selection-start-line="232" selection-start-column="0" selection-end-line="232" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-large/grid_cell.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.222222" vertical-offset="357" max-vertical-offset="1972">
+          <caret line="42" column="43" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/CoverImageFixedAspectLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0015873016" vertical-offset="271" max-vertical-offset="901">
+          <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-land/content_detail_popup_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.4444447" vertical-offset="292" max-vertical-offset="4403">
+          <caret line="29" column="32" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fixed_content_popup_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.481482" vertical-offset="2933" max-vertical-offset="3536">
+          <caret line="186" column="36" selection-start-line="186" selection-start-column="36" selection-end-line="186" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentHolderAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2235" max-vertical-offset="2992">
+          <caret line="179" column="19" selection-start-line="179" selection-start-column="19" selection-end-line="179" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/ApplicationThemeColor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="8877" max-vertical-offset="12274">
+          <caret line="569" column="12" selection-start-line="569" selection-start-column="12" selection-end-line="569" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/grid_cell.xml">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="564" max-vertical-offset="2057">
+          <caret line="45" column="28" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.006644518" vertical-offset="5478" max-vertical-offset="9044">
+          <caret line="350" column="130" selection-start-line="350" selection-start-column="130" selection-end-line="350" selection-end-column="130" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4729927" vertical-offset="1835" max-vertical-offset="27251">
+          <caret line="203" column="0" selection-start-line="203" selection-start-column="0" selection-end-line="203" selection-end-column="0" />
+          <folding>
+            <element signature="method#downloadPdf#0;class#DataApi#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-19/android/app/ActivityThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3008596" vertical-offset="73774" max-vertical-offset="82569">
+          <caret line="4516" column="0" selection-start-line="4516" selection-start-column="0" selection-end-line="4516" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.62034386" vertical-offset="2440" max-vertical-offset="8024">
+          <caret line="192" column="9" selection-start-line="192" selection-start-column="9" selection-end-line="192" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="10815" max-vertical-offset="12189">
+          <caret line="725" column="34" selection-start-line="725" selection-start-column="34" selection-end-line="725" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotationWithChromium.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="365" max-vertical-offset="3825">
+          <caret line="82" column="13" selection-start-line="82" selection-start-column="13" selection-end-line="82" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PageView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.892858" vertical-offset="10235" max-vertical-offset="16796">
+          <caret line="666" column="50" selection-start-line="666" selection-start-column="50" selection-end-line="666" selection-end-column="50" />
+          <folding>
+            <element signature="e#10491#10497#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7777778" vertical-offset="581" max-vertical-offset="3298">
+          <caret line="77" column="13" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5802269" vertical-offset="7462" max-vertical-offset="14586">
+          <caret line="561" column="13" selection-start-line="561" selection-start-column="13" selection-end-line="561" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/CustomPulseProgress.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2603" max-vertical-offset="3485">
+          <caret line="211" column="24" selection-start-line="211" selection-start-column="24" selection-end-line="211" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/CustomWebView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.54126984" vertical-offset="322" max-vertical-offset="2074">
+          <caret line="55" column="9" selection-start-line="55" selection-start-column="9" selection-end-line="55" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>

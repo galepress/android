@@ -151,6 +151,11 @@ public class DatabaseApi {
                 if(GalePressApplication.getInstance().getLibraryActivity()!=null){
                     //GalePressApplication.getInstance().getLibraryActivity().updateGridView();
                     GalePressApplication.getInstance().getLibraryActivity().updateAdapterList(content, false);
+
+                    //icerik panelden mobil uygulamadan kaldir ile kaldirildigi zaman indirilenler ekrani update olmadigi icin bu satiri ekledim (mg)
+                    MainActivity act = GalePressApplication.getInstance().getMainActivity();
+                    if(act.mTabHost.getCurrentTabTag().compareTo(MainActivity.DOWNLOADED_LIBRARY_TAG) == 0)
+                        act.getCurrentDownloadedLibraryFragment().updateGridView();
                 }
             }
             catch (Exception e){

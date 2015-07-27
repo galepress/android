@@ -1,6 +1,5 @@
 package com.artifex.mupdfdemo;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 import android.app.AlertDialog;
@@ -13,14 +12,11 @@ import android.graphics.PointF;
 import android.graphics.RectF;
 import android.net.Uri;
 import android.text.method.PasswordTransformationMethod;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.webkit.WebBackForwardList;
-import android.webkit.WebView;
 import android.widget.EditText;
 
 import ak.detaysoft.galepress.R;
@@ -727,6 +723,7 @@ public class MuPDFPageView extends PageView implements MuPDFView {
         loadAnnotations();
 
         clearWebAnnotations(this);
+        clearCustomProgress(this);
 
 		mLoadWidgetAreas = new AsyncTask<Void,Void,RectF[]> () {
 			@Override

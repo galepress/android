@@ -228,7 +228,9 @@ public class LibraryFragment extends Fragment {
     }
 
     public void updateAdapterList(L_Content content, boolean isImagePathChanged){
+
         contents = GalePressApplication.getInstance().getDatabaseApi().getAllContents(isOnlyDownloaded,searchQuery,selectedCategories);
+
         ContentHolderAdapter.ViewHolder holder = GalePressApplication.getInstance().getDataApi().getViewHolderForContent(content);
         if(holder != null){
             if(!content.isPdfDownloading()) {
