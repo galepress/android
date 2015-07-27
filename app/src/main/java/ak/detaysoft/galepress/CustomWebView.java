@@ -60,9 +60,10 @@ public class CustomWebView extends WebView {
             super.onReceivedError(view, errorCode, description, failingUrl);
             if(isWebFragment) {
                 ((LinearLayout)progressBar.getParent()).setVisibility(View.GONE);
+            } else {
+                view.loadUrl("file:///android_asset/banner_not_loaded.html");
             }
         }
-
     }
 
     public class MyChromeClient extends WebChromeClient {
