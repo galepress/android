@@ -64,6 +64,7 @@ public class WebViewAnnotationWithChromium extends WebView {
                 loading.setVisibility(GONE);
 
             }
+
         }
 
         @Override
@@ -73,14 +74,20 @@ public class WebViewAnnotationWithChromium extends WebView {
             if(loading != null) {
                 loading.setVisibility(VISIBLE);
             }
+            Log.e("loadedurl", ""+url);
         }
 
         @Override
         public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+            //view.loadUrl("file:///android_asset/annotation_not_loaded.html");
+            view.loadUrl("about:blank");
+            view.setVisibility(GONE);
             super.onReceivedError(view, errorCode, description, failingUrl);
             if(loading != null) {
                 loading.setVisibility(GONE);
             }
+
+            ((PageView)view.getParent()).removeView(view);
         }
 
     }
@@ -131,7 +138,6 @@ public class WebViewAnnotationWithChromium extends WebView {
         this.setWebChromeClient(new com.mogoweb.chrome.WebChromeClient());
         this.setWebChromeClient(new MyChromeClient());
         this.setWebViewClient(new MyWebClient());
-
         /*if(lie.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_VIDEO){
             this.setLayerType(WebView.LAYER_TYPE_HARDWARE,null);
         }

@@ -550,7 +550,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
         int tabIndex = 0;
         //Home yoksa (+2 yapilmasinin sebebi static olan iki tab icin (library ve downloaded))
-        if(mTabHost.getTabWidget().getTabCount() == GalePressApplication.getInstance().getTabList().size()+2){
+        if(mTabHost.getTabWidget().getTabCount() == 2 || mTabHost.getTabWidget().getTabCount() == GalePressApplication.getInstance().getTabList().size()+2){
             if(GalePressApplication.getInstance().getDataApi().getMasterContent() != null && GalePressApplication.getInstance().getDataApi().getMasterContent().isPdfDownloaded()){
                 isTabFirstInit = true;
                 mTabHost.clearAllTabs();

@@ -13,6 +13,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.artifex.mupdfdemo.*;
 
@@ -25,6 +26,7 @@ public class WebViewAnnotation extends WebView {
     public MuPDFReaderView readerView;
     public LinkInfoExternal linkInfoExternal;
     private CustomPulseProgress loading;
+    private Context context;
 
     private class MyWebChromeClient extends WebChromeClient {
         @Override
@@ -72,10 +74,17 @@ public class WebViewAnnotation extends WebView {
 
         @Override
         public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+            Toast.makeText(context, "deneme", Toast.LENGTH_SHORT).show();
+            //view.loadUrl("file:///android_asset/annotation_not_loaded.html");
+            view.loadUrl("about:blank");
+            view.setVisibility(GONE);
             super.onReceivedError(view, errorCode, description, failingUrl);
             if(loading != null) {
                 loading.setVisibility(GONE);
             }
+
+            ((PageView)view.getParent()).removeView(view);
+
         }
     }
 
@@ -85,6 +94,7 @@ public class WebViewAnnotation extends WebView {
         super(context);
         this.loading = loading;
         this.linkInfoExternal = lie;
+        this.context = context;
         this.setWebChromeClient(new MyWebChromeClient());
         this.setWebViewClient(new MyWebViewClient());
 
