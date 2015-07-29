@@ -11,7 +11,6 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -34,6 +33,8 @@ import java.io.File;
 
 import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
+import ak.detaysoft.galepress.util.CustomDownloadButton;
+import ak.detaysoft.galepress.util.CustomPulseProgress;
 
 /**
  * Created by p1025 on 27.03.2015.
@@ -51,7 +52,7 @@ public class ContentDetailPopupActivity extends Activity{
     public Button updateButton;
     public Button viewButton;
     public Button deleteButton;
-    public Button downloadButton;
+    public CustomDownloadButton downloadButton;
     public ProgressBar progressBar;
     public CustomPulseProgress loading;
     public Button cancelButton;
@@ -64,13 +65,13 @@ public class ContentDetailPopupActivity extends Activity{
         Button updateButton;
         Button viewButton;
         Button deleteButton;
-        Button downloadButton;
+        CustomDownloadButton downloadButton;
         ProgressBar progressBar;
         Button cancelButton;
         public ContentHolder(Button updateButton,
                              Button viewButton,
                              Button deleteButton,
-                             Button downloadButton,
+                             CustomDownloadButton downloadButton,
                              ProgressBar progressBar,
                              Button cancelButton){
             this.updateButton = updateButton;
@@ -222,24 +223,22 @@ public class ContentDetailPopupActivity extends Activity{
             }
         });
 
-        downloadButton = (Button)findViewById(R.id.content_detail_download);
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            downloadButton.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this, ApplicationThemeColor.DOWNLOAD_CONTENT));
-        else
-            downloadButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this, ApplicationThemeColor.DOWNLOAD_CONTENT));
+        downloadButton = (CustomDownloadButton)findViewById(R.id.content_detail_download);
         downloadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(DataApi.isConnectedToInternet()){
-                    v.setEnabled(false);
+                    downloadButton.startAnim();
                     GalePressApplication.getInstance().getDataApi().getPdf(content, ContentDetailPopupActivity.this);
                 }
             }
         });
 
         cancelButton = (Button)findViewById(R.id.content_detail_cancel);
-        cancelButton.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
-        cancelButton.setTextColor(ApplicationThemeColor.getInstance().getPopupTextColor());
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+            cancelButton.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this, ApplicationThemeColor.CANCEL_CONTENT_DOWNLOAD));
+        else
+            cancelButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this, ApplicationThemeColor.CANCEL_CONTENT_DOWNLOAD));
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -497,6 +496,7 @@ public class ContentDetailPopupActivity extends Activity{
             progressBar.setVisibility(View.INVISIBLE);
             cancelButton.setVisibility(View.GONE);
             cancelButton.setEnabled(false);
+            downloadButton.stopAnim();
 
             if(updateAvailable){
                 updateButton.setVisibility(View.VISIBLE);
@@ -509,6 +509,7 @@ public class ContentDetailPopupActivity extends Activity{
                     deleteButton.setVisibility(View.GONE);
                     cancelButton.setEnabled(true);
                     cancelButton.setVisibility(View.VISIBLE);
+                    downloadButton.stopAnim();
                     progressBar.setVisibility(View.VISIBLE);
                     updateButton.setVisibility(View.GONE);
                     deleteButton.setVisibility(View.GONE);
@@ -528,6 +529,7 @@ public class ContentDetailPopupActivity extends Activity{
                 progressBar.setVisibility(View.VISIBLE);
                 downloadButton.setEnabled(false);
                 downloadButton.setVisibility(View.GONE);
+                downloadButton.stopAnim();
                 updateButton.setVisibility(View.GONE);
                 deleteButton.setVisibility(View.GONE);
                 viewButton.setVisibility(View.GONE);
@@ -548,6 +550,7 @@ public class ContentDetailPopupActivity extends Activity{
             progressBar.setVisibility(View.INVISIBLE);
             cancelButton.setVisibility(View.GONE);
             cancelButton.setEnabled(false);
+            downloadButton.stopAnim();
         }
         baseView.invalidate();
     }

@@ -4,23 +4,13 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.graphics.AvoidXfermode;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
-import android.net.ConnectivityManager;
-import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.GeolocationPermissions;
-import android.widget.FrameLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.artifex.mupdfdemo.*;
@@ -29,7 +19,7 @@ import com.mogoweb.chrome.WebChromeClient;
 import com.mogoweb.chrome.WebSettings;
 import com.mogoweb.chrome.WebView;
 
-import org.chromium.content.browser.ContentViewCore;
+import ak.detaysoft.galepress.util.CustomPulseProgress;
 
 /**
  * Created by adem on 08/08/14.

@@ -30,6 +30,7 @@ import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import ak.detaysoft.galepress.*;
+import ak.detaysoft.galepress.util.CustomPulseProgress;
 
 
 class PatchInfo {

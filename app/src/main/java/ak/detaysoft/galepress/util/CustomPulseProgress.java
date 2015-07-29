@@ -1,4 +1,4 @@
-package ak.detaysoft.galepress;
+package ak.detaysoft.galepress.util;
 
 import android.content.Context;
 import android.os.Build;

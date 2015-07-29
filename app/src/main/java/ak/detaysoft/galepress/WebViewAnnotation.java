@@ -3,7 +3,6 @@ package ak.detaysoft.galepress;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.GeolocationPermissions;
@@ -11,11 +10,11 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.artifex.mupdfdemo.*;
+
+import ak.detaysoft.galepress.util.CustomPulseProgress;
 
 /**
  * Created by adem on 08/08/14.

@@ -35,7 +35,7 @@
                     android:layout_alignParentTop="true"
                     android:id="@+id/custom_cover_image_view">
 
-                    <ak.detaysoft.galepress.CustomPulseProgress
+                    <ak.detaysoft.galepress.util.CustomPulseProgress
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:id="@+id/popup_image_loading"
@@ -83,7 +83,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_toLeftOf="@+id/content_detail_update" />
 
-                    <Button
+                    <ak.detaysoft.galepress.util.CustomDownloadButton
                         android:layout_width="@dimen/content_popup_button_size"
                         android:layout_height="@dimen/content_popup_button_size"
                         android:id="@+id/content_detail_download"
@@ -97,6 +97,15 @@
                         android:layout_width="@dimen/content_popup_button_size"
                         android:layout_height="@dimen/content_popup_button_size"
                         android:id="@+id/content_detail_delete"
+                        android:singleLine="true"
+                        android:background="@android:color/transparent"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="10dp" />
+
+                    <Button
+                        android:layout_width="@dimen/content_popup_button_size"
+                        android:layout_height="@dimen/content_popup_button_size"
+                        android:id="@+id/content_detail_cancel"
                         android:background="@android:color/transparent"
                         android:singleLine="true"
                         android:layout_alignParentRight="true"
@@ -166,22 +175,6 @@
                             android:layout_centerHorizontal="true" />
 
                         </LinearLayout>
-
-                    <Button
-                        android:layout_width="@dimen/content_popup_button_size"
-                        android:layout_height="@dimen/content_popup_button_size"
-                        android:text="X"
-                        android:id="@+id/content_detail_cancel"
-                        android:background="@android:color/transparent"
-                        android:gravity="bottom|right"
-                        android:singleLine="true"
-                        android:textSize="@dimen/content_popup_small_textsize"
-                        android:layout_above="@+id/content_detail_progress_bar"
-                        android:layout_marginRight="10dp"
-                        android:layout_alignRight="@+id/content_detail_progress_label"
-                        android:layout_alignParentRight="true"
-                        android:paddingLeft="5dp"
-                        android:paddingBottom="5dp" />
 
                     <ProgressBar
                         android:id="@+id/content_detail_progress_bar"
