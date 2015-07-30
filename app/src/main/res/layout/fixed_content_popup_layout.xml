@@ -61,7 +61,7 @@
                     android:layout_height="@dimen/content_popup_button_layer"
                     android:orientation="horizontal"
                     android:gravity="center_vertical|right"
-                    android:paddingRight="20dp"
+                    android:paddingRight="5dp"
                     android:layout_below="@+id/custom_cover_image_view">
 
                     <Button
@@ -72,7 +72,7 @@
                         android:singleLine="true"
                         android:ellipsize="marquee"
                         android:layout_toLeftOf="@+id/content_detail_download"
-                        android:layout_marginLeft="10dp" />
+                        android:layout_marginLeft="11dp" />
 
                     <Button
                         android:layout_width="@dimen/content_popup_button_size"
@@ -80,7 +80,7 @@
                         android:id="@+id/content_detail_view"
                         android:background="@android:color/transparent"
                         android:singleLine="true"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="11dp"
                         android:layout_toLeftOf="@+id/content_detail_update" />
 
                     <ak.detaysoft.galepress.util.CustomDownloadButton
@@ -90,7 +90,7 @@
                         android:background="@android:color/transparent"
                         android:singleLine="true"
                         android:layout_alignParentRight="true"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="11dp"
                         android:layout_toLeftOf="@+id/content_detail_delete" />
 
                     <Button
@@ -100,7 +100,7 @@
                         android:singleLine="true"
                         android:background="@android:color/transparent"
                         android:layout_alignParentRight="true"
-                        android:layout_marginLeft="10dp" />
+                        android:layout_marginLeft="11dp" />
 
                     <Button
                         android:layout_width="@dimen/content_popup_button_size"
@@ -109,7 +109,7 @@
                         android:background="@android:color/transparent"
                         android:singleLine="true"
                         android:layout_alignParentRight="true"
-                        android:layout_marginLeft="10dp" />
+                        android:layout_marginLeft="11dp" />
 
                 </RelativeLayout>
 
