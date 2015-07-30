@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/grid_row_content"
     android:layout_width="165dp"
-    android:layout_height="268dp"
+    android:layout_height="269dp"
     android:descendantFocusability="blocksDescendants"
     android:padding="0dp"
     android:gravity="center"
@@ -12,18 +12,8 @@
 
     <RelativeLayout
         android:layout_width="165dp"
-        android:layout_height="268dp"
+        android:layout_height="269dp"
         android:orientation="vertical">
-
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:progressDrawable="@drawable/custom_progressbar"
-            android:layout_height="3dp"
-            android:layout_width="match_parent"
-            android:layout_alignParentBottom="false"
-            android:layout_alignParentTop="true" />
-
 
 
         <RelativeLayout
@@ -49,17 +39,12 @@
                 android:layout_alignParentBottom="false" />
             </RelativeLayout>
 
-
-
         <RelativeLayout
             android:id = "@+id/detailLayout"
             android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:layout_alignParentBottom="false"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_alignParentTop="false"
-            android:layout_below="@+id/cover_image_layout">
+            android:layout_height="55dp"
+            android:layout_below="@+id/cover_image_layout"
+            android:layout_alignParentBottom="true">
             <TextView
                 android:id="@+id/nameLabel"
                 android:text=""
@@ -74,7 +59,9 @@
                 android:ellipsize="end"
                 android:singleLine="true"
                 android:paddingRight="2dp"
-                android:layout_alignParentTop="true" />
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp" />
 
             <TextView
                 android:id="@+id/detailLabel"
@@ -90,7 +77,9 @@
                 android:singleLine="true"
                 android:paddingRight="2dp"
                 android:layout_below="@+id/nameLabel"
-                android:gravity="center_vertical|left" />
+                android:gravity="center_vertical|left"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -103,7 +92,17 @@
                 android:gravity="left|top"
                 android:singleLine="true"
                 android:ellipsize="end"
-                android:paddingRight="2dp" />
+                android:paddingRight="2dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp" />
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:progressDrawable="@drawable/custom_progressbar"
+                android:layout_height="3dp"
+                android:layout_width="match_parent"
+                android:layout_alignParentBottom="true" />
 
         </RelativeLayout>
 
