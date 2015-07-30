@@ -60,7 +60,6 @@ public class ContentDetailPopupActivity extends Activity{
     public boolean isFirstOpen;
     private float animationStartX, animationStartY;
 
-
     public class ContentHolder{
         Button updateButton;
         Button viewButton;
@@ -483,6 +482,11 @@ public class ContentDetailPopupActivity extends Activity{
                 && GalePressApplication.getInstance().getDataApi().downloadPdfTask.content !=null
                 && GalePressApplication.getInstance().getDataApi().downloadPdfTask.content.getId().compareTo(content.getId()) == 0;
 
+        //Cancel butonu aktif oldugu her durumda download butonunun animasyonunu durdurmak icin
+        if(cancelButton.getVisibility() == View.VISIBLE){
+            downloadButton.stopAnim();
+        }
+
         if(downloaded){
             // Content is downloaded and ready to view.
             downloadButton.setVisibility(View.GONE);
@@ -546,6 +550,7 @@ public class ContentDetailPopupActivity extends Activity{
                 cancelButton.setEnabled(false);
             }
         }
+
         if(viewButton.getVisibility() == View.VISIBLE){
             progressBar.setVisibility(View.INVISIBLE);
             cancelButton.setVisibility(View.GONE);
