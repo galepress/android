@@ -12,6 +12,7 @@ public class TabbarItem implements Serializable {
 
     private String iconUrl;
     private String webUrl;
+    private String title;
 
     public TabbarItem(){
 
@@ -22,9 +23,11 @@ public class TabbarItem implements Serializable {
         try {
             this.iconUrl = jsonObject.getString("tabLogoUrl");
             this.webUrl = jsonObject.getString("tabUrl");
+            this.title = "Test"; //Burasi servisten gelecek
         } catch (JSONException e) {
             this.iconUrl = "";
             this.webUrl = "";
+            this.title = "";
             e.printStackTrace();
         }
 
@@ -46,11 +49,20 @@ public class TabbarItem implements Serializable {
         this.webUrl = webUrl;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     @Override
     public String toString() {
         return "Tab{" +
                 "iconUrl='"+iconUrl+'\''+
                 ", webUrl='"+webUrl+'\''+
+                ", title='"+title+'\''+
                 "}";
     }
 }

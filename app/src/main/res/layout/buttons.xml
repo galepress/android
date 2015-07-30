@@ -425,64 +425,114 @@
             android:layout_height="59dp"
             android:layout_alignParentBottom="true"
             android:id="@+id/reader_tabbar"
-            android:gravity="center"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp">
+            android:gravity="center">
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="70dp"
-                android:layout_height="match_parent"
+                android:layout_height="50dp"
                 android:gravity="center"
                 android:id="@+id/reader_home_layout">
 
                 <ImageView
                     android:layout_width="60dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="32dp"
                     android:id="@+id/reader_home"
                     android:adjustViewBounds="true" />
+                <TextView
+                    android:id="@+id/reader_home_txt"
+                    android:layout_width="60dp"
+                    android:layout_height="18dp"
+                    android:gravity="center_horizontal|bottom"
+                    android:textColor="@drawable/tab_text_indicator"
+                    android:textSize="9.5dp"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="TEST TEST TEST"
+                    android:ellipsize="end" />
             </LinearLayout>
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="70dp"
-                android:layout_height="match_parent"
+                android:layout_height="50dp"
                 android:gravity="center"
                 android:id="@+id/reader_library_layout">
 
                 <ImageView
                     android:layout_width="60dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="32dp"
                     android:id="@+id/reader_library"
                     android:adjustViewBounds="true" />
+
+                <TextView
+                    android:id="@+id/reader_library_txt"
+                    android:layout_width="60dp"
+                    android:layout_height="18dp"
+                    android:gravity="center_horizontal|bottom"
+                    android:textColor="@drawable/tab_text_indicator"
+                    android:textSize="9.5dp"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="TEST TEST TEST"
+                    android:ellipsize="end" />
             </LinearLayout>
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="70dp"
-                android:layout_height="match_parent"
+                android:layout_height="50dp"
                 android:gravity="center"
                 android:id="@+id/reader_download_layout">
 
                 <ImageView
                     android:layout_width="60dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="32dp"
                     android:id="@+id/reader_download"
                     android:adjustViewBounds="true" />
+
+
+                <TextView
+                    android:id="@+id/reader_download_txt"
+                    android:layout_width="60dp"
+                    android:layout_height="18dp"
+                    android:gravity="center_horizontal|bottom"
+                    android:textColor="@drawable/tab_text_indicator"
+                    android:textSize="9.5dp"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="TEST TEST TEST"
+                    android:ellipsize="end" />
             </LinearLayout>
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="70dp"
-                android:layout_height="match_parent"
+                android:layout_height="50dp"
                 android:gravity="center"
                 android:id="@+id/reader_info_layout">
 
                 <ImageView
                     android:layout_width="60dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="32dp"
                     android:id="@+id/reader_info"
                     android:adjustViewBounds="true" />
+
+                <TextView
+                    android:id="@+id/reader_info_txt"
+                    android:layout_width="60dp"
+                    android:layout_height="18dp"
+                    android:gravity="center_horizontal|bottom"
+                    android:textColor="@drawable/tab_text_indicator"
+                    android:textSize="9.5dp"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="TEST TEST TEST"
+                    android:ellipsize="end" />
             </LinearLayout>
 
         </LinearLayout>

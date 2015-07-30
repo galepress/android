@@ -712,7 +712,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
                 int index = 0;
                 for(TabbarItem item : GalePressApplication.getInstance().getTabList()){
-                    addTab(""+index, createDrawable(true, null, null), WebFragment.class, item);
+                    addTab(item.getTitle(),""+index, createDrawable(true, null, null), WebFragment.class, item);
                     index++;
                 }
             } else {
@@ -800,22 +800,22 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         });
 
         if(GalePressApplication.getInstance().getDataApi().getMasterContent() != null && GalePressApplication.getInstance().getDataApi().getMasterContent().isPdfDownloaded()){
-            addTab(HOME_TAB_TAG, createDrawable(true, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.HOME_ICON),
+            addTab(getResources().getString(R.string.HOME),HOME_TAB_TAG, createDrawable(true, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.HOME_ICON),
                     ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.HOME_ICON_SELECTED)), HomeFragment.class, null);
         }
 
-        addTab(LIBRARY_TAB_TAG, createDrawable(true, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.LIBRARY_ICON),
+        addTab(getResources().getString(R.string.LIBRARY), LIBRARY_TAB_TAG, createDrawable(true, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.LIBRARY_ICON),
                 ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.LIBRARY_ICON_SELECTED)), LibraryFragment.class, null);
-        addTab(DOWNLOADED_LIBRARY_TAG,createDrawable(true, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.DOWNLOAD_ICON),
+        addTab(getResources().getString(R.string.DOWNLOADED),DOWNLOADED_LIBRARY_TAG,createDrawable(true, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.DOWNLOAD_ICON),
                 ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.DOWNLOAD_ICON_SELECTED)),LibraryFragment.class, null);
-        /*addTab(INFO_TAB_TAG,createDrawable(true, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.INFO_ICON),
+        /*addTab(getResources().getString(R.string.INFO),INFO_TAB_TAG,createDrawable(true, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.INFO_ICON),
                 ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.INFO_ICON_SELECTED)),InfoPageFragment.class, null);*/
 
 
         if(GalePressApplication.getInstance().getTabList() != null && GalePressApplication.getInstance().getDataApi().isConnectedToInternet()){
             int index = 0;
             for(TabbarItem item : GalePressApplication.getInstance().getTabList()){
-                addTab(""+index, createDrawable(true, null, null), WebFragment.class, item);
+                addTab(item.getTitle(),""+index, createDrawable(true, null, null), WebFragment.class, item);
                 index++;
             }
         } else if(getSupportFragmentManager().getFragments() != null) {
@@ -843,26 +843,33 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         return null;
     }
 
-    private View createTabIndicator(Drawable drawable, TabbarItem item) {
+    private View createTabIndicator(String titleText, Drawable drawable, TabbarItem item) {
         View tabIndicator = LayoutInflater.from(this).inflate(R.layout.tab_indicator, tempTabHost.getTabWidget(), false);
         tabIndicator.setBackgroundColor(Color.TRANSPARENT);
         tabIndicator.setLayoutParams(new FrameLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 70, getResources().getDisplayMetrics())
-                , FrameLayout.LayoutParams.MATCH_PARENT));
+                , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50, getResources().getDisplayMetrics())));
         ImageView imgIcon = (ImageView) tabIndicator.findViewById(R.id.image_view_tab_icon);
         imgIcon.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())
-                , LinearLayout.LayoutParams.MATCH_PARENT));
+                , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 32, getResources().getDisplayMetrics())));
+
+        TextView title = (TextView) tabIndicator.findViewById(R.id.text_view_tab_title);
+        title.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())
+                , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 18, getResources().getDisplayMetrics())));
+        title.setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
+        title.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
+        title.setText(titleText);
+
         if(drawable != null)
             imgIcon.setImageDrawable(drawable);
         else
             ApplicationThemeColor.getInstance().paintRemoteIcon(this, item, imgIcon);
 
-
         return tabIndicator;
     }
 
-    private void addTab(String tag, Drawable drawable,Class classy, TabbarItem item) {
+    private void addTab(String title, String tag, Drawable drawable,Class classy, TabbarItem item) {
         TabHost.TabSpec spec = tempTabHost.newTabSpec(tag);
-        spec.setIndicator(createTabIndicator(drawable, item));
+        spec.setIndicator(createTabIndicator(title, drawable, item));
         tempTabHost.addTab(spec,classy,null);
     }
 
