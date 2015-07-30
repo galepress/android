@@ -227,7 +227,11 @@ public class ContentDetailPopupActivity extends Activity{
             @Override
             public void onClick(View v) {
                 if(DataApi.isConnectedToInternet()){
-                    downloadButton.startAnim();
+
+                    if (GalePressApplication.getInstance().getDataApi().downloadPdfTask == null
+                            || (GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() != AsyncTask.Status.RUNNING)){
+                        downloadButton.startAnim();
+                    }
                     GalePressApplication.getInstance().getDataApi().getPdf(content, ContentDetailPopupActivity.this);
                 }
             }
