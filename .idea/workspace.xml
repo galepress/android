@@ -104,12 +104,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4272a91b-e20d-476c-9f23-fd491d5d43e7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/popup_download_img1.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/popup_download_img1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/popup_download_img2.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/popup_download_img2.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/popup_update.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/popup_update.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Android.iws" />
@@ -173,71 +168,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="16099">
-              <caret line="854" column="32" selection-start-line="854" selection-start-column="32" selection-end-line="854" selection-end-column="32" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MuPDFActivity.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.76823336" vertical-offset="971" max-vertical-offset="33269">
-              <caret line="87" column="21" selection-start-line="87" selection-start-column="21" selection-end-line="87" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#9027#9053#0" expanded="true" />
-                <element signature="e#9233#9257#0" expanded="true" />
-                <element signature="e#9473#9499#0" expanded="true" />
-                <element signature="e#9682#9705#0" expanded="true" />
-                <element signature="e#9853#9875#0" expanded="true" />
-                <element signature="e#14375#14426#0" expanded="true" />
-                <element signature="e#14515#14542#0" expanded="true" />
-                <element signature="e#15851#15880#0" expanded="true" />
-                <element signature="e#15940#15967#0" expanded="true" />
-                <element signature="e#18214#18237#0" expanded="true" />
-                <element signature="e#18331#18355#0" expanded="true" />
-                <element signature="e#18860#18886#0" expanded="true" />
-                <element signature="e#30604#30662#0" expanded="true" />
-                <element signature="e#32485#32517#0" expanded="true" />
-                <element signature="e#33602#33642#0" expanded="true" />
-                <element signature="e#33645#33684#0" expanded="true" />
-                <element signature="method#searchModeOn#0;class#MuPDFActivity#0" expanded="false" />
-                <element signature="method#savePic#0;class#MuPDFActivity#0" expanded="false" />
-                <element signature="method#sendMail#0;class#MuPDFActivity#0" expanded="false" />
-                <element signature="method#takeScreenShot#0;class#MuPDFActivity#0" expanded="false" />
-                <element signature="method#searchModeOff#0;class#MuPDFActivity#0" expanded="false" />
-                <element signature="e#61160#61210#0" expanded="true" />
-                <element signature="e#61402#61434#0" expanded="true" />
-                <element signature="method#startThumnailLeftAnim#0;class#MuPDFActivity#0" expanded="false" />
-                <element signature="method#startThumnailRightAnim#0;class#MuPDFActivity#0" expanded="false" />
-                <element signature="e#74992#75031#0" expanded="true" />
-                <element signature="e#76506#76548#0" expanded="true" />
-                <element signature="e#77754#77799#0" expanded="true" />
-                <element signature="e#78966#79005#0" expanded="true" />
-                <element signature="e#88209#88238#0" expanded="true" />
-                <element signature="e#88258#88289#0" expanded="true" />
-                <element signature="e#88913#88931#0" expanded="true" />
-                <element signature="e#88951#88982#0" expanded="true" />
-                <element signature="e#89281#89299#0" expanded="true" />
-                <element signature="e#89319#89350#0" expanded="true" />
-                <element signature="e#89649#89668#0" expanded="true" />
-                <element signature="e#89688#89719#0" expanded="true" />
-                <element signature="e#90004#90016#0" expanded="true" />
-                <element signature="e#90036#90071#0" expanded="true" />
-                <element signature="e#91059#91098#0" expanded="true" />
-                <element signature="e#91101#91137#0" expanded="true" />
-                <element signature="e#91420#91456#0" expanded="true" />
-                <element signature="e#91739#91775#0" expanded="true" />
-                <element signature="e#92058#92094#0" expanded="true" />
-                <element signature="e#92339#92374#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.6612642" vertical-offset="0" max-vertical-offset="16099">
+              <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -3833,7 +3769,11 @@
       <created>1438330112956</created>
       <updated>1438330112956</updated>
     </task>
-    <option name="localTasksCounter" value="170" />
+    <task id="LOCAL-00170" summary="tab title">
+      <created>1438342246674</created>
+      <updated>1438342246674</updated>
+    </task>
+    <option name="localTasksCounter" value="171" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -4365,20 +4305,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="12354" max-vertical-offset="15045">
-          <caret line="854" column="32" selection-start-line="854" selection-start-column="32" selection-end-line="854" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.76823336" vertical-offset="971" max-vertical-offset="33269">
-          <caret line="87" column="21" selection-start-line="87" selection-start-column="21" selection-end-line="87" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.547812" vertical-offset="1175" max-vertical-offset="33269">
+          <caret line="91" column="5" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#9027#9053#0" expanded="true" />
@@ -4427,6 +4357,14 @@
             <element signature="e#92058#92094#0" expanded="true" />
             <element signature="e#92339#92374#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6612642" vertical-offset="0" max-vertical-offset="16099">
+          <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
