@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -1804,7 +1805,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         reader_home_txt.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())
                 , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 18, getResources().getDisplayMetrics())));
         reader_home_txt.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
-        reader_home_txt.setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
+        reader_home_txt.setTextColor(createTabTitleColorStateList());
         reader_home_txt.setText(getResources().getString(R.string.HOME));
 
         ((LinearLayout) mButtonsView.findViewById(R.id.reader_home_layout)).setOnClickListener(new View.OnClickListener() {
@@ -1826,7 +1827,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         reader_library_txt.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())
                 , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 18, getResources().getDisplayMetrics())));
         reader_library_txt.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
-        reader_library_txt.setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
+        reader_library_txt.setTextColor(createTabTitleColorStateList());
         reader_library_txt.setText(getResources().getString(R.string.LIBRARY));
 
         ((LinearLayout) mButtonsView.findViewById(R.id.reader_library_layout)).setOnClickListener(new View.OnClickListener() {
@@ -1845,7 +1846,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         reader_download_txt.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())
                 , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 18, getResources().getDisplayMetrics())));
         reader_download_txt.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
-        reader_download_txt.setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
+        reader_download_txt.setTextColor(createTabTitleColorStateList());
         reader_download_txt.setText(getResources().getString(R.string.DOWNLOADED));
 
         ((LinearLayout) mButtonsView.findViewById(R.id.reader_download_layout)).setOnClickListener(new View.OnClickListener() {
@@ -1864,7 +1865,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         reader_info_txt.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())
                 , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 18, getResources().getDisplayMetrics())));
         reader_info_txt.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
-        reader_info_txt.setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
+        reader_info_txt.setTextColor(createTabTitleColorStateList());
         reader_info_txt.setText(getResources().getString(R.string.INFO));
 
         ((LinearLayout) mButtonsView.findViewById(R.id.reader_info_layout)).setOnClickListener(new View.OnClickListener() {
@@ -1911,7 +1912,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                 txt.setEllipsize(TextUtils.TruncateAt.END);
                 txt.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 9.5f);
                 txt.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
-                txt.setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
+                txt.setTextColor(createTabTitleColorStateList());
                 txt.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
                 txt.setText(item.getTitle());
                 layout.addView(txt);
@@ -1960,6 +1961,25 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         //mPageSlider.setVisibility(View.INVISIBLE);
         bottomTabBar.setVisibility(View.INVISIBLE);
         mPreviewBarHolder.setVisibility(View.INVISIBLE);
+    }
+
+    private ColorStateList createTabTitleColorStateList(){
+        int[][] states = new int[][] {
+                new int[] {android.R.attr.state_pressed},
+                new int[] {android.R.attr.state_focused},
+                new int[] {android.R.attr.state_selected},
+                new int [] {}
+        };
+
+        int[] colors = new int[] {
+                ApplicationThemeColor.getInstance().getForegroundColorWithAlpha(50),
+                ApplicationThemeColor.getInstance().getForegroundColorWithAlpha(50),
+                ApplicationThemeColor.getInstance().getForegroundColorWithAlpha(50),
+                ApplicationThemeColor.getInstance().getForegroundColor()
+        };
+
+        ColorStateList myList = new ColorStateList(states, colors);
+        return myList;
     }
 
     private void tabItemClick(int type) {

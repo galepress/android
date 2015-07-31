@@ -1594,6 +1594,7 @@ public class DataApi extends Object {
 
                                 }
                             }
+
                             // Content'in sunucudan silinmis olmasi durumu icin local content'lerin sunucudan gelenler icinde olup olmadigini kontrol ediyoruz.
                             List<L_Content> localContents = databaseApi.getAllContents(null);
                             for (L_Content l_content : localContents) {
@@ -1606,6 +1607,9 @@ public class DataApi extends Object {
                                 }
                                 if (deletedInServer && !l_content.isPdfDownloaded()) {
                                     deleteContent(l_content);
+                                } else if(l_content.isMaster()){ // Localde master olan icerik eger serverdan silinmisse localden de master ozelligi kaldirilmasi gerekiyor
+                                    l_content.setMaster(false);
+                                    getDatabaseApi().updateContent(l_content,false);
                                 }
                             }
 

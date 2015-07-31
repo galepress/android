@@ -846,15 +846,17 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
     private ColorStateList createTabTitleColorStateList(){
         int[][] states = new int[][] {
-                new int[] {android.R.attr.state_enabled},
+                new int[] {android.R.attr.state_pressed},
+                new int[] {android.R.attr.state_focused},
                 new int[] {android.R.attr.state_selected},
                 new int [] {}
         };
 
         int[] colors = new int[] {
-                ApplicationThemeColor.getInstance().getForegroundColor(),
                 ApplicationThemeColor.getInstance().getForegroundColorWithAlpha(50),
-                ApplicationThemeColor.getInstance().getForegroundColorWithAlpha(50)
+                ApplicationThemeColor.getInstance().getForegroundColorWithAlpha(50),
+                ApplicationThemeColor.getInstance().getForegroundColorWithAlpha(50),
+                ApplicationThemeColor.getInstance().getForegroundColor()
         };
 
         ColorStateList myList = new ColorStateList(states, colors);
@@ -874,6 +876,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         title.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())
                 , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 18, getResources().getDisplayMetrics())));
         title.setTextColor(createTabTitleColorStateList());
+        title.setClickable(true);
         title.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
         title.setText(titleText);
 
