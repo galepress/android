@@ -23,7 +23,7 @@ public class TabbarItem implements Serializable {
         try {
             this.iconUrl = jsonObject.getString("tabLogoUrl");
             this.webUrl = jsonObject.getString("tabUrl");
-            this.title = "Test"; //Burasi servisten gelecek
+            this.title = jsonObject.getString("tabTitle");
         } catch (JSONException e) {
             this.iconUrl = "";
             this.webUrl = "";

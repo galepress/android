@@ -1605,11 +1605,13 @@ public class DataApi extends Object {
                                         break;
                                     }
                                 }
-                                if (deletedInServer && !l_content.isPdfDownloaded()) {
-                                    deleteContent(l_content);
-                                } else if(l_content.isMaster()){ // Localde master olan icerik eger serverdan silinmisse localden de master ozelligi kaldirilmasi gerekiyor
-                                    l_content.setMaster(false);
-                                    getDatabaseApi().updateContent(l_content,false);
+                                if (deletedInServer) {
+                                    if(!l_content.isPdfDownloaded())
+                                        deleteContent(l_content);
+                                    else if(l_content.isMaster()){ // Localde master olan icerik eger serverdan silinmisse localden de master ozelligi kaldirilmasi gerekiyor
+                                        l_content.setMaster(false);
+                                        getDatabaseApi().updateContent(l_content,false);
+                                    }
                                 }
                             }
 

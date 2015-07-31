@@ -740,7 +740,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         GalePressApplication.getInstance().onActivityResult(requestCode,resultCode,data);
         if(resultCode == 101) { //reader view return
             int type = data.getIntExtra("SelectedTab", 0);
-            mTabHost.getTabWidget().setCurrentTab(type);
+            //mTabHost.getTabWidget().setCurrentTab(type);
 
             if(type == 0){
                 mTabHost.setCurrentTabByTag(HOME_TAB_TAG);
