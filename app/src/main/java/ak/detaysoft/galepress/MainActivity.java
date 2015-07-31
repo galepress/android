@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -843,6 +844,23 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         return null;
     }
 
+    private ColorStateList createTabTitleColorStateList(){
+        int[][] states = new int[][] {
+                new int[] {android.R.attr.state_enabled},
+                new int[] {android.R.attr.state_selected},
+                new int [] {}
+        };
+
+        int[] colors = new int[] {
+                ApplicationThemeColor.getInstance().getForegroundColor(),
+                ApplicationThemeColor.getInstance().getForegroundColorWithAlpha(50),
+                ApplicationThemeColor.getInstance().getForegroundColorWithAlpha(50)
+        };
+
+        ColorStateList myList = new ColorStateList(states, colors);
+        return myList;
+    }
+
     private View createTabIndicator(String titleText, Drawable drawable, TabbarItem item) {
         View tabIndicator = LayoutInflater.from(this).inflate(R.layout.tab_indicator, tempTabHost.getTabWidget(), false);
         tabIndicator.setBackgroundColor(Color.TRANSPARENT);
@@ -855,7 +873,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         TextView title = (TextView) tabIndicator.findViewById(R.id.text_view_tab_title);
         title.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())
                 , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 18, getResources().getDisplayMetrics())));
-        title.setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
+        title.setTextColor(createTabTitleColorStateList());
         title.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
         title.setText(titleText);
 

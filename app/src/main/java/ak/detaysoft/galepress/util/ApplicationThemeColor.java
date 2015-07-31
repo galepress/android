@@ -290,6 +290,10 @@ public class ApplicationThemeColor {
         return Color.parseColor(foregroundColor);
     }
 
+    public int getForegroundColorWithAlpha(int alpha){
+        return Color.parseColor(convertIntAlphaToHex(alpha)+foregroundColor.substring(1));
+    }
+
     public ColorFilter getTransparentForegroundColorFilter(){
         int color = getThemeTranperentForegroundColor();
         int red = (color & 0xFF0000) / 0xFFFF;
