@@ -595,6 +595,8 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             int customIndex = tabIndex;
             for(TabbarItem item : GalePressApplication.getInstance().getTabList()){
                 ImageView img = ((ImageView)((LinearLayout)mTabHost.getTabWidget().getChildAt(customIndex)).getChildAt(0));
+                TextView txt = ((TextView)((LinearLayout)mTabHost.getTabWidget().getChildAt(customIndex)).getChildAt(1));
+                txt.setText(item.getTitle());
                 ApplicationThemeColor.getInstance().paintRemoteIcon(this, item, img);
                 customIndex++;
             }
