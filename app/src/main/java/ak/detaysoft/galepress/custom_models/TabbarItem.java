@@ -5,6 +5,8 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 
+import ak.detaysoft.galepress.GalePressApplication;
+
 /**
  * Created by p1025 on 21.05.2015.
  */
@@ -21,7 +23,16 @@ public class TabbarItem implements Serializable {
     public TabbarItem(JSONObject jsonObject){
 
         try {
-            this.iconUrl = jsonObject.getString("tabLogoUrl");
+            if(GalePressApplication.getInstance().getDeviceDensity() == GalePressApplication.getInstance().XXH_DPI){
+                this.iconUrl = jsonObject.getString("tabLogoUrl_3x");
+            } else if(GalePressApplication.getInstance().getDeviceDensity() == GalePressApplication.getInstance().XH_DPI){
+                this.iconUrl = jsonObject.getString("tabLogoUrl_2x");
+            } else if(GalePressApplication.getInstance().getDeviceDensity() == GalePressApplication.getInstance().H_DPI){
+                this.iconUrl = jsonObject.getString("tabLogoUrl_1x");
+            } else {
+                this.iconUrl = jsonObject.getString("tabLogoUrl");
+            }
+
             this.webUrl = jsonObject.getString("tabUrl");
             this.title = jsonObject.getString("tabTitle");
         } catch (JSONException e) {

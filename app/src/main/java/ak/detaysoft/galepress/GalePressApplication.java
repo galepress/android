@@ -106,6 +106,11 @@ public class GalePressApplication
     public boolean isTablistChanced = true;
 
 
+    public final int M_DPI = 0;
+    public final int H_DPI = 1;
+    public final int XH_DPI = 2;
+    public final int XXH_DPI = 3;
+
     Foreground.Listener myListener = new Foreground.Listener(){
         public void onBecameForeground(){
             mLocationClient.connect();
@@ -573,6 +578,22 @@ public class GalePressApplication
             ((MainActivity)getCurrentActivity()).getCurrentLibraryFragment().updateBanner();
 
 
+    }
+
+    public int getDeviceDensity(){
+        double density = getResources().getDisplayMetrics().density;
+        if (density >= 3.0) {
+            return XXH_DPI;
+        }
+        if (density >= 2.0) {
+            return XH_DPI;
+        }
+        if (density >= 1.5 && density < 2.0) {
+            return H_DPI;
+        }
+        else {
+            return M_DPI;
+        }
     }
 
     public void setTabList(JSONObject response) {
