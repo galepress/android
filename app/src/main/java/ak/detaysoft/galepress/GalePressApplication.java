@@ -651,8 +651,9 @@ public class GalePressApplication
 
         tabList = newTabList;
 
-        if(getCurrentActivity()!= null && getCurrentActivity().getClass() == MainActivity.class && isTablistChanced)
+        if(getCurrentActivity()!= null && getCurrentActivity().getClass() == MainActivity.class && isTablistChanced){
             ((MainActivity)getCurrentActivity()).setCustomTabs();
+        }
     }
 
     public ArrayList<TabbarItem> getTabList(){
