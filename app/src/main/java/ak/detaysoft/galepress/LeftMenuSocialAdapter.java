@@ -67,12 +67,12 @@ public class LeftMenuSocialAdapter extends BaseAdapter {
                 image.setBackground(ApplicationThemeColor.getInstance().paintIcons(mContext, ApplicationThemeColor.TWITTER_ICON));
             else
                 image.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(mContext, ApplicationThemeColor.TWITTER_ICON));
-        } else if(mList.get(position).getKey().toLowerCase().contains("instagram")) {
+        } else if(mList.get(position).getKey().toLowerCase().contains("instagram") || mList.get(position).getKey().toLowerCase().contains("ınstagram")) {
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(ApplicationThemeColor.getInstance().paintIcons(mContext, ApplicationThemeColor.INSTAGRAM_ICON));
             else
                 image.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(mContext, ApplicationThemeColor.INSTAGRAM_ICON));
-        } else if(mList.get(position).getKey().toLowerCase().contains("linkedin")) {
+        } else if(mList.get(position).getKey().toLowerCase().contains("linkedin") || mList.get(position).getKey().toLowerCase().contains("linkedın")) {
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(ApplicationThemeColor.getInstance().paintIcons(mContext, ApplicationThemeColor.LINKEDIN_ICON));
             else

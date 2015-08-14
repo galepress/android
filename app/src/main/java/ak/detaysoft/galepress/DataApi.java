@@ -425,7 +425,6 @@ public class DataApi extends Object {
                         loginActivity.openMasterContent();
                     }
                 }
-
             }
             else{
                 updateCompleted();

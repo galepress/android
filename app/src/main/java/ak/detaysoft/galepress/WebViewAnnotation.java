@@ -3,6 +3,7 @@ package ak.detaysoft.galepress;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.GeolocationPermissions;
@@ -13,6 +14,9 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import com.artifex.mupdfdemo.*;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 import ak.detaysoft.galepress.util.CustomPulseProgress;
 
@@ -126,7 +130,6 @@ public class WebViewAnnotation extends WebView {
         this.setVerticalScrollBarEnabled(false);
         this.setBackgroundColor(Color.TRANSPARENT);
         final WebViewAnnotation web = this;
-
 
         if(linkInfoExternal.mustHorizontalScrollLock()){
             this.setOnTouchListener(new OnTouchListener() {

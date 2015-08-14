@@ -1,7 +1,12 @@
 package ak.detaysoft.galepress;
 
 import android.app.Activity;
+import android.app.PendingIntent;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentSender;
+import android.content.ServiceConnection;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -10,6 +15,8 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.os.RemoteException;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -23,11 +30,16 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.vending.billing.IInAppBillingService;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 
@@ -59,6 +71,19 @@ public class ContentDetailPopupActivity extends Activity{
     public ContentHolder contentHolder;
     public boolean isFirstOpen;
     private float animationStartX, animationStartY;
+
+    private IInAppBillingService mService;
+    private ServiceConnection mServiceConn;
+    private boolean blnBind = false;
+
+    private final static int BILLING_RESPONSE_RESULT_OK = 0;
+    private final static int RESULT_USER_CANCELED = 1;
+    private final static int RESULT_BILLING_UNAVAILABLE = 3;
+    private final static int RESULT_ITEM_UNAVAILABLE = 4;
+    private final static int RESULT_DEVELOPER_ERROR = 5;
+    private final static int RESULT_ERROR = 6;
+    private final static int RESULT_ITEM_ALREADY_OWNED = 7;
+    private final static int RESULT_ITEM_NOT_OWNED = 8;
 
     public class ContentHolder{
         Button updateButton;
@@ -103,6 +128,8 @@ public class ContentDetailPopupActivity extends Activity{
             Log.e("Popup Content error", e.toString());
             finish();
         }
+
+        initBilling();
 
         Intent intent = getIntent();
         if(intent.hasExtra("animationStartX") && intent.hasExtra("animationStartY")){
@@ -228,11 +255,64 @@ public class ContentDetailPopupActivity extends Activity{
             public void onClick(View v) {
                 if(DataApi.isConnectedToInternet()){
 
-                    if (GalePressApplication.getInstance().getDataApi().downloadPdfTask == null
-                            || (GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() != AsyncTask.Status.RUNNING)){
-                        downloadButton.startAnim();
+                    if(content.isBuyable() && !content.isOwnedProduct()){
+                        if (!blnBind && mService == null) {
+                            Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLING_RESULT_BILLING_UNAVAILABLE), Toast.LENGTH_SHORT)
+                                    .show();
+                            return;
+                        }
+
+                        try {
+                            Bundle buyIntentBundle = mService.getBuyIntent(3, getPackageName(),
+                                    content.getIdentifier(), "inapp", "bGoa+V7g/yqDXvKRqq+JTFn4uQZbPiQJo4pf9RzJ");
+                            PendingIntent pendingIntent = buyIntentBundle.getParcelable("BUY_INTENT");
+
+                            if (buyIntentBundle.getInt("RESPONSE_CODE") == BILLING_RESPONSE_RESULT_OK) { // Urun satin alinmamis
+                                // Start purchase flow (this brings up the Google Play UI).
+                                // Result will be delivered through onActivityResult().
+                                startIntentSenderForResult(pendingIntent.getIntentSender(),
+                                        1001, new Intent(), Integer.valueOf(0), Integer.valueOf(0),
+                                        Integer.valueOf(0));
+                            } else if (buyIntentBundle.getInt("RESPONSE_CODE") == RESULT_ITEM_ALREADY_OWNED){ // Urun daha once alinmis
+                                Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLING_ITEM_ALREADY_OWNED), Toast.LENGTH_SHORT)
+                                        .show();
+                                if (GalePressApplication.getInstance().getDataApi().downloadPdfTask == null
+                                        || (GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() != AsyncTask.Status.RUNNING)){
+                                    downloadButton.startAnim();
+                                }
+                                GalePressApplication.getInstance().getDataApi().getPdf(content, ContentDetailPopupActivity.this);
+                            } else if (buyIntentBundle.getInt("RESPONSE_CODE") == RESULT_USER_CANCELED){ // Hata var
+                                Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLING_RESULT_USER_CANCELED), Toast.LENGTH_SHORT)
+                                        .show();
+                            } else if (buyIntentBundle.getInt("RESPONSE_CODE") == RESULT_BILLING_UNAVAILABLE){ // Hata var
+                                Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLING_RESULT_BILLING_UNAVAILABLE), Toast.LENGTH_SHORT)
+                                        .show();
+                            } else if (buyIntentBundle.getInt("RESPONSE_CODE") == RESULT_ITEM_UNAVAILABLE){ // Hata var
+                                Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLIN_RESULT_ITEM_UNAVAILABLE), Toast.LENGTH_SHORT)
+                                        .show();
+                            } else if (buyIntentBundle.getInt("RESPONSE_CODE") == RESULT_ERROR){ // Hata var
+                                Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLING_RESULT_ERROR), Toast.LENGTH_SHORT)
+                                        .show();
+                            } else { //  Beklenmedik Hata var
+                                Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLING_UNEXPECTED), Toast.LENGTH_SHORT)
+                                        .show();
+                            }
+
+                        } catch (RemoteException e) {
+                            e.printStackTrace();
+                        } catch (IntentSender.SendIntentException e) {
+                            e.printStackTrace();
+                        } catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    } else {
+                        if (GalePressApplication.getInstance().getDataApi().downloadPdfTask == null
+                                || (GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() != AsyncTask.Status.RUNNING)){
+                            downloadButton.startAnim();
+                        }
+                        GalePressApplication.getInstance().getDataApi().getPdf(content, ContentDetailPopupActivity.this);
                     }
-                    GalePressApplication.getInstance().getDataApi().getPdf(content, ContentDetailPopupActivity.this);
+
                 }
             }
         });
@@ -350,6 +430,26 @@ public class ContentDetailPopupActivity extends Activity{
         }
     }
 
+    private void initBilling(){
+
+        mServiceConn = new ServiceConnection() {
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+                mService = null;
+            }
+
+            @Override
+            public void onServiceConnected(ComponentName name,
+                                           IBinder service) {
+                mService = IInAppBillingService.Stub.asInterface(service);
+            }
+        };
+
+        Intent serviceIntent = new Intent("com.android.vending.billing.InAppBillingService.BIND");
+        serviceIntent.setPackage("com.android.vending");
+        blnBind = bindService(serviceIntent, mServiceConn, Context.BIND_AUTO_CREATE);
+    }
+
     private void displayImage(final boolean isDownload, final boolean isThumnail, final ImageView image, final CustomPulseProgress loading, String imagePath) {
         DisplayImageOptions displayConfig;
         if (isThumnail) {
@@ -461,6 +561,65 @@ public class ContentDetailPopupActivity extends Activity{
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
+        if (mService != null) {
+            unbindService(mServiceConn);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1001) {
+
+            int responseCode = data.getIntExtra("RESPONSE_CODE", 0);
+            String purchaseData = data.getStringExtra("INAPP_PURCHASE_DATA");
+            String dataSignature = data.getStringExtra("INAPP_DATA_SIGNATURE");
+
+            if (resultCode == RESULT_OK && responseCode == BILLING_RESPONSE_RESULT_OK) {
+                try {
+                    Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLING_RESPONSE_RESULT_OK), Toast.LENGTH_SHORT)
+                            .show();
+                    content.setOwnedProduct(true);
+                    GalePressApplication.getInstance().getDataApi().getDatabaseApi().updateContent(content, false);
+                    if (GalePressApplication.getInstance().getDataApi().downloadPdfTask == null
+                            || (GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() != AsyncTask.Status.RUNNING)){
+                        downloadButton.startAnim();
+                    }
+                    GalePressApplication.getInstance().getDataApi().getPdf(content, ContentDetailPopupActivity.this);
+                    JSONObject jo = new JSONObject(purchaseData);
+                    String sku = jo.getString("productId");
+                }
+                catch (JSONException e) {
+                    Toast.makeText(ContentDetailPopupActivity.this, "act result json parse error - "+e.getMessage(), Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
+            } else if(resultCode == RESULT_OK && responseCode == RESULT_ITEM_ALREADY_OWNED){
+                Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLING_ITEM_ALREADY_OWNED), Toast.LENGTH_SHORT)
+                        .show();
+                content.setOwnedProduct(true);
+                GalePressApplication.getInstance().getDataApi().getDatabaseApi().updateContent(content, false);
+                if (GalePressApplication.getInstance().getDataApi().downloadPdfTask == null
+                        || (GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() != AsyncTask.Status.RUNNING)){
+                    downloadButton.startAnim();
+                }
+                GalePressApplication.getInstance().getDataApi().getPdf(content, ContentDetailPopupActivity.this);
+            } else if (responseCode == RESULT_USER_CANCELED){ // Hata var
+                Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLING_RESULT_USER_CANCELED), Toast.LENGTH_SHORT)
+                        .show();
+            } else if (responseCode == RESULT_BILLING_UNAVAILABLE){ // Hata var
+                Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLING_RESULT_BILLING_UNAVAILABLE), Toast.LENGTH_SHORT)
+                        .show();
+            } else if (responseCode == RESULT_ITEM_UNAVAILABLE){ // Hata var
+                Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLIN_RESULT_ITEM_UNAVAILABLE), Toast.LENGTH_SHORT)
+                        .show();
+            } else if (responseCode == RESULT_ERROR){ // Hata var
+                Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLING_RESULT_ERROR), Toast.LENGTH_SHORT)
+                        .show();
+            } else { //  Beklenmedik Hata var
+                Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLING_UNEXPECTED), Toast.LENGTH_SHORT)
+                        .show();
+            }
+        }
     }
 
     @Override

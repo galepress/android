@@ -52,6 +52,8 @@ public class L_Content implements Serializable {
     @DatabaseField private String largeCoverImageDownloadPath;
     @DatabaseField private String smallCoverImageDownloadPath;
     @DatabaseField private boolean isForceDetele;
+    @DatabaseField private String identifier;
+    @DatabaseField private boolean isOwnedProduct;
 
     private ArrayList<L_Category> categories;
     private String pdfPath;
@@ -334,6 +336,22 @@ public class L_Content implements Serializable {
     public void setForceDetele(boolean isForceDetele) {
         this.isForceDetele = isForceDetele;
     }
+
+    public String getIdentifier() {
+        return identifier;
+    }
+
+    public void setIdentifier(String identifier) {
+        this.identifier = identifier;
+    }
+
+    public boolean isOwnedProduct() {
+        return isOwnedProduct;
+    }
+
+    public void setOwnedProduct(boolean isOwnedProduct) {
+        this.isOwnedProduct = isOwnedProduct;
+    }
 // Model Methods
 
     public L_Content(R_ContentDetail remoteContent){
@@ -373,6 +391,7 @@ public class L_Content implements Serializable {
         this.contentOrientation = remoteContent.getContentOrientation();
         this.contentOrderNo = remoteContent.getContentOrderNo();
         this.isForceDetele = remoteContent.isForceDelete();
+        this.identifier = remoteContent.getContentIdentifier();
     }
 
     public void updateWithRemoteContent(R_ContentDetail remoteContent){
@@ -400,6 +419,7 @@ public class L_Content implements Serializable {
         this.contentOrientation = remoteContent.getContentOrientation();
         this.contentOrderNo = remoteContent.getContentOrderNo();
         this.isForceDetele = remoteContent.isForceDelete();
+        this.identifier = remoteContent.getContentIdentifier();
     }
 
     public void updateWithImageDownloadUrl(String url, boolean isLargeCover){
@@ -445,6 +465,8 @@ public class L_Content implements Serializable {
                 ", largeCoverImageDownloadPath='"+largeCoverImageDownloadPath+'\''+
                 ", smallCoverImageDownloadPath='"+smallCoverImageDownloadPath+'\''+
                 ", isForceDetele=" + isForceDetele +
+                ", identifier='"+identifier+'\''+
+                ", isOwnedProduct=" + isOwnedProduct +
                 '}';
     }
 }

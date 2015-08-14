@@ -154,4 +154,17 @@
     <string name="left_menu_setting">Kullanıcı Bilgileri</string>
     <string name="viewer_facebook_login_warning">Facebook girişi yapılamadı</string>
     <string name="viewer_facebook_login_appId_warning">Lütfen uygulama id girin</string>
+
+
+    <string name="BILLING_RESPONSE_RESULT_OK">Satın alma başarılı</string>
+    <string name="BILLING_RESULT_USER_CANCELED">Satın alma iptal edildi</string>
+    <string name="BILLING_RESULT_BILLING_UNAVAILABLE">Google servislere ulaşılamıyor</string>
+    <string name="BILLIN_RESULT_ITEM_UNAVAILABLE">Ürün kullanımda değil</string>
+    <string name="BILLING_RESULT_DEVELOPER_ERROR">Geliştirici hatası</string>
+    <string name="BILLING_RESULT_ERROR">Satın alma başarısız</string>
+    <string name="BILLING_ITEM_ALREADY_OWNED">Ürün daha önce alındı</string>
+    <string name="BILLING_RESULT_ITEM_NOT_OWNED">Ürün daha önce alınmamış</string>
+    <string name="BILLING_UNEXPECTED">Beklenmedik Hata oluştu</string>
+
+
 </resources>
