@@ -892,6 +892,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         }
         clearReferences();
         GalePressApplication.getInstance().setMainActivity(null);
+        GalePressApplication.getInstance().destroyBillingServices();
         super.onDestroy();
     }
 

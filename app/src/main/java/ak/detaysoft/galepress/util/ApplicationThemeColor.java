@@ -100,6 +100,10 @@ public class ApplicationThemeColor {
     public static final int DOWNLOAD_CONTENT_IMG1 = 55;
     public static final int DOWNLOAD_CONTENT_IMG2 = 56;
     public static final int CANCEL_CONTENT_DOWNLOAD = 57;
+    public static final int DOWNLOAD_CONTENT_DOWNLOAD_PURCHASED = 58;
+    public static final int DOWNLOAD_CONTENT_DOWNLOAD_PURCHASED_OK = 59;
+    public static final int DOWNLOAD_CONTENT_PURCHASE_OK = 60;
+
 
     //Servisten gelen iconlar icin
     public static final int CUSTOM_TAB_ICON = 101;
@@ -718,11 +722,29 @@ public class ApplicationThemeColor {
 
             pressed = context.getResources().getDrawable(R.drawable.popup_download_img1);
             pressed.setColorFilter(getThemeColorFilter());
-        } else {
+        } else if(resourceType == DOWNLOAD_CONTENT_IMG2){
             normal = context.getResources().getDrawable(R.drawable.popup_download_img2);
             normal.setColorFilter(getReverseThemeColorFilter());
 
             pressed = context.getResources().getDrawable(R.drawable.popup_download_img2);
+            pressed.setColorFilter(getThemeColorFilter());
+        } else if(resourceType == DOWNLOAD_CONTENT_DOWNLOAD_PURCHASED){
+            normal = context.getResources().getDrawable(R.drawable.popup_download_img3);
+            normal.setColorFilter(getReverseThemeColorFilter());
+
+            pressed = context.getResources().getDrawable(R.drawable.popup_download_img3);
+            pressed.setColorFilter(getThemeColorFilter());
+        } else if(resourceType == DOWNLOAD_CONTENT_DOWNLOAD_PURCHASED_OK){
+            normal = context.getResources().getDrawable(R.drawable.popup_download_img_purchase_ok);
+            normal.setColorFilter(getReverseThemeColorFilter());
+
+            pressed = context.getResources().getDrawable(R.drawable.popup_download_img_purchase_ok);
+            pressed.setColorFilter(getThemeColorFilter());
+        } else {
+            normal = context.getResources().getDrawable(R.drawable.popup_download_img_purchase_ok_center);
+            normal.setColorFilter(getReverseThemeColorFilter());
+
+            pressed = context.getResources().getDrawable(R.drawable.popup_download_img_purchase_ok_center);
             pressed.setColorFilter(getThemeColorFilter());
         }
 

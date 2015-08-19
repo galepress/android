@@ -2,15 +2,19 @@ package ak.detaysoft.galepress;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.location.Location;
 
+import com.android.vending.billing.IInAppBillingService;
 import com.artifex.mupdfdemo.MuPDFActivity;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.os.PowerManager;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
@@ -111,6 +115,11 @@ public class GalePressApplication
     public final int XH_DPI = 2;
     public final int XXH_DPI = 3;
 
+
+    private IInAppBillingService mService;
+    private ServiceConnection mServiceConn;
+    private boolean blnBind = false;
+
     Foreground.Listener myListener = new Foreground.Listener(){
         public void onBecameForeground(){
             mLocationClient.connect();
@@ -161,6 +170,7 @@ public class GalePressApplication
         ImageLoader.getInstance().init(loaderConfig);
 
         parseApplicationPlist();
+        initBillingServices();
 
         //Uygulama ilk acildiginda localde tutulan renk, banner ve tabbar datalarini alabilmek icin
         ApplicationThemeColor.getInstance().setParameters(null);
@@ -185,6 +195,12 @@ public class GalePressApplication
         mEditor = mPrefs.edit();
         mLocationClient = new LocationClient(this, this, this);
         requestCount = -101;
+    }
+
+    public void destroyBillingServices(){
+        if (mService != null) {
+            unbindService(mServiceConn);
+        }
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
@@ -676,5 +692,68 @@ public class GalePressApplication
 
     public void setMuPDFActivity(MuPDFActivity muPDFActivity) {
         this.muPDFActivity = muPDFActivity;
+    }
+
+    public void initBillingServices(){
+        mServiceConn = new ServiceConnection() {
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+                mService = null;
+            }
+
+            @Override
+            public void onServiceConnected(ComponentName name,
+                                           IBinder service) {
+                mService = IInAppBillingService.Stub.asInterface(service);
+            }
+        };
+
+        Intent serviceIntent = new Intent("com.android.vending.billing.InAppBillingService.BIND");
+        serviceIntent.setPackage("com.android.vending");
+        blnBind = bindService(serviceIntent, mServiceConn, Context.BIND_AUTO_CREATE);
+    }
+
+    public IInAppBillingService getmService() {
+        return mService;
+    }
+
+    public ServiceConnection getmServiceConn() {
+        return mServiceConn;
+    }
+
+    public boolean isBlnBind() {
+        return blnBind;
+    }
+
+    public String md5(String s) {
+        try {
+            java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
+            byte[] array = md.digest(s.getBytes());
+            StringBuffer sb = new StringBuffer();
+            for (int i = 0; i < array.length; ++i) {
+                sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1,3));
+            }
+            return sb.toString();
+        } catch (java.security.NoSuchAlgorithmException e) {
+        }
+        return null;
+    }
+
+    public String prepareMD5ForStorage(String s){
+        int mod = 0;
+        try{
+            mod = getApplicationId()%4;
+        } catch (Exception e){
+            mod = 0;
+        }
+
+        String str1 = "";
+        if(mod != 0)
+            str1 = s.substring(0,mod);
+        String str2 = s.substring(mod, mod+1);
+        String str3 = s.substring(mod+1, mod+2);
+        String str4 = s.substring(mod+2);
+
+        return str1+str3+str2+str4;
     }
 }

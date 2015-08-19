@@ -2,11 +2,8 @@ package ak.detaysoft.galepress;
 
 import android.app.Activity;
 import android.app.PendingIntent;
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
-import android.content.ServiceConnection;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -15,7 +12,6 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
 import android.view.Gravity;
@@ -32,7 +28,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.vending.billing.IInAppBillingService;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
@@ -42,6 +37,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
@@ -72,10 +68,6 @@ public class ContentDetailPopupActivity extends Activity{
     public boolean isFirstOpen;
     private float animationStartX, animationStartY;
 
-    private IInAppBillingService mService;
-    private ServiceConnection mServiceConn;
-    private boolean blnBind = false;
-
     private final static int BILLING_RESPONSE_RESULT_OK = 0;
     private final static int RESULT_USER_CANCELED = 1;
     private final static int RESULT_BILLING_UNAVAILABLE = 3;
@@ -83,7 +75,9 @@ public class ContentDetailPopupActivity extends Activity{
     private final static int RESULT_DEVELOPER_ERROR = 5;
     private final static int RESULT_ERROR = 6;
     private final static int RESULT_ITEM_ALREADY_OWNED = 7;
-    private final static int RESULT_ITEM_NOT_OWNED = 8;
+    private final static int RESULT_ITEM_NOT_OWNED = 8; //For consumable product
+
+    private Button hele;
 
     public class ContentHolder{
         Button updateButton;
@@ -128,8 +122,6 @@ public class ContentDetailPopupActivity extends Activity{
             Log.e("Popup Content error", e.toString());
             finish();
         }
-
-        initBilling();
 
         Intent intent = getIntent();
         if(intent.hasExtra("animationStartX") && intent.hasExtra("animationStartY")){
@@ -250,20 +242,21 @@ public class ContentDetailPopupActivity extends Activity{
         });
 
         downloadButton = (CustomDownloadButton)findViewById(R.id.content_detail_download);
+        initDownloadButton();
         downloadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(DataApi.isConnectedToInternet()){
 
                     if(content.isBuyable() && !content.isOwnedProduct()){
-                        if (!blnBind && mService == null) {
+                        if (!GalePressApplication.getInstance().isBlnBind() && GalePressApplication.getInstance().getmService() == null) {
                             Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLING_RESULT_BILLING_UNAVAILABLE), Toast.LENGTH_SHORT)
                                     .show();
                             return;
                         }
 
                         try {
-                            Bundle buyIntentBundle = mService.getBuyIntent(3, getPackageName(),
+                            Bundle buyIntentBundle = GalePressApplication.getInstance().getmService().getBuyIntent(3, getPackageName(),
                                     content.getIdentifier(), "inapp", "bGoa+V7g/yqDXvKRqq+JTFn4uQZbPiQJo4pf9RzJ");
                             PendingIntent pendingIntent = buyIntentBundle.getParcelable("BUY_INTENT");
 
@@ -430,24 +423,83 @@ public class ContentDetailPopupActivity extends Activity{
         }
     }
 
-    private void initBilling(){
+    private void initDownloadButton(){
+        String price = "";
 
-        mServiceConn = new ServiceConnection() {
-            @Override
-            public void onServiceDisconnected(ComponentName name) {
-                mService = null;
+        if(content.isBuyable()){
+            //Kullanicinin daha once aldigi urunler kontrol ediliyor
+            if (GalePressApplication.getInstance().isBlnBind() && GalePressApplication.getInstance().getmService() != null) {
+                Bundle ownedItems;
+                try {
+                    ownedItems = GalePressApplication.getInstance().getmService().getPurchases(3, getPackageName(), "inapp", null);
+                    int response = ownedItems.getInt("RESPONSE_CODE");
+
+                    ArrayList<String> ownedSkus = new ArrayList<String>();
+                    if (response == 0){
+                        ownedSkus = ownedItems.getStringArrayList("INAPP_PURCHASE_ITEM_LIST");
+                    }
+
+                    if(ownedSkus.size() > 0){
+                        for(String skuItem : ownedSkus){
+                            if(skuItem.compareTo(content.getIdentifier()) == 0){
+                                content.setOwnedProduct(true);
+                                GalePressApplication.getInstance().getDatabaseApi().updateContent(content, false);
+                                break;
+                            }
+                        }
+
+                    }
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+
+
+                //Satin alinabilen urunse fiyati kontrol ediliyor
+                ArrayList<String> skuList = new ArrayList<String>();
+                skuList.add(content.getIdentifier());
+                Bundle querySkus = new Bundle();
+                querySkus.putStringArrayList("ITEM_ID_LIST", skuList);
+
+                Bundle skuDetails;
+                try {
+                    skuDetails = GalePressApplication.getInstance().getmService().getSkuDetails(3, getPackageName(), "inapp", querySkus);
+
+                    int response = skuDetails.getInt("RESPONSE_CODE");
+
+                    if (response == 0){
+                        ArrayList<String> responseList = skuDetails.getStringArrayList("DETAILS_LIST");
+
+                        if (responseList.size() != 0) {
+                            for (String thisResponse : responseList) {
+                                JSONObject object = null;
+                                try {
+                                    object = new JSONObject(thisResponse);
+                                    price = object.getString("price");
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+
+                    }
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
             }
+        }
 
-            @Override
-            public void onServiceConnected(ComponentName name,
-                                           IBinder service) {
-                mService = IInAppBillingService.Stub.asInterface(service);
+        if(content.isBuyable()){
+            if(content.isOwnedProduct()){
+                downloadButton.init(CustomDownloadButton.DOWNLOAD_PURCHASED, price);
+            } else {
+                if(price.length() != 0)
+                    downloadButton.init(CustomDownloadButton.PURCHASE, price);
+                else
+                    downloadButton.init(CustomDownloadButton.DOWNLOAD, price);
             }
-        };
-
-        Intent serviceIntent = new Intent("com.android.vending.billing.InAppBillingService.BIND");
-        serviceIntent.setPackage("com.android.vending");
-        blnBind = bindService(serviceIntent, mServiceConn, Context.BIND_AUTO_CREATE);
+        } else {
+            downloadButton.init(CustomDownloadButton.DOWNLOAD, price);
+        }
     }
 
     private void displayImage(final boolean isDownload, final boolean isThumnail, final ImageView image, final CustomPulseProgress loading, String imagePath) {
@@ -561,10 +613,6 @@ public class ContentDetailPopupActivity extends Activity{
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
-        if (mService != null) {
-            unbindService(mServiceConn);
-        }
     }
 
     @Override
