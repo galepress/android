@@ -45,6 +45,7 @@ public class CustomDownloadButton extends RelativeLayout {
 
     public void init(int typ, String price){
         this.type = typ;
+        type = RESTORE_PURCHASED;
         int defaultWith = 0;
 
         if(this.type != PURCHASE_DOWNLOAD){
