@@ -12,6 +12,7 @@ import android.graphics.PointF;
 import android.graphics.RectF;
 import android.net.Uri;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -635,7 +636,6 @@ public class MuPDFPageView extends PageView implements MuPDFView {
                             webView.loadUrl("javascript:" + stopScriptVideo );
                         }
                     }
-
 
                 } else if(view instanceof WebViewAnnotationWithChromium){
                     WebViewAnnotationWithChromium webView = (WebViewAnnotationWithChromium) view;

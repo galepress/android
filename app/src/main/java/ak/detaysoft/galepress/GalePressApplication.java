@@ -740,7 +740,7 @@ public class GalePressApplication
     }
 
     public String prepareMD5ForStorage(String s){
-        int mod = 0;
+        int mod;
         try{
             mod = getApplicationId()%4;
         } catch (Exception e){

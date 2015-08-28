@@ -59,11 +59,10 @@
     <string name="format_currently_not_supported">Format currently not supported</string>
     <string name="toggle_reflow_mode">Toggle reflow mode</string>
     <string name="user_information_check">Kullanıcı bilgileri kontrol ediliyor...</string>
-    <string name="viewer_login_uname">Kullanıcı Adı...</string>
-    <string name="viewer_login_pass">Şifre...</string>
-    <string name="viewer_login_appId">Uygulama ID...</string>
-    <string name="viewer_login_login">Giriş</string>
-    <string name="viewer_login_logout">Çıkış</string>
+    <string name="KULLANICIADI">Kullanıcı Adı</string>
+    <string name="SIFRE">Şifre</string>
+    <string name="login">Giriş</string>
+    <string name="logout">Çıkış</string>
     <string name="no_customer_application">Uygulama bulunamadı</string>
     <string name="select_customer_application">Lütfen uygulamayı seçin</string>
 
@@ -81,7 +80,6 @@
     <string name="HAYIR">Hayır</string>
     <string name="TAMAM">Tamam</string>
     <string name="UYARI">Uyarı</string>
-    <string name="SIFRE">Şifre</string>
     <string name="HATA">Hata</string>
     <string name="AC">Aç</string>
     <string name="ARA">Ara..</string>
@@ -92,10 +90,11 @@
     <string name="DOWNLOADED">İndirilenler</string>
     <string name="INFO">İnfo</string>
 
+    <string name="INAPPPURCHASE">Uygulama İçi Satın Alma</string>
+
     <string name="WARNING_0">Beklenmedik bir hata oluştu</string>
     <string name="WARNING_1">İnternet bağlantınız bulunmuyor.</string>
     <string name="WARNING_2">Lütfen Şifrenizi Giriniz</string>
-    <string name="WARNING_3">Lütfen oturum açma bilgilerinizi kontrol edin</string>
 
     <string name="WARNING_101">Şifre kabul edilmedi</string>
     <string name="WARNING_102">İçerik bulunamadı</string>
@@ -149,8 +148,7 @@
     <string name="forceUpdateWarnMessage" >Güncel uygulamayı marketten indirmek ister misiniz ?</string>
     <string name="forceUpdateBlockMessage">Uygulama engellenmiştir. Lütfen uygulamayı güncelleyiniz.</string>
     <string name="goToMarket">Markete Git</string>
-    <string name="left_menu_search_hint">Ara...</string>
-    <string name="left_menu_links">Bağlantılar</string>
+    <string name="links">Bağlantılar</string>
     <string name="left_menu_setting">Kullanıcı Bilgileri</string>
     <string name="viewer_facebook_login_warning">Facebook girişi yapılamadı</string>
     <string name="viewer_facebook_login_appId_warning">Lütfen uygulama id girin</string>
@@ -158,13 +156,16 @@
 
     <string name="BILLING_RESPONSE_RESULT_OK">Satın alma başarılı</string>
     <string name="BILLING_RESULT_USER_CANCELED">Satın alma iptal edildi</string>
-    <string name="BILLING_RESULT_BILLING_UNAVAILABLE">Google servislere ulaşılamıyor</string>
+    <string name="BILLING_RESULT_BILLING_UNAVAILABLE">Google servislerine ulaşılamıyor</string>
     <string name="BILLIN_RESULT_ITEM_UNAVAILABLE">Ürün kullanımda değil</string>
-    <string name="BILLING_RESULT_DEVELOPER_ERROR">Geliştirici hatası</string>
     <string name="BILLING_RESULT_ERROR">Satın alma başarısız</string>
-    <string name="BILLING_ITEM_ALREADY_OWNED">Ürün daha önce alındı</string>
-    <string name="BILLING_RESULT_ITEM_NOT_OWNED">Ürün daha önce alınmamış</string>
-    <string name="BILLING_UNEXPECTED">Beklenmedik Hata oluştu</string>
+    <string name="BILLING_ITEM_ALREADY_OWNED">Ürün daha önce satın alındı</string>
+    <string name="BILLING_RESULT_ITEM_NOT_OWNED">Ürün daha önce satın alınmadı</string>
+    <string name="BILLING_UNEXPECTED">Beklenmedik bir hata oluştu</string>
 
-
+    <string name="Error">Error</string>
+    <string name="OK">OK</string>
+    <string name="Open">Open</string>
+    <string name="FacebookLogin">-Facebook ile Bağlan</string>
+    <string name="ChooseApplication">Uygulama seçiniz.</string>
 </resources>

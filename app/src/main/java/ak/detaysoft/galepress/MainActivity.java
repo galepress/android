@@ -890,10 +890,21 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         } catch (Exception e) {
             Logout.e("UnRegister Receiver Error", "> " + e.getMessage());
         }
+
         clearReferences();
         GalePressApplication.getInstance().setMainActivity(null);
-        GalePressApplication.getInstance().destroyBillingServices();
         super.onDestroy();
+    }
+
+    @Override
+    public void onBackPressed() {
+        GalePressApplication.getInstance().destroyBillingServices();
+        try{
+            unregisterReceiver(mConnReceiver);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        super.onBackPressed();
     }
 
     @Override
@@ -991,4 +1002,5 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         if (currActivity != null && currActivity.equals(this))
             GalePressApplication.getInstance().setCurrentActivity(null);
     }
+
 }

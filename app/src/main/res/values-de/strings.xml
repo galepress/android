@@ -51,4 +51,21 @@
 	<string name="toggle_links">Markiere und aktiviere Verknüpfungen</string>
 	<string name="underline">Unterstreichen</string>
 	<string name="yes">Ja</string>
+
+    <string name="INAPPPURCHASE">In - App Kauf</string>
+    <string name="Error">Fehler</string>
+    <string name="OK">OK</string>
+    <string name="Open">Öffnen</string>
+    <string name="FacebookLogin">Mit Facebook Einloggen</string>
+    <string name="ChooseApplication">Choose Application</string>
+
+    <string name="BILLING_RESPONSE_RESULT_OK">Payment successful</string>
+    <string name="BILLING_RESULT_USER_CANCELED">Payment canceled</string>
+    <string name="BILLING_RESULT_BILLING_UNAVAILABLE">Google services unavailable</string>
+    <string name="BILLIN_RESULT_ITEM_UNAVAILABLE">Product unavailable</string>
+    <string name="BILLING_RESULT_ERROR">Payment unsuccessful</string>
+    <string name="RESULT_ITEM_ALREADY_OWNED">Product already owned</string>
+    <string name="BILLING_RESULT_ITEM_NOT_OWNED">Product not owned</string>
+    <string name="BILLING_UNEXPECTED">Unexpected error occurred</string>
+
 </resources>

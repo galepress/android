@@ -18,7 +18,7 @@ public class StateListDrawableForPopupButtons extends StateListDrawable {
 
     @Override
     protected boolean onStateChange(int[] stateSet) {
-        boolean isClicked = false;
+        /*boolean isClicked = false;
         for (int state : stateSet) {
             if (state == android.R.attr.state_selected || state == android.R.attr.state_pressed) {
                 isClicked = true;
@@ -29,7 +29,7 @@ public class StateListDrawableForPopupButtons extends StateListDrawable {
         }
         else {
             setColorFilter(ApplicationThemeColor.getInstance().getReverseThemeColorFilter());
-        }
+        }*/
         return super.onStateChange(stateSet);
     }
 }

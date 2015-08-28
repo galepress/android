@@ -77,7 +77,6 @@ public class WebViewAnnotation extends WebView {
 
         @Override
         public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-            Toast.makeText(context, "deneme", Toast.LENGTH_SHORT).show();
             //view.loadUrl("file:///android_asset/annotation_not_loaded.html");
             view.loadUrl("about:blank");
             view.setVisibility(GONE);

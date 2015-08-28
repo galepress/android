@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.animation.Animation;
@@ -19,43 +21,47 @@ import ak.detaysoft.galepress.R;
  */
 public class CustomDownloadButton extends RelativeLayout {
 
-    private ImageView img1;
-    private ImageView img2;
+    private ImageView arrowIcon;
+    private ImageView downloadIcon;
     private TextView priceTextView;
-    private TranslateAnimation moveBottom;
-    private TranslateAnimation moveTop;
+    private TranslateAnimation moveDown;
+    private TranslateAnimation moveUp;
     private Context context;
 
     private int type = 0;
-    public final static int DOWNLOAD = 0;
-    public final static int PURCHASE = 1;
-    public final static int DOWNLOAD_PURCHASED = 2;
+    public final static int FREE_DOWNLOAD = 0;
+    public final static int PURCHASE_DOWNLOAD = 1;
+    public final static int RESTORE_PURCHASED = 2;
 
     public CustomDownloadButton(Context context) {
         super(context);
         this.context = context;
-        //init();
     }
 
     public CustomDownloadButton(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
-        //init();
     }
 
-    public void init(int type, String price){
-
-        this.type = type;
+    public void init(int typ, String price){
+        this.type = typ;
         int defaultWith = 0;
 
-        if(type == PURCHASE){
+        if(this.type != PURCHASE_DOWNLOAD){
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_BUTTON_BACKGROUND));
+            else
+                setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_BUTTON_BACKGROUND));
+        }
+
+        if(this.type == PURCHASE_DOWNLOAD){
             RelativeLayout.LayoutParams downloadButtonParams = (RelativeLayout.LayoutParams)getLayoutParams();
             defaultWith = downloadButtonParams.width;
             downloadButtonParams.width = downloadButtonParams.width * 3;  //Burada width tipe göre belirlenecek
             setLayoutParams(downloadButtonParams);
         }
 
-        if(type == PURCHASE){
+        if(this.type == PURCHASE_DOWNLOAD){
             priceTextView  = new TextView(context);
             RelativeLayout.LayoutParams priceParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.MATCH_PARENT);
             priceParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
@@ -70,56 +76,57 @@ public class CustomDownloadButton extends RelativeLayout {
             this.addView(priceTextView);
         }
 
-        img1 = new ImageView(context);
+        arrowIcon = new ImageView(context);
         RelativeLayout.LayoutParams img1Params;
-        if(type == DOWNLOAD){
+        if(this.type == FREE_DOWNLOAD){
             img1Params = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
             img1Params.addRule(RelativeLayout.ALIGN_TOP);
-        } else if(type == PURCHASE){
+        } else if(this.type == PURCHASE_DOWNLOAD){
             img1Params = new RelativeLayout.LayoutParams(defaultWith,LayoutParams.MATCH_PARENT);
+            img1Params.setMargins(0,0,-10,0);
             img1Params.addRule(RelativeLayout.LEFT_OF, priceTextView.getId());
         } else {
             img1Params = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
             img1Params.addRule(RelativeLayout.ALIGN_TOP);
         }
-        img1.setLayoutParams(img1Params);
-        if(type == DOWNLOAD){
+        arrowIcon.setLayoutParams(img1Params);
+        if(this.type == FREE_DOWNLOAD){
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                img1.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_IMG1));
+                arrowIcon.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_FREE_ARROW));
             else
-                img1.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_IMG1));
-        } else if(type == DOWNLOAD_PURCHASED){
+                arrowIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_FREE_ARROW));
+        } else if(type == RESTORE_PURCHASED){
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                img1.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_DOWNLOAD_PURCHASED_OK));
+                arrowIcon.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_CLOUD_ARROW));
             else
-                img1.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_DOWNLOAD_PURCHASED_OK));
+                arrowIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_CLOUD_ARROW));
         } else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                img1.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_PURCHASE_OK));
+                arrowIcon.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_PURCHASE_ARROW));
             else
-                img1.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_PURCHASE_OK));
+                arrowIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_PURCHASE_ARROW));
         }
 
-        this.addView(img1);
+        this.addView(arrowIcon);
 
 
-        if(type == DOWNLOAD || type == DOWNLOAD_PURCHASED){
-            img2 = new ImageView(context);
+        if(this.type == FREE_DOWNLOAD || type == RESTORE_PURCHASED){
+            downloadIcon = new ImageView(context);
             RelativeLayout.LayoutParams img2Params = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
             img2Params.addRule(RelativeLayout.ALIGN_TOP);
-            img2.setLayoutParams(img2Params);
-            if(type == DOWNLOAD){
+            downloadIcon.setLayoutParams(img2Params);
+            if(this.type == FREE_DOWNLOAD){
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                    img2.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_IMG2));
+                    downloadIcon.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_FREE));
                 else
-                    img2.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_IMG2));
+                    downloadIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_FREE));
             } else {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                    img2.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_DOWNLOAD_PURCHASED));
+                    downloadIcon.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_CLOUD));
                 else
-                    img2.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_DOWNLOAD_PURCHASED));
+                    downloadIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_CLOUD));
             }
-            this.addView(img2);
+            this.addView(downloadIcon);
         }
 
     }
@@ -129,14 +136,14 @@ public class CustomDownloadButton extends RelativeLayout {
         int fromY = -5;
         int toY = -5;
 
-        if(type == DOWNLOAD_PURCHASED){
+        if(type == RESTORE_PURCHASED){
             fromY = 5;
             toY = 5;
         }
 
-        moveTop = new TranslateAnimation(0,0,0,toY);
-        moveTop.setDuration(400);
-        moveTop.setAnimationListener(new Animation.AnimationListener() {
+        moveUp = new TranslateAnimation(0,0,0,toY);
+        moveUp.setDuration(400);
+        moveUp.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
 
@@ -144,7 +151,7 @@ public class CustomDownloadButton extends RelativeLayout {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                img1.startAnimation(moveBottom);
+                arrowIcon.startAnimation(moveDown);
             }
 
             @Override
@@ -155,16 +162,16 @@ public class CustomDownloadButton extends RelativeLayout {
 
 
 
-        moveBottom = new TranslateAnimation(0,0,fromY,0);
-        moveBottom.setDuration(400);
-        moveBottom.setAnimationListener(new Animation.AnimationListener() {
+        moveDown = new TranslateAnimation(0,0,fromY,0);
+        moveDown.setDuration(400);
+        moveDown.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
             }
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                img1.startAnimation(moveTop);
+                arrowIcon.startAnimation(moveUp);
             }
 
             @Override
@@ -173,18 +180,18 @@ public class CustomDownloadButton extends RelativeLayout {
             }
         });
 
-        if(type == PURCHASE){
-            img1.startAnimation(moveBottom);
-        } else if(type == DOWNLOAD_PURCHASED){
-            img1.startAnimation(moveBottom);
+        if(type == PURCHASE_DOWNLOAD){
+            arrowIcon.startAnimation(moveDown);
+        } else if(type == RESTORE_PURCHASED){
+            arrowIcon.startAnimation(moveDown);
         } else {
-            img1.startAnimation(moveTop);
+            arrowIcon.startAnimation(moveUp);
         }
 
 
     }
 
     public void stopAnim(){
-        img1.clearAnimation();
+        arrowIcon.clearAnimation();
     }
 }

@@ -908,6 +908,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
         //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
         ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
+        ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
 
         /*for(int i =0; i < mDocView.getChildCount(); i++){
             MuPDFPageView muPDFPageView = (MuPDFPageView) mDocView.getChildAt(i);
@@ -2240,6 +2241,20 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             L_Statistic statistic = new L_Statistic(udid, this.content.getId(), location != null ? location.getLatitude() : null, location != null ? location.getLongitude() : null, null, dateFormat.format(cal.getTime()), L_Statistic.STATISTIC_contentClosed, null, null, null);
             GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
 
+
+            try{
+                //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
+                ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
+                ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
+
+                /*for(int i =0; i < mDocView.getChildCount(); i++){
+                    MuPDFPageView muPDFPageView = (MuPDFPageView) mDocView.getChildAt(i);
+                    muPDFPageView.clearWebAnnotations(muPDFPageView);
+                }*/
+            } catch (Exception e){
+                Log.e("Webview clear",""+e.toString());
+            }
+
             if (content.isMaster() && isHomeOpen) {
                 Intent intent = getIntent();
                 intent.putExtra("SelectedTab", 1);
@@ -2250,6 +2265,20 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             }
         } else {
             if (content.isMaster() && isHomeOpen) {
+
+                try{
+                    //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
+                    ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
+                    ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
+
+                /*for(int i =0; i < mDocView.getChildCount(); i++){
+                    MuPDFPageView muPDFPageView = (MuPDFPageView) mDocView.getChildAt(i);
+                    muPDFPageView.clearWebAnnotations(muPDFPageView);
+                }*/
+                } catch (Exception e){
+                    Log.e("Webview clear",""+e.toString());
+                }
+
                 Intent intent = getIntent();
                 intent.putExtra("SelectedTab", 0);
                 setResult(101, intent);

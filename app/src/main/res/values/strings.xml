@@ -75,7 +75,6 @@
     <string name="HAYIR">No</string>
     <string name="TAMAM">OK</string>
     <string name="UYARI">Warning</string>
-    <string name="SIFRE">Password</string>
     <string name="HATA">Error</string>
     <string name="AC">Open</string>
     <string name="ARA">Search..</string>
@@ -85,11 +84,12 @@
     <string name="LIBRARY">Library</string>
     <string name="DOWNLOADED">Downloaded</string>
     <string name="INFO">Info</string>
+    <string name="INAPPPURCHASE">In - App Billing</string>
+
 
     <string name="WARNING_0">Unexpected error occured</string>
     <string name="WARNING_1">No internet connection.</string>
     <string name="WARNING_2">Please type your password</string>
-    <string name="WARNING_3">Please check your login information</string>
 
     <string name="WARNING_101">Wrong Password</string>
     <string name="WARNING_102">Content couldn\'t found</string>
@@ -101,6 +101,7 @@
     <string name="WARNING_131">Application is not active or expired</string>
     <string name="WARNING_140">Login infromations are not correct</string>
     <string name="WARNING_141">You must create an account with www.galepress.com</string>
+
 
     <string name="CONFIRM_1">Are you sure you want to delete?</string>
     <string name="CONFIRM_2">Are you sure you want to cancel other downloads?</string>
@@ -116,6 +117,9 @@
     <string name="INFO_4">Loading</string>
 
     <string name="PLACEHOLDER1">Search by content name</string>
+    <string name="Error">Error</string>
+    <string name="OK">OK</string>
+    <string name="Open">Open</string>
 
 
 // General
@@ -153,19 +157,17 @@
     <string name="play_services_available">Google Play services is available</string>
 
     <string name="title_activity_launch">LaunchActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="left_menu_search_hint">Search...</string>
-    <string name="left_menu_links">Links</string>
+    <string name="links">Links</string>
     <string name="left_menu_setting">Login Informations</string>
     <string name="user_information_check">Checking user information...</string>
-    <string name="viewer_login_uname">Username...</string>
-    <string name="viewer_login_pass">Password...</string>
-    <string name="viewer_login_appId">Application ID...</string>
-    <string name="viewer_login_login">Login</string>
-    <string name="viewer_login_logout">Logout</string>
+    <string name="KULLANICIADI">Username</string>
+    <string name="SIFRE">Password</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
     <string name="viewer_facebook_login_warning">Unable to login with Facebook</string>
-    <string name="viewer_facebook_login_appId_warning">Please enter applicaiton Id</string>
+    <string name="viewer_facebook_login_appId_warning">Please enter Application ID</string>
+    <string name="FacebookLogin">Login With Facebook</string>
+
 
     <string name="facebook_app_id">583822921756369</string>
 
@@ -173,10 +175,9 @@
     <string name="BILLING_RESULT_USER_CANCELED">Payment canceled</string>
     <string name="BILLING_RESULT_BILLING_UNAVAILABLE">Google services unavailable</string>
     <string name="BILLIN_RESULT_ITEM_UNAVAILABLE">Product unavailable</string>
-    <string name="BILLING_RESULT_DEVELOPER_ERROR">Developer error</string>
     <string name="BILLING_RESULT_ERROR">Payment unsuccessful</string>
     <string name="RESULT_ITEM_ALREADY_OWNED">Product already owned</string>
     <string name="BILLING_RESULT_ITEM_NOT_OWNED">Product not owned</string>
     <string name="BILLING_UNEXPECTED">Unexpected error occurred</string>
-
+    <string name="ChooseApplication">Choose Application</string>
 </resources>

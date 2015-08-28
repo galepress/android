@@ -10,7 +10,6 @@
     <dimen name="content_popup_padding">40dp</dimen>
     <dimen name="content_popup_detail">60dp</dimen>
     <dimen name="content_popup_button_layer">40dp</dimen>
-    <dimen name="content_popup_button_size">25dp</dimen>
     <dimen name="content_popup_progress_height">3dp</dimen>
     <dimen name="content_popup_progress_label_height">10dp</dimen>
     <dimen name="content_popup_large_textsize">13dp</dimen>
@@ -20,4 +19,5 @@
     <dimen name="reader_page_textsize">13sp</dimen>
 
     <dimen name="library_banner_height">170dp</dimen>
+
 </resources>

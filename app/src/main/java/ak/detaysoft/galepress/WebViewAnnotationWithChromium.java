@@ -55,6 +55,8 @@ public class WebViewAnnotationWithChromium extends WebView {
 
             }
 
+            Log.e("loadedurl finish", ""+url);
+
         }
 
         @Override
@@ -64,7 +66,7 @@ public class WebViewAnnotationWithChromium extends WebView {
             if(loading != null) {
                 loading.setVisibility(VISIBLE);
             }
-            Log.e("loadedurl", ""+url);
+            Log.e("loadedurl start", ""+url);
         }
 
         @Override
@@ -78,6 +80,8 @@ public class WebViewAnnotationWithChromium extends WebView {
             }
 
             ((PageView)view.getParent()).removeView(view);
+
+            Log.e("loadedurl error", ""+failingUrl);
         }
 
     }

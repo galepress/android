@@ -190,7 +190,7 @@ public class ViewerLoginActivity extends Activity {
                 if (unameField.getText().length() == 0 || passwordField.getText().length() == 0) {
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(ViewerLoginActivity.this);
                     alertDialog.setTitle(ViewerLoginActivity.this.getString(R.string.UYARI));
-                    alertDialog.setMessage(ViewerLoginActivity.this.getString(R.string.WARNING_3));
+                    alertDialog.setMessage(ViewerLoginActivity.this.getString(R.string.WARNING_140));
 
                     alertDialog.setPositiveButton(ViewerLoginActivity.this.getString(R.string.TAMAM), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {

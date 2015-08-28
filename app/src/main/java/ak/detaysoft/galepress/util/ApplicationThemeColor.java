@@ -97,12 +97,13 @@ public class ApplicationThemeColor {
     public static final int READER_MENU_OPEN2 = 52;
     public static final int READER_MENU_OPEN_OK = 53;
     public static final int CUSTOM_PROGRESS_PULSE = 54;
-    public static final int DOWNLOAD_CONTENT_IMG1 = 55;
-    public static final int DOWNLOAD_CONTENT_IMG2 = 56;
+    public static final int DOWNLOAD_CONTENT_FREE_ARROW = 55;
+    public static final int DOWNLOAD_CONTENT_FREE = 56;
     public static final int CANCEL_CONTENT_DOWNLOAD = 57;
-    public static final int DOWNLOAD_CONTENT_DOWNLOAD_PURCHASED = 58;
-    public static final int DOWNLOAD_CONTENT_DOWNLOAD_PURCHASED_OK = 59;
-    public static final int DOWNLOAD_CONTENT_PURCHASE_OK = 60;
+    public static final int DOWNLOAD_CONTENT_CLOUD = 58;
+    public static final int DOWNLOAD_CONTENT_CLOUD_ARROW = 59;
+    public static final int DOWNLOAD_CONTENT_PURCHASE_ARROW = 60;
+    public static final int DOWNLOAD_CONTENT_BUTTON_BACKGROUND = 61;
 
 
     //Servisten gelen iconlar icin
@@ -555,10 +556,10 @@ public class ApplicationThemeColor {
         } else if(resourceType == CUSTOM_PROGRESS_PULSE){
             myIcon = context.getResources().getDrawable(R.drawable.progress_icon);
             myIcon.setColorFilter(getForegroundColorFilter());
-        } else if(resourceType == DOWNLOAD_CONTENT_IMG1){
+        } else if(resourceType == DOWNLOAD_CONTENT_FREE_ARROW){
             myIcon = context.getResources().getDrawable(R.drawable.popup_download_img1);
             myIcon.setColorFilter(getReverseThemeColorFilter());
-        } else if(resourceType == DOWNLOAD_CONTENT_IMG2){
+        } else if(resourceType == DOWNLOAD_CONTENT_FREE){
             myIcon = context.getResources().getDrawable(R.drawable.popup_download_img2);
             myIcon.setColorFilter(getReverseThemeColorFilter());
         } else {
@@ -687,65 +688,105 @@ public class ApplicationThemeColor {
         Drawable pressed;
 
         if(resourceType == READ_CONTENT){
-            normal = context.getResources().getDrawable(R.drawable.popup_read);
-            normal.setColorFilter(getReverseThemeColorFilter());
 
-            pressed = context.getResources().getDrawable(R.drawable.popup_read);
-            pressed.setColorFilter(getThemeColorFilter());
+            if(getInstance().themeType == DARK_THEME_TYPE){
+                normal = context.getResources().getDrawable(R.drawable.popup_read_dark);
+                pressed = context.getResources().getDrawable(R.drawable.popup_read_light);
+            } else {
+                normal = context.getResources().getDrawable(R.drawable.popup_read_light);
+                pressed = context.getResources().getDrawable(R.drawable.popup_read_dark);
+            }
         } else if(resourceType == DELETE_CONTENT){
-            normal = context.getResources().getDrawable(R.drawable.popup_delete);
-            normal.setColorFilter(getReverseThemeColorFilter());
 
-            pressed = context.getResources().getDrawable(R.drawable.popup_delete);
-            pressed.setColorFilter(getThemeColorFilter());
+            if(getInstance().themeType == DARK_THEME_TYPE){
+                normal = context.getResources().getDrawable(R.drawable.popup_delete_dark);
+                pressed = context.getResources().getDrawable(R.drawable.popup_delete_light);
+            } else {
+                normal = context.getResources().getDrawable(R.drawable.popup_delete_light);
+                pressed = context.getResources().getDrawable(R.drawable.popup_delete_dark);
+            }
         } else if(resourceType == UPDATE_CONTENT){
-            normal = context.getResources().getDrawable(R.drawable.popup_update);
-            normal.setColorFilter(getReverseThemeColorFilter());
 
-            pressed = context.getResources().getDrawable(R.drawable.popup_update);
-            pressed.setColorFilter(getThemeColorFilter());
+            if(getInstance().themeType == DARK_THEME_TYPE){
+                normal = context.getResources().getDrawable(R.drawable.popup_update_dark);
+                pressed = context.getResources().getDrawable(R.drawable.popup_update_light);
+            } else {
+                normal = context.getResources().getDrawable(R.drawable.popup_update_light);
+                pressed = context.getResources().getDrawable(R.drawable.popup_update_dark);
+            }
         } else if(resourceType == DOWNLOAD_CONTENT){
-            normal = context.getResources().getDrawable(R.drawable.popup_download);
-            normal.setColorFilter(getReverseThemeColorFilter());
 
-            pressed = context.getResources().getDrawable(R.drawable.popup_download);
-            pressed.setColorFilter(getThemeColorFilter());
+            if(getInstance().themeType == DARK_THEME_TYPE){
+                normal = context.getResources().getDrawable(R.drawable.popup_download_dark);
+                pressed = context.getResources().getDrawable(R.drawable.popup_download_light);
+            } else {
+                normal = context.getResources().getDrawable(R.drawable.popup_download_light);
+                pressed = context.getResources().getDrawable(R.drawable.popup_download_dark);
+            }
         } else if(resourceType == CANCEL_CONTENT_DOWNLOAD){
-            normal = context.getResources().getDrawable(R.drawable.popup_cancel);
-            normal.setColorFilter(getReverseThemeColorFilter());
 
-            pressed = context.getResources().getDrawable(R.drawable.popup_cancel);
-            pressed.setColorFilter(getThemeColorFilter());
-        } else if(resourceType == DOWNLOAD_CONTENT_IMG1){
-            normal = context.getResources().getDrawable(R.drawable.popup_download_img1);
-            normal.setColorFilter(getReverseThemeColorFilter());
+            if(getInstance().themeType == DARK_THEME_TYPE){
+                normal = context.getResources().getDrawable(R.drawable.popup_cancel_dark);
+                pressed = context.getResources().getDrawable(R.drawable.popup_cancel_light);
+            } else {
+                normal = context.getResources().getDrawable(R.drawable.popup_cancel_light);
+                pressed = context.getResources().getDrawable(R.drawable.popup_cancel_dark);
+            }
 
-            pressed = context.getResources().getDrawable(R.drawable.popup_download_img1);
-            pressed.setColorFilter(getThemeColorFilter());
-        } else if(resourceType == DOWNLOAD_CONTENT_IMG2){
-            normal = context.getResources().getDrawable(R.drawable.popup_download_img2);
-            normal.setColorFilter(getReverseThemeColorFilter());
+        } else if(resourceType == DOWNLOAD_CONTENT_FREE_ARROW){
 
-            pressed = context.getResources().getDrawable(R.drawable.popup_download_img2);
-            pressed.setColorFilter(getThemeColorFilter());
-        } else if(resourceType == DOWNLOAD_CONTENT_DOWNLOAD_PURCHASED){
-            normal = context.getResources().getDrawable(R.drawable.popup_download_img3);
-            normal.setColorFilter(getReverseThemeColorFilter());
+            if(getInstance().themeType == DARK_THEME_TYPE){
+                normal = context.getResources().getDrawable(R.drawable.popup_download_free_arrow_dark);
+                pressed = context.getResources().getDrawable(R.drawable.popup_download_free_arrow_light);
+            } else {
+                normal = context.getResources().getDrawable(R.drawable.popup_download_free_arrow_light);
+                pressed = context.getResources().getDrawable(R.drawable.popup_download_free_arrow_dark);
+            }
+        } else if(resourceType == DOWNLOAD_CONTENT_FREE){
 
-            pressed = context.getResources().getDrawable(R.drawable.popup_download_img3);
-            pressed.setColorFilter(getThemeColorFilter());
-        } else if(resourceType == DOWNLOAD_CONTENT_DOWNLOAD_PURCHASED_OK){
-            normal = context.getResources().getDrawable(R.drawable.popup_download_img_purchase_ok);
-            normal.setColorFilter(getReverseThemeColorFilter());
+            if(getInstance().themeType == DARK_THEME_TYPE){
+                normal = context.getResources().getDrawable(R.drawable.popup_download_free_dark);
+                pressed = context.getResources().getDrawable(R.drawable.popup_download_free_light);
+            } else {
+                normal = context.getResources().getDrawable(R.drawable.popup_download_free_light);
+                pressed = context.getResources().getDrawable(R.drawable.popup_download_free_dark);
+            }
 
-            pressed = context.getResources().getDrawable(R.drawable.popup_download_img_purchase_ok);
-            pressed.setColorFilter(getThemeColorFilter());
+        } else if(resourceType == DOWNLOAD_CONTENT_CLOUD){
+
+            if(getInstance().themeType == DARK_THEME_TYPE){
+                normal = context.getResources().getDrawable(R.drawable.popup_download_cloud_dark);
+                pressed = context.getResources().getDrawable(R.drawable.popup_download_cloud_light);
+            } else {
+                normal = context.getResources().getDrawable(R.drawable.popup_download_cloud_light);
+                pressed = context.getResources().getDrawable(R.drawable.popup_download_cloud_dark);
+            }
+        } else if(resourceType == DOWNLOAD_CONTENT_CLOUD_ARROW){
+
+            if(getInstance().themeType == DARK_THEME_TYPE){
+                normal = context.getResources().getDrawable(R.drawable.popup_cloud_arrow_dark);
+                pressed = context.getResources().getDrawable(R.drawable.popup_cloud_arrow_light);
+            } else {
+                normal = context.getResources().getDrawable(R.drawable.popup_cloud_arrow_light);
+                pressed = context.getResources().getDrawable(R.drawable.popup_cloud_arrow_dark);
+            }
+        } else if(resourceType == DOWNLOAD_CONTENT_PURCHASE_ARROW){
+
+            if(getInstance().themeType == DARK_THEME_TYPE){
+                normal = context.getResources().getDrawable(R.drawable.popup_download_purchase_arrow_dark);
+                pressed = context.getResources().getDrawable(R.drawable.popup_download_purchase_arrow_light);
+            } else {
+                normal = context.getResources().getDrawable(R.drawable.popup_download_purchase_arrow_light);
+                pressed = context.getResources().getDrawable(R.drawable.popup_download_purchase_arrow_dark);
+            }
         } else {
-            normal = context.getResources().getDrawable(R.drawable.popup_download_img_purchase_ok_center);
-            normal.setColorFilter(getReverseThemeColorFilter());
-
-            pressed = context.getResources().getDrawable(R.drawable.popup_download_img_purchase_ok_center);
-            pressed.setColorFilter(getThemeColorFilter());
+            if(getInstance().themeType == DARK_THEME_TYPE){
+                normal = context.getResources().getDrawable(R.drawable.popup_download_bg_dark);
+                pressed = context.getResources().getDrawable(R.drawable.popup_download_bg_light);
+            } else {
+                normal = context.getResources().getDrawable(R.drawable.popup_download_bg_light);
+                pressed = context.getResources().getDrawable(R.drawable.popup_download_bg_dark);
+            }
         }
 
         return new StateListDrawableForPopupButtons(normal, pressed);

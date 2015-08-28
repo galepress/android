@@ -490,15 +490,15 @@ public class ContentDetailPopupActivity extends Activity{
 
         if(content.isBuyable()){
             if(content.isOwnedProduct()){
-                downloadButton.init(CustomDownloadButton.DOWNLOAD_PURCHASED, price);
+                downloadButton.init(CustomDownloadButton.RESTORE_PURCHASED, price);
             } else {
                 if(price.length() != 0)
-                    downloadButton.init(CustomDownloadButton.PURCHASE, price);
+                    downloadButton.init(CustomDownloadButton.PURCHASE_DOWNLOAD, price);
                 else
-                    downloadButton.init(CustomDownloadButton.DOWNLOAD, price);
+                    downloadButton.init(CustomDownloadButton.FREE_DOWNLOAD, price);
             }
         } else {
-            downloadButton.init(CustomDownloadButton.DOWNLOAD, price);
+            downloadButton.init(CustomDownloadButton.FREE_DOWNLOAD, price);
         }
     }
 
