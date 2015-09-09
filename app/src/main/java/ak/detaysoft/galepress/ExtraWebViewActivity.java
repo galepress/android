@@ -76,7 +76,7 @@ public class ExtraWebViewActivity extends Activity {
 
         TextView titleTextView = (TextView) findViewById(R.id.extra_web_view_title);
         titleTextView.setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
-        titleTextView.setTypeface(ApplicationThemeColor.getInstance().getFont(ExtraWebViewActivity.this));
+        titleTextView.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(ExtraWebViewActivity.this));
 
 
         if(isModal){

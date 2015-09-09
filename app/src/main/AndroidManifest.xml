@@ -66,6 +66,11 @@
             android:name="ak.detaysoft.galepress.ContentDetailPopupActivity"
             android:theme="@style/ContentPopupTheme"></activity>
 
+        <activity
+            android:name="ak.detaysoft.galepress.LoginActivity"
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/LoginPopupTheme"></activity>
+
         <!--<activity-->
         <!--android:name="com.artifex.mupdfdemo.ChoosePDFActivity"-->
         <!--android:theme="@android:style/Theme.Light"-->

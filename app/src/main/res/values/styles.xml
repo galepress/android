@@ -48,6 +48,18 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowAnimationStyle">@null</item>
     </style>
+
+    <style name="LoginPopupTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:popupMenuStyle">@style/PopupMenu</item>
+        <item name="android:textAppearanceLargePopupMenu">@style/PopupMenu.MenuItemTextAppearance</item>
+        <item name="android:textAppearanceSmallPopupMenu">@style/PopupMenu.MenuItemTextAppearance</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name ="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
     <style name="AppBaseTheme" parent="@android:style/Theme.NoTitleBar.Fullscreen">
         <!--<item name="android:windowBackground">@drawable/tiled_background</item>-->
         <item name="android:windowBackground">@color/black</item>

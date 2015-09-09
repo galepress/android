@@ -45,7 +45,6 @@ public class CustomDownloadButton extends RelativeLayout {
 
     public void init(int typ, String price){
         this.type = typ;
-        type = RESTORE_PURCHASED;
         int defaultWith = 0;
 
         if(this.type != PURCHASE_DOWNLOAD){
@@ -68,7 +67,7 @@ public class CustomDownloadButton extends RelativeLayout {
             priceParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
             priceTextView.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(context));
             priceTextView.setTextColor(ApplicationThemeColor.getInstance().getPopupTextColor());
-            priceTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, context.getResources().getDimension(R.dimen.content_popup_small_textsize));
+            priceTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, context.getResources().getDimension(R.dimen.content_popup_small_textsize));
             priceTextView.setId(R.id.price_text);
             priceTextView.setLayoutParams(priceParams);
             priceTextView.setBackgroundColor(Color.TRANSPARENT);

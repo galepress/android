@@ -108,6 +108,7 @@ public class GalePressApplication
     private String bannerLink = "";
     private ArrayList<TabbarItem> tabList;
     public boolean isTablistChanced = true;
+    private ArrayList<Integer> membershipMenuList;
 
 
     public final int M_DPI = 0;
@@ -171,6 +172,7 @@ public class GalePressApplication
 
         parseApplicationPlist();
         initBillingServices();
+        prepareMemberShipList(false);
 
         //Uygulama ilk acildiginda localde tutulan renk, banner ve tabbar datalarini alabilmek icin
         ApplicationThemeColor.getInstance().setParameters(null);
@@ -725,7 +727,7 @@ public class GalePressApplication
         return blnBind;
     }
 
-    public String md5(String s) {
+    public String getMD5EncryptedValue(String s) {
         try {
             java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
             byte[] array = md.digest(s.getBytes());
@@ -739,7 +741,7 @@ public class GalePressApplication
         return null;
     }
 
-    public String prepareMD5ForStorage(String s){
+    public String prepareMD5EncryptedValue(String s){
         int mod;
         try{
             mod = getApplicationId()%4;
@@ -755,5 +757,46 @@ public class GalePressApplication
         String str4 = s.substring(mod+2);
 
         return str1+str3+str2+str4;
+    }
+
+    public ArrayList<Integer> getMembershipMenuList() {
+        return membershipMenuList;
+    }
+
+    public void setMembershipMenuList(ArrayList<Integer> membershipMenuList) {
+        this.membershipMenuList = membershipMenuList;
+    }
+
+    public void prepareMemberShipList(boolean isLoginORLogout){
+
+        membershipMenuList = new ArrayList<Integer>();
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(GalePressApplication.getInstance().getApplicationContext());
+        if(isLoginORLogout){
+            SharedPreferences.Editor editor;
+            if(!preferences.getBoolean("userLogin", false)){
+                editor = preferences.edit();
+                editor.putBoolean("userLogin", true);
+                editor.commit();
+                membershipMenuList.add(LeftMenuMembershipAdapter.SUBSCRIPTION);
+                membershipMenuList.add(LeftMenuMembershipAdapter.RESTORE);
+                membershipMenuList.add(LeftMenuMembershipAdapter.LOGOUT);
+
+            } else {
+                editor = preferences.edit();
+                editor.putBoolean("userLogin", false);
+                editor.commit();
+                membershipMenuList.add(LeftMenuMembershipAdapter.LOGIN);
+            }
+        } else {
+            if(!preferences.getBoolean("userLogin", false)){
+                membershipMenuList.add(LeftMenuMembershipAdapter.LOGIN);
+            } else {
+                membershipMenuList.add(LeftMenuMembershipAdapter.SUBSCRIPTION);
+                membershipMenuList.add(LeftMenuMembershipAdapter.RESTORE);
+                membershipMenuList.add(LeftMenuMembershipAdapter.LOGOUT);
+            }
+        }
+
+
     }
 }

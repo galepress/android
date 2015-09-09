@@ -447,7 +447,6 @@ public class ContentDetailPopupActivity extends Activity{
                                 break;
                             }
                         }
-
                     }
                 } catch (RemoteException e) {
                     e.printStackTrace();
