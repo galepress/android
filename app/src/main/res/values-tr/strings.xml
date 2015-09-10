@@ -59,6 +59,7 @@
     <string name="format_currently_not_supported">Format currently not supported</string>
     <string name="toggle_reflow_mode">Toggle reflow mode</string>
     <string name="user_information_check">Kullanıcı bilgileri kontrol ediliyor...</string>
+    <string name="user_information_missing">Kullanıcı bilgileri eksik</string>
     <string name="KULLANICIADI">Kullanıcı Adı</string>
     <string name="SIFRE">Şifre</string>
     <string name="login">Giriş</string>
@@ -106,6 +107,7 @@
     <string name="WARNING_131">Uygulama aktif degil, süresi dolmuş veya engellenmiş olabilir.</string>
     <string name="WARNING_140">Kullanici bilgileri hatalı</string>
     <string name="WARNING_141">www.galepress.com adresinde hesap oluşturmalısınız</string>
+    <string name="WARNING_160">Kullanıcı bulunamadı</string>
 
     <string name="CONFIRM_1">Silmek istediğinizden emin misiniz?</string>
     <string name="CONFIRM_2">Diğer indirme işlemlerini iptal etmek istediğinizden emin misiniz?</string>

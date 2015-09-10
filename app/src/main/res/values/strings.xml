@@ -101,6 +101,7 @@
     <string name="WARNING_131">Application is not active or expired</string>
     <string name="WARNING_140">Login infromations are not correct</string>
     <string name="WARNING_141">You must create an account with www.galepress.com</string>
+    <string name="WARNING_160">User not found</string>
 
 
     <string name="CONFIRM_1">Are you sure you want to delete?</string>
@@ -161,6 +162,7 @@
 
     <string name="left_menu_setting">Login Informations</string>
     <string name="user_information_check">Checking user information...</string>
+    <string name="user_information_missing">User information is missing</string>
     <string name="KULLANICIADI">Username</string>
     <string name="SIFRE">Password</string>
     <string name="login">Login</string>

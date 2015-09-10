@@ -1,7 +1,10 @@
 package ak.detaysoft.galepress;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.ColorStateList;
@@ -89,6 +92,7 @@ public class LoginActivity extends Activity {
     private String facebookEmail = "";
     private String facebookUserId = "";
     private String facebookToken;
+    private ProgressDialog updateDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +108,7 @@ public class LoginActivity extends Activity {
             Log.e("Popup Content error", e.toString());
             finish();
         }
+
 
         if(getResources().getBoolean(R.bool.portrait_only)){
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -204,8 +209,32 @@ public class LoginActivity extends Activity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GalePressApplication.getInstance().prepareMemberShipList(true);
-                finishActivityWithAnimation();
+
+                if(GalePressApplication.getInstance().getDataApi().isConnectedToInternet()){
+
+
+                    if (unameField.getText().length() == 0 || passwordField.getText().length() == 0) {
+                        AlertDialog.Builder alertDialog = new AlertDialog.Builder(LoginActivity.this);
+                        alertDialog.setTitle(LoginActivity.this.getString(R.string.UYARI));
+                        alertDialog.setMessage(LoginActivity.this.getString(R.string.user_information_missing));
+
+                        alertDialog.setPositiveButton(LoginActivity.this.getString(R.string.TAMAM), new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                        alertDialog.show();
+                    } else {
+                        GalePressApplication.getInstance().setTestApplicationLoginInf(unameField.getText().toString(), passwordField.getText().toString(), "0"
+                                ,facebookEmail, facebookUserId, false);
+                        updateDialog = ProgressDialog.show(LoginActivity.this, "",
+                                LoginActivity.this.getString(R.string.user_information_check), true);
+                        GalePressApplication.getInstance().getDataApi().login(LoginActivity.this, false,
+                                unameField.getText().toString(), GalePressApplication.getInstance().getMD5EncryptedValue(passwordField.getText().toString()));
+                    }
+                } else {
+                    Toast.makeText(LoginActivity.this, getResources().getString(R.string.WARNING_1), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -253,7 +282,7 @@ public class LoginActivity extends Activity {
                                     facebookUserId = object.getString("id");
                                     facebookEmail = object.getString("email");
 
-                                    GalePressApplication.getInstance().prepareMemberShipList(true);
+                                    GalePressApplication.getInstance().editMemberShipList(true, null); //burasi yeniden yazilacak
                                     finishActivityWithAnimation();
 
                                 } catch (JSONException e) {
@@ -305,6 +334,46 @@ public class LoginActivity extends Activity {
             });
             popup.startAnimation(scale);
         }
+    }
+
+    public void customFailLoginWarning(String errorString){
+        if(updateDialog != null)
+            updateDialog.dismiss();
+        LoginManager.getInstance().logOut();
+        if(errorString != null)
+            Toast.makeText(LoginActivity.this, errorString, Toast.LENGTH_SHORT).show();
+    }
+
+    public void closeActivityAndUpdateApplication(){
+        if(updateDialog != null){
+            updateDialog.dismiss();
+            finishActivityWithAnimation();
+        }
+    }
+
+    public void internetConnectionWarning(){
+        if(updateDialog != null)
+            updateDialog.dismiss();
+        LoginManager.getInstance().logOut();
+        Toast.makeText(LoginActivity.this, getResources().getString(R.string.WARNING_1), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    protected void onPause() {
+        super.onPause();
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     @Override
@@ -634,6 +703,12 @@ public class LoginActivity extends Activity {
                 ((RelativeLayout)view.getParent()).setBackgroundDrawable(gradient);
             loading.stopAnim();
             loading.setVisibility(View.GONE);
+        }
+
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+
+            return super.shouldOverrideUrlLoading(view, url);
         }
     }
 

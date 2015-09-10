@@ -1,6 +1,7 @@
 package ak.detaysoft.galepress;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -9,7 +10,6 @@ import android.content.pm.ActivityInfo;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
@@ -24,7 +24,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,7 +40,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupMenu;
-import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -814,8 +812,13 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             Intent intent = new Intent(this, LoginActivity.class);
             startActivityForResult(intent, 102);
         }
-        else if(GalePressApplication.getInstance().getMembershipMenuList().get(position) == LeftMenuMembershipAdapter.RESTORE)
-            Log.e("membership", "restore");
+        else if(GalePressApplication.getInstance().getMembershipMenuList().get(position) == LeftMenuMembershipAdapter.RESTORE) {
+            ProgressDialog progress = new ProgressDialog(this);
+            progress.setMessage(getResources().getString(R.string.Restore) + "...");
+            progress.setCancelable(false);
+            progress.show();
+            GalePressApplication.getInstance().restorePurchasedProductsFromMarket(false, progress);
+        }
         else if(GalePressApplication.getInstance().getMembershipMenuList().get(position) == LeftMenuMembershipAdapter.SUBSCRIPTION)
             Log.e("membership", "subscription");
         else if(GalePressApplication.getInstance().getMembershipMenuList().get(position) == LeftMenuMembershipAdapter.LOGOUT){
@@ -824,7 +827,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             FacebookSdk.sdkInitialize(this.getApplicationContext());
             LoginManager.getInstance().logOut();
 
-            GalePressApplication.getInstance().prepareMemberShipList(true);
+            GalePressApplication.getInstance().editMemberShipList(false, null);
             membershipAdapter.notifyDataSetChanged();
             LayoutInflater mInflater = (LayoutInflater)getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
             View membershipListItemView = mInflater.inflate(R.layout.left_menu_membership_item, null);

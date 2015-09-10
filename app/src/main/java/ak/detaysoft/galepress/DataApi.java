@@ -178,7 +178,6 @@ public class DataApi extends Object {
                             // Do Nothing
                         }
                     }
-
                 }
             }
             else{
@@ -601,6 +600,93 @@ public class DataApi extends Object {
     public void commitStatisticsToDB(L_Statistic statistic){
         if(!GalePressApplication.getInstance().isTestApplication())
             getDatabaseApi().createStatistic(statistic);
+    }
+
+
+    public void login(final LoginActivity activity, boolean isFacebookLogin, String uname, String password){
+
+        if(isConnectedToInternet()){
+            getBuildVersion();
+            Logout.e("Adem","INC"); GalePressApplication.getInstance().incrementRequestCount();
+            GalePressApplication application = GalePressApplication.getInstance();
+            RequestQueue requestQueue = application.getRequestQueue();
+            final JsonObjectRequest request;
+
+            Integer applicationID;
+            if (GalePressApplication.getInstance().isTestApplication()) {
+                applicationID = new Integer(application.getTestApplicationLoginInf().getApplicationId());
+            } else {
+                applicationID = application.getApplicationId();
+            }
+            applicationID = 187;
+
+            Uri.Builder uriBuilder = new Uri.Builder();
+            uriBuilder.scheme("http")
+                    .authority("www.galepress.com")
+                    .appendPath("webservice")
+                    .appendPath("103");
+            //Uri.Builder uriBuilder = getWebServiceUrlBuilder();
+            uriBuilder.appendPath("applications");
+            uriBuilder.appendPath("login_application");
+            if(!isFacebookLogin){
+                uriBuilder.appendQueryParameter("username",uname);
+                uriBuilder.appendQueryParameter("password",password);
+                uriBuilder.appendQueryParameter("applicationID",applicationID.toString());
+            } else {
+            /*
+            *
+            * Facebook login oldugu zaman burda istenen bilgiler gonderilecek
+            *
+            * */
+            }
+
+
+            request = new JsonObjectRequest(Request.Method.POST,uriBuilder.build().toString(), null,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                String accessToken = response.getString("accessToken");
+                                if(accessToken != null && accessToken.length() != 0)
+                                {
+                                    GalePressApplication.getInstance().editMemberShipList(true, response);
+                                    activity.closeActivityAndUpdateApplication();
+                                } else {
+                                    GalePressApplication.getInstance().editMemberShipList(false, null);
+                                    activity.customFailLoginWarning(activity.getResources().getString(R.string.WARNING_0));
+                                }
+                                Logout.e("Adem","DECREMENT"); GalePressApplication.getInstance().decrementRequestCount();
+                            } catch (Exception e){
+                                GalePressApplication.getInstance().editMemberShipList(false, null);
+                                activity.customFailLoginWarning(activity.getResources().getString(R.string.WARNING_0));
+                                Logout.e("Adem","DECREMENT"); GalePressApplication.getInstance().decrementRequestCount();
+                                e.printStackTrace();
+                            }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+
+                            if(error != null && error.getMessage() != null){
+                                if(error.getMessage().toLowerCase().contains("160"))
+                                    activity.customFailLoginWarning(activity.getResources().getString(R.string.WARNING_160));
+                                else if(error.getMessage().toLowerCase().contains("140"))
+                                    activity.customFailLoginWarning(activity.getResources().getString(R.string.WARNING_140));
+                                else
+                                    activity.customFailLoginWarning(activity.getResources().getString(R.string.WARNING_0));
+                                VolleyLog.e("Error: ", error.getMessage());
+                            }
+                            GalePressApplication.getInstance().editMemberShipList(false, null);
+                            Logout.e("Adem","DECREMENT"); GalePressApplication.getInstance().decrementRequestCount();
+
+                        }
+                    });
+            request.setShouldCache(Boolean.FALSE);
+            requestQueue.add(request);
+        } else {
+            activity.internetConnectionWarning();
+        }
     }
 
     public void getCustomerApplications(final ViewerLoginActivity activity, final boolean isFacebookLogin){

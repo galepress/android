@@ -424,9 +424,8 @@ public class ContentDetailPopupActivity extends Activity{
     }
 
     private void initDownloadButton(){
-        String price = "";
 
-        if(content.isBuyable()){
+        /*if(content.isBuyable()){
             //Kullanicinin daha once aldigi urunler kontrol ediliyor
             if (GalePressApplication.getInstance().isBlnBind() && GalePressApplication.getInstance().getmService() != null) {
                 Bundle ownedItems;
@@ -485,13 +484,50 @@ public class ContentDetailPopupActivity extends Activity{
                     e.printStackTrace();
                 }
             }
+        } */
+
+        //Satin alinabilen urunse fiyati kontrol ediliyor
+        String price = "";
+        ArrayList<String> skuList = new ArrayList<String>();
+        skuList.add(content.getIdentifier());
+        Bundle querySkus = new Bundle();
+        querySkus.putStringArrayList("ITEM_ID_LIST", skuList);
+
+        Bundle skuDetails;
+        try {
+            skuDetails = GalePressApplication.getInstance().getmService().getSkuDetails(3, getPackageName(), "inapp", querySkus);
+
+            int response = skuDetails.getInt("RESPONSE_CODE");
+
+            if (response == 0){
+                ArrayList<String> responseList = skuDetails.getStringArrayList("DETAILS_LIST");
+
+                if (responseList.size() != 0) {
+                    for (String thisResponse : responseList) {
+                        JSONObject object = null;
+                        try {
+                            object = new JSONObject(thisResponse);
+                            price = object.getString("price");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            price = "";
+        }
+        if(price == null || price.length() == 0){
+            price = (content.getMarketPrice() == null || content.getMarketPrice().length() == 0) ? "" : content.getMarketPrice();
         }
 
         if(content.isBuyable()){
             if(content.isOwnedProduct()){
                 downloadButton.init(CustomDownloadButton.RESTORE_PURCHASED, price);
             } else {
-                if(price.length() != 0)
+                if(content.getMarketPrice().length() != 0)
                     downloadButton.init(CustomDownloadButton.PURCHASE_DOWNLOAD, price);
                 else
                     downloadButton.init(CustomDownloadButton.FREE_DOWNLOAD, price);

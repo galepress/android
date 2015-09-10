@@ -2,42 +2,43 @@ package ak.detaysoft.galepress;
 
 import android.app.Activity;
 import android.app.Application;
+import android.app.ProgressDialog;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.location.Location;
-
-import com.android.vending.billing.IInAppBillingService;
-import com.artifex.mupdfdemo.MuPDFActivity;
-import com.google.android.gms.location.LocationListener;
-import com.google.android.gms.location.LocationRequest;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.PowerManager;
+import android.os.RemoteException;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
-import android.util.Log;
 
+import com.android.vending.billing.IInAppBillingService;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.Volley;
+import com.artifex.mupdfdemo.MuPDFActivity;
 import com.dd.plist.NSDictionary;
 import com.dd.plist.PropertyListParser;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.LocationClient;
-import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.InputStream;
@@ -45,18 +46,17 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Set;
 import java.util.TimeZone;
 import java.util.UUID;
+
 import ak.detaysoft.galepress.custom_models.ApplicationPlist;
 import ak.detaysoft.galepress.custom_models.TabbarItem;
+import ak.detaysoft.galepress.custom_models.UserInformations;
 import ak.detaysoft.galepress.database_models.L_Application;
+import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.database_models.L_Statistic;
 import ak.detaysoft.galepress.database_models.TestApplicationInf;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
@@ -121,6 +121,8 @@ public class GalePressApplication
     private ServiceConnection mServiceConn;
     private boolean blnBind = false;
 
+    private UserInformations userInformation;
+
     Foreground.Listener myListener = new Foreground.Listener(){
         public void onBecameForeground(){
             mLocationClient.connect();
@@ -172,7 +174,7 @@ public class GalePressApplication
 
         parseApplicationPlist();
         initBillingServices();
-        prepareMemberShipList(false);
+        prepareMemberShipList();
 
         //Uygulama ilk acildiginda localde tutulan renk, banner ve tabbar datalarini alabilmek icin
         ApplicationThemeColor.getInstance().setParameters(null);
@@ -741,7 +743,7 @@ public class GalePressApplication
         return null;
     }
 
-    public String prepareMD5EncryptedValue(String s){
+    public String getMD5MixedValue(String s){
         int mod;
         try{
             mod = getApplicationId()%4;
@@ -767,36 +769,170 @@ public class GalePressApplication
         this.membershipMenuList = membershipMenuList;
     }
 
-    public void prepareMemberShipList(boolean isLoginORLogout){
+    public void prepareMemberShipList(){
 
         membershipMenuList = new ArrayList<Integer>();
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(GalePressApplication.getInstance().getApplicationContext());
-        if(isLoginORLogout){
-            SharedPreferences.Editor editor;
-            if(!preferences.getBoolean("userLogin", false)){
-                editor = preferences.edit();
-                editor.putBoolean("userLogin", true);
-                editor.commit();
+        SharedPreferences preferences = getSharedPreferences("ak.detaysoft.galepress", Context.MODE_PRIVATE);
+        String token = preferences.getString("accessToken","");
+        if(token.length() != 0){ //login olmus kullanici var
+            try {
+                userInformation = new UserInformations(new JSONObject(token));
+                String recoveryToken = userInformation.getAccessToken();
+                try{
+                    userInformation.setAccessToken(getMD5MixedValue(userInformation.getAccessToken()));
+                } catch (Exception e){
+                    userInformation.setAccessToken(recoveryToken);
+                    e.printStackTrace();
+                }
                 membershipMenuList.add(LeftMenuMembershipAdapter.SUBSCRIPTION);
                 membershipMenuList.add(LeftMenuMembershipAdapter.RESTORE);
                 membershipMenuList.add(LeftMenuMembershipAdapter.LOGOUT);
-
-            } else {
-                editor = preferences.edit();
-                editor.putBoolean("userLogin", false);
-                editor.commit();
-                membershipMenuList.add(LeftMenuMembershipAdapter.LOGIN);
-            }
-        } else {
-            if(!preferences.getBoolean("userLogin", false)){
-                membershipMenuList.add(LeftMenuMembershipAdapter.LOGIN);
-            } else {
-                membershipMenuList.add(LeftMenuMembershipAdapter.SUBSCRIPTION);
+            } catch (JSONException e) {
+                userInformation = null;
                 membershipMenuList.add(LeftMenuMembershipAdapter.RESTORE);
-                membershipMenuList.add(LeftMenuMembershipAdapter.LOGOUT);
+                membershipMenuList.add(LeftMenuMembershipAdapter.LOGIN);
+                e.printStackTrace();
             }
+        } else { //login olmus kullanici yok
+            userInformation = null;
+            membershipMenuList.add(LeftMenuMembershipAdapter.RESTORE);
+            membershipMenuList.add(LeftMenuMembershipAdapter.LOGIN);
         }
+    }
 
+    public void editMemberShipList(boolean isLogin, JSONObject response){
+
+        membershipMenuList = new ArrayList<Integer>();
+        SharedPreferences preferences = getSharedPreferences("ak.detaysoft.galepress", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor;
+        String token = preferences.getString("accessToken","");
+        if(isLogin){ //kullanici login olacak
+            editor = preferences.edit();
+            userInformation = new UserInformations(response);
+            String recoveryToken = userInformation.getAccessToken();
+            try{
+                userInformation.setAccessToken(getMD5MixedValue(userInformation.getAccessToken()));
+            } catch (Exception e){
+                userInformation.setAccessToken(recoveryToken);
+                e.printStackTrace();
+            }
+            editor.putString("accessToken", userInformation.getJSONObject().toString());
+            editor.commit();
+            userInformation.setAccessToken(recoveryToken);
+            membershipMenuList.add(LeftMenuMembershipAdapter.SUBSCRIPTION);
+            membershipMenuList.add(LeftMenuMembershipAdapter.RESTORE);
+            membershipMenuList.add(LeftMenuMembershipAdapter.LOGOUT);
+        } else { //kullanici logout olacak
+            editor = preferences.edit();
+            editor.putString("accessToken", "");
+            userInformation = null;
+            editor.commit();
+            membershipMenuList.add(LeftMenuMembershipAdapter.RESTORE);
+            membershipMenuList.add(LeftMenuMembershipAdapter.LOGIN);
+        }
+    }
+
+    public UserInformations getUserInformation() {
+        return userInformation;
+    }
+
+    public void setUserInformation(UserInformations userInformation) {
+        this.userInformation = userInformation;
+    }
+
+    public void restorePurchasedProductsFromMarket(final boolean isSubscriptionRestore, final ProgressDialog progress){
+
+        AsyncTask<Void, Void, Void> executePurchase = new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+            }
+
+            @Override
+            protected Void doInBackground(Void... params) {
+                List<L_Content> localContents = GalePressApplication.getInstance().getDatabaseApi().getAllContents(null);
+                //Kullanicinin daha once aldigi urunler kontrol ediliyor
+                if (GalePressApplication.getInstance().isBlnBind() && GalePressApplication.getInstance().getmService() != null) {
+                    Bundle ownedItems;
+                    try {
+                        ownedItems = GalePressApplication.getInstance().getmService().getPurchases(3, getPackageName(), (isSubscriptionRestore)? "subs" : "inapp", null);
+                        int response = ownedItems.getInt("RESPONSE_CODE");
+
+                        ArrayList<String> ownedSkus = new ArrayList<String>();
+                        if (response == 0){
+                            ownedSkus = ownedItems.getStringArrayList("INAPP_PURCHASE_ITEM_LIST");
+                        }
+
+                        if(ownedSkus.size() > 0){
+                            for(String skuItem : ownedSkus){
+                                for(int i = 0; i < localContents.size(); i++){
+                                    L_Content content = localContents.get(i);
+                                    if(skuItem.compareTo(content.getIdentifier()) == 0){
+                                        content.setOwnedProduct(true);
+                                        GalePressApplication.getInstance().getDatabaseApi().updateContent(content, false);
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+
+                    ArrayList<String> skuList = new ArrayList<String>();
+                    Bundle querySkus = new Bundle();
+                    for(int i = 0; i < localContents.size(); i++){
+                        L_Content content = localContents.get(i);
+                        if(content.isBuyable()){
+                            //Satin alinabilen urunse fiyati kontrol ediliyor
+                            skuList.add(content.getIdentifier());
+                            querySkus.putStringArrayList("ITEM_ID_LIST", skuList);
+                        }
+                    }
+
+                    Bundle skuDetails;
+                    try {
+                        skuDetails = GalePressApplication.getInstance().getmService().getSkuDetails(3, getPackageName(), (isSubscriptionRestore)? "subs" : "inapp", querySkus);
+                        int response = skuDetails.getInt("RESPONSE_CODE");
+
+                        if (response == 0){
+                            ArrayList<String> responseList = skuDetails.getStringArrayList("DETAILS_LIST");
+
+                            if (responseList.size() != 0) {
+                                for (String thisResponse : responseList) {
+                                    JSONObject object = null;
+                                    try {
+                                        object = new JSONObject(thisResponse);
+                                        for(int i = 0; i < localContents.size(); i++){
+                                            L_Content content = localContents.get(i);
+                                            if(object.getString("productId").compareTo(content.getIdentifier()) == 0){
+                                                content.setMarketPrice(object.getString("price"));
+                                                GalePressApplication.getInstance().getDatabaseApi().updateContent(content, false);
+                                                break;
+                                            }
+                                        }
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }
+                        }
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                if(progress!= null && progress.isShowing())
+                    progress.dismiss();
+            }
+
+        };
+        executePurchase.execute();
 
     }
 }

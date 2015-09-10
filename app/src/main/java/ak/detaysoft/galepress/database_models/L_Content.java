@@ -54,6 +54,7 @@ public class L_Content implements Serializable {
     @DatabaseField private boolean isForceDetele;
     @DatabaseField private String identifier;
     @DatabaseField private boolean isOwnedProduct;
+    @DatabaseField private String marketPrice;
 
     private ArrayList<L_Category> categories;
     private String pdfPath;
@@ -352,6 +353,14 @@ public class L_Content implements Serializable {
     public void setOwnedProduct(boolean isOwnedProduct) {
         this.isOwnedProduct = isOwnedProduct;
     }
+
+    public String getMarketPrice() {
+        return marketPrice;
+    }
+
+    public void setMarketPrice(String marketPrice) {
+        this.marketPrice = marketPrice;
+    }
 // Model Methods
 
     public L_Content(R_ContentDetail remoteContent){
@@ -467,6 +476,7 @@ public class L_Content implements Serializable {
                 ", isForceDetele=" + isForceDetele +
                 ", identifier='"+identifier+'\''+
                 ", isOwnedProduct=" + isOwnedProduct +
+                ", marketPrice='"+marketPrice+'\''+
                 '}';
     }
 }
