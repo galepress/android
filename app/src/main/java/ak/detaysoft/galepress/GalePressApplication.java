@@ -164,6 +164,7 @@ public class GalePressApplication
     public void onCreate() {
         super.onCreate();
         sInstance = this;
+        parseApplicationPlist();
 
         DisplayImageOptions displayConfig = new DisplayImageOptions.Builder()
                 .cacheInMemory(true).build();
@@ -172,7 +173,7 @@ public class GalePressApplication
                 .defaultDisplayImageOptions(displayConfig).build();
         ImageLoader.getInstance().init(loaderConfig);
 
-        parseApplicationPlist();
+
         initBillingServices();
         prepareMemberShipList();
 
@@ -183,7 +184,7 @@ public class GalePressApplication
 
         if(isTestApplication()){
             SharedPreferences preferences;
-            preferences= PreferenceManager.getDefaultSharedPreferences(this);
+            preferences= getSharedPreferences("ak.detaysoft.galepress", Context.MODE_PRIVATE);
             setTestApplicationLoginInf(preferences.getString("AppUserName", ""), preferences.getString("AppPassword", ""), preferences.getString("AppId", "0"),
                                        preferences.getString("FacebookEmail", ""), preferences.getString("FacebookUserId", ""), false);
         }
@@ -422,7 +423,7 @@ public class GalePressApplication
 
         SharedPreferences preferences;
         SharedPreferences.Editor editor;
-        preferences= PreferenceManager.getDefaultSharedPreferences(GalePressApplication.getInstance().getApplicationContext());
+        preferences= getSharedPreferences("ak.detaysoft.galepress", Context.MODE_PRIVATE);
         editor = preferences.edit();
         editor.putString("AppUserName", username);
         editor.putString("AppPassword", password);
@@ -438,6 +439,7 @@ public class GalePressApplication
         if(dataApi != null){
             dataApi.getDatabaseApi().deleteApplication(dataApi.getDatabaseApi().getApplication(getApplicationId()));
             dataApi.getDatabaseApi().createApplication(new L_Application(Integer.parseInt(applicationId), -1));
+            setTestApplicationLoginInf(testApplicationInf.getUsername(), testApplicationInf.getPassword(), applicationId, testApplicationInf.getFacebookEmail(), testApplicationInf.getFacebookUserId(), false);
         }
     }
 

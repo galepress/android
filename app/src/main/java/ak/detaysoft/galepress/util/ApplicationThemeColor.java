@@ -705,7 +705,15 @@ public class ApplicationThemeColor {
         Drawable normal;
         Drawable pressed;
 
-        if(resourceType == READ_CONTENT){
+        if(resourceType == MEMBERSHIP_POPUP_CLOSE){
+            if(getInstance().themeType == DARK_THEME_TYPE){
+                normal = context.getResources().getDrawable(R.drawable.login_popup_cancel_dark);
+                pressed = context.getResources().getDrawable(R.drawable.login_popup_cancel_light);
+            } else {
+                normal = context.getResources().getDrawable(R.drawable.login_popup_cancel_light);
+                pressed = context.getResources().getDrawable(R.drawable.login_popup_cancel_dark);
+            }
+        }else if(resourceType == READ_CONTENT){
 
             if(getInstance().themeType == DARK_THEME_TYPE){
                 normal = context.getResources().getDrawable(R.drawable.popup_read_dark);

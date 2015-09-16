@@ -443,7 +443,6 @@ public class DataApi extends Object {
             }
         }
 
-
     }
 
     private void progressUpdate(L_Content content, long total, long fileLength) {
@@ -618,7 +617,6 @@ public class DataApi extends Object {
             } else {
                 applicationID = application.getApplicationId();
             }
-            applicationID = 187;
 
             Uri.Builder uriBuilder = new Uri.Builder();
             uriBuilder.scheme("http")
@@ -640,27 +638,42 @@ public class DataApi extends Object {
             * */
             }
 
-
             request = new JsonObjectRequest(Request.Method.POST,uriBuilder.build().toString(), null,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
                             try {
-                                String accessToken = response.getString("accessToken");
-                                if(accessToken != null && accessToken.length() != 0)
-                                {
-                                    GalePressApplication.getInstance().editMemberShipList(true, response);
-                                    activity.closeActivityAndUpdateApplication();
+
+                                if(!response.isNull("accessToken")){
+                                    String accessToken = response.getString("accessToken");
+                                    if(accessToken != null && accessToken.length() != 0)
+                                    {
+                                        GalePressApplication.getInstance().editMemberShipList(true, response);
+                                        activity.closeActivityAndUpdateApplication();
+                                    } else {
+                                        GalePressApplication.getInstance().editMemberShipList(false, null);
+                                        activity.customFailLoginWarning(activity.getResources().getString(R.string.WARNING_0));
+                                    }
+                                } else if(!response.isNull("status")) {
+                                    int code = response.getInt("status");
+                                    if(code == 160)
+                                        activity.customFailLoginWarning(activity.getResources().getString(R.string.WARNING_160));
+                                    else if(code == 140)
+                                        activity.customFailLoginWarning(activity.getResources().getString(R.string.WARNING_140));
+                                    else
+                                        activity.customFailLoginWarning(activity.getResources().getString(R.string.WARNING_0));
                                 } else {
                                     GalePressApplication.getInstance().editMemberShipList(false, null);
                                     activity.customFailLoginWarning(activity.getResources().getString(R.string.WARNING_0));
                                 }
+
+
                                 Logout.e("Adem","DECREMENT"); GalePressApplication.getInstance().decrementRequestCount();
                             } catch (Exception e){
                                 GalePressApplication.getInstance().editMemberShipList(false, null);
                                 activity.customFailLoginWarning(activity.getResources().getString(R.string.WARNING_0));
-                                Logout.e("Adem","DECREMENT"); GalePressApplication.getInstance().decrementRequestCount();
                                 e.printStackTrace();
+                                Logout.e("Adem","DECREMENT"); GalePressApplication.getInstance().decrementRequestCount();
                             }
                         }
                     },

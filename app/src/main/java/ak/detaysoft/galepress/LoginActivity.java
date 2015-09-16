@@ -12,19 +12,15 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.GradientDrawable;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
-import android.view.animation.TranslateAnimation;
 import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -38,7 +34,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.artifex.mupdfdemo.PageView;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -49,25 +44,8 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.URL;
-import java.net.URLConnection;
 
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
 import ak.detaysoft.galepress.util.CustomPulseProgress;
@@ -248,7 +226,13 @@ public class LoginActivity extends Activity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openSignUpPopup();
+                if(GalePressApplication.getInstance().getDataApi().isConnectedToInternet()){
+                    //openSignUpPopup();
+                    openSigupActivity();
+                } else {
+                    Toast.makeText(LoginActivity.this, getResources().getString(R.string.WARNING_1), Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
@@ -258,7 +242,11 @@ public class LoginActivity extends Activity {
         forgot_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openPasswordPopup();
+                if(GalePressApplication.getInstance().getDataApi().isConnectedToInternet()){
+                    openPasswordActivity();
+                } else {
+                    Toast.makeText(LoginActivity.this, getResources().getString(R.string.WARNING_1), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -362,7 +350,15 @@ public class LoginActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == 101){ //signup
+            if(resultCode == 101) //Kullanıcı oluşturma başarılı
+                finishActivityWithAnimation();
+        } else if(requestCode == 102) { //password
+
+        }
     }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -379,7 +375,6 @@ public class LoginActivity extends Activity {
     @Override
     public void onBackPressed() {
         finishActivityWithAnimation();
-
     }
 
     private void finishActivityWithAnimation(){
@@ -446,270 +441,18 @@ public class LoginActivity extends Activity {
         popup.startAnimation(scale);
     }
 
-    private void openPasswordPopup(){
-        // Inflate the popup_layout.xml
-        LinearLayout viewGroup = (LinearLayout) findViewById(R.id.forgot_password_base_view);
-        LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        final View layout = layoutInflater.inflate(R.layout.forgot_password_popup, viewGroup);
-
-        // Creating the PopupWindow
-        final PopupWindow popup = new PopupWindow(this);
-        popup.setContentView(layout);
-        popup.setFocusable(true);
-
-        Button close = (Button)layout.findViewById(R.id.forgot_web_close);
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            close.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this, ApplicationThemeColor.CANCEL_CONTENT_DOWNLOAD));
-        else
-            close.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this, ApplicationThemeColor.CANCEL_CONTENT_DOWNLOAD));
-        close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popup.dismiss();
-            }
-        });
-
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            ((LinearLayout)close.getParent()).setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.MEMBERSHIP_POPUP_CLOSE_BASE));
-        else
-            ((LinearLayout)close.getParent()).setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.MEMBERSHIP_POPUP_CLOSE_BASE));
-
-        popup.setWidth(this.popup.getWidth()+ ((LinearLayout)close.getParent()).getLayoutParams().width - 8);
-        popup.setHeight(this.popup.getHeight()+ ((LinearLayout)close.getParent()).getLayoutParams().height - 8);
-
-        CustomPulseProgress progress = (CustomPulseProgress)layout.findViewById(R.id.forgot_loading);
-        progress.startAnim();
-
-        WebView web = (WebView)layout.findViewById(R.id.password_web);
-        web.setVisibility(View.INVISIBLE);
-
-        RelativeLayout.LayoutParams webBaseParams = new RelativeLayout.LayoutParams(this.popup.getWidth(), this.popup.getHeight());
-        webBaseParams.addRule(RelativeLayout.CENTER_IN_PARENT, R.id.forgot_popup_base);
-        ((RelativeLayout)web.getParent()).setLayoutParams(webBaseParams);
-        web.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
-        prepareWebSetting(web);
-
-        GradientDrawable gradient =  new GradientDrawable();
-        gradient.setCornerRadius(2);
-        gradient.setColor(ApplicationThemeColor.getInstance().getThemeColor());
-        gradient.setStroke(0, ApplicationThemeColor.getInstance().getThemeColor());
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            ((RelativeLayout)web.getParent()).setBackground(gradient);
-        else
-            ((RelativeLayout)web.getParent()).setBackgroundDrawable(gradient);
-
-        web.setWebViewClient(new MyWebViewClient(progress));
-
-        web.setHorizontalScrollBarEnabled(false);
-        web.setVerticalScrollBarEnabled(false);
-
-        web.loadUrl("http://m.facebook.com"); //Bu url suan dummy
-
-        // Clear the default translucent background
-        popup.setBackgroundDrawable(new BitmapDrawable());
-
-        int padding =  (this.popup.getHeight()+ (((LinearLayout)close.getParent()).getLayoutParams().width - 8)/2) ;
-        popup.showAsDropDown(this.popup, -(((LinearLayout)close.getParent()).getLayoutParams().width - 8)/2, -padding);
+    private void openPasswordActivity(){
+        Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+        intent.putExtra("width", popup.getWidth());
+        intent.putExtra("height", popup.getHeight());
+        startActivityForResult(intent, 102);
     }
 
-    private void openSignUpPopup(){
-        // Inflate the popup_layout.xml
-        LinearLayout viewGroup = (LinearLayout) findViewById(R.id.signup_base_view);
-        LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        final View layout = layoutInflater.inflate(R.layout.signup_popup, viewGroup);
-
-        // Creating the PopupWindow
-        final PopupWindow popup = new PopupWindow(this);
-        popup.setContentView(layout);
-        layout.setBackgroundColor(Color.TRANSPARENT);
-        popup.setFocusable(true);
-
-        Button close = (Button)layout.findViewById(R.id.signup_web_close);
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            close.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this, ApplicationThemeColor.CANCEL_CONTENT_DOWNLOAD));
-        else
-            close.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this, ApplicationThemeColor.CANCEL_CONTENT_DOWNLOAD));
-        close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popup.dismiss();
-            }
-        });
-
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            ((LinearLayout)close.getParent()).setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.MEMBERSHIP_POPUP_CLOSE_BASE));
-        else
-            ((LinearLayout)close.getParent()).setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.MEMBERSHIP_POPUP_CLOSE_BASE));
-
-        popup.setWidth(this.popup.getWidth()+ ((LinearLayout)close.getParent()).getLayoutParams().width - 8);
-        popup.setHeight(this.popup.getHeight()+ ((LinearLayout)close.getParent()).getLayoutParams().height - 8);
-
-        CustomPulseProgress progress = (CustomPulseProgress)layout.findViewById(R.id.signup_loading);
-        progress.startAnim();
-
-        WebView web = (WebView)layout.findViewById(R.id.signup_web);
-        web.setVisibility(View.INVISIBLE);
-        RelativeLayout.LayoutParams webBaseParams = new RelativeLayout.LayoutParams(this.popup.getWidth(), this.popup.getHeight());
-        webBaseParams.addRule(RelativeLayout.CENTER_IN_PARENT, R.id.signup_popup_base);
-        ((RelativeLayout)web.getParent()).setLayoutParams(webBaseParams);
-        web.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
-        web.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
-        prepareWebSetting(web);
-
-        GradientDrawable gradient =  new GradientDrawable();
-        gradient.setCornerRadius(2);
-        gradient.setColor(ApplicationThemeColor.getInstance().getThemeColor());
-        gradient.setStroke(0, ApplicationThemeColor.getInstance().getThemeColor());
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            ((RelativeLayout)web.getParent()).setBackground(gradient);
-        else
-            ((RelativeLayout)web.getParent()).setBackgroundDrawable(gradient);
-
-        web.setWebViewClient(new MyWebViewClient(progress));
-        web.setWebChromeClient(new WebChromeClient(){
-            @Override
-            public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
-                Log.e("deneme", consoleMessage.message());
-                return true;
-            }
-        });
-
-        web.setHorizontalScrollBarEnabled(false);
-        web.setVerticalScrollBarEnabled(false);
-
-        web.loadUrl("http://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=NBA"); //Bu url suan dummy
-
-        // Clear the default translucent background
-        popup.setBackgroundDrawable(new BitmapDrawable());
-
-        int padding =  (this.popup.getHeight()+ (((LinearLayout)close.getParent()).getLayoutParams().width - 8)/2) ;
-        popup.showAsDropDown(this.popup, -(((LinearLayout)close.getParent()).getLayoutParams().width - 8)/2, -padding);
-
-    }
-
-    private void prepareWebSetting(WebView web){
-        WebSettings s = web.getSettings();
-        s.setBuiltInZoomControls(true);
-        s.setPluginState(WebSettings.PluginState.ON);
-        s.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
-        s.setUseWideViewPort(true);
-        s.setLoadWithOverviewMode(true);
-        s.setSaveFormData(true);
-        s.setJavaScriptEnabled(true);
-        s.setDomStorageEnabled(true);
-        s.setAllowFileAccess(true);
-        s.setAppCacheEnabled(true);
-        s.setAllowFileAccessFromFileURLs(true);
-        s.setAllowUniversalAccessFromFileURLs(true);
-        s.setSupportZoom(false);
-    }
-
-    private class MyWebViewClient extends WebViewClient {
-
-        private CustomPulseProgress loading;
-
-        public MyWebViewClient(CustomPulseProgress loading){
-            this.loading = loading;
-        }
-
-        @Override
-        public void onPageFinished(final WebView view, final String url) {
-            super.onPageFinished(view, url);
-
-            view.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
-            view.setVisibility(View.VISIBLE);
-            GradientDrawable gradient =  new GradientDrawable();
-            gradient.setCornerRadius(2);
-            gradient.setColor(ApplicationThemeColor.getInstance().getForegroundColor());
-            gradient.setStroke(0, ApplicationThemeColor.getInstance().getForegroundColor());
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                ((RelativeLayout)view.getParent()).setBackground(gradient);
-            else
-                ((RelativeLayout)view.getParent()).setBackgroundDrawable(gradient);
-            loading.stopAnim();
-            loading.setVisibility(View.GONE);
-
-            /*AsyncTask<Void, Void, Void> asyncTask = new AsyncTask<Void, Void, Void>() {
-                @Override
-                protected Void doInBackground(Void... params) {
-                    try{
-                        HttpClient client = new DefaultHttpClient();
-                        HttpGet request = new HttpGet(url);
-                        HttpResponse response = client.execute(request);
-
-                        String html = "";
-                        InputStream in = response.getEntity().getContent();
-                        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-                        StringBuilder str = new StringBuilder();
-                        String line = null;
-                        while((line = reader.readLine()) != null)
-                        {
-                            str.append(line);
-                        }
-                        in.close();
-                        html = str.toString();
-                        Log.e("deneme", html);
-                    } catch (Exception e){
-                        e.printStackTrace();
-                    }
-                    return null;
-                }
-
-                @Override
-                protected void onPostExecute(Void aVoid) {
-                    view.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
-                    view.setVisibility(View.VISIBLE);
-                    GradientDrawable gradient =  new GradientDrawable();
-                    gradient.setCornerRadius(2);
-                    gradient.setColor(ApplicationThemeColor.getInstance().getForegroundColor());
-                    gradient.setStroke(0, ApplicationThemeColor.getInstance().getForegroundColor());
-                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                        ((RelativeLayout)view.getParent()).setBackground(gradient);
-                    else
-                        ((RelativeLayout)view.getParent()).setBackgroundDrawable(gradient);
-                    loading.stopAnim();
-                    loading.setVisibility(View.GONE);
-
-                    super.onPostExecute(aVoid);
-                }
-            };
-            asyncTask.execute();*/
-
-
-        }
-
-        @Override
-        public void onPageStarted(WebView view, String url, Bitmap favicon) {
-            super.onPageStarted(view, url, favicon);
-            loading.startAnim();
-            loading.setVisibility(View.VISIBLE);
-
-        }
-
-        @Override
-        public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-            //view.loadUrl("file:///android_asset/annotation_not_loaded.html");
-
-            view.loadUrl("about:blank");
-            view.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
-            view.setVisibility(View.VISIBLE);
-            GradientDrawable gradient =  new GradientDrawable();
-            gradient.setCornerRadius(2);
-            gradient.setColor(ApplicationThemeColor.getInstance().getForegroundColor());
-            gradient.setStroke(0, ApplicationThemeColor.getInstance().getForegroundColor());
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                ((RelativeLayout)view.getParent()).setBackground(gradient);
-            else
-                ((RelativeLayout)view.getParent()).setBackgroundDrawable(gradient);
-            loading.stopAnim();
-            loading.setVisibility(View.GONE);
-        }
-
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
-            return super.shouldOverrideUrlLoading(view, url);
-        }
+    private void openSigupActivity(){
+        Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+        intent.putExtra("width", popup.getWidth());
+        intent.putExtra("height", popup.getHeight());
+        startActivityForResult(intent, 101);
     }
 
     private ColorStateList createTextViewColorStateList(){

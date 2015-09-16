@@ -71,6 +71,15 @@
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/LoginPopupTheme"></activity>
 
+        <activity
+            android:name=".SignupActivity"
+            android:windowSoftInputMode="adjustNothing"
+            android:theme="@style/SignupPopupTheme"></activity>
+        <activity
+            android:name=".ForgotPasswordActivity"
+            android:windowSoftInputMode="adjustNothing"
+            android:theme="@style/SignupPopupTheme"></activity>
+
         <!--<activity-->
         <!--android:name="com.artifex.mupdfdemo.ChoosePDFActivity"-->
         <!--android:theme="@android:style/Theme.Light"-->
