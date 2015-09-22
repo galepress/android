@@ -1041,21 +1041,21 @@ public class GalePressApplication
             subscriptions = new ArrayList<Subscription>();
             try {
                 JSONArray array = new JSONArray();
-                Subscription weekSubscription = new Subscription(Subscription.WEEK, response.getString("SubscriptionWeekIdentifier")
+                Subscription weekSubscription = new Subscription(Subscription.WEEK, response.getString("SubscriptionWeekIdentifier").toLowerCase()
                         , response.getString("WeekPrice"), "", (response.getInt("SubscriptionWeekActive") == 0) ? false :true , false);
                 if(weekSubscription.isActive()) {
                     subscriptions.add(weekSubscription);
                     array.put(weekSubscription.getJSONObject());
                 }
 
-                Subscription monthSubscription = new Subscription(Subscription.MONTH, response.getString("SubscriptionMonthIdentifier")
+                Subscription monthSubscription = new Subscription(Subscription.MONTH, response.getString("SubscriptionMonthIdentifier").toLowerCase()
                         , response.getString("MonthPrice"), "", (response.getInt("SubscriptionMonthActive") == 0) ? false :true, false);
                 if(monthSubscription.isActive()) {
                     subscriptions.add(monthSubscription);
                     array.put(monthSubscription.getJSONObject());
                 }
 
-                Subscription yearSubscription = new Subscription(Subscription.YEAR, response.getString("SubscriptionYearIdentifier")
+                Subscription yearSubscription = new Subscription(Subscription.YEAR, response.getString("SubscriptionYearIdentifier").toLowerCase()
                         , response.getString("YearPrice"), "", (response.getInt("SubscriptionYearActive") == 0) ? false :true, false );
                 if(yearSubscription.isActive()) {
                     subscriptions.add(yearSubscription);

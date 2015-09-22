@@ -833,21 +833,11 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         }
         else if(GalePressApplication.getInstance().getMembershipMenuList().get(position) == LeftMenuMembershipAdapter.SUBSCRIPTION) {
             if(GalePressApplication.getInstance().getSubscriptions().size() > 0){
-
-                boolean isRestored = true;
-                for(Subscription subs : GalePressApplication.getInstance().getSubscriptions()){
-                    if(subs.getMarketPrice() == null || subs.getMarketPrice().compareTo("") == 0)
-                        isRestored = false;
-                }
-                if(isRestored)
-                    openSubscriptionChooser();
-                else {
-                    ProgressDialog progress = new ProgressDialog(this);
-                    progress.setMessage(getResources().getString(R.string.Restore) + "...");
-                    progress.setCancelable(false);
-                    progress.show();
-                    GalePressApplication.getInstance().restoreSubscriptions(false, this, progress);
-                }
+                ProgressDialog progress = new ProgressDialog(this);
+                progress.setMessage(getResources().getString(R.string.Restore) + "...");
+                progress.setCancelable(false);
+                progress.show();
+                GalePressApplication.getInstance().restoreSubscriptions(false, this, progress);
             } else {
                 Toast.makeText(this, getResources().getString(R.string.subscription_warning), Toast.LENGTH_SHORT).show();
             }
@@ -892,7 +882,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         for(Subscription subs : GalePressApplication.getInstance().getSubscriptions()){
 
             String price = "";
-            if(subs.getMarketPrice() != null || subs.getMarketPrice().compareTo("") != 0){
+            if(subs.getMarketPrice() != null && subs.getMarketPrice().compareTo("") != 0){
                 price = subs.getMarketPrice();
             } else {
                 price = subs.getPrice();
@@ -902,20 +892,20 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 if(!subs.isOwned()){
                     arrayAdapter.add(getResources().getString(R.string.WEEK) +" " + price);
                 } else {
-                    arrayAdapter.add(getResources().getString(R.string.subscription_type_owned , getResources().getString(R.string.WEEK)));
+                    arrayAdapter.add(getResources().getString(R.string.subscription_type_owned , ""+getResources().getString(R.string.WEEK)));
                 }
             } else if(subs.getType() == Subscription.MONTH){
                 if(!subs.isOwned()){
                     arrayAdapter.add(getResources().getString(R.string.MONTH) +" " + price);
                 } else {
-                    arrayAdapter.add(getResources().getString(R.string.subscription_type_owned ,getResources().getString(R.string.MONTH)));
+                    arrayAdapter.add(getResources().getString(R.string.subscription_type_owned ,""+getResources().getString(R.string.MONTH)));
                 }
 
             } else {
                 if(!subs.isOwned()){
                     arrayAdapter.add(getResources().getString(R.string.YEAR) +" " + price);
                 } else {
-                    arrayAdapter.add(getResources().getString(R.string.subscription_type_owned ,getResources().getString(R.string.YEAR)));
+                    arrayAdapter.add(getResources().getString(R.string.subscription_type_owned ,""+getResources().getString(R.string.YEAR)));
                 }
             }
         }

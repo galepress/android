@@ -445,88 +445,74 @@ public class ContentDetailPopupActivity extends Activity{
 
     private void initDownloadButton(){
 
-        AsyncTask<Void, Void ,String> getPrice = new AsyncTask<Void, Void, String>() {
+        if(subscribed || !content.isBuyable()){
+            downloadButton.init(CustomDownloadButton.FREE_DOWNLOAD, "");
+        } else if(content.isOwnedProduct()) {
+            downloadButton.init(CustomDownloadButton.RESTORE_PURCHASED, "");
+        } else {
+            AsyncTask<Void, Void ,String> getPrice = new AsyncTask<Void, Void, String>() {
 
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-
-                if(subscribed){
-                    downloadButton.init(CustomDownloadButton.FREE_DOWNLOAD, "");
-                } else {
-                    if(content.isBuyable()){
-                        if(content.isOwnedProduct()){
-                            downloadButton.init(CustomDownloadButton.RESTORE_PURCHASED, "");
-                        } else {
-                            downloadButton.init(CustomDownloadButton.PURCHASE_DOWNLOAD, "");
-                        }
-                    } else {
-                        downloadButton.init(CustomDownloadButton.FREE_DOWNLOAD, "");
-                    }
+                @Override
+                protected void onPreExecute() {
+                    super.onPreExecute();
+                    downloadButton.init(CustomDownloadButton.PURCHASE_DOWNLOAD, "");
                 }
 
-            }
+                @Override
+                protected String doInBackground(Void... params) {
+                    String price = "";
+                    if(subscribed){
+                        return price;
+                    } else {
+                        //Satin alinabilen urunse fiyati kontrol ediliyor
+                        ArrayList<String> skuList = new ArrayList<String>();
+                        skuList.add(content.getIdentifier());
+                        Bundle querySkus = new Bundle();
+                        querySkus.putStringArrayList("ITEM_ID_LIST", skuList);
 
-            @Override
-            protected String doInBackground(Void... params) {
-                String price = "";
-                if(subscribed){
-                    return price;
-                } else {
-                    //Satin alinabilen urunse fiyati kontrol ediliyor
-                    ArrayList<String> skuList = new ArrayList<String>();
-                    skuList.add(content.getIdentifier());
-                    Bundle querySkus = new Bundle();
-                    querySkus.putStringArrayList("ITEM_ID_LIST", skuList);
+                        Bundle skuDetails;
+                        try {
+                            skuDetails = GalePressApplication.getInstance().getmService().getSkuDetails(3, getPackageName(), "inapp", querySkus);
 
-                    Bundle skuDetails;
-                    try {
-                        skuDetails = GalePressApplication.getInstance().getmService().getSkuDetails(3, getPackageName(), "inapp", querySkus);
+                            int response = skuDetails.getInt("RESPONSE_CODE");
 
-                        int response = skuDetails.getInt("RESPONSE_CODE");
+                            if (response == 0) {
+                                ArrayList<String> responseList = skuDetails.getStringArrayList("DETAILS_LIST");
 
-                        if (response == 0) {
-                            ArrayList<String> responseList = skuDetails.getStringArrayList("DETAILS_LIST");
-
-                            if (responseList.size() != 0) {
-                                for (String thisResponse : responseList) {
-                                    JSONObject object = null;
-                                    try {
-                                        object = new JSONObject(thisResponse);
-                                        price = object.getString("price");
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
+                                if (responseList.size() != 0) {
+                                    for (String thisResponse : responseList) {
+                                        JSONObject object = null;
+                                        try {
+                                            object = new JSONObject(thisResponse);
+                                            price = object.getString("price");
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
                                     }
                                 }
+
                             }
-
+                        } catch (RemoteException e) {
+                            e.printStackTrace();
+                            price = "";
                         }
-                    } catch (RemoteException e) {
-                        e.printStackTrace();
-                        price = "";
+                        if (price == null || price.length() == 0) {
+                            price = (content.getMarketPrice() == null || content.getMarketPrice().length() == 0) ? "" : content.getMarketPrice();
+                        }
                     }
-                    if (price == null || price.length() == 0) {
-                        price = (content.getMarketPrice() == null || content.getMarketPrice().length() == 0) ? "" : content.getMarketPrice();
-                    }
+                    return price;
                 }
-                return price;
-            }
 
-            @Override
-            protected void onPostExecute(String s) {
-                super.onPostExecute(s);
-                if(content.isBuyable()){
-                    if(content.isOwnedProduct()){
-                        downloadButton.init(CustomDownloadButton.RESTORE_PURCHASED, s);
-                    } else {
-                        downloadButton.init(CustomDownloadButton.PURCHASE_DOWNLOAD, s);
-                    }
-                } else {
-                    downloadButton.init(CustomDownloadButton.FREE_DOWNLOAD, s);
+                @Override
+                protected void onPostExecute(String s) {
+                    super.onPostExecute(s);
+                    downloadButton.getPriceTextView().setText(s);
+                    downloadButton.invalidate();
                 }
-            }
-        };
-        getPrice.execute();
+            };
+            getPrice.execute();
+        }
+
     }
 
     private void displayImage(final boolean isDownload, final boolean isThumnail, final ImageView image, final CustomPulseProgress loading, String imagePath) {

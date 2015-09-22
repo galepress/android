@@ -194,4 +194,8 @@ public class CustomDownloadButton extends RelativeLayout {
     public void stopAnim(){
         arrowIcon.clearAnimation();
     }
+
+    public TextView getPriceTextView() {
+        return priceTextView;
+    }
 }
