@@ -834,7 +834,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         else if(GalePressApplication.getInstance().getMembershipMenuList().get(position) == LeftMenuMembershipAdapter.SUBSCRIPTION) {
             if(GalePressApplication.getInstance().getSubscriptions().size() > 0){
                 ProgressDialog progress = new ProgressDialog(this);
-                progress.setMessage(getResources().getString(R.string.Restore) + "...");
+                progress.setMessage(getResources().getString(R.string.subscription_check) + "...");
                 progress.setCancelable(false);
                 progress.show();
                 GalePressApplication.getInstance().restoreSubscriptions(false, this, progress);
