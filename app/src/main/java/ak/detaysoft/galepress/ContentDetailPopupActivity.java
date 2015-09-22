@@ -507,7 +507,10 @@ public class ContentDetailPopupActivity extends Activity{
                 @Override
                 protected void onPostExecute(String s) {
                     super.onPostExecute(s);
-                    downloadButton.getPriceTextView().setText(s);
+                    if(s.compareTo("") != 0)
+                        downloadButton.getPriceTextView().setText(s);
+                    else
+                        downloadButton.getPriceTextView().setText(content.getPrice());
                     downloadButton.invalidate();
                 }
             };
