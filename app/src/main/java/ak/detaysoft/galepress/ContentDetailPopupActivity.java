@@ -250,6 +250,7 @@ public class ContentDetailPopupActivity extends Activity{
                     subscribed = true;
             }
         }
+
         initDownloadButton();
         downloadButton.setOnClickListener(new View.OnClickListener() {
             @Override
