@@ -178,4 +178,14 @@
     <string name="forgot_password"><u>Şifremi Unuttum?</u></string>
     <string name="signup">Kayıt ol</string>
     <string name="cannot_load">Sayfa yüklenemedi</string>
+
+    <string name="language">tr</string>
+    <string name="subscription_warning">Abonelik bulunamadı</string>
+    <string name="subscription_owned">Abonelik daha önce satın alındı.</string>
+    <string name="subscription_type_owned">%$s abonelik daha önce satın alındı.</string>
+
+    <string name="WEEK">Haftalık</string>
+    <string name="MONTH">Aylık</string>
+    <string name="YEAR">Yıllık</string>
+    <string name="select_subscription">Lütfen abonelik seçin</string>
 </resources>

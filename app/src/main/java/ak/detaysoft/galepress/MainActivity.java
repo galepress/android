@@ -1,11 +1,15 @@
 package ak.detaysoft.galepress;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.IntentSender;
 import android.content.pm.ActivityInfo;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -16,6 +20,7 @@ import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.RemoteException;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.ActionBar;
@@ -32,6 +37,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -51,6 +57,9 @@ import com.google.android.gcm.GCMRegistrar;
 import com.mogoweb.chrome.WebView;
 
 import net.simonvt.menudrawer.MenuDrawer;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 
@@ -61,7 +70,9 @@ import java.util.List;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import ak.detaysoft.galepress.custom_models.ApplicationIds;
 import ak.detaysoft.galepress.custom_models.ApplicationPlist;
+import ak.detaysoft.galepress.custom_models.Subscription;
 import ak.detaysoft.galepress.custom_models.TabbarItem;
 import ak.detaysoft.galepress.database_models.L_Category;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
@@ -118,6 +129,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     private ImageButton refreshButton;
     public boolean isTabFirstInit = true;
     ArrayList<TabHost.TabSpec> specList = new ArrayList<TabHost.TabSpec>();
+    private Subscription selectedSubscription;
 
     private BroadcastReceiver mConnReceiver = new BroadcastReceiver() {
         @Override
@@ -817,10 +829,29 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             progress.setMessage(getResources().getString(R.string.Restore) + "...");
             progress.setCancelable(false);
             progress.show();
-            GalePressApplication.getInstance().restorePurchasedProductsFromMarket(false, progress);
+            GalePressApplication.getInstance().restorePurchasedProductsFromMarket(false, true, this, progress);
         }
-        else if(GalePressApplication.getInstance().getMembershipMenuList().get(position) == LeftMenuMembershipAdapter.SUBSCRIPTION)
-            Log.e("membership", "subscription");
+        else if(GalePressApplication.getInstance().getMembershipMenuList().get(position) == LeftMenuMembershipAdapter.SUBSCRIPTION) {
+            if(GalePressApplication.getInstance().getSubscriptions().size() > 0){
+
+                boolean isRestored = true;
+                for(Subscription subs : GalePressApplication.getInstance().getSubscriptions()){
+                    if(subs.getMarketPrice() == null || subs.getMarketPrice().compareTo("") == 0)
+                        isRestored = false;
+                }
+                if(isRestored)
+                    openSubscriptionChooser();
+                else {
+                    ProgressDialog progress = new ProgressDialog(this);
+                    progress.setMessage(getResources().getString(R.string.Restore) + "...");
+                    progress.setCancelable(false);
+                    progress.show();
+                    GalePressApplication.getInstance().restoreSubscriptions(false, this, progress);
+                }
+            } else {
+                Toast.makeText(this, getResources().getString(R.string.subscription_warning), Toast.LENGTH_SHORT).show();
+            }
+        }
         else if(GalePressApplication.getInstance().getMembershipMenuList().get(position) == LeftMenuMembershipAdapter.LOGOUT){
 
             //Facebook logout
@@ -840,6 +871,112 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             membershipListView.invalidate();
         }
 
+    }
+
+
+    public void openSubscriptionChooser(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getResources().getString(R.string.select_subscription));
+        builder.setNegativeButton(getResources().getString(R.string.cancel),
+                new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                this,
+                android.R.layout.select_dialog_singlechoice);
+        for(Subscription subs : GalePressApplication.getInstance().getSubscriptions()){
+
+            String price = "";
+            if(subs.getMarketPrice() != null || subs.getMarketPrice().compareTo("") != 0){
+                price = subs.getMarketPrice();
+            } else {
+                price = subs.getPrice();
+            }
+
+            if(subs.getType() == Subscription.WEEK){
+                if(!subs.isOwned()){
+                    arrayAdapter.add(getResources().getString(R.string.WEEK) +" " + price);
+                } else {
+                    arrayAdapter.add(getResources().getString(R.string.subscription_type_owned , getResources().getString(R.string.WEEK)));
+                }
+            } else if(subs.getType() == Subscription.MONTH){
+                if(!subs.isOwned()){
+                    arrayAdapter.add(getResources().getString(R.string.MONTH) +" " + price);
+                } else {
+                    arrayAdapter.add(getResources().getString(R.string.subscription_type_owned ,getResources().getString(R.string.MONTH)));
+                }
+
+            } else {
+                if(!subs.isOwned()){
+                    arrayAdapter.add(getResources().getString(R.string.YEAR) +" " + price);
+                } else {
+                    arrayAdapter.add(getResources().getString(R.string.subscription_type_owned ,getResources().getString(R.string.YEAR)));
+                }
+            }
+        }
+        builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                selectedSubscription = GalePressApplication.getInstance().getSubscriptions().get(which);
+                if(!selectedSubscription.isOwned())
+                    subscribe();
+                else
+                    Toast.makeText(MainActivity.this, getResources().getString(R.string.subscription_owned), Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.show();
+    }
+
+    private void subscribe(){
+
+        try {
+            Bundle buyIntentBundle = GalePressApplication.getInstance().getmService().getBuyIntent(3, getPackageName(),
+                    selectedSubscription.getIdentifier(), "subs", "bGoa+V7g/yqDXvKRqq+JTFn4uQZbPiQJo4pf9RzJ");
+            PendingIntent pendingIntent = buyIntentBundle.getParcelable("BUY_INTENT");
+
+            if (buyIntentBundle.getInt("RESPONSE_CODE") == GalePressApplication.BILLING_RESPONSE_RESULT_OK) { // Urun satin alinmamis
+                // Start purchase flow (this brings up the Google Play UI).
+                // Result will be delivered through onActivityResult().
+                startIntentSenderForResult(pendingIntent.getIntentSender(),
+                        1001, new Intent(), Integer.valueOf(0), Integer.valueOf(0),
+                        Integer.valueOf(0));
+            } else if (buyIntentBundle.getInt("RESPONSE_CODE") == GalePressApplication.RESULT_ITEM_ALREADY_OWNED){ // Urun daha once alinmis
+                Toast.makeText(this, this.getResources().getString(R.string.BILLING_ITEM_ALREADY_OWNED), Toast.LENGTH_SHORT)
+                        .show();
+                selectedSubscription.setOwned(true);
+                for (Subscription subs : GalePressApplication.getInstance().getSubscriptions())
+                    if(subs.getIdentifier().compareTo(selectedSubscription.getIdentifier()) == 0)
+                        subs.setOwned(true);
+                GalePressApplication.getInstance().prepareSubscriptions(null);
+            } else if (buyIntentBundle.getInt("RESPONSE_CODE") == GalePressApplication.RESULT_USER_CANCELED){ // Hata var
+                Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESULT_USER_CANCELED), Toast.LENGTH_SHORT)
+                        .show();
+            } else if (buyIntentBundle.getInt("RESPONSE_CODE") == GalePressApplication.RESULT_BILLING_UNAVAILABLE){ // Hata var
+                Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESULT_BILLING_UNAVAILABLE), Toast.LENGTH_SHORT)
+                        .show();
+            } else if (buyIntentBundle.getInt("RESPONSE_CODE") == GalePressApplication.RESULT_ITEM_UNAVAILABLE){ // Hata var
+                Toast.makeText(this, this.getResources().getString(R.string.BILLIN_RESULT_ITEM_UNAVAILABLE), Toast.LENGTH_SHORT)
+                        .show();
+            } else if (buyIntentBundle.getInt("RESPONSE_CODE") == GalePressApplication.RESULT_ERROR){ // Hata var
+                Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESULT_ERROR), Toast.LENGTH_SHORT)
+                        .show();
+            } else { //  Beklenmedik Hata var
+                Toast.makeText(this, this.getResources().getString(R.string.BILLING_UNEXPECTED), Toast.LENGTH_SHORT)
+                        .show();
+            }
+
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        } catch (IntentSender.SendIntentException e) {
+            e.printStackTrace();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     private Drawable createDrawable(boolean isSelected, Drawable res, Drawable selectedRes) {
@@ -1002,34 +1139,84 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         GalePressApplication.getInstance().onActivityResult(requestCode,resultCode,data);
-        if(resultCode == 101) { //reader view return
-            int type = data.getIntExtra("SelectedTab", 0);
-            //mTabHost.getTabWidget().setCurrentTab(type);
 
-            if(type == 0){
-                mTabHost.setCurrentTabByTag(HOME_TAB_TAG);
-            } else if(type == 1){
-                mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG);
-            } else if(type == 2) {
-                mTabHost.setCurrentTabByTag(DOWNLOADED_LIBRARY_TAG);
-            } else if(type == 3){
-                mTabHost.setCurrentTabByTag(INFO_TAB_TAG);
-            } else { // 100+ type olanlar servisten gelen buttonlar
-                String customTabTag = ""+(type- 100);
-                mTabHost.setCurrentTabByTag(customTabTag);
+        if(requestCode == 1001){
+            int responseCode = data.getIntExtra("RESPONSE_CODE", 0);
+            String purchaseData = data.getStringExtra("INAPP_PURCHASE_DATA");
+            String dataSignature = data.getStringExtra("INAPP_DATA_SIGNATURE");
+
+            if (resultCode == RESULT_OK && responseCode == GalePressApplication.BILLING_RESPONSE_RESULT_OK) {
+                try {
+                    Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESPONSE_RESULT_OK), Toast.LENGTH_SHORT)
+                            .show();
+                    selectedSubscription.setOwned(true);
+
+                    JSONObject jo = new JSONObject(purchaseData);
+                    String sku = jo.getString("productId");
+                    for (Subscription subs : GalePressApplication.getInstance().getSubscriptions())
+                        if(subs.getIdentifier().compareTo(selectedSubscription.getIdentifier()) == 0)
+                            subs.setOwned(true);
+                }
+                catch (JSONException e) {
+                    Toast.makeText(this, "act result json parse error - "+e.getMessage(), Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
+            } else if(resultCode == RESULT_OK && responseCode == GalePressApplication.RESULT_ITEM_ALREADY_OWNED){
+                Toast.makeText(this, this.getResources().getString(R.string.BILLING_ITEM_ALREADY_OWNED), Toast.LENGTH_SHORT)
+                        .show();
+                selectedSubscription.setOwned(true);
+                for (Subscription subs : GalePressApplication.getInstance().getSubscriptions())
+                    if(subs.getIdentifier().compareTo(selectedSubscription.getIdentifier()) == 0)
+                        subs.setOwned(true);
+            } else if (responseCode == GalePressApplication.RESULT_USER_CANCELED){ // Hata var
+                Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESULT_USER_CANCELED), Toast.LENGTH_SHORT)
+                        .show();
+            } else if (responseCode == GalePressApplication.RESULT_BILLING_UNAVAILABLE){ // Hata var
+                Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESULT_BILLING_UNAVAILABLE), Toast.LENGTH_SHORT)
+                        .show();
+            } else if (responseCode == GalePressApplication.RESULT_ITEM_UNAVAILABLE){ // Hata var
+                Toast.makeText(this, this.getResources().getString(R.string.BILLIN_RESULT_ITEM_UNAVAILABLE), Toast.LENGTH_SHORT)
+                        .show();
+            } else if (responseCode == GalePressApplication.RESULT_ERROR){ // Hata var
+                Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESULT_ERROR), Toast.LENGTH_SHORT)
+                        .show();
+            } else { //  Beklenmedik Hata var
+                Toast.makeText(this, this.getResources().getString(R.string.BILLING_UNEXPECTED), Toast.LENGTH_SHORT)
+                        .show();
             }
-        } else if(resultCode == 102) { //Login return
-            membershipAdapter.notifyDataSetChanged();
-            LayoutInflater mInflater = (LayoutInflater)getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            View membershipListItemView = mInflater.inflate(R.layout.left_menu_membership_item, null);
-            membershipListItemView.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
-            int listHeight = 0;
-            for(int i = 0 ; i < GalePressApplication.getInstance().getMembershipMenuList().size(); i++){
-                listHeight += membershipListItemView.getMeasuredHeight();
+            GalePressApplication.getInstance().prepareSubscriptions(null);
+        } else {
+            if(resultCode == 101) { //reader view return
+                int type = data.getIntExtra("SelectedTab", 0);
+                //mTabHost.getTabWidget().setCurrentTab(type);
+
+                if(type == 0){
+                    mTabHost.setCurrentTabByTag(HOME_TAB_TAG);
+                } else if(type == 1){
+                    mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG);
+                } else if(type == 2) {
+                    mTabHost.setCurrentTabByTag(DOWNLOADED_LIBRARY_TAG);
+                } else if(type == 3){
+                    mTabHost.setCurrentTabByTag(INFO_TAB_TAG);
+                } else { // 100+ type olanlar servisten gelen buttonlar
+                    String customTabTag = ""+(type- 100);
+                    mTabHost.setCurrentTabByTag(customTabTag);
+                }
+            } else if(resultCode == 102) { //Login return
+                membershipAdapter.notifyDataSetChanged();
+                LayoutInflater mInflater = (LayoutInflater)getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+                View membershipListItemView = mInflater.inflate(R.layout.left_menu_membership_item, null);
+                membershipListItemView.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+                int listHeight = 0;
+                for(int i = 0 ; i < GalePressApplication.getInstance().getMembershipMenuList().size(); i++){
+                    listHeight += membershipListItemView.getMeasuredHeight();
+                }
+                membershipListView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listHeight));
+                membershipListView.invalidate();
             }
-            membershipListView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listHeight));
-            membershipListView.invalidate();
         }
+
+
     }
 
     @Override

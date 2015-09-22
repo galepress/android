@@ -60,6 +60,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 import java.util.TimeZone;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
@@ -602,7 +603,8 @@ public class DataApi extends Object {
     }
 
 
-    public void login(final LoginActivity activity, boolean isFacebookLogin, String uname, String password){
+    public void login(final String token, final String userId, final String email, final String name, final String last_name,
+                      final LoginActivity activity, boolean isFacebookLogin, String uname, String password){
 
         if(isConnectedToInternet()){
             getBuildVersion();
@@ -625,17 +627,22 @@ public class DataApi extends Object {
                     .appendPath("103");
             //Uri.Builder uriBuilder = getWebServiceUrlBuilder();
             uriBuilder.appendPath("applications");
-            uriBuilder.appendPath("login_application");
+            if(!isFacebookLogin)
+                uriBuilder.appendPath("login_application");
+            else
+                uriBuilder.appendPath("fblogin");
             if(!isFacebookLogin){
                 uriBuilder.appendQueryParameter("username",uname);
                 uriBuilder.appendQueryParameter("password",password);
                 uriBuilder.appendQueryParameter("applicationID",applicationID.toString());
             } else {
-            /*
-            *
-            * Facebook login oldugu zaman burda istenen bilgiler gonderilecek
-            *
-            * */
+                uriBuilder.appendQueryParameter("clientLanguage", activity.getResources().getString(R.string.language));
+                uriBuilder.appendQueryParameter("applicationID",applicationID.toString());
+                uriBuilder.appendQueryParameter("facebookToken",token);
+                uriBuilder.appendQueryParameter("facebookUserId",userId);
+                uriBuilder.appendQueryParameter("facebookEmail",email);
+                uriBuilder.appendQueryParameter("name",name);
+                uriBuilder.appendQueryParameter("surname",last_name);
             }
 
             request = new JsonObjectRequest(Request.Method.POST,uriBuilder.build().toString(), null,
@@ -643,11 +650,9 @@ public class DataApi extends Object {
                         @Override
                         public void onResponse(JSONObject response) {
                             try {
-
                                 if(!response.isNull("accessToken")){
                                     String accessToken = response.getString("accessToken");
-                                    if(accessToken != null && accessToken.length() != 0)
-                                    {
+                                    if(accessToken != null && accessToken.length() != 0) {
                                         GalePressApplication.getInstance().editMemberShipList(true, response);
                                         activity.closeActivityAndUpdateApplication();
                                     } else {
@@ -827,7 +832,14 @@ public class DataApi extends Object {
             JsonObjectRequest request;
 
             //http://www.galepress.com/ws/v100/applications/20/detail?deviceType=android&osVersion=19_4.4.4&deviceDetail=LG Nexus 5&deviceToken=a;lskdfjla;skjdf;laksjdf;laksdf;
-            Uri.Builder uriBuilder = getWebServiceUrlBuilder();
+
+            //Uri.Builder uriBuilder = getWebServiceUrlBuilder();
+            Uri.Builder uriBuilder = new Uri.Builder();
+            uriBuilder.scheme("http")
+                    .authority("www.galepress.com")
+                    .appendPath("webservice")
+                    .appendPath("103");
+
             uriBuilder.appendPath("applications");
             uriBuilder.appendPath(applicationID.toString());
             uriBuilder.appendPath("detail");
@@ -844,6 +856,8 @@ public class DataApi extends Object {
                         public void onResponse(JSONObject response) {
                             try {
                                 R_AppDetail appDetail= new R_AppDetail(response);
+
+                                GalePressApplication.getInstance().prepareSubscriptions(response);
                                 if(appDetail.getForce() == R_AppDetail.FORCE_WARN){
                                     isBlockedFromWS = false;
                                     // Warn user to update app.

@@ -4,12 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
@@ -34,6 +36,9 @@ public class SignupActivity extends Activity {
 
     private RelativeLayout popup;
     private LinearLayout baseView;
+    private RelativeLayout webBase;
+
+    private RelativeLayout.LayoutParams webBaseParams;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,9 +103,10 @@ public class SignupActivity extends Activity {
             }
         });
 
-        RelativeLayout.LayoutParams webBaseParams = new RelativeLayout.LayoutParams(getIntent().getExtras().getInt("width"), getIntent().getExtras().getInt("height"));
+        webBase = ((RelativeLayout)findViewById(R.id.activity_signup_web_base));
+        webBaseParams = new RelativeLayout.LayoutParams(getIntent().getExtras().getInt("width"), getIntent().getExtras().getInt("height"));
         webBaseParams.addRule(RelativeLayout.CENTER_IN_PARENT, R.id.signup_base_view);
-        ((RelativeLayout)web.getParent()).setLayoutParams(webBaseParams);
+        webBase.setLayoutParams(webBaseParams);
 
         GradientDrawable gradient =  new GradientDrawable();
         gradient.setCornerRadius(2);
@@ -122,6 +128,7 @@ public class SignupActivity extends Activity {
         }
 
         web.loadUrl("http://www.galepress.com/tr/mobil-kullanici/kayitol/"+applicationID);
+
     }
 
     @Override
@@ -209,7 +216,6 @@ public class SignupActivity extends Activity {
         @Override
         public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
             //view.loadUrl("file:///android_asset/annotation_not_loaded.html");
-
             view.loadUrl("about:blank");
             view.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
             view.setVisibility(View.VISIBLE);

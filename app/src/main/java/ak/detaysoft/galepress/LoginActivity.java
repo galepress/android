@@ -67,9 +67,6 @@ public class LoginActivity extends Activity {
 
     private LoginButton loginButton;
     private CallbackManager callbackManager;
-    private String facebookEmail = "";
-    private String facebookUserId = "";
-    private String facebookToken;
     private ProgressDialog updateDialog;
 
     @Override
@@ -203,11 +200,9 @@ public class LoginActivity extends Activity {
                         });
                         alertDialog.show();
                     } else {
-                        GalePressApplication.getInstance().setTestApplicationLoginInf(unameField.getText().toString(), passwordField.getText().toString(), "0"
-                                ,facebookEmail, facebookUserId, false);
                         updateDialog = ProgressDialog.show(LoginActivity.this, "",
                                 LoginActivity.this.getString(R.string.user_information_check), true);
-                        GalePressApplication.getInstance().getDataApi().login(LoginActivity.this, false,
+                        GalePressApplication.getInstance().getDataApi().login("","","","","",LoginActivity.this, false,
                                 unameField.getText().toString(), GalePressApplication.getInstance().getMD5EncryptedValue(passwordField.getText().toString()));
                     }
                 } else {
@@ -255,9 +250,9 @@ public class LoginActivity extends Activity {
         // Callback registration
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
-            public void onSuccess(LoginResult loginResult) {
+            public void onSuccess(final LoginResult loginResult) {
 
-                facebookToken = loginResult.getAccessToken().getToken();
+
                 GraphRequest request = GraphRequest.newMeRequest(
                         loginResult.getAccessToken(),
                         new GraphRequest.GraphJSONObjectCallback() {
@@ -267,11 +262,16 @@ public class LoginActivity extends Activity {
                                     GraphResponse response) {
 
                                 try {
-                                    facebookUserId = object.getString("id");
-                                    facebookEmail = object.getString("email");
+                                    String userId = object.getString("id");
+                                    String email = object.getString("email");
+                                    String name = object.getString("first_name");
+                                    String lastName = object.getString("last_name");
+                                    String token = loginResult.getAccessToken().getToken();
 
-                                    GalePressApplication.getInstance().editMemberShipList(true, null); //burasi yeniden yazilacak
-                                    finishActivityWithAnimation();
+                                    updateDialog = ProgressDialog.show(LoginActivity.this, "",
+                                            LoginActivity.this.getString(R.string.user_information_check), true);
+                                    GalePressApplication.getInstance().getDataApi().login(token, userId, email, name, lastName, LoginActivity.this, true,
+                                            unameField.getText().toString(), GalePressApplication.getInstance().getMD5EncryptedValue(passwordField.getText().toString()));
 
                                 } catch (JSONException e) {
                                     Toast.makeText(LoginActivity.this, getResources().getString(R.string.WARNING_0), Toast.LENGTH_SHORT).show();

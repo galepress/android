@@ -79,4 +79,15 @@
 
     <string name="cannot_load">Konnte webseite nicht geladen</string>
 
+    <string name="language">de</string>
+
+    <string name="subscription_warning">Kein abonnieren</string>
+    <string name="subscription_owned">Subscription already owned.</string>
+    <string name="subscription_type_owned">%$s subscription already owned.</string>
+
+    <string name="WEEK">Wöchentlich</string>
+    <string name="MONTH">Monatlich</string>
+    <string name="YEAR">Jährlich</string>
+    <string name="select_subscription">Bitte wählen sie abonnement</string>
+
 </resources>

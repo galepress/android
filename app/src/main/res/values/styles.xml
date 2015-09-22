@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
 
     </style>
     <style name="LibraryTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -62,13 +62,7 @@
     </style>
 
     <style name="SignupPopupTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:popupMenuStyle">@style/PopupMenu</item>
-        <item name="android:textAppearanceLargePopupMenu">@style/PopupMenu.MenuItemTextAppearance</item>
-        <item name="android:textAppearanceSmallPopupMenu">@style/PopupMenu.MenuItemTextAppearance</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowFullscreen">false</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="windowActionBar">false</item>
         <item name ="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowIsTranslucent">true</item>
     </style>

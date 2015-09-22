@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:configChanges="keyboard">
+        android:layout_above="@+id/temp_popup">
 
         <RelativeLayout
             android:layout_width="@dimen/popup_login_width"
@@ -27,8 +27,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/activity_signup_web"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_centerInParent="true" />
+                    android:layout_gravity="center_horizontal"/>
 
                 <ak.detaysoft.galepress.util.CustomPulseProgress
                     android:layout_width="40dp"
@@ -60,6 +59,14 @@
         </RelativeLayout>
 
     </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/temp_popup"
+        android:background="@android:color/transparent"
+        android:layout_alignParentBottom="true"></LinearLayout>
 
 
 </RelativeLayout>

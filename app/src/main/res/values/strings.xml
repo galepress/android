@@ -191,4 +191,15 @@
     <string name="forgot_password"><u>Forgot Password</u></string>
     <string name="signup">Sign Up</string>
     <string name="cannot_load">Cannot load page</string>
+
+    <string name="language">en</string>
+    <string name="subscription_warning">No subscription</string>
+    <string name="subscription_owned">Subscription already owned.</string>
+    <string name="subscription_type_owned">%$s subscription already owned.</string>
+
+    <string name="WEEK">Weekly</string>
+    <string name="MONTH">Monthly</string>
+    <string name="YEAR">Yearly</string>
+
+    <string name="select_subscription">Please select subscription</string>
 </resources>

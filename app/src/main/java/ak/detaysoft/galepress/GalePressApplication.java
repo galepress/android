@@ -53,6 +53,7 @@ import java.util.TimeZone;
 import java.util.UUID;
 
 import ak.detaysoft.galepress.custom_models.ApplicationPlist;
+import ak.detaysoft.galepress.custom_models.Subscription;
 import ak.detaysoft.galepress.custom_models.TabbarItem;
 import ak.detaysoft.galepress.custom_models.UserInformations;
 import ak.detaysoft.galepress.database_models.L_Application;
@@ -109,6 +110,17 @@ public class GalePressApplication
     private ArrayList<TabbarItem> tabList;
     public boolean isTablistChanced = true;
     private ArrayList<Integer> membershipMenuList;
+    private ArrayList<Subscription> subscriptions;
+
+
+    public final static int BILLING_RESPONSE_RESULT_OK = 0;
+    public final static int RESULT_USER_CANCELED = 1;
+    public final static int RESULT_BILLING_UNAVAILABLE = 3;
+    public final static int RESULT_ITEM_UNAVAILABLE = 4;
+    public final static int RESULT_DEVELOPER_ERROR = 5;
+    public final static int RESULT_ERROR = 6;
+    public final static int RESULT_ITEM_ALREADY_OWNED = 7;
+    public final static int RESULT_ITEM_NOT_OWNED = 8; //For consumable product
 
 
     public final int M_DPI = 0;
@@ -176,6 +188,7 @@ public class GalePressApplication
 
         initBillingServices();
         prepareMemberShipList();
+        prepareSubscriptions(null);
 
         //Uygulama ilk acildiginda localde tutulan renk, banner ve tabbar datalarini alabilmek icin
         ApplicationThemeColor.getInstance().setParameters(null);
@@ -807,7 +820,6 @@ public class GalePressApplication
         membershipMenuList = new ArrayList<Integer>();
         SharedPreferences preferences = getSharedPreferences("ak.detaysoft.galepress", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor;
-        String token = preferences.getString("accessToken","");
         if(isLogin){ //kullanici login olacak
             editor = preferences.edit();
             userInformation = new UserInformations(response);
@@ -834,15 +846,94 @@ public class GalePressApplication
         }
     }
 
-    public UserInformations getUserInformation() {
-        return userInformation;
+
+    public void restoreSubscriptions(final boolean isMenuRestore, final Activity activity, final ProgressDialog progress){
+        AsyncTask<Void, Void, Void> restore = new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+                //Kullanicinin daha once aldigi urunler kontrol ediliyor
+                if (GalePressApplication.getInstance().isBlnBind() && GalePressApplication.getInstance().getmService() != null) {
+                    Bundle ownedItems;
+                    try {
+                        ownedItems = GalePressApplication.getInstance().getmService().getPurchases(3, getPackageName(), "subs", null);
+                        int response = ownedItems.getInt("RESPONSE_CODE");
+
+                        ArrayList<String> ownedSkus = new ArrayList<String>();
+                        if (response == 0){
+                            ownedSkus = ownedItems.getStringArrayList("INAPP_PURCHASE_ITEM_LIST");
+                        }
+
+                        if(ownedSkus.size() > 0){
+                            for(String skuItem : ownedSkus){
+                                for(int i = 0; i < subscriptions.size(); i++){
+                                    if(skuItem.compareTo(subscriptions.get(i).getIdentifier()) == 0){
+                                        subscriptions.get(i).setOwned(true);
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+
+                    ArrayList<String> skuList = new ArrayList<String>();
+                    Bundle querySkus = new Bundle();
+                    for(int i = 0; i < subscriptions.size(); i++){
+                        Subscription subscription = subscriptions.get(i);
+                        skuList.add(subscription.getIdentifier());
+                        querySkus.putStringArrayList("ITEM_ID_LIST", skuList);
+                    }
+
+                    Bundle skuDetails;
+                    try {
+                        skuDetails = GalePressApplication.getInstance().getmService().getSkuDetails(3, getPackageName(), "subs", querySkus);
+                        int response = skuDetails.getInt("RESPONSE_CODE");
+
+                        if (response == 0){
+                            ArrayList<String> responseList = skuDetails.getStringArrayList("DETAILS_LIST");
+
+                            if (responseList.size() != 0) {
+                                for (String thisResponse : responseList) {
+                                    JSONObject object = null;
+                                    try {
+                                        object = new JSONObject(thisResponse);
+                                        for(int i = 0; i < subscriptions.size(); i++){
+                                            if(object.getString("productId").compareTo(subscriptions.get(i).getIdentifier()) == 0){
+                                                subscriptions.get(i).setMarketPrice(object.getString("price"));
+                                                break;
+                                            }
+                                        }
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }
+                        }
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+
+                prepareSubscriptions(null);
+                if(activity != null){
+                    if(progress != null && progress.isShowing())
+                        progress.dismiss();
+                    if(!isMenuRestore)
+                        ((MainActivity)activity).openSubscriptionChooser();
+                }
+            }
+        };
+        restore.execute();
     }
 
-    public void setUserInformation(UserInformations userInformation) {
-        this.userInformation = userInformation;
-    }
-
-    public void restorePurchasedProductsFromMarket(final boolean isSubscriptionRestore, final ProgressDialog progress){
+    public void restorePurchasedProductsFromMarket(final boolean isSubscriptionRestore, final boolean isMenuRestore, final Activity activity, final ProgressDialog progress){
 
         AsyncTask<Void, Void, Void> executePurchase = new AsyncTask<Void, Void, Void>() {
             @Override
@@ -929,12 +1020,102 @@ public class GalePressApplication
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
-                if(progress!= null && progress.isShowing())
-                    progress.dismiss();
+                if(GalePressApplication.getInstance().getSubscriptions().size() > 0)
+                    restoreSubscriptions(isMenuRestore, activity, progress);
+                else{
+                    if(progress != null && progress.isShowing())
+                        progress.dismiss();
+                }
             }
 
         };
         executePurchase.execute();
 
+    }
+
+    public void prepareSubscriptions(JSONObject response){
+
+        SharedPreferences preferences = getSharedPreferences("ak.detaysoft.galepress", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        if(response != null) { //servisten gelen set edilecek
+            subscriptions = new ArrayList<Subscription>();
+            try {
+                JSONArray array = new JSONArray();
+                Subscription weekSubscription = new Subscription(Subscription.WEEK, response.getString("SubscriptionWeekIdentifier")
+                        , response.getString("WeekPrice"), "", (response.getInt("SubscriptionWeekActive") == 0) ? false :true , false);
+                if(weekSubscription.isActive()) {
+                    subscriptions.add(weekSubscription);
+                    array.put(weekSubscription.getJSONObject());
+                }
+
+                Subscription monthSubscription = new Subscription(Subscription.MONTH, response.getString("SubscriptionMonthIdentifier")
+                        , response.getString("MonthPrice"), "", (response.getInt("SubscriptionMonthActive") == 0) ? false :true, false);
+                if(monthSubscription.isActive()) {
+                    subscriptions.add(monthSubscription);
+                    array.put(monthSubscription.getJSONObject());
+                }
+
+                Subscription yearSubscription = new Subscription(Subscription.YEAR, response.getString("SubscriptionYearIdentifier")
+                        , response.getString("YearPrice"), "", (response.getInt("SubscriptionYearActive") == 0) ? false :true, false );
+                if(yearSubscription.isActive()) {
+                    subscriptions.add(yearSubscription);
+                    array.put(yearSubscription.getJSONObject());
+                }
+
+                editor.putString("Subscription", array.toString());
+                editor.commit();
+
+                restoreSubscriptions(false, null, null); // marketten fiyatlarini ve kullanicinin daha once satin aldigi abonelikleri cekmek icin (farkli cihazlarda daha once alinan abonelikler gelmeyebilir)
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+                subscriptions = new ArrayList<Subscription>();
+                editor.putString("Subscription","");
+                editor.commit();
+            }
+
+        } else { //lokaldeki set edilecek yada restore sonucu set edilecek
+
+            if(subscriptions != null) { //restore sonucu set edilecek
+                JSONArray array;
+                for(Subscription sub : subscriptions){
+                    array = new JSONArray();
+                    array.put(sub.getJSONObject());
+                    editor.putString("Subscription", array.toString());
+                    editor.commit();
+                }
+            } else { //lokalde tutulan subs sonucu alınacak
+                subscriptions = new ArrayList<Subscription>();
+                try {
+                    JSONArray array = new JSONArray(preferences.getString("Subscription",""));
+                    Subscription subscription;
+                    for(int i = 0; i < array.length(); i++){
+                        JSONObject object = (JSONObject) array.get(i);
+                        subscription = new Subscription(object);
+                        subscriptions.add(subscription);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    subscriptions = new ArrayList<Subscription>();
+                }
+            }
+
+        }
+    }
+
+    public UserInformations getUserInformation() {
+        return userInformation;
+    }
+
+    public void setUserInformation(UserInformations userInformation) {
+        this.userInformation = userInformation;
+    }
+
+    public ArrayList<Subscription> getSubscriptions() {
+        return subscriptions;
+    }
+
+    public void setSubscriptions(ArrayList<Subscription> subscriptions) {
+        this.subscriptions = subscriptions;
     }
 }
