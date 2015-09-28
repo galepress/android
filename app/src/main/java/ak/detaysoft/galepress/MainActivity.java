@@ -912,11 +912,26 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+
+                Subscription ownedSub = null;
+                for(Subscription subs : GalePressApplication.getInstance().getSubscriptions())
+                    if(subs.isOwned())
+                        ownedSub = subs;
                 selectedSubscription = GalePressApplication.getInstance().getSubscriptions().get(which);
-                if(!selectedSubscription.isOwned())
+                if(ownedSub != null){
+                    if(ownedSub.getType() == Subscription.WEEK)
+                        Toast.makeText(MainActivity.this, getResources().getString(R.string.subscription_type_owned , ""+getResources().getString(R.string.WEEK)), Toast.LENGTH_SHORT)
+                                .show();
+                    if(ownedSub.getType() == Subscription.MONTH)
+                        Toast.makeText(MainActivity.this, getResources().getString(R.string.subscription_type_owned , ""+getResources().getString(R.string.MONTH)), Toast.LENGTH_SHORT)
+                                .show();
+                    if(ownedSub.getType() == Subscription.YEAR)
+                        Toast.makeText(MainActivity.this, getResources().getString(R.string.subscription_type_owned , ""+getResources().getString(R.string.YEAR)), Toast.LENGTH_SHORT)
+                                .show();
+                } else {
                     subscribe();
-                else
-                    Toast.makeText(MainActivity.this, getResources().getString(R.string.subscription_owned), Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
         builder.show();
