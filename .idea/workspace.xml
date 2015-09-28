@@ -115,9 +115,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4272a91b-e20d-476c-9f23-fd491d5d43e7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/model_data.bin" afterPath="$PROJECT_DIR$/build/intermediates/model_data.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values-de/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-de/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Android.iws" />
@@ -270,10 +269,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GalePressApplication.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="GalePressApplication.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3744" vertical-offset="14267" max-vertical-offset="15708">
+            <state vertical-scroll-proportion="0.0" vertical-offset="14267" max-vertical-offset="15708">
               <caret line="1052" column="19" selection-start-line="1052" selection-start-column="19" selection-end-line="1052" selection-end-column="19" />
               <folding>
                 <element signature="e#31683#31691#0" expanded="true" />
@@ -284,11 +283,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="build.gradle" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.48" vertical-offset="0" max-vertical-offset="867">
+              <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="3604">
-              <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.4263323" vertical-offset="0" max-vertical-offset="3604">
+              <caret line="16" column="53" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -2070,7 +2079,7 @@
     <option name="modificationStamps">
       <map>
         <entry key="$USER_HOME$/Android/HelloGridViewProject" value="1389606334000" />
-        <entry key="$PROJECT_DIR$" value="7163929726383" />
+        <entry key="$PROJECT_DIR$" value="7167323095966" />
         <entry key="$PROJECT_DIR$/Android Project" value="1389126907000" />
         <entry key="$PROJECT_DIR$/mupdf/platform/android" value="1389602914000" />
         <entry key="$PROJECT_DIR$/mupdf/platform/android/gradle" value="1389018832000" />
@@ -2548,7 +2557,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/login_popup.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/forgot_password.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/viewer_login.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LoginPopupFixedAspectLayout.java" />
@@ -2590,7 +2598,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/SignupActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/custom_models/Subscription.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/CustomDownloadButton.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-tr/strings.xml" />
@@ -2599,6 +2606,8 @@
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-de/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -3933,7 +3942,11 @@
       <created>1442926819944</created>
       <updated>1442926819944</updated>
     </task>
-    <option name="localTasksCounter" value="190" />
+    <task id="LOCAL-00190" summary="- Kullanıcının daha önceden play market üzerinden aldığı bir aboneliği varsa başka abonelik alması engellendi.">
+      <created>1443446787607</created>
+      <updated>1443446787607</updated>
+    </task>
+    <option name="localTasksCounter" value="191" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -4010,7 +4023,6 @@
       <TodoPanelSettings />
     </option>
     <option name="SHOW_FILE_HISTORY_DETAILS" value="false" />
-    <MESSAGE value="modal webview" />
     <MESSAGE value="download-cancel button" />
     <MESSAGE value="download button" />
     <MESSAGE value="popup buttons" />
@@ -4035,7 +4047,8 @@
     <MESSAGE value="- download button for subscription" />
     <MESSAGE value="- subscription texts" />
     <MESSAGE value="- Abonelik olduğu zaman download butonunun editlenmesi" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Abonelik olduğu zaman download butonunun editlenmesi" />
+    <MESSAGE value="- Kullanıcının daha önceden play market üzerinden aldığı bir aboneliği varsa başka abonelik alması engellendi." />
+    <option name="LAST_COMMIT_MESSAGE" value="- Kullanıcının daha önceden play market üzerinden aldığı bir aboneliği varsa başka abonelik alması engellendi." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -4359,21 +4372,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="882">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3604">
-          <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-19/android/app/Instrumentation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3322884" vertical-offset="1658" max-vertical-offset="29019">
@@ -4510,13 +4508,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3744" vertical-offset="14267" max-vertical-offset="15708">
+        <state vertical-scroll-proportion="0.0" vertical-offset="14267" max-vertical-offset="15708">
           <caret line="1052" column="19" selection-start-line="1052" selection-start-column="19" selection-end-line="1052" selection-end-column="19" />
           <folding>
             <element signature="e#31683#31691#0" expanded="true" />
             <element signature="e#32588#32596#0" expanded="true" />
             <element signature="method#restorePurchasedProductsFromMarket#0;class#GalePressApplication#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.48" vertical-offset="0" max-vertical-offset="867">
+          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4263323" vertical-offset="0" max-vertical-offset="3604">
+          <caret line="16" column="53" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
+          <folding />
         </state>
       </provider>
     </entry>
