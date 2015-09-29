@@ -592,7 +592,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         */
 
         //Renk ve tablist lerde bi degisiklik varsa custom tablari update ediyoruz
-        if(isColorChanged && GalePressApplication.getInstance().getDataApi().isConnectedToInternet()){
+        if(GalePressApplication.getInstance().getTabList() != null && isColorChanged && GalePressApplication.getInstance().getDataApi().isConnectedToInternet()){
             int customIndex = tabIndex;
             for(TabbarItem item : GalePressApplication.getInstance().getTabList()){
                 ImageView img = ((ImageView)((LinearLayout)mTabHost.getTabWidget().getChildAt(customIndex)).getChildAt(0));
