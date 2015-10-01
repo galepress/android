@@ -932,7 +932,6 @@ public class GalePressApplication
                     if(progress != null && progress.isShowing())
                         progress.dismiss();
                 }
-
             }
         };
         restore.execute();

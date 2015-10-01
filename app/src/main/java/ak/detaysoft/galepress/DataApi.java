@@ -1683,8 +1683,14 @@ public class DataApi extends Object {
 
                         } catch (Exception e) {
                             e.printStackTrace();
-                            if(progress != null && progress.isShowing())
-                                progress.dismiss();
+                            if(activity != null){
+                                if(activity instanceof MainActivity) {
+                                    if(progress != null && progress.isShowing())
+                                        progress.dismiss();
+                                } else if(activity instanceof LoginActivity){
+                                    ((LoginActivity) activity).closeActivityAndUpdateApplication();
+                                }
+                            }
                         }
                     }
                 },
@@ -1693,8 +1699,14 @@ public class DataApi extends Object {
                     public void onErrorResponse(VolleyError error) {
                         Logout.e("Adem", "Error : " + error.getMessage());
                         VolleyLog.e("Error: ", error.getMessage());
-                        if(progress != null && progress.isShowing())
-                            progress.dismiss();
+                        if(activity != null){
+                            if(activity instanceof MainActivity) {
+                                if(progress != null && progress.isShowing())
+                                    progress.dismiss();
+                            } else if(activity instanceof LoginActivity){
+                                ((LoginActivity) activity).closeActivityAndUpdateApplication();
+                            }
+                        }
                     }
                 }
         );
