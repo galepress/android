@@ -859,6 +859,12 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             }
             membershipListView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listHeight));
             membershipListView.invalidate();
+
+            ProgressDialog progress = new ProgressDialog(this);
+            progress.setMessage(getResources().getString(R.string.logout) + "...");
+            progress.setCancelable(false);
+            progress.show();
+            GalePressApplication.getInstance().restorePurchasedProductsFromMarket(true, this, progress);
         }
 
     }
