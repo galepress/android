@@ -14,6 +14,7 @@ public class R_Content {
     private boolean contentIsMaster;
     private Integer contentOrderNo;
     private boolean isForceDelete;
+    private boolean contentBought;
 
     public R_Content() {
 
@@ -30,6 +31,7 @@ public class R_Content {
         this.contentIsMaster = json.optBoolean("ContentIsMaster");
         this.contentOrderNo = json.optInt("ContentOrderNo");
         this.isForceDelete = json.optBoolean("RemoveFromMobile");
+        this.contentBought = json.optBoolean("ContentBought");
     }
 
     public String getContentName() {
@@ -102,5 +104,13 @@ public class R_Content {
 
     public void setForceDelete(boolean isForceDelete) {
         this.isForceDelete = isForceDelete;
+    }
+
+    public boolean isContentBought() {
+        return contentBought;
+    }
+
+    public void setContentBought(boolean contentBought) {
+        this.contentBought = contentBought;
     }
 }

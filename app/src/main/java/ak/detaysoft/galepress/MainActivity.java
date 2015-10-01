@@ -829,7 +829,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             progress.setMessage(getResources().getString(R.string.Restore) + "...");
             progress.setCancelable(false);
             progress.show();
-            GalePressApplication.getInstance().restorePurchasedProductsFromMarket(false, true, this, progress);
+            GalePressApplication.getInstance().restorePurchasedProductsFromMarket(true, this, progress);
         }
         else if(GalePressApplication.getInstance().getMembershipMenuList().get(position) == LeftMenuMembershipAdapter.SUBSCRIPTION) {
             if(GalePressApplication.getInstance().getSubscriptions().size() > 0){
@@ -1218,6 +1218,8 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 }
                 membershipListView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listHeight));
                 membershipListView.invalidate();
+
+                getCurrentLibraryFragment().updateGridView();
             }
         }
 

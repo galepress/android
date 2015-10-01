@@ -267,7 +267,7 @@ public class ContentDetailPopupActivity extends Activity{
                         }
                         GalePressApplication.getInstance().getDataApi().getPdf(content, ContentDetailPopupActivity.this);
                     } else {
-                        if(content.isBuyable() && !content.isOwnedProduct()){
+                        if(content.isBuyable() && (!content.isOwnedProduct() || !content.isContentBought())){
                             if (!GalePressApplication.getInstance().isBlnBind() && GalePressApplication.getInstance().getmService() == null) {
                                 Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLING_RESULT_BILLING_UNAVAILABLE), Toast.LENGTH_SHORT)
                                         .show();
@@ -446,7 +446,7 @@ public class ContentDetailPopupActivity extends Activity{
 
     private void initDownloadButton(){
 
-        if(subscribed || !content.isBuyable()){
+        if(subscribed || !content.isBuyable() || content.isContentBought()){
             downloadButton.init(CustomDownloadButton.FREE_DOWNLOAD, "");
         } else if(content.isOwnedProduct()) {
             downloadButton.init(CustomDownloadButton.RESTORE_PURCHASED, "");

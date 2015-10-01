@@ -847,7 +847,7 @@ public class GalePressApplication
     }
 
 
-    public void restoreSubscriptions(final boolean isMenuRestore, final Activity activity, final ProgressDialog progress){
+    public void restoreSubscriptions(final boolean isFullRestore, final Activity activity, final ProgressDialog progress){
         AsyncTask<Void, Void, Void> restore = new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
@@ -922,18 +922,23 @@ public class GalePressApplication
                 super.onPostExecute(aVoid);
 
                 prepareSubscriptions(null);
-                if(activity != null){
+
+                if(isFullRestore) {
+                    dataApi.restoreAppContents(activity, progress);
+                } else {
+                    if(activity != null){
+                        ((MainActivity)activity).openSubscriptionChooser();
+                    }
                     if(progress != null && progress.isShowing())
                         progress.dismiss();
-                    if(!isMenuRestore)
-                        ((MainActivity)activity).openSubscriptionChooser();
                 }
+
             }
         };
         restore.execute();
     }
 
-    public void restorePurchasedProductsFromMarket(final boolean isSubscriptionRestore, final boolean isMenuRestore, final Activity activity, final ProgressDialog progress){
+    public void restorePurchasedProductsFromMarket(final boolean isFullRestore, final Activity activity, final ProgressDialog progress){
 
         AsyncTask<Void, Void, Void> executePurchase = new AsyncTask<Void, Void, Void>() {
             @Override
@@ -948,7 +953,7 @@ public class GalePressApplication
                 if (GalePressApplication.getInstance().isBlnBind() && GalePressApplication.getInstance().getmService() != null) {
                     Bundle ownedItems;
                     try {
-                        ownedItems = GalePressApplication.getInstance().getmService().getPurchases(3, getPackageName(), (isSubscriptionRestore)? "subs" : "inapp", null);
+                        ownedItems = GalePressApplication.getInstance().getmService().getPurchases(3, getPackageName(), "inapp", null);
                         int response = ownedItems.getInt("RESPONSE_CODE");
 
                         ArrayList<String> ownedSkus = new ArrayList<String>();
@@ -985,7 +990,7 @@ public class GalePressApplication
 
                     Bundle skuDetails;
                     try {
-                        skuDetails = GalePressApplication.getInstance().getmService().getSkuDetails(3, getPackageName(), (isSubscriptionRestore)? "subs" : "inapp", querySkus);
+                        skuDetails = GalePressApplication.getInstance().getmService().getSkuDetails(3, getPackageName(), "inapp", querySkus);
                         int response = skuDetails.getInt("RESPONSE_CODE");
 
                         if (response == 0){
@@ -1021,10 +1026,9 @@ public class GalePressApplication
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
                 if(GalePressApplication.getInstance().getSubscriptions().size() > 0)
-                    restoreSubscriptions(isMenuRestore, activity, progress);
+                    restoreSubscriptions(isFullRestore, activity, progress);
                 else{
-                    if(progress != null && progress.isShowing())
-                        progress.dismiss();
+                    dataApi.restoreAppContents(activity, progress);
                 }
             }
 

@@ -1,7 +1,5 @@
 package ak.detaysoft.galepress.database_models;
 
-import android.os.Parcelable;
-
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -55,6 +53,7 @@ public class L_Content implements Serializable {
     @DatabaseField private String identifier;
     @DatabaseField private boolean isOwnedProduct;
     @DatabaseField private String marketPrice;
+    @DatabaseField private boolean contentBought;
 
     private ArrayList<L_Category> categories;
     private String pdfPath;
@@ -358,6 +357,14 @@ public class L_Content implements Serializable {
         return marketPrice;
     }
 
+    public boolean isContentBought() {
+        return contentBought;
+    }
+
+    public void setContentBought(boolean contentBought) {
+        this.contentBought = contentBought;
+    }
+
     public void setMarketPrice(String marketPrice) {
         this.marketPrice = marketPrice;
     }
@@ -474,6 +481,7 @@ public class L_Content implements Serializable {
                 ", largeCoverImageDownloadPath='"+largeCoverImageDownloadPath+'\''+
                 ", smallCoverImageDownloadPath='"+smallCoverImageDownloadPath+'\''+
                 ", isForceDetele=" + isForceDetele +
+                ", contentBought=" + contentBought +
                 ", identifier='"+identifier+'\''+
                 ", isOwnedProduct=" + isOwnedProduct +
                 ", marketPrice='"+marketPrice+'\''+

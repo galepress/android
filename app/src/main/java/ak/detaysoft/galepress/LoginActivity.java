@@ -325,7 +325,7 @@ public class LoginActivity extends Activity {
     }
 
     public void customFailLoginWarning(String errorString){
-        if(updateDialog != null)
+        if(updateDialog != null && updateDialog.isShowing())
             updateDialog.dismiss();
         LoginManager.getInstance().logOut();
         if(errorString != null)
@@ -333,14 +333,14 @@ public class LoginActivity extends Activity {
     }
 
     public void closeActivityAndUpdateApplication(){
-        if(updateDialog != null){
+        if(updateDialog != null && updateDialog.isShowing()){
             updateDialog.dismiss();
             finishActivityWithAnimation();
         }
     }
 
     public void internetConnectionWarning(){
-        if(updateDialog != null)
+        if(updateDialog != null && updateDialog.isShowing())
             updateDialog.dismiss();
         LoginManager.getInstance().logOut();
         Toast.makeText(LoginActivity.this, getResources().getString(R.string.WARNING_1), Toast.LENGTH_SHORT).show();
@@ -474,4 +474,7 @@ public class LoginActivity extends Activity {
         return myList;
     }
 
+    public ProgressDialog getUpdateDialog() {
+        return updateDialog;
+    }
 }
