@@ -24,9 +24,11 @@ import android.os.Message;
 import android.provider.Settings;
 import android.text.InputType;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -37,6 +39,8 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.RequestFuture;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
 import com.google.android.gcm.GCMRegistrar;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
@@ -1649,37 +1653,69 @@ public class DataApi extends Object {
                     public void onResponse(JSONObject response) {
                         try {
                             R_AppContents RAppContents = new R_AppContents(response);
-
-                            List<L_Content> localContents = databaseApi.getAllContents(null);
-                            boolean isUpdate = false;
-                            for (L_Content l_content : localContents) {
-                                for (R_Content r_content : RAppContents.getContents()) {
-                                    if (l_content.getId().compareTo(r_content.getContentID()) == 0) {
-                                        if(l_content.isContentBought() != r_content.isContentBought()) {
-                                            l_content.setContentBought(r_content.isContentBought());
+                            if(!response.isNull("error") && response.getString("error").length() != 0){
+                                int code = response.getInt("status");
+                                boolean isUpdate = false;
+                                if(code == 160) {
+                                    List<L_Content> localContents = databaseApi.getAllContents(null);
+                                    for (L_Content l_content : localContents) {
+                                        if(l_content.isContentBought()) {
+                                            l_content.setContentBought(false);
                                             getDatabaseApi().updateContent(l_content,false);
                                             isUpdate = true;
                                         }
                                     }
                                 }
-                            }
 
-
-
-                            if(activity != null){
-                                if(activity instanceof MainActivity) {
-                                    if(progress != null && progress.isShowing())
-                                        progress.dismiss();
-                                    if(isUpdate){
-                                        MainActivity act = (MainActivity)activity;
-                                        if(act.mTabHost.getCurrentTabTag().compareTo(MainActivity.DOWNLOADED_LIBRARY_TAG) == 0
-                                                || act.mTabHost.getCurrentTabTag().compareTo(MainActivity.LIBRARY_TAB_TAG) == 0)
-                                            act.getCurrentLibraryFragment().updateGridView();
+                                if(activity != null){
+                                    if(activity instanceof MainActivity) {
+                                        if(progress != null && progress.isShowing())
+                                            progress.dismiss();
+                                        ((MainActivity)activity).logout();
+                                        Toast.makeText(activity, activity.getResources().getString(R.string.WARNING_160), Toast.LENGTH_SHORT).show();
+                                        if(isUpdate){
+                                            MainActivity act = (MainActivity)activity;
+                                            if(act.mTabHost.getCurrentTabTag().compareTo(MainActivity.DOWNLOADED_LIBRARY_TAG) == 0
+                                                    || act.mTabHost.getCurrentTabTag().compareTo(MainActivity.LIBRARY_TAB_TAG) == 0)
+                                                act.getCurrentLibraryFragment().updateGridView();
+                                        }
+                                    } else if(activity instanceof LoginActivity){
+                                        ((LoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_160));
                                     }
-                                } else if(activity instanceof LoginActivity){
-                                    ((LoginActivity) activity).closeActivityAndUpdateApplication();
+                                }
+                            } else {
+                                List<L_Content> localContents = databaseApi.getAllContents(null);
+                                boolean isUpdate = false;
+                                for (L_Content l_content : localContents) {
+                                    for (R_Content r_content : RAppContents.getContents()) {
+                                        if (l_content.getId().compareTo(r_content.getContentID()) == 0) {
+                                            if(l_content.isContentBought() != r_content.isContentBought()) {
+                                                l_content.setContentBought(r_content.isContentBought());
+                                                getDatabaseApi().updateContent(l_content,false);
+                                                isUpdate = true;
+                                            }
+                                        }
+                                    }
+                                }
+
+
+
+                                if(activity != null){
+                                    if(activity instanceof MainActivity) {
+                                        if(progress != null && progress.isShowing())
+                                            progress.dismiss();
+                                        if(isUpdate){
+                                            MainActivity act = (MainActivity)activity;
+                                            if(act.mTabHost.getCurrentTabTag().compareTo(MainActivity.DOWNLOADED_LIBRARY_TAG) == 0
+                                                    || act.mTabHost.getCurrentTabTag().compareTo(MainActivity.LIBRARY_TAB_TAG) == 0)
+                                                act.getCurrentLibraryFragment().updateGridView();
+                                        }
+                                    } else if(activity instanceof LoginActivity){
+                                        ((LoginActivity) activity).closeActivityAndUpdateApplication();
+                                    }
                                 }
                             }
+
 
                         } catch (Exception e) {
                             e.printStackTrace();
