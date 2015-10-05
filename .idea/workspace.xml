@@ -114,9 +114,10 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: ak.detaysoft.galepress" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4272a91b-e20d-476c-9f23-fd491d5d43e7" name="Default" comment="- panelden kullanıcı">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
+    <list default="true" id="4272a91b-e20d-476c-9f23-fd491d5d43e7" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/model_data.bin" afterPath="$PROJECT_DIR$/build/intermediates/model_data.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LoginActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LoginActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/raw/application.plist" afterPath="$PROJECT_DIR$/app/src/main/res/raw/application.plist" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Android.iws" />
@@ -171,8 +172,8 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <breakpoint_rules converted="true" />
     <ui_properties converted="true" />
+    <breakpoint_rules converted="true" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -183,95 +184,26 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.857143" vertical-offset="12126" max-vertical-offset="21165">
-              <caret line="847" column="0" selection-start-line="847" selection-start-column="0" selection-end-line="847" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="13209" max-vertical-offset="21063">
+              <caret line="928" column="28" selection-start-line="928" selection-start-column="28" selection-end-line="928" selection-end-column="28" />
               <folding>
-                <element signature="e#46716#46770#0" expanded="true" />
-                <element signature="e#46807#46848#0" expanded="true" />
-                <element signature="e#46866#47095#0" expanded="true" />
-                <element signature="e#47076#47077#0" expanded="true" />
+                <element signature="e#48435#48474#0" expanded="true" />
+                <element signature="e#49358#49461#0" expanded="true" />
+                <element signature="e#49421#49460#0" expanded="true" />
+                <element signature="e#49647#49751#0" expanded="true" />
+                <element signature="e#49710#49750#0" expanded="true" />
+                <element signature="e#49936#50039#0" expanded="true" />
+                <element signature="e#49999#50038#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ContentDetailPopupActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java">
+      <file leaf-file-name="SignupActivity.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/SignupActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="6426" max-vertical-offset="11577">
-              <caret line="485" column="45" selection-start-line="485" selection-start-column="45" selection-end-line="485" selection-end-column="45" />
-              <folding>
-                <element signature="method#displayImage#0;class#ContentDetailPopupActivity#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataApi.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.47571188" vertical-offset="24740" max-vertical-offset="32300">
-              <caret line="1655" column="22" selection-start-line="1655" selection-start-column="22" selection-end-line="1655" selection-end-column="22" />
-              <folding>
-                <element signature="e#24454#24539#0" expanded="true" />
-                <element signature="e#27916#27968#0" expanded="true" />
-                <element signature="e#29183#29234#0" expanded="true" />
-                <element signature="e#29661#29714#0" expanded="true" />
-                <element signature="e#30043#30098#0" expanded="true" />
-                <element signature="e#30248#30303#0" expanded="true" />
-                <element signature="e#30437#30490#0" expanded="true" />
-                <element signature="e#30724#30777#0" expanded="true" />
-                <element signature="e#31171#31224#0" expanded="true" />
-                <element signature="e#31888#31943#0" expanded="true" />
-                <element signature="e#32122#32177#0" expanded="true" />
-                <element signature="e#32303#32356#0" expanded="true" />
-                <element signature="e#35417#35488#0" expanded="true" />
-                <element signature="e#35557#35607#0" expanded="true" />
-                <element signature="e#37521#37588#0" expanded="true" />
-                <element signature="e#37732#37785#0" expanded="true" />
-                <element signature="e#38215#38270#0" expanded="true" />
-                <element signature="e#38414#38469#0" expanded="true" />
-                <element signature="e#38560#38613#0" expanded="true" />
-                <element signature="e#42132#42213#0" expanded="true" />
-                <element signature="e#42275#42373#0" expanded="true" />
-                <element signature="e#42443#42524#0" expanded="true" />
-                <element signature="e#43757#43838#0" expanded="true" />
-                <element signature="e#44760#44841#0" expanded="true" />
-                <element signature="e#44903#45002#0" expanded="true" />
-                <element signature="e#45072#45158#0" expanded="true" />
-                <element signature="e#46391#46451#0" expanded="true" />
-                <element signature="e#53200#53281#0" expanded="true" />
-                <element signature="e#53319#53404#0" expanded="true" />
-                <element signature="e#53450#53530#0" expanded="true" />
-                <element signature="e#53781#53862#0" expanded="true" />
-                <element signature="e#55245#55326#0" expanded="true" />
-                <element signature="e#55364#55449#0" expanded="true" />
-                <element signature="e#55495#55575#0" expanded="true" />
-                <element signature="e#56783#56864#0" expanded="true" />
-                <element signature="e#57253#57334#0" expanded="true" />
-                <element signature="e#57370#57455#0" expanded="true" />
-                <element signature="e#58874#58955#0" expanded="true" />
-                <element signature="e#58993#59078#0" expanded="true" />
-                <element signature="e#59124#59204#0" expanded="true" />
-                <element signature="e#61995#62076#0" expanded="true" />
-                <element signature="e#64399#64480#0" expanded="true" />
-                <element signature="e#64687#64768#0" expanded="true" />
-                <element signature="e#86752#86807#0" expanded="true" />
-                <element signature="e#87554#87609#0" expanded="true" />
-                <element signature="e#109365#109452#0" expanded="true" />
-                <element signature="e#109573#109660#0" expanded="true" />
-                <element signature="e#109781#109868#0" expanded="true" />
-                <element signature="e#109989#110076#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GalePressApplication.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.642858" vertical-offset="15846" max-vertical-offset="17391">
-              <caret line="1051" column="17" selection-start-line="1051" selection-start-column="17" selection-end-line="1051" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.34930447" vertical-offset="2273" max-vertical-offset="3502">
+              <caret line="190" column="37" selection-start-line="190" selection-start-column="37" selection-end-line="190" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -280,18 +212,34 @@
       <file leaf-file-name="LoginActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LoginActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4072" max-vertical-offset="6800">
-              <caret line="331" column="87" selection-start-line="331" selection-start-column="12" selection-end-line="331" selection-end-column="87" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="4301" max-vertical-offset="6902">
+              <caret line="351" column="67" selection-start-line="351" selection-start-column="67" selection-end-line="351" selection-end-column="67" />
+              <folding>
+                <element signature="e#7835#7879#0" expanded="true" />
+                <element signature="e#7929#7992#0" expanded="true" />
+                <element signature="e#8050#8094#0" expanded="true" />
+                <element signature="e#8517#8578#0" expanded="true" />
+                <element signature="e#8968#9012#0" expanded="true" />
+                <element signature="e#10009#10053#0" expanded="true" />
+                <element signature="e#10733#10777#0" expanded="true" />
+                <element signature="e#12206#12267#0" expanded="true" />
+                <element signature="e#12733#12777#0" expanded="true" />
+                <element signature="e#13393#13457#0" expanded="true" />
+                <element signature="e#13638#13702#0" expanded="true" />
+                <element signature="e#15613#15657#0" expanded="true" />
+                <element signature="e#16185#16246#0" expanded="true" />
+                <element signature="e#16495#16496#0" expanded="true" />
+                <element signature="e#16527#16528#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LibraryFragment.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java">
+      <file leaf-file-name="DataApi.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4063" max-vertical-offset="5032">
-              <caret line="239" column="37" selection-start-line="239" selection-start-column="37" selection-end-line="239" selection-end-column="37" />
+            <state vertical-scroll-proportion="-11.464286" vertical-offset="9165" max-vertical-offset="32300">
+              <caret line="660" column="40" selection-start-line="660" selection-start-column="40" selection-end-line="661" selection-end-column="172" />
               <folding />
             </state>
           </provider>
@@ -2589,7 +2537,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/custom_models/Subscription.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/CustomDownloadButton.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/raw/application.plist" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-de/strings.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
@@ -2598,10 +2545,11 @@
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_Content.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LoginActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/raw/application.plist" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LoginActivity.java" />
       </list>
     </option>
   </component>
@@ -2662,57 +2610,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="app">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="app">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Android">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Android">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Android">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Android">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="gradle/wrapper">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -2789,6 +2686,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GalePress" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -2825,6 +2748,57 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Android">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Android">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Android">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Android">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="gradle/wrapper">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -3956,7 +3930,11 @@
       <created>1443707301207</created>
       <updated>1443707301207</updated>
     </task>
-    <option name="localTasksCounter" value="195" />
+    <task id="LOCAL-00195" summary="- uygulamada login olmuş kullanıcı panel tarafında silinirse uygulama tarafında logout yapılması">
+      <created>1443793162171</created>
+      <updated>1443793162171</updated>
+    </task>
+    <option name="localTasksCounter" value="196" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -3987,29 +3965,29 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14065935" sideWeight="0.49958915" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32872504" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26813188" sideWeight="0.6007463" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21648352" sideWeight="0.3326226" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26813188" sideWeight="0.6433902" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26813188" sideWeight="0.35660982" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2531983" sideWeight="0.35735735" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32667178" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27659574" sideWeight="0.24786781" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17400081" sideWeight="0.38004485" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17252748" sideWeight="0.49840087" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25824177" sideWeight="0.75159913" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25824177" sideWeight="0.75159913" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.33481422" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289777" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20659341" sideWeight="0.47976878" order="17" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17537314" sideWeight="0.6411411" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21375267" sideWeight="0.6411411" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21978022" sideWeight="0.4968017" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32820907" sideWeight="0.62119967" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" x="154" y="768" width="305" height="214" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18457189" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18457189" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23516484" sideWeight="0.66684437" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32997176" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -4033,7 +4011,6 @@
       <TodoPanelSettings />
     </option>
     <option name="SHOW_FILE_HISTORY_DETAILS" value="false" />
-    <MESSAGE value="popup buttons" />
     <MESSAGE value="tabbar buttons" />
     <MESSAGE value="library progress" />
     <MESSAGE value="tab title" />
@@ -4058,7 +4035,8 @@
     <MESSAGE value="- Kullanıcının daha önceden play market üzerinden aldığı bir aboneliği varsa başka abonelik alması engellendi." />
     <MESSAGE value="- 3.1.1 version" />
     <MESSAGE value="- ürünlerin servisten restore edilmesi.&#10;- Eğer bir ürün galepress panelden kullanıcıya ücretsiz verilmişse bu ürünü kullanıcı satın almadan indirebilecek" />
-    <option name="LAST_COMMIT_MESSAGE" value="- ürünlerin servisten restore edilmesi.&#10;- Eğer bir ürün galepress panelden kullanıcıya ücretsiz verilmişse bu ürünü kullanıcı satın almadan indirebilecek" />
+    <MESSAGE value="- uygulamada login olmuş kullanıcı panel tarafında silinirse uygulama tarafında logout yapılması" />
+    <option name="LAST_COMMIT_MESSAGE" value="- uygulamada login olmuş kullanıcı panel tarafında silinirse uygulama tarafında logout yapılması" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -4166,13 +4144,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/SignupActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18562874" vertical-offset="2834" max-vertical-offset="3502">
-          <caret line="217" column="79" selection-start-line="217" selection-start-column="79" selection-end-line="217" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_signup.xml">
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="782" max-vertical-offset="1309">
@@ -4208,13 +4179,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36215335" vertical-offset="1087" max-vertical-offset="1700">
           <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/raw/application.plist">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="935">
-          <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -4263,18 +4227,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/ApplicationThemeColor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="12184" max-vertical-offset="14688">
-          <caret line="763" column="47" selection-start-line="763" selection-start-column="47" selection-end-line="763" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/left_menu_social_item.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer">
@@ -4285,7 +4241,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1084" max-vertical-offset="3145">
           <caret line="85" column="18" selection-start-line="85" selection-start-column="18" selection-end-line="85" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4300,7 +4255,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.113902844" vertical-offset="2040" max-vertical-offset="4607">
           <caret line="124" column="0" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer">
@@ -4353,7 +4307,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6154">
           <caret line="55" column="36" selection-start-line="55" selection-start-column="36" selection-end-line="55" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4375,7 +4328,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="867">
           <caret line="1" column="1" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer">
@@ -4402,7 +4354,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4636785" vertical-offset="8931" max-vertical-offset="12172">
           <caret line="618" column="58" selection-start-line="618" selection-start-column="58" selection-end-line="618" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4410,7 +4361,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334" vertical-offset="35158" max-vertical-offset="36380">
           <caret line="2246" column="81" selection-start-line="2246" selection-start-column="81" selection-end-line="2246" selection-end-column="81" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4418,104 +4368,94 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.99192244" vertical-offset="3585" max-vertical-offset="16796">
           <caret line="281" column="28" selection-start-line="281" selection-start-column="24" selection-end-line="281" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/ApplicationThemeColor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2755102" vertical-offset="5401" max-vertical-offset="14688">
+          <caret line="364" column="30" selection-start-line="364" selection-start-column="30" selection-end-line="364" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.642858" vertical-offset="15846" max-vertical-offset="17391">
+        <state vertical-scroll-proportion="0.5094637" vertical-offset="15793" max-vertical-offset="17391">
           <caret line="1051" column="17" selection-start-line="1051" selection-start-column="17" selection-end-line="1051" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/raw/application.plist">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.73570323" vertical-offset="0" max-vertical-offset="935">
+          <caret line="28" column="59" selection-start-line="28" selection-start-column="59" selection-end-line="28" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5094637" vertical-offset="7072" max-vertical-offset="12325">
+          <caret line="506" column="25" selection-start-line="506" selection-start-column="25" selection-end-line="506" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.857143" vertical-offset="12126" max-vertical-offset="21165">
-          <caret line="847" column="0" selection-start-line="847" selection-start-column="0" selection-end-line="847" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="13209" max-vertical-offset="21063">
+          <caret line="928" column="28" selection-start-line="928" selection-start-column="28" selection-end-line="928" selection-end-column="28" />
           <folding>
-            <element signature="e#46716#46770#0" expanded="true" />
-            <element signature="e#46807#46848#0" expanded="true" />
-            <element signature="e#46866#47095#0" expanded="true" />
-            <element signature="e#47076#47077#0" expanded="true" />
+            <element signature="e#48435#48474#0" expanded="true" />
+            <element signature="e#49358#49461#0" expanded="true" />
+            <element signature="e#49421#49460#0" expanded="true" />
+            <element signature="e#49647#49751#0" expanded="true" />
+            <element signature="e#49710#49750#0" expanded="true" />
+            <element signature="e#49936#50039#0" expanded="true" />
+            <element signature="e#49999#50038#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6630" max-vertical-offset="11577">
-          <caret line="485" column="45" selection-start-line="485" selection-start-column="45" selection-end-line="485" selection-end-column="45" />
-          <folding>
-            <element signature="method#displayImage#0;class#ContentDetailPopupActivity#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4072" max-vertical-offset="6800">
-          <caret line="331" column="87" selection-start-line="331" selection-start-column="12" selection-end-line="331" selection-end-column="87" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47571188" vertical-offset="24740" max-vertical-offset="32300">
-          <caret line="1655" column="22" selection-start-line="1655" selection-start-column="22" selection-end-line="1655" selection-end-column="22" />
+        <state vertical-scroll-proportion="-11.464286" vertical-offset="9165" max-vertical-offset="32300">
+          <caret line="660" column="40" selection-start-line="660" selection-start-column="40" selection-end-line="661" selection-end-column="172" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4301" max-vertical-offset="6902">
+          <caret line="351" column="67" selection-start-line="351" selection-start-column="67" selection-end-line="351" selection-end-column="67" />
           <folding>
-            <element signature="e#24454#24539#0" expanded="true" />
-            <element signature="e#27916#27968#0" expanded="true" />
-            <element signature="e#29183#29234#0" expanded="true" />
-            <element signature="e#29661#29714#0" expanded="true" />
-            <element signature="e#30043#30098#0" expanded="true" />
-            <element signature="e#30248#30303#0" expanded="true" />
-            <element signature="e#30437#30490#0" expanded="true" />
-            <element signature="e#30724#30777#0" expanded="true" />
-            <element signature="e#31171#31224#0" expanded="true" />
-            <element signature="e#31888#31943#0" expanded="true" />
-            <element signature="e#32122#32177#0" expanded="true" />
-            <element signature="e#32303#32356#0" expanded="true" />
-            <element signature="e#35417#35488#0" expanded="true" />
-            <element signature="e#35557#35607#0" expanded="true" />
-            <element signature="e#37521#37588#0" expanded="true" />
-            <element signature="e#37732#37785#0" expanded="true" />
-            <element signature="e#38215#38270#0" expanded="true" />
-            <element signature="e#38414#38469#0" expanded="true" />
-            <element signature="e#38560#38613#0" expanded="true" />
-            <element signature="e#42132#42213#0" expanded="true" />
-            <element signature="e#42275#42373#0" expanded="true" />
-            <element signature="e#42443#42524#0" expanded="true" />
-            <element signature="e#43757#43838#0" expanded="true" />
-            <element signature="e#44760#44841#0" expanded="true" />
-            <element signature="e#44903#45002#0" expanded="true" />
-            <element signature="e#45072#45158#0" expanded="true" />
-            <element signature="e#46391#46451#0" expanded="true" />
-            <element signature="e#53200#53281#0" expanded="true" />
-            <element signature="e#53319#53404#0" expanded="true" />
-            <element signature="e#53450#53530#0" expanded="true" />
-            <element signature="e#53781#53862#0" expanded="true" />
-            <element signature="e#55245#55326#0" expanded="true" />
-            <element signature="e#55364#55449#0" expanded="true" />
-            <element signature="e#55495#55575#0" expanded="true" />
-            <element signature="e#56783#56864#0" expanded="true" />
-            <element signature="e#57253#57334#0" expanded="true" />
-            <element signature="e#57370#57455#0" expanded="true" />
-            <element signature="e#58874#58955#0" expanded="true" />
-            <element signature="e#58993#59078#0" expanded="true" />
-            <element signature="e#59124#59204#0" expanded="true" />
-            <element signature="e#61995#62076#0" expanded="true" />
-            <element signature="e#64399#64480#0" expanded="true" />
-            <element signature="e#64687#64768#0" expanded="true" />
-            <element signature="e#86752#86807#0" expanded="true" />
-            <element signature="e#87554#87609#0" expanded="true" />
-            <element signature="e#109365#109452#0" expanded="true" />
-            <element signature="e#109573#109660#0" expanded="true" />
-            <element signature="e#109781#109868#0" expanded="true" />
-            <element signature="e#109989#110076#0" expanded="true" />
+            <element signature="e#7835#7879#0" expanded="true" />
+            <element signature="e#7929#7992#0" expanded="true" />
+            <element signature="e#8050#8094#0" expanded="true" />
+            <element signature="e#8517#8578#0" expanded="true" />
+            <element signature="e#8968#9012#0" expanded="true" />
+            <element signature="e#10009#10053#0" expanded="true" />
+            <element signature="e#10733#10777#0" expanded="true" />
+            <element signature="e#12206#12267#0" expanded="true" />
+            <element signature="e#12733#12777#0" expanded="true" />
+            <element signature="e#13393#13457#0" expanded="true" />
+            <element signature="e#13638#13702#0" expanded="true" />
+            <element signature="e#15613#15657#0" expanded="true" />
+            <element signature="e#16185#16246#0" expanded="true" />
+            <element signature="e#16495#16496#0" expanded="true" />
+            <element signature="e#16527#16528#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/SignupActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34930447" vertical-offset="2273" max-vertical-offset="3502">
+          <caret line="190" column="37" selection-start-line="190" selection-start-column="37" selection-end-line="190" selection-end-column="37" />
+          <folding />
         </state>
       </provider>
     </entry>

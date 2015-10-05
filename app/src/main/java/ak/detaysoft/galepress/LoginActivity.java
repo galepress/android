@@ -352,8 +352,12 @@ public class LoginActivity extends Activity {
         callbackManager.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == 101){ //signup
-            if(resultCode == 101) //Kullanıcı oluşturma başarılı
-                finishActivityWithAnimation();
+            if(resultCode == 101) { //Kullanıcı oluşturma başarılı
+                //finishActivityWithAnimation();
+                updateDialog = ProgressDialog.show(LoginActivity.this, "",
+                        LoginActivity.this.getString(R.string.user_information_check), true);
+                GalePressApplication.getInstance().restorePurchasedProductsFromMarket(true, this, updateDialog);
+            }
         } else if(requestCode == 102) { //password
 
         }
