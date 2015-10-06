@@ -183,7 +183,7 @@ public class SignupActivity extends Activity {
             if(url.contains("usertoken")){
                 JSONObject obj = new JSONObject();
                 try {
-                    if(url.indexOf("usertoken=") != -1){
+                    if(url.indexOf("usertoken=") != -1){ // kayit-basarili?usertoken= üzerindede yapılabilir
                         String accessToken = url.substring(url.indexOf("usertoken=")+"usertoken=".length());
                         obj.put("accessToken", accessToken);
                         GalePressApplication.getInstance().editMemberShipList(true, obj);

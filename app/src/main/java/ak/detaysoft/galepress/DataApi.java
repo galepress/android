@@ -92,7 +92,7 @@ import ak.detaysoft.galepress.util.ApplicationThemeColor;
 public class DataApi extends Object {
     //http://galepress.com/ws/v100/applications/20/detail
 
-    private static final String webServisVersion = "v102";
+    private static final String webServisVersion = "103";
     private static final String domainUrl = "http://www.galepress.com";
     public static final Integer MESSAGE_TYPE_COVER_IMAGE = 1;
     public static final Integer MESSAGE_TYPE_COVER_PDF_DOWNLOAD = 2;
@@ -512,7 +512,7 @@ public class DataApi extends Object {
         Uri.Builder builder = new Uri.Builder();
         builder.scheme("http")
                 .authority("www.galepress.com")
-                .appendPath("ws")
+                .appendPath("webservice")
                 .appendPath(webServisVersion);
         return builder;
     }
@@ -624,12 +624,12 @@ public class DataApi extends Object {
                 applicationID = application.getApplicationId();
             }
 
-            Uri.Builder uriBuilder = new Uri.Builder();
+            /*Uri.Builder uriBuilder = new Uri.Builder();
             uriBuilder.scheme("http")
                     .authority("www.galepress.com")
                     .appendPath("webservice")
-                    .appendPath("103");
-            //Uri.Builder uriBuilder = getWebServiceUrlBuilder();
+                    .appendPath("103");*/
+            Uri.Builder uriBuilder = getWebServiceUrlBuilder();
             uriBuilder.appendPath("applications");
             if(!isFacebookLogin)
                 uriBuilder.appendPath("login_application");
@@ -792,13 +792,19 @@ public class DataApi extends Object {
                         @Override
                         public void onErrorResponse(VolleyError error) {
 
-                            if(error.getMessage().toLowerCase().contains("140"))
-                                activity.customWarning(activity.getResources().getString(R.string.WARNING_140));
-                            else if(error.getMessage().toLowerCase().contains("141"))
-                                activity.customWarning(activity.getResources().getString(R.string.WARNING_141));
-                            else
+                            if(error != null && error.getMessage() != null) {
+                                if(error.getMessage().toLowerCase().contains("140"))
+                                    activity.customWarning(activity.getResources().getString(R.string.WARNING_140));
+                                else if(error.getMessage().toLowerCase().contains("141"))
+                                    activity.customWarning(activity.getResources().getString(R.string.WARNING_141));
+                                else
+                                    activity.customWarning(activity.getResources().getString(R.string.WARNING_0));
+                                VolleyLog.e("Error: ", error.getMessage());
+                            } else {
                                 activity.customWarning(activity.getResources().getString(R.string.WARNING_0));
-                            VolleyLog.e("Error: ", error.getMessage());
+                            }
+
+
                         }
                     }
             );
@@ -838,12 +844,12 @@ public class DataApi extends Object {
 
             //http://www.galepress.com/ws/v100/applications/20/detail?deviceType=android&osVersion=19_4.4.4&deviceDetail=LG Nexus 5&deviceToken=a;lskdfjla;skjdf;laksjdf;laksdf;
 
-            //Uri.Builder uriBuilder = getWebServiceUrlBuilder();
-            Uri.Builder uriBuilder = new Uri.Builder();
+            Uri.Builder uriBuilder = getWebServiceUrlBuilder();
+            /*Uri.Builder uriBuilder = new Uri.Builder();
             uriBuilder.scheme("http")
                     .authority("www.galepress.com")
                     .appendPath("webservice")
-                    .appendPath("103");
+                    .appendPath("103");*/
 
             uriBuilder.appendPath("applications");
             uriBuilder.appendPath(applicationID.toString());
@@ -945,7 +951,10 @@ public class DataApi extends Object {
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            VolleyLog.e("Error: ", error.getMessage());
+                            if(error != null && error.getMessage() != null) {
+                                VolleyLog.e("Error: ", error.getMessage());
+                            }
+
                         }
                     }
             );
@@ -1053,8 +1062,11 @@ public class DataApi extends Object {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Logout.e("Adem", "Error : " + error.getMessage());
-                        VolleyLog.e("Error: ", error.getMessage());
+                        if(error != null && error.getMessage() != null) {
+                            Logout.e("Adem", "Error : " + error.getMessage());
+                            VolleyLog.e("Error: ", error.getMessage());
+                        }
+
                     }
                 }
         );
@@ -1266,8 +1278,11 @@ public class DataApi extends Object {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Logout.e("Adem", "Error : " + error.getMessage());
-                        VolleyLog.e("Error: ", error.getMessage());
+                        if(error != null && error.getMessage() != null) {
+                            Logout.e("Adem", "Error : " + error.getMessage());
+                            VolleyLog.e("Error: ", error.getMessage());
+                        }
+
                     }
                 }
         );
@@ -1366,8 +1381,11 @@ public class DataApi extends Object {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Logout.e("Adem", "Error : " + error.getMessage());
-                        VolleyLog.e("Error: ", error.getMessage());
+                        if(error != null && error.getMessage() != null) {
+                            Logout.e("Adem", "Error : " + error.getMessage());
+                            VolleyLog.e("Error: ", error.getMessage());
+                        }
+
                     }
                 }
         );
@@ -1543,7 +1561,9 @@ public class DataApi extends Object {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        VolleyLog.e("Error: ", error.getMessage());
+                        if(error != null && error.getMessage() != null) {
+                            VolleyLog.e("Error: ", error.getMessage());
+                        }
                         Logout.e("Adem","DECREMENT"); GalePressApplication.getInstance().decrementRequestCount();
                     }
                 }
@@ -1606,8 +1626,11 @@ public class DataApi extends Object {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Logout.e("Adem", "Error : " + error.getMessage());
-                        VolleyLog.e("Error: ", error.getMessage());
+                        if(error != null && error.getMessage() != null) {
+                            Logout.e("Adem", "Error : " + error.getMessage());
+                            VolleyLog.e("Error: ", error.getMessage());
+                        }
+
                         Logout.e("Adem","DECREMENT"); GalePressApplication.getInstance().decrementRequestCount();
                     }
                 }
@@ -1628,12 +1651,12 @@ public class DataApi extends Object {
             applicationId = application.getApplicationId();
         }
 
-        Uri.Builder uriBuilder = new Uri.Builder();
+        /*Uri.Builder uriBuilder = new Uri.Builder();
         uriBuilder.scheme("http")
                 .authority("www.galepress.com")
                 .appendPath("webservice")
-                .appendPath("103");
-        //Uri.Builder uriBuilder = getWebServiceUrlBuilder();
+                .appendPath("103");*/
+        Uri.Builder uriBuilder = getWebServiceUrlBuilder();
         uriBuilder.appendPath("applications");
         uriBuilder.appendPath(applicationId.toString());
         uriBuilder.appendPath("contents");
@@ -1733,8 +1756,11 @@ public class DataApi extends Object {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Logout.e("Adem", "Error : " + error.getMessage());
-                        VolleyLog.e("Error: ", error.getMessage());
+                        if(error != null && error.getMessage() != null) {
+                            Logout.e("Adem", "Error : " + error.getMessage());
+                            VolleyLog.e("Error: ", error.getMessage());
+                        }
+
                         if(activity != null){
                             if(activity instanceof MainActivity) {
                                 if(progress != null && progress.isShowing())
@@ -1763,12 +1789,12 @@ public class DataApi extends Object {
             applicationId = application.getApplicationId();
         }
 
-        Uri.Builder uriBuilder = new Uri.Builder();
+        /*Uri.Builder uriBuilder = new Uri.Builder();
         uriBuilder.scheme("http")
                 .authority("www.galepress.com")
                 .appendPath("webservice")
-                .appendPath("103");
-        //Uri.Builder uriBuilder = getWebServiceUrlBuilder();
+                .appendPath("103");*/
+        Uri.Builder uriBuilder = getWebServiceUrlBuilder();
         uriBuilder.appendPath("applications");
         uriBuilder.appendPath(applicationId.toString());
         uriBuilder.appendPath("contents");
@@ -1896,8 +1922,11 @@ public class DataApi extends Object {
                         ApplicationThemeColor.getInstance().setParameters(null);
                         GalePressApplication.getInstance().setBannerLink(null);
                         GalePressApplication.getInstance().setTabList(null);
-                        Logout.e("Adem", "Error : " + error.getMessage());
-                        VolleyLog.e("Error: ", error.getMessage());
+                        if(error != null && error.getMessage() != null) {
+                            Logout.e("Adem", "Error : " + error.getMessage());
+                            VolleyLog.e("Error: ", error.getMessage());
+                        }
+
                         Logout.e("Adem","DECREMENT"); GalePressApplication.getInstance().decrementRequestCount();
                     }
                 }
@@ -1920,6 +1949,11 @@ public class DataApi extends Object {
         RequestQueue requestQueue = application.getRequestQueue();
         int seqNo = requestQueue.getSequenceNumber();
         JsonObjectRequest request;
+        /*Uri.Builder uriBuilder = new Uri.Builder();
+        uriBuilder.scheme("http")
+                .authority("www.galepress.com")
+                .appendPath("webservice")
+                .appendPath("103");*/
         Uri.Builder uriBuilder = getWebServiceUrlBuilder();
         uriBuilder.appendPath("applications");
         uriBuilder.appendPath(applicationID.toString());
@@ -1949,8 +1983,11 @@ public class DataApi extends Object {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Logout.e("Adem", "Error : " + error.getMessage());
-                        VolleyLog.e("Error: ", error.getMessage());
+                        if(error != null && error.getMessage() != null) {
+                            Logout.e("Adem", "Error : " + error.getMessage());
+                            VolleyLog.e("Error: ", error.getMessage());
+                        }
+
                         Logout.e("Adem","DECREMENT"); GalePressApplication.getInstance().decrementRequestCount();
                     }
                 }
@@ -1999,8 +2036,11 @@ public class DataApi extends Object {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Logout.e("Adem", "Error : " + error.getMessage());
-                        VolleyLog.e("Error: ", error.getMessage());
+                        if(error != null && error.getMessage() != null) {
+                            Logout.e("Adem", "Error : " + error.getMessage());
+                            VolleyLog.e("Error: ", error.getMessage());
+                        }
+
                         Logout.e("Adem","DECREMENT"); GalePressApplication.getInstance().decrementRequestCount();
 
                     }
