@@ -710,10 +710,12 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
         ((ImageView)((LinearLayout)mTabHost.getTabWidget().getChildAt(tabIndex)).getChildAt(0)).setImageDrawable(createDrawable(true, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.LIBRARY_ICON),
                 ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.LIBRARY_ICON_SELECTED)));
+        ((TextView)((LinearLayout)mTabHost.getTabWidget().getChildAt(tabIndex)).getChildAt(1)).setTextColor(createTabTitleColorStateList());
         tabIndex++;
 
         ((ImageView)((LinearLayout)mTabHost.getTabWidget().getChildAt(tabIndex)).getChildAt(0)).setImageDrawable(createDrawable(true, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.DOWNLOAD_ICON),
                 ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.DOWNLOAD_ICON_SELECTED)));
+        ((TextView)((LinearLayout)mTabHost.getTabWidget().getChildAt(tabIndex)).getChildAt(1)).setTextColor(createTabTitleColorStateList());
         tabIndex++;
 
         /*
@@ -729,6 +731,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 ImageView img = ((ImageView)((LinearLayout)mTabHost.getTabWidget().getChildAt(customIndex)).getChildAt(0));
                 TextView txt = ((TextView)((LinearLayout)mTabHost.getTabWidget().getChildAt(customIndex)).getChildAt(1));
                 txt.setText(item.getTitle());
+                txt.setTextColor(createTabTitleColorStateList());
                 ApplicationThemeColor.getInstance().paintRemoteIcon(this, item, img);
                 customIndex++;
             }
