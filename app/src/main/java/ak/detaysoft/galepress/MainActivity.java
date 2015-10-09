@@ -721,6 +721,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         /*
         *((ImageView)((LinearLayout)mTabHost.getTabWidget().getChildAt(2)).getChildAt(0)).setImageDrawable(createDrawable(true, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.INFO_ICON),
         *        ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.INFO_ICON_SELECTED)));
+        *((TextView)((LinearLayout)mTabHost.getTabWidget().getChildAt(tabIndex)).getChildAt(1)).setTextColor(createTabTitleColorStateList());
         *tabIndex++;
         */
 
@@ -855,7 +856,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             progress.show();
             GalePressApplication.getInstance().restorePurchasedProductsFromMarket(true, this, progress);
         }
-
     }
 
     public void logout(){

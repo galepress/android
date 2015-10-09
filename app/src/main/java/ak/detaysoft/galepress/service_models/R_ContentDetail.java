@@ -48,7 +48,7 @@ public class R_ContentDetail {
         this.contentCategoryID = json.optInt("ContentCategoryID");
         this.contentIdentifier = json.optString("ContentIdentifier");
         this.contentIsProtected = json.optBoolean("ContentIsProtected");
-        this.contentPrice = json.optString("ContentPrice");
+        this.contentPrice = "";//json.optString("ContentPrice");
         this.error = json.optString("error");
         this.contentAutoDownload = json.optBoolean("ContentAutoDownload");
         this.contentName = json.optString("ContentName");

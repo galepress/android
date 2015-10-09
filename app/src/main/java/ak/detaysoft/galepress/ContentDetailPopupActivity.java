@@ -258,7 +258,7 @@ public class ContentDetailPopupActivity extends Activity{
                 if(DataApi.isConnectedToInternet()){
 
                     /*
-                    * Abonelik varsa ve kullanici abone olmussa icerigi ucretisiz indirir
+                    * Abonelik varsa ve kullanici abone olmussa yada içerik kullanıcı için ücretsizse icerigi ucretisiz indirir
                     * */
                     if(subscribed){
                         if (GalePressApplication.getInstance().getDataApi().downloadPdfTask == null
@@ -267,7 +267,7 @@ public class ContentDetailPopupActivity extends Activity{
                         }
                         GalePressApplication.getInstance().getDataApi().getPdf(content, ContentDetailPopupActivity.this);
                     } else {
-                        if(content.isBuyable() && (!content.isOwnedProduct() || !content.isContentBought())){
+                        if(content.isBuyable() && (!content.isOwnedProduct() && !content.isContentBought())){
                             if (!GalePressApplication.getInstance().isBlnBind() && GalePressApplication.getInstance().getmService() == null) {
                                 Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLING_RESULT_BILLING_UNAVAILABLE), Toast.LENGTH_SHORT)
                                         .show();
