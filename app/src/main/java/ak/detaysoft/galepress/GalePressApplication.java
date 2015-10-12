@@ -846,8 +846,7 @@ public class GalePressApplication
         }
     }
 
-
-    public void restoreSubscriptions(final boolean isFullRestore, final Activity activity, final ProgressDialog progress){
+    public void restoreSubscriptions(final boolean applicationFirstOpen,final boolean isFullRestore, final Activity activity, final ProgressDialog progress){
         AsyncTask<Void, Void, Void> restore = new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
@@ -921,17 +920,21 @@ public class GalePressApplication
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
 
-                prepareSubscriptions(null);
+                if(!applicationFirstOpen){
+                    prepareSubscriptions(null);
 
-                if(isFullRestore) {
-                    dataApi.restoreAppContents(activity, progress);
-                } else {
-                    if(activity != null){
-                        ((MainActivity)activity).openSubscriptionChooser();
+                    if(isFullRestore) {
+                        dataApi.restoreAppContents(activity, progress);
+                    } else {
+                        if(activity != null){
+                            ((MainActivity)activity).openSubscriptionChooser();
+                        }
+                        if(progress != null && progress.isShowing())
+                            progress.dismiss();
                     }
-                    if(progress != null && progress.isShowing())
-                        progress.dismiss();
                 }
+
+
             }
         };
         restore.execute();
@@ -1025,7 +1028,7 @@ public class GalePressApplication
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
                 if(GalePressApplication.getInstance().getSubscriptions().size() > 0)
-                    restoreSubscriptions(isFullRestore, activity, progress);
+                    restoreSubscriptions(false, isFullRestore, activity, progress);
                 else{
                     dataApi.restoreAppContents(activity, progress);
                 }
@@ -1045,21 +1048,21 @@ public class GalePressApplication
             try {
                 JSONArray array = new JSONArray();
                 Subscription weekSubscription = new Subscription(Subscription.WEEK, response.getString("SubscriptionWeekIdentifier").toLowerCase()
-                        , response.getString("WeekPrice"), "", (response.getInt("SubscriptionWeekActive") == 0) ? false :true , false);
+                        , "", "", (response.getInt("SubscriptionWeekActive") == 0) ? false :true , false);
                 if(weekSubscription.isActive()) {
                     subscriptions.add(weekSubscription);
                     array.put(weekSubscription.getJSONObject());
                 }
 
                 Subscription monthSubscription = new Subscription(Subscription.MONTH, response.getString("SubscriptionMonthIdentifier").toLowerCase()
-                        , response.getString("MonthPrice"), "", (response.getInt("SubscriptionMonthActive") == 0) ? false :true, false);
+                        , "", "", (response.getInt("SubscriptionMonthActive") == 0) ? false :true, false);
                 if(monthSubscription.isActive()) {
                     subscriptions.add(monthSubscription);
                     array.put(monthSubscription.getJSONObject());
                 }
 
                 Subscription yearSubscription = new Subscription(Subscription.YEAR, response.getString("SubscriptionYearIdentifier").toLowerCase()
-                        , response.getString("YearPrice"), "", (response.getInt("SubscriptionYearActive") == 0) ? false :true, false );
+                        , "", "", (response.getInt("SubscriptionYearActive") == 0) ? false :true, false );
                 if(yearSubscription.isActive()) {
                     subscriptions.add(yearSubscription);
                     array.put(yearSubscription.getJSONObject());
@@ -1068,7 +1071,7 @@ public class GalePressApplication
                 editor.putString("Subscription", array.toString());
                 editor.commit();
 
-                restoreSubscriptions(false, null, null); // marketten fiyatlarini ve kullanicinin daha once satin aldigi abonelikleri cekmek icin (farkli cihazlarda daha once alinan abonelikler gelmeyebilir)
+                restoreSubscriptions(false, false, null, null); // marketten fiyatlarini ve kullanicinin daha once satin aldigi abonelikleri cekmek icin (farkli cihazlarda daha once alinan abonelikler gelmeyebilir)
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -1097,6 +1100,7 @@ public class GalePressApplication
                         subscription = new Subscription(object);
                         subscriptions.add(subscription);
                     }
+                    restoreSubscriptions(true, false, null, null);
                 } catch (JSONException e) {
                     e.printStackTrace();
                     subscriptions = new ArrayList<Subscription>();

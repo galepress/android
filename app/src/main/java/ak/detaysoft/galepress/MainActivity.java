@@ -841,7 +841,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 progress.setMessage(getResources().getString(R.string.subscription_check) + "...");
                 progress.setCancelable(false);
                 progress.show();
-                GalePressApplication.getInstance().restoreSubscriptions(false, this, progress);
+                GalePressApplication.getInstance().restoreSubscriptions(false, false, this, progress);
             } else {
                 Toast.makeText(this, getResources().getString(R.string.subscription_warning), Toast.LENGTH_SHORT).show();
             }
