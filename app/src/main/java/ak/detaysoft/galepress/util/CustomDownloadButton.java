@@ -20,7 +20,7 @@ import ak.detaysoft.galepress.R;
 /**
  * Created by p1025 on 29.07.2015.
  */
-public class CustomDownloadButton extends RelativeLayout {
+public class CustomDownloadButton extends RelativeLayout{
 
     private ImageView arrowIcon;
     private ImageView downloadIcon;
@@ -194,20 +194,13 @@ public class CustomDownloadButton extends RelativeLayout {
 
     public void stopAnim(){
         arrowIcon.clearAnimation();
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if(moveUp != null)
-                    moveUp.cancel();
-                if(moveDown != null)
-                    moveDown.cancel();
-
-            }
-        }, 1000);
     }
 
     public TextView getPriceTextView() {
         return priceTextView;
+    }
+
+    public ImageView getArrowIcon() {
+        return arrowIcon;
     }
 }

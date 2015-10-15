@@ -1156,6 +1156,8 @@ public class DataApi extends Object {
 
                 alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
+                        content.setPdfDownloading(false);
+                        getDatabaseApi().updateContent(content,false);
                         if(GalePressApplication.getInstance().getContentDetailPopupActivity() != null){
                             GalePressApplication.getInstance().getContentDetailPopupActivity().contentHolder.downloadButton.stopAnim();
                             GalePressApplication.getInstance().getContentDetailPopupActivity().update();
