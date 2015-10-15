@@ -1156,6 +1156,10 @@ public class DataApi extends Object {
 
                 alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
+                        if(GalePressApplication.getInstance().getContentDetailPopupActivity() != null){
+                            GalePressApplication.getInstance().getContentDetailPopupActivity().contentHolder.downloadButton.stopAnim();
+                            GalePressApplication.getInstance().getContentDetailPopupActivity().update();
+                        }
                         dialog.cancel();
                     }
                 });
@@ -1165,7 +1169,6 @@ public class DataApi extends Object {
                 downloadPdf(content);
             }
         }
-
     }
 
     public void deletePdf(final Integer id, Context context) {

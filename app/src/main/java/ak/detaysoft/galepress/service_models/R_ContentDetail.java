@@ -65,7 +65,6 @@ public class R_ContentDetail {
         this.isForceDelete = json.optBoolean("RemoveFromMobile");
         this.contentCategories = new ArrayList<R_Category>();
 
-
         JSONArray arrayContentCategories = json.optJSONArray("ContentCategories");
         if (null != arrayContentCategories) {
             int contentCategoriesLength = arrayContentCategories.length();

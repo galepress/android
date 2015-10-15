@@ -233,6 +233,15 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 libraryFragment.selectedCategory = selectedCategory;
                 libraryFragment.updateCategoryList();
                 libraryFragment.updateGridView();
+
+
+                LibraryFragment downloadFragment = getCurrentDownloadedLibraryFragment();
+                if(downloadFragment != null) {
+                    downloadFragment.selectedCategory = selectedCategory;
+                    downloadFragment.updateCategoryList();
+                    downloadFragment.updateGridView();
+                }
+
                 categoriesAdapter.notifyDataSetChanged();
             }
         });

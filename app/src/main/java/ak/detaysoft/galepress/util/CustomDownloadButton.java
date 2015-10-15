@@ -3,6 +3,7 @@ package ak.detaysoft.galepress.util;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -193,6 +194,17 @@ public class CustomDownloadButton extends RelativeLayout {
 
     public void stopAnim(){
         arrowIcon.clearAnimation();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(moveUp != null)
+                    moveUp.cancel();
+                if(moveDown != null)
+                    moveDown.cancel();
+
+            }
+        }, 1000);
     }
 
     public TextView getPriceTextView() {
