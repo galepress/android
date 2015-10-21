@@ -64,6 +64,18 @@ public class CustomWebView extends WebView {
                 view.loadUrl("file:///android_asset/banner_not_loaded.html");
             }
         }
+        
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            if(!isWebFragment){
+                Intent intent = new Intent(context, ExtraWebViewActivity.class);
+                intent.putExtra("url", url);
+                intent.putExtra("isMainActivitIntent", false);
+                context.startActivity(intent);
+                return true;
+            }
+            return false;
+        }
     }
 
     public class MyChromeClient extends WebChromeClient {
