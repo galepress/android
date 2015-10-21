@@ -1,6 +1,7 @@
 package ak.detaysoft.galepress;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
@@ -63,6 +64,19 @@ public class CustomWebView extends WebView {
             } else {
                 view.loadUrl("file:///android_asset/banner_not_loaded.html");
             }
+        }
+
+
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            if(!isWebFragment){
+                Intent intent = new Intent(context, ExtraWebViewActivity.class);
+                intent.putExtra("url", url);
+                intent.putExtra("isMainActivitIntent", false);
+                context.startActivity(intent);
+                return true;
+            }
+            return false;
         }
     }
 
