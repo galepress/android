@@ -1,4 +1,14 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
 apply plugin: 'android'
+apply plugin: 'io.fabric'
 
 android {
     signingConfigs {
@@ -8,8 +18,8 @@ android {
     defaultConfig {
         minSdkVersion 11
         targetSdkVersion 19
-        versionCode 13
-        versionName '3.1.1'
+        versionCode 14
+        versionName '3.3.0'
     }
     buildTypes {
         release {
@@ -29,6 +39,7 @@ android {
 
 repositories {
     mavenCentral()
+    maven { url 'https://maven.fabric.io/public' }
 }
 
 dependencies {
@@ -43,4 +54,7 @@ dependencies {
     compile project(':menuDrawer')
     compile 'com.facebook.android:facebook-android-sdk:4.1.1'
     compile files('src/main/lib/universal-image-loader-1.9.3.jar')
+    compile('com.crashlytics.sdk.android:crashlytics:2.5.2@aar') {
+        transitive = true;
+    }
 }

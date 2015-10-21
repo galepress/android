@@ -1175,7 +1175,7 @@ public class DataApi extends Object {
 
     public void deletePdf(final Integer id, Context context) {
         final L_Content content = getDatabaseApi().getContent(id);
-        if (content.isPdfDownloaded()) {
+        if(content.isPdfDownloaded()) {
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
             alertDialog.setTitle(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.UYARI));
             alertDialog.setMessage(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.CONFIRM_1));

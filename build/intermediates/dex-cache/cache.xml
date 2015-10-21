@@ -30,6 +30,13 @@
         <dex dex="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\pre-dexed\debug\ormlite-android-4.45-293b2b56b5cf4871fc0549012085f14d3a117ec0.jar" />
     </item>
     <item
+        jar="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\exploded-aar\com.crashlytics.sdk.android\beta\1.1.3\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="b7a78990c10481f43cb4909f535ef4f11e60f1ab">
+        <dex dex="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\pre-dexed\debug\classes-62e7d08b3d85c052bc5b0110ae874a941456289d.jar" />
+    </item>
+    <item
         jar="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
         jumboMode="false"
         revision="20.0.0"
@@ -40,7 +47,7 @@
         jar="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\exploded-aar\GalePress\ChromiumLibrary\unspecified\classes.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="353d83de7ad2b15f5ffc952b3828e396cfc7239c">
+        sha1="aaf20f7a92e854b2048de058ef867b2f62272945">
         <dex dex="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\pre-dexed\debug\classes-83d49c4ec06be8d14dd595d9086ae286ee838c41.jar" />
     </item>
     <item
@@ -72,6 +79,13 @@
         <dex dex="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\pre-dexed\debug\universal-image-loader-1.9.3-ca81cb71a3fbf21b4b943b392b0aa999763740f5.jar" />
     </item>
     <item
+        jar="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\exploded-aar\io.fabric.sdk.android\fabric\1.3.6\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="fc82596d7f7683c8b3a7e5715a2ed5295c586887">
+        <dex dex="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\pre-dexed\debug\classes-36d07c98a3bedd008d5f4c863c8e9c8d28047b59.jar" />
+    </item>
+    <item
         jar="C:\Users\p1025\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
         jumboMode="false"
         revision="20.0.0"
@@ -86,11 +100,32 @@
         <dex dex="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\pre-dexed\debug\classes-c39353091c53d739931abd2eb5ee8e1863d6652e.jar" />
     </item>
     <item
+        jar="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\exploded-aar\com.crashlytics.sdk.android\crashlytics-core\2.3.5\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="d18ba1d0eff55680fdf9a35f70a6091e4bc1adcb">
+        <dex dex="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\pre-dexed\debug\classes-d7038c49e3ebe2a00966f7081bc1a69ab4ff2338.jar" />
+    </item>
+    <item
         jar="C:\Users\p1025\AndroidStudioProjects\GalePress\dd-plist.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="d39b131d5aaf8bf6e53ff8dfd28f5cf2521c6d10">
         <dex dex="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\pre-dexed\debug\dd-plist-3501db71d41714a6d999e391ff88871a1ee3360d.jar" />
+    </item>
+    <item
+        jar="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\exploded-aar\com.crashlytics.sdk.android\crashlytics\2.5.2\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="0c7f9fb9a729166c69fa585e01be2fe8fab4f45c">
+        <dex dex="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\pre-dexed\debug\classes-118c799ef406475f01246199b3acb41eb19f1f94.jar" />
+    </item>
+    <item
+        jar="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\exploded-aar\com.crashlytics.sdk.android\answers\1.3.2\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e99413cdc93bd7b001d312a4a33d25ac21042f69">
+        <dex dex="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\pre-dexed\debug\classes-ef44de519a9ff988cb90664e2ed58c29cafe85ff.jar" />
     </item>
     <item
         jar="C:\Users\p1025\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-android\1.2.0\6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd\bolts-android-1.2.0.jar"
@@ -103,7 +138,7 @@
         jar="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\exploded-aar\GalePress\menuDrawer\unspecified\classes.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="06b4d7dfdfb0345c5480d313f5aab9e8bb0bc17e">
+        sha1="52ba87bda4fa5e90401c6831f641531ee8b444e3">
         <dex dex="C:\Users\p1025\AndroidStudioProjects\GalePress\app\build\intermediates\pre-dexed\debug\classes-8635c60f2203afb06c9a96d4e06ad1e5b1e334d9.jar" />
     </item>
     <item
