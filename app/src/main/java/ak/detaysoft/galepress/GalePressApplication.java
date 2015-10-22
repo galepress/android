@@ -606,6 +606,7 @@ public class GalePressApplication
         } catch (Exception e){
             link = preferences.getString("bannerPage","");
         }
+
         editor.putString("bannerPage", link);
         editor.commit();
 
