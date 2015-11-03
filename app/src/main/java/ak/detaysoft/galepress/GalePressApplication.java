@@ -613,13 +613,9 @@ public class GalePressApplication
         bannerLink = link;
 
         //bannerLink = "http://rastcode.com/test/index.html";
-
         if(bannerLink.length() != 0 && getCurrentActivity()!= null && getCurrentActivity().getClass() == MainActivity.class
                 && ((MainActivity)getCurrentActivity()).getCurrentLibraryFragment()  != null)
             ((MainActivity)getCurrentActivity()).getCurrentLibraryFragment().updateBanner();
-
-
-
 
     }
 

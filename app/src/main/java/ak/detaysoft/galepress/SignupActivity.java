@@ -2,6 +2,7 @@ package ak.detaysoft.galepress;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Rect;
@@ -56,6 +57,12 @@ public class SignupActivity extends Activity {
                 finish();
             }
         });
+
+        if(getResources().getBoolean(R.bool.portrait_only)){
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+        } else {
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
+        }
 
         Button close = (Button)findViewById(R.id.activity_signup_web_close);
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)

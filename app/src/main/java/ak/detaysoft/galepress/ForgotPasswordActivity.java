@@ -13,6 +13,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -50,6 +51,12 @@ public class ForgotPasswordActivity extends Activity {
                 finish();
             }
         });
+
+        if(getResources().getBoolean(R.bool.portrait_only)){
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        } else {
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
+        }
 
         Button close = (Button)findViewById(R.id.activity_forgot_password_web_close);
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
@@ -178,7 +185,6 @@ public class ForgotPasswordActivity extends Activity {
             super.onPageStarted(view, url, favicon);
             loading.startAnim();
             loading.setVisibility(View.VISIBLE);
-
         }
 
         @Override
