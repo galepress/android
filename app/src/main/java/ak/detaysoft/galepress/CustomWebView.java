@@ -1,6 +1,7 @@
 package ak.detaysoft.galepress;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
