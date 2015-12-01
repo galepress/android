@@ -598,7 +598,8 @@ public abstract class PageView extends ViewGroup {
                                     String url = linkInfoExternal.getSourceUrlPath(mContext);
                                     // Web Annotations
                                     final WebViewAnnotation web = new WebViewAnnotation(mContext, linkInfoExternal, progressBar);
-                                    web.layout(left,top,right,bottom);
+									web.setLayoutParams(new ViewGroup.LayoutParams(right-left, bottom-top));
+									web.layout(left,top,right,bottom);
                                     web.readerView = ((MuPDFActivity) mContext).mDocView;
                                     web.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
                                     final String url2 = linkInfoExternal.getSourceUrlPath(mContext);
@@ -607,11 +608,17 @@ public abstract class PageView extends ViewGroup {
                                     linkInfoExternal.webViewId = web.getId();
 
                                     if(linkInfoExternal.isWebAnnotation()){
+                                        //web.loadUrl("http://www.koeri.boun.edu.tr/scripts/lst2.asp");
+                                        //web.loadUrl("https://m.facebook.com/");
                                         web.loadUrl(url);
+                                        //web.loadUrl("https://html5test.com/");
+                                        //web.loadUrl("file:///android_asset/deneme.html");
+
                                     }
                                     addView(web);
                                 } else {
                                     String url = linkInfoExternal.getSourceUrlPath(mContext);
+
                                     // Web Annotations
                                     final WebViewAnnotationWithChromium web = new WebViewAnnotationWithChromium(mContext, linkInfoExternal, progressBar);
                                     web.setDrawingCacheBackgroundColor(Color.TRANSPARENT);
@@ -624,7 +631,11 @@ public abstract class PageView extends ViewGroup {
                                     linkInfoExternal.webViewId = web.getId();
 
                                     if(linkInfoExternal.isWebAnnotation()){
+                                        //web.loadUrl("http://www.koeri.boun.edu.tr/scripts/lst2.asp");
+                                        //web.loadUrl("https://m.facebook.com/");
                                         web.loadUrl(url);
+										//web.loadUrl("https://html5test.com/");
+                                        //web.loadUrl("file:///android_asset/deneme.html");
                                     }
 
                                     addView(web);
@@ -654,6 +665,7 @@ public abstract class PageView extends ViewGroup {
                             if (android.os.Build.VERSION.SDK_INT >= LOLLIPOP) {
                                 // Web Annotations
                                 final WebViewAnnotation web = new WebViewAnnotation(mContext, linkInfoExternal, progressBar);
+								web.setLayoutParams(new ViewGroup.LayoutParams(right-left, bottom-top));
                                 web.layout(left,top,right,bottom);
                                 web.readerView = ((MuPDFActivity) mContext).mDocView;
                                 web.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);

@@ -3,7 +3,6 @@ package ak.detaysoft.galepress;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.GeolocationPermissions;
@@ -11,12 +10,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
-
 import com.artifex.mupdfdemo.*;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 import ak.detaysoft.galepress.util.CustomPulseProgress;
 
@@ -65,6 +59,13 @@ public class WebViewAnnotation extends WebView {
             if(loading != null) {
                 loading.setVisibility(GONE);
             }
+
+            /*String meta = "var metaTag=document.createElement('meta');"
+                    +" metaTag.name = \"viewport\""
+                    +" metaTag.content = \"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0\""
+                    +" document.getElementsByTagName('head')[0].appendChild(metaTag);" ;
+            view.loadUrl("javascript:" + meta );*/
+
         }
 
         @Override
@@ -112,18 +113,20 @@ public class WebViewAnnotation extends WebView {
 
         WebSettings s = getSettings();
         s.setBuiltInZoomControls(true);
-        s.setPluginState(WebSettings.PluginState.ON);
-        s.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
-        s.setUseWideViewPort(true);
+        s.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
         s.setLoadWithOverviewMode(true);
+        s.setUseWideViewPort(true);
         s.setSaveFormData(true);
         s.setJavaScriptEnabled(true);
         s.setDomStorageEnabled(true);
+        s.setMediaPlaybackRequiresUserGesture(false); //false olarak set edilmediği autoplay çalışmıyor.
         s.setAllowFileAccess(true);
-        s.setAppCacheEnabled(true);
+        s.setAppCacheEnabled(false);
         s.setAllowFileAccessFromFileURLs(true);
         s.setAllowUniversalAccessFromFileURLs(true);
+        s.setDefaultTextEncodingName("utf-8");
         s.setSupportZoom(false);
+
 
         this.setHorizontalScrollBarEnabled(false);
         this.setVerticalScrollBarEnabled(false);
@@ -147,7 +150,6 @@ public class WebViewAnnotation extends WebView {
                         else{
                             return true;
                         }
-
                     }
                     else if(event.getAction() == MotionEvent.ACTION_MOVE){
                         // Action MOVE

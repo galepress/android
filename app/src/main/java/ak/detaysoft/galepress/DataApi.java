@@ -1435,7 +1435,7 @@ public class DataApi extends Object {
         uriBuilder.appendQueryParameter("type",statistic.getType().toString());
         uriBuilder.appendQueryParameter("time",statistic.getTime());
         uriBuilder.appendQueryParameter("lat",statistic.getLat()!=null?statistic.getLat().toString(): "");
-        uriBuilder.appendQueryParameter("long",statistic.getLon()!=null?statistic.getLon().toString(): "");
+        uriBuilder.appendQueryParameter("lon",statistic.getLon()!=null?statistic.getLon().toString(): "");
         uriBuilder.appendQueryParameter("deviceID",gcmRegisterId);
         uriBuilder.appendQueryParameter("applicationID",applicationId.toString());
         uriBuilder.appendQueryParameter("contentID", statistic.getContentId() != null ? statistic.getContentId().toString() : "");
