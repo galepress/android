@@ -23,6 +23,7 @@ public class WebViewAnnotation extends WebView {
     public MuPDFReaderView readerView;
     public LinkInfoExternal linkInfoExternal;
     private CustomPulseProgress loading;
+
     private Context context;
 
     private class MyWebChromeClient extends WebChromeClient {
