@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: C:\\Users\\p1025\\AndroidStudioProjects\\GalePress\\ChromiumLibrary\\src\\main\\aidl\\com\\googlecode\\eyesfree\\braille\\translate\\ITranslatorService.aidl
+ * Original file: D:\\Galepress-master\\ChromiumLibrary\\src\\main\\aidl\\com\\googlecode\\eyesfree\\braille\\translate\\ITranslatorService.aidl
  */
 package com.googlecode.eyesfree.braille.translate;
 public interface ITranslatorService extends android.os.IInterface

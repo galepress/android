@@ -598,7 +598,8 @@ public abstract class PageView extends ViewGroup {
                                     String url = linkInfoExternal.getSourceUrlPath(mContext);
                                     // Web Annotations
                                     final WebViewAnnotation web = new WebViewAnnotation(mContext, linkInfoExternal, progressBar);
-                                    web.layout(left,top,right,bottom);
+									web.setLayoutParams(new ViewGroup.LayoutParams(right-left, bottom-top));
+									web.layout(left,top,right,bottom);
                                     web.readerView = ((MuPDFActivity) mContext).mDocView;
                                     web.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
                                     final String url2 = linkInfoExternal.getSourceUrlPath(mContext);
@@ -654,7 +655,8 @@ public abstract class PageView extends ViewGroup {
                             if (android.os.Build.VERSION.SDK_INT >= LOLLIPOP) {
                                 // Web Annotations
                                 final WebViewAnnotation web = new WebViewAnnotation(mContext, linkInfoExternal, progressBar);
-                                web.layout(left,top,right,bottom);
+								web.setLayoutParams(new ViewGroup.LayoutParams(right-left, bottom-top));
+								web.layout(left,top,right,bottom);
                                 web.readerView = ((MuPDFActivity) mContext).mDocView;
                                 web.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
 
