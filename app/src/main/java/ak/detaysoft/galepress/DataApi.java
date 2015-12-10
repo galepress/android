@@ -629,6 +629,9 @@ public class DataApi extends Object {
                     .authority("www.galepress.com")
                     .appendPath("webservice")
                     .appendPath("103");*/
+
+            final String gcmRegisterId = GCMRegistrar.getRegistrationId(GalePressApplication.getInstance().getApplicationContext());
+
             Uri.Builder uriBuilder = getWebServiceUrlBuilder();
             uriBuilder.appendPath("applications");
             if(!isFacebookLogin)
@@ -648,6 +651,7 @@ public class DataApi extends Object {
                 uriBuilder.appendQueryParameter("name",name);
                 uriBuilder.appendQueryParameter("surname",last_name);
             }
+            uriBuilder.appendQueryParameter("deviceToken", gcmRegisterId);
 
             request = new JsonObjectRequest(Request.Method.POST,uriBuilder.build().toString(), null,
                     new Response.Listener<JSONObject>() {
@@ -858,6 +862,10 @@ public class DataApi extends Object {
             uriBuilder.appendQueryParameter("osVersion", osVersion);
             uriBuilder.appendQueryParameter("deviceDetail", getDeviceName());
             uriBuilder.appendQueryParameter("deviceToken", gcmRegisterId);
+            if(GalePressApplication.getInstance().getUserInformation() != null
+                    && GalePressApplication.getInstance().getUserInformation().getAccessToken() != null
+                    && GalePressApplication.getInstance().getUserInformation().getAccessToken().length() != 0)
+                uriBuilder.appendQueryParameter("accessToken",GalePressApplication.getInstance().getUserInformation().getAccessToken()); // Kullanici login oldugu zaman deviceToken alınamamışsa burda gönderilen accesToken ile tekrar eşleştiriyoruz.
             uriBuilder.appendQueryParameter("buildVersion", getBuildVersion());
             uriBuilder.appendQueryParameter("udid", udid);
 

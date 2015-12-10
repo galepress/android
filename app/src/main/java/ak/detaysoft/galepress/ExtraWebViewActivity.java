@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
@@ -113,6 +114,15 @@ public class ExtraWebViewActivity extends Activity {
             }
         });
         webView.getSettings().setJavaScriptEnabled(true);
+
+        webView.getSettings().setBuiltInZoomControls(true);
+        webView.getSettings().setLoadWithOverviewMode(true);
+        webView.getSettings().setUseWideViewPort(true);
+        webView.getSettings().setDisplayZoomControls(false);
+
+        webView.setHorizontalScrollBarEnabled(false);
+        webView.setVerticalScrollBarEnabled(false);
+
         final ExtraWebViewActivity activity = ExtraWebViewActivity.this;
         webView.setWebViewClient(new AK_WebViewClient(){
             @Override

@@ -65,6 +65,7 @@
         <item name="android:windowNoTitle">true</item>
         <item name ="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowFullscreen">false</item>
     </style>
     <style name="AppBaseTheme" parent="@android:style/Theme.NoTitleBar.Fullscreen">
         <!--<item name="android:windowBackground">@drawable/tiled_background</item>-->

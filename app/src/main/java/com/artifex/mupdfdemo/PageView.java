@@ -593,8 +593,8 @@ public abstract class PageView extends ViewGroup {
                                 addView(modalButton);
                             }
                             else{
-                                final int LOLLIPOP = 21; // Android 5.0
-                                if (android.os.Build.VERSION.SDK_INT >= LOLLIPOP) {
+								final int KITKAT = 19; // Android 4.4
+								if (android.os.Build.VERSION.SDK_INT >= KITKAT) {
                                     String url = linkInfoExternal.getSourceUrlPath(mContext);
                                     // Web Annotations
                                     final WebViewAnnotation web = new WebViewAnnotation(mContext, linkInfoExternal, progressBar);
@@ -661,8 +661,8 @@ public abstract class PageView extends ViewGroup {
                             String mapUrl = builder.build().toString();
 
 
-                            final int LOLLIPOP = 21; // Android 5.0
-                            if (android.os.Build.VERSION.SDK_INT >= LOLLIPOP) {
+                            final int KITKAT = 19; // Android 4.4
+                            if (android.os.Build.VERSION.SDK_INT >= KITKAT) {
                                 // Web Annotations
                                 final WebViewAnnotation web = new WebViewAnnotation(mContext, linkInfoExternal, progressBar);
 								web.setLayoutParams(new ViewGroup.LayoutParams(right-left, bottom-top));

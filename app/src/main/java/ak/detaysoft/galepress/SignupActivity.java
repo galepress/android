@@ -61,8 +61,10 @@ public class SignupActivity extends Activity {
         if(getResources().getBoolean(R.bool.portrait_only)){
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         } else {
-            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         }
+
+
 
         Button close = (Button)findViewById(R.id.activity_signup_web_close);
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
