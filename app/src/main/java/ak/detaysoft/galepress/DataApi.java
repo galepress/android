@@ -869,7 +869,7 @@ public class DataApi extends Object {
             uriBuilder.appendQueryParameter("buildVersion", getBuildVersion());
             uriBuilder.appendQueryParameter("udid", udid);
 
-            request = new JsonObjectRequest(Request.Method.GET, uriBuilder.build().toString(), null,
+            request = new JsonObjectRequest(Request.Method.POST, uriBuilder.build().toString(), null,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
