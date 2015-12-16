@@ -120,7 +120,8 @@ public class WebViewAnnotation extends WebView {
         s.setSaveFormData(true);
         s.setJavaScriptEnabled(true);
         s.setDomStorageEnabled(true);
-        s.setMediaPlaybackRequiresUserGesture(false); //false olarak set edilmediği autoplay çalışmıyor.
+        if (android.os.Build.VERSION.SDK_INT >= 17)
+            s.setMediaPlaybackRequiresUserGesture(false); //false olarak set edilmediği zaman autoplay çalışmıyor.
         s.setAllowFileAccess(true);
         s.setAppCacheEnabled(false);
         s.setAllowFileAccessFromFileURLs(true);

@@ -25,7 +25,7 @@ import ak.detaysoft.galepress.util.ApplicationThemeColor;
 public class CustomWebView extends WebView {
 
     private Context context;
-    private boolean isWebFragment = false;
+    private boolean isWebFragment = false; // Banner ise false olacak eger custom tablarda kullanılacaksa true olacak
     private ProgressBar progressBar;
 
     public class MyWebClient extends WebViewClient {
@@ -69,7 +69,11 @@ public class CustomWebView extends WebView {
 
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            if(!isWebFragment){
+            /*
+            * Google vb sitelerde ilk load edilen url redirect edildigi icin ilk acilista intent cagrilmasini engellemek icin ve
+            * internetin olmadigi durumlarda yada load edilemedi durumlarda intent cagrilmasini engellemek icin kontroller yapiliyor.
+            * */
+            if(!isWebFragment && !url.contains("file:///") && view.getOriginalUrl() != null && url.compareTo(view.getOriginalUrl()) != 0){
                 Intent intent = new Intent(context, ExtraWebViewActivity.class);
                 intent.putExtra("url", url);
                 intent.putExtra("isMainActivitIntent", false);

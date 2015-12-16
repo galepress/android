@@ -49,7 +49,7 @@ public class LibraryFragment extends Fragment {
     ArrayList<L_Category> selectedCategories;
     L_Category selectedCategory = null;
     private View v;
-    final int LOLLIPOP = 21; // Android 5.0
+    final int KITKAT = 19; // Android 5.0
 
 
     public LayoutInflater getLayoutInflater() {
@@ -115,7 +115,7 @@ public class LibraryFragment extends Fragment {
 
         banner =  (LinearLayout)LayoutInflater.from(this.getActivity()).inflate(R.layout.library_banner, null, false);
 
-        if (android.os.Build.VERSION.SDK_INT <= LOLLIPOP) {
+        if (android.os.Build.VERSION.SDK_INT <= KITKAT) {
             customWebView = new CustomWebView(this.getActivity());
             customWebView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
             customWebView.loadUrl(GalePressApplication.getInstance().getBannerLink());
@@ -150,7 +150,7 @@ public class LibraryFragment extends Fragment {
 
     public void updateBanner(){
         banner.setLayoutParams(prepareBannerSize());
-        if (android.os.Build.VERSION.SDK_INT <= LOLLIPOP) {
+        if (android.os.Build.VERSION.SDK_INT <= KITKAT) {
             customWebView.loadUrl(GalePressApplication.getInstance().getBannerLink());
         } else {
             customWebViewWithChromium.loadUrl(GalePressApplication.getInstance().getBannerLink());
