@@ -32,7 +32,10 @@ public class WebViewAnnotation extends WebView {
     private Context context;
 
     private class MyWebChromeClient extends WebChromeClient {
-        @Override
+        /*
+        * Bu iki metod override edildigi zaman videolar gorunmuyor
+        * */
+        /*@Override
         public void onShowCustomView(View view, CustomViewCallback callback) {
             Logout.e("Adem","onShowCustomView");
             super.onShowCustomView(view, callback);
@@ -42,7 +45,7 @@ public class WebViewAnnotation extends WebView {
         public void onHideCustomView() {
             Logout.e("Adem","onHideCustomView");
             super.onHideCustomView();
-        }
+        }*/
         @Override
         public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
             callback.invoke(origin, true, false);

@@ -689,7 +689,11 @@ public class ReaderView
 
 	@Override
 	public View getSelectedView() {
-		throw new UnsupportedOperationException(getContext().getString(R.string.not_supported));
+		/*
+		* HTC LG gibi bazi cihazlarda burda crash oluyordu. Mupdf 1.8 versiyonda burasi bu sekilde duzenlenmis. Bende 1.8'e gore duzenledim. (MG)
+		* */
+		//throw new UnsupportedOperationException(getContext().getString(R.string.not_supported));
+		return null;
 	}
 
 	@Override
