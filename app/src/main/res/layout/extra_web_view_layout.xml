@@ -92,13 +92,25 @@
             android:layout_height="match_parent">
         </WebView>
 
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/extra_web_view_close_progress_bar"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:visibility="visible"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@android:color/black"
+            android:visibility="visible"
+            android:alpha="0.5">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/extra_web_view_load_progress_bar"
+                android:visibility="visible"/>
+
+        </LinearLayout>
+
+
     </RelativeLayout>
 
 

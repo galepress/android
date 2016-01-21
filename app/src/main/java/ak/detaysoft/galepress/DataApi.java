@@ -10,6 +10,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.location.Location;
 import android.net.ConnectivityManager;
@@ -36,6 +38,7 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.RequestFuture;
+import com.artifex.mupdfdemo.MuPDFActivity;
 import com.google.android.gcm.GCMRegistrar;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
@@ -87,7 +90,7 @@ import ak.detaysoft.galepress.util.ApplicationThemeColor;
 public class DataApi extends Object {
     //http://galepress.com/ws/v100/applications/20/detail
 
-    private static final String webServisVersion = "v102";
+    private static final String webServisVersion = "103";
     private static final String domainUrl = "http://www.galepress.com";
     public static final Integer MESSAGE_TYPE_COVER_IMAGE = 1;
     public static final Integer MESSAGE_TYPE_COVER_PDF_DOWNLOAD = 2;
@@ -194,7 +197,7 @@ public class DataApi extends Object {
 
         List<L_Content> list = GalePressApplication.getInstance().getDatabaseApi().getAllContents(null);
         L_Content masterContent = getMasterContent();
-        if(list.size() == 1 && masterContent!=null && list.get(0).getId().intValue() == masterContent.getId().intValue()){
+        if(list!= null && list.size() == 1 && masterContent!=null && list.get(0).getId().intValue() == masterContent.getId().intValue()){
             return false ;
         }
         else{
@@ -244,7 +247,10 @@ public class DataApi extends Object {
 
                 // download the file
                 input = connection.getInputStream();
+
+
                 output = new FileOutputStream(outputFile.getPath());
+                //output = GalePressApplication.getInstance().getApplicationContext().openFileOutput(pdfFileName, Context.MODE_WORLD_READABLE);
 
                 byte data[] = new byte[1024];
                 total = 0;
@@ -274,6 +280,7 @@ public class DataApi extends Object {
                     output.write(data, 0, count);
                 }
 
+                outputFile.setReadable(true, false);
                 publishProgress((int) total, (int) fileLength);
                 if (directory.exists()) {
                     deleteFolder(directory);
@@ -281,7 +288,7 @@ public class DataApi extends Object {
                 final boolean isUpdate = content.isPdfDownloaded() ? true: false;
 
                 tempDirectory.renameTo(directory);
-                Decompress decompressor = new Decompress(directory + "/" + pdfFileName, directory + "/");
+                Decompress decompressor = new Decompress(directory + "/" + pdfFileName, directory + "/", GalePressApplication.getInstance().getApplicationContext());
                 Logout.e("Adem","Content Directory : "+directory.getPath()+"");
                 decompressor.unzip();
                 if(checkDownloadSuccessfull(directory)){
@@ -312,7 +319,6 @@ public class DataApi extends Object {
                                 L_Statistic statistic = new L_Statistic(udid, content.getId(), location!=null ? location.getLatitude():null,location != null ? location.getLongitude() : null, null, dateFormat.format(cal.getTime()),L_Statistic.STATISTIC_contentDownloaded, null,null,null);
                                 GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
                             }
-
 
                         }
                     });
@@ -379,16 +385,16 @@ public class DataApi extends Object {
             if(GalePressApplication.getInstance().getMainActivity() != null){
                 MainActivity act = GalePressApplication.getInstance().getMainActivity();
                 if(act.mTabHost.getCurrentTabTag().compareTo(MainActivity.DOWNLOADED_LIBRARY_TAG) == 0)
-                    act.getCurrentDownloadedLibraryFragment().updateGridView();
+                    act.getDownloadedLibraryFragment().updateGridView();
             }
 
             if(GalePressApplication.getInstance().getLibraryActivity() != null)
                 GalePressApplication.getInstance().getLibraryActivity().updateAdapterList(content, false);
 
-            if(GalePressApplication.getInstance().getContentDetailPopupActivity() != null){
-                if(content.getId().compareTo(GalePressApplication.getInstance().getContentDetailPopupActivity().getContent().getId()) == 0)
-                    GalePressApplication.getInstance().getContentDetailPopupActivity().setContent(content);
-                GalePressApplication.getInstance().getContentDetailPopupActivity().update();
+            if(GalePressApplication.getInstance().getContentPopupActivity() != null){
+                if(content.getId().compareTo(GalePressApplication.getInstance().getContentPopupActivity().getContent().getId()) == 0)
+                    GalePressApplication.getInstance().getContentPopupActivity().setContent(content);
+                GalePressApplication.getInstance().getContentPopupActivity().update();
             }
         }
 
@@ -398,11 +404,11 @@ public class DataApi extends Object {
                 deleteFolder(tempDirectory);
             }
             content.setPdfDownloading(false);
-            getDatabaseApi().updateContent(content,true);
-            if(GalePressApplication.getInstance().getContentDetailPopupActivity() != null){
-                if(content.getId().compareTo(GalePressApplication.getInstance().getContentDetailPopupActivity().getContent().getId()) == 0)
-                    GalePressApplication.getInstance().getContentDetailPopupActivity().setContent(content);
-                GalePressApplication.getInstance().getContentDetailPopupActivity().update();
+            getDatabaseApi().updateContent(content, true);
+            if(GalePressApplication.getInstance().getContentPopupActivity() != null){
+                if(content.getId().compareTo(GalePressApplication.getInstance().getContentPopupActivity().getContent().getId()) == 0)
+                    GalePressApplication.getInstance().getContentPopupActivity().setContent(content);
+                GalePressApplication.getInstance().getContentPopupActivity().update();
             }
 
             super.onCancelled();
@@ -430,17 +436,17 @@ public class DataApi extends Object {
                 updateCompleted();
             }
 
-            if(GalePressApplication.getInstance().getContentDetailPopupActivity() != null){
-                if(content.getId().compareTo(GalePressApplication.getInstance().getContentDetailPopupActivity().getContent().getId()) == 0)
-                    GalePressApplication.getInstance().getContentDetailPopupActivity().setContent(content);
-                GalePressApplication.getInstance().getContentDetailPopupActivity().update();
+            if(GalePressApplication.getInstance().getContentPopupActivity() != null){
+                if(content.getId().compareTo(GalePressApplication.getInstance().getContentPopupActivity().getContent().getId()) == 0)
+                    GalePressApplication.getInstance().getContentPopupActivity().setContent(content);
+                GalePressApplication.getInstance().getContentPopupActivity().update();
             }
 
-            //icerik indirildigi zaman downloaded ekrani aciksa update etmek icin
+            //icerik indirildigi zaman indirilenler ekrani aciksa update etmek icin
             if(GalePressApplication.getInstance().getMainActivity() != null){
                 MainActivity act = GalePressApplication.getInstance().getMainActivity();
-                if(act.mTabHost.getCurrentTabTag().compareTo(MainActivity.DOWNLOADED_LIBRARY_TAG) == 0)
-                    act.getCurrentDownloadedLibraryFragment().updateGridView();
+                if(act.getDownloadedLibraryFragment() != null)
+                    act.getDownloadedLibraryFragment().updateGridView();
             }
         }
 
@@ -466,9 +472,9 @@ public class DataApi extends Object {
                     }
                 }
             }
-        } else if(GalePressApplication.getInstance().getContentDetailPopupActivity() != null
-                && GalePressApplication.getInstance().getContentDetailPopupActivity().content.getId().compareTo(content.getId()) == 0) {
-            ContentDetailPopupActivity act = GalePressApplication.getInstance().getContentDetailPopupActivity();
+        } else if(GalePressApplication.getInstance().getContentPopupActivity() != null
+                && GalePressApplication.getInstance().getContentPopupActivity().content.getId().compareTo(content.getId()) == 0) {
+            ContentPopupActivity act = GalePressApplication.getInstance().getContentPopupActivity();
             act.contentHolder.progressBar.setProgress((int) (total * 100 / fileLength));
         }
     }
@@ -509,7 +515,7 @@ public class DataApi extends Object {
         Uri.Builder builder = new Uri.Builder();
         builder.scheme("http")
                 .authority("www.galepress.com")
-                .appendPath("ws")
+                .appendPath("webservice")
                 .appendPath(webServisVersion);
         return builder;
     }
@@ -962,8 +968,8 @@ public class DataApi extends Object {
                     dialog.cancel();
                     //GalePressApplication.getInstance().getLibraryActivity().updateGridView();
                     GalePressApplication.getInstance().getLibraryActivity().updateAdapterList(content, false);
-                    if(GalePressApplication.getInstance().getContentDetailPopupActivity() != null)
-                        GalePressApplication.getInstance().getContentDetailPopupActivity().update();
+                    if(GalePressApplication.getInstance().getContentPopupActivity() != null)
+                        GalePressApplication.getInstance().getContentPopupActivity().update();
                 }
             });
             alertDialog.show();
@@ -973,8 +979,8 @@ public class DataApi extends Object {
     public void getPdf(final L_Content content, final Context context) {
         //GalePressApplication.getInstance().getLibraryActivity().updateGridView();
         GalePressApplication.getInstance().getLibraryActivity().updateAdapterList(content, false);
-        if(GalePressApplication.getInstance().getContentDetailPopupActivity() != null)
-            GalePressApplication.getInstance().getContentDetailPopupActivity().update();
+        if(GalePressApplication.getInstance().getContentPopupActivity() != null)
+            GalePressApplication.getInstance().getContentPopupActivity().update();
         content.setPdfDownloading(true);
         getDatabaseApi().updateContent(content,false);
         if (downloadPdfTask != null && (downloadPdfTask.getStatus() == AsyncTask.Status.RUNNING)) {
@@ -986,17 +992,17 @@ public class DataApi extends Object {
                 public void onClick(DialogInterface dialog, int which) {
                     cancelDownload(true, context, content);
                     if (content.isPdfUpdateAvailable()) {
-                        if(GalePressApplication.getInstance().getContentDetailPopupActivity() != null){
-                            GalePressApplication.getInstance().getContentDetailPopupActivity().contentHolder.updateButton.setEnabled(false);
+                        if(GalePressApplication.getInstance().getContentPopupActivity() != null){
+                            GalePressApplication.getInstance().getContentPopupActivity().contentHolder.updateButton.setEnabled(false);
                         }
 
                     } else {
-                        if(GalePressApplication.getInstance().getContentDetailPopupActivity() != null){
-                            GalePressApplication.getInstance().getContentDetailPopupActivity().contentHolder.downloadButton.setEnabled(false);
+                        if(GalePressApplication.getInstance().getContentPopupActivity() != null){
+                            GalePressApplication.getInstance().getContentPopupActivity().contentHolder.downloadButton.setEnabled(false);
                         }
                     }
-                    if(GalePressApplication.getInstance().getContentDetailPopupActivity() != null){
-                        GalePressApplication.getInstance().getContentDetailPopupActivity().contentHolder.downloadButton.setEnabled(false);
+                    if(GalePressApplication.getInstance().getContentPopupActivity() != null){
+                        GalePressApplication.getInstance().getContentPopupActivity().contentHolder.downloadButton.setEnabled(false);
                     }
                     downloadPdf(content);
                 }
@@ -1067,20 +1073,44 @@ public class DataApi extends Object {
                     application.setVersion(application.getVersion()-1);
                     getDatabaseApi().updateApplication(application);
 
+                    /*
+                     * Silinen icerigin son acilan sayfa bilgileri siliniyor.
+                     * Eger silinmezse icerik tekrar indirilirse silinmeden onceki sayfadan basliyor.
+                    * */
+                    try{
+                        File samplePdfFile = new File(content.getPdfPath(),"file.pdf");
+                        Uri uri = Uri.parse(samplePdfFile.getAbsolutePath());
+                        String path = Uri.decode(uri.getEncodedPath());
+                        int lastSlashPos = path.lastIndexOf('/');
+                        int penultimateSlashPos = (path.substring(0, path.lastIndexOf("/"))).lastIndexOf('/');
+                        String mFileName = new String((lastSlashPos == -1 ||penultimateSlashPos == -1)
+                                ? path
+                                : path.substring(penultimateSlashPos + 1, lastSlashPos));
+
+                        SharedPreferences prefs = GalePressApplication.getInstance().getApplicationContext().getSharedPreferences("pages", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor edit = prefs.edit();
+
+                        edit.putInt("page" + mFileName, 0);
+                        edit.putInt("lastPortraitPageIndex" + mFileName, 0);
+                        edit.commit();
+                    } catch (Exception e){
+                        Log.e("Content_Delete", ""+e.toString());
+                    }
+
                     //icerik silindigi zaman downloaded ekrani aciksa update etmek icin
                     if(GalePressApplication.getInstance().getMainActivity() != null){
                         MainActivity act = GalePressApplication.getInstance().getMainActivity();
                         if(act.mTabHost.getCurrentTabTag().compareTo(MainActivity.DOWNLOADED_LIBRARY_TAG) == 0)
-                            act.getCurrentDownloadedLibraryFragment().updateGridView();
+                            act.getDownloadedLibraryFragment().updateGridView();
                     }
 
 
                     updateApplication();
 
-                    if(GalePressApplication.getInstance().getContentDetailPopupActivity() != null){
-                        if(content.getId().compareTo(GalePressApplication.getInstance().getContentDetailPopupActivity().getContent().getId()) == 0)
-                            GalePressApplication.getInstance().getContentDetailPopupActivity().setContent(content);
-                        GalePressApplication.getInstance().getContentDetailPopupActivity().update();
+                    if(GalePressApplication.getInstance().getContentPopupActivity() != null){
+                        if(content.getId().compareTo(GalePressApplication.getInstance().getContentPopupActivity().getContent().getId()) == 0)
+                            GalePressApplication.getInstance().getContentPopupActivity().setContent(content);
+                        GalePressApplication.getInstance().getContentPopupActivity().update();
                     }
 
                 }
@@ -1090,8 +1120,8 @@ public class DataApi extends Object {
                     dialog.cancel();
                     //GalePressApplication.getInstance().getLibraryActivity().updateGridView();
                     GalePressApplication.getInstance().getLibraryActivity().updateAdapterList(content, false);
-                    if(GalePressApplication.getInstance().getContentDetailPopupActivity() != null){
-                        GalePressApplication.getInstance().getContentDetailPopupActivity().update();
+                    if(GalePressApplication.getInstance().getContentPopupActivity() != null){
+                        GalePressApplication.getInstance().getContentPopupActivity().update();
                     }
                 }
             });
@@ -1406,10 +1436,10 @@ public class DataApi extends Object {
                                 if(GalePressApplication.getInstance().getLibraryActivity()!=null){
                                     GalePressApplication.getInstance().getLibraryActivity().getContentHolderAdapter().notifyDataSetChanged();
                                 }
-                                if(GalePressApplication.getInstance().getContentDetailPopupActivity() != null) {
-                                    if(localContent.getId().compareTo(GalePressApplication.getInstance().getContentDetailPopupActivity().getContent().getId()) == 0)
-                                        GalePressApplication.getInstance().getContentDetailPopupActivity().setContent(localContent);
-                                    GalePressApplication.getInstance().getContentDetailPopupActivity().update();
+                                if(GalePressApplication.getInstance().getContentPopupActivity() != null) {
+                                    if(localContent.getId().compareTo(GalePressApplication.getInstance().getContentPopupActivity().getContent().getId()) == 0)
+                                        GalePressApplication.getInstance().getContentPopupActivity().setContent(localContent);
+                                    GalePressApplication.getInstance().getContentPopupActivity().update();
                                 }
                             }
 
@@ -1700,7 +1730,7 @@ public class DataApi extends Object {
     }
 
     public void updateApplicationVersion() {
-        Logout.e("Adem","INC"); GalePressApplication.getInstance().incrementRequestCount();
+        Logout.e("Adem", "INC"); GalePressApplication.getInstance().incrementRequestCount();
         GalePressApplication application = GalePressApplication.getInstance();
         RequestQueue requestQueue = application.getRequestQueue();
 
@@ -1751,6 +1781,7 @@ public class DataApi extends Object {
     }
 
     private void deleteContent(L_Content content) {
+
         File coverImage = new File(GalePressApplication.getInstance().getFilesDir(), content.getCoverImageFileName());
         if (coverImage.exists()) {
             coverImage.delete();

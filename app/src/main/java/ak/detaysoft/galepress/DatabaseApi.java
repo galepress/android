@@ -7,14 +7,16 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.SelectArg;
+import com.j256.ormlite.stmt.Where;
+import com.j256.ormlite.stmt.query.OrderBy;
+
+import org.json.JSONArray;
 
 import java.sql.SQLException;
+import java.text.Normalizer;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -24,6 +26,7 @@ import ak.detaysoft.galepress.database_models.L_Category;
 import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.database_models.L_ContentCategory;
 import ak.detaysoft.galepress.database_models.L_Statistic;
+import ak.detaysoft.galepress.service_models.R_Category;
 
 /**
  * Created by adem on 25/02/14.
@@ -155,7 +158,7 @@ public class DatabaseApi {
                     //icerik panelden mobil uygulamadan kaldir ile kaldirildigi zaman indirilenler ekrani update olmadigi icin bu satiri ekledim (mg)
                     MainActivity act = GalePressApplication.getInstance().getMainActivity();
                     if(act.mTabHost.getCurrentTabTag().compareTo(MainActivity.DOWNLOADED_LIBRARY_TAG) == 0)
-                        act.getCurrentDownloadedLibraryFragment().updateGridView();
+                        act.getDownloadedLibraryFragment().updateGridView();
                 }
             }
             catch (Exception e){
@@ -197,12 +200,116 @@ public class DatabaseApi {
         }
     }
 
+    public List getAllContent(boolean isOnlyDownloaded, String searchQuery, ArrayList<L_Category> categoryList){
+        List contents;
+        if(searchQuery!= null && searchQuery.length() != 0)
+            searchQuery = Normalizer.normalize(searchQuery, Normalizer.Form.NFD)
+                    .replaceAll("[^\\p{ASCII}]", "");
+        try {
+            if(categoryList == null || categoryList.size() == 0){ //Kategori listesi null yada bossa
+                L_Category generalCategory = getCategory(MainActivity.GENEL_CATEGORY_ID);
+                if(generalCategory != null){
+                    // Genel kategorisine ait contentler listelenecek.
+                    QueryBuilder<L_Content, Integer> contentQuery = contentsDao.queryBuilder();
+
+                    Where where = contentQuery.where();
+
+                    where.like("categoryIds", "%"+generalCategory.getCategoryID()+"%");
+
+                    if(searchQuery!= null && searchQuery.length() != 0){
+                        where.and();
+                        where.like("name_asc", "%"+searchQuery+"%");
+                    }
+                    if(isOnlyDownloaded){
+                        where.and();
+                        where.eq("isPdfDownloaded", isOnlyDownloaded);
+                    }
+
+                    contentQuery.orderBy("contentOrderNo", false);
+
+                    contents = contentQuery.query();
+                }
+                else {
+                    // Genel kategorisinin olmadigi durumlarda butun contentler listelenir.
+                    QueryBuilder<L_Content, Integer> contentQuery = contentsDao.queryBuilder();
+
+                    if((searchQuery!= null && searchQuery.length() != 0) || isOnlyDownloaded) {
+                        Where where = contentQuery.where();
+                        if(searchQuery!= null && searchQuery.length() != 0){
+                            where.and();
+                            where.like("name_asc", "%"+searchQuery+"%");
+                        }
+                        if(isOnlyDownloaded){
+                            where.and();
+                            where.eq("isPdfDownloaded", isOnlyDownloaded);
+                        }
+                    }
+
+                    contentQuery.orderBy("contentOrderNo", false);
+
+                    contents = contentQuery.query();
+                }
+            } else if(isSelectedCategoriesContainAll(categoryList)){ //Tum kategoriler secilmisse
+                QueryBuilder<L_Content, Integer> contentQuery = contentsDao.queryBuilder();
+
+                if((searchQuery!= null && searchQuery.length() != 0) || isOnlyDownloaded) {
+                    Where where = contentQuery.where();
+                    if(searchQuery!= null && searchQuery.length() != 0){
+                        where.like("name_asc", "%"+searchQuery+"%");
+                    }
+                    if(isOnlyDownloaded){
+                        where.and();
+                        where.eq("isPdfDownloaded", isOnlyDownloaded);
+                    }
+                }
+
+                contentQuery.orderBy("contentOrderNo", false);
+
+                contents = contentQuery.query();
+            } else { //Kategorilerin hepsi secilmemisse
+                QueryBuilder<L_Content, Integer> contentQuery = contentsDao.queryBuilder();
+
+                Where where = contentQuery.where();
+
+
+                //Kategori
+                for(int i = 0 ; i < categoryList.size(); i++){
+                    L_Category item = categoryList.get(i);
+                    where.like("categoryIds", "%" + item.getCategoryID() + "%");
+                }
+
+                if(categoryList.size() > 1)
+                    where.or(categoryList.size());
+
+
+
+                if(searchQuery!= null && searchQuery.length() != 0) {
+                    where.and();
+                    where.like("name_asc", "%"+searchQuery+"%");
+                }
+                if(isOnlyDownloaded){
+                    where.and();
+                    where.eq("isPdfDownloaded", isOnlyDownloaded);
+                }
+
+
+                contentQuery.orderBy("contentOrderNo", false);
+
+                contents = contentQuery.query();
+            }
+
+        } catch (SQLException e) {
+            return new ArrayList<L_Content>();
+        }
+        return contents;
+    }
+
     public List getAllContents(boolean isOnlyDownloaded, String searchQuery, ArrayList<L_Category> categoryList)
     {
         List contents = null;
         List<L_Content> resultContents = new ArrayList<L_Content>();
 
-        if(categoryList.size() == 0){
+        if(categoryList == null || categoryList.size() == 0){ //Kategori listesi null yada bossa
 
             try {
                 L_Category generalCategory = getCategory(MainActivity.GENEL_CATEGORY_ID);
@@ -238,36 +345,37 @@ public class DatabaseApi {
                 return null;
             }
 
-        } else {
+        } else if(isSelectedCategoriesContainAll(categoryList)){ //Tum kategoriler secilmisse
+            try{
+                // Show all categories.
+                contents = contentsDao.queryForAll();
+                resultContents.clear();
+                for(int i=0; i<contents.size(); i++){
+                    L_Content content = (L_Content )contents.get(i);
+
+                    if(isOnlyDownloaded){
+                        // Download Status Filter must be applied.
+                        if(!content.isPdfDownloaded()){
+                            continue;
+                        }
+                    }
+
+                    if(searchQuery!=null && searchQuery.compareTo("")!=0){
+                        // Search Query Filter must be applied.
+                        if(!content.getName().toLowerCase().contains(searchQuery.toLowerCase())){
+                            continue;
+                        }
+                    }
+                    resultContents.add(content);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return null;
+            }
+        } else { //Kategorilerin hepsi secilmemisse
             for(L_Category item : categoryList) {
                 try {
-                    if(item.getCategoryID().compareTo(-1)==0){
-                        // Show all categories.
-                        contents = contentsDao.queryForAll();
-                        resultContents.clear();
-                        for(int i=0; i<contents.size(); i++){
-                            L_Content content = (L_Content )contents.get(i);
-
-                            if(isOnlyDownloaded){
-                                // Download Status Filter must be applied.
-                                if(!content.isPdfDownloaded()){
-                                    continue;
-                                }
-                            }
-
-                            if(searchQuery!=null && searchQuery.compareTo("")!=0){
-                                // Search Query Filter must be applied.
-                                if(!content.getName().toLowerCase().contains(searchQuery.toLowerCase())){
-                                    continue;
-                                }
-                            }
-                            resultContents.add(content);
-                        }
-                        break;
-                    }
-                    else{
-                        contents = getAllContentsByCategory(item);
-                    }
+                    contents = getAllContentsByCategory(item);
                     for(int i=0; i<contents.size(); i++){
                         L_Content content = (L_Content )contents.get(i);
 
@@ -287,7 +395,7 @@ public class DatabaseApi {
                         resultContents.add(content);
                     }
 
-                } catch (SQLException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                     return null;
                 }
@@ -301,12 +409,24 @@ public class DatabaseApi {
         Collections.sort(resultContents, new Comparator() {
             @Override
             public int compare(Object lhs, Object rhs) {
-                return ((L_Content)lhs).getContentOrderNo().compareTo(((L_Content)rhs).getContentOrderNo());
+                return ((L_Content) lhs).getContentOrderNo().compareTo(((L_Content) rhs).getContentOrderNo());
             }
         });
         Collections.reverse(resultContents);
 
         return resultContents;
+    }
+
+    public boolean isSelectedCategoriesContainAll(ArrayList<L_Category> categoryList){
+        /*
+        * Show All secilmeden tum kategoriler tek tek secilmisse
+        * */
+        int databaseCategorySize = getAllCategories().size();
+        if(categoryList.size() == databaseCategorySize || categoryList.size() == databaseCategorySize+1){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public List<L_Content> removeDuplicates(List<L_Content> l) {

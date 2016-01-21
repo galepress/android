@@ -61,8 +61,8 @@ public class LeftMenuCategoryAdapter extends BaseAdapter {
         else
             image.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(mContext, ApplicationThemeColor.CATEGORY_UNSELECT));
 
-        for (int i = 0; i < ((MainActivity)(mContext)).getCurrentLibraryFragment().selectedCategories.size(); i++){
-            L_Category item = ((MainActivity)(mContext)).getCurrentLibraryFragment().selectedCategories.get(i);
+        for (int i = 0; i < ((MainActivity)(mContext)).getLibraryFragment().selectedCategories.size(); i++){
+            L_Category item = ((MainActivity)(mContext)).getLibraryFragment().selectedCategories.get(i);
             if(item.getCategoryID().compareTo(mCategory.get(position).categoryID) == 0){
                 if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                     image.setBackground(ApplicationThemeColor.getInstance().paintIcons(mContext, ApplicationThemeColor.CATEGORY_SELECT));

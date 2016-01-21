@@ -127,12 +127,24 @@ public class LaunchActivity extends ActionBarActivity {
         super.onResume();
         GalePressApplication.getInstance().setCurrentActivity(this);
         if(GalePressApplication.getInstance().getDataApi() != null){
-            if(GalePressApplication.getInstance().getDataApi().downloadPdfTask != null
-                    && GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() == AsyncTask.Status.FINISHED){
-                openMasterContent();
+            if(masterContent != null){
+                if(GalePressApplication.getInstance().getDataApi().downloadPdfTask != null
+                        && GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() == AsyncTask.Status.FINISHED){
+                    openMasterContent();
+                }
+            } else {
+                if(GalePressApplication.getInstance().isTestApplication()){
+                    if(GalePressApplication.getInstance().getTestApplicationLoginInf().getUsername().isEmpty())
+                        openLoginActivity();
+                    else
+                        GalePressApplication.getInstance().getDataApi().updateApplication();
+                } else {
+                    GalePressApplication.getInstance().getDataApi().updateApplication();
+                }
             }
         }
     }
+
     protected void onPause() {
         clearReferences();
         super.onPause();

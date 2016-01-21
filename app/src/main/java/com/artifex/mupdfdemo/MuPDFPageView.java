@@ -12,7 +12,6 @@ import android.graphics.PointF;
 import android.graphics.RectF;
 import android.net.Uri;
 import android.text.method.PasswordTransformationMethod;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -20,9 +19,11 @@ import android.view.inputmethod.EditorInfo;
 import android.webkit.WebBackForwardList;
 import android.widget.EditText;
 
+import org.xwalk.core.XWalkView;
+
 import ak.detaysoft.galepress.R;
-import ak.detaysoft.galepress.WebViewAnnotation;
-import ak.detaysoft.galepress.WebViewAnnotationWithChromium;
+import ak.detaysoft.galepress.web_views.WebViewAnnotation;
+import ak.detaysoft.galepress.web_views.WebViewAnnotationWithCrosswalk;
 
 /* This enum should be kept in line with the cooresponding C enum in mupdf.c */
 enum SignatureState {
@@ -266,10 +267,10 @@ public class MuPDFPageView extends PageView implements MuPDFView {
 	private void invokeChoiceDialog(final String [] options) {
 		mChoiceEntryBuilder.setItems(options, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
-				mSetWidgetChoice = new AsyncTask<String,Void,Void>() {
+				mSetWidgetChoice = new AsyncTask<String, Void, Void>() {
 					@Override
 					protected Void doInBackground(String... params) {
-						String [] sel = {params[0]};
+						String[] sel = {params[0]};
 						mCore.setFocusedWidgetChoiceSelected(sel);
 						return null;
 					}
@@ -606,116 +607,139 @@ public class MuPDFPageView extends PageView implements MuPDFView {
 		mLoadAnnotations.execute();
 	}
 
-    /*Tüm sayfaların içindeki ses ve video olan componentler kontrol ediliyor ve video ve ses js ile stop ediliyor.
+	/*Tüm sayfaların içindeki ses ve video olan componentler kontrol ediliyor ve video ve ses js ile stop ediliyor.
     MG*/
-    public void stopAllWebAnnotationsMedia(){
+	public void stopAllWebAnnotationsMedia(){
 
-        String stopScriptAudio = "var audios = document.querySelectorAll(\"audio\"); for (var i = audios.length - 1; i >= 0; i--) " +
-                "{audios[i].pause(); audios[i].currentTime = 0;};";
-        String stopScriptVideo = "var videos = document.querySelectorAll(\"video\"); for (var i = videos.length - 1; i >= 0; i--) " +
-                "{videos[i].pause();};";
+		String stopScriptAudio = "var audios = document.querySelectorAll(\"audio\"); for (var i = audios.length - 1; i >= 0; i--) " +
+				"{audios[i].pause(); audios[i].currentTime = 0;};";
+		String stopScriptVideo = "var videos = document.querySelectorAll(\"video\"); for (var i = videos.length - 1; i >= 0; i--) " +
+				"{videos[i].pause();};";
 
-        for(int i =0; i < ((MuPDFActivity)(mContext)).mDocView.getChildCount(); i++){
-            MuPDFPageView muPDFPageView = (MuPDFPageView) ((MuPDFActivity)(mContext)).mDocView.getChildAt(i);
-            ArrayList<View> gpAnnotations = getGPAnnotations(muPDFPageView);
-            for(int j = 0; j < gpAnnotations.size(); j++){
-                View view = gpAnnotations.get(j);
+		for(int i =0; i < ((MuPDFActivity)(mContext)).mDocView.getChildCount(); i++){
+			MuPDFPageView muPDFPageView = (MuPDFPageView) ((MuPDFActivity)(mContext)).mDocView.getChildAt(i);
+			ArrayList<View> gpAnnotations = getGPAnnotations(muPDFPageView);
+			for(int j = 0; j < gpAnnotations.size(); j++){
+				View view = gpAnnotations.get(j);
 
-                if(view instanceof WebViewAnnotation){
-                    WebViewAnnotation webView = (WebViewAnnotation)view;
-                    WebBackForwardList mWebBackForwardList = webView.copyBackForwardList();
-                    if(mWebBackForwardList.getCurrentIndex() != -1){
-                        if(!webView.linkInfoExternal.isModal && webView.linkInfoExternal.isWebAnnotation()
-                                && (webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_SES)) {
-                            //webView.loadUrl("");
-                            webView.loadUrl("javascript:" + stopScriptAudio );
-                        } else if(!webView.linkInfoExternal.isModal && webView.linkInfoExternal.isWebAnnotation()
-                                && (webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_VIDEO
-                                || webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_WEB)) {
-                            //webView.loadUrl("");
-                            webView.loadUrl("javascript:" + stopScriptVideo );
-                        }
-                    }
+				if(view instanceof WebViewAnnotation){
+					WebViewAnnotation webView = (WebViewAnnotation)view;
+					WebBackForwardList mWebBackForwardList = webView.copyBackForwardList();
+					if(mWebBackForwardList.getCurrentIndex() != -1){
+						if(!webView.linkInfoExternal.isModal && webView.linkInfoExternal.isWebAnnotation()
+								&& (webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_SES)) {
+							//webView.loadUrl("");
+							webView.loadUrl("javascript:" + stopScriptAudio );
+						} else if(!webView.linkInfoExternal.isModal && webView.linkInfoExternal.isWebAnnotation()
+								&& (webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_VIDEO
+								|| webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_WEB)) {
+							//webView.loadUrl("");
+							webView.loadUrl("javascript:" + stopScriptVideo );
+						}
+					}
 
-                } else if(view instanceof WebViewAnnotationWithChromium){
-                    WebViewAnnotationWithChromium webView = (WebViewAnnotationWithChromium) view;
-                    com.mogoweb.chrome.WebBackForwardList mWebBackForwardList = webView.copyBackForwardList();
-                    if(mWebBackForwardList.getCurrentIndex() != -1) {
-                        if(!webView.linkInfoExternal.isModal && webView.linkInfoExternal.isWebAnnotation()
-                                && (webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_SES)) {
-                            //webView.loadUrl("");
-                            webView.loadUrl("javascript:" + stopScriptAudio);
-                        } else if(!webView.linkInfoExternal.isModal && webView.linkInfoExternal.isWebAnnotation()
-                                && (webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_VIDEO
-                                || webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_WEB)) {
-                            //webView.loadUrl("");
-                            webView.loadUrl("javascript:" + stopScriptVideo);
-                        }
-                    }
+				}
+			}
+		}
 
-                }
-            }
-        }
+	}
 
-    }
+	public void resumeTimers(){
+		for(int i =0; i < ((MuPDFActivity)(mContext)).mDocView.getChildCount(); i++){
+			MuPDFPageView muPDFPageView = (MuPDFPageView) ((MuPDFActivity)(mContext)).mDocView.getChildAt(i);
+			ArrayList<View> gpAnnotations = getGPAnnotations(muPDFPageView);
+			for(int j = 0; j < gpAnnotations.size(); j++){
+				View view = gpAnnotations.get(j);
 
-    /*Sayfa geçişinde  aktif olan sayfadaki ses ve videoların
+				if(view instanceof WebViewAnnotationWithCrosswalk){
+					WebViewAnnotationWithCrosswalk webView = (WebViewAnnotationWithCrosswalk)view;
+					webView.resumeTimers();
+					webView.onShow();
+				}
+			}
+		}
+	}
+
+	public void pauseTimers(){
+		for(int i =0; i < ((MuPDFActivity)(mContext)).mDocView.getChildCount(); i++){
+			MuPDFPageView muPDFPageView = (MuPDFPageView) ((MuPDFActivity)(mContext)).mDocView.getChildAt(i);
+			ArrayList<View> gpAnnotations = getGPAnnotations(muPDFPageView);
+			for(int j = 0; j < gpAnnotations.size(); j++){
+				View view = gpAnnotations.get(j);
+
+				if(view instanceof WebViewAnnotationWithCrosswalk){
+					WebViewAnnotationWithCrosswalk webView = (WebViewAnnotationWithCrosswalk)view;
+					webView.pauseTimers();
+					webView.onHide();
+
+				}
+			}
+		}
+	}
+
+	public void destroyTimers(){
+		for(int i =0; i < ((MuPDFActivity)(mContext)).mDocView.getChildCount(); i++){
+			MuPDFPageView muPDFPageView = (MuPDFPageView) ((MuPDFActivity)(mContext)).mDocView.getChildAt(i);
+			ArrayList<View> gpAnnotations = getGPAnnotations(muPDFPageView);
+			for(int j = 0; j < gpAnnotations.size(); j++){
+				View view = gpAnnotations.get(j);
+
+				if(view instanceof WebViewAnnotationWithCrosswalk){
+					WebViewAnnotationWithCrosswalk webView = (WebViewAnnotationWithCrosswalk)view;
+					webView.onDestroy();
+
+				}
+			}
+		}
+
+	}
+
+	/*Sayfa geçişinde  aktif olan sayfadaki ses ve videoların
     daha önce load edilmiş bir url'i varsa copyBackForwardList() ile kontrol ediliyor ve autoplay olanlar tekrar js ile load ediliyor.(MG)*/
-    public void resumeCurrentPageWebAnnotationsMedia() {
+	public void resumeCurrentPageWebAnnotationsMedia() {
 
-        String reloadScriptAudio = "var audios = document.querySelectorAll(\"audio\"); for (var i = audios.length - 1; i >= 0; i--) " +
-                "{ if(audios[i].autoplay){audios[i].play();} };";
+		String reloadScriptAudio = "var audios = document.querySelectorAll(\"audio\"); for (var i = audios.length - 1; i >= 0; i--) " +
+				"{ if(audios[i].autoplay){audios[i].play();} };";
         /*String reloadScriptVideo = "var videos = document.querySelectorAll(\"video\"); for (var i = videos.length - 1; i >= 0; i--) " +
                 "{ videos[i].currentTime = 0; if(videos[i].autoplay){videos[i].play();}};";*/
-        String reloadScriptVideo = "var videos = document.querySelectorAll(\"video\"); if (videos.length > 0) " +
-                "{ window.location.href=window.location.href };";
+		String reloadScriptVideo = "var videos = document.querySelectorAll(\"video\"); if (videos.length > 0) " +
+				"{ window.location.href=window.location.href };";
 
-        ArrayList<View> currentPageGpAnnotations = getGPAnnotations((MuPDFPageView) ((MuPDFActivity)(mContext)).mDocView.getDisplayedView());
-        //uygulama arka plana atıldığında yada ekran kilitlendiğinde currentPage üzerindeki video ve ses dosyalarından autoplay olanların yüklenmemesi için isActivityPause komtrolü yapılıyor
-        for(int i = 0; i < currentPageGpAnnotations.size(); i++){
-            View view = currentPageGpAnnotations.get(i);
-            if(view instanceof WebViewAnnotation){
-                WebViewAnnotation webView = (WebViewAnnotation)view;
-                WebBackForwardList mWebBackForwardList = webView.copyBackForwardList();
-                if(mWebBackForwardList.getItemAtIndex(0) != null){
-                    if(!webView.linkInfoExternal.isModal && webView.linkInfoExternal.isWebAnnotation()
-                            && (webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_SES)) {
-                        //webView.loadUrl(mWebBackForwardList.getItemAtIndex(0).getOriginalUrl());
-                        webView.loadUrl("javascript:" + reloadScriptAudio);
-                        webView.invalidate();
-                    } else if(!webView.linkInfoExternal.isModal && webView.linkInfoExternal.isWebAnnotation()
-                            && (webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_VIDEO
-                            || webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_WEB)) {
-                        //webView.loadUrl(mWebBackForwardList.getItemAtIndex(0).getOriginalUrl());
-                        //webView.loadUrl("javascript:" + reloadScriptVideo);
-                        webView.loadUrl("javascript:window.location.href=window.location.href");
-                        webView.invalidate();
-                    }
-                }
-
-
-            } else {
-                WebViewAnnotationWithChromium webView = (WebViewAnnotationWithChromium) view;
-                com.mogoweb.chrome.WebBackForwardList mWebBackForwardList = webView.copyBackForwardList();
-
-                if(mWebBackForwardList.getItemAtIndex(0) != null) {
-                    if(!webView.linkInfoExternal.isModal && webView.linkInfoExternal.isWebAnnotation()
-                            && (webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_SES)) {
-                        //webView.loadUrl(mWebBackForwardList.getItemAtIndex(0).getOriginalUrl());
-                        webView.loadUrl("javascript:" + reloadScriptAudio);
-                        webView.invalidate();
-                    } else if(!webView.linkInfoExternal.isModal && webView.linkInfoExternal.isWebAnnotation()
-                            && (webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_VIDEO
-                            || webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_WEB)) {
-                        //webView.loadUrl(mWebBackForwardList.getItemAtIndex(0).getOriginalUrl());
-                        //webView.loadUrl("javascript:" + reloadScriptVideo);
-                        webView.loadUrl("javascript:window.location.href=window.location.href");
-                        webView.invalidate();
-                    }
-                }
-            }
-        }
-    }
+		ArrayList<View> currentPageGpAnnotations = getGPAnnotations((MuPDFPageView) ((MuPDFActivity)(mContext)).mDocView.getDisplayedView());
+		//uygulama arka plana atıldığında yada ekran kilitlendiğinde currentPage üzerindeki video ve ses dosyalarından autoplay olanların yüklenmemesi için isActivityPause komtrolü yapılıyor
+		for(int i = 0; i < currentPageGpAnnotations.size(); i++){
+			View view = currentPageGpAnnotations.get(i);
+			if(view instanceof WebViewAnnotation){
+				WebViewAnnotation webView = (WebViewAnnotation)view;
+				WebBackForwardList mWebBackForwardList = webView.copyBackForwardList();
+				if(mWebBackForwardList.getItemAtIndex(0) != null){
+					if(!webView.linkInfoExternal.isModal && webView.linkInfoExternal.isWebAnnotation()
+							&& (webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_SES)) {
+						//webView.loadUrl(mWebBackForwardList.getItemAtIndex(0).getOriginalUrl());
+						webView.loadUrl("javascript:" + reloadScriptAudio);
+						webView.invalidate();
+					} else if(!webView.linkInfoExternal.isModal && webView.linkInfoExternal.isWebAnnotation()
+							&& (webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_VIDEO
+							|| webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_WEB)) {
+						//webView.loadUrl(mWebBackForwardList.getItemAtIndex(0).getOriginalUrl());
+						//webView.loadUrl("javascript:" + reloadScriptVideo);
+						webView.loadUrl("javascript:window.location.href=window.location.href");
+						webView.invalidate();
+					} else if(webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_ANIMATION){ //Animasyonların load edildikten sonra
+						webView.setVisibility(GONE);
+						webView.reload();
+					}
+				}
+			}
+			if(view instanceof WebViewAnnotationWithCrosswalk){
+				WebViewAnnotationWithCrosswalk webView = (WebViewAnnotationWithCrosswalk)view;
+				if(webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_ANIMATION){
+					webView.setVisibility(GONE);
+					webView.reload(XWalkView.RELOAD_NORMAL);
+				}
+			}
+		}
+	}
 
 	@Override
 	public void setPage(final int page, PointF size) {
@@ -724,6 +748,7 @@ public class MuPDFPageView extends PageView implements MuPDFView {
 
         clearWebAnnotations(this);
         clearCustomProgress(this);
+        clearModals(this);
 
 		mLoadWidgetAreas = new AsyncTask<Void,Void,RectF[]> () {
 			@Override

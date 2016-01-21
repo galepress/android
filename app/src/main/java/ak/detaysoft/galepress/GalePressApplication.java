@@ -11,6 +11,7 @@ import android.location.Location;
 
 import com.android.vending.billing.IInAppBillingService;
 import com.artifex.mupdfdemo.MuPDFActivity;
+import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import android.os.Bundle;
@@ -32,26 +33,21 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.LocationClient;
-import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.xwalk.core.XWalkPreferences;
 
 import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Set;
 import java.util.TimeZone;
 import java.util.UUID;
 import ak.detaysoft.galepress.custom_models.ApplicationPlist;
@@ -61,6 +57,7 @@ import ak.detaysoft.galepress.database_models.L_Statistic;
 import ak.detaysoft.galepress.database_models.TestApplicationInf;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
 import ak.detaysoft.galepress.util.MyImageDecoder;
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by adem on 11/02/14.
@@ -77,7 +74,7 @@ public class GalePressApplication
     private static DatabaseApi databaseApi = null;
     private static DataApi dataApi;
     private LibraryFragment libraryFragmentActivity;
-    private WebFragment webFragment;
+    private CustomTabFragment customTabFragment;
     private Fragment currentFragment;
     private int requestCount;
 
@@ -100,7 +97,7 @@ public class GalePressApplication
     public Location location;
     private LocationRequest mLocationRequest;
     private LocationClient mLocationClient;SharedPreferences mPrefs;
-    private ContentDetailPopupActivity contentDetailPopupActivity;
+    private ContentPopupActivity contentPopupActivity;
     SharedPreferences.Editor mEditor;
     boolean mUpdatesRequested = false;
     private Activity currentActivity = null;
@@ -160,6 +157,12 @@ public class GalePressApplication
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
+
+        XWalkPreferences.setValue(XWalkPreferences.ANIMATABLE_XWALK_VIEW, true);
+        XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, true);
+        XWalkPreferences.setValue(XWalkPreferences.ALLOW_UNIVERSAL_ACCESS_FROM_FILE, true);
+
         sInstance = this;
 
         DisplayImageOptions displayConfig = new DisplayImageOptions.Builder()
@@ -198,9 +201,14 @@ public class GalePressApplication
     }
 
     public void destroyBillingServices(){
-        if (mService != null) {
-            unbindService(mServiceConn);
+        try{
+            if (mService != null && isBlnBind()) {
+                unbindService(mServiceConn);
+            }
+        } catch (Exception e) {
+            Log.e("Billingservice", "destroyerror"+e.toString());
         }
+
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
@@ -259,7 +267,7 @@ public class GalePressApplication
     }
 
     private void startPeriodicUpdates() {
-        mLocationClient.requestLocationUpdates(mLocationRequest,this);
+        mLocationClient.requestLocationUpdates(mLocationRequest, this);
     }
 
     private void stopPeriodicUpdates() {
@@ -411,6 +419,7 @@ public class GalePressApplication
             applicationId = testApplicationInf.getApplicationId();
         else
             applicationId = (String)applicationPlist.get("ApplicationID");
+
         return Integer.valueOf(applicationId);
     }
 
@@ -455,12 +464,12 @@ public class GalePressApplication
     public void setLibraryActivity(LibraryFragment libraryFragmentActivity) {
         this.libraryFragmentActivity = libraryFragmentActivity;
     }
-    public void setCurrentWebFragment(WebFragment webFragment){
-        this.webFragment = webFragment;
+    public void setCurrentWebFragment(CustomTabFragment customTabFragment){
+        this.customTabFragment = customTabFragment;
     }
 
-    public WebFragment getWebFragment(){
-        return this.webFragment;
+    public CustomTabFragment getCustomTabFragment(){
+        return this.customTabFragment;
     }
 
     public Fragment getCurrentFragment() {
@@ -531,7 +540,7 @@ public class GalePressApplication
             // requestCount ilk kez initialize ediliyor. O olsaydi bitmis gibi gorunebilirdi. -101 ile initialize ettim.
         }
         this.requestCount = requestCount;
-        Logout.e("Adem", "***Requestler count : "+this.requestCount);
+        Logout.e("Adem", "***Requestler count : " + this.requestCount);
 
     }
 
@@ -550,12 +559,12 @@ public class GalePressApplication
         this.currentActivity = currentActivity;
     }
 
-    public ContentDetailPopupActivity getContentDetailPopupActivity() {
-        return contentDetailPopupActivity;
+    public ContentPopupActivity getContentPopupActivity() {
+        return contentPopupActivity;
     }
 
-    public void setContentDetailPopupActivity(ContentDetailPopupActivity contentDetailPopupActivity) {
-        this.contentDetailPopupActivity = contentDetailPopupActivity;
+    public void setContentPopupActivity(ContentPopupActivity contentPopupActivity) {
+        this.contentPopupActivity = contentPopupActivity;
     }
 
     public MainActivity getMainActivity() {
@@ -590,8 +599,8 @@ public class GalePressApplication
         bannerLink = link;
 
         if(bannerLink.length() != 0 && getCurrentActivity()!= null && getCurrentActivity().getClass() == MainActivity.class
-                && ((MainActivity)getCurrentActivity()).getCurrentLibraryFragment()  != null)
-            ((MainActivity)getCurrentActivity()).getCurrentLibraryFragment().updateBanner();
+                && ((MainActivity)getCurrentActivity()).getLibraryFragment()  != null)
+            ((MainActivity)getCurrentActivity()).getLibraryFragment().updateBanner();
 
 
     }
@@ -710,7 +719,12 @@ public class GalePressApplication
 
         Intent serviceIntent = new Intent("com.android.vending.billing.InAppBillingService.BIND");
         serviceIntent.setPackage("com.android.vending");
-        blnBind = bindService(serviceIntent, mServiceConn, Context.BIND_AUTO_CREATE);
+        try{
+            blnBind = bindService(serviceIntent, mServiceConn, Context.BIND_AUTO_CREATE);
+        } catch (Exception e) {
+            blnBind = false;
+        }
+
     }
 
     public IInAppBillingService getmService() {

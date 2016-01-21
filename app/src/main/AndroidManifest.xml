@@ -51,19 +51,27 @@
             android:name="ak.detaysoft.galepress.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/LibraryTheme"
+            android:configChanges="orientation|screenSize"
             android:windowSoftInputMode="adjustPan"></activity>
         <activity
             android:name="ak.detaysoft.galepress.ViewerLoginActivity"
             android:label="@string/app_name"
             android:theme="@style/LoginTheme"
             android:screenOrientation="sensorPortrait"
+            android:configChanges="orientation|screenSize"
             android:windowSoftInputMode="adjustPan"></activity>
         <activity
-            android:name="ak.detaysoft.galepress.ExtraWebViewActivity"
+            android:name=".web_views.ExtraWebViewActivity"
             android:label="@string/app_name"
+            android:configChanges="orientation|screenSize"
             android:theme="@style/ExtraWebView"></activity>
         <activity
-            android:name="ak.detaysoft.galepress.ContentDetailPopupActivity"
+            android:name=".web_views.ExtraWebViewWithCrosswalkActivity"
+            android:label="@string/app_name"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/ExtraWebView"></activity>
+        <activity
+            android:name=".ContentPopupActivity"
             android:theme="@style/ContentPopupTheme"></activity>
 
         <!--<activity-->
@@ -175,5 +183,9 @@
             android:value="@integer/google_play_services_version" />
 
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="acef12b899f937633409af1d6fa77ac58678a6ff" />
     </application>
 </manifest>

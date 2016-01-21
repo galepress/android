@@ -84,14 +84,20 @@ public class LinkInfoExternal extends LinkInfo {
                 isInternal = false;
                 sourceUrl = "";
             } else {
-                if (url.substring(0,17).equals("ylweb://localhost")){
-                    isInternal = true;
-                    sourceUrl = url.substring(18);
-                }
-                else{
+                try{
+                    if (url.substring(0,17).equals("ylweb://localhost")){
+                        isInternal = true;
+                        sourceUrl = url.substring(18);
+                    }
+                    else{
+                        isInternal = false;
+                        sourceUrl = "http://"+url.substring(8);
+                    }
+                } catch (Exception e){
                     isInternal = false;
-                    sourceUrl = "http://"+url.substring(8);
+                    sourceUrl = "";
                 }
+
             }
 
         }

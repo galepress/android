@@ -70,8 +70,10 @@ import java.util.UUID;
 import java.util.concurrent.Executor;
 
 import ak.detaysoft.galepress.GalePressApplication;
+import ak.detaysoft.galepress.MainActivity;
 import ak.detaysoft.galepress.R;
-import ak.detaysoft.galepress.StateListDrawableWithColorFilter;
+import ak.detaysoft.galepress.util.ReaderTabbarStateListDrawable;
+import ak.detaysoft.galepress.util.StateListDrawableWithColorFilter;
 import ak.detaysoft.galepress.custom_models.TabbarItem;
 import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.database_models.L_Statistic;
@@ -155,6 +157,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
     private AnimationSet sInVisible;
     private AnimationSet sVisible;
     private boolean isHomeOpen = false;
+    private int lastPortraitPageIndex = -1;
 
 
     public void createAlertWaiter() {
@@ -281,9 +284,10 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
     private MuPDFCore openFile(String path) {
         int lastSlashPos = path.lastIndexOf('/');
-        mFileName = new String(lastSlashPos == -1
+        int penultimateSlashPos = (path.substring(0, path.lastIndexOf("/"))).lastIndexOf('/');
+        mFileName = new String((lastSlashPos == -1 ||penultimateSlashPos == -1)
                 ? path
-                : path.substring(lastSlashPos + 1));
+                : path.substring(penultimateSlashPos + 1, lastSlashPos));
         System.out.println("Trying to open " + path);
         try {
             core = new MuPDFCore(this, path, content);
@@ -442,6 +446,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         if (!isActivityActive && (MuPDFPageView) mDocView.getChildAt(0) != null) {
             //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(false, true);
             ((MuPDFPageView) mDocView.getChildAt(0)).resumeCurrentPageWebAnnotationsMedia();
+            ((MuPDFPageView) mDocView.getChildAt(0)).resumeTimers();
             isActivityActive = true;
         }
     }
@@ -726,18 +731,21 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         }
 
         // Reenstate last state if it was recorded
-        SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences prefs = getSharedPreferences("pages", Context.MODE_PRIVATE);
         int viewIndex = prefs.getInt("page" + mFileName, 0);
+        lastPortraitPageIndex = prefs.getInt("lastPortraitPageIndex" + mFileName, viewIndex);
+
 
         if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
-            mDocView.setDisplayedViewIndex(core.convertIndexes(viewIndex, true));
+            mDocView.setDisplayedViewIndex(core.convertIndexes(viewIndex, lastPortraitPageIndex, true));
         } else {
+            lastPortraitPageIndex = viewIndex;
             mDocView.setDisplayedViewIndex(viewIndex);
         }
 
 
 		/*if (savedInstanceState == null || !savedInstanceState.getBoolean("ButtonsHidden", false))
-			showButtons();*/
+            showButtons();*/
 
         if (savedInstanceState != null && savedInstanceState.getBoolean("SearchMode", false))
             searchModeOn();
@@ -843,14 +851,17 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             // so that we can pick it up each time the file is loaded
             // Other info is needed only for screen-orientation change,
             // so it can go in the bundle
-            SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
+            SharedPreferences prefs = getSharedPreferences("pages",Context.MODE_PRIVATE);
             SharedPreferences.Editor edit = prefs.edit();
             int viewIndex = mDocView.getDisplayedViewIndex();
             if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
-                viewIndex = core.convertIndexes(viewIndex, false);
+                viewIndex = core.convertIndexes(viewIndex, lastPortraitPageIndex, false);
+            } else {
+                lastPortraitPageIndex = viewIndex;
             }
 
             edit.putInt("page" + mFileName, viewIndex);
+            edit.putInt("lastPortraitPageIndex" + mFileName, lastPortraitPageIndex);
             edit.commit();
         }
 
@@ -877,21 +888,25 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             isActivityActive = false;
             //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
             ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
+            ((MuPDFPageView) mDocView.getChildAt(0)).pauseTimers();
         }
 
         if (mSearchTask != null)
             mSearchTask.stop();
 
         if (mFileName != null && mDocView != null) {
-            SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
+            SharedPreferences prefs = getSharedPreferences("pages", Context.MODE_PRIVATE);
             SharedPreferences.Editor edit = prefs.edit();
 
             int viewIndex = mDocView.getDisplayedViewIndex();
             if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
-                viewIndex = core.convertIndexes(viewIndex, false);
+                viewIndex = core.convertIndexes(viewIndex, lastPortraitPageIndex, false);
+            } else {
+                lastPortraitPageIndex = viewIndex;
             }
 
             edit.putInt("page" + mFileName, viewIndex);
+            edit.putInt("lastPortraitPageIndex" + mFileName, lastPortraitPageIndex);
             edit.commit();
         }
     }
@@ -909,6 +924,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
         ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
         ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
+        ((MuPDFPageView) mDocView.getChildAt(0)).destroyTimers();
 
         /*for(int i =0; i < mDocView.getChildCount(); i++){
             MuPDFPageView muPDFPageView = (MuPDFPageView) mDocView.getChildAt(i);
@@ -928,6 +944,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
     protected void onUserLeaveHint() {
         //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
         ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
+        ((MuPDFPageView) mDocView.getChildAt(0)).pauseTimers();
         isActivityActive = false;
         super.onUserLeaveHint();
     }
@@ -1799,7 +1816,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
 
         //ANA SAYFA
-        ((ImageView) mButtonsView.findViewById(R.id.reader_home)).setImageDrawable(createDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.HOME_ICON_SELECTED),
+        ((ImageView) mButtonsView.findViewById(R.id.reader_home)).setImageDrawable(createDrawable(false, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.HOME_ICON_SELECTED),
                 ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.HOME_ICON)));
 
         TextView reader_home_txt = ((TextView) mButtonsView.findViewById(R.id.reader_home_txt));
@@ -1821,15 +1838,26 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
 
         //KUTUPHANE
-        ((ImageView) mButtonsView.findViewById(R.id.reader_library)).setImageDrawable(createDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.LIBRARY_ICON_SELECTED),
-                ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.LIBRARY_ICON)));
-
         TextView reader_library_txt = ((TextView) mButtonsView.findViewById(R.id.reader_library_txt));
         reader_library_txt.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())
                 , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 18, getResources().getDisplayMetrics())));
         reader_library_txt.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
-        reader_library_txt.setTextColor(createTabTitleColorStateList());
         reader_library_txt.setText(getResources().getString(R.string.LIBRARY));
+
+
+        //icerik indirildigi zaman downloaded ekrani aciksa update etmek icin
+        if(GalePressApplication.getInstance().getMainActivity() != null){
+            MainActivity act = GalePressApplication.getInstance().getMainActivity();
+            if(act.mTabHost.getCurrentTabTag().compareTo(MainActivity.LIBRARY_TAB_TAG) == 0){
+                ((ImageView) mButtonsView.findViewById(R.id.reader_library)).setImageDrawable(createDrawable(true, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.LIBRARY_ICON),
+                        ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.LIBRARY_ICON_SELECTED)));
+                reader_library_txt.setTextColor(createSelectedTabTitleColorStateList());
+            } else {
+                ((ImageView) mButtonsView.findViewById(R.id.reader_library)).setImageDrawable(createDrawable(false, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.LIBRARY_ICON),
+                        ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.LIBRARY_ICON_SELECTED)));
+                reader_library_txt.setTextColor(createTabTitleColorStateList());
+            }
+        }
 
         ((LinearLayout) mButtonsView.findViewById(R.id.reader_library_layout)).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1840,15 +1868,25 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
 
         //INDIRILENLER
-        ((ImageView) mButtonsView.findViewById(R.id.reader_download)).setImageDrawable(createDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.DOWNLOAD_ICON_SELECTED),
-                ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.DOWNLOAD_ICON)));
-
         TextView reader_download_txt = ((TextView) mButtonsView.findViewById(R.id.reader_download_txt));
         reader_download_txt.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())
                 , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 18, getResources().getDisplayMetrics())));
         reader_download_txt.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
-        reader_download_txt.setTextColor(createTabTitleColorStateList());
         reader_download_txt.setText(getResources().getString(R.string.DOWNLOADED));
+
+        //icerik indirildigi zaman downloaded ekrani aciksa update etmek icin
+        if(GalePressApplication.getInstance().getMainActivity() != null){
+            MainActivity act = GalePressApplication.getInstance().getMainActivity();
+            if(act.mTabHost.getCurrentTabTag().compareTo(MainActivity.DOWNLOADED_LIBRARY_TAG) == 0){
+                ((ImageView) mButtonsView.findViewById(R.id.reader_download)).setImageDrawable(createDrawable(true, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.DOWNLOAD_ICON),
+                        ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.DOWNLOAD_ICON_SELECTED)));
+                reader_download_txt.setTextColor(createSelectedTabTitleColorStateList());
+            } else {
+                ((ImageView) mButtonsView.findViewById(R.id.reader_download)).setImageDrawable(createDrawable(false, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.DOWNLOAD_ICON),
+                        ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.DOWNLOAD_ICON_SELECTED)));
+                reader_download_txt.setTextColor(createTabTitleColorStateList());
+            }
+        }
 
         ((LinearLayout) mButtonsView.findViewById(R.id.reader_download_layout)).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1859,7 +1897,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
 
         //HAKKINDA
-        ((ImageView) mButtonsView.findViewById(R.id.reader_info)).setImageDrawable(createDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.INFO_ICON_SELECTED),
+        ((ImageView) mButtonsView.findViewById(R.id.reader_info)).setImageDrawable(createDrawable(false, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.INFO_ICON_SELECTED),
                 ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.INFO_ICON)));
 
         TextView reader_info_txt = ((TextView) mButtonsView.findViewById(R.id.reader_info_txt));
@@ -1964,15 +2002,15 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         mPreviewBarHolder.setVisibility(View.INVISIBLE);
     }
 
-    private ColorStateList createTabTitleColorStateList(){
-        int[][] states = new int[][] {
-                new int[] {android.R.attr.state_pressed},
-                new int[] {android.R.attr.state_focused},
-                new int[] {android.R.attr.state_selected},
-                new int [] {}
+    private ColorStateList createTabTitleColorStateList() {
+        int[][] states = new int[][]{
+                new int[]{android.R.attr.state_pressed},
+                new int[]{android.R.attr.state_focused},
+                new int[]{android.R.attr.state_selected},
+                new int[]{}
         };
 
-        int[] colors = new int[] {
+        int[] colors = new int[]{
                 ApplicationThemeColor.getInstance().getForegroundColorWithAlpha(50),
                 ApplicationThemeColor.getInstance().getForegroundColorWithAlpha(50),
                 ApplicationThemeColor.getInstance().getForegroundColorWithAlpha(50),
@@ -1983,9 +2021,28 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         return myList;
     }
 
+    private ColorStateList createSelectedTabTitleColorStateList() {
+        int[][] states = new int[][]{
+                new int[]{android.R.attr.state_pressed},
+                new int[]{android.R.attr.state_focused},
+                new int[]{android.R.attr.state_selected},
+                new int[]{}
+        };
+
+        int[] colors = new int[]{
+                ApplicationThemeColor.getInstance().getForegroundColor(),
+                ApplicationThemeColor.getInstance().getForegroundColor(),
+                ApplicationThemeColor.getInstance().getForegroundColor(),
+                ApplicationThemeColor.getInstance().getForegroundColorWithAlpha(50)
+        };
+
+        ColorStateList myList = new ColorStateList(states, colors);
+        return myList;
+    }
+
     private void tabItemClick(int type) {
-        if (GalePressApplication.getInstance().getContentDetailPopupActivity() != null)
-            GalePressApplication.getInstance().getContentDetailPopupActivity().finish();
+        if (GalePressApplication.getInstance().getContentPopupActivity() != null)
+            GalePressApplication.getInstance().getContentPopupActivity().finish();
 
         if (GalePressApplication.getInstance().getDataApi().isLibraryMustBeEnabled()) {
             Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
@@ -2006,8 +2063,8 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
     }
 
-    private Drawable createDrawable(Drawable res, Drawable selectedRes) {
-        StateListDrawableWithColorFilter states = new StateListDrawableWithColorFilter(false, res, selectedRes);
+    private Drawable createDrawable(boolean isSelected, Drawable res, Drawable selectedRes) {
+        ReaderTabbarStateListDrawable states = new ReaderTabbarStateListDrawable(isSelected, res, selectedRes);
         return states;
     }
 
@@ -2242,17 +2299,18 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
 
 
-            try{
+            try {
                 //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
                 ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
                 ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
+                ((MuPDFPageView) mDocView.getChildAt(0)).destroyTimers();
 
                 /*for(int i =0; i < mDocView.getChildCount(); i++){
                     MuPDFPageView muPDFPageView = (MuPDFPageView) mDocView.getChildAt(i);
                     muPDFPageView.clearWebAnnotations(muPDFPageView);
                 }*/
-            } catch (Exception e){
-                Log.e("Webview clear",""+e.toString());
+            } catch (Exception e) {
+                Log.e("Webview clear", "" + e.toString());
             }
 
             if (content.isMaster() && isHomeOpen) {
@@ -2266,17 +2324,18 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         } else {
             if (content.isMaster() && isHomeOpen) {
 
-                try{
+                try {
                     //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
                     ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
                     ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
+                    ((MuPDFPageView) mDocView.getChildAt(0)).destroyTimers();
 
                 /*for(int i =0; i < mDocView.getChildCount(); i++){
                     MuPDFPageView muPDFPageView = (MuPDFPageView) mDocView.getChildAt(i);
                     muPDFPageView.clearWebAnnotations(muPDFPageView);
                 }*/
-                } catch (Exception e){
-                    Log.e("Webview clear",""+e.toString());
+                } catch (Exception e) {
+                    Log.e("Webview clear", "" + e.toString());
                 }
 
                 Intent intent = getIntent();
@@ -2288,6 +2347,76 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             }
 
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (event.getAction() == KeyEvent.ACTION_DOWN) {
+            switch (keyCode) {
+                case KeyEvent.KEYCODE_BACK:
+                    if (GalePressApplication.getInstance().getDataApi().isLibraryMustBeEnabled()) {
+                        Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+                        String udid = UUID.randomUUID().toString();
+                        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                        Calendar cal = Calendar.getInstance();
+                        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+                        Location location = GalePressApplication.getInstance().location;
+                        L_Statistic statistic = new L_Statistic(udid, this.content.getId(), location != null ? location.getLatitude() : null, location != null ? location.getLongitude() : null, null, dateFormat.format(cal.getTime()), L_Statistic.STATISTIC_contentClosed, null, null, null);
+                        GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
+
+                        try {
+                            //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
+                            ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
+                            ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
+                            ((MuPDFPageView) mDocView.getChildAt(0)).destroyTimers();
+
+                /*for(int i =0; i < mDocView.getChildCount(); i++){
+                    MuPDFPageView muPDFPageView = (MuPDFPageView) mDocView.getChildAt(i);
+                    muPDFPageView.clearWebAnnotations(muPDFPageView);
+                }*/
+                        } catch (Exception e) {
+                            Log.e("Webview clear", "" + e.toString());
+                        }
+
+                        if (content.isMaster() && isHomeOpen) {
+                            Intent intent = getIntent();
+                            intent.putExtra("SelectedTab", 1);
+                            setResult(101, intent);
+                            finish();
+                        } else {
+                            super.onBackPressed();
+                        }
+                    } else {
+                        if (content.isMaster() && isHomeOpen) {
+
+                            try {
+                                //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
+                                ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
+                                ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
+                                ((MuPDFPageView) mDocView.getChildAt(0)).destroyTimers();
+
+                /*for(int i =0; i < mDocView.getChildCount(); i++){
+                    MuPDFPageView muPDFPageView = (MuPDFPageView) mDocView.getChildAt(i);
+                    muPDFPageView.clearWebAnnotations(muPDFPageView);
+                }*/
+                            } catch (Exception e) {
+                                Log.e("Webview clear", "" + e.toString());
+                            }
+
+                            Intent intent = getIntent();
+                            intent.putExtra("SelectedTab", 0);
+                            setResult(101, intent);
+                            finish();
+                        } else {
+                            return true;
+                        }
+
+                    }
+                    return true;
+            }
+
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override

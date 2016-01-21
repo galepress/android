@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ChromiumLibrary/ChromiumLibrary.iml" filepath="$PROJECT_DIR$/ChromiumLibrary/ChromiumLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/Galepress-master.iml" filepath="$PROJECT_DIR$/Galepress-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/menuDrawer/menuDrawer.iml" filepath="$PROJECT_DIR$/menuDrawer/menuDrawer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xwalk_core_library_15/xwalk_core_library_15.iml" filepath="$PROJECT_DIR$/xwalk_core_library_15/xwalk_core_library_15.iml" />
     </modules>
   </component>
 </project>

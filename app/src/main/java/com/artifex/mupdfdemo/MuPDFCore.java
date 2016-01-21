@@ -573,7 +573,7 @@ public class MuPDFCore
         return result;
     }
 
-    public int convertIndexes(int index, boolean portrait2landscape ){
+    public int convertIndexes(int index, int lastPortraitPageIndex, boolean portrait2landscape ){
         if(index == 0 ) return index;
         if(portrait2landscape){
             // Portrait'den Landscape'e index cevirisi
@@ -581,7 +581,10 @@ public class MuPDFCore
         }
         else{
             // Landscape'den Portrait'e index cevirisi
-            return ((index -1)*2)+1;
+            if(lastPortraitPageIndex != -1 && lastPortraitPageIndex % 2 == 0)
+                return ((index -1)*2)+2;
+            else
+                return ((index -1)*2)+1;
         }
     }
 

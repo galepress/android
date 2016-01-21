@@ -11,6 +11,8 @@ import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.webkit.WebView;
 
+import org.xwalk.core.XWalkView;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -19,6 +21,7 @@ import java.util.UUID;
 
 import ak.detaysoft.galepress.GalePressApplication;
 import ak.detaysoft.galepress.database_models.L_Statistic;
+import ak.detaysoft.galepress.util.CustomPulseProgress;
 
 public class MuPDFReaderView extends ReaderView {
 	enum Mode {Viewing, Selecting, Drawing}
@@ -95,9 +98,16 @@ public class MuPDFReaderView extends ReaderView {
                             /*
                              Linklerde ki mantik PageView icine tasindi. Ustuste binen durumlarda page link eziliyordu ve calismiyordu. View ekleyerek bunu engelliyorum.
                             if(li.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_WEBLINK){
-                                Intent intent = new Intent(mContext, ExtraWebViewActivity.class);
-                                intent.putExtra("url",li.url);
-                                mContext.startActivity(intent);
+                                final int KITKAT = 19; // Android 4.4
+                                    if (android.os.Build.VERSION.SDK_INT >= KITKAT) {
+                                        Intent intent = new Intent(mContext, ExtraWebViewActivity.class);
+                                		intent.putExtra("url",li.url);
+                                		mContext.startActivity(intent);
+                                    } else {
+                                        Intent intent = new Intent(mContext, ExtraWebViewWithCrosswalk.class);
+                                		intent.putExtra("url",li.url);
+                                		mContext.startActivity(intent);
+                                    }
                             }
                             */
 						}
@@ -342,55 +352,81 @@ public class MuPDFReaderView extends ReaderView {
 	@Override
 	protected void onScaleChild(View v, Float scale) {
 		((MuPDFView) v).setScale(scale);
-        MuPDFPageView pageView = (MuPDFPageView)v;
-        for(int i=0; i < pageView.getChildCount(); i++){
-            View view = pageView.getChildAt(i);
+		MuPDFPageView pageView = (MuPDFPageView)v;
+		for(int i=0; i < pageView.getChildCount(); i++){
+			View view = pageView.getChildAt(i);
 
-            if(view instanceof WebView){
-                float original_x = -1;
-                float original_y = -1;
-                WebView webView = (WebView) view;
-                LinkInfo[] links = pageView.mLinks;
-                if (links!=null){
-                    for (LinkInfo link : links) {
-                        if (link instanceof LinkInfoExternal){
-                            if(((LinkInfoExternal) link).webViewId == webView.getId()){
-                                original_x = link.rect.left * pageView.mSourceScale;
-                                original_y = link.rect.top * pageView.mSourceScale;
-                                webView.setPivotX(0);
-                                webView.setPivotY(0);
-                                webView.setX(original_x*scale);
-                                webView.setY(original_y*scale);
-                                webView.setScaleX(scale);
-                                webView.setScaleY(scale);
-                            }
-                        }
-                    }
-                }
-            } else if(view instanceof com.mogoweb.chrome.WebView){ //Chromium webview kontrol
-                float original_x = -1;
-                float original_y = -1;
-                com.mogoweb.chrome.WebView webView = (com.mogoweb.chrome.WebView) view;
-                LinkInfo[] links = pageView.mLinks;
-                if (links!=null){
-                    for (LinkInfo link : links) {
-                        if (link instanceof LinkInfoExternal){
-                            if(((LinkInfoExternal) link).webViewId == webView.getId()){
-                                original_x = link.rect.left * pageView.mSourceScale;
-                                original_y = link.rect.top * pageView.mSourceScale;
-                                webView.setPivotX(0);
-                                webView.setPivotY(0);
-                                webView.setX(original_x * scale);
-                                webView.setY(original_y * scale);
-                                webView.setScaleX(scale);
-                                webView.setScaleY(scale);
-                                webView.invalidate();
-                            }
-                        }
-                    }
-                }
-            }
-        }
+			if(view instanceof WebView){
+				float original_x;
+				float original_y;
+				WebView webView = (WebView) view;
+				LinkInfo[] links = pageView.mLinks;
+				if (links!=null){
+					for (LinkInfo link : links) {
+						if (link instanceof LinkInfoExternal){
+							if(((LinkInfoExternal) link).webViewId == webView.getId()){
+								original_x = link.rect.left * pageView.mSourceScale;
+								original_y = link.rect.top * pageView.mSourceScale;
+								webView.setPivotX(0);
+								webView.setPivotY(0);
+								webView.setX(original_x*scale);
+								webView.setY(original_y*scale);
+								webView.setScaleX(scale);
+								webView.setScaleY(scale);
+							}
+						}
+					}
+				}
+			} else if(view instanceof XWalkView){ //XWalkView webview kontrol
+				float original_x;
+				float original_y;
+				XWalkView webView = (XWalkView) view;
+				LinkInfo[] links = pageView.mLinks;
+				if (links!=null){
+					for (LinkInfo link : links) {
+						if (link instanceof LinkInfoExternal){
+							if(((LinkInfoExternal) link).webViewId == webView.getId()){
+								original_x = link.rect.left * pageView.mSourceScale;
+								original_y = link.rect.top * pageView.mSourceScale;
+								webView.setPivotX(0);
+								webView.setPivotY(0);
+								webView.setX(original_x * scale);
+								webView.setY(original_y * scale);
+								webView.setScaleX(scale);
+								webView.setScaleY(scale);
 
+								webView.invalidate();
+
+							}
+						}
+					}
+				}
+			} else if(view instanceof CustomPulseProgress){ //interaktif icerikler uzerindeki animasyon view
+
+				float original_x;
+				float original_y;
+				int progressSize = 40;
+				CustomPulseProgress progress = (CustomPulseProgress) view;
+				LinkInfo[] links = pageView.mLinks;
+
+				if (links!=null){
+					for (LinkInfo link : links) {
+						if (link instanceof LinkInfoExternal){
+							original_x = (link.rect.left + link.rect.right)/2 * pageView.mSourceScale - progressSize/2;
+							original_y = (link.rect.top + link.rect.bottom)/2 * pageView.mSourceScale - progressSize/2;
+							progress.setPivotX(0);
+							progress.setPivotY(0);
+							progress.setX(original_x * scale);
+							progress.setY(original_y * scale);
+							progress.setScaleX(scale);
+							progress.setScaleY(scale);
+
+							progress.invalidate();
+						}
+					}
+				}
+
+			}
+		}
 	}
 }

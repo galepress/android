@@ -2,14 +2,19 @@ package ak.detaysoft.galepress.database_models;
 
 import android.os.Parcelable;
 
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import org.json.JSONArray;
+
 import java.io.Serializable;
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.UUID;
 
 import ak.detaysoft.galepress.GalePressApplication;
+import ak.detaysoft.galepress.service_models.R_Category;
 import ak.detaysoft.galepress.service_models.R_ContentDetail;
 
 /**
@@ -23,6 +28,7 @@ public class L_Content implements Serializable {
 
     @DatabaseField(id = true, columnName = ID_FIELD_NAME) private Integer id;
     @DatabaseField(columnName = NAME_FIELD_NAME) private String name;
+    @DatabaseField private String name_asc; //Buyuk kucuk ve Turkce karakterlerde arama yapabilmek icin ascii kodlarini tutmak zorunda kaldim (MG)
     @DatabaseField private boolean autoDownload;
     @DatabaseField private boolean blocked;
     @DatabaseField private Integer pdfVersion;
@@ -54,6 +60,7 @@ public class L_Content implements Serializable {
     @DatabaseField private boolean isForceDetele;
     @DatabaseField private String identifier;
     @DatabaseField private boolean isOwnedProduct;
+    @DatabaseField private String categoryIds;
 
     private ArrayList<L_Category> categories;
     private String pdfPath;
@@ -352,7 +359,24 @@ public class L_Content implements Serializable {
     public void setOwnedProduct(boolean isOwnedProduct) {
         this.isOwnedProduct = isOwnedProduct;
     }
-// Model Methods
+
+    public void setCategoryIds(String categoryIds) {
+        this.categoryIds = categoryIds;
+    }
+
+    public String getCategoryIds() {
+
+        return categoryIds;
+    }
+
+    public void setName_asc(String name_asc) {
+        this.name_asc = name_asc;
+    }
+
+    public String getName_asc() {        return name_asc;
+    }
+
+    // Model Methods
 
     public L_Content(R_ContentDetail remoteContent){
         this.id = remoteContent.getContentID();
@@ -384,6 +408,8 @@ public class L_Content implements Serializable {
         this.isBuyable = remoteContent.getContentIsBuyable();
         this.isProtected = remoteContent.getContentIsProtected();
         this.name = remoteContent.getContentName();
+        this.name_asc = Normalizer.normalize(remoteContent.getContentName(), Normalizer.Form.NFD)
+                .replaceAll("[^\\p{ASCII}]", "");
         this.currency = remoteContent.getContentCurrency();
         this.price = remoteContent.getContentPrice();
         this.status = remoteContent.getStatus();
@@ -392,6 +418,20 @@ public class L_Content implements Serializable {
         this.contentOrderNo = remoteContent.getContentOrderNo();
         this.isForceDetele = remoteContent.isForceDelete();
         this.identifier = remoteContent.getContentIdentifier();
+        this.categories = new ArrayList<L_Category>();
+        for(R_Category item : remoteContent.getContentCategories())
+            categories.add(new L_Category(item.getCategoryID(), item.getCategoryName()));
+        this.categoryIds = prepareCategoryIdsJson();
+    }
+
+    public String prepareCategoryIdsJson(){
+        JSONArray array = new JSONArray();
+        if(categories != null) {
+            for(L_Category item : categories)
+                array.put(item.getCategoryID().toString());
+        }
+
+        return array.toString();
     }
 
     public void updateWithRemoteContent(R_ContentDetail remoteContent){
@@ -405,6 +445,7 @@ public class L_Content implements Serializable {
             this.categories.add(localCategory);
         }
         */
+
         this.blocked = remoteContent.getContentBlocked();
         this.autoDownload = remoteContent.getContentAutoDownload();
         this.monthlyName = remoteContent.getContentMonthlyName();
@@ -412,6 +453,8 @@ public class L_Content implements Serializable {
         this.isBuyable = remoteContent.getContentIsBuyable();
         this.isProtected = remoteContent.getContentIsProtected();
         this.name = remoteContent.getContentName();
+        this.name_asc = Normalizer.normalize(remoteContent.getContentName(), Normalizer.Form.NFD)
+                .replaceAll("[^\\p{ASCII}]", "");
         this.currency = remoteContent.getContentCurrency();
         this.price = remoteContent.getContentPrice();
         this.status = remoteContent.getStatus();
@@ -420,6 +463,9 @@ public class L_Content implements Serializable {
         this.contentOrderNo = remoteContent.getContentOrderNo();
         this.isForceDetele = remoteContent.isForceDelete();
         this.identifier = remoteContent.getContentIdentifier();
+        for(R_Category item : remoteContent.getContentCategories())
+            categories.add(new L_Category(item.getCategoryID(), item.getCategoryName()));
+        this.categoryIds = prepareCategoryIdsJson();
     }
 
     public void updateWithImageDownloadUrl(String url, boolean isLargeCover){
@@ -433,6 +479,7 @@ public class L_Content implements Serializable {
         return "L_Content{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", name_asc='" + name_asc + '\'' +
                 ", autoDownload=" + autoDownload +
                 ", blocked=" + blocked +
                 ", pdfVersion=" + pdfVersion +
@@ -467,6 +514,7 @@ public class L_Content implements Serializable {
                 ", isForceDetele=" + isForceDetele +
                 ", identifier='"+identifier+'\''+
                 ", isOwnedProduct=" + isOwnedProduct +
+                ", categoryIds='" + categoryIds+'\''+
                 '}';
     }
 }

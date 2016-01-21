@@ -26,8 +26,6 @@ import ak.detaysoft.galepress.GalePressApplication;
 import ak.detaysoft.galepress.LibraryFragment;
 import ak.detaysoft.galepress.MainActivity;
 import ak.detaysoft.galepress.R;
-import ak.detaysoft.galepress.StateListDrawableForPopupButtons;
-import ak.detaysoft.galepress.StateListDrawableWithColorFilter;
 import ak.detaysoft.galepress.custom_models.TabbarItem;
 
 /**

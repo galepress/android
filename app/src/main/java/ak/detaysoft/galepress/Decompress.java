@@ -1,5 +1,6 @@
 package ak.detaysoft.galepress;
 
+import android.content.Context;
 import android.util.Log;
 
 import java.io.BufferedInputStream;
@@ -18,10 +19,12 @@ public class Decompress {
     private String zipFile;
     private String location;
     private final int BUFFER_SIZE = 1024;
+    private Context context;
 
-    public Decompress(String zipFile, String location) {
+    public Decompress(String zipFile, String location, Context context) {
         this.zipFile = zipFile;
         this.location = location;
+        this.context = context;
         _dirChecker("");
     }
 
@@ -59,6 +62,7 @@ public class Decompress {
 
                         // unzip the file
                         FileOutputStream out = new FileOutputStream(unzipFile, false);
+                        //FileOutputStream out = context.openFileOutput(unzipFile.getName(), Context.MODE_WORLD_READABLE);
                         BufferedOutputStream fout = new BufferedOutputStream(out, BUFFER_SIZE);
                         try {
                             while ( (size = zin.read(buffer, 0, BUFFER_SIZE)) != -1 ) {
@@ -71,6 +75,7 @@ public class Decompress {
                             fout.flush();
                             fout.close();
                         }
+                        unzipFile.setReadable(true, false);
                     }
                 }
             }

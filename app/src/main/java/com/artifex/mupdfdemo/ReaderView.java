@@ -7,7 +7,6 @@ import android.content.Context;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.SparseArray;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -18,7 +17,6 @@ import android.widget.AdapterView;
 import android.widget.Scroller;
 
 import ak.detaysoft.galepress.R;
-import ak.detaysoft.galepress.WebViewAnnotationWithChromium;
 
 public class ReaderView
 		extends AdapterView<Adapter>

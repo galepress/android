@@ -23,6 +23,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,6 +31,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -47,11 +49,12 @@ import android.widget.Toast;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 import com.google.android.gcm.GCMRegistrar;
-import com.mogoweb.chrome.WebView;
 
 import net.simonvt.menudrawer.MenuDrawer;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
+import org.xwalk.core.XWalkNavigationHistory;
+import org.xwalk.core.XWalkView;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -60,6 +63,9 @@ import java.util.List;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import ak.detaysoft.galepress.util.StateListDrawableWithColorFilter;
+import ak.detaysoft.galepress.web_views.ExtraWebViewActivity;
+import ak.detaysoft.galepress.web_views.ExtraWebViewWithCrosswalkActivity;
 import ak.detaysoft.galepress.custom_models.ApplicationPlist;
 import ak.detaysoft.galepress.custom_models.TabbarItem;
 import ak.detaysoft.galepress.database_models.L_Category;
@@ -77,6 +83,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     public static final String DOWNLOADED_LIBRARY_TAG = "DOWNLOADED_TAB";
     public static final String HOME_TAB_TAG = "HOME_TAB";
     public static final String INFO_TAB_TAG = "INFO_TAB";
+    private static final int KITKAT = 19; // Android 4.4
     public FragmentTabHost mTabHost;
     private EditText searchView;
     private ImageView menuButton;
@@ -182,12 +189,12 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                                     int position, long id) {
                 hideKeyboard(searchView);
 
-                if(GalePressApplication.getInstance().getDataApi().getMasterContent() != null && GalePressApplication.getInstance().getDataApi().getMasterContent().isPdfDownloaded()) {
+                /*if(GalePressApplication.getInstance().getDataApi().getMasterContent() != null && GalePressApplication.getInstance().getDataApi().getMasterContent().isPdfDownloaded()) {
                     mTabHost.getTabWidget().setCurrentTab(1);
                 }
                 else
                     mTabHost.getTabWidget().setCurrentTab(0);
-                mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG);
+                mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG); */
                 L_Category selectedCategory = (L_Category)categoryListWithAll.get(position);
                 if(selectedCategory.getCategoryName().compareTo(getString(R.string.show_all))!=0){
                     for(int i =0; i<categoryListWithAll.size(); i++){
@@ -200,10 +207,24 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 else{
                     selectedCategory = new L_Category(-1, getString(R.string.show_all));
                 }
-                LibraryFragment libraryFragment = getCurrentLibraryFragment();
-                libraryFragment.selectedCategory = selectedCategory;
-                libraryFragment.updateCategoryList();
-                libraryFragment.updateGridView();
+                if(mTabHost.getCurrentTabTag().compareTo(LIBRARY_TAB_TAG) == 0) {
+
+                }
+
+                if(getLibraryFragment() != null) {
+                    LibraryFragment libraryFragment = getLibraryFragment();
+                    libraryFragment.selectedCategory = selectedCategory;
+                    libraryFragment.updateCategoryList();
+                    libraryFragment.updateGridView();
+                }
+
+                if(getDownloadedLibraryFragment() != null) {
+                    LibraryFragment libraryFragment = getDownloadedLibraryFragment();
+                    libraryFragment.selectedCategory = selectedCategory;
+                    libraryFragment.updateCategoryList();
+                    libraryFragment.updateGridView();
+                }
+
                 categoryAdapter.notifyDataSetChanged();
             }
         });
@@ -233,11 +254,20 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                     }
                 }
                 else {
-                    Intent intent = new Intent(MainActivity.this, ExtraWebViewActivity.class);
-                    intent.putExtra("url",item.getValue().toString());
-                    intent.putExtra("isMainActivitIntent", true);
-                    startActivity(intent);
-                    overridePendingTransition(R.animator.left_to_right_translate, 0);
+                    final int KITKAT = 19; // Android 4.4
+                    if (android.os.Build.VERSION.SDK_INT >= KITKAT) {
+                        Intent intent = new Intent(MainActivity.this, ExtraWebViewActivity.class);
+                        intent.putExtra("url", item.getValue().toString());
+                        intent.putExtra("isMainActivitIntent", true);
+                        startActivity(intent);
+                        overridePendingTransition(R.animator.left_to_right_translate, 0);
+                    } else {
+                        Intent intent = new Intent(MainActivity.this, ExtraWebViewWithCrosswalkActivity.class);
+                        intent.putExtra("url", item.getValue().toString());
+                        intent.putExtra("isMainActivitIntent", true);
+                        startActivity(intent);
+                        overridePendingTransition(R.animator.left_to_right_translate, 0);
+                    }
                 }
 
             }
@@ -258,6 +288,12 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             }
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
                 if(s.length() == 0) {
                     clearSearch.setVisibility(View.GONE);
                     ((ImageView)findViewById(R.id.left_menu_search_icon)).setVisibility(View.VISIBLE);
@@ -267,12 +303,18 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                     ((ImageView)findViewById(R.id.left_menu_search_icon)).setVisibility(View.GONE);
                 }
                 changeSearchViewColor(true);
-                LibraryFragment libraryFragment = getCurrentLibraryFragment();
-                libraryFragment.searchQuery = s.toString();
-                libraryFragment.updateGridView();
+
+                if(getLibraryFragment() != null) {
+                    LibraryFragment libraryFragment = getLibraryFragment();
+                    libraryFragment.searchQuery = s.toString();
+                    libraryFragment.updateGridView();
+                }
+                /*if(getDownloadedLibraryFragment() != null) {
+                    LibraryFragment libraryFragment = getDownloadedLibraryFragment();
+                    libraryFragment.searchQuery = s.toString();
+                    libraryFragment.updateGridView();
+                } */
             }
-            @Override
-            public void afterTextChanged(Editable s) {}
         });
         searchView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -295,7 +337,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             @Override
             public void onClick(View v) {
                 searchView.setText("");
-                LibraryFragment libraryFragment = getCurrentLibraryFragment();
+                LibraryFragment libraryFragment = getLibraryFragment();
                 libraryFragment.searchQuery = "";
                 libraryFragment.updateGridView();
             }
@@ -503,8 +545,8 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
         prepareTabBars(isColorChanged);
 
-        if(getCurrentLibraryFragment() != null && getCurrentLibraryFragment().gridview != null)
-            getCurrentLibraryFragment().gridview.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
+        if(getLibraryFragment() != null && getLibraryFragment().gridview != null)
+            getLibraryFragment().gridview.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
 
         ileriButton = (ImageButton) findViewById(R.id.main_webview_ileri_button);
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
@@ -525,23 +567,42 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         ileriButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (GalePressApplication.getInstance().getWebFragment().getCustomWebView().canGoForward()) {
-                    GalePressApplication.getInstance().getWebFragment().getCustomWebView().goForward();
+                if (android.os.Build.VERSION.SDK_INT >= KITKAT) {
+                    if (((WebView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).canGoForward()) {
+                        ((WebView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).goForward();
+                    }
+                } else {
+                    if (((XWalkView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).getNavigationHistory().canGoForward()) {
+                        ((XWalkView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).getNavigationHistory().navigate(XWalkNavigationHistory.Direction.FORWARD, 1);
+                    }
                 }
+
             }
         });
         geriButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(GalePressApplication.getInstance().getWebFragment().getCustomWebView().canGoBack()){
-                    GalePressApplication.getInstance().getWebFragment().getCustomWebView().goBack();
+                if (android.os.Build.VERSION.SDK_INT >= KITKAT) {
+                    if (((WebView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).canGoBack()) {
+                        ((WebView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).goBack();
+                    }
+                } else {
+                    if (((XWalkView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).getNavigationHistory().canGoBack()) {
+                        ((XWalkView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).getNavigationHistory().navigate(XWalkNavigationHistory.Direction.BACKWARD, 1);
+                    }
                 }
+
             }
         });
         refreshButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GalePressApplication.getInstance().getWebFragment().getCustomWebView().reload();
+                if (android.os.Build.VERSION.SDK_INT >= KITKAT) {
+                    ((WebView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).reload();
+                } else {
+                    ((XWalkView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).reload(XWalkView.RELOAD_NORMAL);
+                }
+
             }
         });
 
@@ -631,7 +692,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         if(GalePressApplication.getInstance().getTabList() != null && GalePressApplication.getInstance().getDataApi().isConnectedToInternet()){
             int index = 0;
             for(TabbarItem item : GalePressApplication.getInstance().getTabList()){
-                addTab(item.getTitle(),""+index, createDrawable(true, null, null), WebFragment.class, item);
+                addTab(item.getTitle(),""+index, createDrawable(true, null, null), CustomTabFragment.class, item);
                 index++;
             }
         } else if(getSupportFragmentManager().getFragments() != null) {
@@ -664,7 +725,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
                 int index = 0;
                 for(TabbarItem item : GalePressApplication.getInstance().getTabList()){
-                    addTab(item.getTitle(),""+index, createDrawable(true, null, null), WebFragment.class, item);
+                    addTab(item.getTitle(),""+index, createDrawable(true, null, null), CustomTabFragment.class, item);
                     index++;
                 }
             } else {
@@ -728,6 +789,13 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         title.setClickable(true);
         title.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
         title.setText(titleText);
+        title.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                ((View) v.getParent()).onTouchEvent(event);
+                return false;
+            }
+        });
 
         if(drawable != null)
             imgIcon.setImageDrawable(drawable);
@@ -740,15 +808,16 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     private void addTab(String title, String tag, Drawable drawable,Class classy, TabbarItem item) {
         TabHost.TabSpec spec = mTabHost.newTabSpec(tag);
         spec.setIndicator(createTabIndicator(title, drawable, item));
-        mTabHost.addTab(spec,classy,null);
+        mTabHost.addTab(spec, classy, null);
     }
 
-    public void prepareActionBarForCustomTab(WebView webView, boolean isWebFragment, boolean isPageLoadFinish){
+    public void prepareActionBarForCustomTab(View webView, boolean isWebFragment, boolean isPageLoadFinish){
         if(isWebFragment){
             ileriButton.setVisibility(View.VISIBLE);
             geriButton.setVisibility(View.VISIBLE);
             refreshButton.setVisibility(View.VISIBLE);
             menuButton.setVisibility(View.GONE);
+            ((View)menuButton.getParent()).setVisibility(View.GONE);
             mDrawer.setTouchMode(MenuDrawer.TOUCH_MODE_NONE);
             ((TextView)findViewById(R.id.action_bar_title_text_view)).setVisibility(View.GONE);
         } else{
@@ -756,6 +825,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             geriButton.setVisibility(View.INVISIBLE);
             refreshButton.setVisibility(View.INVISIBLE);
             menuButton.setVisibility(View.VISIBLE);
+            ((View) menuButton.getParent()).setVisibility(View.VISIBLE);
             mDrawer.setTouchMode(MenuDrawer.FOCUSABLES_TOUCH_MODE);
             ((TextView)findViewById(R.id.action_bar_title_text_view)).setVisibility(View.VISIBLE);
         }
@@ -767,36 +837,74 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 refreshButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.WEBVIEW_REFRESH_DISABLE));
         }
 
+
+
         if(webView != null){
-            // if has previous page, enable the back button
-            if(webView.canGoBack()){
+
+
+            if (android.os.Build.VERSION.SDK_INT >= KITKAT) { //default webview
+                // if has previous page, enable the back button
+                if(((WebView)webView).canGoBack()){
+                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                        geriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK));
+                    else
+                        geriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK));
+                }else{
+                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                        geriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK_DISABLE));
+                    else
+                        geriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK_DISABLE));
+                }
+                // if has next page, enable the next button
+                if(((WebView)webView).canGoForward()){
+                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                        ileriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT));
+                    else
+                        ileriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT));
+                } else{
+                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                        ileriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT_DISABLE));
+                    else
+                        ileriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT_DISABLE));
+                }
+
                 if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                    geriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK));
+                    refreshButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_REFRESH));
                 else
-                    geriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK));
-            }else{
+                    refreshButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_REFRESH));
+            } else {  //crosswalk
+                // if has previous page, enable the back button
+                if(((XWalkView)webView).getNavigationHistory().canGoBack()){
+                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                        geriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK));
+                    else
+                        geriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK));
+                }else{
+                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                        geriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK_DISABLE));
+                    else
+                        geriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK_DISABLE));
+                }
+                // if has next page, enable the next button
+                if(((XWalkView)webView).getNavigationHistory().canGoForward()){
+                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                        ileriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT));
+                    else
+                        ileriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT));
+                } else{
+                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                        ileriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT_DISABLE));
+                    else
+                        ileriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT_DISABLE));
+                }
+
                 if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                    geriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK_DISABLE));
+                    refreshButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_REFRESH));
                 else
-                    geriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK_DISABLE));
-            }
-            // if has next page, enable the next button
-            if(webView.canGoForward()){
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                    ileriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT));
-                else
-                    ileriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT));
-            } else{
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                    ileriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT_DISABLE));
-                else
-                    ileriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT_DISABLE));
+                    refreshButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_REFRESH));
             }
 
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                refreshButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_REFRESH));
-            else
-                refreshButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_REFRESH));
+
         }
     }
 
@@ -908,6 +1016,25 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     }
 
     @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (event.getAction() == KeyEvent.ACTION_DOWN) {
+            switch (keyCode) {
+                case KeyEvent.KEYCODE_BACK:
+                    GalePressApplication.getInstance().destroyBillingServices();
+                    try{
+                        unregisterReceiver(mConnReceiver);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    finish();
+                    return true;
+            }
+
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
     public boolean onMenuItemClick(MenuItem item) {
         L_Category selectedCategory = null;
         if(item.getTitle().toString().compareTo(getString(R.string.show_all))!=0){
@@ -922,7 +1049,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         else{
             selectedCategory = new L_Category(-1, getString(R.string.show_all));
         }
-        LibraryFragment libraryFragment = getCurrentLibraryFragment();
+        LibraryFragment libraryFragment = getLibraryFragment();
         libraryFragment.selectedCategory = selectedCategory;
         libraryFragment.updateCategoryList();
         libraryFragment.updateGridView();
@@ -951,7 +1078,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
 }
 
-    public LibraryFragment getCurrentLibraryFragment(){
+    public LibraryFragment getLibraryFragment(){
         if(getSupportFragmentManager().getFragments() != null){
             int count = getSupportFragmentManager().getFragments().size();
             for(int i=0; i< count; i++){
@@ -963,7 +1090,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         return null;
     }
 
-    public LibraryFragment getCurrentDownloadedLibraryFragment(){
+    public LibraryFragment getDownloadedLibraryFragment(){
         if(getSupportFragmentManager().getFragments() != null){
             int count = getSupportFragmentManager().getFragments().size();
             for(int i=0; i< count; i++){

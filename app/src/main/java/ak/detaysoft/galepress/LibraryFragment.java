@@ -2,6 +2,7 @@ package ak.detaysoft.galepress;
 
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Point;
 import android.location.Location;
 import android.net.Uri;
@@ -20,6 +21,9 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.artifex.mupdfdemo.MuPDFActivity;
+
+import org.xwalk.core.XWalkView;
+
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -28,6 +32,9 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
 import java.util.UUID;
+
+import ak.detaysoft.galepress.web_views.BannerAndTabbarWebView;
+import ak.detaysoft.galepress.web_views.BannerAndTabbarWebViewWithCrosswalk;
 import ak.detaysoft.galepress.database_models.L_Category;
 import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.database_models.L_Statistic;
@@ -40,7 +47,8 @@ public class LibraryFragment extends Fragment {
     public ContentHolderAdapter contentHolderAdapter;
     public HeaderGridView gridview;
     public LinearLayout banner;
-    public CustomWebView customWebView;
+    public BannerAndTabbarWebView bannerWebView;
+    public BannerAndTabbarWebViewWithCrosswalk bannerWebViewWithCrosswalk;
     private LayoutInflater layoutInflater;
     private boolean isOnlyDownloaded;
     private List contents;
@@ -48,6 +56,8 @@ public class LibraryFragment extends Fragment {
     ArrayList<L_Category> selectedCategories;
     L_Category selectedCategory = null;
     private View v;
+
+    private static final int KITKAT = 19; // Android 4.4
 
     public LayoutInflater getLayoutInflater() {
         return layoutInflater;
@@ -60,10 +70,10 @@ public class LibraryFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
-        if(savedInstanceState != null){
+        /*if(savedInstanceState != null){
             selectedCategories = (ArrayList<L_Category>)savedInstanceState.getSerializable("categoryList");
             searchQuery = savedInstanceState.getString("queryString");
-        }
+        }*/
 
         try{
             isOnlyDownloaded = this.getTag().compareTo(MainActivity.DOWNLOADED_LIBRARY_TAG)==0;
@@ -78,6 +88,23 @@ public class LibraryFragment extends Fragment {
     }
 
     @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // cihaz orientation degistiginde banner boyutu yeniden ayarlaniyor ve reload ediliyor. (MG)
+        if (!getResources().getBoolean(R.bool.portrait_only) &&
+                (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE || newConfig.orientation == Configuration.ORIENTATION_PORTRAIT)) {
+            banner.setLayoutParams(prepareBannerSize());
+            if (android.os.Build.VERSION.SDK_INT >= KITKAT) {
+                bannerWebView.reload();
+                bannerWebView.setVisibility(View.INVISIBLE);
+            } else {
+                bannerWebViewWithCrosswalk.reload(XWalkView.RELOAD_NORMAL);
+                bannerWebViewWithCrosswalk.setVisibility(View.INVISIBLE);
+            }
+        }
+    }
+
+    @Override
     public void onSaveInstanceState(Bundle outState) {
         outState.putSerializable("categoryList", selectedCategories);
         outState.putString("queryString", searchQuery);
@@ -85,22 +112,35 @@ public class LibraryFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.setLayoutInflater(inflater);
+        onViewStateRestored(savedInstanceState);
+
+        if(savedInstanceState != null){
+            selectedCategories = (ArrayList<L_Category>)savedInstanceState.getSerializable("categoryList");
+            searchQuery = savedInstanceState.getString("queryString");
+        }
+
         GalePressApplication.getInstance().setLibraryActivity(this);
         GalePressApplication.getInstance().setCurrentFragment(this);
         ((MainActivity)this.getActivity()).prepareActionBarForCustomTab(null, false, false);
-        v = inflater.inflate(R.layout.library_layout, container, false);
-
         if(GalePressApplication.getInstance().getDataApi().isConnectedToInternet())
             GalePressApplication.getInstance().getDataApi().updateApplication();
+
+        v = inflater.inflate(R.layout.library_layout, container, false);
+
         gridview = (HeaderGridView) v.findViewById(R.id.gridview);
         gridview.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(!GalePressApplication.getInstance().getDataApi().isBlockedFromWS){
-                    if(gridview.getHeaderViewCount() != 0)
+                if (!GalePressApplication.getInstance().getDataApi().isBlockedFromWS) {
+                    if (gridview.getHeaderViewCount() != 0)
                         position = position - gridview.getNumColumns();
                     int[] values = new int[2];
                     v.getLocationInWindow(values);
@@ -111,10 +151,21 @@ public class LibraryFragment extends Fragment {
         });
 
         banner =  (LinearLayout)LayoutInflater.from(this.getActivity()).inflate(R.layout.library_banner, null, false);
-        customWebView = new CustomWebView(this.getActivity());
-        customWebView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-        customWebView.loadUrl(GalePressApplication.getInstance().getBannerLink());
-        banner.addView(customWebView);
+
+        if (android.os.Build.VERSION.SDK_INT >= KITKAT) {
+            bannerWebView = new BannerAndTabbarWebView(this.getActivity());
+            bannerWebView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+            bannerWebView.loadUrl(GalePressApplication.getInstance().getBannerLink());
+            banner.addView(bannerWebView);
+        } else {
+            bannerWebViewWithCrosswalk = new BannerAndTabbarWebViewWithCrosswalk(this.getActivity());
+            bannerWebViewWithCrosswalk.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+            bannerWebViewWithCrosswalk.load(GalePressApplication.getInstance().getBannerLink(), null);
+            banner.addView(bannerWebViewWithCrosswalk);
+        }
+
+
+
 
         banner.setLayoutParams(prepareBannerSize());
         gridview.addHeaderView(banner);
@@ -128,7 +179,7 @@ public class LibraryFragment extends Fragment {
             }
         }
 
-        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContents(isOnlyDownloaded, searchQuery, selectedCategories);
+        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContent(isOnlyDownloaded, searchQuery, selectedCategories);
         this.contentHolderAdapter = new ContentHolderAdapter(this);
         gridview.setAdapter(this.contentHolderAdapter);
         updateGridView();
@@ -138,7 +189,12 @@ public class LibraryFragment extends Fragment {
 
     public void updateBanner(){
         banner.setLayoutParams(prepareBannerSize());
-        customWebView.loadUrl(GalePressApplication.getInstance().getBannerLink());
+
+        if (android.os.Build.VERSION.SDK_INT >= KITKAT) {
+            bannerWebView.loadBannerUrl(GalePressApplication.getInstance().getBannerLink());
+        } else {
+            bannerWebViewWithCrosswalk.loadBannerUrl(GalePressApplication.getInstance().getBannerLink());
+        }
         gridview.invalidateViews();
     }
 
@@ -220,7 +276,7 @@ public class LibraryFragment extends Fragment {
             @Override
             public void run() {
                 gridview.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
-                contents = GalePressApplication.getInstance().getDatabaseApi().getAllContents(isOnlyDownloaded,searchQuery,selectedCategories);
+                contents = GalePressApplication.getInstance().getDatabaseApi().getAllContent(isOnlyDownloaded,searchQuery,selectedCategories);
                 contentHolderAdapter.notifyDataSetChanged();
                 gridview.invalidateViews();
             }
@@ -229,7 +285,7 @@ public class LibraryFragment extends Fragment {
 
     public void updateAdapterList(L_Content content, boolean isImagePathChanged){
 
-        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContents(isOnlyDownloaded,searchQuery,selectedCategories);
+        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContent(isOnlyDownloaded,searchQuery,selectedCategories);
 
         ContentHolderAdapter.ViewHolder holder = GalePressApplication.getInstance().getDataApi().getViewHolderForContent(content);
         if(holder != null){
@@ -275,7 +331,7 @@ public class LibraryFragment extends Fragment {
 
             float animX = xPoint/gridview.getWidth();
             float animY = yPoint/gridview.getHeight();
-            Intent intent = new Intent(getActivity(), ContentDetailPopupActivity.class);
+            Intent intent = new Intent(getActivity(), ContentPopupActivity.class);
             intent.putExtra("content", content);
             intent.putExtra("animationStartX",0.5f);
             intent.putExtra("animationStartY",0.5f);
