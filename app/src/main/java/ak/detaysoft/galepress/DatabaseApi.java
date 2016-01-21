@@ -101,6 +101,21 @@ public class DatabaseApi {
         return null;
     }
 
+    public List getCategoriesOnlyHaveContent(){
+        try {
+            List all = categoriesDao.queryForAll();
+            List result = new ArrayList();
+            for(int i = 0; i <all.size(); i++) {
+                if(getAllContentsByCategory((L_Category)all.get(i)).size() > 0)
+                    result.add(all.get(i));
+            }
+            return result;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public L_Category getCategory(Integer id)
     {
         try {
@@ -421,7 +436,7 @@ public class DatabaseApi {
         /*
         * Show All secilmeden tum kategoriler tek tek secilmisse
         * */
-        int databaseCategorySize = getAllCategories().size();
+        int databaseCategorySize = getCategoriesOnlyHaveContent().size();
         if(categoryList.size() == databaseCategorySize || categoryList.size() == databaseCategorySize+1){
             return true;
         } else {

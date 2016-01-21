@@ -180,7 +180,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             }
         });
 
-        categoryListWithAll = GalePressApplication.getInstance().getDatabaseApi().getAllCategories();
+        categoryListWithAll = GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent();
         categoryListWithAll.add(0, new L_Category(-1, getString(R.string.show_all)));
         categoryList = (ListView)findViewById(R.id.left_menu_category_list);
 
@@ -460,7 +460,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         else
             ((ImageView)findViewById(R.id.left_menu_category_icon)).setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_CATEGORY));
 
-        categoryListWithAll = GalePressApplication.getInstance().getDatabaseApi().getAllCategories();
+        categoryListWithAll = GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent();
         categoryListWithAll.add(0, new L_Category(-1, getString(R.string.show_all)));
 
         categoryAdapter.setmCategory(categoryListWithAll);
@@ -1038,7 +1038,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     public boolean onMenuItemClick(MenuItem item) {
         L_Category selectedCategory = null;
         if(item.getTitle().toString().compareTo(getString(R.string.show_all))!=0){
-            List categories = GalePressApplication.getInstance().getDatabaseApi().getAllCategories();
+            List categories = GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent();
             for(int i =0; i<categories.size(); i++){
                 L_Category category = (L_Category)categories.get(i);
                 if(category.getCategoryName().compareTo(item.getTitle().toString())==0){

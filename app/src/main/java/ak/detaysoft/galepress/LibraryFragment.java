@@ -173,8 +173,8 @@ public class LibraryFragment extends Fragment {
         //Ilk secilen kategori genel oldugu icin ilk create icin listeye eklendi (MG)
         if(selectedCategories == null) {
             selectedCategories = new ArrayList<L_Category>();
-            if(GalePressApplication.getInstance().getDatabaseApi().getAllCategories() != null && GalePressApplication.getInstance().getDatabaseApi().getAllCategories().size() > 0) {
-                selectedCategory = (L_Category)GalePressApplication.getInstance().getDatabaseApi().getAllCategories().get(0);
+            if(GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent() != null && GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent().size() > 0) {
+                selectedCategory = (L_Category)GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent().get(0);
                 selectedCategories.add(selectedCategory);
             }
         }
@@ -234,11 +234,11 @@ public class LibraryFragment extends Fragment {
     public void updateCategoryList(){
         if(selectedCategory.getCategoryID().compareTo(-1) == 0){
 
-            if(selectedCategories.size() == GalePressApplication.getInstance().getDatabaseApi().getAllCategories().size()+1){
+            if(selectedCategories.size() == GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent().size()+1){
                 selectedCategories.clear();
             } else {
                 selectedCategories.clear();
-                selectedCategories.addAll(GalePressApplication.getInstance().getDatabaseApi().getAllCategories());
+                selectedCategories.addAll(GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent());
                 selectedCategories.add(selectedCategory);
             }
 
@@ -276,7 +276,7 @@ public class LibraryFragment extends Fragment {
             @Override
             public void run() {
                 gridview.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
-                contents = GalePressApplication.getInstance().getDatabaseApi().getAllContent(isOnlyDownloaded,searchQuery,selectedCategories);
+                contents = GalePressApplication.getInstance().getDatabaseApi().getAllContent(isOnlyDownloaded, searchQuery, selectedCategories);
                 contentHolderAdapter.notifyDataSetChanged();
                 gridview.invalidateViews();
             }
@@ -285,7 +285,7 @@ public class LibraryFragment extends Fragment {
 
     public void updateAdapterList(L_Content content, boolean isImagePathChanged){
 
-        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContent(isOnlyDownloaded,searchQuery,selectedCategories);
+        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContent(isOnlyDownloaded, searchQuery, selectedCategories);
 
         ContentHolderAdapter.ViewHolder holder = GalePressApplication.getInstance().getDataApi().getViewHolderForContent(content);
         if(holder != null){
