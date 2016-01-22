@@ -193,35 +193,14 @@ public class DatabaseApi {
         return null;
     }
 
-
-
-    public List getAllContents(String searchQuery)
-    {
-        try {
-            if (searchQuery == null) {
-                return contentsDao.queryForAll();
-            } else {
-                if (contentsQuery == null) {
-                    contentsQuery= makeContentsQuery(false);
-                }
-                String nameParameter = searchQuery == null ? "%%" : "%"+searchQuery.trim()+"%";
-                contentsQuery.setArgumentHolderValue(0,nameParameter);
-                return contentsDao.query(contentsQuery);
-            }
-        }
-        catch (SQLException e){
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    public List getAllContent(boolean isOnlyDownloaded, String searchQuery, ArrayList<L_Category> categoryList){
+    public List getAllContentsWithSqlQuery(boolean isOnlyDownloaded, String searchQuery, ArrayList<L_Category> categoryList){
         List contents;
         if(searchQuery!= null && searchQuery.length() != 0)
-            searchQuery = Normalizer.normalize(searchQuery, Normalizer.Form.NFD)
+            searchQuery = Normalizer.normalize(searchQuery.trim(), Normalizer.Form.NFD)
                     .replaceAll("[^\\p{ASCII}]", "");
         try {
-            if(categoryList == null || categoryList.size() == 0){ //Kategori listesi null yada bossa
+            //KATEGORI LISTESI NULL ISE
+            if(categoryList == null){
                 L_Category generalCategory = getCategory(MainActivity.GENEL_CATEGORY_ID);
                 if(generalCategory != null){
                     // Genel kategorisine ait contentler listelenecek.
@@ -250,13 +229,18 @@ public class DatabaseApi {
 
                     if((searchQuery!= null && searchQuery.length() != 0) || isOnlyDownloaded) {
                         Where where = contentQuery.where();
+                        int andClause = 0;
                         if(searchQuery!= null && searchQuery.length() != 0){
-                            where.and();
                             where.like("name_asc", "%"+searchQuery+"%");
+                            andClause++;
                         }
                         if(isOnlyDownloaded){
-                            where.and();
                             where.eq("isPdfDownloaded", isOnlyDownloaded);
+                            andClause++;
+                        }
+
+                        if(andClause>1){
+                            where.and(andClause);
                         }
                     }
 
@@ -264,16 +248,27 @@ public class DatabaseApi {
 
                     contents = contentQuery.query();
                 }
-            } else if(isSelectedCategoriesContainAll(categoryList)){ //Tum kategoriler secilmisse
+            }
+
+            //KATEGORI LISTESI BOS ISE
+            else if(categoryList.size() == 0){
+                return new ArrayList<L_Content>();
+            }
+
+            //KATEGORILERIN HEPSI SECILMISSE
+            else if(isSelectedCategoriesContainAll(categoryList)){
                 QueryBuilder<L_Content, Integer> contentQuery = contentsDao.queryBuilder();
 
                 if((searchQuery!= null && searchQuery.length() != 0) || isOnlyDownloaded) {
                     Where where = contentQuery.where();
+                    int andClause = 0;
                     if(searchQuery!= null && searchQuery.length() != 0){
                         where.like("name_asc", "%"+searchQuery+"%");
+                        andClause++;
                     }
                     if(isOnlyDownloaded){
-                        where.and();
+                        if(andClause > 0)
+                            where.and();
                         where.eq("isPdfDownloaded", isOnlyDownloaded);
                     }
                 }
@@ -281,7 +276,9 @@ public class DatabaseApi {
                 contentQuery.orderBy("contentOrderNo", false);
 
                 contents = contentQuery.query();
-            } else { //Kategorilerin hepsi secilmemisse
+            }
+            //KATEGORILERDEN BIKACI SECILMISSE
+            else {
                 QueryBuilder<L_Content, Integer> contentQuery = contentsDao.queryBuilder();
 
                 Where where = contentQuery.where();
@@ -297,7 +294,6 @@ public class DatabaseApi {
                     where.or(categoryList.size());
 
 
-
                 if(searchQuery!= null && searchQuery.length() != 0) {
                     where.and();
                     where.like("name_asc", "%"+searchQuery+"%");
@@ -306,7 +302,6 @@ public class DatabaseApi {
                     where.and();
                     where.eq("isPdfDownloaded", isOnlyDownloaded);
                 }
-
 
                 contentQuery.orderBy("contentOrderNo", false);
 
@@ -470,6 +465,27 @@ public class DatabaseApi {
 
         return null;
     }
+
+    public List getAllContents(String searchQuery)
+    {
+        try {
+            if (searchQuery == null) {
+                return contentsDao.queryForAll();
+            } else {
+                if (contentsQuery == null) {
+                    contentsQuery= makeContentsQuery(false);
+                }
+                String nameParameter = searchQuery == null ? "%%" : "%"+searchQuery.trim()+"%";
+                contentsQuery.setArgumentHolderValue(0,nameParameter);
+                return contentsDao.query(contentsQuery);
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     private PreparedQuery<L_Content> makeContentsForCategoryQuery() throws SQLException {
         QueryBuilder<L_ContentCategory, Integer> categoryContent = contentCategoryDao.queryBuilder();
         categoryContent.selectColumns(L_ContentCategory.CONTENT_ID_FIELD_NAME);
@@ -482,7 +498,19 @@ public class DatabaseApi {
 
     private PreparedQuery<L_Content> makeContentsQuery(boolean justDownloaded) throws SQLException {
         QueryBuilder<L_Content, Integer> contentObj = contentsDao.queryBuilder();
-        contentObj.where().like(L_Content.NAME_FIELD_NAME,new SelectArg());
+        contentObj.where().like(L_Content.NAME_FIELD_NAME, new SelectArg());
+        return contentObj.prepare();
+    }
+
+
+    private PreparedQuery<L_Content> makeContentsForAllQuery() throws SQLException {
+        QueryBuilder<L_ContentCategory, Integer> categoryContent = contentCategoryDao.queryBuilder();
+        categoryContent.selectColumns(L_ContentCategory.CONTENT_ID_FIELD_NAME);
+        SelectArg userSelectArg = new SelectArg();
+        categoryContent.where().eq(L_ContentCategory.CATEGORY_ID_FIELD_NAME, userSelectArg);
+        QueryBuilder<L_Content, Integer> contentObj = contentsDao.queryBuilder();
+        contentObj.where().in(L_Content.ID_FIELD_NAME, categoryContent);
+        contentObj.orderBy("contentOrderNo", false);
         return contentObj.prepare();
     }
 

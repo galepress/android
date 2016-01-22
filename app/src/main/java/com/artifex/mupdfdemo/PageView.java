@@ -721,12 +721,6 @@ public abstract class PageView extends ViewGroup {
 								final WebViewAnnotationWithCrosswalk web = new WebViewAnnotationWithCrosswalk(mContext, linkInfoExternal, progressBar);
 								web.layout(left, top, right, bottom);
 
-                                /*web.getChildAt(0).layout(0, 0, right - left, bottom - top);
-                                ((ViewGroup) web.getChildAt(0)).getChildAt(0).layout(0, 0, right - left, bottom - top);
-                                (((ViewGroup) ((XWalkViewBridge) web.getChildAt(0)).getChildAt(0))).getChildAt(0).layout(0, 0, right - left, bottom - top);
-                                (((ViewGroup) ((XWalkViewBridge) web.getChildAt(0)).getChildAt(0))).getChildAt(1).layout(0, 0, right - left, bottom - top);
-                                ((ViewGroup) (((ViewGroup) ((XWalkViewBridge) web.getChildAt(0)).getChildAt(0))).getChildAt(0)).getChildAt(0).layout(0, 0, right - left, bottom - top);*/
-
 								//Crosswalk wiew içindeki tüm chil viewlar için .layout metodu set edilmezse load edilen sayfa görünmüyor. Viewgroup da böyle bi sorun var.(MG)
 								web.getChildAt(0).layout(0, 0, right - left, bottom - top);
 								((ViewGroup) web.getChildAt(0)).getChildAt(0).layout(0, 0, right - left, bottom - top);

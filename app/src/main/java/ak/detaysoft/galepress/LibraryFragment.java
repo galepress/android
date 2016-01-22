@@ -179,7 +179,7 @@ public class LibraryFragment extends Fragment {
             }
         }
 
-        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContent(isOnlyDownloaded, searchQuery, selectedCategories);
+        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(isOnlyDownloaded, searchQuery, selectedCategories);
         this.contentHolderAdapter = new ContentHolderAdapter(this);
         gridview.setAdapter(this.contentHolderAdapter);
         updateGridView();
@@ -276,7 +276,7 @@ public class LibraryFragment extends Fragment {
             @Override
             public void run() {
                 gridview.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
-                contents = GalePressApplication.getInstance().getDatabaseApi().getAllContent(isOnlyDownloaded, searchQuery, selectedCategories);
+                contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(isOnlyDownloaded, searchQuery, selectedCategories);
                 contentHolderAdapter.notifyDataSetChanged();
                 gridview.invalidateViews();
             }
@@ -285,7 +285,7 @@ public class LibraryFragment extends Fragment {
 
     public void updateAdapterList(L_Content content, boolean isImagePathChanged){
 
-        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContent(isOnlyDownloaded, searchQuery, selectedCategories);
+        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(isOnlyDownloaded, searchQuery, selectedCategories);
 
         ContentHolderAdapter.ViewHolder holder = GalePressApplication.getInstance().getDataApi().getViewHolderForContent(content);
         if(holder != null){
