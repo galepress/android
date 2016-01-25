@@ -629,11 +629,15 @@ public class MuPDFPageView extends PageView implements MuPDFView {
 						if(!webView.linkInfoExternal.isModal && webView.linkInfoExternal.isWebAnnotation()
 								&& (webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_SES)) {
 							//webView.loadUrl("");
+							if(!webView.isLoadingFinished)
+								webView.stopLoading();
 							webView.loadUrl("javascript:" + stopScriptAudio );
 						} else if(!webView.linkInfoExternal.isModal && webView.linkInfoExternal.isWebAnnotation()
 								&& (webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_VIDEO
 								|| webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_WEB)) {
 							//webView.loadUrl("");
+							if(!webView.isLoadingFinished)
+								webView.stopLoading();
 							webView.loadUrl("javascript:" + stopScriptVideo );
 						}
 					}

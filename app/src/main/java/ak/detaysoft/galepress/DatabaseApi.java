@@ -216,7 +216,7 @@ public class DatabaseApi {
                     }
                     if(isOnlyDownloaded){
                         where.and();
-                        where.eq("isPdfDownloaded", isOnlyDownloaded);
+                        where.eq("isPdfDownloaded", true);
                     }
 
                     contentQuery.orderBy("contentOrderNo", false);
@@ -235,7 +235,7 @@ public class DatabaseApi {
                             andClause++;
                         }
                         if(isOnlyDownloaded){
-                            where.eq("isPdfDownloaded", isOnlyDownloaded);
+                            where.eq("isPdfDownloaded", true);
                             andClause++;
                         }
 
@@ -269,7 +269,7 @@ public class DatabaseApi {
                     if(isOnlyDownloaded){
                         if(andClause > 0)
                             where.and();
-                        where.eq("isPdfDownloaded", isOnlyDownloaded);
+                        where.eq("isPdfDownloaded", true);
                     }
                 }
 
@@ -300,7 +300,7 @@ public class DatabaseApi {
                 }
                 if(isOnlyDownloaded){
                     where.and();
-                    where.eq("isPdfDownloaded", isOnlyDownloaded);
+                    where.eq("isPdfDownloaded", true);
                 }
 
                 contentQuery.orderBy("contentOrderNo", false);

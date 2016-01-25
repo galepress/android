@@ -28,6 +28,13 @@ public class WebViewAnnotation extends WebView {
     private CustomPulseProgress loading;
     private Context context;
 
+    /*
+    * Video ve ses iceriklerinde(ozellikle autoplay olanlarda) sayfa yuklenmesi bitmeden diger sayfaya gecilirse
+    * javascript ile video ve ses durdurulamiyor.
+    * Bu parametre ile MuPDFPageView classinda stopAllWebAnnotationsMedia metodunda kontrol edilerek devam eden loading iptal edilecek.
+    */
+    public boolean isLoadingFinished = false;
+
     private class MyWebChromeClient extends WebChromeClient {
         /*
         * Bu iki metod override edildigi zaman videolar gorunmuyor
@@ -61,7 +68,7 @@ public class WebViewAnnotation extends WebView {
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
-
+            isLoadingFinished = true;
             if(loading != null) {
                 loading.setVisibility(GONE);
             }
@@ -71,6 +78,7 @@ public class WebViewAnnotation extends WebView {
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
             super.onPageStarted(view, url, favicon);
+            isLoadingFinished = false;
             if(loading != null) {
                 loading.setVisibility(VISIBLE);
             }

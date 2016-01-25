@@ -463,6 +463,7 @@ public class L_Content implements Serializable {
         this.contentOrderNo = remoteContent.getContentOrderNo();
         this.isForceDetele = remoteContent.isForceDelete();
         this.identifier = remoteContent.getContentIdentifier();
+        this.categories = new ArrayList<L_Category>();
         for(R_Category item : remoteContent.getContentCategories())
             categories.add(new L_Category(item.getCategoryID(), item.getCategoryName()));
         this.categoryIds = prepareCategoryIdsJson();

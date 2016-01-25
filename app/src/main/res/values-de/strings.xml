@@ -52,21 +52,131 @@
 	<string name="underline">Unterstreichen</string>
 	<string name="yes">Ja</string>
 
-    <string name="INAPPPURCHASE">In - App Kauf</string>
     <string name="Error">Fehler</string>
     <string name="OK">OK</string>
     <string name="Open">Öffnen</string>
     <string name="FacebookLogin">Mit Facebook Einloggen</string>
     <string name="ChooseApplication">Choose Application</string>
 
-    <string name="BILLING_RESPONSE_RESULT_OK">Payment successful</string>
-    <string name="BILLING_RESULT_USER_CANCELED">Payment canceled</string>
-    <string name="BILLING_RESULT_BILLING_UNAVAILABLE">Google services unavailable</string>
-    <string name="BILLIN_RESULT_ITEM_UNAVAILABLE">Product unavailable</string>
-    <string name="BILLING_RESULT_ERROR">Payment unsuccessful</string>
-    <string name="RESULT_ITEM_ALREADY_OWNED">Product already owned</string>
-    <string name="BILLING_RESULT_ITEM_NOT_OWNED">Product not owned</string>
-    <string name="BILLING_UNEXPECTED">Unexpected error occurred</string>
+    <string name="BILLING_RESPONSE_RESULT_OK">Bezahlung erfolgreich</string>
+    <string name="BILLING_RESULT_USER_CANCELED">Payment abgesagt</string>
+    <string name="BILLING_RESULT_BILLING_UNAVAILABLE">Google-Dienste nicht verfügbar</string>
+    <string name="BILLIN_RESULT_ITEM_UNAVAILABLE">Produkt nicht verfügbar</string>
+    <string name="BILLING_RESULT_ERROR">Zahlung erfolglos</string>
+    <string name="RESULT_ITEM_ALREADY_OWNED">Produkt bereits im Besitz</string>
+    <string name="BILLING_RESULT_ITEM_NOT_OWNED">Produkt wurde nicht im Besitz</string>
+    <string name="BILLING_UNEXPECTED">Unerwarteter Fehler aufgetreten</string>
 	<string name="show_all">Alles anzeigen</string>
+
+
+	<!-- From iOS -->
+	<string name="OKU">Lesen</string>
+	<string name="SIL">Löschen</string>
+	<string name="INDIR">Herunterladen</string>
+	<string name="GUNCELLE">Aktualisieren</string>
+	<string name="IPTAL">Abbrechen</string>
+	<string name="KATEGORILER">Kategorien</string>
+	<string name="EXTRA">Extras</string>
+	<string name="SETTINGS">Einstellungen</string>
+	<string name="ONAY">Bestätigung</string>
+	<string name="EVET">Ja</string>
+	<string name="HAYIR">Nein</string>
+	<string name="TAMAM">OK</string>
+	<string name="UYARI">Hinweis</string>
+	<string name="KULLANICIADI">Benutzername</string>
+	<string name="SIFRE">Passwort</string>
+	<string name="HATA">Fehler</string>
+	<string name="AC">Öffnen</string>
+	<string name="ARA">Suchen..</string>
+	<string name="ARIYOR">Suche lDuft..</string>
+
+	<string name="HOME">Zuhause</string>
+	<string name="LIBRARY">Bibliothek</string>
+	<string name="DOWNLOADED">Downloads</string>
+	<string name="INFO">Info</string>
+	<string name="INAPPPURCHASE">In - App Billing</string>
+
+	<string name="WARNING_0">Es ist ein unerwarteter Fehler aufgetreten.</string>
+	<string name="WARNING_1">Keinen Internet-Zugang gefunden.</string>
+	<string name="WARNING_2">Bitte geben Sie ihr Passwort ein.</string>
+
+	<string name="WARNING_101">Passwort wurde nicht angenommen.</string>
+	<string name="WARNING_102">Kein Inhalt gefunden.</string>
+	<string name="WARNING_103">Der Inhalt ist nicht aktiv. Dieser kann blockiert oder inaktiviert sein.</string>
+	<string name="WARNING_104">Interaktive Datei wurde noch nicht erstellt.</string>
+	<string name="WARNING_120">Kein Kunde gefunden.</string>
+	<string name="WARNING_120_2">Fehlerhafte Applikations-ID</string>
+	<string name="WARNING_130">Keine Applikation gefunden.</string>
+	<string name="WARNING_131">Die Applikation ist nicht aktiv. Sie kann abgelaufen oder blockiert sein.</string>
+	<string name="WARNING_140">Benutzerdaten sind fehlerhaft.</string>
+	<string name="WARNING_141">You must create an account on www.galepress.com with Facebook username. </string>
+
+
+	<string name="action_settings">Einstellungen</string>
+	<string name="title_activity_main">MainActivity</string>
+
+	<string name="toggle_reflow_mode">Toggle reflow mode</string>
+	<string name="no_customer_application">Keine Applikation gefunden.</string>
+	<string name="select_customer_application">Choose Application</string>
+
+
+	<string name="CONFIRM_1">Sind Sie sicher, dass Sie löschen möchten?</string>
+	<string name="CONFIRM_2">Sind Sie sicher, dass Sie die anderen Downloads abbrechen möchten?</string>
+	<string name="CONFIRM_3">Sind Sie sicher, dass Sie den Download-Vorgang abbrechen möchten?</string>
+	<string name="CONFIRM_SETTING">Sind Sie sicher, die Sie zurücksetzen möchten?</string>
+
+
+	<string name="ERROR_1">Die Katalogdatei ist defekt.</string>
+
+	<string name="INFO_1">%1$d Treffer gefunden.</string>
+	<string name="INFO_2">Suche abgeschlossen.</string>
+	<string name="INFO_3">Seite %1$d</string>
+	<string name="INFO_4">Wird geladen</string>
+
+	<string name="PLACEHOLDER1">Suche nach der Inhaltsbezeichnung</string>
+
+	// General
+	<string name="Done">Fertig</string>
+
+	// Page Toolbar
+	<string name="pageOfpage">%1$d / %2$d</string>
+	<string name="Page">Seite %d</string>
+
+
+	// PDF Viewer
+	<string name="Document_is_not_valid">Das Dokument ist keine gültige PDF-Datei.</string>
+	<string name="Document_is_password_protected">Das Dokument ist passwortgeschützt!</string>
+
+
+	// Search
+	<string name="Search_Document">Suchen</string>
+	<string name="Searching">Suche läuft</string>
+	<string name="Search_Completed">Suche abgeschlossen</string>
+	<string name="results_found">%1$d Treffer gefunden</string>
+
+	<string name="hide_all">Alles anzeigen</string>
+	<string name="backDescription">Zurück in die Bibliothek</string>
+	<string name="email">E-Mail</string>
+	<string name="forceUpdateWarnMessage">Möchten Sie Anwendung aus Google Play aktualisieren möchten.</string>
+	<string name="forceUpdateBlockMessage">Anwendung blockiert. Bitte aktualisieren Sie Anwendung.</string>
+	<string name="goToMarket">Zum Laden gehen</string>
+	<string name="latitude_longitude"><![CDATA[<string name=\"latitude_longitude\">%1$.8f, %2$.8f</string>]]></string>
+	<string name="resolved">Fehler behoben. Bitte versuchen Sie erneut Betrieb.</string>
+	<string name="connected">Client verbunden</string>
+	<string name="no_resolution">Google Play-Dienste: keine Verbindungsfehler zu beheben.</string>
+	<string name="disconnected">Client getrennt</string>
+	<string name="unknown_activity_request_code">Erhielt eine unbekannte Aktivität Anforderungscode %1$d in onActivityResult.</string>
+	<string name="play_services_available">Google-Play-Dienste zur Verfügung</string>
+
+	<string name="title_activity_launch">LaunchActivity</string>
+	<string name="links">Links</string>
+	<string name="left_menu_setting">Anmelden Informationen</string>
+	<string name="user_information_check">Überprüfen Benutzerinformationen ...</string>
+
+	<string name="login">Login</string>
+	<string name="logout">Logout</string>
+	<string name="viewer_facebook_login_warning">Kann nicht mit Facebook anmelden</string>
+	<string name="viewer_facebook_login_appId_warning">Bitte geben Sie Anwendungs-ID</string>
+
 
 </resources>
