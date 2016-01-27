@@ -298,7 +298,6 @@ public class ThumnailHorizontalListView extends AdapterView<ListAdapter> {
         int scrollX = (scrollDistance - (screenWidth / 2))
                 + (selectedItemWidth / 2);
 
-        Log.e("scrolldd",""+scrollX);
         scrollTo(scrollX);
     }
 

@@ -369,7 +369,7 @@ public class MuPDFCore
                 }
             }
         } catch (OutOfMemoryError e) {
-            Log.e(TAG, "update page " + page + "failed", e);
+            e.printStackTrace();
             if(canvas != null) canvas.drawColor(Color.TRANSPARENT);
         }
 	}

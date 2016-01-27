@@ -1664,7 +1664,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
             thumnailAdapter.pageNumberList.get(selectedIndex).startAnimation(sVisible);
         } catch (Exception e) {
-            Log.e("ThumnailleftAnim", e.toString());
+            e.printStackTrace();
         }
     }
 
@@ -1750,7 +1750,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             thumnailAdapter.pageNumberList.get(selectedIndex).clearAnimation();
             thumnailAdapter.pageNumberList.get(selectedIndex).startAnimation(sVisible);
         } catch (Exception e) {
-            Log.e("ThumnailrightAnim", e.toString());
+            e.printStackTrace();
         }
 
     }
@@ -2335,7 +2335,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                     muPDFPageView.clearWebAnnotations(muPDFPageView);
                 }*/
                 } catch (Exception e) {
-                    Log.e("Webview clear", "" + e.toString());
+                    e.printStackTrace();
                 }
 
                 Intent intent = getIntent();
@@ -2375,7 +2375,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                     muPDFPageView.clearWebAnnotations(muPDFPageView);
                 }*/
                         } catch (Exception e) {
-                            Log.e("Webview clear", "" + e.toString());
+                            e.printStackTrace();
                         }
 
                         if (content.isMaster() && isHomeOpen) {
@@ -2400,7 +2400,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                     muPDFPageView.clearWebAnnotations(muPDFPageView);
                 }*/
                             } catch (Exception e) {
-                                Log.e("Webview clear", "" + e.toString());
+                                e.printStackTrace();
                             }
 
                             Intent intent = getIntent();

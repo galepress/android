@@ -531,12 +531,10 @@ public class GalePressApplication
     public void setRequestCount(int requestCount) {
 
         if(requestCount == 0){
-//            Logout.e("Adem", "***Requestler bitmis olmali");
             dataApi.updateCompleted();
         }
         if(requestCount == -100) {
             requestCount = 1;
-//            Logout.e("Adem", "***Requestler yeni basliyor.");
             // requestCount ilk kez initialize ediliyor. O olsaydi bitmis gibi gorunebilirdi. -101 ile initialize ettim.
         }
         this.requestCount = requestCount;

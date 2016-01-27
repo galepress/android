@@ -356,7 +356,7 @@ public class MuPDFReaderView extends ReaderView {
 		for(int i=0; i < pageView.getChildCount(); i++){
 			View view = pageView.getChildAt(i);
 
-			if(view instanceof WebView){
+			if(view instanceof WebView || view instanceof XWalkView){
 				float original_x;
 				float original_y;
 				WebView webView = (WebView) view;
@@ -369,10 +369,11 @@ public class MuPDFReaderView extends ReaderView {
 								original_y = link.rect.top * pageView.mSourceScale;
 								webView.setPivotX(0);
 								webView.setPivotY(0);
-								webView.setX(original_x*scale);
-								webView.setY(original_y*scale);
+								webView.setX(original_x * scale);
+								webView.setY(original_y * scale);
 								webView.setScaleX(scale);
 								webView.setScaleY(scale);
+								webView.invalidate();
 							}
 						}
 					}

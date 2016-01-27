@@ -598,6 +598,20 @@ public class ContentPopupActivity extends Activity{
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
+                        /*
+                        * Eger indirme islemi devame diyorsa library ve downloads ekranlari update ediliyor.
+                        * */
+                        if (GalePressApplication.getInstance().getMainActivity() != null && GalePressApplication.getInstance().getDataApi().downloadPdfTask != null && (GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() == AsyncTask.Status.RUNNING)){
+                            if(GalePressApplication.getInstance().getMainActivity().getLibraryFragment() != null) {
+                                LibraryFragment libraryFragment = GalePressApplication.getInstance().getMainActivity().getLibraryFragment();
+                                libraryFragment.updateGridView();
+                            }
+
+                            if(GalePressApplication.getInstance().getMainActivity().getDownloadedLibraryFragment() != null) {
+                                LibraryFragment libraryFragment = GalePressApplication.getInstance().getMainActivity().getDownloadedLibraryFragment();
+                                libraryFragment.updateGridView();
+                            }
+                        }
                         popup.setAlpha(0);
                     }
 

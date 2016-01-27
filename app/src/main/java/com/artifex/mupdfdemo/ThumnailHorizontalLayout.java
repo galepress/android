@@ -167,7 +167,7 @@ public class ThumnailHorizontalLayout extends HorizontalScrollView {
 
             adapter.pageNumberList.get(selectedIndex).startAnimation(sVisible);
         } catch (Exception e){
-            Log.e("ThumnailleftAnim", e.toString());
+            e.printStackTrace();
         }
     }
 
@@ -248,7 +248,7 @@ public class ThumnailHorizontalLayout extends HorizontalScrollView {
             adapter.pageNumberList.get(selectedIndex).clearAnimation();
             adapter.pageNumberList.get(selectedIndex).startAnimation(sVisible);
         } catch (Exception e){
-            Log.e("ThumnailrightAnim", e.toString());
+            e.printStackTrace();
         }
 
     }

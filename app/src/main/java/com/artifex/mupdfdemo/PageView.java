@@ -168,7 +168,6 @@ public abstract class PageView extends ViewGroup {
 		mEntireMat = new Matrix();
 	}
 //    public boolean onInterceptTouchEvent(MotionEvent ev) {
-//        Logout.e("Adem","Intercepted touch event : "+ev.getAction());
 //        return true;
 //    }
 
@@ -300,7 +299,7 @@ public abstract class PageView extends ViewGroup {
 							.invoke(webView, (Object[]) null);
 
 				} catch (Exception cnfe) {
-					Log.e("onPause", cnfe.toString());
+					cnfe.printStackTrace();
 				}
 
 				webView.destroy();
@@ -326,7 +325,7 @@ public abstract class PageView extends ViewGroup {
                             .invoke(webView, (Object[]) null);*/
 
 				} catch (Exception cnfe) {
-					Log.e("onPause", cnfe.toString());
+					cnfe.printStackTrace();
 				}
 
 				webView.onDestroy();

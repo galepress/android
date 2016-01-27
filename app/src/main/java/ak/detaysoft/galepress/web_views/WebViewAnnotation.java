@@ -41,13 +41,11 @@ public class WebViewAnnotation extends WebView {
         * */
         /*@Override
         public void onShowCustomView(View view, CustomViewCallback callback) {
-            Logout.e("Adem","onShowCustomView");
             super.onShowCustomView(view, callback);
         }
 
         @Override
         public void onHideCustomView() {
-            Logout.e("Adem","onHideCustomView");
             super.onHideCustomView();
         }*/
         @Override

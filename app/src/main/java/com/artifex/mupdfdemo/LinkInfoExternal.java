@@ -147,7 +147,6 @@ public class LinkInfoExternal extends LinkInfo {
             }
             catch (Exception e){
                 e.printStackTrace();
-                Log.e("Adem",e.getLocalizedMessage());
                 return null;
             }
         }
