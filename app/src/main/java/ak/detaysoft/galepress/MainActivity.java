@@ -440,10 +440,21 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
     }
 
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        /*
+        * Eger super cagrilirsa setCustomTabs() metodunda mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG); satirinda crash oluyor uygulama.
+        * Bu durum her zaman olmuyor sadece eger o sirada baska bi activity aciksa internet state degisirse crash oluyor.
+        * Work round cozum olarak bunu buldum. Kalici cozum ariyorum. (MG)
+        * */
+        //super.onSaveInstanceState(outState);
+    }
+
     /*
     * Renk degismedigi zaman servisten gelen tabbar ikonları invalidate edilmiyor.
     * Yoksa uygulama icinde her update oldugunda ikonlarda yeniden load edildigi cini kotu gorunuyor
-    * */
+    */
     public void invalidateActivityViewAndAdapter(boolean isColorChanged){
 
         leftLayout.setBackgroundColor(ApplicationThemeColor.getInstance().getForegroundColor());
@@ -977,6 +988,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         super.onResume();
         GalePressApplication.getInstance().setCurrentActivity(this);
     }
+
     protected void onPause() {
         clearReferences();
         super.onPause();

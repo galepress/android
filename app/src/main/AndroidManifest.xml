@@ -33,7 +33,7 @@
     <application
         android:name="ak.detaysoft.galepress.GalePressApplication"
         android:allowBackup="true"
-        android:hardwareAccelerated="true"
+        android:hardwareAccelerated="false"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true">
@@ -63,7 +63,6 @@
         <activity
             android:name=".web_views.ExtraWebViewActivity"
             android:label="@string/app_name"
-            android:configChanges="orientation|screenSize"
             android:theme="@style/ExtraWebView"></activity>
         <activity
             android:name=".web_views.ExtraWebViewWithCrosswalkActivity"

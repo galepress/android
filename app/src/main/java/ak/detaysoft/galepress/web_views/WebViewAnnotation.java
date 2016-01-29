@@ -70,6 +70,7 @@ public class WebViewAnnotation extends WebView {
             if(loading != null) {
                 loading.setVisibility(GONE);
             }
+            Logout.e("xxxxxx",""+url);
             view.setVisibility(VISIBLE);
         }
 
@@ -80,6 +81,7 @@ public class WebViewAnnotation extends WebView {
             if(loading != null) {
                 loading.setVisibility(VISIBLE);
             }
+            view.setVisibility(GONE);
         }
 
         @Override

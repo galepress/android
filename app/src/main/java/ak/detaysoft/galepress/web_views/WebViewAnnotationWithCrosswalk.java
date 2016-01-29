@@ -78,6 +78,7 @@ public class WebViewAnnotationWithCrosswalk extends XWalkView {
             if(loading != null) {
                 loading.setVisibility(VISIBLE);
             }
+            view.setVisibility(GONE);
         }
 
         @Override

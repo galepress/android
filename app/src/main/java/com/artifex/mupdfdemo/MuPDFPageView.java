@@ -731,6 +731,7 @@ public class MuPDFPageView extends PageView implements MuPDFView {
 						webView.invalidate();
 					} else if(webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_ANIMATION){ //Animasyonların load edildikten sonra
 						webView.setVisibility(GONE);
+						webView.clearCache(true);
 						webView.reload();
 					}
 				}
@@ -739,6 +740,7 @@ public class MuPDFPageView extends PageView implements MuPDFView {
 				WebViewAnnotationWithCrosswalk webView = (WebViewAnnotationWithCrosswalk)view;
 				if(webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_ANIMATION){
 					webView.setVisibility(GONE);
+					webView.clearCache(true);
 					webView.reload(XWalkView.RELOAD_NORMAL);
 				}
 			}

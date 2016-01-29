@@ -302,7 +302,6 @@ public class MuPDFReaderView extends ReaderView {
             SearchTaskResult.set(null);
             resetupChildren();
         }
-
 	}
 
     public int[] getDisplayedPageNumbers(int index){
@@ -356,48 +355,24 @@ public class MuPDFReaderView extends ReaderView {
 		for(int i=0; i < pageView.getChildCount(); i++){
 			View view = pageView.getChildAt(i);
 
-			if(view instanceof WebView || view instanceof XWalkView){
+			if(view instanceof WebView || view instanceof XWalkView){ //Annotation viewlar WebView-XWalkView
 				float original_x;
 				float original_y;
-				WebView webView = (WebView) view;
 				LinkInfo[] links = pageView.mLinks;
 				if (links!=null){
 					for (LinkInfo link : links) {
 						if (link instanceof LinkInfoExternal){
-							if(((LinkInfoExternal) link).webViewId == webView.getId()){
+							if(((LinkInfoExternal) link).webViewId == view.getId()){
+
 								original_x = link.rect.left * pageView.mSourceScale;
 								original_y = link.rect.top * pageView.mSourceScale;
-								webView.setPivotX(0);
-								webView.setPivotY(0);
-								webView.setX(original_x * scale);
-								webView.setY(original_y * scale);
-								webView.setScaleX(scale);
-								webView.setScaleY(scale);
-								webView.invalidate();
-							}
-						}
-					}
-				}
-			} else if(view instanceof XWalkView){ //XWalkView webview kontrol
-				float original_x;
-				float original_y;
-				XWalkView webView = (XWalkView) view;
-				LinkInfo[] links = pageView.mLinks;
-				if (links!=null){
-					for (LinkInfo link : links) {
-						if (link instanceof LinkInfoExternal){
-							if(((LinkInfoExternal) link).webViewId == webView.getId()){
-								original_x = link.rect.left * pageView.mSourceScale;
-								original_y = link.rect.top * pageView.mSourceScale;
-								webView.setPivotX(0);
-								webView.setPivotY(0);
-								webView.setX(original_x * scale);
-								webView.setY(original_y * scale);
-								webView.setScaleX(scale);
-								webView.setScaleY(scale);
-
-								webView.invalidate();
-
+								view.setPivotX(0);
+								view.setPivotY(0);
+								view.setX(original_x * scale);
+								view.setY(original_y * scale);
+								view.setScaleX(scale);
+								view.setScaleY(scale);
+								view.invalidate();
 							}
 						}
 					}

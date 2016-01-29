@@ -877,66 +877,81 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
     @Override
     protected void onPause() {
-        Logout.e("Adem", "onPause");
-        super.onPause();
+        try{
+            Logout.e("Adem", "onPause");
+            super.onPause();
 
-        // If the screen is off then the device has been locked
-        PowerManager powerManager = (PowerManager) getSystemService(POWER_SERVICE);
-        boolean isScreenOn = powerManager.isScreenOn();
+            // If the screen is off then the device has been locked
+            PowerManager powerManager = (PowerManager) getSystemService(POWER_SERVICE);
+            boolean isScreenOn = powerManager.isScreenOn();
 
-        if (!isScreenOn) {
-            isActivityActive = false;
-            //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
-            ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
-            ((MuPDFPageView) mDocView.getChildAt(0)).pauseTimers();
-        }
-
-        if (mSearchTask != null)
-            mSearchTask.stop();
-
-        if (mFileName != null && mDocView != null) {
-            SharedPreferences prefs = getSharedPreferences("pages", Context.MODE_PRIVATE);
-            SharedPreferences.Editor edit = prefs.edit();
-
-            int viewIndex = mDocView.getDisplayedViewIndex();
-            if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
-                viewIndex = core.convertIndexes(viewIndex, lastPortraitPageIndex, false);
-            } else {
-                lastPortraitPageIndex = viewIndex;
+            if (!isScreenOn) {
+                isActivityActive = false;
+                if(mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null) {
+                    //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
+                    ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
+                    ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
+                    ((MuPDFPageView) mDocView.getChildAt(0)).destroyTimers();
+                }
             }
 
-            edit.putInt("page" + mFileName, viewIndex);
-            edit.putInt("lastPortraitPageIndex" + mFileName, lastPortraitPageIndex);
-            edit.commit();
+            if (mSearchTask != null)
+                mSearchTask.stop();
+
+            if (mFileName != null && mDocView != null) {
+                SharedPreferences prefs = getSharedPreferences("pages", Context.MODE_PRIVATE);
+                SharedPreferences.Editor edit = prefs.edit();
+
+                int viewIndex = mDocView.getDisplayedViewIndex();
+                if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+                    viewIndex = core.convertIndexes(viewIndex, lastPortraitPageIndex, false);
+                } else {
+                    lastPortraitPageIndex = viewIndex;
+                }
+
+                edit.putInt("page" + mFileName, viewIndex);
+                edit.putInt("lastPortraitPageIndex" + mFileName, lastPortraitPageIndex);
+                edit.commit();
+            }
+        } catch (Exception e){
+            e.printStackTrace();
         }
     }
 
     public void onDestroy() {
 
-        if (mDocView != null) {
-            mDocView.applyToChildren(new ViewMapper() {
-                void applyToView(View view) {
-                    ((MuPDFView) view).releaseBitmaps();
-                }
-            });
-        }
+        try{
+            if (mDocView != null) {
+                mDocView.applyToChildren(new ViewMapper() {
+                    void applyToView(View view) {
+                        ((MuPDFView) view).releaseBitmaps();
+                    }
+                });
+            }
 
-        //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
-        ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
-        ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
-        ((MuPDFPageView) mDocView.getChildAt(0)).destroyTimers();
+            if(mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null) {
+                //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
+                ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
+                ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
+                ((MuPDFPageView) mDocView.getChildAt(0)).destroyTimers();
+            }
+
 
         /*for(int i =0; i < mDocView.getChildCount(); i++){
             MuPDFPageView muPDFPageView = (MuPDFPageView) mDocView.getChildAt(i);
             muPDFPageView.clearWebAnnotations(muPDFPageView);
         }*/
-        if (core != null)
-            core.onDestroy();
-        if (mAlertTask != null) {
-            mAlertTask.cancel(true);
-            mAlertTask = null;
+            if (core != null)
+                core.onDestroy();
+            if (mAlertTask != null) {
+                mAlertTask.cancel(true);
+                mAlertTask = null;
+            }
+            core = null;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        core = null;
+
         super.onDestroy();
     }
 
