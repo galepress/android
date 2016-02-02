@@ -505,7 +505,9 @@ public class GalePressApplication
     }
 
     public  void releaseWakeLock() {
-        if (wakeLock != null) wakeLock.release(); wakeLock = null;
+        if (wakeLock != null)
+            wakeLock.release();
+        wakeLock = null;
     }
 
 

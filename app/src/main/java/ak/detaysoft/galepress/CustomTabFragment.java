@@ -45,7 +45,6 @@ public class CustomTabFragment extends Fragment {
         progressBar = (ProgressBar)v.findViewById(R.id.custom_web_view_progress_bar);
         ((LinearLayout)progressBar.getParent()).setBackgroundColor(ApplicationThemeColor.getInstance().getTransperentPopupColor());
 
-
         if (android.os.Build.VERSION.SDK_INT >= KITKAT) {
             tabbarWebView = new BannerAndTabbarWebView(this.getActivity(), progressBar,  false);
             FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);

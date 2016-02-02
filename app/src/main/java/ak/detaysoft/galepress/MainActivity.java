@@ -279,7 +279,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.actionbar);
 
-        setTabs();
+        setDefaultTabs();
 
         searchView = (EditText)findViewById(R.id.left_menu_search_edit_text);
         searchView.addTextChangedListener(new TextWatcher() {
@@ -628,7 +628,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             if(GalePressApplication.getInstance().getDataApi().getMasterContent() != null && GalePressApplication.getInstance().getDataApi().getMasterContent().isPdfDownloaded()){
                 isTabFirstInit = true;
                 mTabHost.clearAllTabs();
-                setTabs();
+                setDefaultTabs();
                 setCustomTabs();
                 mTabHost.getTabWidget().setCurrentTab(1);
                 mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG);
@@ -642,7 +642,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 tabIndex++;
             } else {
                 mTabHost.clearAllTabs();
-                setTabs();
+                setDefaultTabs();
                 setCustomTabs();
                 mTabHost.getTabWidget().setCurrentTab(0);
                 mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG);
@@ -676,7 +676,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         }
     }
 
-    private void setTabs() {
+    private void setDefaultTabs() {
         //gecici bir nesne atayip ordan devam edersek sorun cozulur
         mTabHost = (FragmentTabHost) findViewById(R.id.tabhost);
         mTabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
@@ -1094,7 +1094,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         if(getSupportFragmentManager().getFragments() != null){
             int count = getSupportFragmentManager().getFragments().size();
             for(int i=0; i< count; i++){
-                LibraryFragment fragment = (LibraryFragment) getSupportFragmentManager().getFragments().get(i);
+                Fragment fragment = getSupportFragmentManager().getFragments().get(i);
                 if(fragment != null && fragment.getTag().compareTo(LIBRARY_TAB_TAG) == 0 || fragment.getTag().compareTo(DOWNLOADED_LIBRARY_TAG) == 0)
                     return (LibraryFragment)fragment;
             }
@@ -1106,7 +1106,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         if(getSupportFragmentManager().getFragments() != null){
             int count = getSupportFragmentManager().getFragments().size();
             for(int i=0; i< count; i++){
-                LibraryFragment fragment = (LibraryFragment) getSupportFragmentManager().getFragments().get(i);
+                Fragment fragment = getSupportFragmentManager().getFragments().get(i);
                 if(fragment != null && fragment.getTag().compareTo(DOWNLOADED_LIBRARY_TAG) == 0)
                     return (LibraryFragment)fragment;
             }

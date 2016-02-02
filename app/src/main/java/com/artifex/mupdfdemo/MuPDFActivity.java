@@ -72,12 +72,11 @@ import java.util.concurrent.Executor;
 import ak.detaysoft.galepress.GalePressApplication;
 import ak.detaysoft.galepress.MainActivity;
 import ak.detaysoft.galepress.R;
-import ak.detaysoft.galepress.util.ReaderTabbarStateListDrawable;
-import ak.detaysoft.galepress.util.StateListDrawableWithColorFilter;
 import ak.detaysoft.galepress.custom_models.TabbarItem;
 import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.database_models.L_Statistic;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
+import ak.detaysoft.galepress.util.ReaderTabbarStateListDrawable;
 
 class ThreadPerTaskExecutor implements Executor {
     public void execute(Runnable r) {
@@ -881,7 +880,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             Logout.e("Adem", "onPause");
             super.onPause();
 
-            // If the screen is off then the device has been locked
             PowerManager powerManager = (PowerManager) getSystemService(POWER_SERVICE);
             boolean isScreenOn = powerManager.isScreenOn();
 
@@ -957,9 +955,12 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
     @Override
     protected void onUserLeaveHint() {
-        //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
-        ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
-        ((MuPDFPageView) mDocView.getChildAt(0)).pauseTimers();
+        if(mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null ) {
+            //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
+            ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
+            ((MuPDFPageView) mDocView.getChildAt(0)).pauseTimers();
+        }
+
         isActivityActive = false;
         super.onUserLeaveHint();
     }
@@ -1771,6 +1772,10 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
     }
 
     private void makeButtonsView() {
+
+        if (core == null)
+            return;
+
         mButtonsView = getLayoutInflater().inflate(R.layout.buttons, null);
         mFilenameView = (TextView) mButtonsView.findViewById(R.id.docNameText);
         //mPageSlider = (SeekBar)mButtonsView.findViewById(R.id.pageSlider);
@@ -2315,10 +2320,13 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
 
             try {
-                //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
-                ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
-                ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
-                ((MuPDFPageView) mDocView.getChildAt(0)).destroyTimers();
+                if(mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null ) {
+                    //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
+                    ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
+                    ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
+                    ((MuPDFPageView) mDocView.getChildAt(0)).destroyTimers();
+                }
+
 
                 /*for(int i =0; i < mDocView.getChildCount(); i++){
                     MuPDFPageView muPDFPageView = (MuPDFPageView) mDocView.getChildAt(i);
@@ -2340,10 +2348,13 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             if (content.isMaster() && isHomeOpen) {
 
                 try {
-                    //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
-                    ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
-                    ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
-                    ((MuPDFPageView) mDocView.getChildAt(0)).destroyTimers();
+                    if(mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null ) {
+                        //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
+                        ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
+                        ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
+                        ((MuPDFPageView) mDocView.getChildAt(0)).destroyTimers();
+                    }
+
 
                 /*for(int i =0; i < mDocView.getChildCount(); i++){
                     MuPDFPageView muPDFPageView = (MuPDFPageView) mDocView.getChildAt(i);
@@ -2380,10 +2391,13 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                         GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
 
                         try {
-                            //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
-                            ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
-                            ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
-                            ((MuPDFPageView) mDocView.getChildAt(0)).destroyTimers();
+                            if(mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null ) {
+                                //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
+                                ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
+                                ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
+                                ((MuPDFPageView) mDocView.getChildAt(0)).destroyTimers();
+                            }
+
 
                 /*for(int i =0; i < mDocView.getChildCount(); i++){
                     MuPDFPageView muPDFPageView = (MuPDFPageView) mDocView.getChildAt(i);
@@ -2405,10 +2419,13 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                         if (content.isMaster() && isHomeOpen) {
 
                             try {
-                                //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
-                                ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
-                                ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
-                                ((MuPDFPageView) mDocView.getChildAt(0)).destroyTimers();
+                                if(mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null ) {
+                                    //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
+                                    ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
+                                    ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
+                                    ((MuPDFPageView) mDocView.getChildAt(0)).destroyTimers();
+                                }
+
 
                 /*for(int i =0; i < mDocView.getChildCount(); i++){
                     MuPDFPageView muPDFPageView = (MuPDFPageView) mDocView.getChildAt(i);

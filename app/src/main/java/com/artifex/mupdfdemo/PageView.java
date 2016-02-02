@@ -622,8 +622,11 @@ public abstract class PageView extends ViewGroup {
 								modalButton.setOnClickListener(new OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-										((MuPDFPageView)((MuPDFActivity)mContext).mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
-										((MuPDFPageView)((MuPDFActivity)mContext).mDocView.getChildAt(0)).resumeCurrentPageWebAnnotationsMedia();
+										if(((MuPDFActivity)mContext).mDocView != null && ((MuPDFActivity)mContext).mDocView.getChildAt(0) != null ) {
+											((MuPDFPageView)((MuPDFActivity)mContext).mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
+											((MuPDFPageView)((MuPDFActivity)mContext).mDocView.getChildAt(0)).resumeCurrentPageWebAnnotationsMedia();
+										}
+
 										final int KITKAT = 19; // Android 4.4
 										if (android.os.Build.VERSION.SDK_INT >= KITKAT) {
 											Intent intent = new Intent(mContext, ExtraWebViewActivity.class);

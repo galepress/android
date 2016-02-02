@@ -78,9 +78,9 @@ public class ThumnailListAdapter extends BaseAdapter {
             pageNumberList.add(new TextView(mContext));
 
         if(mCore.getDisplayPages() == 1){
-            mPath = GalePressApplication.getInstance().getFilesDir() + "/"+core.getContent().getId()+"/previewCache/" + mCore.getContent().getPdfFileName()+"/";
+            mPath = GalePressApplication.getInstance().getFilesDir() + "/"+mCore.getContent().getId()+"/previewCache/" + mCore.getContent().getPdfFileName()+"/";
         } else {
-            mPath = GalePressApplication.getInstance().getFilesDir() + "/"+core.getContent().getId()+"/previewCache/" + mCore.getContent().getPdfFileName()+"/land/";
+            mPath = GalePressApplication.getInstance().getFilesDir() + "/"+mCore.getContent().getId()+"/previewCache/" + mCore.getContent().getPdfFileName()+"/land/";
         }
 
         File mCacheDirectory = new File(mPath);

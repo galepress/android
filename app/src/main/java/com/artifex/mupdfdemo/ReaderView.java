@@ -586,9 +586,12 @@ public class ReaderView
                     mCurrent++;
                     onMoveToChild(mCurrent);
 
-                    //((MuPDFPageView)((MuPDFActivity)this.mContext).mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(false, false);
-                    ((MuPDFPageView) ((MuPDFActivity) this.mContext).mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
-                    ((MuPDFPageView) ((MuPDFActivity) this.mContext).mDocView.getChildAt(0)).resumeCurrentPageWebAnnotationsMedia();
+                    if(((MuPDFActivity) this.mContext).mDocView != null && ((MuPDFActivity) this.mContext).mDocView.getChildAt(0) != null ) {
+                        //((MuPDFPageView)((MuPDFActivity)this.mContext).mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(false, false);
+                        ((MuPDFPageView) ((MuPDFActivity) this.mContext).mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
+                        ((MuPDFPageView) ((MuPDFActivity) this.mContext).mDocView.getChildAt(0)).resumeCurrentPageWebAnnotationsMedia();
+                    }
+
                 }
 
                 if (cv.getLeft() - cvOffset.x - GAP / 2 + mXScroll >= getWidth() / 2 && mCurrent > 0) {
@@ -601,10 +604,13 @@ public class ReaderView
                     mCurrent--;
                     onMoveToChild(mCurrent);
 
+                    if(((MuPDFActivity) this.mContext).mDocView != null && ((MuPDFActivity) this.mContext).mDocView.getChildAt(0) != null ) {
+                        //((MuPDFPageView)((MuPDFActivity)this.mContext).mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(false, false);
+                        ((MuPDFPageView) ((MuPDFActivity) this.mContext).mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
+                        ((MuPDFPageView) ((MuPDFActivity) this.mContext).mDocView.getChildAt(0)).resumeCurrentPageWebAnnotationsMedia();
+                    }
 
-                    //((MuPDFPageView)((MuPDFActivity)this.mContext).mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(false, false);
-                    ((MuPDFPageView) ((MuPDFActivity) this.mContext).mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
-                    ((MuPDFPageView) ((MuPDFActivity) this.mContext).mDocView.getChildAt(0)).resumeCurrentPageWebAnnotationsMedia();
+
                 }
             }
 
