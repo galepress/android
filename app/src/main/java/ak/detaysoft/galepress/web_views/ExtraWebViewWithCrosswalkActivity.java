@@ -1,12 +1,14 @@
 package ak.detaysoft.galepress.web_views;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -14,10 +16,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.xwalk.core.XWalkNavigationHistory;
+import org.xwalk.core.XWalkPreferences;
 import org.xwalk.core.XWalkResourceClient;
 import org.xwalk.core.XWalkUIClient;
 import org.xwalk.core.XWalkView;
 import org.xwalk.core.internal.XWalkSettings;
+import org.xwalk.core.internal.XWalkViewBridge;
 
 import ak.detaysoft.galepress.R;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
@@ -38,7 +42,6 @@ public class ExtraWebViewWithCrosswalkActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.extra_crosswalk_webview_layout);
         progressBar = (ProgressBar) findViewById(R.id.crosswalk_extra_web_view_load_progress_bar);
-
 
         if (getIntent().getExtras().containsKey("isModal"))
             isModal = this.getIntent().getExtras().getBoolean("isModal");
@@ -115,10 +118,12 @@ public class ExtraWebViewWithCrosswalkActivity extends Activity {
 
 
         webView = (XWalkView) findViewById(R.id.crosswalk_webview);
+        webView.setOnKeyListener(null);
+
         MyXWalkResourceClient resourceClient = new MyXWalkResourceClient(webView);
         webView.setResourceClient(resourceClient);
 
-        XWalkSettings settings = new XWalkSettings(webView.getContext(), null, false);
+        XWalkSettings settings = new XWalkSettings(webView.getContext(), null , false);
         settings.setAllowContentAccess(true);
         settings.setAllowFileAccess(true);
         settings.setDomStorageEnabled(true);
@@ -130,6 +135,9 @@ public class ExtraWebViewWithCrosswalkActivity extends Activity {
 
         MyXUIClient uiClient = new MyXUIClient(webView);
         webView.setUIClient(uiClient);
+
+        webView.setHorizontalScrollBarEnabled(false);
+        webView.setVerticalScrollBarEnabled(false);
 
         webView.load(url, null);
 
@@ -219,6 +227,7 @@ public class ExtraWebViewWithCrosswalkActivity extends Activity {
         public void onLoadStarted(XWalkView view, String url) {
             super.onLoadStarted(view, url);
         }
+
     }
 
     class MyXUIClient extends XWalkUIClient {
@@ -246,6 +255,7 @@ public class ExtraWebViewWithCrosswalkActivity extends Activity {
                 else
                     refreshButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(ExtraWebViewWithCrosswalkActivity.this, ApplicationThemeColor.WEBVIEW_REFRESH_DISABLE));
             }
+            view.setVisibility(View.GONE);
         }
 
         @Override
@@ -253,8 +263,9 @@ public class ExtraWebViewWithCrosswalkActivity extends Activity {
             super.onPageLoadStopped(view, url, status);
             ((LinearLayout)progressBar.getParent()).setVisibility(View.GONE);
             enableDisableNavigationButtons(view);
+            view.setVisibility(View.VISIBLE);
+
         }
 
     }
-
 }

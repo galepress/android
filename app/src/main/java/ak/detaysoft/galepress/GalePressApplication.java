@@ -159,10 +159,12 @@ public class GalePressApplication
         super.onCreate();
         Fabric.with(this, new Crashlytics());
 
-        XWalkPreferences.setValue(XWalkPreferences.ANIMATABLE_XWALK_VIEW, true);
+        XWalkPreferences.setValue("enable-javascript", true);
         XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, true);
         XWalkPreferences.setValue(XWalkPreferences.ALLOW_UNIVERSAL_ACCESS_FROM_FILE, true);
-
+        XWalkPreferences.setValue(XWalkPreferences.JAVASCRIPT_CAN_OPEN_WINDOW, true);
+        XWalkPreferences.setValue(XWalkPreferences.SUPPORT_MULTIPLE_WINDOWS, true);
+        XWalkPreferences.setValue(XWalkPreferences.ANIMATABLE_XWALK_VIEW, true);
         sInstance = this;
 
         DisplayImageOptions displayConfig = new DisplayImageOptions.Builder()
@@ -677,7 +679,7 @@ public class GalePressApplication
         tabList = newTabList;
 
         if(getCurrentActivity()!= null && getCurrentActivity().getClass() == MainActivity.class && isTablistChanced){
-            ((MainActivity)getCurrentActivity()).setCustomTabs();
+            ((MainActivity)getCurrentActivity()).initCustomTabs();
         }
     }
 

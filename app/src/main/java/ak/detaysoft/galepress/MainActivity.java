@@ -111,7 +111,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     private BroadcastReceiver mConnReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            setCustomTabs();
+            initCustomTabs();
         }
     };
 
@@ -279,7 +279,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.actionbar);
 
-        setDefaultTabs();
+        initDefaultTabs();
 
         searchView = (EditText)findViewById(R.id.left_menu_search_edit_text);
         searchView.addTextChangedListener(new TextWatcher() {
@@ -444,7 +444,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         /*
-        * Eger super cagrilirsa setCustomTabs() metodunda mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG); satirinda crash oluyor uygulama.
+        * Eger super cagrilirsa initCustomTabs() metodunda mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG); satirinda crash oluyor uygulama.
         * Bu durum her zaman olmuyor sadece eger o sirada baska bi activity aciksa internet state degisirse crash oluyor.
         * Work round cozum olarak bunu buldum. Kalici cozum ariyorum. (MG)
         * */
@@ -554,7 +554,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             logoutButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().getLogoutButtonDrawable(this));
 
 
-        prepareTabBars(isColorChanged);
+        invalidateTabBars(isColorChanged);
 
         if(getLibraryFragment() != null && getLibraryFragment().gridview != null)
             getLibraryFragment().gridview.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
@@ -619,7 +619,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
     }
 
-    public void prepareTabBars(boolean isColorChanged){
+    public void invalidateTabBars(boolean isColorChanged){
         mTabHost.getTabWidget().setBackgroundColor(ApplicationThemeColor.getInstance().getActionAndTabBarColor());
 
         int tabIndex = 0;
@@ -628,8 +628,8 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             if(GalePressApplication.getInstance().getDataApi().getMasterContent() != null && GalePressApplication.getInstance().getDataApi().getMasterContent().isPdfDownloaded()){
                 isTabFirstInit = true;
                 mTabHost.clearAllTabs();
-                setDefaultTabs();
-                setCustomTabs();
+                initDefaultTabs();
+                initCustomTabs();
                 mTabHost.getTabWidget().setCurrentTab(1);
                 mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG);
                 tabIndex++;
@@ -639,11 +639,12 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 isTabFirstInit = false;
                 ((ImageView)((LinearLayout)mTabHost.getTabWidget().getChildAt(tabIndex)).getChildAt(0)).setImageDrawable(createDrawable(true, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.HOME_ICON),
                         ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.HOME_ICON_SELECTED)));
+                ((TextView)((LinearLayout)mTabHost.getTabWidget().getChildAt(tabIndex)).getChildAt(1)).setTextColor(createTabTitleColorStateList());
                 tabIndex++;
             } else {
                 mTabHost.clearAllTabs();
-                setDefaultTabs();
-                setCustomTabs();
+                initDefaultTabs();
+                initCustomTabs();
                 mTabHost.getTabWidget().setCurrentTab(0);
                 mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG);
             }
@@ -651,10 +652,12 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
         ((ImageView)((LinearLayout)mTabHost.getTabWidget().getChildAt(tabIndex)).getChildAt(0)).setImageDrawable(createDrawable(true, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.LIBRARY_ICON),
                 ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.LIBRARY_ICON_SELECTED)));
+        ((TextView)((LinearLayout)mTabHost.getTabWidget().getChildAt(tabIndex)).getChildAt(1)).setTextColor(createTabTitleColorStateList());
         tabIndex++;
 
         ((ImageView)((LinearLayout)mTabHost.getTabWidget().getChildAt(tabIndex)).getChildAt(0)).setImageDrawable(createDrawable(true, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.DOWNLOAD_ICON),
                 ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.DOWNLOAD_ICON_SELECTED)));
+        ((TextView)((LinearLayout)mTabHost.getTabWidget().getChildAt(tabIndex)).getChildAt(1)).setTextColor(createTabTitleColorStateList());
         tabIndex++;
 
         /*
@@ -670,13 +673,17 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 ImageView img = ((ImageView)((LinearLayout)mTabHost.getTabWidget().getChildAt(customIndex)).getChildAt(0));
                 TextView txt = ((TextView)((LinearLayout)mTabHost.getTabWidget().getChildAt(customIndex)).getChildAt(1));
                 txt.setText(item.getTitle());
+                txt.setTextColor(createTabTitleColorStateList());
                 ApplicationThemeColor.getInstance().paintRemoteIcon(this, item, img);
                 customIndex++;
             }
         }
     }
 
-    private void setDefaultTabs() {
+    /*
+    * LIBRARY DOWNLOADED
+    * */
+    private void initDefaultTabs() {
         //gecici bir nesne atayip ordan devam edersek sorun cozulur
         mTabHost = (FragmentTabHost) findViewById(R.id.tabhost);
         mTabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
@@ -722,7 +729,10 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
     }
 
-    public void setCustomTabs(){
+    /*
+    * CUSTOMTABS
+    * */
+    public void initCustomTabs(){
 
         if(getSupportFragmentManager().getFragments() != null){
             if(GalePressApplication.getInstance().getTabList() != null && GalePressApplication.getInstance().getDataApi().isConnectedToInternet()){
@@ -849,9 +859,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         }
 
 
-
         if(webView != null){
-
 
             if (android.os.Build.VERSION.SDK_INT >= KITKAT) { //default webview
                 // if has previous page, enable the back button

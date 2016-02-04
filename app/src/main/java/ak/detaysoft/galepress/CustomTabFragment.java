@@ -88,7 +88,6 @@ public class CustomTabFragment extends Fragment {
         }
 
 
-
         return v;
     }
 
