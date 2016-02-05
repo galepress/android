@@ -57,6 +57,7 @@ dependencies {
     compile 'com.facebook.android:facebook-android-sdk:4.1.1'
     compile 'com.google.android.gms:play-services:4.0.30'
     compile project(':xwalk_core_library_15')
+    compile 'com.edmodo:cropper:1.0.1'
     compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
         transitive = true
     }

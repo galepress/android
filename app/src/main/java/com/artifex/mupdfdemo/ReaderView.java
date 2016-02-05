@@ -731,6 +731,14 @@ public class ReaderView
 
     @Override
     public void setAdapter(Adapter adapter) {
+
+        //  release previous adapter's bitmaps (MG)
+        if (null!=mAdapter && adapter!=mAdapter) {
+            if (adapter instanceof MuPDFPageAdapter){
+                ((MuPDFPageAdapter) adapter).releaseBitmaps();
+            }
+        }
+
         mAdapter = adapter;
 
         requestLayout();

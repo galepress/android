@@ -102,7 +102,8 @@ public class ApplicationThemeColor {
     public static final int DOWNLOAD_CONTENT_CLOUD_ARROW = 59;
     public static final int DOWNLOAD_CONTENT_PURCHASE_ARROW = 60;
     public static final int DOWNLOAD_CONTENT_BUTTON_BACKGROUND = 61;
-
+    public static final int CROP_PAGE_SUBMIT = 62;
+    public static final int CROP_PAGE_CANCEL = 63;
 
     //Servisten gelen iconlar icin
     public static final int CUSTOM_TAB_ICON = 101;
@@ -678,6 +679,19 @@ public class ApplicationThemeColor {
                 normal);
 
         return drawable;
+    }
+
+    public Drawable getCropPageButtonDrawable(Context context, int resourceType) {
+        Drawable myIcon;
+        if(resourceType == CROP_PAGE_SUBMIT){
+            myIcon = context.getResources().getDrawable(R.drawable.crop_submit);
+            myIcon.setColorFilter(getForegroundColorFilter());
+        } else {
+            myIcon = context.getResources().getDrawable(R.drawable.crop_cancel);
+            myIcon.setColorFilter(getForegroundColorFilter());
+        }
+
+        return myIcon;
     }
 
     public Drawable getPopupButtonDrawable(Context context, int resourceType) {

@@ -154,6 +154,11 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:label="@string/app_name" />
 
+        <activity
+            android:name="com.artifex.mupdfdemo.CropAndShareActivity"
+            android:label="@string/title_activity_crop"
+            android:theme="@style/ReaderTheme"></activity>
+
         <receiver
             android:name="com.google.android.gcm.GCMBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND">

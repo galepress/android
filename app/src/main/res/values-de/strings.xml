@@ -113,7 +113,6 @@
 
 
 	<string name="action_settings">Einstellungen</string>
-	<string name="title_activity_main">MainActivity</string>
 
 	<string name="toggle_reflow_mode">Toggle reflow mode</string>
 	<string name="no_customer_application">Keine Applikation gefunden.</string>
@@ -177,6 +176,7 @@
 	<string name="logout">Logout</string>
 	<string name="viewer_facebook_login_warning">Kann nicht mit Facebook anmelden</string>
 	<string name="viewer_facebook_login_appId_warning">Bitte geben Sie Anwendungs-ID</string>
+	<string name="cannot_open_crop">Kann nicht mit anderen geteilt Bildschirm öffnen</string>
 
 
 </resources>

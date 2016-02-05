@@ -58,6 +58,13 @@
         <dex dex="D:\Galepress-master\app\build\intermediates\pre-dexed\debug\ormlite-android-4.45-293b2b56b5cf4871fc0549012085f14d3a117ec0.jar" />
     </item>
     <item
+        jar="D:\Galepress-master\app\build\intermediates\exploded-aar\com.edmodo\cropper\1.0.1\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="66467578c335f7a6babdbe01f7f0ac63230f578e">
+        <dex dex="D:\Galepress-master\app\build\intermediates\pre-dexed\debug\classes-1322c04f9045b31da02997226ab49878503b47cd.jar" />
+    </item>
+    <item
         jar="D:\Galepress-master\app\build\intermediates\exploded-aar\Galepress-master\menuDrawer\unspecified\classes.jar"
         jumboMode="false"
         revision="19.1.0"
@@ -121,6 +128,13 @@
         <dex dex="D:\Galepress-master\app\build\intermediates\pre-dexed\debug\classes-b299032526fb6148fa2c33019872268c41b4917d.jar" />
     </item>
     <item
+        jar="D:\Galepress-master\app\build\intermediates\exploded-aar\com.crashlytics.sdk.android\crashlytics\2.5.5\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="611605b6b640c1558f9bdea41de8ff837ab68ca8">
+        <dex dex="D:\Galepress-master\app\build\intermediates\pre-dexed\debug\classes-f95ba91c5425fbfef03991a66350b10cb2a53d37.jar" />
+    </item>
+    <item
         jar="C:\Users\p1025\.gradle\caches\modules-2\files-2.1\com.j256.ormlite\ormlite-android\4.45\8ff8c21e8d0162333559f35cafd6a2238a33e5ba\ormlite-android-4.45.jar"
         jumboMode="false"
         revision="19.1.0"
@@ -130,23 +144,9 @@
     <item
         jar="D:\Galepress-master\app\build\intermediates\exploded-aar\com.crashlytics.sdk.android\crashlytics\2.5.5\classes.jar"
         jumboMode="false"
-        revision="20.0.0"
-        sha1="611605b6b640c1558f9bdea41de8ff837ab68ca8">
-        <dex dex="D:\Galepress-master\app\build\intermediates\pre-dexed\debug\classes-f95ba91c5425fbfef03991a66350b10cb2a53d37.jar" />
-    </item>
-    <item
-        jar="D:\Galepress-master\app\build\intermediates\exploded-aar\com.crashlytics.sdk.android\crashlytics\2.5.5\classes.jar"
-        jumboMode="false"
         revision="19.1.0"
         sha1="611605b6b640c1558f9bdea41de8ff837ab68ca8">
         <dex dex="D:\Galepress-master\app\build\intermediates\pre-dexed\debug\classes-f95ba91c5425fbfef03991a66350b10cb2a53d37.jar" />
-    </item>
-    <item
-        jar="D:\Galepress-master\app\src\main\lib\universal-image-loader-1.9.3.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="a85588bec3e2c4584d593d3f15df1677321bca72">
-        <dex dex="D:\Galepress-master\app\build\intermediates\pre-dexed\debug\universal-image-loader-1.9.3-e7cafaa818fc672cfb1cd87e2ac54950c4b1954c.jar" />
     </item>
     <item
         jar="D:\Galepress-master\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\20.0.0\classes.jar"
@@ -154,6 +154,13 @@
         revision="20.0.0"
         sha1="f21927d22fe31889ecce94dd697a2e75b137e0ef">
         <dex dex="D:\Galepress-master\app\build\intermediates\pre-dexed\debug\classes-8dfaa988ac90556f977a2d12f1937c372c3ac583.jar" />
+    </item>
+    <item
+        jar="D:\Galepress-master\app\src\main\lib\universal-image-loader-1.9.3.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="a85588bec3e2c4584d593d3f15df1677321bca72">
+        <dex dex="D:\Galepress-master\app\build\intermediates\pre-dexed\debug\universal-image-loader-1.9.3-e7cafaa818fc672cfb1cd87e2ac54950c4b1954c.jar" />
     </item>
     <item
         jar="D:\Galepress-master\app\build\intermediates\exploded-aar\Galepress-master\xwalk_core_library_15\unspecified\classes.jar"

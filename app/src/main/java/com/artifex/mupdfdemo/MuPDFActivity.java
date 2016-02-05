@@ -57,6 +57,7 @@ import com.artifex.mupdfdemo.ReaderView.ViewMapper;
 
 import net.simonvt.menudrawer.MenuDrawer;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -627,9 +628,11 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
         mailButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Activity activity = MuPDFActivity.this;
+                /*Activity activity = MuPDFActivity.this;
                 String filePath = Environment.getExternalStorageDirectory() + File.separator + "Pictures/screenshot.png";
-                sendMail(activity, filePath);
+                sendMail(activity, filePath);*/
+
+                cropAndShareCurrentPage();
             }
         });
 
@@ -1508,6 +1511,28 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             Toast.makeText(this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
         }
         showButtonsFast();
+    }
+
+    public void cropAndShareCurrentPage(){
+
+        hideButtonsFast();
+        bottomButton.setVisibility(View.INVISIBLE);
+        byte[] bytes;
+        try{
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            takeScreenShot(MuPDFActivity.this).compress(Bitmap.CompressFormat.PNG, 100, stream);
+            bytes =  stream.toByteArray();
+            Intent intent = new Intent(MuPDFActivity.this, CropAndShareActivity.class);
+            intent.putExtra("cropImage", bytes);
+            int display_mode = getResources().getConfiguration().orientation;
+            intent.putExtra("displayMode", display_mode);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(MuPDFActivity.this, MuPDFActivity.this.getResources().getString(R.string.cannot_open_crop), Toast.LENGTH_SHORT).show();
+        }
+        bottomButton.setVisibility(View.VISIBLE);
+        showButtonsFast();
+
     }
 
 
