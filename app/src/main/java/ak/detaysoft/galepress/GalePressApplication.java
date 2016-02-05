@@ -421,7 +421,7 @@ public class GalePressApplication
             applicationId = testApplicationInf.getApplicationId();
         else {
 
-            if (applicationPlist == null || applicationPlist.get("ApplicationID") != null)
+            if (applicationPlist == null || applicationPlist.get("ApplicationID") == null)
                 parseApplicationPlist();
 
             applicationId = (String)applicationPlist.get("ApplicationID");
