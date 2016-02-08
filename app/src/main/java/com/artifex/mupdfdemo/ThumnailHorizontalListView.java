@@ -284,10 +284,15 @@ public class ThumnailHorizontalListView extends AdapterView<ListAdapter> {
         int selectedItemWidth = 0;
         int density = (int)((MuPDFActivity)mContext).getResources().getDisplayMetrics().density;
         for(int i = 0; i <= position; i++){
-            if(i != position)
-                scrollDistance += (((int)((ThumnailListAdapter)mAdapter).itemSizeList.get(i).x) + density);
-            else
-                selectedItemWidth = (int)(((ThumnailListAdapter)mAdapter).itemSizeList.get(i).x);
+            if(i < ((ThumnailListAdapter)mAdapter).itemSizeList.size()) {
+                if(i != position) {
+                    scrollDistance += (((int)((ThumnailListAdapter)mAdapter).itemSizeList.get(i).x) + density);
+                    selectedItemWidth = (int)(((ThumnailListAdapter)mAdapter).itemSizeList.get(i).x);
+                } else {
+                    selectedItemWidth = (int)(((ThumnailListAdapter)mAdapter).itemSizeList.get(i).x);
+                }
+            }
+
         }
 
         Display display = ((MuPDFActivity)mContext).getWindowManager().getDefaultDisplay();

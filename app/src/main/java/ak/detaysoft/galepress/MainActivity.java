@@ -694,6 +694,13 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 return true;
             }
         });
+        /*mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String tabId) {
+                Log.e("denemeeeee", "" + tabId);
+                getCustomFragment();
+            }
+        });*/
 
         if(GalePressApplication.getInstance().getDataApi().getMasterContent() != null && GalePressApplication.getInstance().getDataApi().getMasterContent().isPdfDownloaded()){
             addTab(getResources().getString(R.string.HOME),HOME_TAB_TAG, createDrawable(true, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.HOME_ICON),
@@ -1105,6 +1112,19 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 Fragment fragment = getSupportFragmentManager().getFragments().get(i);
                 if(fragment != null && fragment.getTag().compareTo(LIBRARY_TAB_TAG) == 0 || fragment.getTag().compareTo(DOWNLOADED_LIBRARY_TAG) == 0)
                     return (LibraryFragment)fragment;
+            }
+        }
+        return null;
+    }
+
+    public CustomTabFragment getCustomFragment(){
+        if(getSupportFragmentManager().getFragments() != null){
+            int count = getSupportFragmentManager().getFragments().size();
+            for(int i=0; i< count; i++){
+                Fragment fragment = getSupportFragmentManager().getFragments().get(i);
+                if(fragment != null && fragment.getTag().compareTo(LIBRARY_TAB_TAG) != 0 && fragment.getTag().compareTo(DOWNLOADED_LIBRARY_TAG) != 0
+                        && fragment.getTag().compareTo(HOME_TAB_TAG) != 0 && fragment.getTag().compareTo(INFO_TAB_TAG) != 0)
+                    return (CustomTabFragment)fragment;
             }
         }
         return null;

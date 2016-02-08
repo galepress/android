@@ -321,6 +321,9 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         this.savedInstanceState = savedInstanceState;
         super.onCreate(savedInstanceState);
 
+        Intent intent = getIntent();
+        this.content = (L_Content) intent.getSerializableExtra("content");
+
         mAlertBuilder = new AlertDialog.Builder(this);
 
         if (getIntent().hasExtra("isHomeOpen"))
@@ -334,7 +337,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             }
         }
         if (core == null) {
-            Intent intent = getIntent();
+
             byte buffer[] = null;
             if (Intent.ACTION_VIEW.equals(intent.getAction())) {
                 Uri uri = intent.getData();
@@ -381,7 +384,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                 if (buffer != null) {
                     core = openBuffer(buffer);
                 } else {
-                    this.content = (L_Content) intent.getSerializableExtra("content");
                     core = openFile(Uri.decode(uri.getEncodedPath()));
                 }
                 SearchTaskResult.set(null);
