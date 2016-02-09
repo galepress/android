@@ -483,14 +483,17 @@ public class DataApi extends Object {
         @Override
         protected Void doInBackground(Void... params) {
             List<L_Statistic> statistics = getDatabaseApi().getAllStatistics();
-            for(L_Statistic statistic : statistics){
-                if(isCancelled() == false){
-                    postStatistic(statistic);
-                }
-                else{
-                    break;
+            if(statistics != null) {
+                for(L_Statistic statistic : statistics){
+                    if(isCancelled() == false){
+                        postStatistic(statistic);
+                    }
+                    else{
+                        break;
+                    }
                 }
             }
+
             return null;
         }
 

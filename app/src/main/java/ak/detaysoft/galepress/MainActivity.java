@@ -190,10 +190,10 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 hideKeyboard(searchView);
 
                 /*if(GalePressApplication.getInstance().getDataApi().getMasterContent() != null && GalePressApplication.getInstance().getDataApi().getMasterContent().isPdfDownloaded()) {
-                    mTabHost.getTabWidget().setCurrentTab(1);
+                    mTabHost.setCurrentTab(1);
                 }
                 else
-                    mTabHost.getTabWidget().setCurrentTab(0);
+                    mTabHost.setCurrentTab(0);
                 mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG); */
                 L_Category selectedCategory = (L_Category)categoryListWithAll.get(position);
                 if(selectedCategory.getCategoryName().compareTo(getString(R.string.show_all))!=0){
@@ -630,8 +630,8 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 mTabHost.clearAllTabs();
                 initDefaultTabs();
                 initCustomTabs();
-                mTabHost.getTabWidget().setCurrentTab(1);
-                mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG);
+                mTabHost.setCurrentTab(1);
+                //mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG);
                 tabIndex++;
             }
         } else {// Home varsa
@@ -645,8 +645,8 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 mTabHost.clearAllTabs();
                 initDefaultTabs();
                 initCustomTabs();
-                mTabHost.getTabWidget().setCurrentTab(0);
-                mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG);
+                mTabHost.setCurrentTab(0);
+                //mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG);
             }
         }
 
@@ -728,11 +728,11 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         }
 
         if(GalePressApplication.getInstance().getDataApi().getMasterContent() != null && GalePressApplication.getInstance().getDataApi().getMasterContent().isPdfDownloaded()) {
-            mTabHost.getTabWidget().setCurrentTab(1);
+            mTabHost.setCurrentTab(1);
         }
         else
-            mTabHost.getTabWidget().setCurrentTab(0);
-        mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG);
+            mTabHost.setCurrentTab(0);
+        //mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG);
 
     }
 
@@ -756,20 +756,25 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                     addTab(item.getTitle(),""+index, createDrawable(true, null, null), CustomTabFragment.class, item);
                     index++;
                 }
+
+                if(GalePressApplication.getInstance().getDataApi().getMasterContent() != null && GalePressApplication.getInstance().getDataApi().getMasterContent().isPdfDownloaded()) {
+                    mTabHost.setCurrentTab(1);
+                }
+                else
+                    mTabHost.setCurrentTab(0);
             } else {
                 int tabCount = 2;
                 if(GalePressApplication.getInstance().getDataApi().getMasterContent() != null && GalePressApplication.getInstance().getDataApi().getMasterContent().isPdfDownloaded()) {
-                    mTabHost.getTabWidget().setCurrentTab(1);
+                    mTabHost.setCurrentTab(1);
                     tabCount = 3;
                 }
                 else
-                    mTabHost.getTabWidget().setCurrentTab(0);
-                mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG);
+                    mTabHost.setCurrentTab(0);
+                //mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG);
                 while(mTabHost.getTabWidget().getChildCount() > tabCount){
                     int tabSize = mTabHost.getTabWidget().getChildCount();
                     mTabHost.getTabWidget().removeView(mTabHost.getTabWidget().getChildTabViewAt(tabSize-1));
                 }
-
             }
         }
     }

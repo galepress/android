@@ -512,8 +512,14 @@ public class GalePressApplication
     }
 
     public  void releaseWakeLock() {
-        if (wakeLock != null)
-            wakeLock.release();
+        if (wakeLock != null){
+            try {
+                if (wakeLock.isHeld())
+                    wakeLock.release();
+            } catch (Throwable th) {
+                // ignoring this exception, probably wakeLock was already released
+            }
+        }
         wakeLock = null;
     }
 
