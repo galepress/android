@@ -19,7 +19,7 @@ import ak.detaysoft.galepress.web_views.BannerAndTabbarWebView;
 import ak.detaysoft.galepress.web_views.BannerAndTabbarWebViewWithCrosswalk;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
 
-public class CustomTabFragment extends Fragment {
+public class CustomTabFragment extends Fragment{
 
     public BannerAndTabbarWebView tabbarWebView;
     public BannerAndTabbarWebViewWithCrosswalk tabbarWebViewWithCrosswalk;
@@ -107,7 +107,4 @@ public class CustomTabFragment extends Fragment {
         }
 
     }
-
-
-
 }

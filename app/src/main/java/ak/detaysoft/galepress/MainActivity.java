@@ -108,10 +108,24 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     public boolean isTabFirstInit = true;
     ArrayList<TabHost.TabSpec> specList = new ArrayList<TabHost.TabSpec>();
 
+
+
+
+    /*
+    * Uygulama arka planda yada content detail ekrani acikken internet baglantisinin degismesi durumunda customtablarin set edilmesi islemini onresume da yapabilmek icin eklendi.
+    * Eger bu kontrol yapilmazsa setCurrentTab metodu kullanilirken illegalStateException aliyoruz ve uygulama crash oluyor.
+    * */
+    private boolean connectionStatusChangedOnPause = false;
+
     private BroadcastReceiver mConnReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            initCustomTabs();
+            if(GalePressApplication.getInstance().getCurrentActivity() == MainActivity.this){
+                initCustomTabs();
+            } else {
+                connectionStatusChangedOnPause = true;
+            }
+
         }
     };
 
@@ -779,6 +793,12 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         }
     }
 
+    private void addTab(String title, String tag, Drawable drawable,Class classy, TabbarItem item) {
+        TabHost.TabSpec spec = mTabHost.newTabSpec(tag);
+        spec.setIndicator(createTabIndicator(title, drawable, item));
+        mTabHost.addTab(spec, classy, null);
+    }
+
     private Drawable createDrawable(boolean isSelected, Drawable res, Drawable selectedRes) {
         if(res != null && selectedRes != null){
             StateListDrawableWithColorFilter states = new StateListDrawableWithColorFilter(isSelected,res, selectedRes);
@@ -838,11 +858,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         return tabIndicator;
     }
 
-    private void addTab(String title, String tag, Drawable drawable,Class classy, TabbarItem item) {
-        TabHost.TabSpec spec = mTabHost.newTabSpec(tag);
-        spec.setIndicator(createTabIndicator(title, drawable, item));
-        mTabHost.addTab(spec, classy, null);
-    }
+
 
     public void prepareActionBarForCustomTab(View webView, boolean isWebFragment, boolean isPageLoadFinish){
         if(isWebFragment){
@@ -983,7 +999,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        GalePressApplication.getInstance().onActivityResult(requestCode,resultCode,data);
+        GalePressApplication.getInstance().onActivityResult(requestCode, resultCode, data);
         if(resultCode == 101) { //reader view return
             int type = data.getIntExtra("SelectedTab", 0);
             //mTabHost.getTabWidget().setCurrentTab(type);
@@ -1007,6 +1023,12 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     protected void onResume() {
         super.onResume();
         GalePressApplication.getInstance().setCurrentActivity(this);
+
+        // connectionStatusChangedOnPause aciklamasinda yaziyor neden kullanildigi
+        if(connectionStatusChangedOnPause) {
+            initCustomTabs();
+            connectionStatusChangedOnPause = false;
+        }
     }
 
     protected void onPause() {
