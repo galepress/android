@@ -428,7 +428,7 @@ public class L_Content implements Serializable {
         JSONArray array = new JSONArray();
         if(categories != null) {
             for(L_Category item : categories)
-                array.put(item.getCategoryID().toString());
+                array.put("<"+item.getCategoryID().toString()+">");
         }
 
         return array.toString();

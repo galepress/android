@@ -208,7 +208,7 @@ public class DatabaseApi {
 
                     Where where = contentQuery.where();
 
-                    where.like("categoryIds", "%"+generalCategory.getCategoryID()+"%");
+                    where.like("categoryIds", "%<" + generalCategory.getCategoryID() + ">%");
 
                     if(searchQuery!= null && searchQuery.length() != 0){
                         where.and();
@@ -287,7 +287,7 @@ public class DatabaseApi {
                 //Kategori
                 for(int i = 0 ; i < categoryList.size(); i++){
                     L_Category item = categoryList.get(i);
-                    where.like("categoryIds", "%" + item.getCategoryID() + "%");
+                    where.like("categoryIds", "%<" + item.getCategoryID() + ">%");
                 }
 
                 if(categoryList.size() > 1)
