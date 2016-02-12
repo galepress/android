@@ -132,6 +132,7 @@ public class ExtraWebViewWithCrosswalkActivity extends Activity {
         settings.setAllowFileAccessFromFileURLs(true);
         settings.setAllowUniversalAccessFromFileURLs(true);
         settings.setAppCacheEnabled(true);
+        settings.setGeolocationEnabled(true);
 
         MyXUIClient uiClient = new MyXUIClient(webView);
         webView.setUIClient(uiClient);

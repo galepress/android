@@ -642,6 +642,22 @@ public class MuPDFPageView extends PageView implements MuPDFView {
 						}
 					}
 
+				} else if(view instanceof WebViewAnnotationWithCrosswalk){
+					WebViewAnnotationWithCrosswalk webView = (WebViewAnnotationWithCrosswalk)view;
+					if(!webView.linkInfoExternal.isModal && webView.linkInfoExternal.isWebAnnotation()
+							&& (webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_SES)) {
+						//webView.loadUrl("");
+						if(!webView.isLoadingFinished)
+							webView.stopLoading();
+						webView.load("javascript:" + stopScriptAudio, null);
+					} else if(!webView.linkInfoExternal.isModal && webView.linkInfoExternal.isWebAnnotation()
+							&& (webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_VIDEO
+							|| webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_WEB)) {
+						//webView.loadUrl("");
+						if(!webView.isLoadingFinished)
+							webView.stopLoading();
+						webView.load("javascript:" + stopScriptVideo, null );
+					}
 				}
 			}
 		}
@@ -735,8 +751,7 @@ public class MuPDFPageView extends PageView implements MuPDFView {
 						webView.reload();
 					}
 				}
-			}
-			if(view instanceof WebViewAnnotationWithCrosswalk){
+			} else if(view instanceof WebViewAnnotationWithCrosswalk){
 				WebViewAnnotationWithCrosswalk webView = (WebViewAnnotationWithCrosswalk)view;
 				if(webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_ANIMATION){
 					webView.setVisibility(GONE);
@@ -749,7 +764,6 @@ public class MuPDFPageView extends PageView implements MuPDFView {
 
 	@Override
 	public void setPage(final int page, PointF size) {
-		//stopAllWebAnnotationsMediaAndReload(false); // Ses ve video annotatinlari durdurmak icin MG
         loadAnnotations();
 
         clearWebAnnotations(this);

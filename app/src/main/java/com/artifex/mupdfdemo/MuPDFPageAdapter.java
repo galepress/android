@@ -1,12 +1,19 @@
 package com.artifex.mupdfdemo;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.graphics.PointF;
+import android.graphics.Rect;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.SparseArray;
+import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.BaseAdapter;
 
 public class MuPDFPageAdapter extends BaseAdapter {
@@ -45,8 +52,20 @@ public class MuPDFPageAdapter extends BaseAdapter {
 	public View getView(final int position, View convertView, ViewGroup parent) {
 		final MuPDFPageView pageView;
 		if (convertView == null) {
-			if (mSharedHqBm == null || mSharedHqBm.getWidth() != parent.getWidth() || mSharedHqBm.getHeight() != parent.getHeight())
-				mSharedHqBm = Bitmap.createBitmap(parent.getWidth(), parent.getHeight(), Bitmap.Config.ARGB_8888);
+			if (mSharedHqBm == null || mSharedHqBm.getWidth() != parent.getWidth() || mSharedHqBm.getHeight() != parent.getHeight()) {
+
+				/*
+				* Eger parent view init edilmemisse(herzaman olmuyor) burada ekran boyutuna gore bitmap olusturuluyor. (MG)
+				* (https://fabric.io/galepress/android/apps/ak.detaysoft.carrefoursa1/issues/56b278fcf5d3a7f76b8f6164)
+				* */
+				if(parent.getWidth() <= 0 || parent.getHeight() <= 0) {
+					View view = ((Activity)mContext).getWindow().getDecorView();
+					mSharedHqBm = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
+				} else {
+					mSharedHqBm = Bitmap.createBitmap(parent.getWidth(), parent.getHeight(), Bitmap.Config.ARGB_8888);
+				}
+			}
+
 
 			pageView = new MuPDFPageView(mContext, mFilePickerSupport, mCore, new Point(parent.getWidth(), parent.getHeight()), mSharedHqBm);
 		} else {

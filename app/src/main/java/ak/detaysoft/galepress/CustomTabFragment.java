@@ -4,6 +4,7 @@ package ak.detaysoft.galepress;
  * Created by p1025 on 21.05.2015.
  */
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -24,7 +25,6 @@ public class CustomTabFragment extends Fragment{
     public BannerAndTabbarWebView tabbarWebView;
     public BannerAndTabbarWebViewWithCrosswalk tabbarWebViewWithCrosswalk;
     private ProgressBar progressBar;
-    final int KITKAT = 19; // Android 4.4
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,8 @@ public class CustomTabFragment extends Fragment{
         progressBar = (ProgressBar)v.findViewById(R.id.custom_web_view_progress_bar);
         ((LinearLayout)progressBar.getParent()).setBackgroundColor(ApplicationThemeColor.getInstance().getTransperentPopupColor());
 
-        if (android.os.Build.VERSION.SDK_INT >= KITKAT) {
+        //4.4
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             tabbarWebView = new BannerAndTabbarWebView(this.getActivity(), progressBar,  false);
             FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
             tabbarWebView.setLayoutParams(params);
@@ -100,7 +101,8 @@ public class CustomTabFragment extends Fragment{
 
     public View getWebview() {
 
-        if (android.os.Build.VERSION.SDK_INT >= KITKAT) {
+        //4.4
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             return tabbarWebView;
         } else {
             return tabbarWebViewWithCrosswalk;

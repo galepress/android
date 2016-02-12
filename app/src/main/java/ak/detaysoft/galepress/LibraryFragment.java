@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.graphics.Point;
 import android.location.Location;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -57,8 +58,6 @@ public class LibraryFragment extends Fragment {
     L_Category selectedCategory = null;
     private View v;
 
-    private static final int KITKAT = 19; // Android 4.4
-
     public LayoutInflater getLayoutInflater() {
         return layoutInflater;
     }
@@ -94,7 +93,8 @@ public class LibraryFragment extends Fragment {
         if (!getResources().getBoolean(R.bool.portrait_only) &&
                 (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE || newConfig.orientation == Configuration.ORIENTATION_PORTRAIT)) {
             banner.setLayoutParams(prepareBannerSize());
-            if (android.os.Build.VERSION.SDK_INT >= KITKAT) {
+            //4.4
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                 bannerWebView.reload();
                 bannerWebView.setVisibility(View.INVISIBLE);
             } else {
@@ -152,7 +152,8 @@ public class LibraryFragment extends Fragment {
 
         banner =  (LinearLayout)LayoutInflater.from(this.getActivity()).inflate(R.layout.library_banner, null, false);
 
-        if (android.os.Build.VERSION.SDK_INT >= KITKAT) {
+        //4.4
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
             bannerWebView = new BannerAndTabbarWebView(this.getActivity());
             bannerWebView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
             bannerWebView.loadUrl(GalePressApplication.getInstance().getBannerLink());
@@ -190,7 +191,8 @@ public class LibraryFragment extends Fragment {
     public void updateBanner(){
         banner.setLayoutParams(prepareBannerSize());
 
-        if (android.os.Build.VERSION.SDK_INT >= KITKAT) {
+        //4.4
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             bannerWebView.loadBannerUrl(GalePressApplication.getInstance().getBannerLink());
         } else {
             bannerWebViewWithCrosswalk.loadBannerUrl(GalePressApplication.getInstance().getBannerLink());

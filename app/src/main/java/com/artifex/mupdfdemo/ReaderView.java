@@ -587,7 +587,6 @@ public class ReaderView
                     onMoveToChild(mCurrent);
 
                     if(((MuPDFActivity) this.mContext).mDocView != null && ((MuPDFActivity) this.mContext).mDocView.getChildAt(0) != null ) {
-                        //((MuPDFPageView)((MuPDFActivity)this.mContext).mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(false, false);
                         ((MuPDFPageView) ((MuPDFActivity) this.mContext).mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
                         ((MuPDFPageView) ((MuPDFActivity) this.mContext).mDocView.getChildAt(0)).resumeCurrentPageWebAnnotationsMedia();
                     }
@@ -605,7 +604,6 @@ public class ReaderView
                     onMoveToChild(mCurrent);
 
                     if(((MuPDFActivity) this.mContext).mDocView != null && ((MuPDFActivity) this.mContext).mDocView.getChildAt(0) != null ) {
-                        //((MuPDFPageView)((MuPDFActivity)this.mContext).mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(false, false);
                         ((MuPDFPageView) ((MuPDFActivity) this.mContext).mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
                         ((MuPDFPageView) ((MuPDFActivity) this.mContext).mDocView.getChildAt(0)).resumeCurrentPageWebAnnotationsMedia();
                     }

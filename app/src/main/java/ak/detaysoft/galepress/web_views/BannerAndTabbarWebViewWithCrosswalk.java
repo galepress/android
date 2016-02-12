@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -71,6 +72,7 @@ public class BannerAndTabbarWebViewWithCrosswalk extends XWalkView {
         settings.setAllowFileAccessFromFileURLs(true);
         settings.setAllowUniversalAccessFromFileURLs(true);
         settings.setAppCacheEnabled(true);
+        settings.setGeolocationEnabled(true);
 
         MyXUIClient uiClient = new MyXUIClient(this);
         setUIClient(uiClient);
@@ -125,8 +127,8 @@ public class BannerAndTabbarWebViewWithCrosswalk extends XWalkView {
                     * isBannerUrlUpdated kontrolu yapilmazsa yeni banner url geldiginde onu ExtraWebviewActivity de aciyor. (MG)
                     */
                     isBannerUrlUpdated = false;
-                    final int KITKAT = 19; // Android 4.4
-                    if (android.os.Build.VERSION.SDK_INT >= KITKAT) {
+                    //4.4
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
                         Intent intent = new Intent(context, ExtraWebViewActivity.class);
                         intent.putExtra("url", url);
                         intent.putExtra("isMainActivitIntent", false);

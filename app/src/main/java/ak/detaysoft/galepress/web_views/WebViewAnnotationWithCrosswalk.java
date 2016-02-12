@@ -30,6 +30,13 @@ public class WebViewAnnotationWithCrosswalk extends XWalkView {
     public boolean isHorizontalScrolling, isDummyAction;
     private MotionEvent previousMotionEvent;
 
+    /*
+    * Video ve ses iceriklerinde(ozellikle autoplay olanlarda) sayfa yuklenmesi bitmeden diger sayfaya gecilirse
+    * javascript ile video ve ses durdurulamiyor.
+    * Bu parametre ile MuPDFPageView classinda stopAllWebAnnotationsMedia metodunda kontrol edilerek devam eden loading iptal edilecek.
+    */
+    public boolean isLoadingFinished = false;
+
     class MyXWalkResourceClient extends XWalkResourceClient {
 
 
@@ -78,6 +85,7 @@ public class WebViewAnnotationWithCrosswalk extends XWalkView {
             if(loading != null) {
                 loading.setVisibility(VISIBLE);
             }
+            isLoadingFinished = false;
             view.setVisibility(GONE);
         }
 
@@ -87,6 +95,7 @@ public class WebViewAnnotationWithCrosswalk extends XWalkView {
             if( loading != null) {
                 loading.setVisibility(GONE);
             }
+            isLoadingFinished = true;
             view.setVisibility(VISIBLE);
         }
     }
@@ -114,6 +123,7 @@ public class WebViewAnnotationWithCrosswalk extends XWalkView {
         settings.setAllowFileAccessFromFileURLs(true);
         settings.setAllowUniversalAccessFromFileURLs(true);
         settings.setAppCacheEnabled(true);
+        settings.setGeolocationEnabled(true);
 
         MyXUIClient uiClient = new MyXUIClient(this);
         setUIClient(uiClient);

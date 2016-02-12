@@ -15,6 +15,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.media.AudioManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
@@ -627,8 +628,8 @@ public abstract class PageView extends ViewGroup {
 											((MuPDFPageView)((MuPDFActivity)mContext).mDocView.getChildAt(0)).resumeCurrentPageWebAnnotationsMedia();
 										}
 
-										final int KITKAT = 19; // Android 4.4
-										if (android.os.Build.VERSION.SDK_INT >= KITKAT) {
+										//4.4
+										if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 											Intent intent = new Intent(mContext, ExtraWebViewActivity.class);
 											intent.putExtra("url", linkInfoExternal.getSourceUrlPath(mContext)); // daha once linkInfoExternal.sourceurl vardi o nedenle modal acilmiyordu
 											intent.putExtra("isModal", true);
@@ -646,9 +647,8 @@ public abstract class PageView extends ViewGroup {
                             else{
 								String url = linkInfoExternal.getSourceUrlPath(mContext);
 
-
-								final int KITKAT = 19; // Android 4.4
-								if (android.os.Build.VERSION.SDK_INT >= KITKAT) {
+								//4.4
+								if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 									// Web Annotations
 									final WebViewAnnotation web = new WebViewAnnotation(mContext, linkInfoExternal, progressBar);
 									web.layout(left, top, right, bottom);
@@ -706,8 +706,8 @@ public abstract class PageView extends ViewGroup {
                             String mapUrl = builder.build().toString();
 
 
-							final int KITKAT = 19; // Android 4.4
-							if (android.os.Build.VERSION.SDK_INT >= KITKAT) {
+							//4.4
+							if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 								// Web Annotations
 								final WebViewAnnotation web = new WebViewAnnotation(mContext, linkInfoExternal, progressBar);
 								web.layout(left, top, right, bottom);

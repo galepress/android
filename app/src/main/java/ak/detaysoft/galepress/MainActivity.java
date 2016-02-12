@@ -83,7 +83,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     public static final String DOWNLOADED_LIBRARY_TAG = "DOWNLOADED_TAB";
     public static final String HOME_TAB_TAG = "HOME_TAB";
     public static final String INFO_TAB_TAG = "INFO_TAB";
-    private static final int KITKAT = 19; // Android 4.4
     public FragmentTabHost mTabHost;
     private EditText searchView;
     private ImageView menuButton;
@@ -592,7 +591,8 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         ileriButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (android.os.Build.VERSION.SDK_INT >= KITKAT) {
+                //4.4
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                     if (((WebView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).canGoForward()) {
                         ((WebView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).goForward();
                     }
@@ -607,7 +607,8 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         geriButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (android.os.Build.VERSION.SDK_INT >= KITKAT) {
+                //4.4
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                     if (((WebView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).canGoBack()) {
                         ((WebView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).goBack();
                     }
@@ -622,7 +623,8 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         refreshButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (android.os.Build.VERSION.SDK_INT >= KITKAT) {
+                //4.4
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                     ((WebView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).reload();
                 } else {
                     ((XWalkView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).reload(XWalkView.RELOAD_NORMAL);
@@ -889,7 +891,8 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
         if(webView != null){
 
-            if (android.os.Build.VERSION.SDK_INT >= KITKAT) { //default webview
+            //4.4
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) { //default webview
                 // if has previous page, enable the back button
                 if(((WebView)webView).canGoBack()){
                     if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)

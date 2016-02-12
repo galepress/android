@@ -64,7 +64,12 @@ public class BannerAndTabbarWebView extends WebView {
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     public void initView(){
-        this.setWebChromeClient(new MyChromeClient());
+        this.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public void onReceivedTitle(WebView view, String title) {
+                super.onReceivedTitle(view, title);
+            }
+        });
         this.setWebViewClient(new MyWebClient());
 
         WebSettings s = getSettings();
@@ -83,6 +88,7 @@ public class BannerAndTabbarWebView extends WebView {
         s.setAllowFileAccessFromFileURLs(true);
         s.setAllowUniversalAccessFromFileURLs(true);
         s.setSupportZoom(false);
+        s.setGeolocationEnabled(true);
 
         this.setHorizontalScrollBarEnabled(false);
         this.setVerticalScrollBarEnabled(false);
@@ -133,8 +139,8 @@ public class BannerAndTabbarWebView extends WebView {
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             if(isBannerWebView){
                 if(!url.contains("file:///") && url.compareTo(GalePressApplication.getInstance().getBannerLink()) != 0){
-                    final int KITKAT = 19; // Android 4.4
-                    if (android.os.Build.VERSION.SDK_INT >= KITKAT) {
+                    //4.4
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                         Intent intent = new Intent(context, ExtraWebViewActivity.class);
                         intent.putExtra("url", url);
                         intent.putExtra("isMainActivitIntent", false);
@@ -154,14 +160,10 @@ public class BannerAndTabbarWebView extends WebView {
                 return super.shouldOverrideUrlLoading(view, url);
             }
         }
+
+
     }
 
-    public class MyChromeClient extends WebChromeClient {
-        @Override
-        public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
-            callback.invoke(origin, true, false);
-        }
-    }
 
     public void loadBannerUrl(String url){
         loadUrl(url);

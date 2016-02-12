@@ -98,8 +98,8 @@ public class MuPDFReaderView extends ReaderView {
                             /*
                              Linklerde ki mantik PageView icine tasindi. Ustuste binen durumlarda page link eziliyordu ve calismiyordu. View ekleyerek bunu engelliyorum.
                             if(li.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_WEBLINK){
-                                final int KITKAT = 19; // Android 4.4
-                                    if (android.os.Build.VERSION.SDK_INT >= KITKAT) {
+                                	//4.4
+        							if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                                         Intent intent = new Intent(mContext, ExtraWebViewActivity.class);
                                 		intent.putExtra("url",li.url);
                                 		mContext.startActivity(intent);

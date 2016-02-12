@@ -446,7 +446,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
         //uygulamaya tekrar açıldığında
         if (!isActivityActive && (MuPDFPageView) mDocView.getChildAt(0) != null) {
-            //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(false, true);
             ((MuPDFPageView) mDocView.getChildAt(0)).resumeCurrentPageWebAnnotationsMedia();
             ((MuPDFPageView) mDocView.getChildAt(0)).resumeTimers();
             isActivityActive = true;
@@ -488,6 +487,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         // Now create the UI.
         // First create the document view
         mDocView = new MuPDFReaderView(this) {
+
             @Override
             protected void onMoveToChild(int i) {
                 if (core == null)
@@ -890,11 +890,15 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
             if (!isScreenOn) {
                 isActivityActive = false;
-                if(mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null) {
-                    //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
+                /*if(mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null) {
                     ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
                     ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
                     ((MuPDFPageView) mDocView.getChildAt(0)).destroyTimers();
+                }*/
+
+                if(mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null ) {
+                    ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
+                    ((MuPDFPageView) mDocView.getChildAt(0)).pauseTimers();
                 }
             }
 
@@ -933,7 +937,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             }
 
             if(mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null) {
-                //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
                 ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
                 ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
                 ((MuPDFPageView) mDocView.getChildAt(0)).destroyTimers();
@@ -961,7 +964,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
     @Override
     protected void onUserLeaveHint() {
         if(mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null ) {
-            //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
             ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
             ((MuPDFPageView) mDocView.getChildAt(0)).pauseTimers();
         }
@@ -2348,7 +2350,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
             try {
                 if(mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null ) {
-                    //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
                     ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
                     ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
                     ((MuPDFPageView) mDocView.getChildAt(0)).destroyTimers();
@@ -2376,7 +2377,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
                 try {
                     if(mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null ) {
-                        //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
                         ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
                         ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
                         ((MuPDFPageView) mDocView.getChildAt(0)).destroyTimers();
@@ -2419,7 +2419,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
                         try {
                             if(mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null ) {
-                                //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
                                 ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
                                 ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
                                 ((MuPDFPageView) mDocView.getChildAt(0)).destroyTimers();
@@ -2447,7 +2446,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
                             try {
                                 if(mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null ) {
-                                    //((MuPDFPageView)mDocView.getChildAt(0)).stopAllWebAnnotationsMediaAndReload(true, false);
                                     ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
                                     ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
                                     ((MuPDFPageView) mDocView.getChildAt(0)).destroyTimers();

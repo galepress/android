@@ -119,6 +119,7 @@ public class ExtraWebViewActivity extends Activity {
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.getSettings().setUseWideViewPort(true);
         webView.getSettings().setDisplayZoomControls(false);
+        webView.getSettings().setGeolocationEnabled(true);
 
         webView.setHorizontalScrollBarEnabled(false);
         webView.setVerticalScrollBarEnabled(false);
