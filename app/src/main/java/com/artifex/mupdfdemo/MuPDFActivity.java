@@ -890,16 +890,16 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
             if (!isScreenOn) {
                 isActivityActive = false;
-                /*if(mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null) {
+                if(mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null) {
                     ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
                     ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
                     ((MuPDFPageView) mDocView.getChildAt(0)).destroyTimers();
-                }*/
+                }
 
-                if(mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null ) {
+                /*if(mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null ) {
                     ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
                     ((MuPDFPageView) mDocView.getChildAt(0)).pauseTimers();
-                }
+                }*/
             }
 
             if (mSearchTask != null)

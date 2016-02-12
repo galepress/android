@@ -78,15 +78,46 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ExtraWebViewActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ExtraWebViewActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/ExtraWebViewActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6757246">
+            <state vertical-scroll-proportion="0.0">
               <caret line="124" column="47" selection-start-line="124" selection-start-column="47" selection-end-line="124" selection-end-column="47" />
               <folding>
                 <element signature="e#5145#5336#0" expanded="true" />
                 <element signature="e#5335#5336#0" expanded="true" />
                 <element signature="method#enableDisableNavigationButtons#0;class#ExtraWebViewActivity#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MuPDFActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.3713768">
+              <caret line="893" column="77" selection-start-line="893" selection-start-column="77" selection-end-line="893" selection-end-column="77" />
+              <folding>
+                <element signature="method#destroyAlertWaiter#0;class#MuPDFActivity#0" expanded="false" />
+                <element signature="method#onResume#0;class#MuPDFActivity#0" expanded="false" />
+                <element signature="method#createUI#0;class#MuPDFActivity#0" expanded="false" />
+                <element signature="method#onMoveToChild#0;class#19548:23742" expanded="false" />
+                <element signature="method#onTapMainDocArea#0;class#19548:23742" expanded="false" />
+                <element signature="method#onHit#0;class#19548:23742" expanded="false" />
+                <element signature="method#onActivityResult#0;class#MuPDFActivity#0" expanded="false" />
+                <element signature="method#onRetainNonConfigurationInstance#0;class#MuPDFActivity#0" expanded="false" />
+                <element signature="method#reflowModeSet#0;class#MuPDFActivity#0" expanded="false" />
+                <element signature="method#toggleReflow#0;class#MuPDFActivity#0" expanded="false" />
+                <element signature="method#onSaveInstanceState#0;class#MuPDFActivity#0" expanded="false" />
+                <element signature="method#setLinkHighlight#0;class#MuPDFActivity#0" expanded="false" />
+                <element signature="method#hideButtons#0;class#MuPDFActivity#0" expanded="false" />
+                <element signature="method#scaleAnimation#0;class#MuPDFActivity#0" expanded="false" />
+                <element signature="method#searchModeOn#0;class#MuPDFActivity#0" expanded="false" />
+                <element signature="method#savePic#0;class#MuPDFActivity#0" expanded="false" />
+                <element signature="method#showInfo#0;class#MuPDFActivity#0" expanded="false" />
+                <element signature="method#setInvisibleAllTextView#0;class#MuPDFActivity#0" expanded="false" />
+                <element signature="method#startThumnailLeftAnim#0;class#MuPDFActivity#0" expanded="false" />
+                <element signature="method#startThumnailRightAnim#0;class#MuPDFActivity#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -2756,7 +2787,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFReaderView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PageView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/ReaderView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/WebViewAnnotation.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageView.java" />
@@ -2766,6 +2796,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/BannerAndTabbarWebView.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/raw/application.plist" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/ExtraWebViewActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java" />
       </list>
     </option>
   </component>
@@ -2921,40 +2952,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Galepress-master" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Galepress-master" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="galepress" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web_views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
@@ -2983,7 +2980,7 @@
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="4d0020215dfc5071" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="0715f742efc41336" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_5_API_21" />
     <property name="FullScreen" value="false" />
     <property name="android.project.structure.last.selected" value="app" />
@@ -3650,38 +3647,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.448276">
-          <caret line="899" column="74" selection-start-line="899" selection-start-column="74" selection-end-line="899" selection-end-column="74" />
-          <folding>
-            <element signature="method#createAlertWaiter#0;class#MuPDFActivity#0" expanded="false" />
-            <element signature="method#onCreate#0;class#MuPDFActivity#0" expanded="false" />
-            <element signature="method#requestPassword#0;class#MuPDFActivity#0" expanded="false" />
-            <element signature="method#createUI#0;class#MuPDFActivity#0" expanded="false" />
-            <element signature="method#onMoveToChild#0;class#19548:23742" expanded="false" />
-            <element signature="method#onTapMainDocArea#0;class#19548:23742" expanded="false" />
-            <element signature="method#onHit#0;class#19548:23742" expanded="false" />
-            <element signature="method#onActivityResult#0;class#MuPDFActivity#0" expanded="false" />
-            <element signature="method#onRetainNonConfigurationInstance#0;class#MuPDFActivity#0" expanded="false" />
-            <element signature="method#reflowModeSet#0;class#MuPDFActivity#0" expanded="false" />
-            <element signature="method#toggleReflow#0;class#MuPDFActivity#0" expanded="false" />
-            <element signature="method#onSaveInstanceState#0;class#MuPDFActivity#0" expanded="false" />
-            <element signature="method#setButtonEnabled#0;class#MuPDFActivity#0" expanded="false" />
-            <element signature="method#showButtonsFast#0;class#MuPDFActivity#0" expanded="false" />
-            <element signature="method#hideButtons#0;class#MuPDFActivity#0" expanded="false" />
-            <element signature="e#50300#50301#0" expanded="true" />
-            <element signature="e#50356#50357#0" expanded="true" />
-            <element signature="method#hideButtonsFast#0;class#MuPDFActivity#0" expanded="false" />
-            <element signature="method#searchModeOn#0;class#MuPDFActivity#0" expanded="false" />
-            <element signature="method#showInfo#0;class#MuPDFActivity#0" expanded="false" />
-            <element signature="method#setInvisibleAllTextView#0;class#MuPDFActivity#0" expanded="false" />
-            <element signature="method#startThumnailLeftAnim#0;class#MuPDFActivity#0" expanded="false" />
-            <element signature="method#startThumnailRightAnim#0;class#MuPDFActivity#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/WebViewAnnotation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3758,12 +3723,41 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/ExtraWebViewActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6757246">
+        <state vertical-scroll-proportion="0.0">
           <caret line="124" column="47" selection-start-line="124" selection-start-column="47" selection-end-line="124" selection-end-column="47" />
           <folding>
             <element signature="e#5145#5336#0" expanded="true" />
             <element signature="e#5335#5336#0" expanded="true" />
             <element signature="method#enableDisableNavigationButtons#0;class#ExtraWebViewActivity#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3713768">
+          <caret line="893" column="77" selection-start-line="893" selection-start-column="77" selection-end-line="893" selection-end-column="77" />
+          <folding>
+            <element signature="method#destroyAlertWaiter#0;class#MuPDFActivity#0" expanded="false" />
+            <element signature="method#onResume#0;class#MuPDFActivity#0" expanded="false" />
+            <element signature="method#createUI#0;class#MuPDFActivity#0" expanded="false" />
+            <element signature="method#onMoveToChild#0;class#19548:23742" expanded="false" />
+            <element signature="method#onTapMainDocArea#0;class#19548:23742" expanded="false" />
+            <element signature="method#onHit#0;class#19548:23742" expanded="false" />
+            <element signature="method#onActivityResult#0;class#MuPDFActivity#0" expanded="false" />
+            <element signature="method#onRetainNonConfigurationInstance#0;class#MuPDFActivity#0" expanded="false" />
+            <element signature="method#reflowModeSet#0;class#MuPDFActivity#0" expanded="false" />
+            <element signature="method#toggleReflow#0;class#MuPDFActivity#0" expanded="false" />
+            <element signature="method#onSaveInstanceState#0;class#MuPDFActivity#0" expanded="false" />
+            <element signature="method#setLinkHighlight#0;class#MuPDFActivity#0" expanded="false" />
+            <element signature="method#hideButtons#0;class#MuPDFActivity#0" expanded="false" />
+            <element signature="method#scaleAnimation#0;class#MuPDFActivity#0" expanded="false" />
+            <element signature="method#searchModeOn#0;class#MuPDFActivity#0" expanded="false" />
+            <element signature="method#savePic#0;class#MuPDFActivity#0" expanded="false" />
+            <element signature="method#showInfo#0;class#MuPDFActivity#0" expanded="false" />
+            <element signature="method#setInvisibleAllTextView#0;class#MuPDFActivity#0" expanded="false" />
+            <element signature="method#startThumnailLeftAnim#0;class#MuPDFActivity#0" expanded="false" />
+            <element signature="method#startThumnailRightAnim#0;class#MuPDFActivity#0" expanded="false" />
           </folding>
         </state>
       </provider>
