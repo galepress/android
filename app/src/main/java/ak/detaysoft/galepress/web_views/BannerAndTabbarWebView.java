@@ -69,26 +69,30 @@ public class BannerAndTabbarWebView extends WebView {
             public void onReceivedTitle(WebView view, String title) {
                 super.onReceivedTitle(view, title);
             }
+
+            @Override
+            public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
+                callback.invoke(origin, true, false);
+            }
         });
         this.setWebViewClient(new MyWebClient());
 
         WebSettings s = getSettings();
         s.setBuiltInZoomControls(true);
+        s.setPluginState(WebSettings.PluginState.ON);
         s.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
         s.setUseWideViewPort(true);
         s.setLoadWithOverviewMode(true);
         s.setSaveFormData(true);
         s.setJavaScriptEnabled(true);
         s.setDomStorageEnabled(true);
-        if(Integer.valueOf(android.os.Build.VERSION.SDK_INT) >= Build.VERSION_CODES.JELLY_BEAN_MR1)
-            s.setMediaPlaybackRequiresUserGesture(false); //false olarak set edilmediği autoplay çalışmıyor.
+        s.setMediaPlaybackRequiresUserGesture(false); //false olarak set edilmedigi autoplay calismiyor.
         s.setAllowFileAccess(true);
         s.setAppCacheEnabled(true);
-        s.setCacheMode(WebSettings.LOAD_NO_CACHE);
         s.setAllowFileAccessFromFileURLs(true);
         s.setAllowUniversalAccessFromFileURLs(true);
         s.setSupportZoom(false);
-        s.setGeolocationEnabled(true);
+
 
         this.setHorizontalScrollBarEnabled(false);
         this.setVerticalScrollBarEnabled(false);

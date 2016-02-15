@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.webkit.GeolocationPermissions;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.ImageButton;
@@ -15,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import ak.detaysoft.galepress.AK_WebViewClient;
+import ak.detaysoft.galepress.GalePressApplication;
 import ak.detaysoft.galepress.R;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
 
@@ -97,7 +99,7 @@ public class ExtraWebViewActivity extends Activity {
             @Override
             public void onClick(View v) {
                 finish();
-                if(isMainActivitIntent)
+                if (isMainActivitIntent)
                     overridePendingTransition(0, R.animator.right_to_left_translate);
             }
         });
@@ -112,6 +114,11 @@ public class ExtraWebViewActivity extends Activity {
             @Override
             public void onReceivedTitle(WebView view, String title) {
                 super.onReceivedTitle(view, title);
+            }
+
+            @Override
+            public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
+                callback.invoke(origin,true, false);
             }
         });
         webView.getSettings().setJavaScriptEnabled(true);

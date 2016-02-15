@@ -81,7 +81,7 @@ public class LibraryFragment extends Fragment {
         }
         super.onCreate(savedInstanceState);
         if(((MainActivity)this.getActivity()).content_id !=null){
-            viewContent(GalePressApplication.getInstance().getDatabaseApi().getContent(((MainActivity)this.getActivity()).content_id));
+            viewContent(GalePressApplication.getInstance().getDatabaseApi().getContent(((MainActivity) this.getActivity()).content_id));
             ((MainActivity)this.getActivity()).content_id = null;
         }
     }
@@ -277,10 +277,13 @@ public class LibraryFragment extends Fragment {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-                gridview.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
                 contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(isOnlyDownloaded, searchQuery, selectedCategories);
                 contentHolderAdapter.notifyDataSetChanged();
-                gridview.invalidateViews();
+                if(gridview != null){
+                    gridview.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
+                    gridview.invalidateViews();
+                }
+
             }
         });
     }

@@ -445,7 +445,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         }
 
         //uygulamaya tekrar açıldığında
-        if (!isActivityActive && (MuPDFPageView) mDocView.getChildAt(0) != null) {
+        if (!isActivityActive && mDocView != null && (MuPDFPageView) mDocView.getChildAt(0) != null) {
             ((MuPDFPageView) mDocView.getChildAt(0)).resumeCurrentPageWebAnnotationsMedia();
             ((MuPDFPageView) mDocView.getChildAt(0)).resumeTimers();
             isActivityActive = true;
