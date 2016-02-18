@@ -46,6 +46,7 @@ public class LaunchActivity extends ActionBarActivity {
         pw_two.setVisibility(View.INVISIBLE);
         GalePressApplication.getInstance().setCurrentActivity(this);
 
+
         if(GalePressApplication.getInstance().isTestApplication())
             FacebookSdk.sdkInitialize(this.getApplicationContext());
 

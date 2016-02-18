@@ -93,7 +93,6 @@ public class BannerAndTabbarWebView extends WebView {
         s.setAllowUniversalAccessFromFileURLs(true);
         s.setSupportZoom(false);
 
-
         this.setHorizontalScrollBarEnabled(false);
         this.setVerticalScrollBarEnabled(false);
         if(isBannerWebView) {

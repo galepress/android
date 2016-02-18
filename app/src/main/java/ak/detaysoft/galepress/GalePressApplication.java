@@ -421,10 +421,16 @@ public class GalePressApplication
             applicationId = testApplicationInf.getApplicationId();
         else {
 
+            /*
+            * plist parse edmedigi durumlar oluyor. Tekrar cekmeye calisiyoruz eger olmazsa appId -1 set ediliyor.
+            * */
             if (applicationPlist == null || applicationPlist.get("ApplicationID") == null)
                 parseApplicationPlist();
 
-            applicationId = (String)applicationPlist.get("ApplicationID");
+            if (applicationPlist == null || applicationPlist.get("ApplicationID") == null)
+                applicationId = String.valueOf("-1");
+            else
+                applicationId = (String)applicationPlist.get("ApplicationID");
         }
 
         return Integer.valueOf(applicationId);

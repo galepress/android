@@ -19,6 +19,7 @@ import android.content.Context;
 import android.database.DataSetObservable;
 import android.database.DataSetObserver;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -28,6 +29,9 @@ import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ListAdapter;
 import android.widget.WrapperListAdapter;
+
+import com.crashlytics.android.Crashlytics;
+
 import java.util.ArrayList;
 /**
  * A {@link GridView} that supports adding header rows in a
@@ -262,6 +266,7 @@ public class HeaderGridView extends GridView {
                 return true;
             }
         }
+
         @Override
         public boolean isEnabled(int position) {
             // Header (negative positions will throw an ArrayIndexOutOfBoundsException)
@@ -277,9 +282,11 @@ public class HeaderGridView extends GridView {
                 adapterCount = mAdapter.getCount();
                 if (adjPosition < adapterCount) {
                     return mAdapter.isEnabled(adjPosition);
-                }
+                } else //Eger position degeri adaptercount degerinden daha fazla olursa son itemi load ediyoruz. (MG)
+                    return mAdapter.isEnabled(adapterCount-1);
+            } else {
+                return false;
             }
-            throw new ArrayIndexOutOfBoundsException(position);
         }
         @Override
         public Object getItem(int position) {
@@ -348,9 +355,12 @@ public class HeaderGridView extends GridView {
                 adapterCount = mAdapter.getCount();
                 if (adjPosition < adapterCount) {
                     return mAdapter.getView(adjPosition, convertView, parent);
+                } else{ //Eger position degeri adaptercount degerinden daha fazla olursa son itemi load ediyoruz. (MG)
+                    return mAdapter.getView((adapterCount-1), convertView, parent);
                 }
             }
-            throw new ArrayIndexOutOfBoundsException(position);
+
+            throw new ArrayIndexOutOfBoundsException("position: "+position+" adapterCount: "+(mAdapter == null?-1:mAdapter.getCount()));
         }
         @Override
         public int getItemViewType(int position) {
