@@ -30,6 +30,7 @@ public class BannerAndTabbarWebViewWithCrosswalk extends XWalkView {
     private boolean isBannerWebView = true;
     private ProgressBar progressBar;
     private boolean isBannerUrlUpdated = false;
+    private boolean isFirstInit = true;
 
     public BannerAndTabbarWebViewWithCrosswalk(Context context) {
         super(context);
@@ -110,38 +111,47 @@ public class BannerAndTabbarWebViewWithCrosswalk extends XWalkView {
 
         @Override
         public void onLoadFinished(XWalkView view, String url) {
+            Log.e("denemeee", "start :"+ url);
             super.onLoadFinished(view, url);
         }
 
         @Override
         public void onLoadStarted(XWalkView view, String url) {
+            Log.e("denemeee", "finish :"+ url);
             super.onLoadStarted(view, url);
         }
 
         @Override
         public boolean shouldOverrideUrlLoading(XWalkView view, String url) {
-
-            if(isBannerWebView){
-                if(!isBannerUrlUpdated && (!url.contains("file:///") && url.compareTo(GalePressApplication.getInstance().getBannerLink()) != 0)){
-                    /*
-                    * isBannerUrlUpdated kontrolu yapilmazsa yeni banner url geldiginde onu ExtraWebviewActivity de aciyor. (MG)
-                    */
-                    isBannerUrlUpdated = false;
-                    //4.4
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
-                        Intent intent = new Intent(context, ExtraWebViewActivity.class);
-                        intent.putExtra("url", url);
-                        intent.putExtra("isMainActivitIntent", false);
-                        context.startActivity(intent);
-                        return true;
-                    } else {
-                        Intent intent = new Intent(context, ExtraWebViewWithCrosswalkActivity.class);
-                        intent.putExtra("url", url);
-                        intent.putExtra("isMainActivitIntent", false);
-                        context.startActivity(intent);
-                        return true;
+            if (isBannerWebView) {
+                if(!isFirstInit){
+                    if(!isBannerUrlUpdated){
+                        /*
+                        * isBannerUrlUpdated kontrolu yapilmazsa yeni banner url geldiginde onu ExtraWebviewActivity de aciyor. (MG)
+                        * */
+                        isBannerUrlUpdated = false;
+                        if(!url.contains("file:///")){
+                            if(url.compareTo(GalePressApplication.getInstance().getBannerLink()) != 0){
+                                //4.4
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                                    Intent intent = new Intent(context, ExtraWebViewActivity.class);
+                                    intent.putExtra("url", url);
+                                    intent.putExtra("isMainActivitIntent", false);
+                                    context.startActivity(intent);
+                                    return true;
+                                } else {
+                                    Intent intent = new Intent(context, ExtraWebViewWithCrosswalkActivity.class);
+                                    intent.putExtra("url", url);
+                                    intent.putExtra("isMainActivitIntent", false);
+                                    context.startActivity(intent);
+                                    return true;
+                                }
+                            }
+                            return false;
+                        }
+                        return false;
                     }
-
+                    return false;
                 }
                 return false;
             } else {
@@ -183,7 +193,10 @@ public class BannerAndTabbarWebViewWithCrosswalk extends XWalkView {
                     ((LinearLayout)progressBar.getParent()).setVisibility(View.GONE);
                 }
             }
-
+            /*
+            * isFirstInit kontrolu yapilmazsa ilk acilista redirect edilen sayfalar  ExtraWebviewActivity de aciyor. (MG)
+            * */
+            isFirstInit = false;
             view.setVisibility(VISIBLE);
         }
 
@@ -191,6 +204,7 @@ public class BannerAndTabbarWebViewWithCrosswalk extends XWalkView {
 
     public void loadBannerUrl(String url){
         isBannerUrlUpdated = true;
+        isFirstInit = true;
         load(url, null);
     }
 }

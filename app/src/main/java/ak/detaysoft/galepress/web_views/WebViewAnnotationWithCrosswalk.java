@@ -107,8 +107,12 @@ public class WebViewAnnotationWithCrosswalk extends XWalkView {
         this.linkInfoExternal = lie;
         this.context = context;
 
-        setAlpha(0.9999f); // alpha set edilmedigi zaman view siyah gorunuyor. cozum ariyorum (MG).
+        /*
+        * alpha set edilmedigi zaman view siyah gorunuyor. Cozum olarak onerilen bu (MG).
+        */
+        setAlpha(0.9999f);
         setBackgroundColor(Color.TRANSPARENT);
+
         setOnKeyListener(null);
 
         MyXWalkResourceClient resourceClient = new MyXWalkResourceClient(this);
