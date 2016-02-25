@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/signup_base_view"
+    android:isScrollContainer="true">
+
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/signup_popup_base">
+
+        <RelativeLayout
+            android:layout_width="@dimen/popup_login_width"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="3dp"
+            android:layout_centerInParent="true"
+            android:id="@+id/signup_web_base">
+
+            <WebView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/signup_web"
+                android:layout_gravity="center_horizontal"
+                android:layout_centerInParent="true" />
+
+            <ak.detaysoft.galepress.util.CustomPulseProgress
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/signup_loading"
+                android:visibility="visible"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical"
+            android:layout_alignParentLeft="false"
+            android:gravity="center"
+            android:id="@+id/signup_web_close_base">
+
+            <Button
+                android:id="@+id/signup_web_close"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</RelativeLayout>

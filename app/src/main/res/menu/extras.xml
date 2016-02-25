@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        android:id="@+id/action_extras_web"
+        android:title="Web"
+        android:icon="@drawable/web"
+        />
+    <item
+        android:id="@+id/action_extras_facebook"
+        android:title="Facebook"
+        android:icon="@drawable/facebook"/>
+    <item
+        android:id="@+id/action_extras_twitter"
+        android:title="Twitter"
+        android:icon="@drawable/twitter"/>
+    <item
+        android:id="@+id/action_extras_email"
+        android:title="Mail"
+        android:icon="@drawable/mail"/>
+</menu>

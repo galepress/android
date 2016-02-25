@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/login_base_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="@dimen/popup_login_width"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:id="@+id/login_custom_popup"
+            android:padding="@dimen/popup_login_padding">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:orientation="vertical"
+                android:gravity="center">
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/popup_login_logo"
+                    android:layout_gravity="center_horizontal"
+                    android:adjustViewBounds="true"
+                    android:layout_alignWithParentIfMissing="false"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentTop="false"
+                    android:layout_alignParentBottom="false"
+                    android:layout_marginBottom="40dp"
+                    android:src="@drawable/app_logo" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/popup_login_input_height"
+                    android:id="@+id/popup_login_username"
+                    android:layout_gravity="center_horizontal"
+                    android:hint="@string/KULLANICIADI"
+                    android:textSize="@dimen/popup_login_input_text_size"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:layout_alignWithParentIfMissing="false"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentTop="false"
+                    android:layout_alignParentBottom="false"
+                    android:layout_below="@+id/login_logo"
+                    android:textCursorDrawable="@null"
+                    android:layout_marginBottom="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="0dp" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/popup_login_input_height"
+                    android:id="@+id/popup_login_password"
+                    android:layout_gravity="center_horizontal"
+                    android:hint="@string/SIFRE"
+                    android:textSize="@dimen/popup_login_input_text_size"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:inputType="textPassword"
+                    android:layout_alignWithParentIfMissing="false"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentTop="false"
+                    android:layout_alignParentBottom="false"
+                    android:layout_below="@+id/login_uname"
+                    android:textCursorDrawable="@null"
+                    android:layout_marginBottom="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="0dp" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/login_signup_layer_height"
+                    android:gravity="center_vertical|right"
+                    android:layout_marginBottom="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="@string/forgot_password"
+                        android:id="@+id/login_popup_forgot_password"
+                        android:gravity="center_vertical|right"
+                        android:layout_weight="1"
+                        android:layout_marginRight="20dp" />
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/popup_login_input_height"
+                    android:text="@string/login"
+                    android:id="@+id/popup_login_submit"
+                    android:textSize="@dimen/popup_login_button_text_size"
+                    android:layout_alignWithParentIfMissing="false"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentTop="false"
+                    android:layout_alignParentBottom="false" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/popup_login_input_height"
+                    android:text="@string/signup"
+                    android:id="@+id/login_popup_signup"
+                    android:textSize="@dimen/popup_login_button_text_size"
+                    android:layout_alignWithParentIfMissing="false"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentTop="false"
+                    android:layout_alignParentBottom="false"
+                    android:layout_marginTop="10dp" />
+
+
+                <com.facebook.login.widget.LoginButton
+                    android:id="@+id/facebook_popup_login_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_alignWithParentIfMissing="false"
+                    android:layout_alignParentBottom="false"
+                    android:layout_centerHorizontal="true"
+                    android:clickable="false"
+                    android:layout_marginTop="10dp" />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
