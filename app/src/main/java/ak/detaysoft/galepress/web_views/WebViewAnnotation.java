@@ -4,7 +4,10 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+<<<<<<< HEAD:app/src/main/java/ak/detaysoft/galepress/web_views/WebViewAnnotation.java
 import android.os.Build;
+=======
+>>>>>>> inAppBilling:app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.GeolocationPermissions;
@@ -12,7 +15,10 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+<<<<<<< HEAD:app/src/main/java/ak/detaysoft/galepress/web_views/WebViewAnnotation.java
 
+=======
+>>>>>>> inAppBilling:app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java
 import com.artifex.mupdfdemo.*;
 
 import ak.detaysoft.galepress.util.CustomPulseProgress;
@@ -26,6 +32,7 @@ public class WebViewAnnotation extends WebView {
     public MuPDFReaderView readerView;
     public LinkInfoExternal linkInfoExternal;
     private CustomPulseProgress loading;
+
     private Context context;
 
     /*
@@ -70,8 +77,18 @@ public class WebViewAnnotation extends WebView {
             if(loading != null) {
                 loading.setVisibility(GONE);
             }
+<<<<<<< HEAD:app/src/main/java/ak/detaysoft/galepress/web_views/WebViewAnnotation.java
             Logout.e("xxxxxx",""+url);
             view.setVisibility(VISIBLE);
+=======
+
+            /*String meta = "var metaTag=document.createElement('meta');"
+                    +" metaTag.name = \"viewport\""
+                    +" metaTag.content = \"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0\""
+                    +" document.getElementsByTagName('head')[0].appendChild(metaTag);" ;
+            view.loadUrl("javascript:" + meta );*/
+
+>>>>>>> inAppBilling:app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java
         }
 
         @Override
@@ -122,19 +139,25 @@ public class WebViewAnnotation extends WebView {
 
         WebSettings s = getSettings();
         s.setBuiltInZoomControls(true);
-        s.setPluginState(WebSettings.PluginState.ON);
-        s.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
-        s.setUseWideViewPort(true);
+        s.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
         s.setLoadWithOverviewMode(true);
+        s.setUseWideViewPort(true);
         s.setSaveFormData(true);
         s.setJavaScriptEnabled(true);
         s.setDomStorageEnabled(true);
+<<<<<<< HEAD:app/src/main/java/ak/detaysoft/galepress/web_views/WebViewAnnotation.java
         s.setMediaPlaybackRequiresUserGesture(false); //false olarak set edilmedigi autoplay calismiyor.
+=======
+        if (android.os.Build.VERSION.SDK_INT >= 17)
+            s.setMediaPlaybackRequiresUserGesture(false); //false olarak set edilmediği zaman autoplay çalışmıyor.
+>>>>>>> inAppBilling:app/src/main/java/ak/detaysoft/galepress/WebViewAnnotation.java
         s.setAllowFileAccess(true);
-        s.setAppCacheEnabled(true);
+        s.setAppCacheEnabled(false);
         s.setAllowFileAccessFromFileURLs(true);
         s.setAllowUniversalAccessFromFileURLs(true);
+        s.setDefaultTextEncodingName("utf-8");
         s.setSupportZoom(false);
+
 
         this.setHorizontalScrollBarEnabled(false);
         this.setVerticalScrollBarEnabled(false);
@@ -159,7 +182,6 @@ public class WebViewAnnotation extends WebView {
                         else{
                             return true;
                         }
-
                     }
                     else if(event.getAction() == MotionEvent.ACTION_MOVE){
                         // Action MOVE

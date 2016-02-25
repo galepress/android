@@ -53,4 +53,12 @@
     <dimen name="login_input_text_size">22sp</dimen>
     <dimen name="login_button_text_size">22sp</dimen>
 
+    <dimen name="login_signup_layer_height">30dp</dimen>
+    <dimen name="popup_login_width">300dp</dimen>
+    <dimen name="popup_login_padding">30dp</dimen>
+
+    <dimen name="popup_login_input_height">45dp</dimen>
+    <dimen name="popup_login_input_text_size">18sp</dimen>
+    <dimen name="popup_login_button_text_size">20sp</dimen>
+
 </resources>

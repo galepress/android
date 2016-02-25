@@ -48,8 +48,13 @@ public class LibraryFragment extends Fragment {
     public ContentHolderAdapter contentHolderAdapter;
     public HeaderGridView gridview;
     public LinearLayout banner;
+<<<<<<< HEAD
     public BannerAndTabbarWebView bannerWebView;
     public BannerAndTabbarWebViewWithCrosswalk bannerWebViewWithCrosswalk;
+=======
+    public CustomWebView customWebView;
+    public CustomWebViewWithChromium customWebViewWithChromium;
+>>>>>>> inAppBilling
     private LayoutInflater layoutInflater;
     private boolean isOnlyDownloaded;
     private List contents;
@@ -57,6 +62,8 @@ public class LibraryFragment extends Fragment {
     ArrayList<L_Category> selectedCategories;
     L_Category selectedCategory = null;
     private View v;
+    final int KITKAT = 19; // Android 5.0
+
 
     public LayoutInflater getLayoutInflater() {
         return layoutInflater;
@@ -152,6 +159,7 @@ public class LibraryFragment extends Fragment {
 
         banner =  (LinearLayout)LayoutInflater.from(this.getActivity()).inflate(R.layout.library_banner, null, false);
 
+<<<<<<< HEAD
         //4.4
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
             bannerWebView = new BannerAndTabbarWebView(this.getActivity());
@@ -167,6 +175,20 @@ public class LibraryFragment extends Fragment {
 
 
 
+=======
+        if (android.os.Build.VERSION.SDK_INT <= KITKAT) {
+            customWebView = new CustomWebView(this.getActivity());
+            customWebView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+            customWebView.loadUrl(GalePressApplication.getInstance().getBannerLink());
+            banner.addView(customWebView);
+        } else {
+            customWebViewWithChromium = new CustomWebViewWithChromium(this.getActivity());
+            customWebViewWithChromium.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+            customWebViewWithChromium.loadUrl(GalePressApplication.getInstance().getBannerLink());
+            banner.addView(customWebViewWithChromium);
+        }
+
+>>>>>>> inAppBilling
 
         banner.setLayoutParams(prepareBannerSize());
         gridview.addHeaderView(banner);
@@ -190,6 +212,7 @@ public class LibraryFragment extends Fragment {
 
     public void updateBanner(){
         banner.setLayoutParams(prepareBannerSize());
+<<<<<<< HEAD
 
         //4.4
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -197,6 +220,14 @@ public class LibraryFragment extends Fragment {
         } else {
             bannerWebViewWithCrosswalk.loadBannerUrl(GalePressApplication.getInstance().getBannerLink());
         }
+=======
+        if (android.os.Build.VERSION.SDK_INT <= KITKAT) {
+            customWebView.loadUrl(GalePressApplication.getInstance().getBannerLink());
+        } else {
+            customWebViewWithChromium.loadUrl(GalePressApplication.getInstance().getBannerLink());
+        }
+
+>>>>>>> inAppBilling
         gridview.invalidateViews();
     }
 

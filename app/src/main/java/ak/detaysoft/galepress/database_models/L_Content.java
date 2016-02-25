@@ -1,8 +1,11 @@
 package ak.detaysoft.galepress.database_models;
 
+<<<<<<< HEAD
 import android.os.Parcelable;
 
 import com.j256.ormlite.field.DataType;
+=======
+>>>>>>> inAppBilling
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -60,7 +63,12 @@ public class L_Content implements Serializable {
     @DatabaseField private boolean isForceDetele;
     @DatabaseField private String identifier;
     @DatabaseField private boolean isOwnedProduct;
+<<<<<<< HEAD
     @DatabaseField private String categoryIds;
+=======
+    @DatabaseField private String marketPrice;
+    @DatabaseField private boolean contentBought;
+>>>>>>> inAppBilling
 
     private ArrayList<L_Category> categories;
     private String pdfPath;
@@ -360,6 +368,7 @@ public class L_Content implements Serializable {
         this.isOwnedProduct = isOwnedProduct;
     }
 
+<<<<<<< HEAD
     public void setCategoryIds(String categoryIds) {
         this.categoryIds = categoryIds;
     }
@@ -377,6 +386,24 @@ public class L_Content implements Serializable {
     }
 
     // Model Methods
+=======
+    public String getMarketPrice() {
+        return marketPrice;
+    }
+
+    public boolean isContentBought() {
+        return contentBought;
+    }
+
+    public void setContentBought(boolean contentBought) {
+        this.contentBought = contentBought;
+    }
+
+    public void setMarketPrice(String marketPrice) {
+        this.marketPrice = marketPrice;
+    }
+// Model Methods
+>>>>>>> inAppBilling
 
     public L_Content(R_ContentDetail remoteContent){
         this.id = remoteContent.getContentID();
@@ -513,9 +540,14 @@ public class L_Content implements Serializable {
                 ", largeCoverImageDownloadPath='"+largeCoverImageDownloadPath+'\''+
                 ", smallCoverImageDownloadPath='"+smallCoverImageDownloadPath+'\''+
                 ", isForceDetele=" + isForceDetele +
+                ", contentBought=" + contentBought +
                 ", identifier='"+identifier+'\''+
                 ", isOwnedProduct=" + isOwnedProduct +
+<<<<<<< HEAD
                 ", categoryIds='" + categoryIds+'\''+
+=======
+                ", marketPrice='"+marketPrice+'\''+
+>>>>>>> inAppBilling
                 '}';
     }
 }

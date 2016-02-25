@@ -93,7 +93,11 @@ public class LinkInfoExternal extends LinkInfo {
                         isInternal = false;
                         sourceUrl = "http://"+url.substring(8);
                     }
+<<<<<<< HEAD
                 } catch (Exception e){
+=======
+                } catch (Exception e){ //Url hatalı
+>>>>>>> inAppBilling
                     isInternal = false;
                     sourceUrl = "";
                 }

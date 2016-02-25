@@ -48,7 +48,7 @@ public class R_ContentDetail {
         this.contentCategoryID = json.optInt("ContentCategoryID");
         this.contentIdentifier = json.optString("ContentIdentifier");
         this.contentIsProtected = json.optBoolean("ContentIsProtected");
-        this.contentPrice = json.optString("ContentPrice");
+        this.contentPrice = "";//json.optString("ContentPrice");
         this.error = json.optString("error");
         this.contentAutoDownload = json.optBoolean("ContentAutoDownload");
         this.contentName = json.optString("ContentName");
@@ -64,7 +64,6 @@ public class R_ContentDetail {
         this.contentOrderNo = json.optInt("ContentOrderNo");
         this.isForceDelete = json.optBoolean("RemoveFromMobile");
         this.contentCategories = new ArrayList<R_Category>();
-
 
         JSONArray arrayContentCategories = json.optJSONArray("ContentCategories");
         if (null != arrayContentCategories) {

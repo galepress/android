@@ -7,6 +7,7 @@ package ak.detaysoft.galepress;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -25,9 +26,11 @@ import android.os.Message;
 import android.provider.Settings;
 import android.text.InputType;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -38,7 +41,12 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.RequestFuture;
+<<<<<<< HEAD
 import com.artifex.mupdfdemo.MuPDFActivity;
+=======
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
+>>>>>>> inAppBilling
 import com.google.android.gcm.GCMRegistrar;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
@@ -181,7 +189,6 @@ public class DataApi extends Object {
                             // Do Nothing
                         }
                     }
-
                 }
             }
             else{
@@ -450,7 +457,6 @@ public class DataApi extends Object {
             }
         }
 
-
     }
 
     private void progressUpdate(L_Content content, long total, long fileLength) {
@@ -612,6 +618,116 @@ public class DataApi extends Object {
             getDatabaseApi().createStatistic(statistic);
     }
 
+
+    public void login(final String token, final String userId, final String email, final String name, final String last_name,
+                      final Activity activity, boolean isFacebookLogin, String uname, String password){
+
+        if(isConnectedToInternet()){
+            getBuildVersion();
+            Logout.e("Adem","INC"); GalePressApplication.getInstance().incrementRequestCount();
+            GalePressApplication application = GalePressApplication.getInstance();
+            RequestQueue requestQueue = application.getRequestQueue();
+            final JsonObjectRequest request;
+
+            Integer applicationID;
+            if (GalePressApplication.getInstance().isTestApplication()) {
+                applicationID = new Integer(application.getTestApplicationLoginInf().getApplicationId());
+            } else {
+                applicationID = application.getApplicationId();
+            }
+
+            /*Uri.Builder uriBuilder = new Uri.Builder();
+            uriBuilder.scheme("http")
+                    .authority("www.galepress.com")
+                    .appendPath("webservice")
+                    .appendPath("103");*/
+
+            final String gcmRegisterId = GCMRegistrar.getRegistrationId(GalePressApplication.getInstance().getApplicationContext());
+
+            Uri.Builder uriBuilder = getWebServiceUrlBuilder();
+            uriBuilder.appendPath("applications");
+            if(!isFacebookLogin)
+                uriBuilder.appendPath("login_application");
+            else
+                uriBuilder.appendPath("fblogin");
+            if(!isFacebookLogin){
+                uriBuilder.appendQueryParameter("username",uname);
+                uriBuilder.appendQueryParameter("password",password);
+                uriBuilder.appendQueryParameter("applicationID",applicationID.toString());
+            } else {
+                uriBuilder.appendQueryParameter("clientLanguage", activity.getResources().getString(R.string.language));
+                uriBuilder.appendQueryParameter("applicationID",applicationID.toString());
+                uriBuilder.appendQueryParameter("facebookToken",token);
+                uriBuilder.appendQueryParameter("facebookUserId",userId);
+                uriBuilder.appendQueryParameter("facebookEmail",email);
+                uriBuilder.appendQueryParameter("name",name);
+                uriBuilder.appendQueryParameter("surname",last_name);
+            }
+            uriBuilder.appendQueryParameter("deviceToken", gcmRegisterId);
+
+            request = new JsonObjectRequest(Request.Method.POST,uriBuilder.build().toString(), null,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                if(!response.isNull("accessToken")){
+                                    String accessToken = response.getString("accessToken");
+                                    if(accessToken != null && accessToken.length() != 0) {
+                                        GalePressApplication.getInstance().editMemberShipList(true, response);
+                                        ((LoginActivity) activity).getUpdateDialog().setMessage(activity.getResources().getString(R.string.Restore) + "...");
+                                        GalePressApplication.getInstance().restorePurchasedProductsFromMarket(true, activity, ((LoginActivity) activity).getUpdateDialog());
+                                    } else {
+                                        GalePressApplication.getInstance().editMemberShipList(false, null);
+                                        ((LoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_0));
+                                    }
+                                } else if(!response.isNull("status")) {
+                                    int code = response.getInt("status");
+                                    if(code == 160)
+                                        ((LoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_160));
+                                    else if(code == 140)
+                                        ((LoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_140));
+                                    else
+                                        ((LoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_0));
+                                } else {
+                                    GalePressApplication.getInstance().editMemberShipList(false, null);
+                                    ((LoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_0));
+                                }
+
+
+                                Logout.e("Adem","DECREMENT"); GalePressApplication.getInstance().decrementRequestCount();
+                            } catch (Exception e){
+                                GalePressApplication.getInstance().editMemberShipList(false, null);
+                                ((LoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_0));
+                                e.printStackTrace();
+                                Logout.e("Adem","DECREMENT"); GalePressApplication.getInstance().decrementRequestCount();
+                            }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+
+                            if(error != null && error.getMessage() != null){
+                                if(error.getMessage().toLowerCase().contains("160"))
+                                    ((LoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_160));
+                                else if(error.getMessage().toLowerCase().contains("140"))
+                                    ((LoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_140));
+                                else
+                                    ((LoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_0));
+                                VolleyLog.e("Error: ", error.getMessage());
+                            }
+                            GalePressApplication.getInstance().editMemberShipList(false, null);
+                            Logout.e("Adem","DECREMENT"); GalePressApplication.getInstance().decrementRequestCount();
+
+                        }
+                    });
+            request.setShouldCache(Boolean.FALSE);
+            requestQueue.add(request);
+        } else {
+            ((LoginActivity) activity).internetConnectionWarning();
+        }
+    }
+
     public void getCustomerApplications(final ViewerLoginActivity activity, final boolean isFacebookLogin){
         if(isConnectedToInternet()){
             GalePressApplication application = GalePressApplication.getInstance();
@@ -692,13 +808,19 @@ public class DataApi extends Object {
                         @Override
                         public void onErrorResponse(VolleyError error) {
 
-                            if(error.getMessage().toLowerCase().contains("140"))
-                                activity.customWarning(activity.getResources().getString(R.string.WARNING_140));
-                            else if(error.getMessage().toLowerCase().contains("141"))
-                                activity.customWarning(activity.getResources().getString(R.string.WARNING_141));
-                            else
+                            if(error != null && error.getMessage() != null) {
+                                if(error.getMessage().toLowerCase().contains("140"))
+                                    activity.customWarning(activity.getResources().getString(R.string.WARNING_140));
+                                else if(error.getMessage().toLowerCase().contains("141"))
+                                    activity.customWarning(activity.getResources().getString(R.string.WARNING_141));
+                                else
+                                    activity.customWarning(activity.getResources().getString(R.string.WARNING_0));
+                                VolleyLog.e("Error: ", error.getMessage());
+                            } else {
                                 activity.customWarning(activity.getResources().getString(R.string.WARNING_0));
-                            VolleyLog.e("Error: ", error.getMessage());
+                            }
+
+
                         }
                     }
             );
@@ -737,7 +859,14 @@ public class DataApi extends Object {
             JsonObjectRequest request;
 
             //http://www.galepress.com/ws/v100/applications/20/detail?deviceType=android&osVersion=19_4.4.4&deviceDetail=LG Nexus 5&deviceToken=a;lskdfjla;skjdf;laksjdf;laksdf;
+
             Uri.Builder uriBuilder = getWebServiceUrlBuilder();
+            /*Uri.Builder uriBuilder = new Uri.Builder();
+            uriBuilder.scheme("http")
+                    .authority("www.galepress.com")
+                    .appendPath("webservice")
+                    .appendPath("103");*/
+
             uriBuilder.appendPath("applications");
             uriBuilder.appendPath(applicationID.toString());
             uriBuilder.appendPath("detail");
@@ -745,15 +874,21 @@ public class DataApi extends Object {
             uriBuilder.appendQueryParameter("osVersion", osVersion);
             uriBuilder.appendQueryParameter("deviceDetail", getDeviceName());
             uriBuilder.appendQueryParameter("deviceToken", gcmRegisterId);
+            if(GalePressApplication.getInstance().getUserInformation() != null
+                    && GalePressApplication.getInstance().getUserInformation().getAccessToken() != null
+                    && GalePressApplication.getInstance().getUserInformation().getAccessToken().length() != 0)
+                uriBuilder.appendQueryParameter("accessToken",GalePressApplication.getInstance().getUserInformation().getAccessToken()); // Kullanici login oldugu zaman deviceToken alınamamışsa burda gönderilen accesToken ile tekrar eşleştiriyoruz.
             uriBuilder.appendQueryParameter("buildVersion", getBuildVersion());
             uriBuilder.appendQueryParameter("udid", udid);
 
-            request = new JsonObjectRequest(Request.Method.GET, uriBuilder.build().toString(), null,
+            request = new JsonObjectRequest(Request.Method.POST, uriBuilder.build().toString(), null,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
                             try {
                                 R_AppDetail appDetail= new R_AppDetail(response);
+
+                                GalePressApplication.getInstance().prepareSubscriptions(response);
                                 if(appDetail.getForce() == R_AppDetail.FORCE_WARN){
                                     isBlockedFromWS = false;
                                     // Warn user to update app.
@@ -836,7 +971,10 @@ public class DataApi extends Object {
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            VolleyLog.e("Error: ", error.getMessage());
+                            if(error != null && error.getMessage() != null) {
+                                VolleyLog.e("Error: ", error.getMessage());
+                            }
+
                         }
                     }
             );
@@ -944,8 +1082,11 @@ public class DataApi extends Object {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Logout.e("Adem", "Error : " + error.getMessage());
-                        VolleyLog.e("Error: ", error.getMessage());
+                        if(error != null && error.getMessage() != null) {
+                            Logout.e("Adem", "Error : " + error.getMessage());
+                            VolleyLog.e("Error: ", error.getMessage());
+                        }
+
                     }
                 }
         );
@@ -1035,6 +1176,12 @@ public class DataApi extends Object {
 
                 alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
+                        content.setPdfDownloading(false);
+                        getDatabaseApi().updateContent(content,false);
+                        if(GalePressApplication.getInstance().getContentDetailPopupActivity() != null){
+                            GalePressApplication.getInstance().getContentDetailPopupActivity().contentHolder.downloadButton.stopAnim();
+                            GalePressApplication.getInstance().getContentDetailPopupActivity().update();
+                        }
                         dialog.cancel();
                     }
                 });
@@ -1044,12 +1191,11 @@ public class DataApi extends Object {
                 downloadPdf(content);
             }
         }
-
     }
 
     public void deletePdf(final Integer id, Context context) {
         final L_Content content = getDatabaseApi().getContent(id);
-        if (content.isPdfDownloaded()) {
+        if(content.isPdfDownloaded()) {
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
             alertDialog.setTitle(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.UYARI));
             alertDialog.setMessage(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.CONFIRM_1));
@@ -1181,8 +1327,11 @@ public class DataApi extends Object {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Logout.e("Adem", "Error : " + error.getMessage());
-                        VolleyLog.e("Error: ", error.getMessage());
+                        if(error != null && error.getMessage() != null) {
+                            Logout.e("Adem", "Error : " + error.getMessage());
+                            VolleyLog.e("Error: ", error.getMessage());
+                        }
+
                     }
                 }
         );
@@ -1281,8 +1430,11 @@ public class DataApi extends Object {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Logout.e("Adem", "Error : " + error.getMessage());
-                        VolleyLog.e("Error: ", error.getMessage());
+                        if(error != null && error.getMessage() != null) {
+                            Logout.e("Adem", "Error : " + error.getMessage());
+                            VolleyLog.e("Error: ", error.getMessage());
+                        }
+
                     }
                 }
         );
@@ -1327,7 +1479,7 @@ public class DataApi extends Object {
         uriBuilder.appendQueryParameter("type",statistic.getType().toString());
         uriBuilder.appendQueryParameter("time",statistic.getTime());
         uriBuilder.appendQueryParameter("lat",statistic.getLat()!=null?statistic.getLat().toString(): "");
-        uriBuilder.appendQueryParameter("long",statistic.getLon()!=null?statistic.getLon().toString(): "");
+        uriBuilder.appendQueryParameter("lon",statistic.getLon()!=null?statistic.getLon().toString(): "");
         uriBuilder.appendQueryParameter("deviceID",gcmRegisterId);
         uriBuilder.appendQueryParameter("applicationID",applicationId.toString());
         uriBuilder.appendQueryParameter("contentID", statistic.getContentId() != null ? statistic.getContentId().toString() : "");
@@ -1458,7 +1610,9 @@ public class DataApi extends Object {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        VolleyLog.e("Error: ", error.getMessage());
+                        if(error != null && error.getMessage() != null) {
+                            VolleyLog.e("Error: ", error.getMessage());
+                        }
                         Logout.e("Adem","DECREMENT"); GalePressApplication.getInstance().decrementRequestCount();
                     }
                 }
@@ -1521,8 +1675,11 @@ public class DataApi extends Object {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Logout.e("Adem", "Error : " + error.getMessage());
-                        VolleyLog.e("Error: ", error.getMessage());
+                        if(error != null && error.getMessage() != null) {
+                            Logout.e("Adem", "Error : " + error.getMessage());
+                            VolleyLog.e("Error: ", error.getMessage());
+                        }
+
                         Logout.e("Adem","DECREMENT"); GalePressApplication.getInstance().decrementRequestCount();
                     }
                 }
@@ -1531,6 +1688,142 @@ public class DataApi extends Object {
         requestQueue.add(request);
     }
 
+    public void restoreAppContents(final Activity activity, final ProgressDialog progress){
+        GalePressApplication application = GalePressApplication.getInstance();
+        Integer applicationId = null;
+        RequestQueue requestQueue = application.getRequestQueue();
+        JsonObjectRequest request;
+
+        if (GalePressApplication.getInstance().isTestApplication()) {
+            applicationId = new Integer(application.getTestApplicationLoginInf().getApplicationId());
+        } else {
+            applicationId = application.getApplicationId();
+        }
+
+        /*Uri.Builder uriBuilder = new Uri.Builder();
+        uriBuilder.scheme("http")
+                .authority("www.galepress.com")
+                .appendPath("webservice")
+                .appendPath("103");*/
+        Uri.Builder uriBuilder = getWebServiceUrlBuilder();
+        uriBuilder.appendPath("applications");
+        uriBuilder.appendPath(applicationId.toString());
+        uriBuilder.appendPath("contents");
+
+        if (GalePressApplication.getInstance().isTestApplication()) {
+            uriBuilder.appendQueryParameter("isTest","1");
+        }
+
+        if(GalePressApplication.getInstance().getUserInformation() != null
+                && GalePressApplication.getInstance().getUserInformation().getAccessToken() != null
+                && GalePressApplication.getInstance().getUserInformation().getAccessToken().length() != 0)
+            uriBuilder.appendQueryParameter("accessToken",GalePressApplication.getInstance().getUserInformation().getAccessToken());
+
+        request = new JsonObjectRequest(Request.Method.GET, uriBuilder.build().toString() , null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            R_AppContents RAppContents = new R_AppContents(response);
+                            if(!response.isNull("error") && response.getString("error").length() != 0){
+                                int code = response.getInt("status");
+                                boolean isUpdate = false;
+                                if(code == 160) {
+                                    List<L_Content> localContents = databaseApi.getAllContents(null);
+                                    for (L_Content l_content : localContents) {
+                                        if(l_content.isContentBought()) {
+                                            l_content.setContentBought(false);
+                                            getDatabaseApi().updateContent(l_content,false);
+                                            isUpdate = true;
+                                        }
+                                    }
+                                }
+
+                                if(activity != null){
+                                    if(activity instanceof MainActivity) {
+                                        if(progress != null && progress.isShowing())
+                                            progress.dismiss();
+                                        ((MainActivity)activity).logout();
+                                        Toast.makeText(activity, activity.getResources().getString(R.string.WARNING_160), Toast.LENGTH_SHORT).show();
+                                        if(isUpdate){
+                                            MainActivity act = (MainActivity)activity;
+                                            if(act.mTabHost.getCurrentTabTag().compareTo(MainActivity.DOWNLOADED_LIBRARY_TAG) == 0
+                                                    || act.mTabHost.getCurrentTabTag().compareTo(MainActivity.LIBRARY_TAB_TAG) == 0)
+                                                act.getCurrentLibraryFragment().updateGridView();
+                                        }
+                                    } else if(activity instanceof LoginActivity){
+                                        ((LoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_160));
+                                    }
+                                }
+                            } else {
+                                List<L_Content> localContents = databaseApi.getAllContents(null);
+                                boolean isUpdate = false;
+                                for (L_Content l_content : localContents) {
+                                    for (R_Content r_content : RAppContents.getContents()) {
+                                        if (l_content.getId().compareTo(r_content.getContentID()) == 0) {
+                                            if(l_content.isContentBought() != r_content.isContentBought()) {
+                                                l_content.setContentBought(r_content.isContentBought());
+                                                getDatabaseApi().updateContent(l_content,false);
+                                                isUpdate = true;
+                                            }
+                                        }
+                                    }
+                                }
+
+
+
+                                if(activity != null){
+                                    if(activity instanceof MainActivity) {
+                                        if(progress != null && progress.isShowing())
+                                            progress.dismiss();
+                                        if(isUpdate){
+                                            MainActivity act = (MainActivity)activity;
+                                            if(act.mTabHost.getCurrentTabTag().compareTo(MainActivity.DOWNLOADED_LIBRARY_TAG) == 0
+                                                    || act.mTabHost.getCurrentTabTag().compareTo(MainActivity.LIBRARY_TAB_TAG) == 0)
+                                                act.getCurrentLibraryFragment().updateGridView();
+                                        }
+                                    } else if(activity instanceof LoginActivity){
+                                        ((LoginActivity) activity).closeActivityAndUpdateApplication();
+                                    }
+                                }
+                            }
+
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            if(activity != null){
+                                if(activity instanceof MainActivity) {
+                                    if(progress != null && progress.isShowing())
+                                        progress.dismiss();
+                                } else if(activity instanceof LoginActivity){
+                                    ((LoginActivity) activity).closeActivityAndUpdateApplication();
+                                }
+                            }
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        if(error != null && error.getMessage() != null) {
+                            Logout.e("Adem", "Error : " + error.getMessage());
+                            VolleyLog.e("Error: ", error.getMessage());
+                        }
+
+                        if(activity != null){
+                            if(activity instanceof MainActivity) {
+                                if(progress != null && progress.isShowing())
+                                    progress.dismiss();
+                            } else if(activity instanceof LoginActivity){
+                                ((LoginActivity) activity).closeActivityAndUpdateApplication();
+                            }
+                        }
+                    }
+                }
+        );
+        request.setShouldCache(Boolean.FALSE);
+        requestQueue.add(request);
+    }
 
     private void getRemoteAppContents() {
         Logout.e("Adem","INC"); GalePressApplication.getInstance().incrementRequestCount();
@@ -1545,6 +1838,11 @@ public class DataApi extends Object {
             applicationId = application.getApplicationId();
         }
 
+        /*Uri.Builder uriBuilder = new Uri.Builder();
+        uriBuilder.scheme("http")
+                .authority("www.galepress.com")
+                .appendPath("webservice")
+                .appendPath("103");*/
         Uri.Builder uriBuilder = getWebServiceUrlBuilder();
         uriBuilder.appendPath("applications");
         uriBuilder.appendPath(applicationId.toString());
@@ -1553,6 +1851,11 @@ public class DataApi extends Object {
         if (GalePressApplication.getInstance().isTestApplication()) {
             uriBuilder.appendQueryParameter("isTest","1");
         }
+
+        if(GalePressApplication.getInstance().getUserInformation() != null
+                && GalePressApplication.getInstance().getUserInformation().getAccessToken() != null
+                && GalePressApplication.getInstance().getUserInformation().getAccessToken().length() != 0)
+            uriBuilder.appendQueryParameter("accessToken",GalePressApplication.getInstance().getUserInformation().getAccessToken());
 
         request = new JsonObjectRequest(Request.Method.GET, uriBuilder.build().toString() , null,
                 new Response.Listener<JSONObject>() {
@@ -1667,8 +1970,11 @@ public class DataApi extends Object {
                         ApplicationThemeColor.getInstance().setParameters(null);
                         GalePressApplication.getInstance().setBannerLink(null);
                         GalePressApplication.getInstance().setTabList(null);
-                        Logout.e("Adem", "Error : " + error.getMessage());
-                        VolleyLog.e("Error: ", error.getMessage());
+                        if(error != null && error.getMessage() != null) {
+                            Logout.e("Adem", "Error : " + error.getMessage());
+                            VolleyLog.e("Error: ", error.getMessage());
+                        }
+
                         Logout.e("Adem","DECREMENT"); GalePressApplication.getInstance().decrementRequestCount();
                     }
                 }
@@ -1691,6 +1997,11 @@ public class DataApi extends Object {
         RequestQueue requestQueue = application.getRequestQueue();
         int seqNo = requestQueue.getSequenceNumber();
         JsonObjectRequest request;
+        /*Uri.Builder uriBuilder = new Uri.Builder();
+        uriBuilder.scheme("http")
+                .authority("www.galepress.com")
+                .appendPath("webservice")
+                .appendPath("103");*/
         Uri.Builder uriBuilder = getWebServiceUrlBuilder();
         uriBuilder.appendPath("applications");
         uriBuilder.appendPath(applicationID.toString());
@@ -1720,8 +2031,11 @@ public class DataApi extends Object {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Logout.e("Adem", "Error : " + error.getMessage());
-                        VolleyLog.e("Error: ", error.getMessage());
+                        if(error != null && error.getMessage() != null) {
+                            Logout.e("Adem", "Error : " + error.getMessage());
+                            VolleyLog.e("Error: ", error.getMessage());
+                        }
+
                         Logout.e("Adem","DECREMENT"); GalePressApplication.getInstance().decrementRequestCount();
                     }
                 }
@@ -1770,8 +2084,11 @@ public class DataApi extends Object {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Logout.e("Adem", "Error : " + error.getMessage());
-                        VolleyLog.e("Error: ", error.getMessage());
+                        if(error != null && error.getMessage() != null) {
+                            Logout.e("Adem", "Error : " + error.getMessage());
+                            VolleyLog.e("Error: ", error.getMessage());
+                        }
+
                         Logout.e("Adem","DECREMENT"); GalePressApplication.getInstance().decrementRequestCount();
 
                     }

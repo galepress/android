@@ -135,7 +135,7 @@ public class CustomThumnailAdapter extends ArrayAdapter<Object> {
                 .findViewById(R.id.PreviewPageNumber);
         pageNumber.setText(String.valueOf(position + 1));
         pageNumber.setTextColor(ApplicationThemeColor.getInstance().getThemeColor());
-        pageNumber.setTypeface(ApplicationThemeColor.getInstance().getFont(mContext));
+        pageNumber.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(mContext));
         pageNumberList.set(position, pageNumber);
         if(position == mDocView.getDisplayedViewIndex())
             pageNumber.setVisibility(View.VISIBLE);

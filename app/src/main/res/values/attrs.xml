@@ -37,4 +37,8 @@
         <attr name="aspectRatioButton" format="float"/>
     </declare-styleable>
 
+    <declare-styleable name="FixedLoginPopup">
+        <attr name="aspectRatioLogin" format="float"/>
+    </declare-styleable>
+
 </resources>

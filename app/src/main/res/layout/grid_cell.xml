@@ -28,7 +28,7 @@
                 android:layout_height="match_parent"
                 android:adjustViewBounds="false"
                 android:scaleType="fitXY"
-                />
+            />
 
             <ak.detaysoft.galepress.util.CustomPulseProgress
                 android:layout_width="40dp"
@@ -37,7 +37,7 @@
                 android:visibility="visible"
                 android:layout_centerInParent="true"
                 android:layout_alignParentBottom="false" />
-            </RelativeLayout>
+        </RelativeLayout>
 
         <RelativeLayout
             android:id = "@+id/detailLayout"
@@ -103,13 +103,8 @@
                 android:layout_height="3dp"
                 android:layout_width="match_parent"
                 android:layout_alignParentBottom="true" />
-
         </RelativeLayout>
 
-
-
-
     </RelativeLayout>
-
 
 </RelativeLayout>

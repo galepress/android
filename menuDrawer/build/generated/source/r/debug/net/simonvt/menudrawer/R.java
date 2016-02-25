@@ -153,7 +153,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           @attr name net.simonvt.menudrawer:mdActiveIndicator
         */
-        public static final int MenuDrawer_mdActiveIndicator = 3;
+        public static int MenuDrawer_mdActiveIndicator = 3;
         /**
           <p>This symbol is the offset where the {@link net.simonvt.menudrawer.R.attr#mdAllowIndicatorAnimation}
           attribute's value can be found in the {@link #MenuDrawer} array.
@@ -167,7 +167,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name net.simonvt.menudrawer:mdAllowIndicatorAnimation
         */
-        public static final int MenuDrawer_mdAllowIndicatorAnimation = 9;
+        public static int MenuDrawer_mdAllowIndicatorAnimation = 9;
         /**
           <p>This symbol is the offset where the {@link net.simonvt.menudrawer.R.attr#mdContentBackground}
           attribute's value can be found in the {@link #MenuDrawer} array.
@@ -177,7 +177,7 @@ containing a value of this type.
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           @attr name net.simonvt.menudrawer:mdContentBackground
         */
-        public static final int MenuDrawer_mdContentBackground = 0;
+        public static int MenuDrawer_mdContentBackground = 0;
         /**
           <p>This symbol is the offset where the {@link net.simonvt.menudrawer.R.attr#mdDropShadow}
           attribute's value can be found in the {@link #MenuDrawer} array.
@@ -187,7 +187,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           @attr name net.simonvt.menudrawer:mdDropShadow
         */
-        public static final int MenuDrawer_mdDropShadow = 7;
+        public static int MenuDrawer_mdDropShadow = 7;
         /**
           <p>This symbol is the offset where the {@link net.simonvt.menudrawer.R.attr#mdDropShadowColor}
           attribute's value can be found in the {@link #MenuDrawer} array.
@@ -202,7 +202,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name net.simonvt.menudrawer:mdDropShadowColor
         */
-        public static final int MenuDrawer_mdDropShadowColor = 6;
+        public static int MenuDrawer_mdDropShadowColor = 6;
         /**
           <p>This symbol is the offset where the {@link net.simonvt.menudrawer.R.attr#mdDropShadowEnabled}
           attribute's value can be found in the {@link #MenuDrawer} array.
@@ -216,7 +216,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name net.simonvt.menudrawer:mdDropShadowEnabled
         */
-        public static final int MenuDrawer_mdDropShadowEnabled = 4;
+        public static int MenuDrawer_mdDropShadowEnabled = 4;
         /**
           <p>This symbol is the offset where the {@link net.simonvt.menudrawer.R.attr#mdDropShadowSize}
           attribute's value can be found in the {@link #MenuDrawer} array.
@@ -232,7 +232,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name net.simonvt.menudrawer:mdDropShadowSize
         */
-        public static final int MenuDrawer_mdDropShadowSize = 5;
+        public static int MenuDrawer_mdDropShadowSize = 5;
         /**
           <p>This symbol is the offset where the {@link net.simonvt.menudrawer.R.attr#mdMaxAnimationDuration}
           attribute's value can be found in the {@link #MenuDrawer} array.
@@ -246,7 +246,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name net.simonvt.menudrawer:mdMaxAnimationDuration
         */
-        public static final int MenuDrawer_mdMaxAnimationDuration = 10;
+        public static int MenuDrawer_mdMaxAnimationDuration = 10;
         /**
           <p>This symbol is the offset where the {@link net.simonvt.menudrawer.R.attr#mdMenuBackground}
           attribute's value can be found in the {@link #MenuDrawer} array.
@@ -256,7 +256,7 @@ containing a value of this type.
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           @attr name net.simonvt.menudrawer:mdMenuBackground
         */
-        public static final int MenuDrawer_mdMenuBackground = 1;
+        public static int MenuDrawer_mdMenuBackground = 1;
         /**
           <p>This symbol is the offset where the {@link net.simonvt.menudrawer.R.attr#mdMenuSize}
           attribute's value can be found in the {@link #MenuDrawer} array.
@@ -272,7 +272,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name net.simonvt.menudrawer:mdMenuSize
         */
-        public static final int MenuDrawer_mdMenuSize = 2;
+        public static int MenuDrawer_mdMenuSize = 2;
         /**
           <p>This symbol is the offset where the {@link net.simonvt.menudrawer.R.attr#mdTouchBezelSize}
           attribute's value can be found in the {@link #MenuDrawer} array.
@@ -288,6 +288,6 @@ theme attribute (in the form
 containing a value of this type.
           @attr name net.simonvt.menudrawer:mdTouchBezelSize
         */
-        public static final int MenuDrawer_mdTouchBezelSize = 8;
+        public static int MenuDrawer_mdTouchBezelSize = 8;
     };
 }

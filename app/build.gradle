@@ -1,5 +1,6 @@
 buildscript {
     repositories {
+<<<<<<< HEAD
         jcenter()
         maven { url 'https://maven.fabric.io/public' }
     }
@@ -7,6 +8,12 @@ buildscript {
         classpath 'com.android.tools.build:gradle:1.5.0'
         // The Fabric Gradle plugin uses an open ended version to react
         // quickly to Android tooling updates
+=======
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+>>>>>>> inAppBilling
         classpath 'io.fabric.tools:gradle:1.+'
     }
 }
@@ -17,12 +24,17 @@ android {
     signingConfigs {
     }
     compileSdkVersion 19
-    buildToolsVersion '20.0.0'
+    buildToolsVersion '23.0.2'
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 19
+<<<<<<< HEAD
         versionCode 24
         versionName '3.3.13'
+=======
+        versionCode 17
+        versionName '3.3.5'
+>>>>>>> inAppBilling
     }
     buildTypes {
         release {
@@ -51,6 +63,7 @@ dependencies {
     compile files('src/main/lib/gcm.jar')
     compile project(':menuDrawer')
     compile files('src/main/lib/universal-image-loader-1.9.3.jar')
+<<<<<<< HEAD
     compile 'com.android.support:appcompat-v7:20.+'
     compile 'com.j256.ormlite:ormlite-android:4.45@jar'
     compile 'com.j256.ormlite:ormlite-core:4.45@jar'
@@ -60,5 +73,9 @@ dependencies {
     compile 'com.edmodo:cropper:1.0.1'
     compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
         transitive = true
+=======
+    compile('com.crashlytics.sdk.android:crashlytics:2.5.2@aar') {
+        transitive = true;
+>>>>>>> inAppBilling
     }
 }

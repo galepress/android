@@ -2,42 +2,57 @@ package ak.detaysoft.galepress;
 
 import android.app.Activity;
 import android.app.Application;
+import android.app.ProgressDialog;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.location.Location;
+<<<<<<< HEAD
 
 import com.android.vending.billing.IInAppBillingService;
 import com.artifex.mupdfdemo.MuPDFActivity;
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
+=======
+import android.os.AsyncTask;
+>>>>>>> inAppBilling
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.PowerManager;
+import android.os.RemoteException;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
-import android.util.Log;
 
+import com.android.vending.billing.IInAppBillingService;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.Volley;
+import com.artifex.mupdfdemo.MuPDFActivity;
+import com.crashlytics.android.Crashlytics;
 import com.dd.plist.NSDictionary;
 import com.dd.plist.PropertyListParser;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.LocationClient;
+<<<<<<< HEAD
+=======
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
+>>>>>>> inAppBilling
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
+import io.fabric.sdk.android.Fabric;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.xwalk.core.XWalkPreferences;
 
@@ -48,11 +63,19 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+<<<<<<< HEAD
+=======
+import java.util.List;
+>>>>>>> inAppBilling
 import java.util.TimeZone;
 import java.util.UUID;
+
 import ak.detaysoft.galepress.custom_models.ApplicationPlist;
+import ak.detaysoft.galepress.custom_models.Subscription;
 import ak.detaysoft.galepress.custom_models.TabbarItem;
+import ak.detaysoft.galepress.custom_models.UserInformations;
 import ak.detaysoft.galepress.database_models.L_Application;
+import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.database_models.L_Statistic;
 import ak.detaysoft.galepress.database_models.TestApplicationInf;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
@@ -105,6 +128,18 @@ public class GalePressApplication
     private String bannerLink = "";
     private ArrayList<TabbarItem> tabList;
     public boolean isTablistChanced = true;
+    private ArrayList<Integer> membershipMenuList;
+    private ArrayList<Subscription> subscriptions;
+
+
+    public final static int BILLING_RESPONSE_RESULT_OK = 0;
+    public final static int RESULT_USER_CANCELED = 1;
+    public final static int RESULT_BILLING_UNAVAILABLE = 3;
+    public final static int RESULT_ITEM_UNAVAILABLE = 4;
+    public final static int RESULT_DEVELOPER_ERROR = 5;
+    public final static int RESULT_ERROR = 6;
+    public final static int RESULT_ITEM_ALREADY_OWNED = 7;
+    public final static int RESULT_ITEM_NOT_OWNED = 8; //For consumable product
 
 
     public final int M_DPI = 0;
@@ -116,6 +151,8 @@ public class GalePressApplication
     private IInAppBillingService mService;
     private ServiceConnection mServiceConn;
     private boolean blnBind = false;
+
+    private UserInformations userInformation;
 
     Foreground.Listener myListener = new Foreground.Listener(){
         public void onBecameForeground(){
@@ -158,6 +195,7 @@ public class GalePressApplication
     public void onCreate() {
         super.onCreate();
         Fabric.with(this, new Crashlytics());
+<<<<<<< HEAD
 
         XWalkPreferences.setValue("enable-javascript", true);
         XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, true);
@@ -165,7 +203,10 @@ public class GalePressApplication
         XWalkPreferences.setValue(XWalkPreferences.JAVASCRIPT_CAN_OPEN_WINDOW, true);
         XWalkPreferences.setValue(XWalkPreferences.SUPPORT_MULTIPLE_WINDOWS, true);
         XWalkPreferences.setValue(XWalkPreferences.ANIMATABLE_XWALK_VIEW, true);
+=======
+>>>>>>> inAppBilling
         sInstance = this;
+        parseApplicationPlist();
 
         DisplayImageOptions displayConfig = new DisplayImageOptions.Builder()
                 .cacheInMemory(true).build();
@@ -174,8 +215,10 @@ public class GalePressApplication
                 .defaultDisplayImageOptions(displayConfig).build();
         ImageLoader.getInstance().init(loaderConfig);
 
-        parseApplicationPlist();
+
         initBillingServices();
+        prepareMemberShipList();
+        prepareSubscriptions(null);
 
         //Uygulama ilk acildiginda localde tutulan renk, banner ve tabbar datalarini alabilmek icin
         ApplicationThemeColor.getInstance().setParameters(null);
@@ -184,7 +227,7 @@ public class GalePressApplication
 
         if(isTestApplication()){
             SharedPreferences preferences;
-            preferences= PreferenceManager.getDefaultSharedPreferences(this);
+            preferences= getSharedPreferences("ak.detaysoft.galepress", Context.MODE_PRIVATE);
             setTestApplicationLoginInf(preferences.getString("AppUserName", ""), preferences.getString("AppPassword", ""), preferences.getString("AppId", "0"),
                                        preferences.getString("FacebookEmail", ""), preferences.getString("FacebookUserId", ""), false);
         }
@@ -440,7 +483,7 @@ public class GalePressApplication
 
         SharedPreferences preferences;
         SharedPreferences.Editor editor;
-        preferences= PreferenceManager.getDefaultSharedPreferences(GalePressApplication.getInstance().getApplicationContext());
+        preferences= getSharedPreferences("ak.detaysoft.galepress", Context.MODE_PRIVATE);
         editor = preferences.edit();
         editor.putString("AppUserName", username);
         editor.putString("AppPassword", password);
@@ -456,6 +499,7 @@ public class GalePressApplication
         if(dataApi != null){
             dataApi.getDatabaseApi().deleteApplication(dataApi.getDatabaseApi().getApplication(getApplicationId()));
             dataApi.getDatabaseApi().createApplication(new L_Application(Integer.parseInt(applicationId), -1));
+            setTestApplicationLoginInf(testApplicationInf.getUsername(), testApplicationInf.getPassword(), applicationId, testApplicationInf.getFacebookEmail(), testApplicationInf.getFacebookUserId(), false);
         }
     }
 
@@ -612,15 +656,16 @@ public class GalePressApplication
         } catch (Exception e){
             link = preferences.getString("bannerPage","");
         }
+
         editor.putString("bannerPage", link);
         editor.commit();
 
         bannerLink = link;
 
+        //bannerLink = "http://rastcode.com/test/index.html";
         if(bannerLink.length() != 0 && getCurrentActivity()!= null && getCurrentActivity().getClass() == MainActivity.class
                 && ((MainActivity)getCurrentActivity()).getLibraryFragment()  != null)
             ((MainActivity)getCurrentActivity()).getLibraryFragment().updateBanner();
-
 
     }
 
@@ -758,7 +803,7 @@ public class GalePressApplication
         return blnBind;
     }
 
-    public String md5(String s) {
+    public String getMD5EncryptedValue(String s) {
         try {
             java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
             byte[] array = md.digest(s.getBytes());
@@ -772,7 +817,7 @@ public class GalePressApplication
         return null;
     }
 
-    public String prepareMD5ForStorage(String s){
+    public String getMD5MixedValue(String s){
         int mod;
         try{
             mod = getApplicationId()%4;
@@ -788,5 +833,355 @@ public class GalePressApplication
         String str4 = s.substring(mod+2);
 
         return str1+str3+str2+str4;
+    }
+
+    public ArrayList<Integer> getMembershipMenuList() {
+        return membershipMenuList;
+    }
+
+    public void setMembershipMenuList(ArrayList<Integer> membershipMenuList) {
+        this.membershipMenuList = membershipMenuList;
+    }
+
+    public void prepareMemberShipList(){
+
+        membershipMenuList = new ArrayList<Integer>();
+        SharedPreferences preferences = getSharedPreferences("ak.detaysoft.galepress", Context.MODE_PRIVATE);
+        String token = preferences.getString("accessToken","");
+        if(token.length() != 0){ //login olmus kullanici var
+            try {
+                userInformation = new UserInformations(new JSONObject(token));
+                String recoveryToken = userInformation.getAccessToken();
+                try{
+                    userInformation.setAccessToken(getMD5MixedValue(userInformation.getAccessToken()));
+                } catch (Exception e){
+                    userInformation.setAccessToken(recoveryToken);
+                    e.printStackTrace();
+                }
+                membershipMenuList.add(LeftMenuMembershipAdapter.SUBSCRIPTION);
+                membershipMenuList.add(LeftMenuMembershipAdapter.RESTORE);
+                membershipMenuList.add(LeftMenuMembershipAdapter.LOGOUT);
+            } catch (JSONException e) {
+                userInformation = null;
+                membershipMenuList.add(LeftMenuMembershipAdapter.RESTORE);
+                membershipMenuList.add(LeftMenuMembershipAdapter.LOGIN);
+                e.printStackTrace();
+            }
+        } else { //login olmus kullanici yok
+            userInformation = null;
+            membershipMenuList.add(LeftMenuMembershipAdapter.RESTORE);
+            membershipMenuList.add(LeftMenuMembershipAdapter.LOGIN);
+        }
+    }
+
+    public void editMemberShipList(boolean isLogin, JSONObject response){
+
+        membershipMenuList = new ArrayList<Integer>();
+        SharedPreferences preferences = getSharedPreferences("ak.detaysoft.galepress", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor;
+        if(isLogin){ //kullanici login olacak
+            editor = preferences.edit();
+            userInformation = new UserInformations(response);
+            String recoveryToken = userInformation.getAccessToken();
+            try{
+                userInformation.setAccessToken(getMD5MixedValue(userInformation.getAccessToken()));
+            } catch (Exception e){
+                userInformation.setAccessToken(recoveryToken);
+                e.printStackTrace();
+            }
+            editor.putString("accessToken", userInformation.getJSONObject().toString());
+            editor.commit();
+            userInformation.setAccessToken(recoveryToken);
+            membershipMenuList.add(LeftMenuMembershipAdapter.SUBSCRIPTION);
+            membershipMenuList.add(LeftMenuMembershipAdapter.RESTORE);
+            membershipMenuList.add(LeftMenuMembershipAdapter.LOGOUT);
+        } else { //kullanici logout olacak
+            editor = preferences.edit();
+            editor.putString("accessToken", "");
+            userInformation = null;
+            editor.commit();
+            membershipMenuList.add(LeftMenuMembershipAdapter.RESTORE);
+            membershipMenuList.add(LeftMenuMembershipAdapter.LOGIN);
+        }
+    }
+
+    public void restoreSubscriptions(final boolean applicationFirstOpen,final boolean isFullRestore, final Activity activity, final ProgressDialog progress){
+        AsyncTask<Void, Void, Void> restore = new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+                //Kullanicinin daha once aldigi urunler kontrol ediliyor
+                if (GalePressApplication.getInstance().isBlnBind() && GalePressApplication.getInstance().getmService() != null) {
+                    Bundle ownedItems;
+                    try {
+                        ownedItems = GalePressApplication.getInstance().getmService().getPurchases(3, getPackageName(), "subs", null);
+                        int response = ownedItems.getInt("RESPONSE_CODE");
+
+                        ArrayList<String> ownedSkus = new ArrayList<String>();
+                        if (response == 0){
+                            ownedSkus = ownedItems.getStringArrayList("INAPP_PURCHASE_ITEM_LIST");
+                        }
+
+                        if(ownedSkus.size() > 0){
+                            for(String skuItem : ownedSkus){
+                                for(int i = 0; i < subscriptions.size(); i++){
+                                    if(skuItem.compareTo(subscriptions.get(i).getIdentifier()) == 0){
+                                        subscriptions.get(i).setOwned(true);
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+
+                    ArrayList<String> skuList = new ArrayList<String>();
+                    Bundle querySkus = new Bundle();
+                    for(int i = 0; i < subscriptions.size(); i++){
+                        Subscription subscription = subscriptions.get(i);
+                        skuList.add(subscription.getIdentifier());
+                        querySkus.putStringArrayList("ITEM_ID_LIST", skuList);
+                    }
+
+                    Bundle skuDetails;
+                    try {
+                        skuDetails = GalePressApplication.getInstance().getmService().getSkuDetails(3, getPackageName(), "subs", querySkus);
+                        int response = skuDetails.getInt("RESPONSE_CODE");
+
+                        if (response == 0){
+                            ArrayList<String> responseList = skuDetails.getStringArrayList("DETAILS_LIST");
+
+                            if (responseList.size() != 0) {
+                                for (String thisResponse : responseList) {
+                                    JSONObject object = null;
+                                    try {
+                                        object = new JSONObject(thisResponse);
+                                        for(int i = 0; i < subscriptions.size(); i++){
+                                            if(object.getString("productId").compareTo(subscriptions.get(i).getIdentifier()) == 0){
+                                                subscriptions.get(i).setMarketPrice(object.getString("price"));
+                                                break;
+                                            }
+                                        }
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }
+                        }
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+
+                if(!applicationFirstOpen){
+                    prepareSubscriptions(null);
+
+                    if(isFullRestore) {
+                        dataApi.restoreAppContents(activity, progress);
+                    } else {
+                        if(activity != null){
+                            ((MainActivity)activity).openSubscriptionChooser();
+                        }
+                        if(progress != null && progress.isShowing())
+                            progress.dismiss();
+                    }
+                }
+
+
+            }
+        };
+        restore.execute();
+    }
+
+    public void restorePurchasedProductsFromMarket(final boolean isFullRestore, final Activity activity, final ProgressDialog progress){
+
+        AsyncTask<Void, Void, Void> executePurchase = new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+            }
+
+            @Override
+            protected Void doInBackground(Void... params) {
+                List<L_Content> localContents = GalePressApplication.getInstance().getDatabaseApi().getAllContents(null);
+                //Kullanicinin daha once aldigi urunler kontrol ediliyor
+                if (GalePressApplication.getInstance().isBlnBind() && GalePressApplication.getInstance().getmService() != null) {
+                    Bundle ownedItems;
+                    try {
+                        ownedItems = GalePressApplication.getInstance().getmService().getPurchases(3, getPackageName(), "inapp", null);
+                        int response = ownedItems.getInt("RESPONSE_CODE");
+
+                        ArrayList<String> ownedSkus = new ArrayList<String>();
+                        if (response == 0){
+                            ownedSkus = ownedItems.getStringArrayList("INAPP_PURCHASE_ITEM_LIST");
+                        }
+
+                        if(ownedSkus.size() > 0){
+                            for(String skuItem : ownedSkus){
+                                for(int i = 0; i < localContents.size(); i++){
+                                    L_Content content = localContents.get(i);
+                                    if(skuItem.compareTo(content.getIdentifier()) == 0){
+                                        content.setOwnedProduct(true);
+                                        GalePressApplication.getInstance().getDatabaseApi().updateContent(content, false);
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+
+                    ArrayList<String> skuList = new ArrayList<String>();
+                    Bundle querySkus = new Bundle();
+                    for(int i = 0; i < localContents.size(); i++){
+                        L_Content content = localContents.get(i);
+                        if(content.isBuyable()){
+                            //Satin alinabilen urunse fiyati kontrol ediliyor
+                            skuList.add(content.getIdentifier());
+                            querySkus.putStringArrayList("ITEM_ID_LIST", skuList);
+                        }
+                    }
+
+                    Bundle skuDetails;
+                    try {
+                        skuDetails = GalePressApplication.getInstance().getmService().getSkuDetails(3, getPackageName(), "inapp", querySkus);
+                        int response = skuDetails.getInt("RESPONSE_CODE");
+
+                        if (response == 0){
+                            ArrayList<String> responseList = skuDetails.getStringArrayList("DETAILS_LIST");
+
+                            if (responseList.size() != 0) {
+                                for (String thisResponse : responseList) {
+                                    JSONObject object = null;
+                                    try {
+                                        object = new JSONObject(thisResponse);
+                                        for(int i = 0; i < localContents.size(); i++){
+                                            L_Content content = localContents.get(i);
+                                            if(object.getString("productId").compareTo(content.getIdentifier()) == 0){
+                                                content.setMarketPrice(object.getString("price"));
+                                                GalePressApplication.getInstance().getDatabaseApi().updateContent(content, false);
+                                                break;
+                                            }
+                                        }
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }
+                        }
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                if(GalePressApplication.getInstance().getSubscriptions().size() > 0)
+                    restoreSubscriptions(false, isFullRestore, activity, progress);
+                else{
+                    dataApi.restoreAppContents(activity, progress);
+                }
+            }
+
+        };
+        executePurchase.execute();
+
+    }
+
+    public void prepareSubscriptions(JSONObject response){
+
+        SharedPreferences preferences = getSharedPreferences("ak.detaysoft.galepress", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        if(response != null) { //servisten gelen set edilecek
+            subscriptions = new ArrayList<Subscription>();
+            try {
+                JSONArray array = new JSONArray();
+                Subscription weekSubscription = new Subscription(Subscription.WEEK, response.getString("SubscriptionWeekIdentifier").toLowerCase()
+                        , "", "", (response.getInt("SubscriptionWeekActive") == 0) ? false :true , false);
+                if(weekSubscription.isActive()) {
+                    subscriptions.add(weekSubscription);
+                    array.put(weekSubscription.getJSONObject());
+                }
+
+                Subscription monthSubscription = new Subscription(Subscription.MONTH, response.getString("SubscriptionMonthIdentifier").toLowerCase()
+                        , "", "", (response.getInt("SubscriptionMonthActive") == 0) ? false :true, false);
+                if(monthSubscription.isActive()) {
+                    subscriptions.add(monthSubscription);
+                    array.put(monthSubscription.getJSONObject());
+                }
+
+                Subscription yearSubscription = new Subscription(Subscription.YEAR, response.getString("SubscriptionYearIdentifier").toLowerCase()
+                        , "", "", (response.getInt("SubscriptionYearActive") == 0) ? false :true, false );
+                if(yearSubscription.isActive()) {
+                    subscriptions.add(yearSubscription);
+                    array.put(yearSubscription.getJSONObject());
+                }
+
+                editor.putString("Subscription", array.toString());
+                editor.commit();
+
+                restoreSubscriptions(false, false, null, null); // marketten fiyatlarini ve kullanicinin daha once satin aldigi abonelikleri cekmek icin (farkli cihazlarda daha once alinan abonelikler gelmeyebilir)
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+                subscriptions = new ArrayList<Subscription>();
+                editor.putString("Subscription","");
+                editor.commit();
+            }
+
+        } else { //lokaldeki set edilecek yada restore sonucu set edilecek
+
+            if(subscriptions != null) { //restore sonucu set edilecek
+                JSONArray array;
+                for(Subscription sub : subscriptions){
+                    array = new JSONArray();
+                    array.put(sub.getJSONObject());
+                    editor.putString("Subscription", array.toString());
+                    editor.commit();
+                }
+            } else { //lokalde tutulan subs sonucu alınacak
+                subscriptions = new ArrayList<Subscription>();
+                try {
+                    JSONArray array = new JSONArray(preferences.getString("Subscription",""));
+                    Subscription subscription;
+                    for(int i = 0; i < array.length(); i++){
+                        JSONObject object = (JSONObject) array.get(i);
+                        subscription = new Subscription(object);
+                        subscriptions.add(subscription);
+                    }
+                    restoreSubscriptions(true, false, null, null);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    subscriptions = new ArrayList<Subscription>();
+                }
+            }
+
+        }
+    }
+
+    public UserInformations getUserInformation() {
+        return userInformation;
+    }
+
+    public void setUserInformation(UserInformations userInformation) {
+        this.userInformation = userInformation;
+    }
+
+    public ArrayList<Subscription> getSubscriptions() {
+        return subscriptions;
+    }
+
+    public void setSubscriptions(ArrayList<Subscription> subscriptions) {
+        this.subscriptions = subscriptions;
     }
 }

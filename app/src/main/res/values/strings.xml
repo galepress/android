@@ -103,6 +103,7 @@
     <string name="WARNING_131">Application is not active or expired</string>
     <string name="WARNING_140">Login infromations are not correct</string>
     <string name="WARNING_141">You must create an account with www.galepress.com</string>
+    <string name="WARNING_160">User not found</string>
 
 
     <string name="CONFIRM_1">Are you sure you want to delete?</string>
@@ -160,8 +161,10 @@
 
     <string name="title_activity_launch">LaunchActivity</string>
     <string name="links">Links</string>
+
     <string name="left_menu_setting">Login Informations</string>
     <string name="user_information_check">Checking user information...</string>
+    <string name="user_information_missing">User information is missing</string>
     <string name="KULLANICIADI">Username</string>
     <string name="SIFRE">Password</string>
     <string name="login">Login</string>
@@ -182,4 +185,25 @@
     <string name="BILLING_RESULT_ITEM_NOT_OWNED">Product not owned</string>
     <string name="BILLING_UNEXPECTED">Unexpected error occurred</string>
     <string name="ChooseApplication">Choose Application</string>
+
+    <string name="membership">Membership</string>
+    <string name="Subscribe">Subscribe</string>
+    <string name="Restore">Restore</string>
+    <string name="subscription_check">Checking subscription...</string>
+
+    <string name="forgot_password"><u>Forgot Password</u></string>
+    <string name="signup">Sign Up</string>
+    <string name="cannot_load">Cannot load page</string>
+
+    <string name="language">en</string>
+    <string name="subscription_warning">No subscription</string>
+    <string name="subscription_owned">Subscription already owned.</string>
+    <string name="subscription_type_owned">%1$s subscription already owned.</string>
+
+    <string name="WEEK">Weekly</string>
+    <string name="MONTH">Monthly</string>
+    <string name="YEAR">Yearly</string>
+
+    <string name="select_subscription">Please select subscription</string>
+
 </resources>

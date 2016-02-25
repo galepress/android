@@ -1,10 +1,15 @@
 package ak.detaysoft.galepress;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.PendingIntent;
+import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.IntentSender;
 import android.content.pm.ActivityInfo;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -15,6 +20,7 @@ import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.RemoteException;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.ActionBar;
@@ -33,6 +39,7 @@ import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -51,6 +58,9 @@ import com.facebook.login.LoginManager;
 import com.google.android.gcm.GCMRegistrar;
 
 import net.simonvt.menudrawer.MenuDrawer;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 import org.xwalk.core.XWalkNavigationHistory;
@@ -63,10 +73,15 @@ import java.util.List;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+<<<<<<< HEAD
 import ak.detaysoft.galepress.util.StateListDrawableWithColorFilter;
 import ak.detaysoft.galepress.web_views.ExtraWebViewActivity;
 import ak.detaysoft.galepress.web_views.ExtraWebViewWithCrosswalkActivity;
+=======
+import ak.detaysoft.galepress.custom_models.ApplicationIds;
+>>>>>>> inAppBilling
 import ak.detaysoft.galepress.custom_models.ApplicationPlist;
+import ak.detaysoft.galepress.custom_models.Subscription;
 import ak.detaysoft.galepress.custom_models.TabbarItem;
 import ak.detaysoft.galepress.database_models.L_Category;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
@@ -89,15 +104,32 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     AsyncTask<Void, Void, Void> mRegisterTask;
     public Integer content_id = null;
 
-    private LeftMenuCategoryAdapter categoryAdapter;
-    private ListView categoryList;
-    private List<L_Category> categoryListWithAll;
+
     private MenuDrawer mDrawer;
-    private LeftMenuSocialAdapter socialAdapter;
-    private ListView socialList;
-    private ImageView categoriesCloseIcon;
+
+    //Bağlantılar sekmesi
+    private LeftMenuSocialAdapter linksAdapter;
+    private ImageView linksListViewCloseIcon;
+    private RelativeLayout linksTitleLayout;
+    private ListView linksListView;
+
+
+    //Kategori sekmesi
+    private LeftMenuCategoryAdapter categoriesAdapter;
+    private ListView categoriesListView;
+    private List<L_Category> categoryListWithAll;
+    private RelativeLayout categoriesTitleLayout;
+    private ImageView categoriesListViewCloseIcon;
+
+
+    //Üyelik sekmesi
+    private LeftMenuMembershipAdapter membershipAdapter;
+    private ListView membershipListView;
+    private RelativeLayout membershipTitleLayout;
+    private ImageView membershipListViewCloseIcon;
+
     private ImageView clearSearch;
-    private RelativeLayout categoryListLayout;
+
     private LinearLayout leftLayout;
     private Button logoutButton;
 
@@ -106,6 +138,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     private ImageButton refreshButton;
     public boolean isTabFirstInit = true;
     ArrayList<TabHost.TabSpec> specList = new ArrayList<TabHost.TabSpec>();
+    private Subscription selectedSubscription;
 
 
 
@@ -169,25 +202,24 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         });
 
         leftLayout = (LinearLayout)findViewById(R.id.left_menu_layout);
-        categoryListLayout = (RelativeLayout)findViewById(R.id.left_categories_layout);
-        categoryListLayout.setOnClickListener(new View.OnClickListener() {
+        categoriesTitleLayout = (RelativeLayout)findViewById(R.id.left_categories_layout);
+        categoriesTitleLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 hideKeyboard(searchView);
-                if(categoryList.getVisibility() == View.VISIBLE) {
-                    categoryList.setVisibility(View.GONE);
-                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                        categoriesCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
+                if (categoriesListView.getVisibility() == View.VISIBLE) {
+                    categoriesListView.setVisibility(View.GONE);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                        categoriesListViewCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
                     else
-                        categoriesCloseIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
+                        categoriesListViewCloseIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
 
-                }
-                else{
-                    categoryList.setVisibility(View.VISIBLE);
-                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                        categoriesCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_UP));
+                } else {
+                    categoriesListView.setVisibility(View.VISIBLE);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                        categoriesListViewCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_UP));
                     else
-                        categoriesCloseIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_UP));
+                        categoriesListViewCloseIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_UP));
                 }
 
             }
@@ -195,9 +227,9 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
         categoryListWithAll = GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent();
         categoryListWithAll.add(0, new L_Category(-1, getString(R.string.show_all)));
-        categoryList = (ListView)findViewById(R.id.left_menu_category_list);
+        categoriesListView = (ListView)findViewById(R.id.left_menu_category_list);
 
-        categoryList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        categoriesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 hideKeyboard(searchView);
@@ -220,6 +252,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 else{
                     selectedCategory = new L_Category(-1, getString(R.string.show_all));
                 }
+<<<<<<< HEAD
                 if(mTabHost.getCurrentTabTag().compareTo(LIBRARY_TAB_TAG) == 0) {
 
                 }
@@ -239,32 +272,72 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 }
 
                 categoryAdapter.notifyDataSetChanged();
+=======
+                LibraryFragment libraryFragment = getCurrentLibraryFragment();
+                libraryFragment.selectedCategory = selectedCategory;
+                libraryFragment.updateCategoryList();
+                libraryFragment.updateGridView();
+
+
+                LibraryFragment downloadFragment = getCurrentDownloadedLibraryFragment();
+                if(downloadFragment != null) {
+                    downloadFragment.selectedCategory = selectedCategory;
+                    downloadFragment.updateCategoryList();
+                    downloadFragment.updateGridView();
+                }
+
+                categoriesAdapter.notifyDataSetChanged();
+>>>>>>> inAppBilling
             }
         });
-        categoriesCloseIcon = (ImageView)findViewById(R.id.left_menu_categories_close);
+        categoriesListViewCloseIcon = (ImageView)findViewById(R.id.left_menu_categories_close);
 
-        categoryAdapter = new LeftMenuCategoryAdapter(this, categoryListWithAll);
-        categoryList.setAdapter(categoryAdapter);
+        categoriesAdapter = new LeftMenuCategoryAdapter(this, categoryListWithAll);
+        categoriesListView.setAdapter(categoriesAdapter);
 
-        socialList = (ListView)findViewById(R.id.left_menu_social_list);
-        socialList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        linksListView = (ListView)findViewById(R.id.left_menu_social_list);
+        linksTitleLayout = (RelativeLayout)findViewById(R.id.left_social_layout);
+        linksTitleLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hideKeyboard(searchView);
+                if (linksListView.getVisibility() == View.VISIBLE) {
+                    linksListView.setVisibility(View.GONE);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                        linksListViewCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
+                    else
+                        linksListViewCloseIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
+
+                } else {
+                    linksListView.setVisibility(View.VISIBLE);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                        linksListViewCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_UP));
+                    else
+                        linksListViewCloseIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_UP));
+                }
+
+            }
+        });
+
+        linksListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 mDrawer.closeMenu(true);
                 ApplicationPlist item = GalePressApplication.getInstance().getApplicationPlist().get(position);
 
-                if(item.getKey().toString().toLowerCase().contains("mail")){
+                if (item.getKey().toString().toLowerCase().contains("mail")) {
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.setType("message/rfc822");
                     //intent.setType("text/html");
-                    intent.putExtra(Intent.EXTRA_EMAIL  , new String[]{item.getValue().toString()});
+                    intent.putExtra(Intent.EXTRA_EMAIL, new String[]{item.getValue().toString()});
                     intent.putExtra(Intent.EXTRA_SUBJECT, " ");
-                    intent.putExtra(Intent.EXTRA_TEXT   , " ");
+                    intent.putExtra(Intent.EXTRA_TEXT, " ");
                     try {
                         startActivity(Intent.createChooser(intent, "Send mail..."));
                     } catch (android.content.ActivityNotFoundException ex) {
                         Toast.makeText(MainActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
                     }
+<<<<<<< HEAD
                 }
                 else {
                     final int KITKAT = 19; // Android 4.4
@@ -281,13 +354,58 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                         startActivity(intent);
                         overridePendingTransition(R.animator.left_to_right_translate, 0);
                     }
+=======
+                } else {
+                    Intent intent = new Intent(MainActivity.this, ExtraWebViewActivity.class);
+                    intent.putExtra("url", item.getValue().toString());
+                    intent.putExtra("isMainActivitIntent", true);
+                    startActivity(intent);
+                    overridePendingTransition(R.animator.left_to_right_translate, 0);
+>>>>>>> inAppBilling
                 }
 
             }
         });
 
-        socialAdapter = new LeftMenuSocialAdapter(this, GalePressApplication.getInstance().getApplicationPlist());
-        socialList.setAdapter(socialAdapter);
+        linksListViewCloseIcon = (ImageView)findViewById(R.id.left_menu_social_close);
+        linksAdapter = new LeftMenuSocialAdapter(this, GalePressApplication.getInstance().getApplicationPlist());
+        linksListView.setAdapter(linksAdapter);
+
+
+
+        membershipTitleLayout = (RelativeLayout)findViewById(R.id.left_membership_layout);
+        membershipTitleLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hideKeyboard(searchView);
+
+                if (membershipListView.getVisibility() == View.VISIBLE) {
+                    membershipListView.setVisibility(View.GONE);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                        membershipListViewCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
+                    else
+                        membershipListViewCloseIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
+
+                } else {
+                    membershipListView.setVisibility(View.VISIBLE);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                        membershipListViewCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_UP));
+                    else
+                        membershipListViewCloseIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_UP));
+                }
+            }
+        });
+        membershipListView = (ListView)findViewById(R.id.left_menu_membership_list);
+        membershipListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                selectMembershipListItem(position);
+            }
+        });
+        membershipListViewCloseIcon = (ImageView)findViewById(R.id.left_menu_membership_close);
+
+        membershipAdapter = new LeftMenuMembershipAdapter(this);
+        membershipListView.setAdapter(membershipAdapter);
 
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.actionbar);
@@ -471,13 +589,15 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     public void invalidateActivityViewAndAdapter(boolean isColorChanged){
 
         leftLayout.setBackgroundColor(ApplicationThemeColor.getInstance().getForegroundColor());
-        categoryListLayout.setBackgroundColor(Color.TRANSPARENT);
+
+        //Kategori sekmesi
+        categoriesTitleLayout.setBackgroundColor(Color.TRANSPARENT);
         ((TextView)(findViewById(R.id.left_menu_category_text))).setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(this));
         ((TextView)(findViewById(R.id.left_menu_category_text))).setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColorWithAlpha(50));
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            categoriesCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
+            categoriesListViewCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
         else
-            categoriesCloseIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
+            categoriesListViewCloseIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
             ((ImageView)findViewById(R.id.left_menu_category_icon)).setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_CATEGORY));
@@ -487,16 +607,21 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         categoryListWithAll = GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent();
         categoryListWithAll.add(0, new L_Category(-1, getString(R.string.show_all)));
 
-        categoryAdapter.setmCategory(categoryListWithAll);
-        categoryAdapter.notifyDataSetChanged();
-        categoryList.invalidate();
-        socialAdapter.notifyDataSetChanged();
-        socialList.invalidate();
+        categoriesAdapter.setmCategory(categoryListWithAll);
+        categoriesAdapter.notifyDataSetChanged();
+        categoriesListView.invalidate();
+
+
+        //Bağlantılar sekmesi
+        linksAdapter.notifyDataSetChanged();
+        linksListView.invalidate();
 
         if(!GalePressApplication.getInstance().isTestApplication()){
             ((RelativeLayout)findViewById(R.id.left_social_layout)).setBackgroundColor(Color.TRANSPARENT);
+            ((RelativeLayout)findViewById(R.id.left_membership_layout)).setBackgroundColor(Color.TRANSPARENT);
         } else {
             ((RelativeLayout)findViewById(R.id.left_social_layout)).setVisibility(View.GONE);
+            ((RelativeLayout)findViewById(R.id.left_membership_layout)).setVisibility(View.GONE);
         }
 
         ((TextView)(findViewById(R.id.left_menu_social_text))).setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(this));
@@ -507,6 +632,29 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         else
             ((ImageView)findViewById(R.id.left_menu_link_icon)).setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_LINK));
 
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+            linksListViewCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
+        else
+            linksListViewCloseIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
+
+
+
+        //Üyelik sekmesi
+        membershipAdapter.notifyDataSetChanged();
+        membershipListView.invalidate();
+        ((TextView)(findViewById(R.id.left_menu_membership_text))).setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(this));
+        ((TextView)(findViewById(R.id.left_menu_membership_text))).setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColorWithAlpha(50));
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+            ((ImageView)findViewById(R.id.left_menu_membership_icon)).setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_LINK));
+        else
+            ((ImageView)findViewById(R.id.left_menu_membership_icon)).setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_LINK));
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+            membershipListViewCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_UP));
+        else
+            membershipListViewCloseIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_UP));
+
         //Kategori ve baglantilar listviewlerin height hesaplamasi. Scroll engelleyebilmek icin
         LayoutInflater mInflater = (LayoutInflater)getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         View listItemView = mInflater.inflate(R.layout.left_menu_category_item, null);
@@ -516,16 +664,29 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         for(int i = 0 ; i < categoryListWithAll.size(); i++){
             listHeight += listItemView.getMeasuredHeight();
         }
-        categoryList.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listHeight));
+        categoriesListView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listHeight));
 
         if(!GalePressApplication.getInstance().isTestApplication()){
             listHeight = 0;
             for(int i = 0 ; i < GalePressApplication.getInstance().getApplicationPlist().size(); i++){
                 listHeight += listItemView.getMeasuredHeight();
             }
-            socialList.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listHeight));
+            linksListView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listHeight));
         } else {
-            socialList.setVisibility(View.GONE);
+            linksListView.setVisibility(View.GONE);
+        }
+
+
+        View membershipListItemView = mInflater.inflate(R.layout.left_menu_membership_item, null);
+        membershipListItemView.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+        if(!GalePressApplication.getInstance().isTestApplication()){
+            listHeight = 0;
+            for(int i = 0 ; i < GalePressApplication.getInstance().getMembershipMenuList().size(); i++){
+                listHeight += membershipListItemView.getMeasuredHeight();
+            }
+            membershipListView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listHeight));
+        } else {
+            membershipListView.setVisibility(View.GONE);
         }
 
         TextView title = (TextView)findViewById(R.id.action_bar_title_text_view);
@@ -679,11 +840,16 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         /*
         *((ImageView)((LinearLayout)mTabHost.getTabWidget().getChildAt(2)).getChildAt(0)).setImageDrawable(createDrawable(true, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.INFO_ICON),
         *        ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.INFO_ICON_SELECTED)));
+        *((TextView)((LinearLayout)mTabHost.getTabWidget().getChildAt(tabIndex)).getChildAt(1)).setTextColor(createTabTitleColorStateList());
         *tabIndex++;
         */
 
         //Renk ve tablist lerde bi degisiklik varsa custom tablari update ediyoruz
+<<<<<<< HEAD
         if(GalePressApplication.getInstance().getTabList() != null && isColorChanged && GalePressApplication.getInstance().getDataApi().isConnectedToInternet()){
+=======
+        if(isColorChanged && GalePressApplication.getInstance().getDataApi().isConnectedToInternet() && GalePressApplication.getInstance().getTabList() != null){
+>>>>>>> inAppBilling
             int customIndex = tabIndex;
             for(TabbarItem item : GalePressApplication.getInstance().getTabList()){
                 ImageView img = ((ImageView)((LinearLayout)mTabHost.getTabWidget().getChildAt(customIndex)).getChildAt(0));
@@ -795,10 +961,188 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         }
     }
 
+<<<<<<< HEAD
     private void addTab(String title, String tag, Drawable drawable,Class classy, TabbarItem item) {
         TabHost.TabSpec spec = mTabHost.newTabSpec(tag);
         spec.setIndicator(createTabIndicator(title, drawable, item));
         mTabHost.addTab(spec, classy, null);
+=======
+
+    public void selectMembershipListItem(int position){
+        hideKeyboard(searchView);
+
+        if(GalePressApplication.getInstance().getMembershipMenuList().get(position) == LeftMenuMembershipAdapter.LOGIN) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivityForResult(intent, 102);
+        }
+        else if(GalePressApplication.getInstance().getMembershipMenuList().get(position) == LeftMenuMembershipAdapter.RESTORE) {
+            ProgressDialog progress = new ProgressDialog(this);
+            progress.setMessage(getResources().getString(R.string.Restore) + "...");
+            progress.setCancelable(false);
+            progress.show();
+            GalePressApplication.getInstance().restorePurchasedProductsFromMarket(true, this, progress);
+        }
+        else if(GalePressApplication.getInstance().getMembershipMenuList().get(position) == LeftMenuMembershipAdapter.SUBSCRIPTION) {
+            if(GalePressApplication.getInstance().getSubscriptions().size() > 0){
+                ProgressDialog progress = new ProgressDialog(this);
+                progress.setMessage(getResources().getString(R.string.subscription_check) + "...");
+                progress.setCancelable(false);
+                progress.show();
+                GalePressApplication.getInstance().restoreSubscriptions(false, false, this, progress);
+            } else {
+                Toast.makeText(this, getResources().getString(R.string.subscription_warning), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else if(GalePressApplication.getInstance().getMembershipMenuList().get(position) == LeftMenuMembershipAdapter.LOGOUT){
+
+            logout();
+
+            ProgressDialog progress = new ProgressDialog(this);
+            progress.setMessage(getResources().getString(R.string.logout) + "...");
+            progress.setCancelable(false);
+            progress.show();
+            GalePressApplication.getInstance().restorePurchasedProductsFromMarket(true, this, progress);
+        }
+    }
+
+    public void logout(){
+        //Facebook logout
+        FacebookSdk.sdkInitialize(this.getApplicationContext());
+        LoginManager.getInstance().logOut();
+
+        GalePressApplication.getInstance().editMemberShipList(false, null);
+        membershipAdapter.notifyDataSetChanged();
+        LayoutInflater mInflater = (LayoutInflater)getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+        View membershipListItemView = mInflater.inflate(R.layout.left_menu_membership_item, null);
+        membershipListItemView.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+        int listHeight = 0;
+        for(int i = 0 ; i < GalePressApplication.getInstance().getMembershipMenuList().size(); i++){
+            listHeight += membershipListItemView.getMeasuredHeight();
+        }
+        membershipListView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listHeight));
+        membershipListView.invalidate();
+    }
+
+
+    public void openSubscriptionChooser(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getResources().getString(R.string.select_subscription));
+        builder.setNegativeButton(getResources().getString(R.string.cancel),
+                new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                this,
+                android.R.layout.select_dialog_singlechoice);
+        for(Subscription subs : GalePressApplication.getInstance().getSubscriptions()){
+
+            String price = "";
+            if(subs.getMarketPrice() != null && subs.getMarketPrice().compareTo("") != 0){
+                price = subs.getMarketPrice();
+            } else {
+                price = subs.getPrice();
+            }
+
+            if(subs.getType() == Subscription.WEEK){
+                if(!subs.isOwned()){
+                    arrayAdapter.add(getResources().getString(R.string.WEEK) +" " + price);
+                } else {
+                    arrayAdapter.add(getResources().getString(R.string.subscription_type_owned , ""+getResources().getString(R.string.WEEK)));
+                }
+            } else if(subs.getType() == Subscription.MONTH){
+                if(!subs.isOwned()){
+                    arrayAdapter.add(getResources().getString(R.string.MONTH) +" " + price);
+                } else {
+                    arrayAdapter.add(getResources().getString(R.string.subscription_type_owned ,""+getResources().getString(R.string.MONTH)));
+                }
+
+            } else {
+                if(!subs.isOwned()){
+                    arrayAdapter.add(getResources().getString(R.string.YEAR) +" " + price);
+                } else {
+                    arrayAdapter.add(getResources().getString(R.string.subscription_type_owned ,""+getResources().getString(R.string.YEAR)));
+                }
+            }
+        }
+        builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                Subscription ownedSub = null;
+                for(Subscription subs : GalePressApplication.getInstance().getSubscriptions())
+                    if(subs.isOwned())
+                        ownedSub = subs;
+                selectedSubscription = GalePressApplication.getInstance().getSubscriptions().get(which);
+                if(ownedSub != null){
+                    if(ownedSub.getType() == Subscription.WEEK)
+                        Toast.makeText(MainActivity.this, getResources().getString(R.string.subscription_type_owned , ""+getResources().getString(R.string.WEEK)), Toast.LENGTH_SHORT)
+                                .show();
+                    if(ownedSub.getType() == Subscription.MONTH)
+                        Toast.makeText(MainActivity.this, getResources().getString(R.string.subscription_type_owned , ""+getResources().getString(R.string.MONTH)), Toast.LENGTH_SHORT)
+                                .show();
+                    if(ownedSub.getType() == Subscription.YEAR)
+                        Toast.makeText(MainActivity.this, getResources().getString(R.string.subscription_type_owned , ""+getResources().getString(R.string.YEAR)), Toast.LENGTH_SHORT)
+                                .show();
+                } else {
+                    subscribe();
+                }
+
+            }
+        });
+        builder.show();
+    }
+
+    private void subscribe(){
+
+        try {
+            Bundle buyIntentBundle = GalePressApplication.getInstance().getmService().getBuyIntent(3, getPackageName(),
+                    selectedSubscription.getIdentifier(), "subs", "bGoa+V7g/yqDXvKRqq+JTFn4uQZbPiQJo4pf9RzJ");
+            PendingIntent pendingIntent = buyIntentBundle.getParcelable("BUY_INTENT");
+
+            if (buyIntentBundle.getInt("RESPONSE_CODE") == GalePressApplication.BILLING_RESPONSE_RESULT_OK) { // Urun satin alinmamis
+                // Start purchase flow (this brings up the Google Play UI).
+                // Result will be delivered through onActivityResult().
+                startIntentSenderForResult(pendingIntent.getIntentSender(),
+                        1001, new Intent(), Integer.valueOf(0), Integer.valueOf(0),
+                        Integer.valueOf(0));
+            } else if (buyIntentBundle.getInt("RESPONSE_CODE") == GalePressApplication.RESULT_ITEM_ALREADY_OWNED){ // Urun daha once alinmis
+                Toast.makeText(this, this.getResources().getString(R.string.BILLING_ITEM_ALREADY_OWNED), Toast.LENGTH_SHORT)
+                        .show();
+                selectedSubscription.setOwned(true);
+                for (Subscription subs : GalePressApplication.getInstance().getSubscriptions())
+                    if(subs.getIdentifier().compareTo(selectedSubscription.getIdentifier()) == 0)
+                        subs.setOwned(true);
+                GalePressApplication.getInstance().prepareSubscriptions(null);
+            } else if (buyIntentBundle.getInt("RESPONSE_CODE") == GalePressApplication.RESULT_USER_CANCELED){ // Hata var
+                Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESULT_USER_CANCELED), Toast.LENGTH_SHORT)
+                        .show();
+            } else if (buyIntentBundle.getInt("RESPONSE_CODE") == GalePressApplication.RESULT_BILLING_UNAVAILABLE){ // Hata var
+                Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESULT_BILLING_UNAVAILABLE), Toast.LENGTH_SHORT)
+                        .show();
+            } else if (buyIntentBundle.getInt("RESPONSE_CODE") == GalePressApplication.RESULT_ITEM_UNAVAILABLE){ // Hata var
+                Toast.makeText(this, this.getResources().getString(R.string.BILLIN_RESULT_ITEM_UNAVAILABLE), Toast.LENGTH_SHORT)
+                        .show();
+            } else if (buyIntentBundle.getInt("RESPONSE_CODE") == GalePressApplication.RESULT_ERROR){ // Hata var
+                Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESULT_ERROR), Toast.LENGTH_SHORT)
+                        .show();
+            } else { //  Beklenmedik Hata var
+                Toast.makeText(this, this.getResources().getString(R.string.BILLING_UNEXPECTED), Toast.LENGTH_SHORT)
+                        .show();
+            }
+
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        } catch (IntentSender.SendIntentException e) {
+            e.printStackTrace();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+>>>>>>> inAppBilling
     }
 
     private Drawable createDrawable(boolean isSelected, Drawable res, Drawable selectedRes) {
@@ -1002,24 +1346,94 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+<<<<<<< HEAD
         GalePressApplication.getInstance().onActivityResult(requestCode, resultCode, data);
         if(resultCode == 101) { //reader view return
             int type = data.getIntExtra("SelectedTab", 0);
             //mTabHost.getTabWidget().setCurrentTab(type);
+=======
+        GalePressApplication.getInstance().onActivityResult(requestCode,resultCode,data);
+>>>>>>> inAppBilling
 
-            if(type == 0){
-                mTabHost.setCurrentTabByTag(HOME_TAB_TAG);
-            } else if(type == 1){
-                mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG);
-            } else if(type == 2) {
-                mTabHost.setCurrentTabByTag(DOWNLOADED_LIBRARY_TAG);
-            } else if(type == 3){
-                mTabHost.setCurrentTabByTag(INFO_TAB_TAG);
-            } else { // 100+ type olanlar servisten gelen buttonlar
-                String customTabTag = ""+(type- 100);
-                mTabHost.setCurrentTabByTag(customTabTag);
+        if(requestCode == 1001){
+            int responseCode = data.getIntExtra("RESPONSE_CODE", 0);
+            String purchaseData = data.getStringExtra("INAPP_PURCHASE_DATA");
+            String dataSignature = data.getStringExtra("INAPP_DATA_SIGNATURE");
+
+            if (resultCode == RESULT_OK && responseCode == GalePressApplication.BILLING_RESPONSE_RESULT_OK) {
+                try {
+                    Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESPONSE_RESULT_OK), Toast.LENGTH_SHORT)
+                            .show();
+                    selectedSubscription.setOwned(true);
+
+                    JSONObject jo = new JSONObject(purchaseData);
+                    String sku = jo.getString("productId");
+                    for (Subscription subs : GalePressApplication.getInstance().getSubscriptions())
+                        if(subs.getIdentifier().compareTo(selectedSubscription.getIdentifier()) == 0)
+                            subs.setOwned(true);
+                }
+                catch (JSONException e) {
+                    Toast.makeText(this, "act result json parse error - "+e.getMessage(), Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
+            } else if(resultCode == RESULT_OK && responseCode == GalePressApplication.RESULT_ITEM_ALREADY_OWNED){
+                Toast.makeText(this, this.getResources().getString(R.string.BILLING_ITEM_ALREADY_OWNED), Toast.LENGTH_SHORT)
+                        .show();
+                selectedSubscription.setOwned(true);
+                for (Subscription subs : GalePressApplication.getInstance().getSubscriptions())
+                    if(subs.getIdentifier().compareTo(selectedSubscription.getIdentifier()) == 0)
+                        subs.setOwned(true);
+            } else if (responseCode == GalePressApplication.RESULT_USER_CANCELED){ // Hata var
+                Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESULT_USER_CANCELED), Toast.LENGTH_SHORT)
+                        .show();
+            } else if (responseCode == GalePressApplication.RESULT_BILLING_UNAVAILABLE){ // Hata var
+                Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESULT_BILLING_UNAVAILABLE), Toast.LENGTH_SHORT)
+                        .show();
+            } else if (responseCode == GalePressApplication.RESULT_ITEM_UNAVAILABLE){ // Hata var
+                Toast.makeText(this, this.getResources().getString(R.string.BILLIN_RESULT_ITEM_UNAVAILABLE), Toast.LENGTH_SHORT)
+                        .show();
+            } else if (responseCode == GalePressApplication.RESULT_ERROR){ // Hata var
+                Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESULT_ERROR), Toast.LENGTH_SHORT)
+                        .show();
+            } else { //  Beklenmedik Hata var
+                Toast.makeText(this, this.getResources().getString(R.string.BILLING_UNEXPECTED), Toast.LENGTH_SHORT)
+                        .show();
+            }
+            GalePressApplication.getInstance().prepareSubscriptions(null);
+        } else {
+            if(resultCode == 101) { //reader view return
+                int type = data.getIntExtra("SelectedTab", 0);
+                //mTabHost.getTabWidget().setCurrentTab(type);
+
+                if(type == 0){
+                    mTabHost.setCurrentTabByTag(HOME_TAB_TAG);
+                } else if(type == 1){
+                    mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG);
+                } else if(type == 2) {
+                    mTabHost.setCurrentTabByTag(DOWNLOADED_LIBRARY_TAG);
+                } else if(type == 3){
+                    mTabHost.setCurrentTabByTag(INFO_TAB_TAG);
+                } else { // 100+ type olanlar servisten gelen buttonlar
+                    String customTabTag = ""+(type- 100);
+                    mTabHost.setCurrentTabByTag(customTabTag);
+                }
+            } else if(resultCode == 102) { //Login return
+                membershipAdapter.notifyDataSetChanged();
+                LayoutInflater mInflater = (LayoutInflater)getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+                View membershipListItemView = mInflater.inflate(R.layout.left_menu_membership_item, null);
+                membershipListItemView.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+                int listHeight = 0;
+                for(int i = 0 ; i < GalePressApplication.getInstance().getMembershipMenuList().size(); i++){
+                    listHeight += membershipListItemView.getMeasuredHeight();
+                }
+                membershipListView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listHeight));
+                membershipListView.invalidate();
+
+                getCurrentLibraryFragment().updateGridView();
             }
         }
+
+
     }
 
     @Override

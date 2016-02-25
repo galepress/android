@@ -1,8 +1,13 @@
 <component name="libraryTable">
   <library name="play-services-4.0.30">
     <CLASSES>
+<<<<<<< HEAD
       <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.0.30/classes.jar!/" />
       <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.0.30/res" />
+=======
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.0.30/res" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.0.30/jars/classes.jar!/" />
+>>>>>>> inAppBilling
     </CLASSES>
     <JAVADOC />
     <SOURCES />

@@ -8,6 +8,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.GeolocationPermissions;
 import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -81,7 +82,7 @@ public class ExtraWebViewActivity extends Activity {
 
         TextView titleTextView = (TextView) findViewById(R.id.extra_web_view_title);
         titleTextView.setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
-        titleTextView.setTypeface(ApplicationThemeColor.getInstance().getFont(ExtraWebViewActivity.this));
+        titleTextView.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(ExtraWebViewActivity.this));
 
         if(isModal){
             ileriButton.setVisibility(View.GONE);
@@ -122,16 +123,28 @@ public class ExtraWebViewActivity extends Activity {
             }
         });
         webView.getSettings().setJavaScriptEnabled(true);
+<<<<<<< HEAD:app/src/main/java/ak/detaysoft/galepress/web_views/ExtraWebViewActivity.java
+=======
+
+>>>>>>> inAppBilling:app/src/main/java/ak/detaysoft/galepress/ExtraWebViewActivity.java
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.getSettings().setUseWideViewPort(true);
         webView.getSettings().setDisplayZoomControls(false);
+<<<<<<< HEAD:app/src/main/java/ak/detaysoft/galepress/web_views/ExtraWebViewActivity.java
         webView.getSettings().setGeolocationEnabled(true);
+=======
+>>>>>>> inAppBilling:app/src/main/java/ak/detaysoft/galepress/ExtraWebViewActivity.java
 
         webView.setHorizontalScrollBarEnabled(false);
         webView.setVerticalScrollBarEnabled(false);
 
+<<<<<<< HEAD:app/src/main/java/ak/detaysoft/galepress/web_views/ExtraWebViewActivity.java
         webView.setWebViewClient(new AK_WebViewClient() {
+=======
+        final ExtraWebViewActivity activity = ExtraWebViewActivity.this;
+        webView.setWebViewClient(new AK_WebViewClient(){
+>>>>>>> inAppBilling:app/src/main/java/ak/detaysoft/galepress/ExtraWebViewActivity.java
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);

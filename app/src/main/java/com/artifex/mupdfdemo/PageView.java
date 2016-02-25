@@ -645,6 +645,7 @@ public abstract class PageView extends ViewGroup {
                                 addView(modalButton);
                             }
                             else{
+<<<<<<< HEAD
 								String url = linkInfoExternal.getSourceUrlPath(mContext);
 
 								//4.4
@@ -672,6 +673,52 @@ public abstract class PageView extends ViewGroup {
 									((ViewGroup) web.getChildAt(0)).getChildAt(0).layout(0, 0, right - left, bottom - top);
 									((ViewGroup) web.getChildAt(0)).getChildAt(1).layout(0, 0, right - left, bottom - top);
 									(((ViewGroup) ((XWalkViewBridge) web.getChildAt(0)).getChildAt(0))).getChildAt(0).layout(0, 0, right - left, bottom - top);
+=======
+								final int KITKAT = 19; // Android 4.4
+								if (android.os.Build.VERSION.SDK_INT >= KITKAT) {
+                                    String url = linkInfoExternal.getSourceUrlPath(mContext);
+                                    // Web Annotations
+                                    final WebViewAnnotation web = new WebViewAnnotation(mContext, linkInfoExternal, progressBar);
+									web.setLayoutParams(new ViewGroup.LayoutParams(right-left, bottom-top));
+									web.layout(left,top,right,bottom);
+                                    web.readerView = ((MuPDFActivity) mContext).mDocView;
+                                    web.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+                                    final String url2 = linkInfoExternal.getSourceUrlPath(mContext);
+
+                                    web.setId(atomicInteger.incrementAndGet());
+                                    linkInfoExternal.webViewId = web.getId();
+
+                                    if(linkInfoExternal.isWebAnnotation()){
+                                        //web.loadUrl("http://www.koeri.boun.edu.tr/scripts/lst2.asp");
+                                        //web.loadUrl("https://m.facebook.com/");
+                                        web.loadUrl(url);
+                                        //web.loadUrl("https://html5test.com/");
+                                        //web.loadUrl("file:///android_asset/deneme.html");
+
+                                    }
+                                    addView(web);
+                                } else {
+                                    String url = linkInfoExternal.getSourceUrlPath(mContext);
+
+                                    // Web Annotations
+                                    final WebViewAnnotationWithChromium web = new WebViewAnnotationWithChromium(mContext, linkInfoExternal, progressBar);
+                                    web.setDrawingCacheBackgroundColor(Color.TRANSPARENT);
+                                    web.layout(left,top,right,bottom);
+                                    web.readerView = ((MuPDFActivity) mContext).mDocView;
+                                    web.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+                                    final String url2 = linkInfoExternal.getSourceUrlPath(mContext);
+
+                                    web.setId(atomicInteger.incrementAndGet());
+                                    linkInfoExternal.webViewId = web.getId();
+
+                                    if(linkInfoExternal.isWebAnnotation()){
+                                        //web.loadUrl("http://www.koeri.boun.edu.tr/scripts/lst2.asp");
+                                        //web.loadUrl("https://m.facebook.com/");
+                                        web.loadUrl(url);
+										//web.loadUrl("https://html5test.com/");
+                                        //web.loadUrl("file:///android_asset/deneme.html");
+                                    }
+>>>>>>> inAppBilling
 
 
 									web.readerView = ((MuPDFActivity) mContext).mDocView;
@@ -706,6 +753,7 @@ public abstract class PageView extends ViewGroup {
                             String mapUrl = builder.build().toString();
 
 
+<<<<<<< HEAD
 							//4.4
 							if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 								// Web Annotations
@@ -739,6 +787,34 @@ public abstract class PageView extends ViewGroup {
 								web.load(mapUrl, null);
 								addView(web);
 							}
+=======
+                            final int KITKAT = 19; // Android 4.4
+                            if (android.os.Build.VERSION.SDK_INT >= KITKAT) {
+                                // Web Annotations
+                                final WebViewAnnotation web = new WebViewAnnotation(mContext, linkInfoExternal, progressBar);
+								web.setLayoutParams(new ViewGroup.LayoutParams(right-left, bottom-top));
+                                web.layout(left,top,right,bottom);
+                                web.readerView = ((MuPDFActivity) mContext).mDocView;
+                                web.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+
+                                web.setId(atomicInteger.incrementAndGet());
+                                linkInfoExternal.webViewId = web.getId();
+                                web.loadUrl(mapUrl);
+                                addView(web);
+                            } else {
+                                // Web Annotations
+                                final WebViewAnnotationWithChromium web = new WebViewAnnotationWithChromium(mContext, linkInfoExternal, progressBar);
+                                web.layout(left,top,right,bottom);
+                                web.readerView = ((MuPDFActivity) mContext).mDocView;
+                                web.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+
+                                web.setId(atomicInteger.incrementAndGet());
+                                linkInfoExternal.webViewId = web.getId();
+                                web.loadUrl(mapUrl);
+
+                                addView(web);
+                            }
+>>>>>>> inAppBilling
                         }
                         else if(((LinkInfoExternal) link).componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_WEBLINK){
                             View view = new View(mContext);

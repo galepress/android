@@ -3,6 +3,7 @@ package ak.detaysoft.galepress.util;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -19,7 +20,7 @@ import ak.detaysoft.galepress.R;
 /**
  * Created by p1025 on 29.07.2015.
  */
-public class CustomDownloadButton extends RelativeLayout {
+public class CustomDownloadButton extends RelativeLayout{
 
     private ImageView arrowIcon;
     private ImageView downloadIcon;
@@ -45,7 +46,6 @@ public class CustomDownloadButton extends RelativeLayout {
 
     public void init(int typ, String price){
         this.type = typ;
-        type = RESTORE_PURCHASED;
         int defaultWith = 0;
 
         if(this.type != PURCHASE_DOWNLOAD){
@@ -68,7 +68,7 @@ public class CustomDownloadButton extends RelativeLayout {
             priceParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
             priceTextView.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(context));
             priceTextView.setTextColor(ApplicationThemeColor.getInstance().getPopupTextColor());
-            priceTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, context.getResources().getDimension(R.dimen.content_popup_small_textsize));
+            priceTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, context.getResources().getDimension(R.dimen.content_popup_small_textsize));
             priceTextView.setId(R.id.price_text);
             priceTextView.setLayoutParams(priceParams);
             priceTextView.setBackgroundColor(Color.TRANSPARENT);
@@ -194,5 +194,13 @@ public class CustomDownloadButton extends RelativeLayout {
 
     public void stopAnim(){
         arrowIcon.clearAnimation();
+    }
+
+    public TextView getPriceTextView() {
+        return priceTextView;
+    }
+
+    public ImageView getArrowIcon() {
+        return arrowIcon;
     }
 }
