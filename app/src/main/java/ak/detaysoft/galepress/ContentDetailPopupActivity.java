@@ -79,7 +79,6 @@ public class ContentDetailPopupActivity extends Activity{
     private final static int RESULT_ITEM_ALREADY_OWNED = 7;
     private final static int RESULT_ITEM_NOT_OWNED = 8; //For consumable product
     private boolean isFinishActionStart = false;
-    boolean subscribed = false;
 
     public class ContentHolder{
         Button updateButton;
@@ -247,79 +246,84 @@ public class ContentDetailPopupActivity extends Activity{
 
         downloadButton = (CustomDownloadButton)findViewById(R.id.content_detail_download);
 
-        if(GalePressApplication.getInstance().getSubscriptions() != null){
-            for(Subscription subs : GalePressApplication.getInstance().getSubscriptions()){
-                if(subs.isOwned())
-                    subscribed = true;
-            }
-        }
-
         initDownloadButton();
         downloadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(DataApi.isConnectedToInternet()){
-
                     /*
                     * Abonelik varsa ve kullanici abone olmussa yada içerik kullanıcı için ücretsizse icerigi ucretisiz indirir
                     * */
-                    if(subscribed){
+                    if(GalePressApplication.getInstance().isHaveSubscription()){
                         if (GalePressApplication.getInstance().getDataApi().downloadPdfTask == null
                                 || (GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() != AsyncTask.Status.RUNNING)){
                             downloadButton.startAnim();
                         }
                         GalePressApplication.getInstance().getDataApi().getPdf(content, ContentDetailPopupActivity.this);
                     } else {
+
                         if(content.isBuyable() && (!content.isOwnedProduct() && !content.isContentBought())){
-                            if (!GalePressApplication.getInstance().isBlnBind() && GalePressApplication.getInstance().getmService() == null) {
-                                Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLING_RESULT_BILLING_UNAVAILABLE), Toast.LENGTH_SHORT)
-                                        .show();
-                                return;
-                            }
-
-                            try {
-                                Bundle buyIntentBundle = GalePressApplication.getInstance().getmService().getBuyIntent(3, getPackageName(),
-                                        content.getIdentifier(), "inapp", "bGoa+V7g/yqDXvKRqq+JTFn4uQZbPiQJo4pf9RzJ");
-                                PendingIntent pendingIntent = buyIntentBundle.getParcelable("BUY_INTENT");
-
-                                if (buyIntentBundle.getInt("RESPONSE_CODE") == BILLING_RESPONSE_RESULT_OK) { // Urun satin alinmamis
-                                    // Start purchase flow (this brings up the Google Play UI).
-                                    // Result will be delivered through onActivityResult().
-                                    startIntentSenderForResult(pendingIntent.getIntentSender(),
-                                            1001, new Intent(), Integer.valueOf(0), Integer.valueOf(0),
-                                            Integer.valueOf(0));
-                                } else if (buyIntentBundle.getInt("RESPONSE_CODE") == RESULT_ITEM_ALREADY_OWNED){ // Urun daha once alinmis
-                                    Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLING_ITEM_ALREADY_OWNED), Toast.LENGTH_SHORT)
-                                            .show();
-                                    if (GalePressApplication.getInstance().getDataApi().downloadPdfTask == null
-                                            || (GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() != AsyncTask.Status.RUNNING)){
-                                        downloadButton.startAnim();
-                                    }
-                                    GalePressApplication.getInstance().getDataApi().getPdf(content, ContentDetailPopupActivity.this);
-                                } else if (buyIntentBundle.getInt("RESPONSE_CODE") == RESULT_USER_CANCELED){ // Hata var
-                                    Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLING_RESULT_USER_CANCELED), Toast.LENGTH_SHORT)
-                                            .show();
-                                } else if (buyIntentBundle.getInt("RESPONSE_CODE") == RESULT_BILLING_UNAVAILABLE){ // Hata var
+                            /*
+                            * Login olmayan kullanici urun alamaz
+                            * */
+                            if(GalePressApplication.getInstance().getUserInformation() != null
+                                    && GalePressApplication.getInstance().getUserInformation().getAccessToken() != null
+                                    && GalePressApplication.getInstance().getUserInformation().getAccessToken().length() != 0){
+                                if (!GalePressApplication.getInstance().isBlnBind() && GalePressApplication.getInstance().getmService() == null) {
                                     Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLING_RESULT_BILLING_UNAVAILABLE), Toast.LENGTH_SHORT)
                                             .show();
-                                } else if (buyIntentBundle.getInt("RESPONSE_CODE") == RESULT_ITEM_UNAVAILABLE){ // Hata var
-                                    Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLIN_RESULT_ITEM_UNAVAILABLE), Toast.LENGTH_SHORT)
-                                            .show();
-                                } else if (buyIntentBundle.getInt("RESPONSE_CODE") == RESULT_ERROR){ // Hata var
-                                    Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLING_RESULT_ERROR), Toast.LENGTH_SHORT)
-                                            .show();
-                                } else { //  Beklenmedik Hata var
-                                    Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLING_UNEXPECTED), Toast.LENGTH_SHORT)
-                                            .show();
+                                    return;
                                 }
 
-                            } catch (RemoteException e) {
-                                e.printStackTrace();
-                            } catch (IntentSender.SendIntentException e) {
-                                e.printStackTrace();
-                            } catch (Exception e){
-                                e.printStackTrace();
+                                try {
+                                    Bundle buyIntentBundle = GalePressApplication.getInstance().getmService().getBuyIntent(3, getPackageName(),
+                                            content.getIdentifier(), "inapp", "bGoa+V7g/yqDXvKRqq+JTFn4uQZbPiQJo4pf9RzJ");
+                                    PendingIntent pendingIntent = buyIntentBundle.getParcelable("BUY_INTENT");
+
+                                    if (buyIntentBundle.getInt("RESPONSE_CODE") == BILLING_RESPONSE_RESULT_OK) { // Urun satin alinmamis
+                                        // Start purchase flow (this brings up the Google Play UI).
+                                        // Result will be delivered through onActivityResult().
+                                        startIntentSenderForResult(pendingIntent.getIntentSender(),
+                                                1001, new Intent(), Integer.valueOf(0), Integer.valueOf(0),
+                                                Integer.valueOf(0));
+                                    } else if (buyIntentBundle.getInt("RESPONSE_CODE") == RESULT_ITEM_ALREADY_OWNED){ // Urun daha once alinmis
+                                        Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLING_ITEM_ALREADY_OWNED), Toast.LENGTH_SHORT)
+                                                .show();
+                                        if (GalePressApplication.getInstance().getDataApi().downloadPdfTask == null
+                                                || (GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() != AsyncTask.Status.RUNNING)){
+                                            downloadButton.startAnim();
+                                        }
+                                        GalePressApplication.getInstance().getDataApi().getPdf(content, ContentDetailPopupActivity.this);
+                                    } else if (buyIntentBundle.getInt("RESPONSE_CODE") == RESULT_USER_CANCELED){ // Hata var
+                                        Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLING_RESULT_USER_CANCELED), Toast.LENGTH_SHORT)
+                                                .show();
+                                    } else if (buyIntentBundle.getInt("RESPONSE_CODE") == RESULT_BILLING_UNAVAILABLE){ // Hata var
+                                        Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLING_RESULT_BILLING_UNAVAILABLE), Toast.LENGTH_SHORT)
+                                                .show();
+                                    } else if (buyIntentBundle.getInt("RESPONSE_CODE") == RESULT_ITEM_UNAVAILABLE){ // Hata var
+                                        Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLIN_RESULT_ITEM_UNAVAILABLE), Toast.LENGTH_SHORT)
+                                                .show();
+                                    } else if (buyIntentBundle.getInt("RESPONSE_CODE") == RESULT_ERROR){ // Hata var
+                                        Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLING_RESULT_ERROR), Toast.LENGTH_SHORT)
+                                                .show();
+                                    } else { //  Beklenmedik Hata var
+                                        Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLING_UNEXPECTED), Toast.LENGTH_SHORT)
+                                                .show();
+                                    }
+
+                                } catch (RemoteException e) {
+                                    e.printStackTrace();
+                                } catch (IntentSender.SendIntentException e) {
+                                    e.printStackTrace();
+                                } catch (Exception e){
+                                    e.printStackTrace();
+                                }
+                            } else {
+                                //Giris yapin uyarisi
+                                Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.login_warning_inapp_billing), Toast.LENGTH_SHORT)
+                                        .show();
                             }
+
                         } else {
                             if (GalePressApplication.getInstance().getDataApi().downloadPdfTask == null
                                     || (GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() != AsyncTask.Status.RUNNING)){
@@ -447,7 +451,7 @@ public class ContentDetailPopupActivity extends Activity{
 
     private void initDownloadButton(){
 
-        if(subscribed || !content.isBuyable() || content.isContentBought()){
+        if(!content.isBuyable() || content.isContentBought() || GalePressApplication.getInstance().isHaveSubscription()){
             downloadButton.init(CustomDownloadButton.FREE_DOWNLOAD, "");
         } else if(content.isOwnedProduct()) {
             downloadButton.init(CustomDownloadButton.RESTORE_PURCHASED, "");
@@ -463,7 +467,7 @@ public class ContentDetailPopupActivity extends Activity{
                 @Override
                 protected String doInBackground(Void... params) {
                     String price = "";
-                    if(subscribed){
+                    if(GalePressApplication.getInstance().isHaveSubscription()){
                         return price;
                     } else {
                         //Satin alinabilen urunse fiyati kontrol ediliyor
@@ -671,6 +675,7 @@ public class ContentDetailPopupActivity extends Activity{
                     GalePressApplication.getInstance().getDataApi().getPdf(content, ContentDetailPopupActivity.this);
                     JSONObject jo = new JSONObject(purchaseData);
                     String sku = jo.getString("productId");
+                    GalePressApplication.getInstance().getDataApi().sendReceipt(jo.getString("productId"), jo.getString("purchaseToken"), jo.getString("packageName"));
                 }
                 catch (JSONException e) {
                     Toast.makeText(ContentDetailPopupActivity.this, "act result json parse error - "+e.getMessage(), Toast.LENGTH_LONG).show();

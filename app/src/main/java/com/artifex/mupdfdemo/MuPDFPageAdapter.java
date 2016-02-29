@@ -57,10 +57,15 @@ public class MuPDFPageAdapter extends BaseAdapter {
 				/*
 				* Eger parent view init edilmemisse(herzaman olmuyor) burada ekran boyutuna gore bitmap olusturuluyor. (MG)
 				* (https://fabric.io/galepress/android/apps/ak.detaysoft.carrefoursa1/issues/56b278fcf5d3a7f76b8f6164)
+				* (https://fabric.io/galepress/android/apps/ak.detaysoft.carrefoursa1/issues/56d219e3f5d3a7f76b28a8da)
 				* */
 				if(parent.getWidth() <= 0 || parent.getHeight() <= 0) {
-					View view = ((Activity)mContext).getWindow().getDecorView();
-					mSharedHqBm = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
+					Display display = ((Activity)mContext).getWindowManager().getDefaultDisplay();
+					Point size = new Point();
+					display.getSize(size);
+					int width = size.x;
+					int height = size.y;
+					mSharedHqBm = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
 				} else {
 					mSharedHqBm = Bitmap.createBitmap(parent.getWidth(), parent.getHeight(), Bitmap.Config.ARGB_8888);
 				}

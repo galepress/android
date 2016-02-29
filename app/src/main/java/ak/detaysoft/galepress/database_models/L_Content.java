@@ -394,7 +394,9 @@ public class L_Content implements Serializable {
     public void setMarketPrice(String marketPrice) {
         this.marketPrice = marketPrice;
     }
-// Model Methods
+
+
+    // Model Methods
 
     public L_Content(R_ContentDetail remoteContent){
         this.id = remoteContent.getContentID();

@@ -76,7 +76,6 @@ import javax.xml.parsers.SAXParserFactory;
 import ak.detaysoft.galepress.custom_models.Subscription;
 import ak.detaysoft.galepress.util.StateListDrawableWithColorFilter;
 import ak.detaysoft.galepress.web_views.ExtraWebViewActivity;
-import ak.detaysoft.galepress.web_views.ExtraWebViewWithCrosswalkActivity;
 import ak.detaysoft.galepress.custom_models.ApplicationPlist;
 import ak.detaysoft.galepress.custom_models.TabbarItem;
 import ak.detaysoft.galepress.database_models.L_Category;
@@ -751,6 +750,28 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
     }
 
+    public void invalidateMemberListAdapter(){
+
+        GalePressApplication.getInstance().prepareMemberShipList();
+
+        membershipAdapter.notifyDataSetChanged();
+        membershipListView.invalidate();
+
+        int listHeight = 0;
+        LayoutInflater mInflater = (LayoutInflater)getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+        View membershipListItemView = mInflater.inflate(R.layout.left_menu_membership_item, null);
+        membershipListItemView.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+        if(!GalePressApplication.getInstance().isTestApplication()){
+            listHeight = 0;
+            for(int i = 0 ; i < GalePressApplication.getInstance().getMembershipMenuList().size(); i++){
+                listHeight += membershipListItemView.getMeasuredHeight();
+            }
+            membershipListView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listHeight));
+        } else {
+            membershipListView.setVisibility(View.GONE);
+        }
+    }
+
     public void invalidateTabBars(boolean isColorChanged){
         mTabHost.getTabWidget().setBackgroundColor(ApplicationThemeColor.getInstance().getActionAndTabBarColor());
 
@@ -938,7 +959,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 progress.setMessage(getResources().getString(R.string.subscription_check) + "...");
                 progress.setCancelable(false);
                 progress.show();
-                GalePressApplication.getInstance().restoreSubscriptions(false, false, this, progress);
+                GalePressApplication.getInstance().restorePurchasedSubscriptions(false, false, this, progress);
             } else {
                 Toast.makeText(this, getResources().getString(R.string.subscription_warning), Toast.LENGTH_SHORT).show();
             }
@@ -959,7 +980,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         //Facebook logout
         FacebookSdk.sdkInitialize(this.getApplicationContext());
         LoginManager.getInstance().logOut();
-
         GalePressApplication.getInstance().editMemberShipList(false, null);
         membershipAdapter.notifyDataSetChanged();
         LayoutInflater mInflater = (LayoutInflater)getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
@@ -1313,6 +1333,8 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                     for (Subscription subs : GalePressApplication.getInstance().getSubscriptions())
                         if (subs.getIdentifier().compareTo(selectedSubscription.getIdentifier()) == 0)
                             subs.setOwned(true);
+
+                    GalePressApplication.getInstance().getDataApi().sendReceipt(jo.getString("productId"), jo.getString("purchaseToken"), jo.getString("packageName"));
                 } catch (JSONException e) {
                     Toast.makeText(this, "act result json parse error - " + e.getMessage(), Toast.LENGTH_LONG).show();
                     e.printStackTrace();

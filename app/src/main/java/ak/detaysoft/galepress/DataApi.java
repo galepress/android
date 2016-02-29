@@ -19,6 +19,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -55,6 +56,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.DateFormat;
@@ -690,7 +692,7 @@ public class DataApi extends Object {
                                 GalePressApplication.getInstance().editMemberShipList(false, null);
                                 ((LoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_0));
                                 e.printStackTrace();
-                                Logout.e("Adem","DECREMENT"); GalePressApplication.getInstance().decrementRequestCount();
+                                Logout.e("Adem", "DECREMENT"); GalePressApplication.getInstance().decrementRequestCount();
                             }
                         }
                     },
@@ -1334,7 +1336,7 @@ public class DataApi extends Object {
         ImageLoader.getInstance().loadImage(url, new ImageLoadingListener() {
             @Override
             public void onLoadingStarted(String s, View view) {
-                Log.e("downloadTry", ""+id);
+                Log.e("downloadTry", "" + id);
             }
 
             @Override
@@ -1346,7 +1348,7 @@ public class DataApi extends Object {
             public void onLoadingComplete(String s, View view, Bitmap bitmap) {
                 saveImage(bitmap, fileName, id, isLarge);
                 ImageLoader.getInstance().getMemoryCache().clear();
-                Log.e("imageUpdate", ""+isLarge);
+                Log.e("imageUpdate", "" + isLarge);
             }
 
             @Override
@@ -1679,7 +1681,7 @@ public class DataApi extends Object {
         requestQueue.add(request);
     }
 
-    public void restoreAppContents(final Activity activity, final ProgressDialog progress){
+    public void restoreContentsAndSubscritonsFromServer(final Activity activity, final ProgressDialog progress){
         GalePressApplication application = GalePressApplication.getInstance();
         Integer applicationId = null;
         RequestQueue requestQueue = application.getRequestQueue();
@@ -1719,7 +1721,13 @@ public class DataApi extends Object {
                             if(!response.isNull("error") && response.getString("error").length() != 0){
                                 int code = response.getInt("status");
                                 boolean isUpdate = false;
-                                if(code == 160) {
+                                if(code == 160) { //Kullanici bulunamadi
+                                    GalePressApplication.getInstance().setHaveSubscription(false); // Kullanici yoksa server abonelik false
+                                    GalePressApplication.getInstance().prepareMemberShipList();
+                                    if(activity != null){
+                                        if(activity instanceof MainActivity)
+                                            ((MainActivity)activity).invalidateMemberListAdapter();
+                                    }
                                     List<L_Content> localContents = databaseApi.getAllContents(null);
                                     for (L_Content l_content : localContents) {
                                         if(l_content.isContentBought()) {
@@ -1747,6 +1755,14 @@ public class DataApi extends Object {
                                     }
                                 }
                             } else {
+
+                                GalePressApplication.getInstance().setHaveSubscription(response.getBoolean("ActiveSubscription")); // Server abonelik aliniyor
+                                GalePressApplication.getInstance().prepareMemberShipList();
+                                if(activity != null){
+                                    if(activity instanceof MainActivity)
+                                        ((MainActivity)activity).invalidateMemberListAdapter();
+                                }
+
                                 List<L_Content> localContents = databaseApi.getAllContents(null);
                                 boolean isUpdate = false;
                                 for (L_Content l_content : localContents) {
@@ -1754,6 +1770,7 @@ public class DataApi extends Object {
                                         if (l_content.getId().compareTo(r_content.getContentID()) == 0) {
                                             if(l_content.isContentBought() != r_content.isContentBought()) {
                                                 l_content.setContentBought(r_content.isContentBought());
+                                                l_content.setBuyable(r_content.isBuyable());
                                                 getDatabaseApi().updateContent(l_content,false);
                                                 isUpdate = true;
                                             }
@@ -1859,6 +1876,14 @@ public class DataApi extends Object {
                             ApplicationThemeColor.getInstance().setParameters(response);
                             GalePressApplication.getInstance().setBannerLink(response);
                             GalePressApplication.getInstance().setTabList(response);
+
+                            GalePressApplication.getInstance().setHaveSubscription(response.getBoolean("ActiveSubscription")); // Server abonelik aliniyor
+                            GalePressApplication.getInstance().prepareMemberShipList();
+                            if(GalePressApplication.getInstance().getCurrentActivity() != null){
+                                if(GalePressApplication.getInstance().getCurrentActivity() instanceof MainActivity)
+                                    ((MainActivity)GalePressApplication.getInstance().getCurrentActivity()).invalidateMemberListAdapter();
+                            }
+
 
                             if (GalePressApplication.getInstance().isTestApplication()) {
                                 if (RAppContents.getError() == "120") {
@@ -1973,7 +1998,6 @@ public class DataApi extends Object {
         request.setShouldCache(Boolean.FALSE);
         requestQueue.add(request);
     }
-
 
     public void getRemoteApplicationVersion() {
         Logout.e("Adem","INC"); GalePressApplication.getInstance().incrementRequestCount();
@@ -2177,5 +2201,57 @@ public class DataApi extends Object {
         return errorMessage;
     }
 
+    public void sendReceipt(final String productId, final String purchaseToken, final String packageName){
+        GalePressApplication application = GalePressApplication.getInstance();
+        Integer applicationId = null;
+        RequestQueue requestQueue = application.getRequestQueue();
+        JsonObjectRequest request;
+
+        if (GalePressApplication.getInstance().isTestApplication()) {
+            applicationId = new Integer(application.getTestApplicationLoginInf().getApplicationId());
+        } else {
+            applicationId = application.getApplicationId();
+        }
+
+        /*Uri.Builder uriBuilder = new Uri.Builder();
+        uriBuilder.scheme("http")
+                .authority("www.galepress.com")
+                .appendPath("webservice")
+                .appendPath("103");*/
+        Uri.Builder uriBuilder = getWebServiceUrlBuilder();
+        uriBuilder.appendPath("applications");
+        uriBuilder.appendPath(applicationId.toString());
+        uriBuilder.appendPath("receipt");
+
+        uriBuilder.appendQueryParameter("platformType", "android");
+        uriBuilder.appendQueryParameter("productId", productId);
+        uriBuilder.appendQueryParameter("packageName", packageName);
+        if(GalePressApplication.getInstance().getUserInformation() != null
+                && GalePressApplication.getInstance().getUserInformation().getAccessToken() != null
+                && GalePressApplication.getInstance().getUserInformation().getAccessToken().length() != 0)
+            uriBuilder.appendQueryParameter("accessToken",GalePressApplication.getInstance().getUserInformation().getAccessToken());
+        uriBuilder.appendQueryParameter("purchaseToken",purchaseToken);
+
+        request = new JsonObjectRequest(Request.Method.POST, uriBuilder.build().toString() , null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            Log.e("receipt", ""+response.toString());
+                        } catch (Exception e) {
+                            Log.e("deneme", "deneme");
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("receipt", ""+error.getMessage());
+                    }
+                }
+        );
+        request.setShouldCache(Boolean.FALSE);
+        requestQueue.add(request);
+    }
 }
 

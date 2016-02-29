@@ -15,6 +15,7 @@ public class R_Content {
     private Integer contentOrderNo;
     private boolean isForceDelete;
     private boolean contentBought;
+    private boolean isBuyable;
 
     public R_Content() {
 
@@ -32,6 +33,7 @@ public class R_Content {
         this.contentOrderNo = json.optInt("ContentOrderNo");
         this.isForceDelete = json.optBoolean("RemoveFromMobile");
         this.contentBought = json.optBoolean("ContentBought");
+        this.isBuyable = json.optBoolean("ContentIsBuyable");
     }
 
     public String getContentName() {
@@ -112,5 +114,14 @@ public class R_Content {
 
     public void setContentBought(boolean contentBought) {
         this.contentBought = contentBought;
+    }
+
+    public void setIsBuyable(boolean isBuyable) {
+        this.isBuyable = isBuyable;
+    }
+
+    public boolean isBuyable() {
+
+        return isBuyable;
     }
 }

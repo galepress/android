@@ -45,7 +45,7 @@ public class R_ContentDetail {
         this.contentBlocked = json.optBoolean("ContentBlocked");
         this.contentCurrency = json.optDouble("ContentCurrency");
         this.contentDetail = json.optString("ContentDetail");
-        this.contentCategoryID = json.optInt("ContentCategoryID");
+        this.contentCategoryID = json.optInt("ContentCategoryID"); // Bu data servisten gelmiyor
         this.contentIdentifier = json.optString("ContentIdentifier");
         this.contentIsProtected = json.optBoolean("ContentIsProtected");
         this.contentPrice = "";//json.optString("ContentPrice");
@@ -57,7 +57,7 @@ public class R_ContentDetail {
         this.contentVersion = json.optInt("ContentVersion");
         this.contentPdfVersion = json.optInt("ContentPdfVersion");
         this.contentCoverImageVersion = json.optInt("ContentCoverImageVersion");
-        this.contentCategoryName = json.optString("ContentCategoryName");
+        this.contentCategoryName = json.optString("ContentCategoryName"); // Bu data servisten gelmiyor
         this.status = json.optInt("status");
         this.contentIsMaster = json.optBoolean("ContentIsMaster");
         this.contentOrientation = json.optInt("ContentOrientation");
