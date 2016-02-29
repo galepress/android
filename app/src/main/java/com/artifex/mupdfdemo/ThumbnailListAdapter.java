@@ -8,7 +8,6 @@ import android.graphics.PointF;
 import android.os.Build;
 import android.util.Log;
 import android.util.SparseArray;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,9 +29,9 @@ import ak.detaysoft.galepress.util.ApplicationThemeColor;
 /**
  * Created by p1025 on 16.04.2015.
  */
-public class ThumnailListAdapter extends BaseAdapter {
+public class ThumbnailListAdapter extends BaseAdapter {
 
-    private static final String TAG = ThumnailListAdapter.class
+    private static final String TAG = ThumbnailListAdapter.class
             .getSimpleName();
     private Context mContext;
     private MuPDFCore mCore;
@@ -45,7 +44,7 @@ public class ThumnailListAdapter extends BaseAdapter {
     public ArrayList<TextView> pageNumberList;
     private int dividerHeight;
 
-    public ThumnailListAdapter(Context context, MuPDFCore core, MuPDFReaderView docView) {
+    public ThumbnailListAdapter(Context context, MuPDFCore core, MuPDFReaderView docView) {
         mContext = context;
         mDocView = docView;
         mCore = core;
@@ -173,7 +172,7 @@ public class ThumnailListAdapter extends BaseAdapter {
     }
 
     private void drawPageImageView(final ImageView v, final int position) {
-        ThumnailSafeAsyncTask<Void, Void, Bitmap> drawTask = new ThumnailSafeAsyncTask<Void, Void, Bitmap>() {
+        ThumbnailSafeAsyncTask<Void, Void, Bitmap> drawTask = new ThumbnailSafeAsyncTask<Void, Void, Bitmap>() {
 
             @Override
             protected Bitmap doInBackground(Void... pParams) {

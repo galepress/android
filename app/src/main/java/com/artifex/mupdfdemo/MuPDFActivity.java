@@ -140,13 +140,13 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
     private MenuDrawer mDrawer;
 
     //private ThumnailHorizontalLayout mPreview;
-    private ThumnailHorizontalListView mPreview;
+    private ThumbnailHorizontalListView mPreview;
     private RelativeLayout bottomButton;
     private ImageView bottomButtonImg1;
     private RelativeLayout bottomButtonImg2;
     private RelativeLayout mPreviewBarHolder;
     //private CustomThumnailAdapter thumnailAdapter;
-    private ThumnailListAdapter thumnailAdapter;
+    private ThumbnailListAdapter thumnailAdapter;
 
     private Animation thumnailAnimVisible;
     private Animation thumnailAnimInvisible;
@@ -1844,9 +1844,9 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         else
             ((ImageView) mButtonsView.findViewById(R.id.reader_bottom_page_img_ok)).setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_MENU_OPEN_OK));
 
-        mPreview = (ThumnailHorizontalListView) mButtonsView.findViewById(R.id.reader_preview_bar_listView);
+        mPreview = (ThumbnailHorizontalListView) mButtonsView.findViewById(R.id.reader_preview_bar_listView);
         mPreview.setBackgroundColor(ApplicationThemeColor.getInstance().getActionAndTabBarColor());
-        thumnailAdapter = new ThumnailListAdapter(this, core, mDocView);
+        thumnailAdapter = new ThumbnailListAdapter(this, core, mDocView);
         mPreview.setAdapter(thumnailAdapter);
         //mPreview.setCenter(mDocView.getDisplayedViewIndex());
         mPreview.setOnItemClickListener(new AdapterView.OnItemClickListener() {

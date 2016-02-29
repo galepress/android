@@ -913,7 +913,11 @@ public class GalePressApplication
                             ownedSubscriptionList = ownedItems.getStringArrayList("INAPP_PURCHASE_DATA_LIST");
                         }
 
-                        if(ownedSkus.size() > 0){
+                        /*
+                        * Abonelik retore islemi artik galepress serverdan yapilacak. Burada google play tarafindan restore yapiliyodu.
+                        * Bu kisma gerek kalmadi.
+                        * */
+                        /*if(ownedSkus.size() > 0){
                             for(String skuItem : ownedSkus){
                                 for(int i = 0; i < subscriptions.size(); i++){
                                     if(skuItem.compareTo(subscriptions.get(i).getIdentifier()) == 0){
@@ -922,7 +926,7 @@ public class GalePressApplication
                                     }
                                 }
                             }
-                        }
+                        }*/
                     } catch (RemoteException e) {
                         e.printStackTrace();
                     }
@@ -931,7 +935,7 @@ public class GalePressApplication
                     * Abonelik satin alindiginda sendReceipt isleminin basarisiz olma ihtimaline karsi tekrar deniyoruz (MG)
                     * */
                     try {
-                        if(ownedSubscriptionList.size() > 0){
+                        if(ownedSubscriptionList != null && ownedSubscriptionList.size() > 0){
                             for(String purchaseData : ownedSubscriptionList){
                                 JSONObject jpurchase = new JSONObject(purchaseData);
                                 GalePressApplication.getInstance().getDataApi().sendReceipt(jpurchase.getString("productId"), jpurchase.getString("purchaseToken"), jpurchase.getString("packageName"));
@@ -1033,7 +1037,11 @@ public class GalePressApplication
                             ownedProductList = ownedItems.getStringArrayList("INAPP_PURCHASE_DATA_LIST");
                         }
 
-                        if(ownedSkus.size() > 0){
+                        /*
+                        * Icerik retore islemi artik galepress serverdan yapilacak. Burada google play tarafindan restore yapiliyodu.
+                        * Bu kisma gerek kalmadi.
+                        * */
+                        /*if(ownedSkus.size() > 0){
                             for(String skuItem : ownedSkus){
                                 for(int i = 0; i < localContents.size(); i++){
                                     L_Content content = localContents.get(i);
@@ -1044,7 +1052,7 @@ public class GalePressApplication
                                     }
                                 }
                             }
-                        }
+                        }*/
                     } catch (RemoteException e) {
                         e.printStackTrace();
                     }
@@ -1053,7 +1061,7 @@ public class GalePressApplication
                     * Eger urun satin alindiginda sendReceipt isleminin basarisiz olma ihtimaline karsi tekrar deniyoruz (MG)
                     * */
                     try {
-                        if(ownedProductList.size() > 0){
+                        if(ownedProductList != null && ownedProductList.size() > 0){
                             for(String purchaseData : ownedProductList){
                                 JSONObject jpurchase = new JSONObject(purchaseData);
                                 GalePressApplication.getInstance().getDataApi().sendReceipt(jpurchase.getString("productId"), jpurchase.getString("purchaseToken"), jpurchase.getString("packageName"));

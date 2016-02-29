@@ -251,19 +251,17 @@ public class ContentDetailPopupActivity extends Activity{
             @Override
             public void onClick(View v) {
                 if(DataApi.isConnectedToInternet()){
-                    /*
-                    * Abonelik varsa ve kullanici abone olmussa yada içerik kullanıcı için ücretsizse icerigi ucretisiz indirir
-                    * */
-                    if(GalePressApplication.getInstance().isHaveSubscription()){
-                        if (GalePressApplication.getInstance().getDataApi().downloadPdfTask == null
-                                || (GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() != AsyncTask.Status.RUNNING)){
-                            downloadButton.startAnim();
-                        }
-                        GalePressApplication.getInstance().getDataApi().getPdf(content, ContentDetailPopupActivity.this);
-                    } else {
 
-                        if(content.isBuyable() && (!content.isOwnedProduct() && !content.isContentBought())){
-                            /*
+
+                    if(content.isBuyable()) {
+                        if(content.isContentBought() || GalePressApplication.getInstance().isHaveSubscription() || content.isOwnedProduct()) {
+                            if (GalePressApplication.getInstance().getDataApi().downloadPdfTask == null
+                                    || (GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() != AsyncTask.Status.RUNNING)){
+                                downloadButton.startAnim();
+                            }
+                            GalePressApplication.getInstance().getDataApi().getPdf(content, ContentDetailPopupActivity.this);
+                        } else {
+/*
                             * Login olmayan kullanici urun alamaz
                             * */
                             if(GalePressApplication.getInstance().getUserInformation() != null
@@ -323,14 +321,13 @@ public class ContentDetailPopupActivity extends Activity{
                                 Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.login_warning_inapp_billing), Toast.LENGTH_SHORT)
                                         .show();
                             }
-
-                        } else {
-                            if (GalePressApplication.getInstance().getDataApi().downloadPdfTask == null
-                                    || (GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() != AsyncTask.Status.RUNNING)){
-                                downloadButton.startAnim();
-                            }
-                            GalePressApplication.getInstance().getDataApi().getPdf(content, ContentDetailPopupActivity.this);
                         }
+                    } else {
+                        if (GalePressApplication.getInstance().getDataApi().downloadPdfTask == null
+                                || (GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() != AsyncTask.Status.RUNNING)){
+                            downloadButton.startAnim();
+                        }
+                        GalePressApplication.getInstance().getDataApi().getPdf(content, ContentDetailPopupActivity.this);
                     }
                 }
             }
@@ -451,75 +448,78 @@ public class ContentDetailPopupActivity extends Activity{
 
     private void initDownloadButton(){
 
-        if(!content.isBuyable() || content.isContentBought() || GalePressApplication.getInstance().isHaveSubscription()){
-            downloadButton.init(CustomDownloadButton.FREE_DOWNLOAD, "");
-        } else if(content.isOwnedProduct()) {
-            downloadButton.init(CustomDownloadButton.RESTORE_PURCHASED, "");
-        } else {
-            AsyncTask<Void, Void ,String> getPrice = new AsyncTask<Void, Void, String>() {
 
-                @Override
-                protected void onPreExecute() {
-                    super.onPreExecute();
-                    downloadButton.init(CustomDownloadButton.PURCHASE_DOWNLOAD, "");
-                }
+        if(content.isBuyable()) {
+            if(content.isContentBought() || GalePressApplication.getInstance().isHaveSubscription() || content.isOwnedProduct()) {
+                downloadButton.init(CustomDownloadButton.RESTORE_PURCHASED, "");
+            } else {
+                AsyncTask<Void, Void ,String> getPrice = new AsyncTask<Void, Void, String>() {
 
-                @Override
-                protected String doInBackground(Void... params) {
-                    String price = "";
-                    if(GalePressApplication.getInstance().isHaveSubscription()){
-                        return price;
-                    } else {
-                        //Satin alinabilen urunse fiyati kontrol ediliyor
-                        ArrayList<String> skuList = new ArrayList<String>();
-                        skuList.add(content.getIdentifier());
-                        Bundle querySkus = new Bundle();
-                        querySkus.putStringArrayList("ITEM_ID_LIST", skuList);
+                    @Override
+                    protected void onPreExecute() {
+                        super.onPreExecute();
+                        downloadButton.init(CustomDownloadButton.PURCHASE_DOWNLOAD, "");
+                    }
 
-                        Bundle skuDetails;
-                        try {
-                            skuDetails = GalePressApplication.getInstance().getmService().getSkuDetails(3, getPackageName(), "inapp", querySkus);
+                    @Override
+                    protected String doInBackground(Void... params) {
+                        String price = "";
+                        if(GalePressApplication.getInstance().isHaveSubscription()){
+                            return price;
+                        } else {
+                            //Satin alinabilen urunse fiyati kontrol ediliyor
+                            ArrayList<String> skuList = new ArrayList<String>();
+                            skuList.add(content.getIdentifier());
+                            Bundle querySkus = new Bundle();
+                            querySkus.putStringArrayList("ITEM_ID_LIST", skuList);
 
-                            int response = skuDetails.getInt("RESPONSE_CODE");
+                            Bundle skuDetails;
+                            try {
+                                skuDetails = GalePressApplication.getInstance().getmService().getSkuDetails(3, getPackageName(), "inapp", querySkus);
 
-                            if (response == 0) {
-                                ArrayList<String> responseList = skuDetails.getStringArrayList("DETAILS_LIST");
+                                int response = skuDetails.getInt("RESPONSE_CODE");
 
-                                if (responseList.size() != 0) {
-                                    for (String thisResponse : responseList) {
-                                        JSONObject object = null;
-                                        try {
-                                            object = new JSONObject(thisResponse);
-                                            price = object.getString("price");
-                                        } catch (JSONException e) {
-                                            e.printStackTrace();
+                                if (response == 0) {
+                                    ArrayList<String> responseList = skuDetails.getStringArrayList("DETAILS_LIST");
+
+                                    if (responseList.size() != 0) {
+                                        for (String thisResponse : responseList) {
+                                            JSONObject object = null;
+                                            try {
+                                                object = new JSONObject(thisResponse);
+                                                price = object.getString("price");
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                            }
                                         }
                                     }
+
                                 }
-
+                            } catch (RemoteException e) {
+                                e.printStackTrace();
+                                price = "";
                             }
-                        } catch (RemoteException e) {
-                            e.printStackTrace();
-                            price = "";
+                            if (price == null || price.length() == 0) {
+                                price = (content.getMarketPrice() == null || content.getMarketPrice().length() == 0) ? "" : content.getMarketPrice();
+                            }
                         }
-                        if (price == null || price.length() == 0) {
-                            price = (content.getMarketPrice() == null || content.getMarketPrice().length() == 0) ? "" : content.getMarketPrice();
-                        }
+                        return price;
                     }
-                    return price;
-                }
 
-                @Override
-                protected void onPostExecute(String s) {
-                    super.onPostExecute(s);
-                    if(s.compareTo("") != 0)
-                        downloadButton.getPriceTextView().setText(s);
-                    else
-                        downloadButton.getPriceTextView().setText(content.getPrice());
-                    downloadButton.invalidate();
-                }
-            };
-            getPrice.execute();
+                    @Override
+                    protected void onPostExecute(String s) {
+                        super.onPostExecute(s);
+                        if(s.compareTo("") != 0)
+                            downloadButton.getPriceTextView().setText(s);
+                        else
+                            downloadButton.getPriceTextView().setText(content.getPrice());
+                        downloadButton.invalidate();
+                    }
+                };
+                getPrice.execute();
+            }
+        } else {
+            downloadButton.init(CustomDownloadButton.FREE_DOWNLOAD, "");
         }
 
     }

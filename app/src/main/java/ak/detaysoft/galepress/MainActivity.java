@@ -531,7 +531,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         /*
         * Eger super cagrilirsa initCustomTabs() metodunda mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG); satirinda crash oluyor uygulama.
         * Bu durum her zaman olmuyor sadece eger o sirada baska bi activity aciksa internet state degisirse crash oluyor.
-        * Work round cozum olarak bunu buldum. Kalici cozum ariyorum. (MG)
+        * (MG)
         * */
         //super.onSaveInstanceState(outState);
     }

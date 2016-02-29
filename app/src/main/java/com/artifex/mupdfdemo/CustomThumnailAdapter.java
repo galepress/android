@@ -29,7 +29,7 @@ import ak.detaysoft.galepress.util.ApplicationThemeColor;
  * Created by p1025 on 26.04.2015.
  */
 public class CustomThumnailAdapter extends ArrayAdapter<Object> {
-    private static final String TAG = ThumnailListAdapter.class
+    private static final String TAG = ThumbnailListAdapter.class
             .getSimpleName();
     private Context mContext;
     private MuPDFCore mCore;
@@ -169,7 +169,7 @@ public class CustomThumnailAdapter extends ArrayAdapter<Object> {
     }
 
     private void drawPageImageView(final ImageView v, final int position) {
-        ThumnailSafeAsyncTask<Void, Void, Bitmap> drawTask = new ThumnailSafeAsyncTask<Void, Void, Bitmap>() {
+        ThumbnailSafeAsyncTask<Void, Void, Bitmap> drawTask = new ThumbnailSafeAsyncTask<Void, Void, Bitmap>() {
 
             @Override
             protected Bitmap doInBackground(Void... pParams) {

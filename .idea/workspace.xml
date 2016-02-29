@@ -36,14 +36,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ContentDetailPopupActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ContentDetailPopupActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="676" column="59" selection-start-line="676" selection-start-column="59" selection-end-line="676" selection-end-column="59" />
+            <state vertical-scroll-proportion="2.766727">
+              <caret line="330" column="21" selection-start-line="330" selection-start-column="21" selection-end-line="330" selection-end-column="21" />
               <folding>
+                <element signature="e#12561#12662#0" expanded="true" />
+                <element signature="e#14075#14168#0" expanded="true" />
+                <element signature="e#14987#15082#0" expanded="true" />
+                <element signature="e#15380#15481#0" expanded="true" />
+                <element signature="e#15776#15873#0" expanded="true" />
+                <element signature="e#16157#16244#0" expanded="true" />
+                <element signature="e#16481#16566#0" expanded="true" />
+                <element signature="e#17256#17350#0" expanded="true" />
+                <element signature="e#24596#24604#0" expanded="true" />
                 <element signature="method#displayImage#0;class#ContentDetailPopupActivity#0" expanded="false" />
                 <element signature="method#finishActivityWithAnimation#0;class#ContentDetailPopupActivity#0" expanded="false" />
+                <element signature="e#33833#33926#0" expanded="true" />
+                <element signature="e#35293#35386#0" expanded="true" />
+                <element signature="e#36145#36240#0" expanded="true" />
+                <element signature="e#36439#36540#0" expanded="true" />
+                <element signature="e#36736#36833#0" expanded="true" />
+                <element signature="e#37018#37105#0" expanded="true" />
+                <element signature="e#37270#37355#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -53,88 +69,32 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/CustomDownloadButton.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="98" column="26" selection-start-line="98" selection-start-column="26" selection-end-line="98" selection-end-column="26" />
+              <caret line="91" column="9" selection-start-line="91" selection-start-column="9" selection-end-line="91" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
+      <file leaf-file-name="LibraryFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="19.448277">
-              <caret line="1319" column="34" selection-start-line="1319" selection-start-column="34" selection-end-line="1319" selection-end-column="34" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#51256#51297#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0">
+              <caret line="109" column="16" selection-start-line="109" selection-start-column="16" selection-end-line="109" selection-end-column="16" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataApi.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-35.655174">
-              <caret line="673" column="145" selection-start-line="673" selection-start-column="40" selection-end-line="673" selection-end-column="145" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#isLibraryMustBeEnabled#0;class#DataApi#0" expanded="false" />
-                <element signature="method#DataApi#0;class#DataApi#0" expanded="false" />
-                <element signature="method#getDatabaseApi#0;class#DataApi#0" expanded="false" />
-                <element signature="method#isConnectedToInternet#0;class#DataApi#0" expanded="false" />
-                <element signature="method#capitalize#0;class#DataApi#0" expanded="false" />
-                <element signature="method#updateApplication#0;class#DataApi#0" expanded="false" />
-                <element signature="method#getMasterContent#0;class#DataApi#0" expanded="false" />
-                <element signature="e#29670#29721#0" expanded="true" />
-                <element signature="e#30148#30201#0" expanded="true" />
-                <element signature="method#getAppDetail#0;class#DataApi#0" expanded="false" />
-                <element signature="method#deleteEverythingAndUpdateApplication#0;class#DataApi#0" expanded="false" />
-                <element signature="method#deleteEverything#0;class#DataApi#0" expanded="false" />
-                <element signature="method#cancelDownload#0;class#DataApi#0" expanded="false" />
-                <element signature="method#downloadUpdatedImage#0;class#DataApi#0" expanded="false" />
-                <element signature="method#startStatisticSend#0;class#DataApi#0" expanded="false" />
-                <element signature="method#stopStatisticSend#0;class#DataApi#0" expanded="false" />
-                <element signature="method#removeAllConCatsForContent#0;class#DataApi#0" expanded="false" />
-                <element signature="method#createConCat#0;class#DataApi#0" expanded="false" />
-                <element signature="method#getRemoteAppCategories#0;class#DataApi#0" expanded="false" />
-                <element signature="e#91216#91271#0" expanded="true" />
-                <element signature="e#98243#106074#0" expanded="true" />
-                <element signature="e#106073#106074#0" expanded="true" />
-                <element signature="method#getRemoteApplicationVersion#0;class#DataApi#0" expanded="false" />
-                <element signature="method#updateApplicationVersion#0;class#DataApi#0" expanded="false" />
-                <element signature="method#deleteContent#0;class#DataApi#0" expanded="false" />
-                <element signature="method#deleteFolder#0;class#DataApi#0" expanded="false" />
-                <element signature="method#getViewHolderForContent#0;class#DataApi#0" expanded="false" />
-                <element signature="method#getErrorMessageFromXMLFile#0;class#DataApi#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GalePressApplication.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GalePressApplication.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.3676976">
-              <caret line="895" column="16" selection-start-line="895" selection-start-column="16" selection-end-line="895" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="1046" column="59" selection-start-line="1046" selection-start-column="59" selection-end-line="1046" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#33043#33051#0" expanded="true" />
                 <element signature="e#33118#33126#0" expanded="true" />
-                <element signature="e#35169#35177#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LoginActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="208" column="73" selection-start-line="208" selection-start-column="73" selection-end-line="208" selection-end-column="73" />
-              <folding>
-                <element signature="e#8703#8764#0" expanded="true" />
-                <element signature="method#finishActivityWithAnimation#0;class#LoginActivity#0" expanded="false" />
+                <element signature="e#35448#35456#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -3242,11 +3202,12 @@
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_Content.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/custom_models/Subscription.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/HomeFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java" />
       </list>
     </option>
   </component>
@@ -3372,44 +3333,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mupdfdemo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GalepressMerge" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GalepressMerge" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -3640,7 +3563,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -3648,12 +3571,12 @@
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Fabric" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32967034" sideWeight="0.48933902" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.4914712" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32967034" sideWeight="0.48294243" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.48933902" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.4936034" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32967034" sideWeight="0.510661" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32967034" sideWeight="0.5170576" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -3714,7 +3637,57 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#51256#51297#0" expanded="true" />
+            <element signature="method#invalidateMemberListAdapter#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#43755#43922#0" expanded="true" />
+            <element signature="e#43921#43922#0" expanded="true" />
+            <element signature="e#44389#44428#0" expanded="true" />
+            <element signature="e#44721#44763#0" expanded="true" />
+            <element signature="e#45054#45099#0" expanded="true" />
+            <element signature="e#49966#50008#0" expanded="true" />
+            <element signature="e#50526#50579#0" expanded="true" />
+            <element signature="e#50840#50895#0" expanded="true" />
+            <element signature="e#51196#51237#0" expanded="true" />
+            <element signature="e#52628#52682#0" expanded="true" />
+            <element signature="e#52719#52760#0" expanded="true" />
+            <element signature="e#52778#53007#0" expanded="true" />
+            <element signature="e#53006#53007#0" expanded="true" />
+            <element signature="e#53077#53085#0" expanded="true" />
+            <element signature="e#53633#53672#0" expanded="true" />
+            <element signature="e#53750#53853#0" expanded="true" />
+            <element signature="e#53813#53852#0" expanded="true" />
+            <element signature="e#54009#54049#0" expanded="true" />
+            <element signature="e#54127#54230#0" expanded="true" />
+            <element signature="e#54189#54229#0" expanded="true" />
+            <element signature="e#54347#54386#0" expanded="true" />
+            <element signature="e#54464#54566#0" expanded="true" />
+            <element signature="e#54526#54565#0" expanded="true" />
+            <element signature="e#54652#56124#0" expanded="true" />
+            <element signature="e#55275#55379#0" expanded="true" />
+            <element signature="e#55339#55378#0" expanded="true" />
+            <element signature="e#55566#55671#0" expanded="true" />
+            <element signature="e#55630#55670#0" expanded="true" />
+            <element signature="e#55857#55961#0" expanded="true" />
+            <element signature="e#55921#55960#0" expanded="true" />
+            <element signature="e#56123#56124#0" expanded="true" />
+            <element signature="e#57187#57253#0" expanded="true" />
+            <element signature="e#57838#57906#0" expanded="true" />
+            <element signature="e#58126#58200#0" expanded="true" />
+            <element signature="e#58417#58487#0" expanded="true" />
+            <element signature="e#58693#58753#0" expanded="true" />
+            <element signature="e#58891#58949#0" expanded="true" />
+            <element signature="e#61936#62164#0" expanded="true" />
+            <element signature="e#62163#62164#0" expanded="true" />
+            <element signature="e#72808#72874#0" expanded="true" />
+            <element signature="e#73913#73979#0" expanded="true" />
+            <element signature="e#74460#74528#0" expanded="true" />
+            <element signature="e#74722#74796#0" expanded="true" />
+            <element signature="e#74987#75057#0" expanded="true" />
+            <element signature="e#75237#75297#0" expanded="true" />
+            <element signature="e#75435#75493#0" expanded="true" />
+            <element signature="e#79575#79603#0" expanded="true" />
+            <element signature="e#80090#80118#0" expanded="true" />
+            <element signature="e#80643#80644#0" expanded="true" />
+            <element signature="e#80670#80671#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3735,7 +3708,7 @@
             <element signature="imports" expanded="true" />
             <element signature="e#33043#33051#0" expanded="true" />
             <element signature="e#33118#33126#0" expanded="true" />
-            <element signature="e#35169#35177#0" expanded="true" />
+            <element signature="e#35448#35456#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3803,7 +3776,57 @@
           <caret line="932" column="67" selection-start-line="932" selection-start-column="67" selection-end-line="932" selection-end-column="67" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#51256#51297#0" expanded="true" />
+            <element signature="method#invalidateMemberListAdapter#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#43755#43922#0" expanded="true" />
+            <element signature="e#43921#43922#0" expanded="true" />
+            <element signature="e#44389#44428#0" expanded="true" />
+            <element signature="e#44721#44763#0" expanded="true" />
+            <element signature="e#45054#45099#0" expanded="true" />
+            <element signature="e#49966#50008#0" expanded="true" />
+            <element signature="e#50526#50579#0" expanded="true" />
+            <element signature="e#50840#50895#0" expanded="true" />
+            <element signature="e#51196#51237#0" expanded="true" />
+            <element signature="e#52628#52682#0" expanded="true" />
+            <element signature="e#52719#52760#0" expanded="true" />
+            <element signature="e#52778#53007#0" expanded="true" />
+            <element signature="e#53006#53007#0" expanded="true" />
+            <element signature="e#53077#53085#0" expanded="true" />
+            <element signature="e#53633#53672#0" expanded="true" />
+            <element signature="e#53750#53853#0" expanded="true" />
+            <element signature="e#53813#53852#0" expanded="true" />
+            <element signature="e#54009#54049#0" expanded="true" />
+            <element signature="e#54127#54230#0" expanded="true" />
+            <element signature="e#54189#54229#0" expanded="true" />
+            <element signature="e#54347#54386#0" expanded="true" />
+            <element signature="e#54464#54566#0" expanded="true" />
+            <element signature="e#54526#54565#0" expanded="true" />
+            <element signature="e#54652#56124#0" expanded="true" />
+            <element signature="e#55275#55379#0" expanded="true" />
+            <element signature="e#55339#55378#0" expanded="true" />
+            <element signature="e#55566#55671#0" expanded="true" />
+            <element signature="e#55630#55670#0" expanded="true" />
+            <element signature="e#55857#55961#0" expanded="true" />
+            <element signature="e#55921#55960#0" expanded="true" />
+            <element signature="e#56123#56124#0" expanded="true" />
+            <element signature="e#57187#57253#0" expanded="true" />
+            <element signature="e#57838#57906#0" expanded="true" />
+            <element signature="e#58126#58200#0" expanded="true" />
+            <element signature="e#58417#58487#0" expanded="true" />
+            <element signature="e#58693#58753#0" expanded="true" />
+            <element signature="e#58891#58949#0" expanded="true" />
+            <element signature="e#61936#62164#0" expanded="true" />
+            <element signature="e#62163#62164#0" expanded="true" />
+            <element signature="e#72808#72874#0" expanded="true" />
+            <element signature="e#73913#73979#0" expanded="true" />
+            <element signature="e#74460#74528#0" expanded="true" />
+            <element signature="e#74722#74796#0" expanded="true" />
+            <element signature="e#74987#75057#0" expanded="true" />
+            <element signature="e#75237#75297#0" expanded="true" />
+            <element signature="e#75435#75493#0" expanded="true" />
+            <element signature="e#79575#79603#0" expanded="true" />
+            <element signature="e#80090#80118#0" expanded="true" />
+            <element signature="e#80643#80644#0" expanded="true" />
+            <element signature="e#80670#80671#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3816,7 +3839,7 @@
             <element signature="imports" expanded="true" />
             <element signature="e#33043#33051#0" expanded="true" />
             <element signature="e#33118#33126#0" expanded="true" />
-            <element signature="e#35169#35177#0" expanded="true" />
+            <element signature="e#35448#35456#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -4115,36 +4138,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="19.448277">
-          <caret line="1319" column="34" selection-start-line="1319" selection-start-column="34" selection-end-line="1319" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#51256#51297#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/CustomDownloadButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="98" column="26" selection-start-line="98" selection-start-column="26" selection-end-line="98" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="676" column="59" selection-start-line="676" selection-start-column="59" selection-end-line="676" selection-end-column="59" />
-          <folding>
-            <element signature="method#displayImage#0;class#ContentDetailPopupActivity#0" expanded="false" />
-            <element signature="method#finishActivityWithAnimation#0;class#ContentDetailPopupActivity#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-35.655174">
@@ -4183,15 +4176,154 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$USER_HOME$/AppData/Local/Android/sdk/extras/android/m2repository/com/android/support/support-v4/21.0.3/support-v4-21.0.3-sources.jar!/android/support/v4/app/FragmentActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33273056">
+          <caret line="856" column="11" selection-start-line="856" selection-start-column="9" selection-end-line="856" selection-end-column="11" />
+          <folding>
+            <element signature="e#29022#29023#0" expanded="false" />
+            <element signature="e#29055#29056#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4556962">
+          <caret line="1373" column="56" selection-start-line="1373" selection-start-column="56" selection-end-line="1373" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#invalidateMemberListAdapter#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#43755#43922#0" expanded="true" />
+            <element signature="e#43921#43922#0" expanded="true" />
+            <element signature="e#44389#44428#0" expanded="true" />
+            <element signature="e#44721#44763#0" expanded="true" />
+            <element signature="e#45054#45099#0" expanded="true" />
+            <element signature="e#49966#50008#0" expanded="true" />
+            <element signature="e#50526#50579#0" expanded="true" />
+            <element signature="e#50840#50895#0" expanded="true" />
+            <element signature="e#51196#51237#0" expanded="true" />
+            <element signature="e#52628#52682#0" expanded="true" />
+            <element signature="e#52719#52760#0" expanded="true" />
+            <element signature="e#52778#53007#0" expanded="true" />
+            <element signature="e#53006#53007#0" expanded="true" />
+            <element signature="e#53077#53085#0" expanded="true" />
+            <element signature="e#53633#53672#0" expanded="true" />
+            <element signature="e#53750#53853#0" expanded="true" />
+            <element signature="e#53813#53852#0" expanded="true" />
+            <element signature="e#54009#54049#0" expanded="true" />
+            <element signature="e#54127#54230#0" expanded="true" />
+            <element signature="e#54189#54229#0" expanded="true" />
+            <element signature="e#54347#54386#0" expanded="true" />
+            <element signature="e#54464#54566#0" expanded="true" />
+            <element signature="e#54526#54565#0" expanded="true" />
+            <element signature="e#54652#56124#0" expanded="true" />
+            <element signature="e#55275#55379#0" expanded="true" />
+            <element signature="e#55339#55378#0" expanded="true" />
+            <element signature="e#55566#55671#0" expanded="true" />
+            <element signature="e#55630#55670#0" expanded="true" />
+            <element signature="e#55857#55961#0" expanded="true" />
+            <element signature="e#55921#55960#0" expanded="true" />
+            <element signature="e#56123#56124#0" expanded="true" />
+            <element signature="e#57187#57253#0" expanded="true" />
+            <element signature="e#57838#57906#0" expanded="true" />
+            <element signature="e#58126#58200#0" expanded="true" />
+            <element signature="e#58417#58487#0" expanded="true" />
+            <element signature="e#58693#58753#0" expanded="true" />
+            <element signature="e#58891#58949#0" expanded="true" />
+            <element signature="e#61936#62164#0" expanded="true" />
+            <element signature="e#62163#62164#0" expanded="true" />
+            <element signature="e#72808#72874#0" expanded="true" />
+            <element signature="e#73913#73979#0" expanded="true" />
+            <element signature="e#74460#74528#0" expanded="true" />
+            <element signature="e#74722#74796#0" expanded="true" />
+            <element signature="e#74987#75057#0" expanded="true" />
+            <element signature="e#75237#75297#0" expanded="true" />
+            <element signature="e#75435#75493#0" expanded="true" />
+            <element signature="e#79575#79603#0" expanded="true" />
+            <element signature="e#80090#80118#0" expanded="true" />
+            <element signature="e#80643#80644#0" expanded="true" />
+            <element signature="e#80670#80671#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/CustomTabFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39175257">
+          <caret line="97" column="33" selection-start-line="97" selection-start-column="33" selection-end-line="97" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="845" column="19" selection-start-line="845" selection-start-column="19" selection-end-line="845" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/HomeFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14466546">
+          <caret line="46" column="40" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="109" column="16" selection-start-line="109" selection-start-column="16" selection-end-line="109" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.3676976">
-          <caret line="895" column="16" selection-start-line="895" selection-start-column="16" selection-end-line="895" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1046" column="59" selection-start-line="1046" selection-start-column="59" selection-end-line="1046" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#33043#33051#0" expanded="true" />
             <element signature="e#33118#33126#0" expanded="true" />
-            <element signature="e#35169#35177#0" expanded="true" />
+            <element signature="e#35448#35456#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/CustomDownloadButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="91" column="9" selection-start-line="91" selection-start-column="9" selection-end-line="91" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.766727">
+          <caret line="330" column="21" selection-start-line="330" selection-start-column="21" selection-end-line="330" selection-end-column="21" />
+          <folding>
+            <element signature="e#12561#12662#0" expanded="true" />
+            <element signature="e#14075#14168#0" expanded="true" />
+            <element signature="e#14987#15082#0" expanded="true" />
+            <element signature="e#15380#15481#0" expanded="true" />
+            <element signature="e#15776#15873#0" expanded="true" />
+            <element signature="e#16157#16244#0" expanded="true" />
+            <element signature="e#16481#16566#0" expanded="true" />
+            <element signature="e#17256#17350#0" expanded="true" />
+            <element signature="e#24596#24604#0" expanded="true" />
+            <element signature="method#displayImage#0;class#ContentDetailPopupActivity#0" expanded="false" />
+            <element signature="method#finishActivityWithAnimation#0;class#ContentDetailPopupActivity#0" expanded="false" />
+            <element signature="e#33833#33926#0" expanded="true" />
+            <element signature="e#35293#35386#0" expanded="true" />
+            <element signature="e#36145#36240#0" expanded="true" />
+            <element signature="e#36439#36540#0" expanded="true" />
+            <element signature="e#36736#36833#0" expanded="true" />
+            <element signature="e#37018#37105#0" expanded="true" />
+            <element signature="e#37270#37355#0" expanded="true" />
           </folding>
         </state>
       </provider>

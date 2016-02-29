@@ -2,14 +2,9 @@ package com.artifex.mupdfdemo;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.graphics.PointF;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.os.Build;
 import android.util.SparseArray;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
@@ -18,27 +13,17 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.TranslateAnimation;
-import android.widget.AbsListView;
-import android.widget.GridView;
 import android.widget.HorizontalScrollView;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
-
-import ak.detaysoft.galepress.GalePressApplication;
-import ak.detaysoft.galepress.R;
-import ak.detaysoft.galepress.util.ApplicationThemeColor;
 
 /**
  * Created by p1025 on 26.04.2015.
  */
-public class ThumnailHorizontalLayout extends HorizontalScrollView {
+public class ThumbnailHorizontalLayout extends HorizontalScrollView {
 
     private Context context;
     public ArrayList<TextView> pageNumberList;
@@ -47,7 +32,7 @@ public class ThumnailHorizontalLayout extends HorizontalScrollView {
     public PointF mPreviewSize;
     private PointF mPageSize;
     private final SparseArray<Bitmap> mBitmapCache = new SparseArray<Bitmap>();
-    private static final String TAG = ThumnailHorizontalLayout.class
+    private static final String TAG = ThumbnailHorizontalLayout.class
             .getSimpleName();
     private LinearLayout rootLayout;
     private int prevIndex = 0;
@@ -59,7 +44,7 @@ public class ThumnailHorizontalLayout extends HorizontalScrollView {
     private AnimationSet sInVisible;
     private AnimationSet sVisible;
 
-    public ThumnailHorizontalLayout(Context context, AttributeSet attrs){
+    public ThumbnailHorizontalLayout(Context context, AttributeSet attrs){
         super(context, attrs);
         this.context = context;
 

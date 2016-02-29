@@ -5,7 +5,7 @@ import java.util.concurrent.RejectedExecutionException;
 /**
  * Created by p1025 on 16.04.2015.
  */
-public abstract class ThumnailSafeAsyncTask<Params, Progress, Result> extends AsyncTask<Params, Progress, Result> {
+public abstract class ThumbnailSafeAsyncTask<Params, Progress, Result> extends AsyncTask<Params, Progress, Result> {
     public void safeExecute(Params... params) {
         try {
             execute(params);

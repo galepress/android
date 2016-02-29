@@ -8,7 +8,6 @@ import android.database.DataSetObserver;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Display;
 import android.view.GestureDetector;
 import android.view.GestureDetector.OnGestureListener;
@@ -20,7 +19,7 @@ import android.widget.Scroller;
 /**
  * Created by p1025 on 16.04.2015.
  */
-public class ThumnailHorizontalListView extends AdapterView<ListAdapter> {
+public class ThumbnailHorizontalListView extends AdapterView<ListAdapter> {
 
     public boolean mAlwaysOverrideTouch = true;
     protected ListAdapter mAdapter;
@@ -40,13 +39,13 @@ public class ThumnailHorizontalListView extends AdapterView<ListAdapter> {
     private Context mContext;
     private int lastSelectedIndex = 0;
 
-    public ThumnailHorizontalListView(Context context) {
+    public ThumbnailHorizontalListView(Context context) {
         super(context);
         mContext = context;
         initView();
     }
 
-    public ThumnailHorizontalListView(Context context, AttributeSet attrs) {
+    public ThumbnailHorizontalListView(Context context, AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
         initView();
@@ -82,7 +81,7 @@ public class ThumnailHorizontalListView extends AdapterView<ListAdapter> {
 
         @Override
         public void onChanged() {
-            synchronized (ThumnailHorizontalListView.this) {
+            synchronized (ThumbnailHorizontalListView.this) {
                 mDataChanged = true;
             }
             setEmptyView(getEmptyView());
@@ -128,7 +127,7 @@ public class ThumnailHorizontalListView extends AdapterView<ListAdapter> {
 
     @Override
     public void setSelection(final int position) {
-        ((ThumnailListAdapter)mAdapter).notifyDataSetChanged();
+        ((ThumbnailListAdapter)mAdapter).notifyDataSetChanged();
     }
 
     private void addAndMeasureChild(final View child, int viewPos) {
@@ -284,12 +283,12 @@ public class ThumnailHorizontalListView extends AdapterView<ListAdapter> {
         int selectedItemWidth = 0;
         int density = (int)((MuPDFActivity)mContext).getResources().getDisplayMetrics().density;
         for(int i = 0; i <= position; i++){
-            if(i < ((ThumnailListAdapter)mAdapter).itemSizeList.size()) {
+            if(i < ((ThumbnailListAdapter)mAdapter).itemSizeList.size()) {
                 if(i != position) {
-                    scrollDistance += (((int)((ThumnailListAdapter)mAdapter).itemSizeList.get(i).x) + density);
-                    selectedItemWidth = (int)(((ThumnailListAdapter)mAdapter).itemSizeList.get(i).x);
+                    scrollDistance += (((int)((ThumbnailListAdapter)mAdapter).itemSizeList.get(i).x) + density);
+                    selectedItemWidth = (int)(((ThumbnailListAdapter)mAdapter).itemSizeList.get(i).x);
                 } else {
-                    selectedItemWidth = (int)(((ThumnailListAdapter)mAdapter).itemSizeList.get(i).x);
+                    selectedItemWidth = (int)(((ThumbnailListAdapter)mAdapter).itemSizeList.get(i).x);
                 }
             }
 
@@ -314,7 +313,7 @@ public class ThumnailHorizontalListView extends AdapterView<ListAdapter> {
 
     protected boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
                               float velocityY) {
-        synchronized (ThumnailHorizontalListView.this) {
+        synchronized (ThumbnailHorizontalListView.this) {
             mScroller.fling(mNextX, 0, (int) -velocityX, 0, 0, mMaxX, 0, 0);
         }
         requestLayout();
@@ -339,13 +338,13 @@ public class ThumnailHorizontalListView extends AdapterView<ListAdapter> {
 
         @Override
         public boolean onDown(MotionEvent e) {
-            return ThumnailHorizontalListView.this.onDown(e);
+            return ThumbnailHorizontalListView.this.onDown(e);
         }
 
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
                                float velocityY) {
-            return ThumnailHorizontalListView.this.onFling(e1, e2, velocityX, velocityY);
+            return ThumbnailHorizontalListView.this.onFling(e1, e2, velocityX, velocityY);
         }
 
         @Override
@@ -354,7 +353,7 @@ public class ThumnailHorizontalListView extends AdapterView<ListAdapter> {
 
             getParent().requestDisallowInterceptTouchEvent(true);
 
-            synchronized (ThumnailHorizontalListView.this) {
+            synchronized (ThumbnailHorizontalListView.this) {
                 mNextX += (int) distanceX;
             }
             requestLayout();
@@ -374,10 +373,10 @@ public class ThumnailHorizontalListView extends AdapterView<ListAdapter> {
                 viewRect.set(left, top, right, bottom);
                 if (viewRect.contains((int) e.getX(), (int) e.getY())) {
                     if (mOnItemClicked != null) {
-                        mOnItemClicked.onItemClick(ThumnailHorizontalListView.this, child, mLeftViewIndex + 1 + i, mAdapter.getItemId(mLeftViewIndex + 1 + i));
+                        mOnItemClicked.onItemClick(ThumbnailHorizontalListView.this, child, mLeftViewIndex + 1 + i, mAdapter.getItemId(mLeftViewIndex + 1 + i));
                     }
                     if (mOnItemSelected != null) {
-                        mOnItemSelected.onItemSelected(ThumnailHorizontalListView.this, child, mLeftViewIndex + 1 + i, mAdapter.getItemId(mLeftViewIndex + 1 + i));
+                        mOnItemSelected.onItemSelected(ThumbnailHorizontalListView.this, child, mLeftViewIndex + 1 + i, mAdapter.getItemId(mLeftViewIndex + 1 + i));
                     }
                     break;
                 }
@@ -399,7 +398,7 @@ public class ThumnailHorizontalListView extends AdapterView<ListAdapter> {
                 viewRect.set(left, top, right, bottom);
                 if (viewRect.contains((int) e.getX(), (int) e.getY())) {
                     if (mOnItemLongClicked != null) {
-                        mOnItemLongClicked.onItemLongClick(ThumnailHorizontalListView.this, child, mLeftViewIndex + 1 + i, mAdapter.getItemId(mLeftViewIndex + 1 + i));
+                        mOnItemLongClicked.onItemLongClick(ThumbnailHorizontalListView.this, child, mLeftViewIndex + 1 + i, mAdapter.getItemId(mLeftViewIndex + 1 + i));
                     }
                     break;
                 }

@@ -48,10 +48,6 @@ public class HomeFragment extends Fragment {
         return v;
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-    }
 
     public void openMaster(){
         L_Content content = GalePressApplication.getInstance().getDataApi().getMasterContent();
