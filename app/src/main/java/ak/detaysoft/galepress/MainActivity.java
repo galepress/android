@@ -1031,7 +1031,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                Subscription ownedSub = null;
+                /*Subscription ownedSub = null;
                 for (Subscription sub : GalePressApplication.getInstance().getSubscriptions())
                     if (sub.isOwned())
                         ownedSub = sub;
@@ -1048,8 +1048,10 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                                 .show();
                 } else {
                     subscribe();
-                }
+                }*/
 
+                selectedSubscription = GalePressApplication.getInstance().getSubscriptions().get(which);
+                subscribe();
             }
         });
         builder.show();
