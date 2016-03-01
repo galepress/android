@@ -24,6 +24,7 @@ import java.util.ArrayList;
 
 import ak.detaysoft.galepress.GalePressApplication;
 import ak.detaysoft.galepress.R;
+import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
 
 /**
@@ -43,11 +44,13 @@ public class ThumbnailListAdapter extends BaseAdapter {
     public ArrayList<PointF> itemSizeList;
     public ArrayList<TextView> pageNumberList;
     private int dividerHeight;
+    private L_Content mContent;
 
-    public ThumbnailListAdapter(Context context, MuPDFCore core, MuPDFReaderView docView) {
+    public ThumbnailListAdapter(Context context, MuPDFCore core, MuPDFReaderView docView, L_Content content) {
         mContext = context;
         mDocView = docView;
         mCore = core;
+        mContent = content;
 
         dividerHeight = mContext.getResources()
                 .getDimensionPixelSize(R.dimen.reader_bottom_preview_divider);
@@ -76,10 +79,11 @@ public class ThumbnailListAdapter extends BaseAdapter {
         for(int i = 0; i < mCore.countPages(); i++)
             pageNumberList.add(new TextView(mContext));
 
+
         if(mCore.getDisplayPages() == 1){
-            mPath = GalePressApplication.getInstance().getFilesDir() + "/"+mCore.getContent().getId()+"/previewCache/" + mCore.getContent().getPdfFileName()+"/";
+            mPath = GalePressApplication.getInstance().getFilesDir() + "/"+mContent.getId()+"/previewCache/" + mContent.getPdfFileName()+"/";
         } else {
-            mPath = GalePressApplication.getInstance().getFilesDir() + "/"+mCore.getContent().getId()+"/previewCache/" + mCore.getContent().getPdfFileName()+"/land/";
+            mPath = GalePressApplication.getInstance().getFilesDir() + "/"+mContent.getId()+"/previewCache/" + mContent.getPdfFileName()+"/land/";
         }
 
         File mCacheDirectory = new File(mPath);

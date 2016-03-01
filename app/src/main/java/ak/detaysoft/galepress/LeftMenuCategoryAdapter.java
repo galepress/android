@@ -61,16 +61,28 @@ public class LeftMenuCategoryAdapter extends BaseAdapter {
         else
             image.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(mContext, ApplicationThemeColor.CATEGORY_UNSELECT));
 
-        for (int i = 0; i < ((MainActivity)(mContext)).getLibraryFragment().selectedCategories.size(); i++){
-            L_Category item = ((MainActivity)(mContext)).getLibraryFragment().selectedCategories.get(i);
-            if(item.getCategoryID().compareTo(mCategory.get(position).categoryID) == 0){
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                    image.setBackground(ApplicationThemeColor.getInstance().paintIcons(mContext, ApplicationThemeColor.CATEGORY_SELECT));
-                else
-                    image.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(mContext, ApplicationThemeColor.CATEGORY_SELECT));
-                txtTitle.setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
+
+        /*
+         * https://fabric.io/galepress/android/apps/ak.detaysoft.yeryuzudergidis/issues/56d3205ff5d3a7f76b2cef6d
+         * Seklinde bi hata vardi. selectedCategories null olmasi ihtimaline karsi bende ilk createde oldugu gibi genel kategorisini set ettim
+         * */
+        if(((MainActivity)(mContext)).getLibraryFragment() != null) {
+            if(((MainActivity)(mContext)).getLibraryFragment().selectedCategories == null) {
+                ((MainActivity)(mContext)).getLibraryFragment().repairSelectedCategories();
+            }
+
+            for (int i = 0; i < ((MainActivity)(mContext)).getLibraryFragment().selectedCategories.size(); i++){
+                L_Category item = ((MainActivity)(mContext)).getLibraryFragment().selectedCategories.get(i);
+                if(item.getCategoryID().compareTo(mCategory.get(position).categoryID) == 0){
+                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                        image.setBackground(ApplicationThemeColor.getInstance().paintIcons(mContext, ApplicationThemeColor.CATEGORY_SELECT));
+                    else
+                        image.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(mContext, ApplicationThemeColor.CATEGORY_SELECT));
+                    txtTitle.setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
+                }
             }
         }
+
 
          return convertView;
     }

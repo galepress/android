@@ -56,7 +56,7 @@ import com.artifex.mupdfdemo.ReaderView.ViewMapper;
 
 import net.simonvt.menudrawer.MenuDrawer;
 
-import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -111,7 +111,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
     private TextView mInfoView;
     private ImageButton mSearchButton;
     private ImageButton mOutlineButton;
-    private ImageButton mailButton;
+    private ImageButton shareButton;
     private ImageButton mReflowButton;
     private ImageButton mMoreButton;
     private TextView mAnnotTypeText;
@@ -329,7 +329,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
         if (core == null) {
             core = (MuPDFCore) getLastNonConfigurationInstance();
-
             if (savedInstanceState != null && savedInstanceState.containsKey("FileName")) {
                 mFileName = savedInstanceState.getString("FileName");
             }
@@ -626,13 +625,10 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             }
         });
 
-        mailButton.setOnClickListener(new View.OnClickListener() {
+        shareButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                /*Activity activity = MuPDFActivity.this;
-                String filePath = Environment.getExternalStorageDirectory() + File.separator + "Pictures/screenshot.png";
-                sendMail(activity, filePath);*/
-
-                cropAndShareCurrentPage();
+                String filePath = GalePressApplication.getInstance().getFilesDir().getAbsolutePath() + File.separator + "capturedImage.png";
+                cropAndShareCurrentPage(filePath);
             }
         });
 
@@ -1480,21 +1476,24 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         }
     }
 
-    private static void savePic(Bitmap b, String strFileName) {
+    private static boolean savePic(Bitmap b, String strFileName) {
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(strFileName);
             if (null != fos) {
                 b.compress(Bitmap.CompressFormat.PNG, 90, fos);
-                System.out.println("b is:" + b);
                 fos.flush();
                 fos.close();
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            return false;
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
+
+        return true;
     }
 
     public void sendMail(Activity a, String b) {
@@ -1515,17 +1514,16 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         showButtonsFast();
     }
 
-    public void cropAndShareCurrentPage(){
+    public void cropAndShareCurrentPage(String b){
 
         hideButtonsFast();
         bottomButton.setVisibility(View.INVISIBLE);
-        byte[] bytes;
         try{
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            takeScreenShot(MuPDFActivity.this).compress(Bitmap.CompressFormat.PNG, 100, stream);
-            bytes =  stream.toByteArray();
+            if(!savePic(takeScreenShot(MuPDFActivity.this), b)) {
+                Toast.makeText(MuPDFActivity.this, MuPDFActivity.this.getResources().getString(R.string.cannot_open_crop), Toast.LENGTH_SHORT).show();
+                return;
+            }
             Intent intent = new Intent(MuPDFActivity.this, CropAndShareActivity.class);
-            intent.putExtra("cropImage", bytes);
             int display_mode = getResources().getConfiguration().orientation;
             intent.putExtra("displayMode", display_mode);
             startActivity(intent);
@@ -1554,6 +1552,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         Bitmap b = Bitmap.createBitmap(b1, 0, statusBarHeight, width, height
                 - statusBarHeight);
         view.destroyDrawingCache();
+
         return b;
     }
 
@@ -1846,7 +1845,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
         mPreview = (ThumbnailHorizontalListView) mButtonsView.findViewById(R.id.reader_preview_bar_listView);
         mPreview.setBackgroundColor(ApplicationThemeColor.getInstance().getActionAndTabBarColor());
-        thumnailAdapter = new ThumbnailListAdapter(this, core, mDocView);
+        thumnailAdapter = new ThumbnailListAdapter(this, core, mDocView, this.content);
         mPreview.setAdapter(thumnailAdapter);
         //mPreview.setCenter(mDocView.getDisplayedViewIndex());
         mPreview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -2019,11 +2018,11 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         else
             mOutlineButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_MENU));
 
-        mailButton = (ImageButton) mButtonsView.findViewById(R.id.mailButton);
+        shareButton = (ImageButton) mButtonsView.findViewById(R.id.mailButton);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            mailButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_MAIL));
+            shareButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_MAIL));
         else
-            mailButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_MAIL));
+            shareButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_MAIL));
 
         mReflowButton = (ImageButton) mButtonsView.findViewById(R.id.reflowButton);
         mAnnotButton = (ImageButton) mButtonsView.findViewById(R.id.editAnnotButton);

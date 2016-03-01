@@ -1019,24 +1019,12 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             }
 
             if(subs.getType() == Subscription.WEEK){
-                if(!subs.isOwned()){
-                    arrayAdapter.add(getResources().getString(R.string.WEEK) +" " + price);
-                } else {
-                    arrayAdapter.add(getResources().getString(R.string.subscription_type_owned , ""+getResources().getString(R.string.WEEK)));
-                }
+                arrayAdapter.add(getResources().getString(R.string.WEEK) +" " + price);
             } else if(subs.getType() == Subscription.MONTH){
-                if(!subs.isOwned()){
-                    arrayAdapter.add(getResources().getString(R.string.MONTH) +" " + price);
-                } else {
-                    arrayAdapter.add(getResources().getString(R.string.subscription_type_owned ,""+getResources().getString(R.string.MONTH)));
-                }
+                arrayAdapter.add(getResources().getString(R.string.MONTH) +" " + price);
 
             } else {
-                if(!subs.isOwned()){
-                    arrayAdapter.add(getResources().getString(R.string.YEAR) +" " + price);
-                } else {
-                    arrayAdapter.add(getResources().getString(R.string.subscription_type_owned ,""+getResources().getString(R.string.YEAR)));
-                }
+                arrayAdapter.add(getResources().getString(R.string.YEAR) +" " + price);
             }
         }
         builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
@@ -1044,9 +1032,9 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             public void onClick(DialogInterface dialog, int which) {
 
                 Subscription ownedSub = null;
-                for (Subscription subs : GalePressApplication.getInstance().getSubscriptions())
-                    if (subs.isOwned())
-                        ownedSub = subs;
+                for (Subscription sub : GalePressApplication.getInstance().getSubscriptions())
+                    if (sub.isOwned())
+                        ownedSub = sub;
                 selectedSubscription = GalePressApplication.getInstance().getSubscriptions().get(which);
                 if (ownedSub != null) {
                     if (ownedSub.getType() == Subscription.WEEK)

@@ -17,6 +17,10 @@ import android.widget.RelativeLayout;
 import com.edmodo.cropper.CropImageView;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import ak.detaysoft.galepress.GalePressApplication;
 import ak.detaysoft.galepress.R;
@@ -38,8 +42,10 @@ public class CropAndShareActivity extends Activity {
         ((RelativeLayout)findViewById(R.id.crop_base)).setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
 
         try {
-            byte[] byteArray = getIntent().getByteArrayExtra("cropImage");
-            bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+            bmp = BitmapFactory.decodeFile(GalePressApplication.getInstance().getFilesDir().getAbsolutePath()+File.separator+"capturedImage.png", options);
+
 
             int display_mode = getIntent().getIntExtra("displayMode", Configuration.ORIENTATION_PORTRAIT);
 

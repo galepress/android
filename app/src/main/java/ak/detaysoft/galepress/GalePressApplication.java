@@ -141,6 +141,7 @@ public class GalePressApplication
 
     private UserInformations userInformation;
 
+
     Foreground.Listener myListener = new Foreground.Listener(){
         public void onBecameForeground(){
             mLocationClient.connect();
@@ -913,11 +914,7 @@ public class GalePressApplication
                             ownedSubscriptionList = ownedItems.getStringArrayList("INAPP_PURCHASE_DATA_LIST");
                         }
 
-                        /*
-                        * Abonelik retore islemi artik galepress serverdan yapilacak. Burada google play tarafindan restore yapiliyodu.
-                        * Bu kisma gerek kalmadi.
-                        * */
-                        /*if(ownedSkus.size() > 0){
+                        if(ownedSkus.size() > 0){
                             for(String skuItem : ownedSkus){
                                 for(int i = 0; i < subscriptions.size(); i++){
                                     if(skuItem.compareTo(subscriptions.get(i).getIdentifier()) == 0){
@@ -926,7 +923,7 @@ public class GalePressApplication
                                     }
                                 }
                             }
-                        }*/
+                        }
                     } catch (RemoteException e) {
                         e.printStackTrace();
                     }
@@ -1037,11 +1034,7 @@ public class GalePressApplication
                             ownedProductList = ownedItems.getStringArrayList("INAPP_PURCHASE_DATA_LIST");
                         }
 
-                        /*
-                        * Icerik retore islemi artik galepress serverdan yapilacak. Burada google play tarafindan restore yapiliyodu.
-                        * Bu kisma gerek kalmadi.
-                        * */
-                        /*if(ownedSkus.size() > 0){
+                        if(ownedSkus.size() > 0){
                             for(String skuItem : ownedSkus){
                                 for(int i = 0; i < localContents.size(); i++){
                                     L_Content content = localContents.get(i);
@@ -1052,7 +1045,7 @@ public class GalePressApplication
                                     }
                                 }
                             }
-                        }*/
+                        }
                     } catch (RemoteException e) {
                         e.printStackTrace();
                     }

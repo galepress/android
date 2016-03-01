@@ -169,7 +169,7 @@ public class LibraryFragment extends Fragment {
         banner.setLayoutParams(prepareBannerSize());
         gridview.addHeaderView(banner);
 
-        //Ilk secilen kategori genel oldugu icin ilk create icin listeye eklendi (MG)
+        //Ilk secilen kategori genel oldugu icin ilk create sirasinda listeye eklendi (MG)
         if(selectedCategories == null) {
             selectedCategories = new ArrayList<L_Category>();
             if(GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent() != null && GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent().size() > 0) {
@@ -222,7 +222,7 @@ public class LibraryFragment extends Fragment {
         FrameLayout.LayoutParams bannerParams;
         if(getTag().compareTo(MainActivity.LIBRARY_TAB_TAG) == 0 && GalePressApplication.getInstance().getBannerLink().length() > 0 && GalePressApplication.getInstance().getDataApi().isConnectedToInternet()){
             bannerParams = new FrameLayout.LayoutParams(bannerWidth, bannerHeight);
-            gridview.setPadding(gridview.getPaddingLeft(), (int)(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 70, getResources().getDisplayMetrics())),gridview.getPaddingRight(), gridview.getPaddingBottom());
+            gridview.setPadding(gridview.getPaddingLeft(), (int) (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 70, getResources().getDisplayMetrics())), gridview.getPaddingRight(), gridview.getPaddingBottom());
         } else {
             gridview.setPadding(gridview.getPaddingLeft(), (int)(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())),gridview.getPaddingRight(), gridview.getPaddingBottom());
             bannerParams = new FrameLayout.LayoutParams(bannerWidth, 0);
@@ -336,8 +336,8 @@ public class LibraryFragment extends Fragment {
             float animY = yPoint/gridview.getHeight();
             Intent intent = new Intent(getActivity(), ContentDetailPopupActivity.class);
             intent.putExtra("content", content);
-            intent.putExtra("animationStartX",0.5f);
-            intent.putExtra("animationStartY",0.5f);
+            intent.putExtra("animationStartX", 0.5f);
+            intent.putExtra("animationStartY", 0.5f);
             startActivity(intent);
             GalePressApplication.getInstance().getDataApi().updateApplication();
         }
@@ -345,5 +345,21 @@ public class LibraryFragment extends Fragment {
 
     public List getContents() {
         return contents;
+    }
+
+
+    /*
+    * LeftMenuCategoryAdapter classinda kullanildi.
+    * https://fabric.io/galepress/android/apps/ak.detaysoft.yeryuzudergidis/issues/56d3205ff5d3a7f76b2cef6d
+    * Seklinde bi hata vardi. selectedCategories null olmasi ihtimaline karsi bende ilk createde oldugu gibi genel kategorisini set ettim
+    * */
+    public void repairSelectedCategories(){
+        //Ilk secilen kategori genel oldugu icin ilk create icin listeye eklendi (MG)
+        selectedCategories = new ArrayList<L_Category>();
+        if(GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent() != null && GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent().size() > 0) {
+            selectedCategory = (L_Category)GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent().get(0);
+            selectedCategories.add(selectedCategory);
+            updateGridView();
+        }
     }
 }

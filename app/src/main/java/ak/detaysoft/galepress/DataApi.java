@@ -1093,14 +1093,14 @@ public class DataApi extends Object {
         } else {
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
             alertDialog.setTitle(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.UYARI));
-            alertDialog.setMessage(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.CONFIRM_3));
+            alertDialog.setMessage(context.getString(R.string.CONFIRM_3));
 
-            alertDialog.setPositiveButton(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.EVET), new DialogInterface.OnClickListener() {
+            alertDialog.setPositiveButton(context.getString(R.string.EVET), new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     cancelDownload(true, context, content);
                 }
             });
-            alertDialog.setNegativeButton(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.HAYIR), new DialogInterface.OnClickListener() {
+            alertDialog.setNegativeButton(context.getString(R.string.HAYIR), new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.cancel();
                     //GalePressApplication.getInstance().getLibraryActivity().updateGridView();
