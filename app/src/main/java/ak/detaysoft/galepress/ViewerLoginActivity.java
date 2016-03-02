@@ -232,12 +232,13 @@ public class ViewerLoginActivity extends Activity {
         LoginManager.getInstance().logOut();
         //Giris basarisiz olursa lokalde tutulan degerler sifirlaniyor.
         GalePressApplication.getInstance().setTestApplicationLoginInf("", "", "0"
-                ,"", "", false);
+                , "", "", false);
         if(errorString != null)
             Toast.makeText(ViewerLoginActivity.this, errorString, Toast.LENGTH_SHORT).show();
     }
 
     public void openMasterContent(){
+
         submit.setClickable(true);
         unameField.setEnabled(true);
         passwordField.setEnabled(true);
@@ -245,11 +246,12 @@ public class ViewerLoginActivity extends Activity {
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         i.putExtra("content_id",masterContent.getId().toString());
         startActivity(i);
-
         finish();
+
     }
 
     public void openLibraryFragment(){
+
         submit.setClickable(true);
         unameField.setEnabled(true);
         passwordField.setEnabled(true);
@@ -257,6 +259,7 @@ public class ViewerLoginActivity extends Activity {
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(i);
         finish();
+
     }
 
     public void getKeyForFacebookLogin(){

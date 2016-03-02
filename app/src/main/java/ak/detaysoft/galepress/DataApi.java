@@ -19,7 +19,6 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -56,7 +55,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.DateFormat;
@@ -1722,7 +1720,7 @@ public class DataApi extends Object {
                                 int code = response.getInt("status");
                                 boolean isUpdate = false;
                                 if(code == 160) { //Kullanici bulunamadi
-                                    GalePressApplication.getInstance().setHaveSubscription(false); // Kullanici yoksa server abonelik false
+                                    GalePressApplication.getInstance().setUserHaveActiveSubscription(false); // Kullanici yoksa server abonelik false
                                     GalePressApplication.getInstance().prepareMemberShipList();
                                     if(activity != null){
                                         if(activity instanceof MainActivity)
@@ -1756,7 +1754,7 @@ public class DataApi extends Object {
                                 }
                             } else {
 
-                                GalePressApplication.getInstance().setHaveSubscription(response.getBoolean("ActiveSubscription")); // Server abonelik aliniyor
+                                GalePressApplication.getInstance().setUserHaveActiveSubscription(response.getBoolean("ActiveSubscription")); // Server abonelik aliniyor
                                 GalePressApplication.getInstance().prepareMemberShipList();
                                 if(activity != null){
                                     if(activity instanceof MainActivity)
@@ -1877,7 +1875,7 @@ public class DataApi extends Object {
                             GalePressApplication.getInstance().setBannerLink(response);
                             GalePressApplication.getInstance().setTabList(response);
 
-                            GalePressApplication.getInstance().setHaveSubscription(response.getBoolean("ActiveSubscription")); // Server abonelik aliniyor
+                            GalePressApplication.getInstance().setUserHaveActiveSubscription(response.getBoolean("ActiveSubscription")); // Server abonelik aliniyor
                             GalePressApplication.getInstance().prepareMemberShipList();
                             if(GalePressApplication.getInstance().getCurrentActivity() != null){
                                 if(GalePressApplication.getInstance().getCurrentActivity() instanceof MainActivity)
@@ -2021,9 +2019,13 @@ public class DataApi extends Object {
         uriBuilder.appendPath("applications");
         uriBuilder.appendPath(applicationID.toString());
         uriBuilder.appendPath("version");
+        if(GalePressApplication.getInstance().getUserInformation() != null
+                && GalePressApplication.getInstance().getUserInformation().getAccessToken() != null
+                && GalePressApplication.getInstance().getUserInformation().getAccessToken().length() != 0)
+            uriBuilder.appendQueryParameter("accessToken",GalePressApplication.getInstance().getUserInformation().getAccessToken());
 
 
-        request = new JsonObjectRequest(Request.Method.GET, uriBuilder.build().toString(), null,
+        request = new JsonObjectRequest(Request.Method.POST, uriBuilder.build().toString(), null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -2077,9 +2079,13 @@ public class DataApi extends Object {
         uriBuilder.appendPath("applications");
         uriBuilder.appendPath(applicationID.toString());
         uriBuilder.appendPath("version");
+        if(GalePressApplication.getInstance().getUserInformation() != null
+                && GalePressApplication.getInstance().getUserInformation().getAccessToken() != null
+                && GalePressApplication.getInstance().getUserInformation().getAccessToken().length() != 0)
+            uriBuilder.appendQueryParameter("accessToken",GalePressApplication.getInstance().getUserInformation().getAccessToken());
 
 
-        request = new JsonObjectRequest(Request.Method.GET, uriBuilder.build().toString(), null,
+        request = new JsonObjectRequest(Request.Method.POST, uriBuilder.build().toString(), null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {

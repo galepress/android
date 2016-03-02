@@ -73,17 +73,19 @@ public class LaunchActivity extends ActionBarActivity {
 
         Intent i = new Intent(this,MainActivity.class);
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        i.putExtra("content_id",masterContent.getId().toString());
+        i.putExtra("content_id", masterContent.getId().toString());
         startActivity(i);
-
         finish();
+
     }
 
     public void openLibraryFragment(){
+
         Intent i = new Intent(this,MainActivity.class);
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(i);
         finish();
+
     }
 
     public void startMasterDownload(){

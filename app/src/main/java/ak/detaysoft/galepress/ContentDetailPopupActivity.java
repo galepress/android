@@ -40,7 +40,6 @@ import org.json.JSONObject;
 import java.io.File;
 import java.util.ArrayList;
 
-import ak.detaysoft.galepress.custom_models.Subscription;
 import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
 import ak.detaysoft.galepress.util.CustomDownloadButton;
@@ -254,7 +253,7 @@ public class ContentDetailPopupActivity extends Activity{
 
 
                     if(content.isBuyable()) {
-                        if(content.isContentBought() || GalePressApplication.getInstance().isHaveSubscription()) {
+                        if(content.isContentBought() || GalePressApplication.getInstance().isUserHaveActiveSubscription()) {
                             if (GalePressApplication.getInstance().getDataApi().downloadPdfTask == null
                                     || (GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() != AsyncTask.Status.RUNNING)){
                                 downloadButton.startAnim();
@@ -450,7 +449,7 @@ public class ContentDetailPopupActivity extends Activity{
 
 
         if(content.isBuyable()) {
-            if(content.isContentBought() || GalePressApplication.getInstance().isHaveSubscription()) {
+            if(content.isContentBought() || GalePressApplication.getInstance().isUserHaveActiveSubscription()) {
                 downloadButton.init(CustomDownloadButton.RESTORE_PURCHASED, "");
             } else {
                 AsyncTask<Void, Void ,String> getPrice = new AsyncTask<Void, Void, String>() {
@@ -464,7 +463,7 @@ public class ContentDetailPopupActivity extends Activity{
                     @Override
                     protected String doInBackground(Void... params) {
                         String price = "";
-                        if(GalePressApplication.getInstance().isHaveSubscription()){
+                        if(GalePressApplication.getInstance().isUserHaveActiveSubscription()){
                             return price;
                         } else {
                             //Satin alinabilen urunse fiyati kontrol ediliyor

@@ -116,7 +116,7 @@ public class GalePressApplication
     public boolean isTablistChanced = true;
     private ArrayList<Integer> membershipMenuList;
     private ArrayList<Subscription> subscriptions;
-    private boolean haveSubscription = false;
+    private boolean userHaveActiveSubscription = false;
 
 
     public final static int BILLING_RESPONSE_RESULT_OK = 0;
@@ -847,7 +847,7 @@ public class GalePressApplication
                     userInformation.setAccessToken(recoveryToken);
                     e.printStackTrace();
                 }
-                if(!isHaveSubscription())
+                if(!isUserHaveActiveSubscription())
                     membershipMenuList.add(LeftMenuMembershipAdapter.SUBSCRIPTION);
 
                 membershipMenuList.add(LeftMenuMembershipAdapter.RESTORE);
@@ -881,7 +881,7 @@ public class GalePressApplication
             editor.putString("accessToken", userInformation.getJSONObject().toString());
             editor.commit();
             userInformation.setAccessToken(recoveryToken);
-            if(!isHaveSubscription())
+            if(!isUserHaveActiveSubscription())
                 membershipMenuList.add(LeftMenuMembershipAdapter.SUBSCRIPTION);
             membershipMenuList.add(LeftMenuMembershipAdapter.RESTORE);
             membershipMenuList.add(LeftMenuMembershipAdapter.LOGOUT);
@@ -894,7 +894,7 @@ public class GalePressApplication
         }
     }
 
-    public void restorePurchasedSubscriptions(final boolean applicationFirstOpen, final boolean isFullRestore, final Activity activity, final ProgressDialog progress){
+    public void restorePurchasedSubscriptions(final boolean applicationFirstOpen, final boolean fullRestore, final Activity activity, final ProgressDialog progress){
         AsyncTask<Void, Void, Void> restore = new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
@@ -989,7 +989,7 @@ public class GalePressApplication
                 if(!applicationFirstOpen){
                     prepareSubscriptions(null);
 
-                    if(isFullRestore) {
+                    if(fullRestore) {
                         dataApi.restoreContentsAndSubscritonsFromServer(activity, progress);
                     } else {
                         if(activity != null){
@@ -1006,7 +1006,7 @@ public class GalePressApplication
         restore.execute();
     }
 
-    public void restorePurchasedProductsFromMarket(final boolean isFullRestore, final Activity activity, final ProgressDialog progress){
+    public void restorePurchasedProductsFromMarket(final boolean fullRestore, final Activity activity, final ProgressDialog progress){
 
         AsyncTask<Void, Void, Void> executePurchase = new AsyncTask<Void, Void, Void>() {
             @Override
@@ -1113,7 +1113,7 @@ public class GalePressApplication
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
                 if(GalePressApplication.getInstance().getSubscriptions().size() > 0)
-                    restorePurchasedSubscriptions(false, isFullRestore, activity, progress);
+                    restorePurchasedSubscriptions(false, fullRestore, activity, progress);
                 else{
                     dataApi.restoreContentsAndSubscritonsFromServer(activity, progress);
                 }
@@ -1212,19 +1212,19 @@ public class GalePressApplication
 
     private void getlocalActiveSubscripton(){
         SharedPreferences preferences = getSharedPreferences("ak.detaysoft.galepress", Context.MODE_PRIVATE);
-        haveSubscription = preferences.getBoolean("haveSubscription",false);
+        userHaveActiveSubscription = preferences.getBoolean("userHaveActiveSubscription",false);
     }
 
-    public boolean isHaveSubscription() {
-        return haveSubscription;
+    public boolean isUserHaveActiveSubscription() {
+        return userHaveActiveSubscription;
     }
 
-    public void setHaveSubscription(boolean haveSubscription) {
-        this.haveSubscription = haveSubscription;
+    public void setUserHaveActiveSubscription(boolean userHaveActiveSubscription) {
+        this.userHaveActiveSubscription = userHaveActiveSubscription;
 
         SharedPreferences preferences = getSharedPreferences("ak.detaysoft.galepress", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean("haveSubscription", haveSubscription);
+        editor.putBoolean("userHaveActiveSubscription", userHaveActiveSubscription);
         editor.commit();
     }
 }
