@@ -1585,7 +1585,9 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         for (Subscription subs : GalePressApplication.getInstance().getSubscriptions())
             if (subs.getIdentifier().compareTo(selectedSubscription.getIdentifier()) == 0)
                 subs.setOwned(true);
+        GalePressApplication.getInstance().setUserHaveActiveSubscription(true);
         GalePressApplication.getInstance().prepareSubscriptions(null);
+        invalidateMemberListAdapter();
     }
 
 }
