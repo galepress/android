@@ -189,6 +189,10 @@
     <string name="MONTH">Aylık</string>
     <string name="YEAR">Yıllık</string>
     <string name="select_subscription">Lütfen abonelik seçin</string>
-    <string name="login_warning_inapp_billing">Satın alma için lütfen giriş yapınız...</string>
+    <string name="login_warning_inapp_billing">Satın almak için lütfen giriş yapınız...</string>
+    <string name="purchase_validation_checking">Satış işlemi doğrulanıyor...</string>
+    <string name="purchase_validation_fail">Satış işlemi doğrulanamadı</string>
+    <string name="purchase_validation_success">Satış işlemi doğrulandı</string>
+
 
 </resources>

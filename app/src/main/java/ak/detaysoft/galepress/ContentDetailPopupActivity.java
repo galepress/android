@@ -2,6 +2,7 @@ package ak.detaysoft.galepress;
 
 import android.app.Activity;
 import android.app.PendingIntent;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.ActivityInfo;
@@ -665,25 +666,36 @@ public class ContentDetailPopupActivity extends Activity{
                 try {
                     Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLING_RESPONSE_RESULT_OK), Toast.LENGTH_SHORT)
                             .show();
-                    content.setOwnedProduct(true);
-                    GalePressApplication.getInstance().getDataApi().getDatabaseApi().updateContent(content, false);
-                    if (GalePressApplication.getInstance().getDataApi().downloadPdfTask == null
-                            || (GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() != AsyncTask.Status.RUNNING)){
-                        downloadButton.startAnim();
-                    }
-                    GalePressApplication.getInstance().getDataApi().getPdf(content, ContentDetailPopupActivity.this);
+
                     JSONObject jo = new JSONObject(purchaseData);
-                    String sku = jo.getString("productId");
-                    GalePressApplication.getInstance().getDataApi().sendReceipt(jo.getString("productId"), jo.getString("purchaseToken"), jo.getString("packageName"));
+                    ProgressDialog progress = new ProgressDialog(this);
+                    progress.setMessage(getResources().getString(R.string.purchase_validation_checking));
+                    progress.setCancelable(false);
+                    progress.show();
+                    GalePressApplication.getInstance().getDataApi().sendReceipt(jo.getString("productId"), jo.getString("purchaseToken"), jo.getString("packageName"), progress, ContentDetailPopupActivity.this);
                 }
                 catch (JSONException e) {
                     Toast.makeText(ContentDetailPopupActivity.this, "act result json parse error - "+e.getMessage(), Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
             } else if(resultCode == RESULT_OK && responseCode == RESULT_ITEM_ALREADY_OWNED){
-                Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLING_ITEM_ALREADY_OWNED), Toast.LENGTH_SHORT)
-                        .show();
-                content.setOwnedProduct(true);
+
+                try {
+                    Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLING_ITEM_ALREADY_OWNED), Toast.LENGTH_SHORT)
+                            .show();
+
+                    JSONObject jo = new JSONObject(purchaseData);
+                    ProgressDialog progress = new ProgressDialog(this);
+                    progress.setMessage(getResources().getString(R.string.purchase_validation_checking));
+                    progress.setCancelable(false);
+                    progress.show();
+                    GalePressApplication.getInstance().getDataApi().sendReceipt(jo.getString("productId"), jo.getString("purchaseToken"), jo.getString("packageName"), progress, ContentDetailPopupActivity.this);
+                }
+                catch (JSONException e) {
+                    Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.BILLING_UNEXPECTED), Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
+
                 GalePressApplication.getInstance().getDataApi().getDatabaseApi().updateContent(content, false);
                 if (GalePressApplication.getInstance().getDataApi().downloadPdfTask == null
                         || (GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() != AsyncTask.Status.RUNNING)){
@@ -825,5 +837,16 @@ public class ContentDetailPopupActivity extends Activity{
 
     public void setContent(L_Content content) {
         this.content = content;
+    }
+
+    public void completePurchase(){
+        Toast.makeText(this, getResources().getString(R.string.purchase_validation_success), Toast.LENGTH_LONG).show();
+        content.setOwnedProduct(true);
+        GalePressApplication.getInstance().getDataApi().getDatabaseApi().updateContent(content, false);
+        if (GalePressApplication.getInstance().getDataApi().downloadPdfTask == null
+                || (GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() != AsyncTask.Status.RUNNING)){
+            downloadButton.startAnim();
+        }
+        GalePressApplication.getInstance().getDataApi().getPdf(content, ContentDetailPopupActivity.this);
     }
 }

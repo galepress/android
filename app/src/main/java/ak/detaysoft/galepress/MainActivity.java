@@ -1316,43 +1316,58 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 try {
                     Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESPONSE_RESULT_OK), Toast.LENGTH_SHORT)
                             .show();
-                    selectedSubscription.setOwned(true);
+
 
                     JSONObject jo = new JSONObject(purchaseData);
                     String sku = jo.getString("productId");
-                    for (Subscription subs : GalePressApplication.getInstance().getSubscriptions())
-                        if (subs.getIdentifier().compareTo(selectedSubscription.getIdentifier()) == 0)
-                            subs.setOwned(true);
 
-                    GalePressApplication.getInstance().getDataApi().sendReceipt(jo.getString("productId"), jo.getString("purchaseToken"), jo.getString("packageName"));
+                    ProgressDialog progress = new ProgressDialog(this);
+                    progress.setMessage(getResources().getString(R.string.purchase_validation_checking) + "...");
+                    progress.setCancelable(false);
+                    progress.show();
+                    GalePressApplication.getInstance().getDataApi().sendReceipt(jo.getString("productId"), jo.getString("purchaseToken"), jo.getString("packageName"), progress, MainActivity.this);
+                } catch (JSONException e) {
+                    Toast.makeText(this, MainActivity.this.getResources().getString(R.string.BILLING_UNEXPECTED), Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
+            } else if (resultCode == RESULT_OK && responseCode == GalePressApplication.RESULT_ITEM_ALREADY_OWNED) {
+
+                try {
+                    JSONObject jo = new JSONObject(purchaseData);
+                    Toast.makeText(this, this.getResources().getString(R.string.BILLING_ITEM_ALREADY_OWNED), Toast.LENGTH_SHORT)
+                            .show();
+                    ProgressDialog progress = new ProgressDialog(this);
+                    progress.setMessage(getResources().getString(R.string.purchase_validation_checking) + "...");
+                    progress.setCancelable(false);
+                    progress.show();
+                    GalePressApplication.getInstance().getDataApi().sendReceipt(jo.getString("productId"), jo.getString("purchaseToken"), jo.getString("packageName"), progress, MainActivity.this);
                 } catch (JSONException e) {
                     Toast.makeText(this, "act result json parse error - " + e.getMessage(), Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
-            } else if (resultCode == RESULT_OK && responseCode == GalePressApplication.RESULT_ITEM_ALREADY_OWNED) {
-                Toast.makeText(this, this.getResources().getString(R.string.BILLING_ITEM_ALREADY_OWNED), Toast.LENGTH_SHORT)
-                        .show();
-                selectedSubscription.setOwned(true);
-                for (Subscription subs : GalePressApplication.getInstance().getSubscriptions())
-                    if (subs.getIdentifier().compareTo(selectedSubscription.getIdentifier()) == 0)
-                        subs.setOwned(true);
+
             } else if (responseCode == GalePressApplication.RESULT_USER_CANCELED) { // Hata var
                 Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESULT_USER_CANCELED), Toast.LENGTH_SHORT)
                         .show();
+                GalePressApplication.getInstance().prepareSubscriptions(null);
             } else if (responseCode == GalePressApplication.RESULT_BILLING_UNAVAILABLE) { // Hata var
                 Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESULT_BILLING_UNAVAILABLE), Toast.LENGTH_SHORT)
                         .show();
+                GalePressApplication.getInstance().prepareSubscriptions(null);
             } else if (responseCode == GalePressApplication.RESULT_ITEM_UNAVAILABLE) { // Hata var
                 Toast.makeText(this, this.getResources().getString(R.string.BILLIN_RESULT_ITEM_UNAVAILABLE), Toast.LENGTH_SHORT)
                         .show();
+                GalePressApplication.getInstance().prepareSubscriptions(null);
             } else if (responseCode == GalePressApplication.RESULT_ERROR) { // Hata var
                 Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESULT_ERROR), Toast.LENGTH_SHORT)
                         .show();
+                GalePressApplication.getInstance().prepareSubscriptions(null);
             } else { //  Beklenmedik Hata var
                 Toast.makeText(this, this.getResources().getString(R.string.BILLING_UNEXPECTED), Toast.LENGTH_SHORT)
                         .show();
+                GalePressApplication.getInstance().prepareSubscriptions(null);
             }
-            GalePressApplication.getInstance().prepareSubscriptions(null);
+
         } else {
             if (resultCode == 101) { //reader view return
                 int type = data.getIntExtra("SelectedTab", 0);
@@ -1561,6 +1576,16 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         Activity currActivity = GalePressApplication.getInstance().getCurrentActivity();
         if (currActivity != null && currActivity.equals(this))
             GalePressApplication.getInstance().setCurrentActivity(null);
+    }
+
+
+    public void completePurchase(){
+        Toast.makeText(this, getResources().getString(R.string.purchase_validation_success), Toast.LENGTH_LONG).show();
+        selectedSubscription.setOwned(true);
+        for (Subscription subs : GalePressApplication.getInstance().getSubscriptions())
+            if (subs.getIdentifier().compareTo(selectedSubscription.getIdentifier()) == 0)
+                subs.setOwned(true);
+        GalePressApplication.getInstance().prepareSubscriptions(null);
     }
 
 }

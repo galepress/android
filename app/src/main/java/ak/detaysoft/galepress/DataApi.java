@@ -2022,7 +2022,7 @@ public class DataApi extends Object {
         if(GalePressApplication.getInstance().getUserInformation() != null
                 && GalePressApplication.getInstance().getUserInformation().getAccessToken() != null
                 && GalePressApplication.getInstance().getUserInformation().getAccessToken().length() != 0)
-            uriBuilder.appendQueryParameter("accessToken",GalePressApplication.getInstance().getUserInformation().getAccessToken());
+            uriBuilder.appendQueryParameter("accessToken", GalePressApplication.getInstance().getUserInformation().getAccessToken());
 
 
         request = new JsonObjectRequest(Request.Method.POST, uriBuilder.build().toString(), null,
@@ -2207,7 +2207,7 @@ public class DataApi extends Object {
         return errorMessage;
     }
 
-    public void sendReceipt(final String productId, final String purchaseToken, final String packageName){
+    public void sendReceipt(final String productId, final String purchaseToken, final String packageName, final ProgressDialog dialog, final Activity activity){
         GalePressApplication application = GalePressApplication.getInstance();
         Integer applicationId = null;
         RequestQueue requestQueue = application.getRequestQueue();
@@ -2236,23 +2236,38 @@ public class DataApi extends Object {
                 && GalePressApplication.getInstance().getUserInformation().getAccessToken() != null
                 && GalePressApplication.getInstance().getUserInformation().getAccessToken().length() != 0)
             uriBuilder.appendQueryParameter("accessToken",GalePressApplication.getInstance().getUserInformation().getAccessToken());
-        uriBuilder.appendQueryParameter("purchaseToken",purchaseToken);
+        uriBuilder.appendQueryParameter("purchaseToken", purchaseToken);
 
         request = new JsonObjectRequest(Request.Method.POST, uriBuilder.build().toString() , null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+
                         try {
-                            Log.e("receipt", ""+response.toString());
+                            if(response.getString("error").length() == 0 && response.getInt("status") == 0){
+                                if(activity != null && dialog != null) {
+                                    if(activity instanceof MainActivity)
+                                        ((MainActivity)activity).completePurchase();
+                                    else
+                                        ((ContentDetailPopupActivity)activity).completePurchase();
+                                    dialog.dismiss();
+                                }
+                            }
                         } catch (Exception e) {
-                            Log.e("deneme", "deneme");
+                            if(dialog != null) {
+                                Toast.makeText(activity, activity.getResources().getString(R.string.purchase_validation_fail), Toast.LENGTH_LONG).show();
+                                dialog.dismiss();
+                            }
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.e("receipt", ""+error.getMessage());
+                        if(dialog != null) {
+                            Toast.makeText(activity, activity.getResources().getString(R.string.purchase_validation_fail), Toast.LENGTH_LONG).show();
+                            dialog.dismiss();
+                        }
                     }
                 }
         );

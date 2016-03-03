@@ -205,6 +205,10 @@
     <string name="YEAR">Yearly</string>
 
     <string name="select_subscription">Please select subscription</string>
-    <string name="login_warning_inapp_billing">Please login for purchasing...</string>
+    <string name="login_warning_inapp_billing">Please login to purchase...</string>
+    <string name="purchase_validation_checking">Purchase validating...</string>
+    <string name="purchase_validation_fail">Purchase validation failed.</string>
+    <string name="purchase_validation_success">Purchase validation successful</string>
+
 
 </resources>

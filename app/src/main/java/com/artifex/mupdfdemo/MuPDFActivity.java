@@ -2335,15 +2335,16 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
     public void onBackPressed() {
 
         if (GalePressApplication.getInstance().getDataApi().isLibraryMustBeEnabled()) {
-            Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
-            String udid = UUID.randomUUID().toString();
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            Calendar cal = Calendar.getInstance();
-            dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
-            Location location = GalePressApplication.getInstance().location;
-            L_Statistic statistic = new L_Statistic(udid, this.content.getId(), location != null ? location.getLatitude() : null, location != null ? location.getLongitude() : null, null, dateFormat.format(cal.getTime()), L_Statistic.STATISTIC_contentClosed, null, null, null);
-            GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
-
+            if(content != null && content.getId() != null) {
+                Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+                String udid = UUID.randomUUID().toString();
+                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                Calendar cal = Calendar.getInstance();
+                dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+                Location location = GalePressApplication.getInstance().location;
+                L_Statistic statistic = new L_Statistic(udid, this.content.getId(), location != null ? location.getLatitude() : null, location != null ? location.getLongitude() : null, null, dateFormat.format(cal.getTime()), L_Statistic.STATISTIC_contentClosed, null, null, null);
+                GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
+            }
 
             try {
                 if(mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null ) {
@@ -2422,10 +2423,10 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                             }
 
 
-                /*for(int i =0; i < mDocView.getChildCount(); i++){
-                    MuPDFPageView muPDFPageView = (MuPDFPageView) mDocView.getChildAt(i);
-                    muPDFPageView.clearWebAnnotations(muPDFPageView);
-                }*/
+                        /*for(int i =0; i < mDocView.getChildCount(); i++){
+                            MuPDFPageView muPDFPageView = (MuPDFPageView) mDocView.getChildAt(i);
+                            muPDFPageView.clearWebAnnotations(muPDFPageView);
+                        }*/
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

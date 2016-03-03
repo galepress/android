@@ -935,7 +935,7 @@ public class GalePressApplication
                         if(ownedSubscriptionList != null && ownedSubscriptionList.size() > 0){
                             for(String purchaseData : ownedSubscriptionList){
                                 JSONObject jpurchase = new JSONObject(purchaseData);
-                                GalePressApplication.getInstance().getDataApi().sendReceipt(jpurchase.getString("productId"), jpurchase.getString("purchaseToken"), jpurchase.getString("packageName"));
+                                GalePressApplication.getInstance().getDataApi().sendReceipt(jpurchase.getString("productId"), jpurchase.getString("purchaseToken"), jpurchase.getString("packageName"), null, null);
                             }
                         }
                     } catch (JSONException e) {
@@ -1057,7 +1057,7 @@ public class GalePressApplication
                         if(ownedProductList != null && ownedProductList.size() > 0){
                             for(String purchaseData : ownedProductList){
                                 JSONObject jpurchase = new JSONObject(purchaseData);
-                                GalePressApplication.getInstance().getDataApi().sendReceipt(jpurchase.getString("productId"), jpurchase.getString("purchaseToken"), jpurchase.getString("packageName"));
+                                GalePressApplication.getInstance().getDataApi().sendReceipt(jpurchase.getString("productId"), jpurchase.getString("purchaseToken"), jpurchase.getString("packageName"), null, null);
                             }
                         }
                     } catch (JSONException e) {
