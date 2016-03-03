@@ -1322,7 +1322,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                     String sku = jo.getString("productId");
 
                     ProgressDialog progress = new ProgressDialog(this);
-                    progress.setMessage(getResources().getString(R.string.purchase_validation_checking) + "...");
+                    progress.setMessage(getResources().getString(R.string.purchase_validation_checking));
                     progress.setCancelable(false);
                     progress.show();
                     GalePressApplication.getInstance().getDataApi().sendReceipt(jo.getString("productId"), jo.getString("purchaseToken"), jo.getString("packageName"), progress, MainActivity.this);
@@ -1337,7 +1337,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                     Toast.makeText(this, this.getResources().getString(R.string.BILLING_ITEM_ALREADY_OWNED), Toast.LENGTH_SHORT)
                             .show();
                     ProgressDialog progress = new ProgressDialog(this);
-                    progress.setMessage(getResources().getString(R.string.purchase_validation_checking) + "...");
+                    progress.setMessage(getResources().getString(R.string.purchase_validation_checking));
                     progress.setCancelable(false);
                     progress.show();
                     GalePressApplication.getInstance().getDataApi().sendReceipt(jo.getString("productId"), jo.getString("purchaseToken"), jo.getString("packageName"), progress, MainActivity.this);
