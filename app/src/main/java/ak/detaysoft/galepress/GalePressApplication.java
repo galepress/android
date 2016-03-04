@@ -1112,6 +1112,9 @@ public class GalePressApplication
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
+                /*
+                * Eger abonelik yoksa dogrudan server restore adimina geciyoruz.
+                * */
                 if(GalePressApplication.getInstance().getSubscriptions().size() > 0)
                     restorePurchasedSubscriptions(false, fullRestore, activity, progress);
                 else{

@@ -1754,6 +1754,25 @@ public class DataApi extends Object {
                                 }
                             } else {
 
+                                /*
+                                 * Eger kullanicinin aboneligi varsa ama servisten abonelik false gelmisse
+                                 * Kullanicinin aboneliginin sonladigi icin bilgilendirme yapiliyor.
+                                 * */
+                                if(GalePressApplication.getInstance().isUserHaveActiveSubscription()) {
+                                    if(!response.getBoolean("ActiveSubscription")) {
+                                        AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity);
+                                        alertDialog.setTitle(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.UYARI));
+                                        alertDialog.setMessage(activity.getString(R.string.subscription_finish));
+
+                                        alertDialog.setPositiveButton(activity.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        });
+                                        alertDialog.show();
+                                    }
+                                }
+
                                 GalePressApplication.getInstance().setUserHaveActiveSubscription(response.getBoolean("ActiveSubscription")); // Server abonelik aliniyor
                                 GalePressApplication.getInstance().prepareMemberShipList();
                                 if(activity != null){
@@ -1874,6 +1893,30 @@ public class DataApi extends Object {
                             ApplicationThemeColor.getInstance().setParameters(response);
                             GalePressApplication.getInstance().setBannerLink(response);
                             GalePressApplication.getInstance().setTabList(response);
+
+
+                            /*
+                            * Eger kullanicinin aboneligi varsa ama servisten abonelik false gelmisse
+                            * Kullanicinin aboneliginin sonladigi icin bilgilendirme yapiliyor.
+                            * */
+                            if(GalePressApplication.getInstance().isUserHaveActiveSubscription()) {
+                                if(!response.getBoolean("ActiveSubscription")) {
+
+                                    if(GalePressApplication.getInstance().getCurrentActivity() != null) {
+                                        AlertDialog.Builder alertDialog = new AlertDialog.Builder(GalePressApplication.getInstance().getCurrentActivity());
+                                        alertDialog.setTitle(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.UYARI));
+                                        alertDialog.setMessage(GalePressApplication.getInstance().getCurrentActivity().getString(R.string.subscription_finish));
+                                        alertDialog.setPositiveButton(GalePressApplication.getInstance().getCurrentActivity().getString(R.string.OK), new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        });
+                                        alertDialog.show();
+                                    }
+
+
+                                }
+                            }
 
                             GalePressApplication.getInstance().setUserHaveActiveSubscription(response.getBoolean("ActiveSubscription")); // Server abonelik aliniyor
                             GalePressApplication.getInstance().prepareMemberShipList();
