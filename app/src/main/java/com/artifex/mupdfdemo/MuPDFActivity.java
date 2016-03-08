@@ -283,9 +283,15 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
     private MuPDFCore openFile(String path) {
         int lastSlashPos = path.lastIndexOf('/');
         int penultimateSlashPos = (path.substring(0, path.lastIndexOf("/"))).lastIndexOf('/');
-        mFileName = new String((lastSlashPos == -1 ||penultimateSlashPos == -1)
-                ? path
-                : path.substring(penultimateSlashPos + 1, lastSlashPos));
+
+        try{
+            mFileName = new String((lastSlashPos == -1 ||penultimateSlashPos == -1)
+                    ? path
+                    : path.substring(penultimateSlashPos + 1, lastSlashPos));
+        } catch (StringIndexOutOfBoundsException e) {
+            mFileName = path;
+        }
+
         System.out.println("Trying to open " + path);
         try {
             core = new MuPDFCore(this, path, content);

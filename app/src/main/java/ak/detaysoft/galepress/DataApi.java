@@ -1795,8 +1795,6 @@ public class DataApi extends Object {
                                     }
                                 }
 
-
-
                                 if(activity != null){
                                     if(activity instanceof MainActivity) {
                                         if(progress != null && progress.isShowing())
