@@ -30,9 +30,11 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
@@ -627,12 +629,6 @@ public class DataApi extends Object {
                 applicationID = application.getApplicationId();
             }
 
-            /*Uri.Builder uriBuilder = new Uri.Builder();
-            uriBuilder.scheme("http")
-                    .authority("www.galepress.com")
-                    .appendPath("webservice")
-                    .appendPath("103");*/
-
             final String gcmRegisterId = GCMRegistrar.getRegistrationId(GalePressApplication.getInstance().getApplicationContext());
 
             Uri.Builder uriBuilder = getWebServiceUrlBuilder();
@@ -849,14 +845,8 @@ public class DataApi extends Object {
 
             JsonObjectRequest request;
 
-            //http://www.galepress.com/ws/v100/applications/20/detail?deviceType=android&osVersion=19_4.4.4&deviceDetail=LG Nexus 5&deviceToken=a;lskdfjla;skjdf;laksjdf;laksdf;
 
             Uri.Builder uriBuilder = getWebServiceUrlBuilder();
-            /*Uri.Builder uriBuilder = new Uri.Builder();
-            uriBuilder.scheme("http")
-                    .authority("www.galepress.com")
-                    .appendPath("webservice")
-                    .appendPath("103");*/
 
             uriBuilder.appendPath("applications");
             uriBuilder.appendPath(applicationID.toString());
@@ -1691,11 +1681,6 @@ public class DataApi extends Object {
             applicationId = application.getApplicationId();
         }
 
-        /*Uri.Builder uriBuilder = new Uri.Builder();
-        uriBuilder.scheme("http")
-                .authority("www.galepress.com")
-                .appendPath("webservice")
-                .appendPath("103");*/
         Uri.Builder uriBuilder = getWebServiceUrlBuilder();
         uriBuilder.appendPath("applications");
         uriBuilder.appendPath(applicationId.toString());
@@ -1861,11 +1846,6 @@ public class DataApi extends Object {
             applicationId = application.getApplicationId();
         }
 
-        /*Uri.Builder uriBuilder = new Uri.Builder();
-        uriBuilder.scheme("http")
-                .authority("www.galepress.com")
-                .appendPath("webservice")
-                .appendPath("103");*/
         Uri.Builder uriBuilder = getWebServiceUrlBuilder();
         uriBuilder.appendPath("applications");
         uriBuilder.appendPath(applicationId.toString());
@@ -2051,11 +2031,7 @@ public class DataApi extends Object {
         RequestQueue requestQueue = application.getRequestQueue();
         int seqNo = requestQueue.getSequenceNumber();
         JsonObjectRequest request;
-        /*Uri.Builder uriBuilder = new Uri.Builder();
-        uriBuilder.scheme("http")
-                .authority("www.galepress.com")
-                .appendPath("webservice")
-                .appendPath("103");*/
+
         Uri.Builder uriBuilder = getWebServiceUrlBuilder();
         uriBuilder.appendPath("applications");
         uriBuilder.appendPath(applicationID.toString());
@@ -2260,11 +2236,6 @@ public class DataApi extends Object {
             applicationId = application.getApplicationId();
         }
 
-        /*Uri.Builder uriBuilder = new Uri.Builder();
-        uriBuilder.scheme("http")
-                .authority("www.galepress.com")
-                .appendPath("webservice")
-                .appendPath("103");*/
         Uri.Builder uriBuilder = getWebServiceUrlBuilder();
         uriBuilder.appendPath("applications");
         uriBuilder.appendPath(applicationId.toString());
@@ -2313,6 +2284,63 @@ public class DataApi extends Object {
                 }
         );
         request.setShouldCache(Boolean.FALSE);
+        requestQueue.add(request);
+    }
+
+    public void restoreReceipt(final String productIds, final String purchaseTokens, final String packageName){
+        GalePressApplication application = GalePressApplication.getInstance();
+        Integer applicationId = null;
+        RequestQueue requestQueue = application.getRequestQueue();
+        JsonObjectRequest request;
+
+        if (GalePressApplication.getInstance().isTestApplication()) {
+            applicationId = new Integer(application.getTestApplicationLoginInf().getApplicationId());
+        } else {
+            applicationId = application.getApplicationId();
+        }
+
+        Uri.Builder uriBuilder = getWebServiceUrlBuilder();
+        uriBuilder.appendPath("applications");
+        uriBuilder.appendPath(applicationId.toString());
+        uriBuilder.appendPath("androidrestore");
+
+        uriBuilder.appendQueryParameter("platformType", "android");
+        uriBuilder.appendQueryParameter("productIds", productIds);
+        uriBuilder.appendQueryParameter("packageName", packageName);
+        if(GalePressApplication.getInstance().getUserInformation() != null
+                && GalePressApplication.getInstance().getUserInformation().getAccessToken() != null
+                && GalePressApplication.getInstance().getUserInformation().getAccessToken().length() != 0)
+            uriBuilder.appendQueryParameter("accessToken",GalePressApplication.getInstance().getUserInformation().getAccessToken());
+        uriBuilder.appendQueryParameter("purchaseTokens", purchaseTokens);
+
+        request = new JsonObjectRequest(Request.Method.POST, uriBuilder.build().toString() , null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        try {
+                            if(response.getString("error").length() == 0 && response.getInt("status") == 0){
+                                /*
+                                * Islem basarili olursa uygulama update ediliyor.
+                                * */
+                                updateApplication();
+                            }
+                        } catch (Exception e) {
+                            Log.e("androidrestore", "parse error :"+ response.toString());
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("androidrestore", error.getMessage());
+                    }
+                }
+        );
+        request.setShouldCache(Boolean.FALSE);
+        int socketTimeout = 30000;//30 seconds - change to what you want
+        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        request.setRetryPolicy(policy);
         requestQueue.add(request);
     }
 }

@@ -22,6 +22,16 @@ public class GCMIntentService extends GCMBaseIntentService {
         super(DataApi.GCM_SENDER_ID);
     }
 
+    /*
+    * https://github.com/8fit/OneSignal-Android-SDK/commit/3b06417d35498013a8cd8dc038e2f7bf22f9bf8e
+    * */
+    @Override
+    public void onStart(Intent intent, int startId) {
+        if (intent != null) {
+            super.onStart(intent, startId);
+        }
+    }
+
     /**
      * Method called on device registered
      **/

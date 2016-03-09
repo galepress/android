@@ -134,6 +134,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     public boolean isTabFirstInit = true;
     ArrayList<TabHost.TabSpec> specList = new ArrayList<TabHost.TabSpec>();
     private Subscription selectedSubscription;
+    private int selectedReaderTabIndex = -1;
 
 
 
@@ -1370,19 +1371,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
         } else {
             if (resultCode == 101) { //reader view return
-                int type = data.getIntExtra("SelectedTab", 0);
-                if (type == 0) {
-                    mTabHost.setCurrentTabByTag(HOME_TAB_TAG);
-                } else if (type == 1) {
-                    mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG);
-                } else if (type == 2) {
-                    mTabHost.setCurrentTabByTag(DOWNLOADED_LIBRARY_TAG);
-                } else if (type == 3) {
-                    mTabHost.setCurrentTabByTag(INFO_TAB_TAG);
-                } else { // 100+ type olanlar servisten gelen buttonlar
-                    String customTabTag = "" + (type - 100);
-                    mTabHost.setCurrentTabByTag(customTabTag);
-                }
+                selectedReaderTabIndex = data.getIntExtra("SelectedTab", 0);
             } else if (resultCode == 102) { //Login return
                 membershipAdapter.notifyDataSetChanged();
                 LayoutInflater mInflater = (LayoutInflater) getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
@@ -1409,6 +1398,27 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         if(connectionStatusChangedOnPause) {
             initCustomTabs();
             connectionStatusChangedOnPause = false;
+        }
+
+        /*
+        * onActivityResult icinden buraya tasidim
+        * https://fabric.io/galepress/android/apps/ak.detaysoft.carrefoursa1/issues/56afae00f5d3a7f76b80ee4d
+        * Bu hata activity onresume a dusmeden islem yaptigimiz icin olabilir. Devam ederse hata kaldiracagim. (MG)
+        * */
+        if(selectedReaderTabIndex != -1){
+            if (selectedReaderTabIndex == 0) {
+                mTabHost.setCurrentTabByTag(HOME_TAB_TAG);
+            } else if (selectedReaderTabIndex == 1) {
+                mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG);
+            } else if (selectedReaderTabIndex == 2) {
+                mTabHost.setCurrentTabByTag(DOWNLOADED_LIBRARY_TAG);
+            } else if (selectedReaderTabIndex == 3) {
+                mTabHost.setCurrentTabByTag(INFO_TAB_TAG);
+            } else { // 100+ type olanlar servisten gelen buttonlar
+                String customTabTag = "" + (selectedReaderTabIndex - 100);
+                mTabHost.setCurrentTabByTag(customTabTag);
+            }
+            selectedReaderTabIndex = -1;
         }
     }
 

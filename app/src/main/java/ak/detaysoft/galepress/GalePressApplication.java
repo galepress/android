@@ -929,14 +929,21 @@ public class GalePressApplication
                     }
 
                     /*
-                    * Abonelik satin alindiginda sendReceipt isleminin basarisiz olma ihtimaline karsi tekrar deniyoruz (MG)
+                    * abonelik satin alindiginda sendReceipt isleminin basarisiz olma ihtimaline karsi tekrar deniyoruz (MG)
                     * */
                     try {
                         if(ownedSubscriptionList != null && ownedSubscriptionList.size() > 0){
+                            JSONObject jpurchase = null;
+                            JSONArray productIds = new JSONArray();
+                            JSONArray purchaseTokens = new JSONArray();
                             for(String purchaseData : ownedSubscriptionList){
-                                JSONObject jpurchase = new JSONObject(purchaseData);
-                                GalePressApplication.getInstance().getDataApi().sendReceipt(jpurchase.getString("productId"), jpurchase.getString("purchaseToken"), jpurchase.getString("packageName"), null, null);
+                                jpurchase = new JSONObject(purchaseData);
+                                productIds.put(jpurchase.getString("productId"));
+                                purchaseTokens.put(jpurchase.getString("purchaseToken"));
                             }
+                            if(jpurchase != null)
+                                GalePressApplication.getInstance().getDataApi().restoreReceipt(productIds.toString(),
+                                        purchaseTokens.toString(), jpurchase.getString("packageName"));
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -1055,10 +1062,17 @@ public class GalePressApplication
                     * */
                     try {
                         if(ownedProductList != null && ownedProductList.size() > 0){
+                            JSONObject jpurchase = null;
+                            JSONArray productIds = new JSONArray();
+                            JSONArray purchaseTokens = new JSONArray();
                             for(String purchaseData : ownedProductList){
-                                JSONObject jpurchase = new JSONObject(purchaseData);
-                                GalePressApplication.getInstance().getDataApi().sendReceipt(jpurchase.getString("productId"), jpurchase.getString("purchaseToken"), jpurchase.getString("packageName"), null, null);
+                                jpurchase = new JSONObject(purchaseData);
+                                productIds.put(jpurchase.getString("productId"));
+                                purchaseTokens.put(jpurchase.getString("purchaseToken"));
                             }
+                            if(jpurchase != null)
+                                GalePressApplication.getInstance().getDataApi().restoreReceipt(productIds.toString(),
+                                        purchaseTokens.toString(), jpurchase.getString("packageName"));
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -1124,7 +1138,6 @@ public class GalePressApplication
 
         };
         executePurchase.execute();
-
     }
 
     public void prepareSubscriptions(JSONObject response){
@@ -1159,7 +1172,8 @@ public class GalePressApplication
                 editor.putString("Subscription", array.toString());
                 editor.commit();
 
-                restorePurchasedSubscriptions(false, false, null, null); // marketten fiyatlarini ve kullanicinin daha once satin aldigi abonelikleri cekmek icin (farkli cihazlarda daha once alinan abonelikler gelmeyebilir)
+                // marketten fiyatlarini ve kullanicinin daha once satin aldigi abonelikleri cekmek icin (farkli cihazlarda daha once alinan abonelikler gelmeyebilir)
+                restorePurchasedSubscriptions(false, false, null, null);
 
             } catch (JSONException e) {
                 e.printStackTrace();
