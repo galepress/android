@@ -769,6 +769,7 @@ public class MuPDFPageView extends PageView implements MuPDFView {
         clearWebAnnotations(this);
         clearCustomProgress(this);
         clearModals(this);
+		clearPageLinks(this);
 
 		mLoadWidgetAreas = new AsyncTask<Void,Void,RectF[]> () {
 			@Override

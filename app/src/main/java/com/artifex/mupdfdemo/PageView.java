@@ -359,6 +359,18 @@ public abstract class PageView extends ViewGroup {
 		}
 	}
 
+	/*
+	* PageLinklerin sayfadan temizlenmesi
+	* */
+	public void clearPageLinks(PageView pageView){
+		ArrayList<View> pageLinks = getGPPageLinks(pageView);
+		for(int i=0; i < pageLinks.size(); i++){
+			View view = pageLinks.get(i);
+			pageView.removeView(view);
+			pageView.invalidate();
+		}
+	}
+
 	public ArrayList<View> getGPAnnotations(PageView pageView) {
 		ArrayList<View> gpAnnotations = new ArrayList<View>();
 		for (int i = 0; i < pageView.getChildCount(); i++) {
@@ -387,6 +399,17 @@ public abstract class PageView extends ViewGroup {
 		for (int i = 0; i < pageView.getChildCount(); i++) {
 			View view = (View) pageView.getChildAt(i);
 			if (view.getTag() != null && view.getTag().toString().compareTo("modal") == 0) {
+				modals.add(view);
+			}
+		}
+		return modals;
+	}
+
+	public ArrayList<View> getGPPageLinks(PageView pageView) {
+		ArrayList<View> modals = new ArrayList<View>();
+		for (int i = 0; i < pageView.getChildCount(); i++) {
+			View view = (View) pageView.getChildAt(i);
+			if (view.getTag() != null && view.getTag().toString().compareTo("pagelink") == 0) {
 				modals.add(view);
 			}
 		}
@@ -581,6 +604,7 @@ public abstract class PageView extends ViewGroup {
                 clearWebAnnotations(PageView.this);
                 clearCustomProgress(PageView.this);
 				clearModals(PageView.this);
+				clearPageLinks(PageView.this);
 			}
 
 			protected LinkInfo[] doInBackground(Void... v) {
@@ -770,7 +794,8 @@ public abstract class PageView extends ViewGroup {
                         View view = new View(mContext);
                         view.layout(left,top,right,bottom);
                         view.setBackgroundColor(Color.TRANSPARENT);
-                        view.setOnClickListener(new OnClickListener() {
+						view.setTag("pagelink");
+						view.setOnClickListener(new OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 MuPDFCore core =((MuPDFActivity)mContext).core;

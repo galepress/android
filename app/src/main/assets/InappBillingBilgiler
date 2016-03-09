@@ -1,0 +1,33 @@
+----------------------------------------Inapp Billing sırasında yapılan işlemler için aldığım notlar (MG)----------------------------------------------------
+
+1) Market tarafında eklenebilen iki adet içerik tipi var yönetilebilen ve abonelik. Yönetilebilen içerik içerik satışında kullanılıyor.
+    Abonelik(haftalık-aylık-3aylık-6aylık-yıllık) tipi uygulama aboneliği için kullanılıyor.
+2) Market tarafında ücretli içerik ekleyebilmek için bir adet inappbilling permission tanımlanmış apk yüklenmesi gerekiyor markete.
+3) Ayrıca satıcı hesabınında oluşturulması gerekiyor. Faturalandırma işlemleri için isteniyor sanırım
+4) Satışa sunulan bir içeriği hesabın sahibi satın alamaz. Cihazda test yapılırken developer hesabından farklı bir hesap kullanılmalı.
+5) Test yapılacak kullanıcı play developer panel tarafında ayarlardan test kullanıcısı olarak eklenmesi gerekiyor. Yoksa içerik satın alınamıyor.
+6) Ayrıca imzalı olmayan, package name paneldeki uygulamanın package name ile aynı olmayan uygulamalar ile test yapılamaz. İçeriğin fiyatı gelmiyor yada satın alınamıyor.
+7) İmzalı apk ile debug yapabilmek için build.gradle dosyasına ekleme yapıldı
+    signingConfigs {
+        release {
+            keyAlias 'detay2006'
+            keyPassword 'detay2006'
+            storeFile file('D:/Uni Saç/keystore.jks')
+            storePassword 'detay2006'
+        }
+        debug {
+            keyAlias 'detay2006'
+            keyPassword 'detay2006'
+            storeFile file('D:/Uni Saç/keystore.jks')
+            storePassword 'detay2006'
+        }
+    }
+
+9) Eğer test sırasında içeriklerin ücretleri gelmezse yada satın alınamazsa,
+    beta testine bir apk yüklendiği zaman orda mail adresleri üzerinde test listesi ayarlanabiliyor. Bunu yaptıktan sonra tekrar denemekte fayda var.
+8) Bu adımlar eksiksiz tamamlanırsa uygulama üzerinde test yapılabilir. İçerik satın alma, abonelik satın alma, ücretli içerik fiyatlarını çekme v.b
+9) Ücretli içerik eklendiği zaman yayınlanması zaman alabiliyor hemen gelmeyebilir.
+
+
+
+NOT: Kod içinde gerekli açıklamaları yazmaya çalıştım eksikler olabilir.

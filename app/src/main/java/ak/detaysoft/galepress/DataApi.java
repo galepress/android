@@ -24,6 +24,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.provider.Settings;
 import android.text.InputType;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -1561,9 +1562,16 @@ public class DataApi extends Object {
 
                                 if (localContent.getCoverImageVersion() < remoteContent.getContentCoverImageVersion()) {
                                     // cover image must be updated.
-                                    // localContent.setCoverImageUpdateAvailable(true);
-                                    getCoverImage(localContent, 0, 480, 640);
-                                    getCoverImage(localContent, 1, 155, 206);
+                                    float scale;
+                                    try {
+                                        DisplayMetrics metrics = GalePressApplication.getInstance().getApplicationContext().getResources().getDisplayMetrics();
+                                        scale = metrics.density > 1?metrics.density:1;
+                                    } catch (Exception e) {
+                                        scale = 1;
+                                    }
+
+                                    getCoverImage(localContent, 0, (int)(480*scale), (int)(640*scale));
+                                    getCoverImage(localContent, 1, (int)(155*scale), (int)(206*scale));
                                 } else {
                                     // Content Detail update edildi.
                                     localContent.setVersion(remoteContent.getContentVersion());
@@ -2321,7 +2329,7 @@ public class DataApi extends Object {
                         try {
                             if(response.getString("error").length() == 0 && response.getInt("status") == 0){
                                 /*
-                                * Islem basarili olursa uygulama update ediliyor.
+                                * Islem basarili olursa uygulama update ediliyor. Eger bi degisiklik olursa appversion artiyor kontrol ediliyor.
                                 * */
                                 updateApplication();
                             }
@@ -2338,7 +2346,7 @@ public class DataApi extends Object {
                 }
         );
         request.setShouldCache(Boolean.FALSE);
-        int socketTimeout = 30000;//30 seconds - change to what you want
+        int socketTimeout = 30000;// 30 sec. Array gonderdigimiz ve server tarafinda array islemi yapildigi icin request timeout oluyordu bunu engelledim (MG)
         RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
         request.setRetryPolicy(policy);
         requestQueue.add(request);
