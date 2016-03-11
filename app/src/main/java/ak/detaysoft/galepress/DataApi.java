@@ -286,7 +286,7 @@ public class DataApi extends Object {
                 if (directory.exists()) {
                     deleteFolder(directory);
                 }
-                final boolean isUpdate = content.isPdfDownloaded() ? true: false;
+                final boolean isUpdate = content.isPdfDownloaded();
 
                 tempDirectory.renameTo(directory);
                 Decompress decompressor = new Decompress(directory + "/" + pdfFileName, directory + "/", GalePressApplication.getInstance().getApplicationContext());

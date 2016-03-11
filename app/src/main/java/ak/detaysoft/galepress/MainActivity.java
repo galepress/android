@@ -230,12 +230,12 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                                     int position, long id) {
                 hideKeyboard(searchView);
 
-                if(GalePressApplication.getInstance().getDataApi().getMasterContent() != null && GalePressApplication.getInstance().getDataApi().getMasterContent().isPdfDownloaded()) {
+                /*if(GalePressApplication.getInstance().getDataApi().getMasterContent() != null && GalePressApplication.getInstance().getDataApi().getMasterContent().isPdfDownloaded()) {
                     mTabHost.getTabWidget().setCurrentTab(1);
                 }
                 else
                     mTabHost.getTabWidget().setCurrentTab(0);
-                mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG);
+                mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG);*/
                 L_Category selectedCategory = (L_Category)categoryListWithAll.get(position);
                 if(selectedCategory.getCategoryName().compareTo(getString(R.string.show_all))!=0){
                     for(int i =0; i<categoryListWithAll.size(); i++){
