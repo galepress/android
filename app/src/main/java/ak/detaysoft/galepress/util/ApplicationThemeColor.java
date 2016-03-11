@@ -890,19 +890,41 @@ public class ApplicationThemeColor {
         return drawable;
     }
 
+
+    /*
+    * (MG)
+    * Try catch koymamım sebebi lollipop versiyonunda font bulunamadı hatası almamız
+    * https://fabric.io/galepress/android/apps/ak.detaysoft.ekinyayincilikdis/issues/56e18957ffcdc04250b80d10
+    * */
     public Typeface getFont(Context context){
-        return Typeface.createFromAsset(context.getAssets(), "fonts/Avenir-Light.otf");
+        try{
+            return Typeface.createFromAsset(context.getAssets(), "fonts/Avenir-Light.otf");
+        } catch (Exception e) {
+            return Typeface.DEFAULT;
+        }
     }
 
     public Typeface getMediumFont(Context context){
-        return Typeface.createFromAsset(context.getAssets(), "fonts/Avenir-Medium.otf");
+        try{
+            return Typeface.createFromAsset(context.getAssets(), "fonts/Avenir-Medium.otf");
+        } catch (Exception e) {
+            return Typeface.DEFAULT;
+        }
     }
 
     public Typeface getOpenSansLight(Context context){
-        return Typeface.createFromAsset(context.getAssets(), "fonts/OpenSans-Light.ttf");
+        try{
+            return Typeface.createFromAsset(context.getAssets(), "fonts/OpenSans-Light.ttf");
+        } catch (Exception e) {
+            return Typeface.DEFAULT;
+        }
     }
 
     public Typeface getOpenSansRegular(Context context){
-        return Typeface.createFromAsset(context.getAssets(), "fonts/OpenSans-Regular.ttf");
+        try{
+            return Typeface.createFromAsset(context.getAssets(), "fonts/OpenSans-Regular.ttf");
+        } catch (Exception e) {
+            return Typeface.DEFAULT;
+        }
     }
 }

@@ -1,13 +1,30 @@
 ----------------------------------------Inapp Billing sırasında yapılan işlemler için aldığım notlar (MG)----------------------------------------------------
 
+
+--------DEVELOPER PANEL--------
+
 1) Market tarafında eklenebilen iki adet içerik tipi var yönetilebilen ve abonelik. Yönetilebilen içerik içerik satışında kullanılıyor.
-    Abonelik(haftalık-aylık-3aylık-6aylık-yıllık) tipi uygulama aboneliği için kullanılıyor.
+   Abonelik(haftalık-aylık-3aylık-6aylık-yıllık) tipi uygulama aboneliği için kullanılıyor.
 2) Market tarafında ücretli içerik ekleyebilmek için bir adet inappbilling permission tanımlanmış apk yüklenmesi gerekiyor markete.
-3) Ayrıca satıcı hesabınında oluşturulması gerekiyor. Faturalandırma işlemleri için isteniyor sanırım
+3) Ayrıca satıcı hesabınında oluşturulması gerekiyor. Faturalandırma işlemleri için isteniyor sanırım.
 4) Satışa sunulan bir içeriği hesabın sahibi satın alamaz. Cihazda test yapılırken developer hesabından farklı bir hesap kullanılmalı.
-5) Test yapılacak kullanıcı play developer panel tarafında ayarlardan test kullanıcısı olarak eklenmesi gerekiyor. Yoksa içerik satın alınamıyor.
-6) Ayrıca imzalı olmayan, package name paneldeki uygulamanın package name ile aynı olmayan uygulamalar ile test yapılamaz. İçeriğin fiyatı gelmiyor yada satın alınamıyor.
-7) İmzalı apk ile debug yapabilmek için build.gradle dosyasına ekleme yapıldı
+5) Test yapılacak kullanıcı mail adresinin play developer panel tarafında ayarlardan test kullanıcısı olarak eklenmesi gerekiyor. Yoksa içerik satın alınamıyor.
+6) Eğer test sırasında içeriklerin ücretleri gelmezse yada satın alınamazsa,
+   beta testine bir apk yüklendiği zaman orda mail adresleri üzerinde test listesi ayarlanabiliyor. Bunu yaptıktan sonra tekrar denemekte fayda var.
+7) Ücretli içerik eklendiği zaman yayınlanması zaman alabiliyor hemen gelmeyebilir.
+8) Google play tarafında ücretli ürün eklerken eklenen ürünün identifierının belirli sınırları var. 
+   Detaylı anlatım -> http://developer.android.com/google/play/billing/billing_admin.html?hl=en&rd=1
+9) Eklenen içerik abonelikse fiyatı daha sonra değiştirilemiyor. Yada silinemiyor.
+10) Eklenen içerik yönetilebilen ürünse silinebiliyor. Fiyatı değiştirilebiliyor fakat değiştirince bu değişiklik cihaza gelmedi.
+    İlk çektiği fiyattaki gibi gelmeye devam etti. Bi sorun olabilir yada ekstra işlem yapmak gerekebilir.
+
+
+
+
+--------UYGULAMA--------
+
+1) İmzalı olmayan yada package name paneldeki uygulamanın package name ile aynı olmayan uygulamalar ile test yapılamaz. İçeriğin fiyatı gelmiyor yada satın alınamıyor.
+2) İmzalı apk ile debug yapabilmek için build.gradle dosyasına ekleme yapıldı
     signingConfigs {
         release {
             keyAlias 'detay2006'
@@ -22,11 +39,14 @@
             storePassword 'detay2006'
         }
     }
-
-9) Eğer test sırasında içeriklerin ücretleri gelmezse yada satın alınamazsa,
-    beta testine bir apk yüklendiği zaman orda mail adresleri üzerinde test listesi ayarlanabiliyor. Bunu yaptıktan sonra tekrar denemekte fayda var.
-8) Bu adımlar eksiksiz tamamlanırsa uygulama üzerinde test yapılabilir. İçerik satın alma, abonelik satın alma, ücretli içerik fiyatlarını çekme v.b
-9) Ücretli içerik eklendiği zaman yayınlanması zaman alabiliyor hemen gelmeyebilir.
+3) Login olmayan kullanıcı abonelik yada ücretli içerik satın alamaz.
+4) Satın alınan içeirkler ve abonelikler gpserver a gönderiliyor.
+5) Kullanıcı aboneliğinin aktif olup olmadığını gpserver tafından anlıyoruz. Eğer gpserver abonelik var derse kullanıcıya abonelik var diyoruz.
+6) Eğer gpserver ücretli içeriği kullanıcıya ücretisz verirse free indirmesini sağlıyoruz.
+7) Download butonu init edilirken eğer içerik ücretsizse kutu üstünde ok olan butonu gösteriyoruz. Eğer aboneliği varsa yada contentBought true ise bulut ikonu çıkıyor.
+   Eğer içerik ücretliyse ve abonelik yoksa yada contentBought false ise ok yanında fiyat yazan ikonu gösteriyoruz.
+8) Sol menüde kullanıcı login değilse sadece login butonu olacak. Eğer loginse ve aktif aboneliği varsa logout-restore olacak.
+   Eğer loginse ve aktif aboneliği yoksa loguot-restore-subscription butonları olacak.
 
 
 
