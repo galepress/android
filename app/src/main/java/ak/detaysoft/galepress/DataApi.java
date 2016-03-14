@@ -1751,16 +1751,18 @@ public class DataApi extends Object {
                             } else {
 
                                 /*
-                                 * Eger kullanicinin aboneligi varsa ama servisten abonelik false gelmisse
-                                 * Kullanicinin aboneliginin sonladigi icin bilgilendirme yapiliyor.
-                                 * */
-                                if(GalePressApplication.getInstance().isUserHaveActiveSubscription()) {
-                                    if(!response.getBoolean("ActiveSubscription")) {
-                                        AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity);
+                                * Eger kullanicinin aboneligi varsa ama servisten abonelik false gelmisse
+                                * Kullanicinin aboneliginin sonladigi icin bilgilendirme yapiliyor.
+                                * */
+                                if(GalePressApplication.getInstance().getUserInformation() != null
+                                        && GalePressApplication.getInstance().getUserInformation().getAccessToken() != null
+                                        && GalePressApplication.getInstance().getUserInformation().getAccessToken().length() != 0
+                                        && GalePressApplication.getInstance().isUserHaveActiveSubscription() && !response.getBoolean("ActiveSubscription")) {
+                                    if(GalePressApplication.getInstance().getCurrentActivity() != null) {
+                                        AlertDialog.Builder alertDialog = new AlertDialog.Builder(GalePressApplication.getInstance().getCurrentActivity());
                                         alertDialog.setTitle(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.UYARI));
-                                        alertDialog.setMessage(activity.getString(R.string.subscription_finish));
-
-                                        alertDialog.setPositiveButton(activity.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                                        alertDialog.setMessage(GalePressApplication.getInstance().getCurrentActivity().getString(R.string.subscription_finish));
+                                        alertDialog.setPositiveButton(GalePressApplication.getInstance().getCurrentActivity().getString(R.string.OK), new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int which) {
                                                 dialog.dismiss();
                                             }
@@ -1888,7 +1890,10 @@ public class DataApi extends Object {
                             * Eger kullanicinin aboneligi varsa ama servisten abonelik false gelmisse
                             * Kullanicinin aboneliginin sonladigi icin bilgilendirme yapiliyor.
                             * */
-                            if(GalePressApplication.getInstance().isUserHaveActiveSubscription() && !response.getBoolean("ActiveSubscription")) {
+                            if(GalePressApplication.getInstance().getUserInformation() != null
+                                    && GalePressApplication.getInstance().getUserInformation().getAccessToken() != null
+                                    && GalePressApplication.getInstance().getUserInformation().getAccessToken().length() != 0
+                                    && GalePressApplication.getInstance().isUserHaveActiveSubscription() && !response.getBoolean("ActiveSubscription")) {
                                 if(GalePressApplication.getInstance().getCurrentActivity() != null) {
                                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(GalePressApplication.getInstance().getCurrentActivity());
                                     alertDialog.setTitle(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.UYARI));

@@ -197,14 +197,14 @@
     <string name="subscription_owned">Abonnement besaß bereits.</string>
     <string name="subscription_type_owned">%1$s abonnement besaß bereits.</string>
 
-    <string name="WEEK">Wöchentlich</string>
-    <string name="MONTH">Monatlich</string>
-    <string name="YEAR">Jährlich</string>
-    <string name="select_subscription">Bitte wählen sie abonnement</string>
-	<string name="login_warning_inapp_billing">Bitte melden Sie sich an, um kaufen...</string>
-	<string name="purchase_validation_checking">Kauf Validierung...</string>
-	<string name="purchase_validation_fail">Kauf Validierung fehlgeschlagen</string>
-	<string name="purchase_validation_success">Kauf Validierung erfolgreich</string>
+	<string name="WEEK">Wöchentlich</string>
+	<string name="MONTH">Monatlich</string>
+	<string name="YEAR">Jährlich</string>
+	<string name="select_subscription">Bitte wählen sie abonnement</string>
+	<string name="login_warning_inapp_billing">Zum Kauf bitte anmelden...</string>
+	<string name="purchase_validation_checking">Kauf-Validierung...</string>
+	<string name="purchase_validation_fail">Kauf-Validierung fehlgeschlagen</string>
+	<string name="purchase_validation_success">Kauf-Validierung erfolgreich</string>
 	<string name="subscription_finish">Ihr Abonnement ist abgelaufen.</string>
 
 </resources>

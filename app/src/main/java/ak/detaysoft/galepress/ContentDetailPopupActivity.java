@@ -451,7 +451,7 @@ public class ContentDetailPopupActivity extends Activity{
 
         if(content.isBuyable()) {
             if(content.isContentBought() || GalePressApplication.getInstance().isUserHaveActiveSubscription()) {
-                downloadButton.init(CustomDownloadButton.RESTORE_PURCHASED, "");
+                downloadButton.init(CustomDownloadButton.RESTORE_PURCHASED_DOWNLOAD, "");
             } else {
                 AsyncTask<Void, Void ,String> getPrice = new AsyncTask<Void, Void, String>() {
 

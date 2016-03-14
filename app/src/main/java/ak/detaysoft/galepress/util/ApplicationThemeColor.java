@@ -2,6 +2,7 @@ package ak.detaysoft.galepress.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
@@ -264,6 +265,36 @@ public class ApplicationThemeColor {
         } else {
             return Color.parseColor("#E9E9E9"); //Dark Theme
         }
+    }
+
+    public ColorStateList createdownloadButtonPriceColorStateList(){
+        int[][] states = new int[][] {
+                new int[] {android.R.attr.state_pressed},
+                new int[] {android.R.attr.state_focused},
+                new int[] {android.R.attr.state_selected},
+                new int [] {}
+        };
+
+        int[] colors;
+
+        if(getInstance().themeType == LIGHT_THEME_TYPE){
+            colors = new int[] {
+                    Color.parseColor("#E9E9E9"),
+                    Color.parseColor("#E9E9E9"),
+                    Color.parseColor("#E9E9E9"),
+                    Color.parseColor("#333333")
+            };
+        } else {
+            colors = new int[] {
+                    Color.parseColor("#333333"),
+                    Color.parseColor("#333333"),
+                    Color.parseColor("#333333"),
+                    Color.parseColor("#E9E9E9")
+            };
+        }
+
+        ColorStateList myList = new ColorStateList(states, colors);
+        return myList;
     }
 
     //icerikler indirilirken cikan progresslerin background color
