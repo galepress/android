@@ -1540,6 +1540,9 @@ public class DataApi extends Object {
                                 }
                             } else {
                                 if(remoteContent.isForceDelete()){
+                                    /*
+                                    * Buraya contentbought kontrolu yapilip eger contentBought true ise silinmicek
+                                    * */
                                     deleteContent(localContent);
                                 } else {
                                     localContent.updateWithRemoteContent(remoteContent);
@@ -1885,22 +1888,17 @@ public class DataApi extends Object {
                             * Eger kullanicinin aboneligi varsa ama servisten abonelik false gelmisse
                             * Kullanicinin aboneliginin sonladigi icin bilgilendirme yapiliyor.
                             * */
-                            if(GalePressApplication.getInstance().isUserHaveActiveSubscription()) {
-                                if(!response.getBoolean("ActiveSubscription")) {
-
-                                    if(GalePressApplication.getInstance().getCurrentActivity() != null) {
-                                        AlertDialog.Builder alertDialog = new AlertDialog.Builder(GalePressApplication.getInstance().getCurrentActivity());
-                                        alertDialog.setTitle(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.UYARI));
-                                        alertDialog.setMessage(GalePressApplication.getInstance().getCurrentActivity().getString(R.string.subscription_finish));
-                                        alertDialog.setPositiveButton(GalePressApplication.getInstance().getCurrentActivity().getString(R.string.OK), new DialogInterface.OnClickListener() {
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                dialog.dismiss();
-                                            }
-                                        });
-                                        alertDialog.show();
-                                    }
-
-
+                            if(GalePressApplication.getInstance().isUserHaveActiveSubscription() && !response.getBoolean("ActiveSubscription")) {
+                                if(GalePressApplication.getInstance().getCurrentActivity() != null) {
+                                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(GalePressApplication.getInstance().getCurrentActivity());
+                                    alertDialog.setTitle(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.UYARI));
+                                    alertDialog.setMessage(GalePressApplication.getInstance().getCurrentActivity().getString(R.string.subscription_finish));
+                                    alertDialog.setPositiveButton(GalePressApplication.getInstance().getCurrentActivity().getString(R.string.OK), new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                        }
+                                    });
+                                    alertDialog.show();
                                 }
                             }
 
@@ -1924,7 +1922,7 @@ public class DataApi extends Object {
                                     for (R_Content content : RAppContents.getContents()) {
                                         L_Content localContent = getDatabaseApi().getContent(content.getContentID());
                                         if(content.isForceDelete()){
-                                            if (localContent != null) {
+                                            if (localContent != null && !localContent.isContentBought()) {
                                                 removeAllConCatsForContent(localContent);
                                                 deleteContent(localContent);
                                             }
@@ -1950,7 +1948,7 @@ public class DataApi extends Object {
                                 for (R_Content content : RAppContents.getContents()) {
                                     L_Content localContent = getDatabaseApi().getContent(content.getContentID());
                                     if(content.isForceDelete()){
-                                        if (localContent != null) {
+                                        if (localContent != null && !localContent.isContentBought()) {
                                             removeAllConCatsForContent(localContent);
                                             deleteContent(localContent);
                                         }

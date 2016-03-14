@@ -198,7 +198,10 @@ public class CustomThumnailAdapter extends ArrayAdapter<Object> {
         Bitmap lq = null;
         try {
             if (mCachedBitmapFile.exists() && mCachedBitmapFile.canRead()) {
-                lq = BitmapFactory.decodeFile(mCachedBitmapFilePath);
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+                options.inJustDecodeBounds = true;
+                lq = BitmapFactory.decodeFile(mCachedBitmapFilePath, options);
                 return lq;
             }
         } catch (Exception e) {

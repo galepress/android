@@ -44,6 +44,7 @@ public class CropAndShareActivity extends Activity {
         try {
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+            options.inJustDecodeBounds = true;
             bmp = BitmapFactory.decodeFile(GalePressApplication.getInstance().getFilesDir().getAbsolutePath()+File.separator+"capturedImage.png", options);
 
             int display_mode = getIntent().getIntExtra("displayMode", Configuration.ORIENTATION_PORTRAIT);

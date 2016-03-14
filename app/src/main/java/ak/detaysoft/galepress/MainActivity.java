@@ -123,9 +123,9 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     private RelativeLayout membershipTitleLayout;
     private ImageView membershipListViewCloseIcon;
 
-    private ImageView clearSearch;
+    private ImageView searchClear;
 
-    private LinearLayout leftLayout;
+    private LinearLayout leftMenuBaseLayout;
     private Button logoutButton;
 
     private ImageButton geriButton;
@@ -197,7 +197,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             }
         });
 
-        leftLayout = (LinearLayout)findViewById(R.id.left_menu_layout);
+        leftMenuBaseLayout = (LinearLayout)findViewById(R.id.left_menu_layout);
         categoriesTitleLayout = (RelativeLayout)findViewById(R.id.left_categories_layout);
         categoriesTitleLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -381,11 +381,11 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             public void afterTextChanged(Editable s) {
 
                 if(s.length() == 0) {
-                    clearSearch.setVisibility(View.GONE);
+                    searchClear.setVisibility(View.GONE);
                     ((ImageView)findViewById(R.id.left_menu_search_icon)).setVisibility(View.VISIBLE);
                 }
                 else {
-                    clearSearch.setVisibility(View.VISIBLE);
+                    searchClear.setVisibility(View.VISIBLE);
                     ((ImageView)findViewById(R.id.left_menu_search_icon)).setVisibility(View.GONE);
                 }
                 changeSearchViewColor(true);
@@ -418,8 +418,8 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         });
 
 
-        clearSearch = (ImageView)findViewById(R.id.left_menu_search_clear);
-        clearSearch.setOnClickListener(new View.OnClickListener() {
+        searchClear = (ImageView)findViewById(R.id.left_menu_search_clear);
+        searchClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 searchView.setText("");
@@ -543,7 +543,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     */
     public void invalidateActivityViewAndAdapter(boolean isColorChanged){
 
-        leftLayout.setBackgroundColor(ApplicationThemeColor.getInstance().getForegroundColor());
+        leftMenuBaseLayout.setBackgroundColor(ApplicationThemeColor.getInstance().getForegroundColor());
 
         //Kategori sekmesi
         categoriesTitleLayout.setBackgroundColor(Color.TRANSPARENT);
@@ -666,9 +666,9 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             ((ImageView)findViewById(R.id.left_menu_search_icon)).setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.PASSIVE_SEARCH_ICON));
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            clearSearch.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.SEARCH_CLEAR));
+            searchClear.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.SEARCH_CLEAR));
         else
-            clearSearch.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.SEARCH_CLEAR));
+            searchClear.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.SEARCH_CLEAR));
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
             menuButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.MENU_ICON));
@@ -1282,9 +1282,9 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             else
                 ((ImageView)findViewById(R.id.left_menu_search_icon)).setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.SEARCH_ICON));
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                clearSearch.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.SEARCH_CLEAR));
+                searchClear.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.SEARCH_CLEAR));
             else
-                clearSearch.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.SEARCH_CLEAR));
+                searchClear.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.SEARCH_CLEAR));
         } else {
             searchView.setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColorWithAlpha(50));
             searchView.setHintTextColor(ApplicationThemeColor.getInstance().getReverseThemeColorWithAlpha(50));
@@ -1297,9 +1297,9 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             else
                 ((ImageView)findViewById(R.id.left_menu_search_icon)).setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.PASSIVE_SEARCH_ICON));
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                clearSearch.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.PASSIVE_SEARCH_CLEAR_ICON));
+                searchClear.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.PASSIVE_SEARCH_CLEAR_ICON));
             else
-                clearSearch.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.PASSIVE_SEARCH_CLEAR_ICON));
+                searchClear.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.PASSIVE_SEARCH_CLEAR_ICON));
         }
     }
 

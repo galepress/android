@@ -205,8 +205,10 @@ public class ThumbnailListAdapter extends BaseAdapter {
         Bitmap lq = null;
         try {
             if (mCachedBitmapFile.exists() && mCachedBitmapFile.canRead()) {
-                Log.d(TAG, "page " + position + " found in cache");
-                lq = BitmapFactory.decodeFile(mCachedBitmapFilePath);
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+                options.inJustDecodeBounds = true;
+                lq = BitmapFactory.decodeFile(mCachedBitmapFilePath, options);
                 return lq;
             }
         } catch (Exception e) {
