@@ -1930,6 +1930,7 @@ public class DataApi extends Object {
                                             if (localContent != null && !localContent.isContentBought()) {
                                                 removeAllConCatsForContent(localContent);
                                                 deleteContent(localContent);
+                                                numberOfContentWillBeUpdated++;
                                             }
                                         } else {
                                             if (GalePressApplication.getInstance().isTestApplication() || (content.getContentStatus() && !content.getContentBlocked())) {
@@ -1956,6 +1957,7 @@ public class DataApi extends Object {
                                         if (localContent != null && !localContent.isContentBought()) {
                                             removeAllConCatsForContent(localContent);
                                             deleteContent(localContent);
+                                            numberOfContentWillBeUpdated++;
                                         }
                                     } else {
                                         if (GalePressApplication.getInstance().isTestApplication() || (content.getContentStatus() && !content.getContentBlocked())) {

@@ -685,8 +685,18 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
         invalidateTabBars(isColorChanged);
 
-        if(getLibraryFragment() != null && getLibraryFragment().gridview != null)
+        /*
+        * forceDelete ile silinen yada pasif hale getirilen icerikler oldugunda gridi update etmek icin yazdim(MG)
+        * */
+        if(getLibraryFragment() != null && getLibraryFragment().gridview != null) {
             getLibraryFragment().gridview.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
+            getLibraryFragment().getContentHolderAdapter().notifyDataSetChanged();
+        }
+
+        if(getDownloadedLibraryFragment() != null && getDownloadedLibraryFragment().gridview != null) {
+            getDownloadedLibraryFragment().gridview.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
+            getDownloadedLibraryFragment().getContentHolderAdapter().notifyDataSetChanged();
+        }
 
         ileriButton = (ImageButton) findViewById(R.id.main_webview_ileri_button);
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)

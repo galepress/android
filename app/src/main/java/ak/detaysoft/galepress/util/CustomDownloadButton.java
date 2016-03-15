@@ -107,11 +107,6 @@ public class CustomDownloadButton extends RelativeLayout{
 
         this.addView(arrowIcon);
 
-
-        if(this.type == FREE_DOWNLOAD || type == RESTORE_PURCHASED_DOWNLOAD){
-
-        }
-
         downloadIcon = new ImageView(context);
         RelativeLayout.LayoutParams downloadIconParams;
         if(this.type == FREE_DOWNLOAD){

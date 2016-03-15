@@ -172,9 +172,13 @@ public class LibraryFragment extends Fragment {
         //Ilk secilen kategori genel oldugu icin ilk create sirasinda listeye eklendi (MG)
         if(selectedCategories == null) {
             selectedCategories = new ArrayList<L_Category>();
-            if(GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent() != null && GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent().size() > 0) {
-                selectedCategory = (L_Category)GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent().get(0);
-                selectedCategories.add(selectedCategory);
+            if(isOnlyDownloaded && ((MainActivity)getActivity()).getLibraryFragment() != null && ((MainActivity)getActivity()).getLibraryFragment().getSelectedCategories() != null) {
+                selectedCategories.addAll(((MainActivity)getActivity()).getLibraryFragment().getSelectedCategories());
+            } else {
+                if(GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent() != null && GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent().size() > 0) {
+                    selectedCategory = (L_Category)GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent().get(0);
+                    selectedCategories.add(selectedCategory);
+                }
             }
         }
 
@@ -361,5 +365,9 @@ public class LibraryFragment extends Fragment {
             selectedCategories.add(selectedCategory);
             updateGridView();
         }
+    }
+
+    public ArrayList<L_Category> getSelectedCategories() {
+        return selectedCategories;
     }
 }
