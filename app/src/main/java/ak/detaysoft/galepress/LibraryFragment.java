@@ -172,6 +172,10 @@ public class LibraryFragment extends Fragment {
         //Ilk secilen kategori genel oldugu icin ilk create sirasinda listeye eklendi (MG)
         if(selectedCategories == null) {
             selectedCategories = new ArrayList<L_Category>();
+
+            /*
+            * Uygulama ilk acildiginda indirilenler sekmesi acilmadan kategori secimi yapilirsa indirilenler sekmesinin selectedCategories duzenlendi.
+            * */
             if(isOnlyDownloaded && ((MainActivity)getActivity()).getLibraryFragment() != null && ((MainActivity)getActivity()).getLibraryFragment().getSelectedCategories() != null) {
                 selectedCategories.addAll(((MainActivity)getActivity()).getLibraryFragment().getSelectedCategories());
             } else {
@@ -328,7 +332,7 @@ public class LibraryFragment extends Fragment {
             intent.putExtra("content", content);
             intent.setAction(Intent.ACTION_VIEW);
             intent.setData(uri);
-            startActivityForResult(intent, 101);
+            getActivity().startActivityForResult(intent, 101);
             GalePressApplication.getInstance().getDataApi().updateApplication();
         }
     }
@@ -342,7 +346,7 @@ public class LibraryFragment extends Fragment {
             intent.putExtra("content", content);
             intent.putExtra("animationStartX", 0.5f);
             intent.putExtra("animationStartY", 0.5f);
-            startActivity(intent);
+            getActivity().startActivityForResult(intent, 103);
             GalePressApplication.getInstance().getDataApi().updateApplication();
         }
     }

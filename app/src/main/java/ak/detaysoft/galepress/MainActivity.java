@@ -281,7 +281,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                         linksListViewCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
                     else
                         linksListViewCloseIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
-
                 } else {
                     linksListView.setVisibility(View.VISIBLE);
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
@@ -289,7 +288,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                     else
                         linksListViewCloseIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_UP));
                 }
-
             }
         });
 
@@ -1379,24 +1377,35 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 GalePressApplication.getInstance().prepareSubscriptions(null);
             }
 
-        } else {
-            if (resultCode == 101) { //reader view return
+        } else if (requestCode == 101) { //reader view return
+            if(resultCode == 101) {
                 selectedReaderTabIndex = data.getIntExtra("SelectedTab", 0);
-            } else if (resultCode == 102) { //Login return
-                membershipAdapter.notifyDataSetChanged();
-                LayoutInflater mInflater = (LayoutInflater) getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-                View membershipListItemView = mInflater.inflate(R.layout.left_menu_membership_item, null);
-                membershipListItemView.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
-                int listHeight = 0;
-                for (int i = 0; i < GalePressApplication.getInstance().getMembershipMenuList().size(); i++) {
-                    listHeight += membershipListItemView.getMeasuredHeight();
-                }
-                membershipListView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listHeight));
-                membershipListView.invalidate();
-
-                getLibraryFragment().updateGridView();
+            }
+        } else if (requestCode == 102) { //Login return
+            if(resultCode == 102) {
+                updateMembership();
+            }
+        } else if (requestCode == 103) { //contentdetailactivity ekraninda kullanici login degilse kullaniciyi logine gönderiyoruz
+            if(resultCode == 103) {
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivityForResult(intent, 102);
             }
         }
+    }
+
+    public void updateMembership(){
+        membershipAdapter.notifyDataSetChanged();
+        LayoutInflater mInflater = (LayoutInflater) getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+        View membershipListItemView = mInflater.inflate(R.layout.left_menu_membership_item, null);
+        membershipListItemView.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+        int listHeight = 0;
+        for (int i = 0; i < GalePressApplication.getInstance().getMembershipMenuList().size(); i++) {
+            listHeight += membershipListItemView.getMeasuredHeight();
+        }
+        membershipListView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listHeight));
+        membershipListView.invalidate();
+
+        getLibraryFragment().updateGridView();
     }
 
     @Override

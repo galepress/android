@@ -320,6 +320,12 @@ public class ContentDetailPopupActivity extends Activity{
                                 //Giris yapin uyarisi
                                 Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.login_warning_inapp_billing), Toast.LENGTH_SHORT)
                                         .show();
+                                /*
+                                * Mainactivity onActivityResult da logine yonlendirme yapacagiz
+                                * */
+                                Intent intent = ContentDetailPopupActivity.this.getIntent();
+                                setResult(103, intent);
+                                finish();
                             }
                         }
                     } else {
@@ -495,7 +501,7 @@ public class ContentDetailPopupActivity extends Activity{
                                     }
 
                                 }
-                            } catch (RemoteException e) {
+                            } catch (Exception e) {
                                 e.printStackTrace();
                                 price = "";
                             }
@@ -511,8 +517,10 @@ public class ContentDetailPopupActivity extends Activity{
                         super.onPostExecute(s);
                         if(s.compareTo("") != 0)
                             downloadButton.getPriceTextView().setText(s);
-                        else
+                        else {
+                            Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.product_price_error), Toast.LENGTH_SHORT).show();
                             downloadButton.getPriceTextView().setText(content.getPrice());
+                        }
                         downloadButton.invalidate();
                     }
                 };
@@ -596,6 +604,7 @@ public class ContentDetailPopupActivity extends Activity{
                     public void onAnimationEnd(Animation animation) {
                         GalePressApplication.getInstance().setContentDetailPopupActivity(null);
                         finish();
+
                     }
 
                     @Override

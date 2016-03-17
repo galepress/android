@@ -867,7 +867,6 @@ public abstract class PageView extends ViewGroup {
 					mSearchView.invalidate();
 				}
 			};
-
 			mGetText.execute();
 		}
 	}

@@ -69,7 +69,7 @@ public class HomeFragment extends Fragment {
             intent.putExtra("isHomeOpen", true);
             intent.setAction(Intent.ACTION_VIEW);
             intent.setData(uri);
-            startActivityForResult(intent, 101);
+            getActivity().startActivityForResult(intent, 101);
         } else {
 
         }
