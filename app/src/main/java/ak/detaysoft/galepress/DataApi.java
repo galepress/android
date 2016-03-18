@@ -2066,6 +2066,13 @@ public class DataApi extends Object {
                             if (r_appVersion.getApplicationVersion() != null && application.getVersion() != null) {
                                 if (application.getVersion() < r_appVersion.getApplicationVersion()) {
                                     getRemoteAppCategories();
+                                } else if(application.getVersion() > r_appVersion.getApplicationVersion()) {
+                                    /*
+                                    * kullanici bazli app version tutuldugu icin kullanici logout olursa local version, remote versiondan buyuk olabiliyor.
+                                    * */
+                                    application.setVersion(r_appVersion.getApplicationVersion());
+                                    getDatabaseApi().updateApplication(application);
+                                    getRemoteAppCategories();
                                 }
                             }
                             Logout.e("Adem","DECREMENT"); GalePressApplication.getInstance().decrementRequestCount();

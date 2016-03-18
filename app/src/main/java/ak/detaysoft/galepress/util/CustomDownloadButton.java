@@ -62,10 +62,11 @@ public class CustomDownloadButton extends RelativeLayout{
         if(this.type == PURCHASE_DOWNLOAD){
             priceTextView  = new TextView(context);
             RelativeLayout.LayoutParams priceParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.MATCH_PARENT);
+            priceParams.setMargins(0,0,5,0);
             priceParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
             priceTextView.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(context));
             priceTextView.setTextColor(ApplicationThemeColor.getInstance().createdownloadButtonPriceColorStateList());
-            priceTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, context.getResources().getDimension(R.dimen.content_popup_small_textsize));
+            priceTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, context.getResources().getDimension(R.dimen.content_popup_large_textsize));
             priceTextView.setId(R.id.price_text);
             priceTextView.setLayoutParams(priceParams);
             priceTextView.setBackgroundColor(Color.TRANSPARENT);
@@ -79,15 +80,16 @@ public class CustomDownloadButton extends RelativeLayout{
         if(this.type == FREE_DOWNLOAD){
             arrowIconParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
             arrowIconParams.addRule(RelativeLayout.ALIGN_TOP);
-        } else if(this.type == PURCHASE_DOWNLOAD){
+        } else if(this.type == RESTORE_PURCHASED_DOWNLOAD){
+            arrowIconParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
+            arrowIconParams.addRule(RelativeLayout.ALIGN_TOP);
+        } else {
             arrowIconParams = new RelativeLayout.LayoutParams(defaultWith,LayoutParams.MATCH_PARENT);
             arrowIconParams.setMargins(0, 0, -5, 0);
             arrowIconParams.addRule(RelativeLayout.LEFT_OF, priceTextView.getId());
-        } else {
-            arrowIconParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
-            arrowIconParams.addRule(RelativeLayout.ALIGN_TOP);
         }
         arrowIcon.setLayoutParams(arrowIconParams);
+
         if(this.type == FREE_DOWNLOAD){
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 arrowIcon.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_FREE_ARROW));
@@ -98,12 +100,12 @@ public class CustomDownloadButton extends RelativeLayout{
                 arrowIcon.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_CLOUD_ARROW));
             else
                 arrowIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_CLOUD_ARROW));
-        } else {
+        } /*else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 arrowIcon.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_FREE_ARROW));
             else
                 arrowIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_FREE_ARROW));
-        }
+        }*/
 
         this.addView(arrowIcon);
 
@@ -112,28 +114,33 @@ public class CustomDownloadButton extends RelativeLayout{
         if(this.type == FREE_DOWNLOAD){
             downloadIconParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
             downloadIconParams.addRule(RelativeLayout.ALIGN_TOP);
-        } else if(this.type == PURCHASE_DOWNLOAD){
+        } else if(this.type == RESTORE_PURCHASED_DOWNLOAD){
+            downloadIconParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
+            downloadIconParams.addRule(RelativeLayout.ALIGN_TOP);
+        } else {
             downloadIconParams = new RelativeLayout.LayoutParams(defaultWith,LayoutParams.MATCH_PARENT);
             downloadIconParams.setMargins(0, 0, -5, 0);
             downloadIconParams.addRule(RelativeLayout.LEFT_OF, priceTextView.getId());
-        } else {
-            downloadIconParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
-            downloadIconParams.addRule(RelativeLayout.ALIGN_TOP);
         }
         downloadIcon.setLayoutParams(downloadIconParams);
 
 
-        if(this.type == FREE_DOWNLOAD ||this.type == PURCHASE_DOWNLOAD){
+        if(this.type == FREE_DOWNLOAD){
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 downloadIcon.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_FREE));
             else
                 downloadIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_FREE));
-        } else {
+        } else if(this.type == RESTORE_PURCHASED_DOWNLOAD){
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 downloadIcon.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_CLOUD));
             else
                 downloadIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_CLOUD));
-        }
+        } /*else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                downloadIcon.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_FREE));
+            else
+                downloadIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_FREE));
+        }*/
         this.addView(downloadIcon);
 
     }
@@ -187,19 +194,21 @@ public class CustomDownloadButton extends RelativeLayout{
             }
         });
 
-        if(type == PURCHASE_DOWNLOAD){
+        if(type == RESTORE_PURCHASED_DOWNLOAD){
             arrowIcon.startAnimation(moveDown);
-        } else if(type == RESTORE_PURCHASED_DOWNLOAD){
-            arrowIcon.startAnimation(moveDown);
-        } else {
+        } else if(type == FREE_DOWNLOAD){
             arrowIcon.startAnimation(moveUp);
-        }
+        } /*else if(type == PURCHASE_DOWNLOAD){
+            arrowIcon.startAnimation(moveDown);
+        }*/
 
 
     }
 
     public void stopAnim(){
         arrowIcon.clearAnimation();
+        if(priceTextView != null)
+            priceTextView.setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
     }
 
     public TextView getPriceTextView() {
