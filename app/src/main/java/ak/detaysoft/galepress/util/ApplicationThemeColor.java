@@ -267,7 +267,37 @@ public class ApplicationThemeColor {
         }
     }
 
-    public ColorStateList createdownloadButtonPriceColorStateList(){
+    public ColorStateList downloadButtonPriceColorStateList(){
+        int[][] states = new int[][] {
+                new int[] {android.R.attr.state_pressed},
+                new int[] {android.R.attr.state_focused},
+                new int[] {android.R.attr.state_selected},
+                new int [] {}
+        };
+
+        int[] colors;
+
+        if(getInstance().themeType == LIGHT_THEME_TYPE){
+            colors = new int[] {
+                    Color.parseColor("#E9E9E9"),
+                    Color.parseColor("#E9E9E9"),
+                    Color.parseColor("#E9E9E9"),
+                    Color.parseColor("#333333")
+            };
+        } else {
+            colors = new int[] {
+                    Color.parseColor("#333333"),
+                    Color.parseColor("#333333"),
+                    Color.parseColor("#333333"),
+                    Color.parseColor("#E9E9E9")
+            };
+        }
+
+        ColorStateList myList = new ColorStateList(states, colors);
+        return myList;
+    }
+
+    public ColorStateList leftmenuListViewColorStateList(){
         int[][] states = new int[][] {
                 new int[] {android.R.attr.state_pressed},
                 new int[] {android.R.attr.state_focused},
@@ -857,6 +887,81 @@ public class ApplicationThemeColor {
                 pressed = context.getResources().getDrawable(R.drawable.popup_download_bg_dark);
             }
         }
+
+        return new StateListDrawableForPopupButtons(normal, pressed);
+    }
+
+
+    public Drawable getLeftMenuIconDrawable(Context context, int resourceType) {
+
+        Drawable normal;
+        Drawable pressed;
+
+        if(resourceType == FACEBOOK_ICON){
+            normal = context.getResources().getDrawable(R.drawable.facebook);
+            pressed = context.getResources().getDrawable(R.drawable.facebook);
+        }else if(resourceType == TWITTER_ICON){
+
+            normal = context.getResources().getDrawable(R.drawable.twitter);
+            pressed = context.getResources().getDrawable(R.drawable.twitter);
+        } else if(resourceType == INSTAGRAM_ICON){
+
+            normal = context.getResources().getDrawable(R.drawable.instagram);
+            pressed = context.getResources().getDrawable(R.drawable.instagram);
+        } else if(resourceType == LINKEDIN_ICON){
+
+            normal = context.getResources().getDrawable(R.drawable.linkedin);
+            pressed = context.getResources().getDrawable(R.drawable.linkedin);
+        } else if(resourceType == WEB_ICON){
+
+            normal = context.getResources().getDrawable(R.drawable.web);
+            pressed = context.getResources().getDrawable(R.drawable.web);
+        } else if(resourceType == MAIL_ICON){
+
+            normal = context.getResources().getDrawable(R.drawable.mail);
+            pressed = context.getResources().getDrawable(R.drawable.mail);
+
+        } else if(resourceType == GOOGLE_PLUS_ICON){
+
+            normal = context.getResources().getDrawable(R.drawable.google_plus);
+            pressed = context.getResources().getDrawable(R.drawable.google_plus);
+        } else if(resourceType == PINTEREST_ICON){
+
+            normal = context.getResources().getDrawable(R.drawable.pinterest);
+            pressed = context.getResources().getDrawable(R.drawable.pinterest);
+
+        } else if(resourceType == TUMBLR_ICON){
+
+            if(getInstance().themeType == DARK_THEME_TYPE){
+                normal = context.getResources().getDrawable(R.drawable.tumblr);
+                pressed = context.getResources().getDrawable(R.drawable.tumblr);
+            } else {
+                normal = context.getResources().getDrawable(R.drawable.tumblr);
+                pressed = context.getResources().getDrawable(R.drawable.tumblr);
+            }
+        } else if(resourceType == YOUTUBE_ICON){
+
+            normal = context.getResources().getDrawable(R.drawable.youtube);
+            pressed = context.getResources().getDrawable(R.drawable.youtube);
+        } else if(resourceType == MEMBERSHIP_LOGIN){
+
+            normal = context.getResources().getDrawable(R.drawable.membership_login);
+            pressed = context.getResources().getDrawable(R.drawable.membership_login);
+        }else if(resourceType == MEMBERSHIP_LOGIN){
+
+            normal = context.getResources().getDrawable(R.drawable.membership_restore);
+            pressed = context.getResources().getDrawable(R.drawable.membership_restore);
+        }else if(resourceType == MEMBERSHIP_LOGIN){
+
+            normal = context.getResources().getDrawable(R.drawable.membership_subscription);
+            pressed = context.getResources().getDrawable(R.drawable.membership_subscription);
+        } else { //membership logout
+            normal = context.getResources().getDrawable(R.drawable.membership_logout);
+            pressed = context.getResources().getDrawable(R.drawable.membership_logout);
+        }
+
+        normal.setColorFilter(getThemeColorFilter());
+        pressed.setColorFilter(getReverseThemeColorFilter());
 
         return new StateListDrawableForPopupButtons(normal, pressed);
     }

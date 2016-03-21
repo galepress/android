@@ -36,76 +36,118 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ContentDetailPopupActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java">
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="693" column="17" selection-start-line="693" selection-start-column="17" selection-end-line="693" selection-end-column="17" />
-              <folding>
-                <element signature="method#initDownloadButton#0;class#ContentDetailPopupActivity#0" expanded="false" />
-                <element signature="method#displayImage#0;class#ContentDetailPopupActivity#0" expanded="false" />
-                <element signature="method#finishActivityWithAnimation#0;class#ContentDetailPopupActivity#0" expanded="false" />
-                <element signature="method#onSaveInstanceState#0;class#ContentDetailPopupActivity#0" expanded="false" />
-                <element signature="method#onKeyDown#0;class#ContentDetailPopupActivity#0" expanded="false" />
-                <element signature="method#update#0;class#ContentDetailPopupActivity#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application.plist" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/raw/application.plist">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+            <state vertical-scroll-proportion="-14.481482">
+              <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataApi.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java">
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3646409">
-              <caret line="2066" column="53" selection-start-line="2066" selection-start-column="53" selection-end-line="2066" selection-end-column="53" />
+            <state vertical-scroll-proportion="-2.5185184">
+              <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="623" column="78" selection-start-line="623" selection-start-column="78" selection-end-line="623" selection-end-column="78" />
               <folding>
-                <element signature="method#deleteContent#0;class#DataApi#0" expanded="false" />
-                <element signature="method#getErrorMessageFromXMLFile#0;class#DataApi#0" expanded="false" />
-                <element signature="e#123845#123913#0" expanded="true" />
-                <element signature="e#124105#124541#0" expanded="true" />
-                <element signature="e#124333#124401#0" expanded="true" />
-                <element signature="e#124540#124541#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#12824#14391#0" expanded="true" />
+                <element signature="e#14390#14391#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CustomDownloadButton.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/CustomDownloadButton.java">
+      <file leaf-file-name="LeftMenuSocialAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuSocialAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="143" column="23" selection-start-line="143" selection-start-column="23" selection-end-line="143" selection-end-column="23" />
+              <caret line="69" column="68" selection-start-line="69" selection-start-column="68" selection-end-line="69" selection-end-column="68" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LeftMenuMembershipAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuMembershipAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="70" column="22" selection-start-line="70" selection-start-column="22" selection-end-line="70" selection-end-column="22" />
               <folding>
-                <element signature="e#2807#2880#0" expanded="true" />
-                <element signature="method#startAnim#0;class#CustomDownloadButton#0" expanded="false" />
-                <element signature="e#8432#8433#0" expanded="true" />
-                <element signature="e#8498#8499#0" expanded="true" />
+                <element signature="e#1974#2008#0" expanded="true" />
+                <element signature="e#2546#2582#0" expanded="true" />
+                <element signature="e#3129#3167#0" expanded="true" />
+                <element signature="e#3718#3753#0" expanded="true" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="left_menu_membership_item.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/left_menu_membership_item.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6455696">
+              <caret line="24" column="36" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
+              <folding>
+                <element signature="e#758#786#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="ApplicationThemeColor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/ApplicationThemeColor.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-12.862069">
+              <caret line="965" column="41" selection-start-line="965" selection-start-column="41" selection-end-line="965" selection-end-column="41" />
+              <folding>
+                <element signature="method#downloadButtonPriceColorStateList#0;class#ApplicationThemeColor#0" expanded="false" />
+                <element signature="method#paintIcons#0;class#ApplicationThemeColor#0" expanded="false" />
+                <element signature="method#paintRemoteIcon#0;class#ApplicationThemeColor#0" expanded="false" />
+                <element signature="method#getContentActionButtonsDrawable#0;class#ApplicationThemeColor#0" expanded="false" />
+                <element signature="method#getLoginButtonDrawable#0;class#ApplicationThemeColor#0" expanded="false" />
+                <element signature="method#getPopupLoginButtonDrawable#0;class#ApplicationThemeColor#0" expanded="false" />
+                <element signature="method#getLogoutButtonDrawable#0;class#ApplicationThemeColor#0" expanded="false" />
+                <element signature="method#getCropPageButtonDrawable#0;class#ApplicationThemeColor#0" expanded="false" />
+                <element signature="method#getPopupButtonDrawable#0;class#ApplicationThemeColor#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StateListDrawableForPopupButtons.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/StateListDrawableForPopupButtons.java">
+          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="281" column="42" selection-start-line="281" selection-start-column="42" selection-end-line="281" selection-end-column="42" />
+              <caret line="14" column="71" selection-start-line="14" selection-start-column="71" selection-end-line="14" selection-end-column="71" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="GradleLocalSettings">
     <option name="availableProjects">
@@ -2604,7 +2646,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="D:\GalepressMerge" value="7282151837119" />
+        <entry key="D:\GalepressMerge" value="7283883864947" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -3203,14 +3245,11 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuCategoryAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_crop_and_share.xml" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LaunchActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ViewerLoginActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-tr/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GCMIntentService.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/AK_WebViewClient.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageView.java" />
         <option value="$PROJECT_DIR$/app/src/main/assets/InappBillingBilgiler" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_Content.java" />
@@ -3222,7 +3261,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/ThumbnailListAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentHolderAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-de/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/ApplicationThemeColor.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PageView.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
@@ -3232,8 +3270,18 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/CustomDownloadButton.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/raw/application.plist" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/left_menu.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuMembershipAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuSocialAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/ApplicationThemeColor.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/raw/application.plist" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/custom_models/PlistExtras.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/StateListDrawableForPopupButtons.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/left_menu_membership_item.xml" />
       </list>
     </option>
   </component>
@@ -3269,6 +3317,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scratches" />
       <pane id="AndroidView">
         <subPane>
@@ -3280,8 +3329,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -3394,6 +3441,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -3603,20 +3651,21 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.4978678" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Fabric" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2923077" sideWeight="0.32889125" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37252748" sideWeight="0.4067164" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2923077" sideWeight="0.32569295" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32967034" sideWeight="0.40191898" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26910827" sideWeight="0.4440242" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26813188" sideWeight="0.43976545" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37252748" sideWeight="0.5932836" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32967034" sideWeight="0.59808105" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -3632,7 +3681,6 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -3653,69 +3701,27 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java</url>
-          <line>238</line>
+          <url>file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java</url>
+          <line>334</line>
           <properties />
-          <option name="timeStamp" value="77" />
+          <option name="timeStamp" value="89" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java</url>
+          <line>325</line>
+          <properties />
+          <option name="timeStamp" value="90" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="89" />
+      <option name="time" value="91" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="app">
-        <watch expression="mLinks" />
-        <watch expression="mLinks.length" language="JAVA" custom="" />
+        <watch expression="((HashMap) extras[0]).keySet().toString()" language="JAVA" custom="" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_crop_and_share.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.5172415">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="22" selection-end-column="55" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.703704">
-          <caret line="77" column="34" selection-start-line="77" selection-start-column="34" selection-end-line="77" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/volley/toolbox/BasicNetwork.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="125" column="47" selection-start-line="125" selection-start-column="47" selection-end-line="125" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ViewerLoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="294" column="36" selection-start-line="294" selection-start-column="36" selection-end-line="294" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/custom_models/UserInformations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="24" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LaunchActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="46" column="43" selection-start-line="46" selection-start-column="43" selection-end-line="46" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/popup_cancel_dark.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -3730,14 +3736,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.9748428">
           <caret line="357" column="118" selection-start-line="357" selection-start-column="118" selection-end-line="357" selection-end-column="118" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33278418">
-          <caret line="29" column="58" selection-start-line="29" selection-start-column="54" selection-end-line="29" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3815,17 +3813,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/left_menu.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14480409">
-          <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.j256.ormlite/ormlite-core/4.45/b4e2ced3a336685b43133f6f3f9206ea473b003a/ormlite-core-4.45-sources.jar!/com/j256/ormlite/table/TableUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.58116883">
@@ -3851,13 +3838,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="203" column="35" selection-start-line="203" selection-start-column="35" selection-end-line="203" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/ThumbnailListAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0551949">
-          <caret line="222" column="38" selection-start-line="222" selection-start-column="38" selection-end-line="222" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -3912,14 +3892,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2324786">
-          <caret line="53" column="51" selection-start-line="53" selection-start-column="51" selection-end-line="53" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PageView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3932,70 +3904,6 @@
         <state vertical-scroll-proportion="-5.793103">
           <caret line="146" column="28" selection-start-line="146" selection-start-column="28" selection-end-line="146" selection-end-column="28" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="999" column="55" selection-start-line="999" selection-start-column="55" selection-end-line="999" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#11908#11909#0" expanded="false" />
-            <element signature="e#11948#11949#0" expanded="false" />
-            <element signature="e#12111#12112#0" expanded="false" />
-            <element signature="e#12170#12171#0" expanded="false" />
-            <element signature="e#13782#13783#0" expanded="false" />
-            <element signature="e#13814#13815#0" expanded="false" />
-            <element signature="e#18661#18662#0" expanded="false" />
-            <element signature="e#18702#18703#0" expanded="false" />
-            <element signature="e#19000#19001#0" expanded="false" />
-            <element signature="e#19046#19047#0" expanded="false" />
-            <element signature="e#19383#19384#0" expanded="false" />
-            <element signature="e#19428#19429#0" expanded="false" />
-            <element signature="e#19472#19473#0" expanded="false" />
-            <element signature="e#19510#19511#0" expanded="false" />
-            <element signature="e#21306#21307#0" expanded="false" />
-            <element signature="e#21341#21342#0" expanded="false" />
-            <element signature="e#21835#21836#0" expanded="false" />
-            <element signature="e#21889#21890#0" expanded="false" />
-            <element signature="e#21931#21932#0" expanded="false" />
-            <element signature="e#21983#21984#0" expanded="false" />
-            <element signature="e#22027#22028#0" expanded="false" />
-            <element signature="e#22065#22066#0" expanded="false" />
-            <element signature="e#22530#22531#0" expanded="false" />
-            <element signature="e#22565#22566#0" expanded="false" />
-            <element signature="e#22627#22628#0" expanded="false" />
-            <element signature="e#22675#22676#0" expanded="false" />
-            <element signature="method#setBannerLink#0;class#GalePressApplication#0" expanded="false" />
-            <element signature="method#getDeviceDensity#0;class#GalePressApplication#0" expanded="false" />
-            <element signature="method#setTabList#0;class#GalePressApplication#0" expanded="false" />
-            <element signature="method#getTabList#0;class#GalePressApplication#0" expanded="false" />
-            <element signature="e#27050#27051#0" expanded="false" />
-            <element signature="e#27086#27087#0" expanded="false" />
-            <element signature="e#27380#27381#0" expanded="false" />
-            <element signature="e#27427#27428#0" expanded="false" />
-            <element signature="e#28062#28063#0" expanded="false" />
-            <element signature="e#28093#28094#0" expanded="false" />
-            <element signature="e#28143#28144#0" expanded="false" />
-            <element signature="e#28178#28179#0" expanded="false" />
-            <element signature="e#28212#28213#0" expanded="false" />
-            <element signature="e#28242#28243#0" expanded="false" />
-            <element signature="method#getMD5EncryptedValue#0;class#GalePressApplication#0" expanded="false" />
-            <element signature="e#29296#29297#0" expanded="false" />
-            <element signature="e#29337#29338#0" expanded="false" />
-            <element signature="method#setMembershipMenuList#0;class#GalePressApplication#0" expanded="false" />
-            <element signature="method#prepareMemberShipList#0;class#GalePressApplication#0" expanded="false" />
-            <element signature="e#38728#38729#0" expanded="false" />
-            <element signature="e#38780#38781#0" expanded="false" />
-            <element signature="method#prepareSubscriptions#0;class#GalePressApplication#0" expanded="false" />
-            <element signature="e#48744#48745#0" expanded="false" />
-            <element signature="e#48782#48783#0" expanded="false" />
-            <element signature="e#48965#48966#0" expanded="false" />
-            <element signature="e#49001#49002#0" expanded="false" />
-            <element signature="e#49439#49440#0" expanded="false" />
-            <element signature="e#49488#49489#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -4078,14 +3986,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values-normal/dimens.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -4102,30 +4002,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/ApplicationThemeColor.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/ThumbnailListAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="281" column="42" selection-start-line="281" selection-start-column="42" selection-end-line="281" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.49656358">
+          <caret line="75" column="9" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/CustomDownloadButton.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="143" column="23" selection-start-line="143" selection-start-column="23" selection-end-line="143" selection-end-column="23" />
+        <state vertical-scroll-proportion="-3.1546392">
+          <caret line="2066" column="53" selection-start-line="2066" selection-start-column="53" selection-end-line="2066" selection-end-column="53" />
           <folding>
-            <element signature="e#2807#2880#0" expanded="true" />
-            <element signature="method#startAnim#0;class#CustomDownloadButton#0" expanded="false" />
-            <element signature="e#8432#8433#0" expanded="true" />
-            <element signature="e#8498#8499#0" expanded="true" />
+            <element signature="method#deleteContent#0;class#DataApi#0" expanded="false" />
+            <element signature="method#getErrorMessageFromXMLFile#0;class#DataApi#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/left_menu.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.689655">
+          <caret line="186" column="69" selection-start-line="186" selection-start-column="69" selection-end-line="186" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="1.1683849">
           <caret line="693" column="17" selection-start-line="693" selection-start-column="17" selection-end-line="693" selection-end-column="17" />
           <folding>
             <element signature="method#initDownloadButton#0;class#ContentDetailPopupActivity#0" expanded="false" />
@@ -4138,27 +4047,140 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/raw/application.plist">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/CustomDownloadButton.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+          <caret line="67" column="100" selection-start-line="67" selection-start-column="100" selection-end-line="67" selection-end-column="100" />
+          <folding>
+            <element signature="method#startAnim#0;class#CustomDownloadButton#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuMembershipAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="70" column="22" selection-start-line="70" selection-start-column="22" selection-end-line="70" selection-end-column="22" />
+          <folding>
+            <element signature="e#1974#2008#0" expanded="true" />
+            <element signature="e#2546#2582#0" expanded="true" />
+            <element signature="e#3129#3167#0" expanded="true" />
+            <element signature="e#3718#3753#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuSocialAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="69" column="68" selection-start-line="69" selection-start-column="68" selection-end-line="69" selection-end-column="68" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3646409">
-          <caret line="2066" column="53" selection-start-line="2066" selection-start-column="53" selection-end-line="2066" selection-end-column="53" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="623" column="78" selection-start-line="623" selection-start-column="78" selection-end-line="623" selection-end-column="78" />
           <folding>
-            <element signature="method#deleteContent#0;class#DataApi#0" expanded="false" />
-            <element signature="method#getErrorMessageFromXMLFile#0;class#DataApi#0" expanded="false" />
-            <element signature="e#123845#123913#0" expanded="true" />
-            <element signature="e#124105#124541#0" expanded="true" />
-            <element signature="e#124333#124401#0" expanded="true" />
-            <element signature="e#124540#124541#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#12824#14391#0" expanded="true" />
+            <element signature="e#14390#14391#0" expanded="true" />
           </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/custom_models/ApplicationPlist.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27597404">
+          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.655172">
+          <caret line="339" column="9" selection-start-line="339" selection-start-column="9" selection-end-line="339" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#13042#13050#0" expanded="true" />
+            <element signature="e#13122#13130#0" expanded="true" />
+            <element signature="method#getDatabaseApi#0;class#GalePressApplication#0" expanded="false" />
+            <element signature="method#getDataApi#0;class#GalePressApplication#0" expanded="false" />
+            <element signature="method#setBannerLink#0;class#GalePressApplication#0" expanded="false" />
+            <element signature="method#getDeviceDensity#0;class#GalePressApplication#0" expanded="false" />
+            <element signature="method#setTabList#0;class#GalePressApplication#0" expanded="false" />
+            <element signature="method#getTabList#0;class#GalePressApplication#0" expanded="false" />
+            <element signature="method#getMD5EncryptedValue#0;class#GalePressApplication#0" expanded="false" />
+            <element signature="method#setMembershipMenuList#0;class#GalePressApplication#0" expanded="false" />
+            <element signature="method#prepareMemberShipList#0;class#GalePressApplication#0" expanded="false" />
+            <element signature="method#prepareSubscriptions#0;class#GalePressApplication#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/raw/application.plist">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.5185184">
+          <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.481482">
+          <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/ApplicationThemeColor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.862069">
+          <caret line="965" column="41" selection-start-line="965" selection-start-column="41" selection-end-line="965" selection-end-column="41" />
+          <folding>
+            <element signature="method#downloadButtonPriceColorStateList#0;class#ApplicationThemeColor#0" expanded="false" />
+            <element signature="method#paintIcons#0;class#ApplicationThemeColor#0" expanded="false" />
+            <element signature="method#paintRemoteIcon#0;class#ApplicationThemeColor#0" expanded="false" />
+            <element signature="method#getContentActionButtonsDrawable#0;class#ApplicationThemeColor#0" expanded="false" />
+            <element signature="method#getLoginButtonDrawable#0;class#ApplicationThemeColor#0" expanded="false" />
+            <element signature="method#getPopupLoginButtonDrawable#0;class#ApplicationThemeColor#0" expanded="false" />
+            <element signature="method#getLogoutButtonDrawable#0;class#ApplicationThemeColor#0" expanded="false" />
+            <element signature="method#getCropPageButtonDrawable#0;class#ApplicationThemeColor#0" expanded="false" />
+            <element signature="method#getPopupButtonDrawable#0;class#ApplicationThemeColor#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/StateListDrawableForPopupButtons.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="71" selection-start-line="14" selection-start-column="71" selection-end-line="14" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/left_menu_membership_item.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6455696">
+          <caret line="24" column="36" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
+          <folding>
+            <element signature="e#758#786#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
   </component>

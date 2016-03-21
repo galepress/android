@@ -65,7 +65,7 @@ public class CustomDownloadButton extends RelativeLayout{
             priceParams.setMargins(0,0,5,0);
             priceParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
             priceTextView.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(context));
-            priceTextView.setTextColor(ApplicationThemeColor.getInstance().createdownloadButtonPriceColorStateList());
+            priceTextView.setTextColor(ApplicationThemeColor.getInstance().downloadButtonPriceColorStateList());
             priceTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, context.getResources().getDimension(R.dimen.content_popup_large_textsize));
             priceTextView.setId(R.id.price_text);
             priceTextView.setLayoutParams(priceParams);

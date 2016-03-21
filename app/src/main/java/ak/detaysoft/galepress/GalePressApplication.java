@@ -54,7 +54,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.TimeZone;
 import java.util.UUID;
@@ -92,7 +91,7 @@ public class GalePressApplication
     private RequestQueue mRequestQueue4Statistic;
 
     public static HashMap applicationPlist;
-    public static LinkedHashMap extrasHashMap;
+    public static ArrayList<ApplicationPlist> extrasHashMap;
     private MainActivity mainActivity;
     private MuPDFActivity muPDFActivity;
 
@@ -321,7 +320,7 @@ public class GalePressApplication
 
     public void parseApplicationPlist(){
         applicationPlist = new HashMap();
-        extrasHashMap = new LinkedHashMap();
+        extrasHashMap = new ArrayList<ApplicationPlist>();
         Object[] extras;
         try {
             InputStream is = getResources().openRawResource(R.raw.application);
@@ -335,23 +334,18 @@ public class GalePressApplication
 
         for(int i=0; i<extras.length; i++){
             HashMap extra = (HashMap)extras[i];
-            extrasHashMap.putAll(extra);
+            ArrayList<String> keySet = new ArrayList<String>(extra.keySet());
+            ArrayList<String> valueSet = new ArrayList<String>(extra.values());
+            extrasHashMap.add(new ApplicationPlist(keySet.get(0), valueSet.get(0)));
         }
     }
 
     public ArrayList<ApplicationPlist> getApplicationPlist(){
         parseApplicationPlist();
-        ArrayList<ApplicationPlist> list = new ArrayList<ApplicationPlist>();
-        ArrayList<String> keyString = new ArrayList<String>(extrasHashMap.keySet());
-        ArrayList<String> valueString = new ArrayList<String>(extrasHashMap.values());
-
-        ApplicationPlist item;
-        for(int i=0; i<keyString.size(); i++){
-            item = new ApplicationPlist(keyString.get(i).toString(), valueString.get(i).toString());
-            list.add(item);
-
-        }
-        return list;
+        if(extrasHashMap != null)
+            return extrasHashMap;
+        else
+            return new ArrayList<ApplicationPlist>();
     }
 
     /**
