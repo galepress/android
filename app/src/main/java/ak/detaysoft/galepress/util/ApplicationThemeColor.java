@@ -309,16 +309,16 @@ public class ApplicationThemeColor {
 
         if(getInstance().themeType == LIGHT_THEME_TYPE){
             colors = new int[] {
-                    Color.parseColor("#E9E9E9"),
-                    Color.parseColor("#E9E9E9"),
-                    Color.parseColor("#E9E9E9"),
+                    Color.parseColor("#AA333333"),
+                    Color.parseColor("#AA333333"),
+                    Color.parseColor("#AA333333"),
                     Color.parseColor("#333333")
             };
         } else {
             colors = new int[] {
-                    Color.parseColor("#333333"),
-                    Color.parseColor("#333333"),
-                    Color.parseColor("#333333"),
+                    Color.parseColor("#AAE9E9E9"),
+                    Color.parseColor("#AAE9E9E9"),
+                    Color.parseColor("#AAE9E9E9"),
                     Color.parseColor("#E9E9E9")
             };
         }
