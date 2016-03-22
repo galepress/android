@@ -6,9 +6,9 @@ import android.graphics.drawable.StateListDrawable;
 /**
  * Created by p1025 on 15.04.2015.
  */
-public class StateListDrawableWithColorFilter extends StateListDrawable {
+public class TabbarStateList extends StateListDrawable {
 
-    public StateListDrawableWithColorFilter(boolean isSelected, Drawable res, Drawable selectedRes){
+    public TabbarStateList(boolean isSelected, Drawable res, Drawable selectedRes){
         super();
         if (isSelected)
             addState(new int[]{android.R.attr.state_selected}, selectedRes);

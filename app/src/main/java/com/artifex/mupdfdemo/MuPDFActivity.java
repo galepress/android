@@ -75,7 +75,7 @@ import ak.detaysoft.galepress.custom_models.TabbarItem;
 import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.database_models.L_Statistic;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
-import ak.detaysoft.galepress.util.ReaderTabbarStateListDrawable;
+import ak.detaysoft.galepress.util.ReaderTabbarStateList;
 
 class ThreadPerTaskExecutor implements Executor {
     public void execute(Runnable r) {
@@ -2116,7 +2116,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
     }
 
     private Drawable createDrawable(boolean isSelected, Drawable res, Drawable selectedRes) {
-        ReaderTabbarStateListDrawable states = new ReaderTabbarStateListDrawable(isSelected, res, selectedRes);
+        ReaderTabbarStateList states = new ReaderTabbarStateList(isSelected, res, selectedRes);
         return states;
     }
 

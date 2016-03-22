@@ -650,7 +650,7 @@ public class ApplicationThemeColor {
                 myIcon.setColorFilter(getForegroundColorFilter());
                 Drawable mySelectedIcon = context.getResources().getDrawable(R.drawable.download_error_icon);
                 mySelectedIcon.setColorFilter(getForeGroundColorFilterWithAlpha((float)0.5));
-                ((ImageView)view).setImageDrawable(new StateListDrawableWithColorFilter(true, myIcon, mySelectedIcon));
+                ((ImageView)view).setImageDrawable(new TabbarStateList(true, myIcon, mySelectedIcon));
             }
 
             @Override
@@ -664,7 +664,7 @@ public class ApplicationThemeColor {
                 myIcon.setColorFilter(getForegroundColorFilter());
                 mySelectedIcon.setColorFilter(getForeGroundColorFilterWithAlpha((float) 0.5));
 
-                ((ImageView)view).setImageDrawable(new StateListDrawableWithColorFilter(true, myIcon, mySelectedIcon));
+                ((ImageView)view).setImageDrawable(new TabbarStateList(true, myIcon, mySelectedIcon));
             }
 
             @Override
@@ -900,7 +900,7 @@ public class ApplicationThemeColor {
             }
         }
 
-        return new StateListDrawableForPopupButtons(normal, pressed);
+        return new PopupButtonStateList(normal, pressed);
     }
 
 
@@ -969,7 +969,7 @@ public class ApplicationThemeColor {
         normal.setColorFilter(getReverseThemeColorFilter());
         pressed.setColorFilter(getReverseThemeColorFilterWithAlpha((float) 0.5));
 
-        return new StateListForLeftMenu(normal, pressed);
+        return new LeftMenuStateList(normal, pressed);
     }
 
     //Viewer Login ekraninda kullanici adi sifre girilen edittextlerin background

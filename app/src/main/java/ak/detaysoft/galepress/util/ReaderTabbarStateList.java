@@ -6,11 +6,11 @@ import android.graphics.drawable.StateListDrawable;
 /**
  * Created by p1025 on 15.01.2016.
  */
-public class ReaderTabbarStateListDrawable extends StateListDrawable {
+public class ReaderTabbarStateList extends StateListDrawable {
 
     private boolean isActive;
 
-    public ReaderTabbarStateListDrawable(boolean isActive, Drawable res, Drawable selectedRes){
+    public ReaderTabbarStateList(boolean isActive, Drawable res, Drawable selectedRes){
         super();
         this.isActive = isActive;
         if (isActive) {

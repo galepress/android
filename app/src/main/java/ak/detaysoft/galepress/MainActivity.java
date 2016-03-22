@@ -74,7 +74,7 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 import ak.detaysoft.galepress.custom_models.Subscription;
-import ak.detaysoft.galepress.util.StateListDrawableWithColorFilter;
+import ak.detaysoft.galepress.util.TabbarStateList;
 import ak.detaysoft.galepress.web_views.ExtraWebViewActivity;
 import ak.detaysoft.galepress.custom_models.ApplicationPlist;
 import ak.detaysoft.galepress.custom_models.TabbarItem;
@@ -1115,7 +1115,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
     private Drawable createDrawable(boolean isSelected, Drawable res, Drawable selectedRes) {
         if(res != null && selectedRes != null){
-            StateListDrawableWithColorFilter states = new StateListDrawableWithColorFilter(isSelected,res, selectedRes);
+            TabbarStateList states = new TabbarStateList(isSelected,res, selectedRes);
             return states;
         }
         return null;
