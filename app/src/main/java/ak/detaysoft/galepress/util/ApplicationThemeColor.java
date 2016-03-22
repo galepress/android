@@ -372,6 +372,18 @@ public class ApplicationThemeColor {
         return new ColorMatrixColorFilter(matrixTheme);
     }
 
+    public ColorFilter getThemeColorFilterWithAlpha(float alpha){
+        int color = getThemeColor();
+        int redTheme = (color & 0xFF0000) / 0xFFFF;
+        int greenTheme = (color & 0xFF00) / 0xFF;
+        int blueTheme = color & 0xFF;
+        float[] matrixTheme = { 0, 0, 0, 0, redTheme
+                , 0, 0, 0, 0, greenTheme
+                , 0, 0, 0, 0, blueTheme
+                , 0, 0, 0, alpha, 0 };
+        return new ColorMatrixColorFilter(matrixTheme);
+    }
+
     public ColorFilter getForeGroundColorFilterWithAlpha(float alpha){
         int color = getForegroundColor();
         int redTheme = (color & 0xFF0000) / 0xFFFF;
@@ -901,7 +913,6 @@ public class ApplicationThemeColor {
             normal = context.getResources().getDrawable(R.drawable.facebook);
             pressed = context.getResources().getDrawable(R.drawable.facebook);
         }else if(resourceType == TWITTER_ICON){
-
             normal = context.getResources().getDrawable(R.drawable.twitter);
             pressed = context.getResources().getDrawable(R.drawable.twitter);
         } else if(resourceType == INSTAGRAM_ICON){
@@ -932,13 +943,8 @@ public class ApplicationThemeColor {
 
         } else if(resourceType == TUMBLR_ICON){
 
-            if(getInstance().themeType == DARK_THEME_TYPE){
-                normal = context.getResources().getDrawable(R.drawable.tumblr);
-                pressed = context.getResources().getDrawable(R.drawable.tumblr);
-            } else {
-                normal = context.getResources().getDrawable(R.drawable.tumblr);
-                pressed = context.getResources().getDrawable(R.drawable.tumblr);
-            }
+            normal = context.getResources().getDrawable(R.drawable.tumblr);
+            pressed = context.getResources().getDrawable(R.drawable.tumblr);
         } else if(resourceType == YOUTUBE_ICON){
 
             normal = context.getResources().getDrawable(R.drawable.youtube);
@@ -960,10 +966,10 @@ public class ApplicationThemeColor {
             pressed = context.getResources().getDrawable(R.drawable.membership_logout);
         }
 
-        normal.setColorFilter(getThemeColorFilter());
-        pressed.setColorFilter(getReverseThemeColorFilter());
+        normal.setColorFilter(getReverseThemeColorFilter());
+        pressed.setColorFilter(getReverseThemeColorFilterWithAlpha((float) 0.5));
 
-        return new StateListDrawableForPopupButtons(normal, pressed);
+        return new StateListForLeftMenu(normal, pressed);
     }
 
     //Viewer Login ekraninda kullanici adi sifre girilen edittextlerin background

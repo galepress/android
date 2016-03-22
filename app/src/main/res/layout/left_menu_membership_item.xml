@@ -13,8 +13,7 @@
         android:layout_width="26dp"
         android:layout_height="26dp"
         android:id="@+id/membership_icon"
-        android:adjustViewBounds="true"
-        android:clickable="true" />
+        android:adjustViewBounds="true"/>
 
     <TextView
         android:id="@+id/membership_txt"

@@ -58,6 +58,7 @@ public class LeftMenuMembershipAdapter extends BaseAdapter{
         TextView txtTitle = (TextView) convertView.findViewById(R.id.membership_txt);
         ImageView image = (ImageView)convertView.findViewById(R.id.membership_icon);
 
+
         if(GalePressApplication.getInstance().getMembershipMenuList().get(position) == LOGIN) {
             txtTitle.setText(mContext.getString(R.string.login));
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
