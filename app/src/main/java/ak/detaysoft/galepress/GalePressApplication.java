@@ -533,7 +533,14 @@ public class GalePressApplication
     private PowerManager.WakeLock wakeLock;
 
     public  void acquireWakeLock(Context context) {
-        if (wakeLock != null) wakeLock.release();
+        if (wakeLock != null){
+            try {
+                if (wakeLock.isHeld())
+                    wakeLock.release();
+            } catch (Throwable th) {
+                // ignoring this exception, probably wakeLock was already released
+            }
+        }
 
         PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
 

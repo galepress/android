@@ -627,7 +627,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         // Activate the search-preparing button
         mSearchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                searchModeOn();
+                /*searchModeOn();*/
             }
         });
 
@@ -751,8 +751,8 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 		/*if (savedInstanceState == null || !savedInstanceState.getBoolean("ButtonsHidden", false))
             showButtons();*/
 
-        if (savedInstanceState != null && savedInstanceState.getBoolean("SearchMode", false))
-            searchModeOn();
+        /*if (savedInstanceState != null && savedInstanceState.getBoolean("SearchMode", false))
+            searchModeOn();*/
 
         if (savedInstanceState != null && savedInstanceState.getBoolean("ReflowMode", false))
             reflowModeSet(true);
@@ -2300,7 +2300,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             hideButtons();
         } else {
             showButtons();
-            searchModeOn();
+            /*searchModeOn();*/
         }
         return super.onSearchRequested();
     }

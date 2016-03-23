@@ -1265,8 +1265,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 else
                     refreshButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_REFRESH));
             }
-
-
         }
     }
 

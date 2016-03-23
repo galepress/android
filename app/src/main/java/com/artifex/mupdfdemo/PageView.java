@@ -618,58 +618,119 @@ public abstract class PageView extends ViewGroup {
 
             protected void onPostExecute(LinkInfo[] v) {
 
-                mLinks = v;
-                final float scale = mSourceScale*(float)getWidth()/(float)mSize.x;//
-                for (LinkInfo link : mLinks){
-                    if(link instanceof LinkInfoExternal ){
-                        final LinkInfoExternal linkInfoExternal = (LinkInfoExternal)link;
-                        final int left = (int)(linkInfoExternal.rect.left * scale);
-                        final int top = (int) (linkInfoExternal.rect.top * scale);
-                        int right = (int) (linkInfoExternal.rect.right * scale);
-                        int bottom = (int) (linkInfoExternal.rect.bottom * scale);
+				if(mContext != null) {
+					mLinks = v;
+					final float scale = mSourceScale*(float)getWidth()/(float)mSize.x;//
+					for (LinkInfo link : mLinks){
+						if(link instanceof LinkInfoExternal ){
+							final LinkInfoExternal linkInfoExternal = (LinkInfoExternal)link;
+							final int left = (int)(linkInfoExternal.rect.left * scale);
+							final int top = (int) (linkInfoExternal.rect.top * scale);
+							int right = (int) (linkInfoExternal.rect.right * scale);
+							int bottom = (int) (linkInfoExternal.rect.bottom * scale);
 
 
-                        CustomPulseProgress progressBar;
-                        if(!linkInfoExternal.isInternal && !linkInfoExternal.isModal) {
-                            int progressSize = 40;
-                            progressBar = new CustomPulseProgress(mContext);
-                            progressBar.layout((left+right)/2 - progressSize/2, (top+bottom)/2 - progressSize/2, (left+right)/2+progressSize, (top+bottom)/2+progressSize);
-                        }
-                        else
-                            progressBar = null;
+							CustomPulseProgress progressBar;
+							if(!linkInfoExternal.isInternal && !linkInfoExternal.isModal) {
+								int progressSize = 40;
+								progressBar = new CustomPulseProgress(mContext);
+								progressBar.layout((left+right)/2 - progressSize/2, (top+bottom)/2 - progressSize/2, (left+right)/2+progressSize, (top+bottom)/2+progressSize);
+							}
+							else
+								progressBar = null;
 
-                        if((linkInfoExternal.isWebAnnotation())){
-                            if(linkInfoExternal.isModal){
-                                Button modalButton = new Button(mContext);
-                                modalButton.layout(left,top,right,bottom);
-                                modalButton.setBackgroundColor(Color.TRANSPARENT);
-								modalButton.setTag("modal");
-								modalButton.setOnClickListener(new OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-										if(((MuPDFActivity)mContext).mDocView != null && ((MuPDFActivity)mContext).mDocView.getChildAt(0) != null ) {
-											((MuPDFPageView)((MuPDFActivity)mContext).mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
-											((MuPDFPageView)((MuPDFActivity)mContext).mDocView.getChildAt(0)).resumeCurrentPageWebAnnotationsMedia();
+							if((linkInfoExternal.isWebAnnotation())){
+								if(linkInfoExternal.isModal){
+									Button modalButton = new Button(mContext);
+									modalButton.layout(left,top,right,bottom);
+									modalButton.setBackgroundColor(Color.TRANSPARENT);
+									modalButton.setTag("modal");
+									modalButton.setOnClickListener(new OnClickListener() {
+										@Override
+										public void onClick(View v) {
+											if(((MuPDFActivity)mContext).mDocView != null && ((MuPDFActivity)mContext).mDocView.getChildAt(0) != null ) {
+												((MuPDFPageView)((MuPDFActivity)mContext).mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
+												((MuPDFPageView)((MuPDFActivity)mContext).mDocView.getChildAt(0)).resumeCurrentPageWebAnnotationsMedia();
+											}
+
+											//4.4
+											if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+												Intent intent = new Intent(mContext, ExtraWebViewActivity.class);
+												intent.putExtra("url", linkInfoExternal.getSourceUrlPath(mContext)); // daha once linkInfoExternal.sourceurl vardi o nedenle modal acilmiyordu
+												intent.putExtra("isModal", true);
+												mContext.startActivity(intent);
+											} else {
+												Intent intent = new Intent(mContext, ExtraWebViewWithCrosswalkActivity.class);
+												intent.putExtra("url", linkInfoExternal.getSourceUrlPath(mContext)); // daha once linkInfoExternal.sourceurl vardi o nedenle modal acilmiyordu
+												intent.putExtra("isModal", true);
+												mContext.startActivity(intent);
+											}
+										}
+									});
+									addView(modalButton);
+								}
+								else{
+									String url = linkInfoExternal.getSourceUrlPath(mContext);
+
+									//4.4
+									if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+										// Web Annotations
+										final WebViewAnnotation web = new WebViewAnnotation(mContext, linkInfoExternal, progressBar);
+										web.layout(left, top, right, bottom);
+										web.setLayoutParams(new ViewGroup.LayoutParams(right - left, bottom - top));
+										web.readerView = ((MuPDFActivity) mContext).mDocView;
+										web.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+
+										web.setId(atomicInteger.incrementAndGet());
+										linkInfoExternal.webViewId = web.getId();
+
+										if (linkInfoExternal.isWebAnnotation()) {
+											web.loadUrl(url);
+										}
+										addView(web);
+									} else {
+
+										final WebViewAnnotationWithCrosswalk web = new WebViewAnnotationWithCrosswalk(mContext, linkInfoExternal, progressBar);
+										web.layout(left, top, right, bottom);
+
+										//Crosswalk wiew içindeki tüm chil viewlar için .layout metodu set edilmezse load edilen sayfa görünmüyor. Viewgroup da böyle bi sorun var.(MG)
+										web.getChildAt(0).layout(0, 0, right - left, bottom - top);
+										((ViewGroup) web.getChildAt(0)).getChildAt(0).layout(0, 0, right - left, bottom - top);
+										((ViewGroup) web.getChildAt(0)).getChildAt(1).layout(0, 0, right - left, bottom - top);
+										(((ViewGroup) ((XWalkViewBridge) web.getChildAt(0)).getChildAt(0))).getChildAt(0).layout(0, 0, right - left, bottom - top);
+
+
+										web.readerView = ((MuPDFActivity) mContext).mDocView;
+
+										web.setId(atomicInteger.incrementAndGet());
+										linkInfoExternal.webViewId = web.getId();
+
+										if (linkInfoExternal.isWebAnnotation()) {
+											web.load(url, null);
 										}
 
-										//4.4
-										if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-											Intent intent = new Intent(mContext, ExtraWebViewActivity.class);
-											intent.putExtra("url", linkInfoExternal.getSourceUrlPath(mContext)); // daha once linkInfoExternal.sourceurl vardi o nedenle modal acilmiyordu
-											intent.putExtra("isModal", true);
-											mContext.startActivity(intent);
-										} else {
-											Intent intent = new Intent(mContext, ExtraWebViewWithCrosswalkActivity.class);
-											intent.putExtra("url", linkInfoExternal.getSourceUrlPath(mContext)); // daha once linkInfoExternal.sourceurl vardi o nedenle modal acilmiyordu
-											intent.putExtra("isModal", true);
-											mContext.startActivity(intent);
-										}
-                                    }
-                                });
-                                addView(modalButton);
-                            }
-                            else{
-								String url = linkInfoExternal.getSourceUrlPath(mContext);
+										addView(web);
+									}
+
+								}
+							}
+							else if((((LinkInfoExternal) link).componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_HARİTA) ){
+//                            Map Annotations
+//                            http://adem.me/map/index.html?lat=41.033621&lon=28.952785&zoom=16&w=400&h=300&mapType=0
+								Uri.Builder builder = new Uri.Builder();
+								builder.scheme("http");
+								builder.authority("www.galepress.com");
+								builder.appendPath("files");
+								builder.appendPath("map_html");
+								builder.appendPath("index.html");
+								builder.appendQueryParameter("lat",String.valueOf(linkInfoExternal.location.getLatitude()));
+								builder.appendQueryParameter("lon",String.valueOf(linkInfoExternal.location.getLongitude()));
+								builder.appendQueryParameter("zoom",String.valueOf(linkInfoExternal.zoom));
+								builder.appendQueryParameter("w",String.valueOf(right-left));
+								builder.appendQueryParameter("h",String.valueOf(bottom-top));
+								builder.appendQueryParameter("mapType",String.valueOf(linkInfoExternal.mapType));
+								String mapUrl = builder.build().toString();
+
 
 								//4.4
 								if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -682,10 +743,7 @@ public abstract class PageView extends ViewGroup {
 
 									web.setId(atomicInteger.incrementAndGet());
 									linkInfoExternal.webViewId = web.getId();
-
-									if (linkInfoExternal.isWebAnnotation()) {
-										web.loadUrl(url);
-									}
+									web.loadUrl(mapUrl);
 									addView(web);
 								} else {
 									final WebViewAnnotationWithCrosswalk web = new WebViewAnnotationWithCrosswalk(mContext, linkInfoExternal, progressBar);
@@ -699,125 +757,70 @@ public abstract class PageView extends ViewGroup {
 
 
 									web.readerView = ((MuPDFActivity) mContext).mDocView;
+									final String url2 = linkInfoExternal.getSourceUrlPath(mContext);
 
 									web.setId(atomicInteger.incrementAndGet());
 									linkInfoExternal.webViewId = web.getId();
 
-									if (linkInfoExternal.isWebAnnotation()) {
-										web.load(url, null);
-									}
-
+									web.load(mapUrl, null);
 									addView(web);
 								}
+							}
+							else if(((LinkInfoExternal) link).componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_WEBLINK){
+								View view = new View(mContext);
+								view.layout(left,top,right,bottom);
+								view.setBackgroundColor(Color.TRANSPARENT);
+								view.setOnClickListener(new OnClickListener() {
+									@Override
+									public void onClick(View v) {
+										Intent intent = new Intent(mContext, ExtraWebViewActivity.class);
+										intent.putExtra("url",linkInfoExternal.url);
+										intent.putExtra("isModal", true);
+										mContext.startActivity(intent);
+									}
+								});
+								addView(view);
+							}
 
+							if(!linkInfoExternal.isInternal && !linkInfoExternal.isModal) {
+								addView(progressBar);
 							}
 						}
-						else if((((LinkInfoExternal) link).componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_HARİTA) ){
-//                            Map Annotations
-//                            http://adem.me/map/index.html?lat=41.033621&lon=28.952785&zoom=16&w=400&h=300&mapType=0
-							Uri.Builder builder = new Uri.Builder();
-							builder.scheme("http");
-							builder.authority("www.galepress.com");
-							builder.appendPath("files");
-							builder.appendPath("map_html");
-							builder.appendPath("index.html");
-							builder.appendQueryParameter("lat",String.valueOf(linkInfoExternal.location.getLatitude()));
-							builder.appendQueryParameter("lon",String.valueOf(linkInfoExternal.location.getLongitude()));
-							builder.appendQueryParameter("zoom",String.valueOf(linkInfoExternal.zoom));
-							builder.appendQueryParameter("w",String.valueOf(right-left));
-							builder.appendQueryParameter("h",String.valueOf(bottom-top));
-							builder.appendQueryParameter("mapType",String.valueOf(linkInfoExternal.mapType));
-							String mapUrl = builder.build().toString();
-
-
-							//4.4
-							if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-								// Web Annotations
-								final WebViewAnnotation web = new WebViewAnnotation(mContext, linkInfoExternal, progressBar);
-								web.layout(left, top, right, bottom);
-								web.setLayoutParams(new ViewGroup.LayoutParams(right - left, bottom - top));
-								web.readerView = ((MuPDFActivity) mContext).mDocView;
-								web.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
-
-								web.setId(atomicInteger.incrementAndGet());
-								linkInfoExternal.webViewId = web.getId();
-								web.loadUrl(mapUrl);
-								addView(web);
-							} else {
-								final WebViewAnnotationWithCrosswalk web = new WebViewAnnotationWithCrosswalk(mContext, linkInfoExternal, progressBar);
-								web.layout(left, top, right, bottom);
-
-								//Crosswalk wiew içindeki tüm chil viewlar için .layout metodu set edilmezse load edilen sayfa görünmüyor. Viewgroup da böyle bi sorun var.(MG)
-								web.getChildAt(0).layout(0, 0, right - left, bottom - top);
-								((ViewGroup) web.getChildAt(0)).getChildAt(0).layout(0, 0, right - left, bottom - top);
-								((ViewGroup) web.getChildAt(0)).getChildAt(1).layout(0, 0, right - left, bottom - top);
-								(((ViewGroup) ((XWalkViewBridge) web.getChildAt(0)).getChildAt(0))).getChildAt(0).layout(0, 0, right - left, bottom - top);
-
-
-								web.readerView = ((MuPDFActivity) mContext).mDocView;
-								final String url2 = linkInfoExternal.getSourceUrlPath(mContext);
-
-								web.setId(atomicInteger.incrementAndGet());
-								linkInfoExternal.webViewId = web.getId();
-
-								web.load(mapUrl, null);
-								addView(web);
-							}
+						else{
+							// LinkInfo Internal - Burada pagelinkler icin webView olusturacagiz.
+							final LinkInfoInternal linkInfoInternal = (LinkInfoInternal)link;
+							final int left = (int)(linkInfoInternal.rect.left * scale);
+							final int top = (int) (linkInfoInternal.rect.top * scale);
+							int right = (int) (linkInfoInternal.rect.right * scale);
+							int bottom = (int) (linkInfoInternal.rect.bottom * scale);
+							View view = new View(mContext);
+							view.layout(left,top,right,bottom);
+							view.setBackgroundColor(Color.TRANSPARENT);
+							view.setTag("pagelink");
+							view.setOnClickListener(new OnClickListener() {
+								@Override
+								public void onClick(View v) {
+									MuPDFCore core =((MuPDFActivity)mContext).core;
+									MuPDFReaderView readerView = ((MuPDFActivity) mContext).mDocView;
+									if(readerView.getDisplayedViewIndex() + 1 == linkInfoInternal.pageNumber){
+										readerView.moveToNext(true);
+									}
+									else if (readerView.getDisplayedViewIndex() - 1 == linkInfoInternal.pageNumber){
+										readerView.moveToPrevious(true);
+									}
+									else {
+										readerView.setDisplayedViewIndex(core.convertIndexesForLandscape2Page(linkInfoInternal.pageNumber));
+										((MuPDFActivity)mContext).scrollToLastThumnail(core.convertIndexesForLandscape2Page(linkInfoInternal.pageNumber));
+									}
+								}
+							});
+							addView(view);
 						}
-                        else if(((LinkInfoExternal) link).componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_WEBLINK){
-                            View view = new View(mContext);
-                            view.layout(left,top,right,bottom);
-                            view.setBackgroundColor(Color.TRANSPARENT);
-                            view.setOnClickListener(new OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    Intent intent = new Intent(mContext, ExtraWebViewActivity.class);
-                                    intent.putExtra("url",linkInfoExternal.url);
-                                    intent.putExtra("isModal", true);
-                                    mContext.startActivity(intent);
-                                }
-                            });
-                            addView(view);
-                        }
+					}
 
-                        if(!linkInfoExternal.isInternal && !linkInfoExternal.isModal) {
-                            addView(progressBar);
-                        }
-                    }
-                    else{
-                        // LinkInfo Internal - Burada pagelinkler icin webView olusturacagiz.
-                        final LinkInfoInternal linkInfoInternal = (LinkInfoInternal)link;
-                        final int left = (int)(linkInfoInternal.rect.left * scale);
-                        final int top = (int) (linkInfoInternal.rect.top * scale);
-                        int right = (int) (linkInfoInternal.rect.right * scale);
-                        int bottom = (int) (linkInfoInternal.rect.bottom * scale);
-                        View view = new View(mContext);
-                        view.layout(left,top,right,bottom);
-                        view.setBackgroundColor(Color.TRANSPARENT);
-						view.setTag("pagelink");
-						view.setOnClickListener(new OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                MuPDFCore core =((MuPDFActivity)mContext).core;
-                                MuPDFReaderView readerView = ((MuPDFActivity) mContext).mDocView;
-                                if(readerView.getDisplayedViewIndex() + 1 == linkInfoInternal.pageNumber){
-                                    readerView.moveToNext(true);
-                                }
-                                else if (readerView.getDisplayedViewIndex() - 1 == linkInfoInternal.pageNumber){
-                                    readerView.moveToPrevious(true);
-                                }
-                                else {
-                                    readerView.setDisplayedViewIndex(core.convertIndexesForLandscape2Page(linkInfoInternal.pageNumber));
-                                    ((MuPDFActivity)mContext).scrollToLastThumnail(core.convertIndexesForLandscape2Page(linkInfoInternal.pageNumber));
-                                }
-                            }
-                        });
-                        addView(view);
-                    }
-                }
-
-                if (mSearchView != null)
-                    mSearchView.invalidate();
+					if (mSearchView != null)
+						mSearchView.invalidate();
+				}
             }
         };
 
