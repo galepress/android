@@ -148,7 +148,7 @@ public class DataApi extends Object {
             }
 
         } else if(GalePressApplication.getInstance().getCurrentActivity()!= null && GalePressApplication.getInstance().getCurrentActivity().getClass().equals(MainActivity.class)){
-            ((MainActivity)GalePressApplication.getInstance().getCurrentActivity()).invalidateActivityViewAndAdapter(false);
+            ((MainActivity)GalePressApplication.getInstance().getCurrentActivity()).updateActivityViewAndAdapter(false);
         } else if(GalePressApplication.getInstance().getCurrentActivity()!= null && GalePressApplication.getInstance().getCurrentActivity().getClass().equals(ViewerLoginActivity.class)){
             ViewerLoginActivity loginActivity = (ViewerLoginActivity) GalePressApplication.getInstance().getCurrentActivity();
             L_Content masterContent = getMasterContent();
@@ -1720,7 +1720,7 @@ public class DataApi extends Object {
                                     GalePressApplication.getInstance().prepareMemberShipList();
                                     if(activity != null){
                                         if(activity instanceof MainActivity)
-                                            ((MainActivity)activity).invalidateMemberListAdapter();
+                                            ((MainActivity)activity).updateMemberListAdapter();
                                     }
                                     List<L_Content> localContents = databaseApi.getAllContents(null);
                                     for (L_Content l_content : localContents) {
@@ -1775,7 +1775,7 @@ public class DataApi extends Object {
                                 GalePressApplication.getInstance().prepareMemberShipList();
                                 if(activity != null){
                                     if(activity instanceof MainActivity)
-                                        ((MainActivity)activity).invalidateMemberListAdapter();
+                                        ((MainActivity)activity).updateMemberListAdapter();
                                 }
 
                                 List<L_Content> localContents = databaseApi.getAllContents(null);
@@ -1911,7 +1911,7 @@ public class DataApi extends Object {
                             GalePressApplication.getInstance().prepareMemberShipList();
                             if(GalePressApplication.getInstance().getCurrentActivity() != null){
                                 if(GalePressApplication.getInstance().getCurrentActivity() instanceof MainActivity)
-                                    ((MainActivity)GalePressApplication.getInstance().getCurrentActivity()).invalidateMemberListAdapter();
+                                    ((MainActivity)GalePressApplication.getInstance().getCurrentActivity()).updateMemberListAdapter();
                             }
 
 

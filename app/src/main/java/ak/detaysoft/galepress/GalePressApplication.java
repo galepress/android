@@ -183,7 +183,6 @@ public class GalePressApplication
         super.onCreate();
         Fabric.with(this, new Crashlytics());
 
-
         XWalkPreferences.setValue("enable-javascript", true);
         XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, true);
         XWalkPreferences.setValue(XWalkPreferences.ALLOW_UNIVERSAL_ACCESS_FROM_FILE, true);

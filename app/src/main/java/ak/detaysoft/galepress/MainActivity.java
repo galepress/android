@@ -516,7 +516,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             }
         }
 
-        invalidateActivityViewAndAdapter(true);
+        updateActivityViewAndAdapter(true);
 
         GalePressApplication.getInstance().setCurrentActivity(this);
         GalePressApplication.getInstance().setMainActivity(this);
@@ -539,14 +539,14 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     * Renk degismedigi zaman servisten gelen tabbar ikonları invalidate edilmiyor.
     * Yoksa uygulama icinde her update oldugunda ikonlarda yeniden load edildigi cini kotu gorunuyor
     */
-    public void invalidateActivityViewAndAdapter(boolean isColorChanged){
+    public void updateActivityViewAndAdapter(boolean isColorChanged){
 
         leftMenuBaseLayout.setBackgroundColor(ApplicationThemeColor.getInstance().getForegroundColor());
 
         //Kategori sekmesi
         categoriesTitleLayout.setBackgroundColor(Color.TRANSPARENT);
         ((TextView)(findViewById(R.id.left_menu_category_text))).setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(this));
-        ((TextView)(findViewById(R.id.left_menu_category_text))).setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColorWithAlpha(50));
+        ((TextView)(findViewById(R.id.left_menu_category_text))).setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
             categoriesListViewCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
         else
@@ -578,7 +578,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         }
 
         ((TextView)(findViewById(R.id.left_menu_social_text))).setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(this));
-        ((TextView)(findViewById(R.id.left_menu_social_text))).setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColorWithAlpha(50));
+        ((TextView)(findViewById(R.id.left_menu_social_text))).setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
             ((ImageView)findViewById(R.id.left_menu_link_icon)).setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_LINK));
@@ -596,7 +596,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         membershipAdapter.notifyDataSetChanged();
         membershipListView.invalidate();
         ((TextView)(findViewById(R.id.left_menu_membership_text))).setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(this));
-        ((TextView)(findViewById(R.id.left_menu_membership_text))).setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColorWithAlpha(50));
+        ((TextView)(findViewById(R.id.left_menu_membership_text))).setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
             ((ImageView)findViewById(R.id.left_menu_membership_icon)).setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_LINK));
@@ -650,8 +650,8 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         ((LinearLayout)findViewById(R.id.custom_actionbar_layout)).setBackgroundColor(ApplicationThemeColor.getInstance().getActionAndTabBarColorWithAlpha(98));
 
         searchView.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(this));
-        searchView.setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColorWithAlpha(50));
-        searchView.setHintTextColor(ApplicationThemeColor.getInstance().getReverseThemeColorWithAlpha(50));
+        searchView.setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
+        searchView.setHintTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
             ((RelativeLayout)searchView.getParent()).setBackground(ApplicationThemeColor.getInstance().getPassiveSearchViewDrawable(this));
@@ -681,7 +681,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             logoutButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().getLogoutButtonDrawable(this));
 
 
-        invalidateTabBars(isColorChanged);
+        updateTabBars(isColorChanged);
 
         /*
         * forceDelete ile silinen yada pasif hale getirilen icerikler oldugunda gridi update etmek icin yazdim(MG)
@@ -759,7 +759,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
     }
 
-    public void invalidateMemberListAdapter(){
+    public void updateMemberListAdapter(){
 
         GalePressApplication.getInstance().prepareMemberShipList();
 
@@ -781,7 +781,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         }
     }
 
-    public void invalidateTabBars(boolean isColorChanged){
+    public void updateTabBars(boolean isColorChanged){
         mTabHost.getTabWidget().setBackgroundColor(ApplicationThemeColor.getInstance().getActionAndTabBarColor());
 
         int tabIndex = 0;
@@ -833,11 +833,19 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         if(GalePressApplication.getInstance().getTabList() != null && isColorChanged && GalePressApplication.getInstance().getDataApi().isConnectedToInternet()){
             int customIndex = tabIndex;
             for(TabbarItem item : GalePressApplication.getInstance().getTabList()){
-                ImageView img = ((ImageView)((LinearLayout)mTabHost.getTabWidget().getChildAt(customIndex)).getChildAt(0));
-                TextView txt = ((TextView)((LinearLayout)mTabHost.getTabWidget().getChildAt(customIndex)).getChildAt(1));
-                txt.setText(item.getTitle());
-                txt.setTextColor(createTabTitleColorStateList());
-                ApplicationThemeColor.getInstance().paintRemoteIcon(this, item, img);
+
+                if(mTabHost.getTabWidget().getChildAt(customIndex) != null && ((LinearLayout)mTabHost.getTabWidget().getChildAt(customIndex)).getChildAt(0) != null) {
+                    ImageView img = ((ImageView)((LinearLayout)mTabHost.getTabWidget().getChildAt(customIndex)).getChildAt(0));
+                    ApplicationThemeColor.getInstance().paintRemoteIcon(this, item, img);
+                }
+
+
+                if(mTabHost.getTabWidget().getChildAt(customIndex) != null && ((LinearLayout)mTabHost.getTabWidget().getChildAt(customIndex)).getChildAt(1) != null) {
+                    TextView txt = ((TextView)((LinearLayout)mTabHost.getTabWidget().getChildAt(customIndex)).getChildAt(1));
+                    txt.setText(item.getTitle());
+                    txt.setTextColor(createTabTitleColorStateList());
+                }
+
                 customIndex++;
             }
         }
@@ -1276,8 +1284,8 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
     public void changeSearchViewColor(boolean hasFocus){
         if(hasFocus){
-            searchView.setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
-            searchView.setHintTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
+            searchView.setTextColor(ApplicationThemeColor.getInstance().getThemeColor());
+            searchView.setHintTextColor(ApplicationThemeColor.getInstance().getThemeColor());
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 ((RelativeLayout)searchView.getParent()).setBackground(ApplicationThemeColor.getInstance().getActiveSearchViewDrawable(MainActivity.this));
             else
@@ -1292,8 +1300,8 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             else
                 searchClear.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.SEARCH_CLEAR));
         } else {
-            searchView.setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColorWithAlpha(50));
-            searchView.setHintTextColor(ApplicationThemeColor.getInstance().getReverseThemeColorWithAlpha(50));
+            searchView.setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
+            searchView.setHintTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 ((RelativeLayout)searchView.getParent()).setBackground(ApplicationThemeColor.getInstance().getPassiveSearchViewDrawable(MainActivity.this));
             else
@@ -1614,7 +1622,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 subs.setOwned(true);
         GalePressApplication.getInstance().setUserHaveActiveSubscription(true);
         GalePressApplication.getInstance().prepareSubscriptions(null);
-        invalidateMemberListAdapter();
+        updateMemberListAdapter();
     }
 
 }

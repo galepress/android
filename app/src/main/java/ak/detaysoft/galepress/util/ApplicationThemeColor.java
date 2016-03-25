@@ -142,7 +142,7 @@ public class ApplicationThemeColor {
         getInstance().foregroundColor = foreGround;
 
         if(isColorChanged && GalePressApplication.getInstance().getCurrentActivity()!= null && GalePressApplication.getInstance().getCurrentActivity().getClass() == MainActivity.class) {
-            ((MainActivity) GalePressApplication.getInstance().getCurrentActivity()).invalidateActivityViewAndAdapter(true);
+            ((MainActivity) GalePressApplication.getInstance().getCurrentActivity()).updateActivityViewAndAdapter(true);
             if(GalePressApplication.getInstance().getCurrentFragment() != null)
                 ((LibraryFragment)GalePressApplication.getInstance().getCurrentFragment()).gridview.setBackgroundColor(getThemeColor());
         }
@@ -309,17 +309,18 @@ public class ApplicationThemeColor {
 
         if(getInstance().themeType == LIGHT_THEME_TYPE){
             colors = new int[] {
-                    Color.parseColor("#AA333333"),
-                    Color.parseColor("#AA333333"),
-                    Color.parseColor("#AA333333"),
-                    Color.parseColor("#333333")
-            };
-        } else {
-            colors = new int[] {
                     Color.parseColor("#AAE9E9E9"),
                     Color.parseColor("#AAE9E9E9"),
                     Color.parseColor("#AAE9E9E9"),
                     Color.parseColor("#E9E9E9")
+            };
+        } else {
+            colors = new int[] {
+                    Color.parseColor("#AA333333"),
+                    Color.parseColor("#AA333333"),
+                    Color.parseColor("#AA333333"),
+                    Color.parseColor("#333333")
+
             };
         }
 
@@ -469,10 +470,10 @@ public class ApplicationThemeColor {
             myIcon.setColorFilter(getForegroundColorFilter());
         } else if(resourceType == LEFT_MENU_DOWN){
             myIcon = context.getResources().getDrawable(R.drawable.left_menu_down);
-            myIcon.setColorFilter(getReverseThemeColorFilterWithAlpha((float)0.5));
+            myIcon.setColorFilter(getThemeColorFilterWithAlpha((float)0.5));
         } else if(resourceType == LEFT_MENU_UP){
             myIcon = context.getResources().getDrawable(R.drawable.left_menu_up);
-            myIcon.setColorFilter(getReverseThemeColorFilterWithAlpha((float)0.5));
+            myIcon.setColorFilter(getThemeColorFilterWithAlpha((float)0.5));
         } else if(resourceType == LEFT_MENU_CATEGORY){
             myIcon = context.getResources().getDrawable(R.drawable.left_menu_category_icon1);
             myIcon.setColorFilter(getThemeColorFilter());
@@ -481,13 +482,13 @@ public class ApplicationThemeColor {
             myIcon.setColorFilter(getThemeColorFilter());
         } else if (resourceType == CATEGORY_SELECT){
             myIcon = context.getResources().getDrawable(R.drawable.category_select);
-            myIcon.setColorFilter(getReverseThemeColorFilter());
+            myIcon.setColorFilter(getThemeColorFilter());
         } else if(resourceType == SEARCH_CLEAR){
             myIcon = context.getResources().getDrawable(R.drawable.left_menu_clear_icon_light);
-            myIcon.setColorFilter(getReverseThemeColorFilter());
+            myIcon.setColorFilter(getThemeColorFilter());
         } else if(resourceType == SEARCH_ICON){
             myIcon = context.getResources().getDrawable(R.drawable.left_menu_search_icon);
-            myIcon.setColorFilter(getReverseThemeColorFilter());
+            myIcon.setColorFilter(getThemeColorFilter());
         } else if(resourceType == LIBRARY_ICON_SELECTED) {
             myIcon = context.getResources().getDrawable(R.drawable.tab_library);
             myIcon.setColorFilter(getForeGroundColorFilterWithAlpha((float) 0.5));
@@ -562,13 +563,13 @@ public class ApplicationThemeColor {
             myIcon.setColorFilter(getReverseThemeColorFilter());
         } else if(resourceType == CATEGORY_UNSELECT){
             myIcon = context.getResources().getDrawable(R.drawable.category_unselect);
-            myIcon.setColorFilter(getReverseThemeColorFilterWithAlpha((float)0.5));
+            myIcon.setColorFilter(getThemeColorFilterWithAlpha((float)0.5));
         } else if(resourceType == PASSIVE_SEARCH_ICON){
             myIcon = context.getResources().getDrawable(R.drawable.left_menu_search_icon);
-            myIcon.setColorFilter(getReverseThemeColorFilterWithAlpha((float)0.5));
+            myIcon.setColorFilter(getThemeColorFilterWithAlpha((float)0.5));
         } else if(resourceType == PASSIVE_SEARCH_CLEAR_ICON){
             myIcon = context.getResources().getDrawable(R.drawable.left_menu_clear_icon_light);
-            myIcon.setColorFilter(getReverseThemeColorFilterWithAlpha((float)0.5));
+            myIcon.setColorFilter(getThemeColorFilterWithAlpha((float)0.5));
         } else if(resourceType == READ_CONTENT){
             myIcon = context.getResources().getDrawable(R.drawable.popup_read);
             myIcon.setColorFilter(getReverseThemeColorFilter());
@@ -966,8 +967,8 @@ public class ApplicationThemeColor {
             pressed = context.getResources().getDrawable(R.drawable.membership_logout);
         }
 
-        normal.setColorFilter(getReverseThemeColorFilter());
-        pressed.setColorFilter(getReverseThemeColorFilterWithAlpha((float) 0.5));
+        normal.setColorFilter(getThemeColorFilter());
+        pressed.setColorFilter(getThemeColorFilterWithAlpha((float) 0.5));
 
         return new LeftMenuStateList(normal, pressed);
     }
@@ -1019,7 +1020,7 @@ public class ApplicationThemeColor {
         GradientDrawable drawable =  new GradientDrawable();
         drawable.setCornerRadius(context.getResources().getDimension(R.dimen.login_input_height));
         drawable.setColor(Color.TRANSPARENT);
-        drawable.setStroke(1, getReverseThemeColor());
+        drawable.setStroke(1, getThemeColor());
         return drawable;
     }
 
@@ -1028,7 +1029,7 @@ public class ApplicationThemeColor {
         GradientDrawable drawable =  new GradientDrawable();
         drawable.setCornerRadius(context.getResources().getDimension(R.dimen.login_input_height));
         drawable.setColor(Color.TRANSPARENT);
-        drawable.setStroke(1, getReverseThemeColorWithAlpha(50));
+        drawable.setStroke(1, getThemeColorWithAlpha(50));
         return drawable;
     }
 

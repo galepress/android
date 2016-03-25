@@ -52,7 +52,7 @@ public class LeftMenuCategoryAdapter extends BaseAdapter {
 
         TextView txtTitle = (TextView) convertView.findViewById(R.id.category_title);
         txtTitle.setText(mCategory.get(position).getCategoryName());
-        txtTitle.setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColorWithAlpha(50));
+        txtTitle.setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
         txtTitle.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(mContext));
 
         ImageView image = (ImageView)convertView.findViewById(R.id.category_icon);
@@ -78,7 +78,7 @@ public class LeftMenuCategoryAdapter extends BaseAdapter {
                         image.setBackground(ApplicationThemeColor.getInstance().paintIcons(mContext, ApplicationThemeColor.CATEGORY_SELECT));
                     else
                         image.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(mContext, ApplicationThemeColor.CATEGORY_SELECT));
-                    txtTitle.setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
+                    txtTitle.setTextColor(ApplicationThemeColor.getInstance().getThemeColor());
                 }
             }
         }

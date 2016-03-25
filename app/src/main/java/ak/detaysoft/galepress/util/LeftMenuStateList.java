@@ -24,10 +24,10 @@ public class LeftMenuStateList extends StateListDrawable {
             }
         }
         if (isClicked) {
-            setColorFilter(ApplicationThemeColor.getInstance().getReverseThemeColorFilterWithAlpha((float)0.5));
+            setColorFilter(ApplicationThemeColor.getInstance().getThemeColorFilterWithAlpha((float)0.5));
         }
         else {
-            setColorFilter(ApplicationThemeColor.getInstance().getReverseThemeColorFilter());
+            setColorFilter(ApplicationThemeColor.getInstance().getThemeColorFilter());
         }
         return super.onStateChange(stateSet);
     }

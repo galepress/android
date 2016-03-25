@@ -618,6 +618,9 @@ public abstract class PageView extends ViewGroup {
 
             protected void onPostExecute(LinkInfo[] v) {
 
+				/*
+				* interaktif iceriklerin bilgileri alinana kadar activity'nin kapatilmasi durumu kontrol ediliyor.
+				* */
 				if(mContext != null) {
 					mLinks = v;
 					final float scale = mSourceScale*(float)getWidth()/(float)mSize.x;//
