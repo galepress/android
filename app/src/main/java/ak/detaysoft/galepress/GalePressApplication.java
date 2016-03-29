@@ -243,6 +243,7 @@ public class GalePressApplication
 
     }
 
+
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         switch (requestCode) {
             case LocationUtils.CONNECTION_FAILURE_RESOLUTION_REQUEST :

@@ -542,6 +542,8 @@ public class ContentDetailPopupActivity extends Activity{
 
     }
 
+
+
     private void displayImage(final boolean isDownload, final boolean isThumnail, final ImageView image, final CustomPulseProgress loading, String imagePath) {
         DisplayImageOptions displayConfig;
         if (isThumnail) {

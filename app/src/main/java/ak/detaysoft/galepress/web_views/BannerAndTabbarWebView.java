@@ -179,10 +179,7 @@ public class BannerAndTabbarWebView extends WebView {
                 return super.shouldOverrideUrlLoading(view, url);
             }
         }
-
-
     }
-
 
     public void loadBannerUrl(String url) {
         isBannerUrlUpdated = true;

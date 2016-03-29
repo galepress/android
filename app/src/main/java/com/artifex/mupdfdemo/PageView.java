@@ -172,8 +172,6 @@ public abstract class PageView extends ViewGroup {
 //        return true;
 //    }
 
-
-
 	protected abstract void drawPage(Bitmap bm, int sizeX, int sizeY, int patchX, int patchY, int patchWidth, int patchHeight);
 	protected abstract void updatePage(Bitmap bm, int sizeX, int sizeY, int patchX, int patchY, int patchWidth, int patchHeight);
 	protected abstract LinkInfo[] getLinkInfo();
@@ -240,10 +238,12 @@ public abstract class PageView extends ViewGroup {
 	public void releaseBitmaps() {
 		reinit();
         // Outofmemory hatasi aliyordum. Onun cozumu icin ekledim. (ak_)
-        mEntireBm.recycle();
-        mPatchBm.recycle();
-        //
+		if (mEntireBm!=null)
+			mEntireBm.recycle();
 		mEntireBm = null;
+
+		if (mPatchBm!=null)
+			mPatchBm.recycle();
 		mPatchBm = null;
 	}
 
