@@ -958,6 +958,12 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             e.printStackTrace();
         }
 
+        /*
+        * garbage collector tetikleniyor. Bu metodu kullanmak cokta saglikli bir yontem olamayabilir (MG)
+        * Bu yapilmadigi zaman memory usage her pdf reader acilisinda biraz daha artiyor.
+        * Bu islem yapilirsa reader kapandiktan sonra bir miktar dusuyor.
+        * */
+        Runtime.getRuntime().gc();
         super.onDestroy();
     }
 
@@ -2412,14 +2418,18 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             switch (keyCode) {
                 case KeyEvent.KEYCODE_BACK:
                     if (GalePressApplication.getInstance().getDataApi().isLibraryMustBeEnabled()) {
-                        Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
-                        String udid = UUID.randomUUID().toString();
-                        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                        Calendar cal = Calendar.getInstance();
-                        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
-                        Location location = GalePressApplication.getInstance().location;
-                        L_Statistic statistic = new L_Statistic(udid, this.content.getId(), location != null ? location.getLatitude() : null, location != null ? location.getLongitude() : null, null, dateFormat.format(cal.getTime()), L_Statistic.STATISTIC_contentClosed, null, null, null);
-                        GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
+
+                        if(this.content != null && this.content.getId() != null) {
+                            Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+                            String udid = UUID.randomUUID().toString();
+                            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                            Calendar cal = Calendar.getInstance();
+                            dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+                            Location location = GalePressApplication.getInstance().location;
+                            L_Statistic statistic = new L_Statistic(udid, this.content.getId(), location != null ? location.getLatitude() : null, location != null ? location.getLongitude() : null, null, dateFormat.format(cal.getTime()), L_Statistic.STATISTIC_contentClosed, null, null, null);
+                            GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
+                        }
+
 
                         try {
                             if(mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null ) {
@@ -2427,7 +2437,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                                 ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
                                 ((MuPDFPageView) mDocView.getChildAt(0)).destroyTimers();
                             }
-
 
                         /*for(int i =0; i < mDocView.getChildCount(); i++){
                             MuPDFPageView muPDFPageView = (MuPDFPageView) mDocView.getChildAt(i);
@@ -2437,7 +2446,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                             e.printStackTrace();
                         }
 
-                        if (content.isMaster() && isHomeOpen) {
+                        if (content != null && content.isMaster() && isHomeOpen) {
                             Intent intent = getIntent();
                             intent.putExtra("SelectedTab", 1);
                             setResult(101, intent);
@@ -2446,7 +2455,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                             super.onBackPressed();
                         }
                     } else {
-                        if (content.isMaster() && isHomeOpen) {
+                        if (content != null && content.isMaster() && isHomeOpen) {
 
                             try {
                                 if(mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null ) {
@@ -2456,10 +2465,10 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                                 }
 
 
-                /*for(int i =0; i < mDocView.getChildCount(); i++){
-                    MuPDFPageView muPDFPageView = (MuPDFPageView) mDocView.getChildAt(i);
-                    muPDFPageView.clearWebAnnotations(muPDFPageView);
-                }*/
+                            /*for(int i =0; i < mDocView.getChildCount(); i++){
+                                MuPDFPageView muPDFPageView = (MuPDFPageView) mDocView.getChildAt(i);
+                                muPDFPageView.clearWebAnnotations(muPDFPageView);
+                            }*/
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }

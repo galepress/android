@@ -693,26 +693,29 @@ public abstract class PageView extends ViewGroup {
 										addView(web);
 									} else {
 
-										final WebViewAnnotationWithCrosswalk web = new WebViewAnnotationWithCrosswalk(mContext, linkInfoExternal, progressBar);
-										web.layout(left, top, right, bottom);
+										if(GalePressApplication.getInstance().isXWalkInitializer()) {
+											final WebViewAnnotationWithCrosswalk web = new WebViewAnnotationWithCrosswalk(mContext, linkInfoExternal, progressBar);
+											web.layout(left, top, right, bottom);
 
-										//Crosswalk wiew içindeki tüm chil viewlar için .layout metodu set edilmezse load edilen sayfa görünmüyor. Viewgroup da böyle bi sorun var.(MG)
-										web.getChildAt(0).layout(0, 0, right - left, bottom - top);
-										((ViewGroup) web.getChildAt(0)).getChildAt(0).layout(0, 0, right - left, bottom - top);
-										((ViewGroup) web.getChildAt(0)).getChildAt(1).layout(0, 0, right - left, bottom - top);
-										(((ViewGroup) ((XWalkViewBridge) web.getChildAt(0)).getChildAt(0))).getChildAt(0).layout(0, 0, right - left, bottom - top);
+											//Crosswalk wiew içindeki tüm chil viewlar için .layout metodu set edilmezse load edilen sayfa görünmüyor. Viewgroup da böyle bi sorun var.(MG)
+											web.getChildAt(0).layout(0, 0, right - left, bottom - top);
+											((ViewGroup) web.getChildAt(0)).getChildAt(0).layout(0, 0, right - left, bottom - top);
+											((ViewGroup) web.getChildAt(0)).getChildAt(1).layout(0, 0, right - left, bottom - top);
+											(((ViewGroup) ((XWalkViewBridge) web.getChildAt(0)).getChildAt(0))).getChildAt(0).layout(0, 0, right - left, bottom - top);
 
 
-										web.readerView = ((MuPDFActivity) mContext).mDocView;
+											web.readerView = ((MuPDFActivity) mContext).mDocView;
 
-										web.setId(atomicInteger.incrementAndGet());
-										linkInfoExternal.webViewId = web.getId();
+											web.setId(atomicInteger.incrementAndGet());
+											linkInfoExternal.webViewId = web.getId();
 
-										if (linkInfoExternal.isWebAnnotation()) {
-											web.load(url, null);
+											if (linkInfoExternal.isWebAnnotation()) {
+												web.load(url, null);
+											}
+
+											addView(web);
 										}
 
-										addView(web);
 									}
 
 								}
@@ -749,24 +752,28 @@ public abstract class PageView extends ViewGroup {
 									web.loadUrl(mapUrl);
 									addView(web);
 								} else {
-									final WebViewAnnotationWithCrosswalk web = new WebViewAnnotationWithCrosswalk(mContext, linkInfoExternal, progressBar);
-									web.layout(left, top, right, bottom);
 
-									//Crosswalk wiew içindeki tüm chil viewlar için .layout metodu set edilmezse load edilen sayfa görünmüyor. Viewgroup da böyle bi sorun var.(MG)
-									web.getChildAt(0).layout(0, 0, right - left, bottom - top);
-									((ViewGroup) web.getChildAt(0)).getChildAt(0).layout(0, 0, right - left, bottom - top);
-									((ViewGroup) web.getChildAt(0)).getChildAt(1).layout(0, 0, right - left, bottom - top);
-									(((ViewGroup) ((XWalkViewBridge) web.getChildAt(0)).getChildAt(0))).getChildAt(0).layout(0, 0, right - left, bottom - top);
+									if(GalePressApplication.getInstance().isXWalkInitializer()) {
+										final WebViewAnnotationWithCrosswalk web = new WebViewAnnotationWithCrosswalk(mContext, linkInfoExternal, progressBar);
+										web.layout(left, top, right, bottom);
+
+										//Crosswalk wiew içindeki tüm chil viewlar için .layout metodu set edilmezse load edilen sayfa görünmüyor. Viewgroup da böyle bi sorun var.(MG)
+										web.getChildAt(0).layout(0, 0, right - left, bottom - top);
+										((ViewGroup) web.getChildAt(0)).getChildAt(0).layout(0, 0, right - left, bottom - top);
+										((ViewGroup) web.getChildAt(0)).getChildAt(1).layout(0, 0, right - left, bottom - top);
+										(((ViewGroup) ((XWalkViewBridge) web.getChildAt(0)).getChildAt(0))).getChildAt(0).layout(0, 0, right - left, bottom - top);
 
 
-									web.readerView = ((MuPDFActivity) mContext).mDocView;
-									final String url2 = linkInfoExternal.getSourceUrlPath(mContext);
+										web.readerView = ((MuPDFActivity) mContext).mDocView;
+										final String url2 = linkInfoExternal.getSourceUrlPath(mContext);
 
-									web.setId(atomicInteger.incrementAndGet());
-									linkInfoExternal.webViewId = web.getId();
+										web.setId(atomicInteger.incrementAndGet());
+										linkInfoExternal.webViewId = web.getId();
 
-									web.load(mapUrl, null);
-									addView(web);
+										web.load(mapUrl, null);
+										addView(web);
+									}
+
 								}
 							}
 							else if(((LinkInfoExternal) link).componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_WEBLINK){
@@ -789,7 +796,7 @@ public abstract class PageView extends ViewGroup {
 								addView(progressBar);
 							}
 						}
-						else{
+						else if(link instanceof LinkInfoInternal){
 							// LinkInfo Internal - Burada pagelinkler icin webView olusturacagiz.
 							final LinkInfoInternal linkInfoInternal = (LinkInfoInternal)link;
 							final int left = (int)(linkInfoInternal.rect.left * scale);

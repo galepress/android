@@ -73,7 +73,7 @@ public class CustomTabFragment extends Fragment{
             if (savedInstanceState == null)
                 tabbarWebViewWithCrosswalk.load(GalePressApplication.getInstance().getTabList().get(Integer.parseInt(getTag())).getWebUrl(), null);
             else
-                tabbarWebView.restoreState(savedInstanceState);
+                tabbarWebViewWithCrosswalk.restoreState(savedInstanceState);
 
             v.addView(tabbarWebViewWithCrosswalk);
 

@@ -19,9 +19,12 @@ import ak.detaysoft.galepress.util.SystemUiHider;
 import ak.detaysoft.galepress.view.ProgressWheel;
 
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.View;
 
 import com.facebook.FacebookSdk;
+
+import org.xwalk.core.XWalkInitializer;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -29,7 +32,7 @@ import com.facebook.FacebookSdk;
  *
  * @see SystemUiHider
  */
-public class LaunchActivity extends ActionBarActivity {
+public class LaunchActivity extends ActionBarActivity implements  XWalkInitializer.XWalkInitListener {
     private SystemUiHider mSystemUiHider;
     boolean running;
     ProgressWheel pw_two;
@@ -39,6 +42,11 @@ public class LaunchActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        XWalkInitializer mXWalkInitializer = new XWalkInitializer(this, this);
+        mXWalkInitializer.initAsync();
+
+
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         setContentView(R.layout.activity_launch);
@@ -105,7 +113,7 @@ public class LaunchActivity extends ActionBarActivity {
     }
 
     public void progressUpdate(long total, long fileLength){
-        Logout.e("Adem", "Total : "+total+" file lenght: "+fileLength);
+        Logout.e("Adem", "Total : " + total + " file lenght: " + fileLength);
         if(total == fileLength){
 //            openMasterContent();
         }
@@ -120,7 +128,7 @@ public class LaunchActivity extends ActionBarActivity {
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        Logout.e("Adem","Launch Activity onPostCreate calistirildi.");
+        Logout.e("Adem", "Launch Activity onPostCreate calistirildi.");
         // Trigger the initial hide() shortly after the activity has been
         // created, to briefly hint to the user that UI controls
         // are available.
@@ -162,5 +170,27 @@ public class LaunchActivity extends ActionBarActivity {
         Activity currActivity = GalePressApplication.getInstance().getCurrentActivity();
         if (currActivity != null && currActivity.equals(this))
             GalePressApplication.getInstance().setCurrentActivity(null);
+    }
+
+
+    @Override
+    public void onXWalkInitStarted() {
+        Log.e("CroswalkInit", "start");
+    }
+
+    @Override
+    public void onXWalkInitCancelled() {
+        Log.e("CroswalkInit", "cancel");
+    }
+
+    @Override
+    public void onXWalkInitFailed() {
+        Log.e("CroswalkInit", "fail");
+    }
+
+    @Override
+    public void onXWalkInitCompleted() {
+        Log.e("CroswalkInit","complete");
+        GalePressApplication.getInstance().setXWalkInitializer(true);
     }
 }

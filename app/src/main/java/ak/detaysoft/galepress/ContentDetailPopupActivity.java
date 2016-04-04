@@ -480,7 +480,7 @@ public class ContentDetailPopupActivity extends Activity{
                     @Override
                     protected String doInBackground(Void... params) {
                         String price = "";
-                        if(GalePressApplication.getInstance().isUserHaveActiveSubscription()){
+                        if(GalePressApplication.getInstance().isUserHaveActiveSubscription() || GalePressApplication.getInstance().getmService() == null){
                             return price;
                         } else {
                             //Satin alinabilen urunse fiyati kontrol ediliyor

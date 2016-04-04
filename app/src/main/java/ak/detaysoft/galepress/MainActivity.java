@@ -63,6 +63,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
+import org.xwalk.core.XWalkInitializer;
 import org.xwalk.core.XWalkNavigationHistory;
 import org.xwalk.core.XWalkView;
 
@@ -1076,49 +1077,55 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
     private void subscribe(){
 
-        try {
-            Bundle buyIntentBundle = GalePressApplication.getInstance().getmService().getBuyIntent(3, getPackageName(),
-                    selectedSubscription.getIdentifier(), "subs", "bGoa+V7g/yqDXvKRqq+JTFn4uQZbPiQJo4pf9RzJ");
-            PendingIntent pendingIntent = buyIntentBundle.getParcelable("BUY_INTENT");
+        if(GalePressApplication.getInstance().getmService() != null) {
+            try {
+                Bundle buyIntentBundle = GalePressApplication.getInstance().getmService().getBuyIntent(3, getPackageName(),
+                        selectedSubscription.getIdentifier(), "subs", "bGoa+V7g/yqDXvKRqq+JTFn4uQZbPiQJo4pf9RzJ");
+                PendingIntent pendingIntent = buyIntentBundle.getParcelable("BUY_INTENT");
 
-            if (buyIntentBundle.getInt("RESPONSE_CODE") == GalePressApplication.BILLING_RESPONSE_RESULT_OK) { // Urun satin alinmamis
-                // Start purchase flow (this brings up the Google Play UI).
-                // Result will be delivered through onActivityResult().
-                startIntentSenderForResult(pendingIntent.getIntentSender(),
-                        1001, new Intent(), Integer.valueOf(0), Integer.valueOf(0),
-                        Integer.valueOf(0));
-            } else if (buyIntentBundle.getInt("RESPONSE_CODE") == GalePressApplication.RESULT_ITEM_ALREADY_OWNED){ // Urun daha once alinmis
-                Toast.makeText(this, this.getResources().getString(R.string.BILLING_ITEM_ALREADY_OWNED), Toast.LENGTH_SHORT)
-                        .show();
-                selectedSubscription.setOwned(true);
-                for (Subscription subs : GalePressApplication.getInstance().getSubscriptions())
-                    if(subs.getIdentifier().compareTo(selectedSubscription.getIdentifier()) == 0)
-                        subs.setOwned(true);
-                GalePressApplication.getInstance().prepareSubscriptions(null);
-            } else if (buyIntentBundle.getInt("RESPONSE_CODE") == GalePressApplication.RESULT_USER_CANCELED){ // Hata var
-                Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESULT_USER_CANCELED), Toast.LENGTH_SHORT)
-                        .show();
-            } else if (buyIntentBundle.getInt("RESPONSE_CODE") == GalePressApplication.RESULT_BILLING_UNAVAILABLE){ // Hata var
-                Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESULT_BILLING_UNAVAILABLE), Toast.LENGTH_SHORT)
-                        .show();
-            } else if (buyIntentBundle.getInt("RESPONSE_CODE") == GalePressApplication.RESULT_ITEM_UNAVAILABLE){ // Hata var
-                Toast.makeText(this, this.getResources().getString(R.string.BILLIN_RESULT_ITEM_UNAVAILABLE), Toast.LENGTH_SHORT)
-                        .show();
-            } else if (buyIntentBundle.getInt("RESPONSE_CODE") == GalePressApplication.RESULT_ERROR){ // Hata var
-                Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESULT_ERROR), Toast.LENGTH_SHORT)
-                        .show();
-            } else { //  Beklenmedik Hata var
-                Toast.makeText(this, this.getResources().getString(R.string.BILLING_UNEXPECTED), Toast.LENGTH_SHORT)
-                        .show();
+                if (buyIntentBundle.getInt("RESPONSE_CODE") == GalePressApplication.BILLING_RESPONSE_RESULT_OK) { // Urun satin alinmamis
+                    // Start purchase flow (this brings up the Google Play UI).
+                    // Result will be delivered through onActivityResult().
+                    startIntentSenderForResult(pendingIntent.getIntentSender(),
+                            1001, new Intent(), Integer.valueOf(0), Integer.valueOf(0),
+                            Integer.valueOf(0));
+                } else if (buyIntentBundle.getInt("RESPONSE_CODE") == GalePressApplication.RESULT_ITEM_ALREADY_OWNED){ // Urun daha once alinmis
+                    Toast.makeText(this, this.getResources().getString(R.string.BILLING_ITEM_ALREADY_OWNED), Toast.LENGTH_SHORT)
+                            .show();
+                    selectedSubscription.setOwned(true);
+                    for (Subscription subs : GalePressApplication.getInstance().getSubscriptions())
+                        if(subs.getIdentifier().compareTo(selectedSubscription.getIdentifier()) == 0)
+                            subs.setOwned(true);
+                    GalePressApplication.getInstance().prepareSubscriptions(null);
+                } else if (buyIntentBundle.getInt("RESPONSE_CODE") == GalePressApplication.RESULT_USER_CANCELED){ // Hata var
+                    Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESULT_USER_CANCELED), Toast.LENGTH_SHORT)
+                            .show();
+                } else if (buyIntentBundle.getInt("RESPONSE_CODE") == GalePressApplication.RESULT_BILLING_UNAVAILABLE){ // Hata var
+                    Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESULT_BILLING_UNAVAILABLE), Toast.LENGTH_SHORT)
+                            .show();
+                } else if (buyIntentBundle.getInt("RESPONSE_CODE") == GalePressApplication.RESULT_ITEM_UNAVAILABLE){ // Hata var
+                    Toast.makeText(this, this.getResources().getString(R.string.BILLIN_RESULT_ITEM_UNAVAILABLE), Toast.LENGTH_SHORT)
+                            .show();
+                } else if (buyIntentBundle.getInt("RESPONSE_CODE") == GalePressApplication.RESULT_ERROR){ // Hata var
+                    Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESULT_ERROR), Toast.LENGTH_SHORT)
+                            .show();
+                } else { //  Beklenmedik Hata var
+                    Toast.makeText(this, this.getResources().getString(R.string.BILLING_UNEXPECTED), Toast.LENGTH_SHORT)
+                            .show();
+                }
+
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (IntentSender.SendIntentException e) {
+                e.printStackTrace();
+            } catch (Exception e){
+                e.printStackTrace();
             }
-
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        } catch (IntentSender.SendIntentException e) {
-            e.printStackTrace();
-        } catch (Exception e){
-            e.printStackTrace();
+        } else {
+            Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESULT_BILLING_UNAVAILABLE), Toast.LENGTH_SHORT)
+                    .show();
         }
+
     }
 
     private Drawable createDrawable(boolean isSelected, Drawable res, Drawable selectedRes) {
@@ -1415,10 +1422,9 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        GalePressApplication.getInstance().setCurrentActivity(this);
-
+    protected void onResumeFragments() {
+        super.onResumeFragments();
+        Log.e("mgunes", "onResumeFragments");
         // connectionStatusChangedOnPause aciklamasinda yaziyor neden kullanildigi
         if(connectionStatusChangedOnPause) {
             initCustomTabs();
@@ -1445,6 +1451,15 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             }
             selectedReaderTabIndex = -1;
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        GalePressApplication.getInstance().setCurrentActivity(this);
+        Log.e("mgunes", "onResume");
+
+
     }
 
     protected void onPause() {
@@ -1624,5 +1639,4 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         GalePressApplication.getInstance().prepareSubscriptions(null);
         updateMemberListAdapter();
     }
-
 }

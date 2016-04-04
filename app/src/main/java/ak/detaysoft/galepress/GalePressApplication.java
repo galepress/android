@@ -139,7 +139,7 @@ public class GalePressApplication
     private boolean blnBind = false;
 
     private UserInformations userInformation;
-
+    private boolean XWalkInitializer = false;
 
     Foreground.Listener myListener = new Foreground.Listener(){
         public void onBecameForeground(){
@@ -181,6 +181,7 @@ public class GalePressApplication
     @Override
     public void onCreate() {
         super.onCreate();
+
         Fabric.with(this, new Crashlytics());
 
         XWalkPreferences.setValue("enable-javascript", true);
@@ -925,7 +926,7 @@ public class GalePressApplication
                                 }
                             }
                         }
-                    } catch (RemoteException e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
 
@@ -958,34 +959,37 @@ public class GalePressApplication
                         querySkus.putStringArrayList("ITEM_ID_LIST", skuList);
                     }
 
-                    Bundle skuDetails;
-                    try {
-                        skuDetails = GalePressApplication.getInstance().getmService().getSkuDetails(3, getPackageName(), "subs", querySkus);
-                        int response = skuDetails.getInt("RESPONSE_CODE");
+                    if(subscriptions != null && subscriptions.size() > 0) {
+                        Bundle skuDetails;
+                        try {
+                            skuDetails = GalePressApplication.getInstance().getmService().getSkuDetails(3, getPackageName(), "subs", querySkus);
+                            int response = skuDetails.getInt("RESPONSE_CODE");
 
-                        if (response == 0){
-                            ArrayList<String> responseList = skuDetails.getStringArrayList("DETAILS_LIST");
+                            if (response == 0){
+                                ArrayList<String> responseList = skuDetails.getStringArrayList("DETAILS_LIST");
 
-                            if (responseList.size() != 0) {
-                                for (String thisResponse : responseList) {
-                                    JSONObject object = null;
-                                    try {
-                                        object = new JSONObject(thisResponse);
-                                        for(int i = 0; i < subscriptions.size(); i++){
-                                            if(object.getString("productId").compareTo(subscriptions.get(i).getIdentifier()) == 0){
-                                                subscriptions.get(i).setMarketPrice(object.getString("price"));
-                                                break;
+                                if (responseList.size() != 0) {
+                                    for (String thisResponse : responseList) {
+                                        JSONObject object = null;
+                                        try {
+                                            object = new JSONObject(thisResponse);
+                                            for(int i = 0; i < subscriptions.size(); i++){
+                                                if(object.getString("productId").compareTo(subscriptions.get(i).getIdentifier()) == 0){
+                                                    subscriptions.get(i).setMarketPrice(object.getString("price"));
+                                                    break;
+                                                }
                                             }
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
                                         }
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
                                     }
                                 }
                             }
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
-                    } catch (RemoteException e) {
-                        e.printStackTrace();
                     }
+
                 }
                 return null;
             }
@@ -1054,7 +1058,7 @@ public class GalePressApplication
                                 }
                             }
                         }
-                    } catch (RemoteException e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
 
@@ -1117,7 +1121,7 @@ public class GalePressApplication
                                 }
                             }
                         }
-                    } catch (RemoteException e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
@@ -1244,5 +1248,14 @@ public class GalePressApplication
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("userHaveActiveSubscription", userHaveActiveSubscription);
         editor.commit();
+    }
+
+    public void setXWalkInitializer(boolean XWalkInitializer) {
+        this.XWalkInitializer = XWalkInitializer;
+    }
+
+    public boolean isXWalkInitializer() {
+
+        return XWalkInitializer;
     }
 }

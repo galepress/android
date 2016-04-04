@@ -80,10 +80,11 @@ public class ThumbnailListAdapter extends BaseAdapter {
             pageNumberList.add(new TextView(mContext));
 
 
+        Integer contentId = mContent != null ? mContent.getId():-1;
         if(mCore.getDisplayPages() == 1){
-            mPath = GalePressApplication.getInstance().getFilesDir() + "/"+mContent.getId()+"/previewCache/" + mContent.getPdfFileName()+"/";
+            mPath = GalePressApplication.getInstance().getFilesDir() + "/"+contentId+"/previewCache/" + mContent.getPdfFileName()+"/";
         } else {
-            mPath = GalePressApplication.getInstance().getFilesDir() + "/"+mContent.getId()+"/previewCache/" + mContent.getPdfFileName()+"/land/";
+            mPath = GalePressApplication.getInstance().getFilesDir() + "/"+contentId+"/previewCache/" + mContent.getPdfFileName()+"/land/";
         }
 
         File mCacheDirectory = new File(mPath);
@@ -207,7 +208,7 @@ public class ThumbnailListAdapter extends BaseAdapter {
             if (mCachedBitmapFile.exists() && mCachedBitmapFile.canRead()) {
                 BitmapFactory.Options options = new BitmapFactory.Options();
                 options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-                options.inJustDecodeBounds = true;
+                //options.inJustDecodeBounds = true;
                 lq = BitmapFactory.decodeFile(mCachedBitmapFilePath, options);
                 return lq;
             }
