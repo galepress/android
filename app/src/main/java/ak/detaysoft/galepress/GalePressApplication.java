@@ -19,7 +19,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.PowerManager;
-import android.os.RemoteException;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
@@ -141,6 +140,10 @@ public class GalePressApplication
     private UserInformations userInformation;
     private boolean XWalkInitializer = false;
 
+    private boolean ageVerificationSubmit = false;
+    private String ageVerificationQuestion = "";
+    private boolean isAgeVerificationActive = false;
+
     Foreground.Listener myListener = new Foreground.Listener(){
         public void onBecameForeground(){
             mLocationClient.connect();
@@ -202,6 +205,10 @@ public class GalePressApplication
         ImageLoader.getInstance().init(loaderConfig);
 
 
+        SharedPreferences verificationPreferences = getSharedPreferences("ak.detaysoft.galepress", Context.MODE_PRIVATE);
+        setAgeVerificationSubmit(verificationPreferences.getBoolean("ageVerificationSubmit",false));
+        setAgeVerificationActive(verificationPreferences.getBoolean("isAgeVerificationActive",false));
+        setAgeVerificationQuestion(verificationPreferences.getString("ageVerificationQuestion",""));
 
         initBillingServices();
         getlocalActiveSubscripton();
@@ -1012,7 +1019,6 @@ public class GalePressApplication
                     }
                 }
 
-
             }
         };
         restore.execute();
@@ -1208,7 +1214,6 @@ public class GalePressApplication
                     }
                     restorePurchasedSubscriptions(true, false, null, null);
                 } catch (JSONException e) {
-                    e.printStackTrace();
                     subscriptions = new ArrayList<Subscription>();
                 }
             }
@@ -1257,5 +1262,44 @@ public class GalePressApplication
     public boolean isXWalkInitializer() {
 
         return XWalkInitializer;
+    }
+
+    public void setAgeVerificationSubmit(boolean ageVerificationSubmit) {
+        SharedPreferences preferences = getSharedPreferences("ak.detaysoft.galepress", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("ageVerificationSubmit", ageVerificationSubmit);
+        editor.commit();
+        this.ageVerificationSubmit = ageVerificationSubmit;
+    }
+
+    public boolean isAgeVerificationSubmit() {
+
+        return ageVerificationSubmit;
+    }
+
+
+    public void setAgeVerificationQuestion(String ageVerificationQuestion) {
+        SharedPreferences preferences = getSharedPreferences("ak.detaysoft.galepress", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("ageVerificationQuestion", ageVerificationQuestion);
+        editor.commit();
+        this.ageVerificationQuestion = ageVerificationQuestion;
+    }
+
+    public void setAgeVerificationActive(boolean ageVerificationActive) {
+        SharedPreferences preferences = getSharedPreferences("ak.detaysoft.galepress", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("isAgeVerificationActive", ageVerificationActive);
+        editor.commit();
+        this.isAgeVerificationActive = ageVerificationActive;
+    }
+
+    public String getAgeVerificationQuestion() {
+
+        return ageVerificationQuestion;
+    }
+
+    public boolean isAgeVerificationActive() {
+        return isAgeVerificationActive;
     }
 }

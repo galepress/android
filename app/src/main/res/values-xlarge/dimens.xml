@@ -6,4 +6,12 @@
     <dimen name="left_menu_text_size">22dp</dimen>
     <dimen name="left_menu_title_size">15dp</dimen>
     <dimen name="left_menu_scroll_size">300dp</dimen>
+
+
+    <dimen name="verification_input_height">45dp</dimen>
+    <dimen name="verification_input_width">350dp</dimen>
+    <dimen name="verification_button_text_size">17sp</dimen>
+    <dimen name="verification_forgot_text_size">12sp</dimen>
+    <dimen name="verification_connect_text_size">13sp</dimen>
+    <dimen name="verification_skip_text_size">17sp</dimen>
 </resources>

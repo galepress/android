@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <gradient
+                android:startColor="#2c467b"
+                android:endColor="#2c467b"
+                android:angle="0" />
+            <corners
+                android:bottomLeftRadius="@dimen/verification_input_height"
+                android:bottomRightRadius="@dimen/verification_input_height"
+                android:topLeftRadius="@dimen/verification_input_height"
+                android:topRightRadius="@dimen/verification_input_height"/>
+        </shape>
+    </item>
+
+
+    <item android:state_activated="true">
+        <shape>
+            <gradient
+                android:startColor="#502c467b"
+                android:endColor="#502c467b"
+                android:angle="0" />
+            <corners
+                android:bottomLeftRadius="@dimen/verification_input_height"
+                android:bottomRightRadius="@dimen/verification_input_height"
+                android:topLeftRadius="@dimen/verification_input_height"
+                android:topRightRadius="@dimen/verification_input_height"/>
+        </shape>
+    </item>
+</selector>

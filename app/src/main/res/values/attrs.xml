@@ -41,4 +41,8 @@
         <attr name="aspectRatioLogin" format="float"/>
     </declare-styleable>
 
+    <declare-styleable name="VerficationBannerView">
+        <attr name="aspectRatioBanner" format="float"/>
+    </declare-styleable>
+
 </resources>

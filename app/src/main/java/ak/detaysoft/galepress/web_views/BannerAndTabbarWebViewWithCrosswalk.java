@@ -111,13 +111,11 @@ public class BannerAndTabbarWebViewWithCrosswalk extends XWalkView {
 
         @Override
         public void onLoadFinished(XWalkView view, String url) {
-            Log.e("denemeee", "start :"+ url);
             super.onLoadFinished(view, url);
         }
 
         @Override
         public void onLoadStarted(XWalkView view, String url) {
-            Log.e("denemeee", "finish :"+ url);
             super.onLoadStarted(view, url);
         }
 

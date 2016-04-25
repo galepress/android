@@ -2430,7 +2430,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                             GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
                         }
 
-
                         try {
                             if(mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null ) {
                                 ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();

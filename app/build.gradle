@@ -4,25 +4,25 @@ buildscript {
         maven { url 'https://maven.fabric.io/public' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.5.0'
+        classpath 'com.android.tools.build:gradle:2.0.0'
         // The Fabric Gradle plugin uses an open ended version to react
         // quickly to Android tooling updates
         classpath 'io.fabric.tools:gradle:1.+'
     }
 }
-apply plugin: 'android'
+apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
 
 android {
     signingConfigs {
     }
     compileSdkVersion 19
-    buildToolsVersion '20.0.0'
+    buildToolsVersion '21.0.0'
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 19
-        versionCode 29
-        versionName '3.4.3'
+        versionCode 32
+        versionName '3.4.6'
     }
     buildTypes {
         release {

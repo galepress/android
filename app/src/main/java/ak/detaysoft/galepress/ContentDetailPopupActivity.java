@@ -509,7 +509,6 @@ public class ContentDetailPopupActivity extends Activity{
                                             }
                                         }
                                     }
-
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -531,6 +530,7 @@ public class ContentDetailPopupActivity extends Activity{
                             Toast.makeText(ContentDetailPopupActivity.this, ContentDetailPopupActivity.this.getResources().getString(R.string.product_price_error), Toast.LENGTH_SHORT).show();
                             downloadButton.getPriceTextView().setText(content.getPrice());
                         }
+                        //downloadButton.getPriceTextView().setText("12.99 TL");
                         downloadButton.invalidate();
                     }
                 };
@@ -541,8 +541,6 @@ public class ContentDetailPopupActivity extends Activity{
         }
 
     }
-
-
 
     private void displayImage(final boolean isDownload, final boolean isThumnail, final ImageView image, final CustomPulseProgress loading, String imagePath) {
         DisplayImageOptions displayConfig;

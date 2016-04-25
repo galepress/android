@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <gradient
+                android:startColor="#333333"
+                android:endColor="#333333"
+                android:angle="270" />
+            <corners
+                android:bottomLeftRadius="@dimen/verification_input_height"
+                android:topLeftRadius="@dimen/verification_input_height"/>
+        </shape>
+    </item>
+
+
+    <item android:state_activated="true">
+        <shape>
+            <gradient
+                android:startColor="#50333333"
+                android:endColor="#50333333"
+                android:angle="270" />
+            <corners
+                android:bottomLeftRadius="@dimen/verification_input_height"
+                android:topLeftRadius="@dimen/verification_input_height"/>
+        </shape>
+    </item>
+</selector>

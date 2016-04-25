@@ -111,6 +111,9 @@ public class ApplicationThemeColor {
     public static final int MEMBERSHIP_LOGOUT = 65;
     public static final int MEMBERSHIP_POPUP_CLOSE = 66;
     public static final int MEMBERSHIP_POPUP_CLOSE_BASE = 67;
+    public static final int DOWNLOAD_CONTENT_PURCHASE_BUTTON_BACKGROUND = 68;
+    public static final int DOWNLOAD_CONTENT_PURCHASE_BOTTOM = 69;
+    public static final int VERIFICATION_POPUP_CLOSE_BASE = 70;
 
     public ApplicationThemeColor(){
 
@@ -161,6 +164,14 @@ public class ApplicationThemeColor {
         } else {
             return Color.parseColor("#E8E8E8"); //Light Theme
         }
+    }
+
+    public int getLightThemeColor(){
+        return Color.parseColor("#E8E8E8"); //Light Theme
+    }
+
+    public int getDarkThemeColor(){
+        return Color.parseColor("#333333"); //Dark Theme
     }
 
     //alpha degeri 0-255 arası olmali convertIntAlphaToHex metodunda hex hesaplamasi yapiliyor
@@ -297,6 +308,51 @@ public class ApplicationThemeColor {
         return myList;
     }
 
+    public ColorStateList defaultLightPressedDarkStateList(){
+        int[][] states = new int[][] {
+                new int[] {android.R.attr.state_pressed},
+                new int[] {android.R.attr.state_focused},
+                new int[] {android.R.attr.state_selected},
+                new int [] {}
+        };
+
+        int[] colors;
+
+        colors = new int[] {
+                Color.parseColor("#333333"),
+                Color.parseColor("#333333"),
+                Color.parseColor("#333333"),
+                Color.parseColor("#E9E9E9")
+
+        };
+
+        ColorStateList myList = new ColorStateList(states, colors);
+        return myList;
+    }
+
+
+    public ColorStateList defaultLightAlphaPressedDarkStateList(){
+        int[][] states = new int[][] {
+                new int[] {android.R.attr.state_pressed},
+                new int[] {android.R.attr.state_focused},
+                new int[] {android.R.attr.state_selected},
+                new int [] {}
+        };
+
+        int[] colors;
+
+        colors = new int[] {
+                Color.parseColor("#AA333333"),
+                Color.parseColor("#AA333333"),
+                Color.parseColor("#AA333333"),
+                Color.parseColor("#AAE9E9E9")
+
+        };
+
+        ColorStateList myList = new ColorStateList(states, colors);
+        return myList;
+    }
+
     public ColorStateList leftmenuListViewColorStateList(){
         int[][] states = new int[][] {
                 new int[] {android.R.attr.state_pressed},
@@ -347,6 +403,10 @@ public class ApplicationThemeColor {
 
     public int getForegroundColorWithAlpha(int alpha){
         return Color.parseColor(convertIntAlphaToHex(alpha)+foregroundColor.substring(1));
+    }
+
+    public int getVerficationLoginColor(){
+        return Color.parseColor("#7E7E7E");
     }
 
     public ColorFilter getForegroundColorFilter(){
@@ -431,6 +491,43 @@ public class ApplicationThemeColor {
                 , 0, 0, 0, 0, blueUnselected
                 , 0, 0, 0, 1, 0 };
         return new ColorMatrixColorFilter(matrixUnselected);
+    }
+
+    public ColorFilter getLightThemeColorFilter(){
+        int color = Color.parseColor("#E9E9E9");
+        int red = (color & 0xFF0000) / 0xFFFF;
+        int green = (color & 0xFF00) / 0xFF;
+        int blue = color & 0xFF;
+        float[] matrix = { 0, 0, 0, 0, red
+                , 0, 0, 0, 0, green
+                , 0, 0, 0, 0, blue
+                , 0, 0, 0, 1, 0 };
+        return new ColorMatrixColorFilter(matrix);
+    }
+
+    public ColorFilter getDarkThemeColorFilter(){
+        int color = Color.parseColor("#333333");
+        int red = (color & 0xFF0000) / 0xFFFF;
+        int green = (color & 0xFF00) / 0xFF;
+        int blue = color & 0xFF;
+        float[] matrix = { 0, 0, 0, 0, red
+                , 0, 0, 0, 0, green
+                , 0, 0, 0, 0, blue
+                , 0, 0, 0, 1, 0 };
+        return new ColorMatrixColorFilter(matrix);
+    }
+
+
+    public ColorFilter getDarkThemeColorFilterWithAlpha(float alpha){
+        int color = Color.parseColor("#333333");
+        int red = (color & 0xFF0000) / 0xFFFF;
+        int green = (color & 0xFF00) / 0xFF;
+        int blue = color & 0xFF;
+        float[] matrix = { 0, 0, 0, 0, red
+                , 0, 0, 0, 0, green
+                , 0, 0, 0, 0, blue
+                , 0, 0, 0, alpha, 0 };
+        return new ColorMatrixColorFilter(matrix);
     }
 
     public Drawable paintIcons(Context context, int resourceType){
@@ -632,7 +729,10 @@ public class ApplicationThemeColor {
         } else if(resourceType == MEMBERSHIP_POPUP_CLOSE_BASE){
             myIcon = context.getResources().getDrawable(R.drawable.popup_close_base_circle);
             myIcon.setColorFilter(getForegroundColorFilter());
-        }else {
+        } else if(resourceType == VERIFICATION_POPUP_CLOSE_BASE){
+            myIcon = context.getResources().getDrawable(R.drawable.popup_close_base_circle);
+            myIcon.setColorFilter(getDarkThemeColorFilterWithAlpha((float)0.5));
+        } else {
             myIcon = context.getResources().getDrawable(R.drawable.popup_cancel);
             myIcon.setColorFilter(getReverseThemeColorFilter());
         }
@@ -773,6 +873,147 @@ public class ApplicationThemeColor {
         return drawable;
     }
 
+    //Verification giris butonu background
+    public Drawable getVerificationLoginButtonDrawable(Context context) {
+        GradientDrawable normal =  new GradientDrawable();
+        normal.setCornerRadii(new float [] {
+                context.getResources().getDimension(R.dimen.verification_input_height)/2, context.getResources().getDimension(R.dimen.verification_input_height)/2,
+                0, 0,
+                0, 0,
+                context.getResources().getDimension(R.dimen.verification_input_height)/2, context.getResources().getDimension(R.dimen.verification_input_height)/2});
+        normal.setColor(getDarkThemeColor());
+        normal.setStroke(0, Color.TRANSPARENT);
+
+        GradientDrawable pressed =  new GradientDrawable();
+        pressed.setCornerRadii(new float [] {
+                context.getResources().getDimension(R.dimen.verification_input_height)/2, context.getResources().getDimension(R.dimen.verification_input_height)/2,
+                0, 0,
+                0, 0,
+                context.getResources().getDimension(R.dimen.verification_input_height)/2, context.getResources().getDimension(R.dimen.verification_input_height)/2});
+        pressed.setColor(getLightThemeColor());
+        pressed.setStroke(0, Color.TRANSPARENT);
+
+        StateListDrawable drawable = new StateListDrawable();
+        drawable.addState(new int[] { android.R.attr.state_pressed },
+                pressed);
+        drawable.addState(new int[] { android.R.attr.state_enabled },
+                normal);
+
+        return drawable;
+    }
+
+    //Verification signup butonu background
+    public Drawable getVerificationSubmitButtonDrawable(Context context) {
+        GradientDrawable normal =  new GradientDrawable();
+        normal.setCornerRadius(context.getResources().getDimension(R.dimen.verification_input_height));
+        normal.setColor(getDarkThemeColor());
+        normal.setStroke(0, Color.TRANSPARENT);
+
+        GradientDrawable pressed =  new GradientDrawable();
+        pressed.setCornerRadius(context.getResources().getDimension(R.dimen.verification_input_height));
+        pressed.setColor(getLightThemeColor());
+        pressed.setStroke(0, Color.TRANSPARENT);
+
+        StateListDrawable drawable = new StateListDrawable();
+        drawable.addState(new int[] { android.R.attr.state_pressed },
+                pressed);
+        drawable.addState(new int[] { android.R.attr.state_enabled },
+                normal);
+
+        return drawable;
+    }
+
+
+    //Verification login butonu background
+    public Drawable getVerificationSignupButtonDrawable(Context context) {
+        GradientDrawable normal =  new GradientDrawable();
+        normal.setCornerRadii(new float [] {
+                0, 0,
+                context.getResources().getDimension(R.dimen.verification_input_height)/2, context.getResources().getDimension(R.dimen.verification_input_height)/2,
+                context.getResources().getDimension(R.dimen.verification_input_height)/2, context.getResources().getDimension(R.dimen.verification_input_height)/2,
+                0, 0
+        });
+        normal.setColor(getDarkThemeColor());
+        normal.setStroke(0, Color.TRANSPARENT);
+
+        GradientDrawable pressed =  new GradientDrawable();
+        pressed.setCornerRadii(new float [] {
+                0, 0,
+                context.getResources().getDimension(R.dimen.verification_input_height)/2, context.getResources().getDimension(R.dimen.verification_input_height)/2,
+                context.getResources().getDimension(R.dimen.verification_input_height)/2, context.getResources().getDimension(R.dimen.verification_input_height)/2,
+                0, 0});
+        pressed.setColor(getLightThemeColor());
+        pressed.setStroke(0, Color.TRANSPARENT);
+
+        StateListDrawable drawable = new StateListDrawable();
+        drawable.addState(new int[] { android.R.attr.state_pressed },
+                pressed);
+        drawable.addState(new int[] { android.R.attr.state_enabled },
+                normal);
+
+        return drawable;
+    }
+
+    //Verification login-signup-facebook butonu background
+    public Drawable getVerificationFacebookButtonDrawable(Context context) {
+        GradientDrawable normal =  new GradientDrawable();
+        normal.setCornerRadius(context.getResources().getDimension(R.dimen.verification_input_height));
+        normal.setColor(Color.parseColor("#2c467b"));
+        normal.setStroke(0, Color.TRANSPARENT);
+
+        GradientDrawable pressed =  new GradientDrawable();
+        pressed.setCornerRadius(context.getResources().getDimension(R.dimen.verification_input_height));
+        pressed.setColor(Color.parseColor("#AA2c467b"));
+        pressed.setStroke(0, Color.TRANSPARENT);
+
+        StateListDrawable drawable = new StateListDrawable();
+        drawable.addState(new int[] { android.R.attr.state_pressed },
+                pressed);
+        drawable.addState(new int[] { android.R.attr.state_enabled },
+                normal);
+
+        return drawable;
+    }
+
+    //Login ekraninda kullanici adi sifre girilen edittextlerin background
+    public Drawable getVerificationLoginInputDrawable(Context context) {
+        GradientDrawable normal =  new GradientDrawable();
+        normal.setCornerRadius(context.getResources().getDimension(R.dimen.verification_input_height));
+        normal.setColor(getDarkThemeColor());
+        normal.setStroke(0, Color.TRANSPARENT);
+
+        GradientDrawable focused =  new GradientDrawable();
+        focused.setCornerRadius(context.getResources().getDimension(R.dimen.verification_input_height));
+        focused.setColor(getLightThemeColor());
+        focused.setStroke(0, Color.TRANSPARENT);
+
+        StateListDrawable drawable = new StateListDrawable();
+        drawable.addState(new int[] { android.R.attr.state_focused },
+                focused);
+        drawable.addState(new int[] { android.R.attr.state_enabled },
+                normal);
+
+        return drawable;
+    }
+
+
+    public Drawable getVerificationClose(Context context){
+
+        Drawable normal;
+        Drawable pressed;
+
+        normal = context.getResources().getDrawable(R.drawable.login_popup_cancel_light);
+        pressed = context.getResources().getDrawable(R.drawable.login_popup_cancel_dark);
+
+        StateListDrawable drawable = new StateListDrawable();
+        drawable.addState(new int[] { android.R.attr.state_focused },
+                pressed);
+        drawable.addState(new int[] { android.R.attr.state_enabled },
+                normal);
+
+        return drawable;
+    }
+
     public Drawable getCropPageButtonDrawable(Context context, int resourceType) {
         Drawable myIcon;
         if(resourceType == CROP_PAGE_SUBMIT){
@@ -799,7 +1040,7 @@ public class ApplicationThemeColor {
                 normal = context.getResources().getDrawable(R.drawable.login_popup_cancel_light);
                 pressed = context.getResources().getDrawable(R.drawable.login_popup_cancel_dark);
             }
-        }else if(resourceType == READ_CONTENT){
+        } else if(resourceType == READ_CONTENT){
 
             if(getInstance().themeType == DARK_THEME_TYPE){
                 normal = context.getResources().getDrawable(R.drawable.popup_read_dark);
@@ -885,19 +1126,38 @@ public class ApplicationThemeColor {
         } else if(resourceType == DOWNLOAD_CONTENT_PURCHASE_ARROW){
 
             if(getInstance().themeType == DARK_THEME_TYPE){
-                normal = context.getResources().getDrawable(R.drawable.popup_download_purchase_arrow_dark);
-                pressed = context.getResources().getDrawable(R.drawable.popup_download_purchase_arrow_light);
+                normal = context.getResources().getDrawable(R.drawable.popup_download_purchase_light_arrow);
+                pressed = context.getResources().getDrawable(R.drawable.popup_download_purchase_dark_arrow);
+
             } else {
-                normal = context.getResources().getDrawable(R.drawable.popup_download_purchase_arrow_light);
-                pressed = context.getResources().getDrawable(R.drawable.popup_download_purchase_arrow_dark);
+                normal = context.getResources().getDrawable(R.drawable.popup_download_purchase_dark_arrow);
+                pressed = context.getResources().getDrawable(R.drawable.popup_download_purchase_light_arrow);
             }
-        } else {
+        } else if(resourceType == DOWNLOAD_CONTENT_PURCHASE_BOTTOM){
+
+            if(getInstance().themeType == DARK_THEME_TYPE){
+                normal = context.getResources().getDrawable(R.drawable.popup_download_purchase_light_bottom);
+                pressed = context.getResources().getDrawable(R.drawable.popup_download_purchase_dark_bottom);
+            } else {
+                normal = context.getResources().getDrawable(R.drawable.popup_download_purchase_dark_bottom);
+                pressed = context.getResources().getDrawable(R.drawable.popup_download_purchase_light_bottom);
+
+            }
+        } else if(resourceType == DOWNLOAD_CONTENT_BUTTON_BACKGROUND){
             if(getInstance().themeType == DARK_THEME_TYPE){
                 normal = context.getResources().getDrawable(R.drawable.popup_download_bg_dark);
                 pressed = context.getResources().getDrawable(R.drawable.popup_download_bg_light);
             } else {
                 normal = context.getResources().getDrawable(R.drawable.popup_download_bg_light);
                 pressed = context.getResources().getDrawable(R.drawable.popup_download_bg_dark);
+            }
+        } else {
+            if(getInstance().themeType == DARK_THEME_TYPE){
+                normal = context.getResources().getDrawable(R.drawable.popup_purchase_download_bg_dark);
+                pressed = context.getResources().getDrawable(R.drawable.popup_purchase_download_bg_light);
+            } else {
+                normal = context.getResources().getDrawable(R.drawable.popup_purchase_download_bg_light);
+                pressed = context.getResources().getDrawable(R.drawable.popup_purchase_download_bg_dark);
             }
         }
 
@@ -1066,6 +1326,22 @@ public class ApplicationThemeColor {
     public Typeface getOpenSansRegular(Context context){
         try{
             return Typeface.createFromAsset(context.getAssets(), "fonts/OpenSans-Regular.ttf");
+        } catch (Exception e) {
+            return Typeface.DEFAULT;
+        }
+    }
+
+    public Typeface getGothamBook(Context context){
+        try{
+            return Typeface.createFromAsset(context.getAssets(), "fonts/GothamRnd-Book.otf");
+        } catch (Exception e) {
+            return Typeface.DEFAULT;
+        }
+    }
+
+    public Typeface getGothamLight(Context context){
+        try{
+            return Typeface.createFromAsset(context.getAssets(), "fonts/GothamRnd-Light.otf");
         } catch (Exception e) {
             return Typeface.DEFAULT;
         }

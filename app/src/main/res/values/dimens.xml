@@ -50,8 +50,17 @@
 
     <dimen name="login_input_width">300dp</dimen>
     <dimen name="login_input_height">55dp</dimen>
+
+    <dimen name="verification_input_height">45dp</dimen>
+    <dimen name="verification_input_width">300dp</dimen>
+    <dimen name="verification_button_text_size">17sp</dimen>
+    <dimen name="verification_forgot_text_size">12sp</dimen>
+    <dimen name="verification_connect_text_size">13sp</dimen>
+    <dimen name="verification_skip_text_size">15sp</dimen>
+
     <dimen name="login_input_text_size">22sp</dimen>
     <dimen name="login_button_text_size">22sp</dimen>
+    <dimen name="skip_button_text_size">25sp</dimen>
 
     <dimen name="login_signup_layer_height">30dp</dimen>
     <dimen name="popup_login_width">300dp</dimen>

@@ -45,7 +45,12 @@ public class CustomDownloadButton extends RelativeLayout{
         this.type = typ;
         int defaultWith = 0;
 
-        if(this.type != PURCHASE_DOWNLOAD){
+        if(this.type == PURCHASE_DOWNLOAD){
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_PURCHASE_BUTTON_BACKGROUND));
+            else
+                setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_PURCHASE_BUTTON_BACKGROUND));
+        } else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_BUTTON_BACKGROUND));
             else
@@ -55,27 +60,24 @@ public class CustomDownloadButton extends RelativeLayout{
         if(this.type == PURCHASE_DOWNLOAD){
             RelativeLayout.LayoutParams downloadButtonParams = (RelativeLayout.LayoutParams)getLayoutParams();
             defaultWith = downloadButtonParams.width;
-            downloadButtonParams.width = downloadButtonParams.width * 3;  //Burada width tipe göre belirlenecek
+            downloadButtonParams.width = downloadButtonParams.width * 3+10;  //Burada width tipe göre belirlenecek
             setLayoutParams(downloadButtonParams);
         }
 
         if(this.type == PURCHASE_DOWNLOAD){
             priceTextView  = new TextView(context);
-            RelativeLayout.LayoutParams priceParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.MATCH_PARENT);
-            priceParams.setMargins(0,0,5,0);
-            priceParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
             priceTextView.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(context));
             priceTextView.setTextColor(ApplicationThemeColor.getInstance().downloadButtonPriceColorStateList());
-            priceTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, context.getResources().getDimension(R.dimen.content_popup_large_textsize));
+            priceTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, context.getResources().getDimension(R.dimen.content_popup_small_textsize));
             priceTextView.setId(R.id.price_text);
-            priceTextView.setLayoutParams(priceParams);
             priceTextView.setBackgroundColor(Color.TRANSPARENT);
-            priceTextView.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
+            priceTextView.setGravity(Gravity.CENTER);
             priceTextView.setText(price);
             this.addView(priceTextView);
         }
 
         arrowIcon = new ImageView(context);
+        arrowIcon.setId(R.id.arrow_icon);
         RelativeLayout.LayoutParams arrowIconParams;
         if(this.type == FREE_DOWNLOAD){
             arrowIconParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
@@ -85,8 +87,7 @@ public class CustomDownloadButton extends RelativeLayout{
             arrowIconParams.addRule(RelativeLayout.ALIGN_TOP);
         } else {
             arrowIconParams = new RelativeLayout.LayoutParams(defaultWith,LayoutParams.MATCH_PARENT);
-            arrowIconParams.setMargins(0, 0, -5, 0);
-            arrowIconParams.addRule(RelativeLayout.LEFT_OF, priceTextView.getId());
+            arrowIconParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
         }
         arrowIcon.setLayoutParams(arrowIconParams);
 
@@ -100,16 +101,17 @@ public class CustomDownloadButton extends RelativeLayout{
                 arrowIcon.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_CLOUD_ARROW));
             else
                 arrowIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_CLOUD_ARROW));
-        } /*else {
+        } else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                arrowIcon.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_FREE_ARROW));
+                arrowIcon.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_PURCHASE_ARROW));
             else
-                arrowIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_FREE_ARROW));
-        }*/
+                arrowIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_PURCHASE_ARROW));
+        }
 
         this.addView(arrowIcon);
 
         downloadIcon = new ImageView(context);
+        downloadIcon.setId(R.id.bottom_icon);
         RelativeLayout.LayoutParams downloadIconParams;
         if(this.type == FREE_DOWNLOAD){
             downloadIconParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
@@ -119,8 +121,7 @@ public class CustomDownloadButton extends RelativeLayout{
             downloadIconParams.addRule(RelativeLayout.ALIGN_TOP);
         } else {
             downloadIconParams = new RelativeLayout.LayoutParams(defaultWith,LayoutParams.MATCH_PARENT);
-            downloadIconParams.setMargins(0, 0, -5, 0);
-            downloadIconParams.addRule(RelativeLayout.LEFT_OF, priceTextView.getId());
+            downloadIconParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
         }
         downloadIcon.setLayoutParams(downloadIconParams);
 
@@ -135,13 +136,21 @@ public class CustomDownloadButton extends RelativeLayout{
                 downloadIcon.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_CLOUD));
             else
                 downloadIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_CLOUD));
-        } /*else {
+        } else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                downloadIcon.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_FREE));
+                downloadIcon.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_PURCHASE_BOTTOM));
             else
-                downloadIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_FREE));
-        }*/
+                downloadIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this.context, ApplicationThemeColor.DOWNLOAD_CONTENT_PURCHASE_BOTTOM));
+        }
         this.addView(downloadIcon);
+
+
+        if(this.type == PURCHASE_DOWNLOAD){
+            RelativeLayout.LayoutParams priceParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
+            priceParams.setMargins(0,0,-10,0);
+            priceParams.addRule(RelativeLayout.LEFT_OF, downloadIcon.getId());
+            priceTextView.setLayoutParams(priceParams);
+        }
 
     }
 
@@ -198,17 +207,15 @@ public class CustomDownloadButton extends RelativeLayout{
             arrowIcon.startAnimation(moveDown);
         } else if(type == FREE_DOWNLOAD){
             arrowIcon.startAnimation(moveUp);
-        } /*else if(type == PURCHASE_DOWNLOAD){
+        } else if(type == PURCHASE_DOWNLOAD){
             arrowIcon.startAnimation(moveDown);
-        }*/
+        }
 
 
     }
 
     public void stopAnim(){
         arrowIcon.clearAnimation();
-        if(priceTextView != null)
-            priceTextView.setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
     }
 
     public TextView getPriceTextView() {

@@ -63,7 +63,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
-import org.xwalk.core.XWalkInitializer;
 import org.xwalk.core.XWalkNavigationHistory;
 import org.xwalk.core.XWalkView;
 
@@ -222,7 +221,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             }
         });
 
-        categoryListWithAll = GalePressApplication.getInstance().getDatabaseApi().getAllCategories();
+        categoryListWithAll = GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent();
         categoryListWithAll.add(0, new L_Category(-1, getString(R.string.show_all)));
         categoriesListView = (ListView)findViewById(R.id.left_menu_category_list);
 
@@ -558,7 +557,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         else
             ((ImageView)findViewById(R.id.left_menu_category_icon)).setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_CATEGORY));
 
-        categoryListWithAll = GalePressApplication.getInstance().getDatabaseApi().getAllCategories();
+        categoryListWithAll = GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent();
         categoryListWithAll.add(0, new L_Category(-1, getString(R.string.show_all)));
 
         categoriesAdapter.setmCategory(categoryListWithAll);
@@ -590,7 +589,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             linksListViewCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
         else
             linksListViewCloseIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
-
 
 
         //Üyelik sekmesi
@@ -961,7 +959,9 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         hideKeyboard(searchView);
 
         if(GalePressApplication.getInstance().getMembershipMenuList().get(position) == LeftMenuMembershipAdapter.LOGIN) {
-            Intent intent = new Intent(this, LoginActivity.class);
+            Intent intent = new Intent(this, UserLoginActivity.class);
+            intent.putExtra("action", UserLoginActivity.ACTION_MENU);
+            intent.putExtra("isLaunchOpen", false);
             startActivityForResult(intent, 102);
         }
         else if(GalePressApplication.getInstance().getMembershipMenuList().get(position) == LeftMenuMembershipAdapter.RESTORE) {
@@ -1400,7 +1400,9 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             }
         } else if (requestCode == 103) { //contentdetailactivity ekraninda kullanici login degilse kullaniciyi logine gönderiyoruz
             if(resultCode == 103) {
-                Intent intent = new Intent(this, LoginActivity.class);
+                Intent intent = new Intent(this, UserLoginActivity.class);
+                intent.putExtra("action", UserLoginActivity.ACTION_MENU);
+                intent.putExtra("isLaunchOpen", true);
                 startActivityForResult(intent, 102);
             }
         }

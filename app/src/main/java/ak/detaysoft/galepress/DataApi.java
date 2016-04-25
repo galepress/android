@@ -430,6 +430,9 @@ public class DataApi extends Object {
                     } else if(this.content.isMaster() && GalePressApplication.getInstance().getCurrentActivity().getClass().equals(ViewerLoginActivity.class)){
                         ViewerLoginActivity loginActivity = (ViewerLoginActivity) GalePressApplication.getInstance().getCurrentActivity();
                         loginActivity.openMasterContent();
+                    } else if(this.content.isMaster() && GalePressApplication.getInstance().getCurrentActivity().getClass().equals(UserLoginActivity.class)){
+                        UserLoginActivity userLoginActivity = (UserLoginActivity) GalePressApplication.getInstance().getCurrentActivity();
+                        userLoginActivity.openMasterContent();
                     }
                 }
             }
@@ -460,6 +463,9 @@ public class DataApi extends Object {
                 launchActivity.progressUpdate(total, fileLength);
             } else if(content.isMaster() && GalePressApplication.getInstance().getCurrentActivity().getClass().equals(ViewerLoginActivity.class)){
                 ViewerLoginActivity loginActivity = (ViewerLoginActivity) GalePressApplication.getInstance().getCurrentActivity();
+                loginActivity.progressUpdate(total, fileLength);
+            } else if(content.isMaster() && GalePressApplication.getInstance().getCurrentActivity().getClass().equals(UserLoginActivity.class)){
+                UserLoginActivity loginActivity = (UserLoginActivity) GalePressApplication.getInstance().getCurrentActivity();
                 loginActivity.progressUpdate(total, fileLength);
             }
             else{
@@ -662,30 +668,46 @@ public class DataApi extends Object {
                                     String accessToken = response.getString("accessToken");
                                     if(accessToken != null && accessToken.length() != 0) {
                                         GalePressApplication.getInstance().editMemberShipList(true, response);
-                                        ((LoginActivity) activity).getUpdateDialog().setMessage(activity.getResources().getString(R.string.Restore) + "...");
-                                        GalePressApplication.getInstance().restorePurchasedProductsFromMarket(true, activity, ((LoginActivity) activity).getUpdateDialog());
+                                        ((UserLoginActivity) activity).getUpdateDialog().setMessage(activity.getResources().getString(R.string.Restore) + "...");
+                                        GalePressApplication.getInstance().restorePurchasedProductsFromMarket(true, activity, ((UserLoginActivity) activity).getUpdateDialog());
                                     } else {
                                         GalePressApplication.getInstance().editMemberShipList(false, null);
-                                        ((LoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_0));
+
+                                        if(activity instanceof UserLoginActivity) {
+                                            ((UserLoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_0));
+                                        }
                                     }
                                 } else if(!response.isNull("status")) {
                                     int code = response.getInt("status");
-                                    if(code == 160)
-                                        ((LoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_160));
-                                    else if(code == 140)
-                                        ((LoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_140));
-                                    else
-                                        ((LoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_0));
+                                    if(code == 160) {
+                                        if (activity instanceof UserLoginActivity) {
+                                            ((UserLoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_160));
+                                        }
+                                    }
+                                    else if(code == 140) {
+                                            if (activity instanceof UserLoginActivity) {
+                                                ((UserLoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_140));
+                                            }
+                                        }
+                                    else {
+                                        if(activity instanceof UserLoginActivity) {
+                                            ((UserLoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_0));
+                                        }
+                                    }
                                 } else {
                                     GalePressApplication.getInstance().editMemberShipList(false, null);
-                                    ((LoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_0));
+                                    if(activity instanceof UserLoginActivity) {
+                                        ((UserLoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_0));
+                                    }
                                 }
 
 
                                 Logout.e("Adem","DECREMENT"); GalePressApplication.getInstance().decrementRequestCount();
                             } catch (Exception e){
                                 GalePressApplication.getInstance().editMemberShipList(false, null);
-                                ((LoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_0));
+                                if(activity instanceof UserLoginActivity) {
+                                    ((UserLoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_0));
+                                }
                                 e.printStackTrace();
                                 Logout.e("Adem", "DECREMENT"); GalePressApplication.getInstance().decrementRequestCount();
                             }
@@ -696,12 +718,21 @@ public class DataApi extends Object {
                         public void onErrorResponse(VolleyError error) {
 
                             if(error != null && error.getMessage() != null){
-                                if(error.getMessage().toLowerCase().contains("160"))
-                                    ((LoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_160));
-                                else if(error.getMessage().toLowerCase().contains("140"))
-                                    ((LoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_140));
-                                else
-                                    ((LoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_0));
+                                if(error.getMessage().toLowerCase().contains("160")) {
+                                    if(activity instanceof UserLoginActivity) {
+                                        ((UserLoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_160));
+                                    }
+                                }
+                                else if(error.getMessage().toLowerCase().contains("140")) {
+                                    if(activity instanceof UserLoginActivity) {
+                                        ((UserLoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_140));
+                                    }
+                                }
+                                else {
+                                    if(activity instanceof UserLoginActivity) {
+                                        ((UserLoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_0));
+                                    }
+                                }
                                 VolleyLog.e("Error: ", error.getMessage());
                             }
                             GalePressApplication.getInstance().editMemberShipList(false, null);
@@ -712,7 +743,10 @@ public class DataApi extends Object {
             request.setShouldCache(Boolean.FALSE);
             requestQueue.add(request);
         } else {
-            ((LoginActivity) activity).internetConnectionWarning();
+            if(activity instanceof UserLoginActivity){
+                ((UserLoginActivity) activity).internetConnectionWarning();
+            }
+
         }
     }
 
@@ -1744,8 +1778,8 @@ public class DataApi extends Object {
                                                     || act.mTabHost.getCurrentTabTag().compareTo(MainActivity.LIBRARY_TAB_TAG) == 0)
                                                 act.getLibraryFragment().updateGridView();
                                         }
-                                    } else if(activity instanceof LoginActivity){
-                                        ((LoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_160));
+                                    } else if(activity instanceof UserLoginActivity){
+                                        ((UserLoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_160));
                                     }
                                 }
                             } else {
@@ -1803,8 +1837,8 @@ public class DataApi extends Object {
                                                     || act.mTabHost.getCurrentTabTag().compareTo(MainActivity.LIBRARY_TAB_TAG) == 0)
                                                 act.getLibraryFragment().updateGridView();
                                         }
-                                    } else if(activity instanceof LoginActivity){
-                                        ((LoginActivity) activity).closeActivityAndUpdateApplication();
+                                    } else if(activity instanceof UserLoginActivity){
+                                        ((UserLoginActivity) activity).closeActivityAndUpdateApplication();
                                     }
                                 }
                             }
@@ -1816,8 +1850,10 @@ public class DataApi extends Object {
                                 if(activity instanceof MainActivity) {
                                     if(progress != null && progress.isShowing())
                                         progress.dismiss();
-                                } else if(activity instanceof LoginActivity){
-                                    ((LoginActivity) activity).closeActivityAndUpdateApplication();
+                                } else if(activity instanceof UserLoginActivity){
+                                    ((UserLoginActivity) activity).closeActivityAndUpdateApplication();
+                                } else if(activity instanceof UserLoginActivity) {
+                                    ((UserLoginActivity) activity).closeActivityAndUpdateApplication();
                                 }
                             }
                         }
@@ -1835,8 +1871,8 @@ public class DataApi extends Object {
                             if(activity instanceof MainActivity) {
                                 if(progress != null && progress.isShowing())
                                     progress.dismiss();
-                            } else if(activity instanceof LoginActivity){
-                                ((LoginActivity) activity).closeActivityAndUpdateApplication();
+                            } else if(activity instanceof UserLoginActivity){
+                                ((UserLoginActivity) activity).closeActivityAndUpdateApplication();
                             }
                         }
                     }
@@ -2062,6 +2098,13 @@ public class DataApi extends Object {
                         try {
                             VolleyLog.v("Response: %s", response.toString());
                             R_AppVersion r_appVersion = new R_AppVersion(response);
+
+                            //age verification datalari burdan alinacak
+                            //TODO degerleri servisten gelecek sekilde alinacak
+                            GalePressApplication.getInstance().setAgeVerificationQuestion("Age?");
+                            GalePressApplication.getInstance().setAgeVerificationActive(true);
+
+
                             L_Application application = getDatabaseApi().getApplication(GalePressApplication.getInstance().getApplicationId());
                             if (r_appVersion.getApplicationVersion() != null && application.getVersion() != null) {
                                 if (application.getVersion() < r_appVersion.getApplicationVersion()) {

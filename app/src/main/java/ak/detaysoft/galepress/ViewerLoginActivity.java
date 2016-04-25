@@ -97,6 +97,8 @@ public class ViewerLoginActivity extends Activity {
         loginButton = (LoginButton) findViewById(R.id.facebook_login_button);
         loginButton.setReadPermissions("user_friends", "email");
         // Callback registration
+
+        //loginButton.performClick();
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -307,6 +309,7 @@ public class ViewerLoginActivity extends Activity {
         clearReferences();
         super.onDestroy();
     }
+
     private void clearReferences(){
         Activity currActivity = GalePressApplication.getInstance().getCurrentActivity();
         if (currActivity != null && currActivity.equals(this))

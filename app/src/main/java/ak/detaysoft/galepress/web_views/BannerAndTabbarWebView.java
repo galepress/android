@@ -108,7 +108,7 @@ public class BannerAndTabbarWebView extends WebView {
             super.onPageFinished(view, url);
             if (GalePressApplication.getInstance().getCurrentActivity() != null && GalePressApplication.getInstance().getCurrentActivity().getClass() == MainActivity.class) {
                 Fragment fragment = GalePressApplication.getInstance().getCurrentFragment();
-                if (fragment != null && fragment.getTag().compareTo(MainActivity.LIBRARY_TAB_TAG) != 0
+                if (fragment != null && fragment.getTag() != null && fragment.getTag().compareTo(MainActivity.LIBRARY_TAB_TAG) != 0
                         && fragment.getTag().compareTo(MainActivity.DOWNLOADED_LIBRARY_TAG) != 0 && fragment.getTag().compareTo(MainActivity.INFO_TAB_TAG) != 0 && !isBannerWebView) {
                     ((MainActivity) context).prepareActionBarForCustomTab(view, true, true);
                     ((LinearLayout) progressBar.getParent()).setVisibility(View.GONE);

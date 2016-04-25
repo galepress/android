@@ -26,4 +26,17 @@
     <dimen name="popup_login_width">380dp</dimen>
     <dimen name="popup_login_padding">50dp</dimen>
 
+
+
+    <dimen name="verification_input_height">50dp</dimen>
+    <dimen name="verification_input_width">300dp</dimen>
+    <dimen name="verification_button_text_size">19sp</dimen>
+    <dimen name="verification_forgot_text_size">14sp</dimen>
+    <dimen name="verification_connect_text_size">15sp</dimen>
+    <dimen name="verification_skip_text_size">18sp</dimen>
+
+    <dimen name="login_input_text_size">22sp</dimen>
+    <dimen name="login_button_text_size">22sp</dimen>
+    <dimen name="skip_button_text_size">25sp</dimen>
+
 </resources>
