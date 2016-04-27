@@ -91,7 +91,6 @@ public class LaunchActivity extends ActionBarActivity implements  XWalkInitializ
             startActivity(intent);
             finish();
         }
-
     }
 
     public void openLibraryFragment(){

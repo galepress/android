@@ -2100,7 +2100,7 @@ public class DataApi extends Object {
                             VolleyLog.v("Response: %s", response.toString());
                             R_AppVersion r_appVersion = new R_AppVersion(response);
 
-                            //TODO degerleri servisten gelecek sekilde alinacak age verification datalari burdan alinacak
+                            //Verification datalari burda aliniyor.
                             GalePressApplication.getInstance().setAgeVerificationQuestion(response.has("ConfirmationMessage") ? response.getString("ConfirmationMessage"):"");
                             GalePressApplication.getInstance().setAgeVerificationActive(response.has("ShowDashboard") ? response.getBoolean("ShowDashboard"):false);
 
