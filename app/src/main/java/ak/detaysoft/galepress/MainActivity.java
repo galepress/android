@@ -1426,7 +1426,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     @Override
     protected void onResumeFragments() {
         super.onResumeFragments();
-        Log.e("mgunes", "onResumeFragments");
         // connectionStatusChangedOnPause aciklamasinda yaziyor neden kullanildigi
         if(connectionStatusChangedOnPause) {
             initCustomTabs();
@@ -1459,7 +1458,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     protected void onResume() {
         super.onResume();
         GalePressApplication.getInstance().setCurrentActivity(this);
-        Log.e("mgunes", "onResume");
 
 
     }

@@ -2085,6 +2085,7 @@ public class DataApi extends Object {
         uriBuilder.appendPath("applications");
         uriBuilder.appendPath(applicationID.toString());
         uriBuilder.appendPath("version");
+        //uriBuilder.appendQueryParameter("clientLanguage", GalePressApplication.getInstance().getResources().getString(R.string.language));
         if(GalePressApplication.getInstance().getUserInformation() != null
                 && GalePressApplication.getInstance().getUserInformation().getAccessToken() != null
                 && GalePressApplication.getInstance().getUserInformation().getAccessToken().length() != 0)
@@ -2099,10 +2100,9 @@ public class DataApi extends Object {
                             VolleyLog.v("Response: %s", response.toString());
                             R_AppVersion r_appVersion = new R_AppVersion(response);
 
-                            //age verification datalari burdan alinacak
-                            //TODO degerleri servisten gelecek sekilde alinacak
-                            GalePressApplication.getInstance().setAgeVerificationQuestion("Age?");
-                            GalePressApplication.getInstance().setAgeVerificationActive(true);
+                            //TODO degerleri servisten gelecek sekilde alinacak age verification datalari burdan alinacak
+                            GalePressApplication.getInstance().setAgeVerificationQuestion(response.has("ConfirmationMessage") ? response.getString("ConfirmationMessage"):"");
+                            GalePressApplication.getInstance().setAgeVerificationActive(response.has("ShowDashboard") ? response.getBoolean("ShowDashboard"):false);
 
 
                             L_Application application = getDatabaseApi().getApplication(GalePressApplication.getInstance().getApplicationId());

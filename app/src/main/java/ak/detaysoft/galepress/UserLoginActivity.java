@@ -396,7 +396,6 @@ public class UserLoginActivity extends Activity {
                     loginButton.performClick();
                 }
 
-
             }
         });
 
@@ -429,8 +428,6 @@ public class UserLoginActivity extends Activity {
                 } else {
                     runAction();
                 }
-
-
 
             }
         });
@@ -549,7 +546,6 @@ public class UserLoginActivity extends Activity {
     }
 
     public void leftMenuLogin(){
-        //TODO menuden gelen islem
         Intent intent = getIntent();
         setResult(102, intent);
         finish();
@@ -611,7 +607,6 @@ public class UserLoginActivity extends Activity {
     }
 
     public void closeActivityAndUpdateApplication(){
-        //TODO burada islam yap master indir library ac v.b
         if(updateDialog != null && updateDialog.isShowing()){
             updateDialog.dismiss();
             runAction();
@@ -676,7 +671,7 @@ public class UserLoginActivity extends Activity {
                     }
                 } catch (JSONException e) {
                     GalePressApplication.getInstance().editMemberShipList(false, null);
-                    //TODO olusturulan kullanici hatali uyari ver
+                    customFailLoginWarning(getResources().getString(R.string.WARNING_0));
                     openLoginView();
                     e.printStackTrace();
                 }

@@ -72,15 +72,16 @@ public class LaunchActivity extends ActionBarActivity implements  XWalkInitializ
 
     public void openMasterContent(){
 
-        //TODO burayı düzenle age verification gerekiyorsa ve onaylanmamissa isAgeverificationActive && !ageverificationSubmit && !isTestApplication
-        if(false) {
+        boolean openLogin = GalePressApplication.getInstance().isAgeVerificationActive()
+                && !GalePressApplication.getInstance().isAgeVerificationSubmit()
+                && !GalePressApplication.getInstance().isTestApplication();
+        if(!openLogin) {
             Intent i = new Intent(this,MainActivity.class);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             i.putExtra("content_id", masterContent.getId().toString());
             startActivity(i);
             finish();
         } else {
-
             GalePressApplication.getInstance().setAgeVerificationSubmit(false);
             Intent intent = new Intent(LaunchActivity.this, UserLoginActivity.class);
             intent.putExtra("content_id", masterContent.getId().toString());
@@ -89,35 +90,36 @@ public class LaunchActivity extends ActionBarActivity implements  XWalkInitializ
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
-
         }
 
     }
 
     public void openLibraryFragment(){
 
-        //TODO burayı düzenle age verification gerekiyorsa ve onaylanmamissa isAgeverificationActive && !ageverificationSubmit && !isTestApplication
-        if(false) {
+        boolean openLogin = GalePressApplication.getInstance().isAgeVerificationActive()
+                && !GalePressApplication.getInstance().isAgeVerificationSubmit()
+                && !GalePressApplication.getInstance().isTestApplication();
+        if(!openLogin) {
             Intent i = new Intent(this,MainActivity.class);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(i);
             finish();
         } else {
-
             Intent intent = new Intent(this, UserLoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             intent.putExtra("action", UserLoginActivity.ACTION_OPEN_LIBRARY);
             intent.putExtra("isLaunchOpen", true);
             startActivity(intent);
             finish();
-
         }
     }
 
     public void startMasterDownload(){
 
-        //TODO burayı düzenle age verification gerekiyorsa ve onaylanmamissa isAgeverificationActive && !ageverificationSubmit && !isTestApplication
-        if(false) {
+        boolean openLogin = GalePressApplication.getInstance().isAgeVerificationActive()
+                && !GalePressApplication.getInstance().isAgeVerificationSubmit()
+                && !GalePressApplication.getInstance().isTestApplication();
+        if(!openLogin) {
             DataApi.DownloadPdfTask downloadPdfTask = GalePressApplication.getInstance().getDataApi().downloadPdfTask;
             if(!(downloadPdfTask!= null && downloadPdfTask.getStatus() == AsyncTask.Status.RUNNING)){
                 Logout.e("Adem", "Start Master Downloaded");
