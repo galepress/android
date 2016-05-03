@@ -282,7 +282,13 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
     private MuPDFCore openFile(String path) {
         int lastSlashPos = path.lastIndexOf('/');
-        int penultimateSlashPos = (path.substring(0, path.lastIndexOf("/"))).lastIndexOf('/');
+        int penultimateSlashPos;
+        try {
+            penultimateSlashPos = (path.substring(0, path.lastIndexOf("/"))).lastIndexOf('/');
+        } catch (Exception e) {
+            penultimateSlashPos = -1;
+        }
+
 
         try{
             mFileName = new String((lastSlashPos == -1 ||penultimateSlashPos == -1)

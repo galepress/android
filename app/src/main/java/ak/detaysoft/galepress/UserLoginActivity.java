@@ -217,7 +217,7 @@ public class UserLoginActivity extends Activity {
 
 
                 if(GalePressApplication.getInstance().getDataApi().isConnectedToInternet()){
-                    if(isLaunchOpen) {
+                    if(isLaunchOpen && GalePressApplication.getInstance().getAgeVerificationQuestion() != null && GalePressApplication.getInstance().getAgeVerificationQuestion().length() > 0) {
                         AlertDialog.Builder alertDialog = new AlertDialog.Builder(UserLoginActivity.this);
                         alertDialog.setTitle(UserLoginActivity.this.getResources().getString(R.string.UYARI));
                         alertDialog.setMessage(GalePressApplication.getInstance().getAgeVerificationQuestion());
@@ -274,7 +274,7 @@ public class UserLoginActivity extends Activity {
                         });
                         alertDialog.show();
                     } else {
-                        if(isLaunchOpen) {
+                        if(isLaunchOpen && GalePressApplication.getInstance().getAgeVerificationQuestion() != null && GalePressApplication.getInstance().getAgeVerificationQuestion().length() > 0) {
                             AlertDialog.Builder alertDialog = new AlertDialog.Builder(UserLoginActivity.this);
                             alertDialog.setTitle(UserLoginActivity.this.getResources().getString(R.string.UYARI));
                             alertDialog.setMessage(GalePressApplication.getInstance().getAgeVerificationQuestion());
@@ -325,7 +325,7 @@ public class UserLoginActivity extends Activity {
 
 
                 if(GalePressApplication.getInstance().getDataApi().isConnectedToInternet()){
-                    if(isLaunchOpen) {
+                    if(isLaunchOpen && GalePressApplication.getInstance().getAgeVerificationQuestion() != null && GalePressApplication.getInstance().getAgeVerificationQuestion().length() > 0) {
                         AlertDialog.Builder alertDialog = new AlertDialog.Builder(UserLoginActivity.this);
                         alertDialog.setTitle(UserLoginActivity.this.getResources().getString(R.string.UYARI));
                         alertDialog.setMessage(GalePressApplication.getInstance().getAgeVerificationQuestion());
@@ -374,7 +374,7 @@ public class UserLoginActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                if(isLaunchOpen) {
+                if(isLaunchOpen && GalePressApplication.getInstance().getAgeVerificationQuestion() != null && GalePressApplication.getInstance().getAgeVerificationQuestion().length() > 0) {
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(UserLoginActivity.this);
                     alertDialog.setTitle(UserLoginActivity.this.getResources().getString(R.string.UYARI));
                     alertDialog.setMessage(GalePressApplication.getInstance().getAgeVerificationQuestion());
@@ -406,7 +406,7 @@ public class UserLoginActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                if(isLaunchOpen) {
+                if(isLaunchOpen && GalePressApplication.getInstance().getAgeVerificationQuestion() != null && GalePressApplication.getInstance().getAgeVerificationQuestion().length() > 0) {
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(UserLoginActivity.this);
                     alertDialog.setTitle(UserLoginActivity.this.getResources().getString(R.string.UYARI));
                     alertDialog.setMessage(GalePressApplication.getInstance().getAgeVerificationQuestion());

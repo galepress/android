@@ -8,7 +8,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/verification_bg"
+        android:src="@drawable/verification_bg_land"
         android:scaleType="centerCrop" />
 
     <FrameLayout

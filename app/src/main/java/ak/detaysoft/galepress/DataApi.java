@@ -2103,6 +2103,9 @@ public class DataApi extends Object {
                             //Verification datalari burda aliniyor.
                             GalePressApplication.getInstance().setAgeVerificationQuestion(response.has("ConfirmationMessage") ? response.getString("ConfirmationMessage"):"");
                             GalePressApplication.getInstance().setAgeVerificationActive(response.has("ShowDashboard") ? response.getBoolean("ShowDashboard"):false);
+                            if(!GalePressApplication.getInstance().isAgeVerificationActive()) {
+                                GalePressApplication.getInstance().setAgeVerificationSubmit(false);
+                            }
 
 
                             L_Application application = getDatabaseApi().getApplication(GalePressApplication.getInstance().getApplicationId());

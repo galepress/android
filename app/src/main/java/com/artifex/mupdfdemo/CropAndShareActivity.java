@@ -59,7 +59,6 @@ public class CropAndShareActivity extends Activity {
             finish();
         }
 
-
         cropImageView = (CropImageView) findViewById(R.id.crop_imageview);
         cropImageView.setGuidelines(1);
         cropImageView.setImageBitmap(bmp);

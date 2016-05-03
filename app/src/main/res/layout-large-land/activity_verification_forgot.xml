@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    xmlns:ProgressWheel="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/verification_forgot_base_layout">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/verification_bg_land"
+            android:scaleType="centerCrop"
+            android:id="@+id/imageView2" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/verification_forgot_web_base">
+
+            <WebView
+                android:id="@+id/verification_forgot_webview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent">
+
+            </WebView>
+
+        </LinearLayout>
+
+
+        <ak.detaysoft.galepress.util.CustomPulseProgress
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/verification_forgot_loading"
+            android:visibility="visible"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center" />
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/verification_forgot_proggress_layout"
+            android:visibility="gone"
+            android:clickable="true">
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:src="@drawable/launch"/>
+
+            <ak.detaysoft.galepress.view.ProgressWheel
+                android:id="@+id/verification_forgot_progressBarTwo"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                ProgressWheel:text=""
+                ProgressWheel:textColor="#222222"
+                ProgressWheel:textSize="14sp"
+                ProgressWheel:rimColor="#51000000"
+                ProgressWheel:barLength="110dp"
+                ProgressWheel:barColor="#99FFFFFF"
+                ProgressWheel:barWidth="30dp"
+                ProgressWheel:rimWidth="30dp"
+                ProgressWheel:contourSize="0dp"
+                ProgressWheel:contourColor="#99FFFFFF"
+                />
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/verification_forgot_close"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="right"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/verification_close" />
+
+
+    </FrameLayout>
+
+</LinearLayout>
