@@ -143,6 +143,7 @@ public class GalePressApplication
     private boolean ageVerificationSubmit = false;
     private String ageVerificationQuestion = "";
     private boolean isAgeVerificationActive = false;
+    private boolean applicationHaveActiveSubscription;
 
     Foreground.Listener myListener = new Foreground.Listener(){
         public void onBecameForeground(){
@@ -212,8 +213,9 @@ public class GalePressApplication
 
         initBillingServices();
         getlocalActiveSubscripton();
-        prepareMemberShipList();
         prepareSubscriptions(null);
+        prepareMemberShipList();
+
 
         //Uygulama ilk acildiginda localde tutulan renk, banner ve tabbar datalarini alabilmek icin
         ApplicationThemeColor.getInstance().setParameters(null);
@@ -856,7 +858,7 @@ public class GalePressApplication
                     userInformation.setAccessToken(recoveryToken);
                     e.printStackTrace();
                 }
-                if(!isUserHaveActiveSubscription())
+                if(!isUserHaveActiveSubscription() && applicationHaveActiveSubscription)
                     membershipMenuList.add(LeftMenuMembershipAdapter.SUBSCRIPTION);
 
                 membershipMenuList.add(LeftMenuMembershipAdapter.RESTORE);
@@ -890,7 +892,7 @@ public class GalePressApplication
             editor.putString("accessToken", userInformation.getJSONObject().toString());
             editor.commit();
             userInformation.setAccessToken(recoveryToken);
-            if(!isUserHaveActiveSubscription())
+            if(!isUserHaveActiveSubscription() && applicationHaveActiveSubscription)
                 membershipMenuList.add(LeftMenuMembershipAdapter.SUBSCRIPTION);
             membershipMenuList.add(LeftMenuMembershipAdapter.RESTORE);
             membershipMenuList.add(LeftMenuMembershipAdapter.LOGOUT);
@@ -1211,6 +1213,8 @@ public class GalePressApplication
                         JSONObject object = (JSONObject) array.get(i);
                         subscription = new Subscription(object);
                         subscriptions.add(subscription);
+                        if(subscription.isActive())
+                            applicationHaveActiveSubscription = true;
                     }
                     restorePurchasedSubscriptions(true, false, null, null);
                 } catch (JSONException e) {

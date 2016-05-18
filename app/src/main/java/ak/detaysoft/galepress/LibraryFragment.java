@@ -228,6 +228,7 @@ public class LibraryFragment extends Fragment {
         int bannerHeight = (int)(heightReference*(320f/740f));
 
         FrameLayout.LayoutParams bannerParams;
+
         if(getTag().compareTo(MainActivity.LIBRARY_TAB_TAG) == 0 && GalePressApplication.getInstance().getBannerLink().length() > 0 && GalePressApplication.getInstance().getDataApi().isConnectedToInternet()){
             bannerParams = new FrameLayout.LayoutParams(bannerWidth, bannerHeight);
             gridview.setPadding(gridview.getPaddingLeft(), (int) (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 70, getResources().getDisplayMetrics())), gridview.getPaddingRight(), gridview.getPaddingBottom());
@@ -239,16 +240,26 @@ public class LibraryFragment extends Fragment {
         return bannerParams;
     }
 
-    public void updateCategoryList(){
+    public void updateSelectedCategoriesList(){
         if(selectedCategory.getCategoryID().compareTo(-1) == 0){
+            List categoriesOnlyHaveContent = GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent();
+            if(categoriesOnlyHaveContent == null) {
 
-            if(selectedCategories.size() == GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent().size()+1){
-                selectedCategories.clear();
+                /*
+                * Burasi sqlite dan cekilen listenin bos olmasi durumunda hem secili kagetorileri hemde sol medude kategori listesini refresh etmek icin
+                * */
+                repairSelectedCategories();
+                ((MainActivity)getActivity()).getCategoriesAdapter().notifyDataSetChanged();
             } else {
-                selectedCategories.clear();
-                selectedCategories.addAll(GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent());
-                selectedCategories.add(selectedCategory);
+                if(selectedCategories.size() == categoriesOnlyHaveContent.size()+1){
+                    selectedCategories.clear();
+                } else {
+                    selectedCategories.clear();
+                    selectedCategories.addAll(categoriesOnlyHaveContent);
+                    selectedCategories.add(selectedCategory);
+                }
             }
+
 
 
         } else {
@@ -275,7 +286,6 @@ public class LibraryFragment extends Fragment {
             if(!isCategorySelectedBefore){
                 selectedCategories.add(selectedCategory);
             }
-
         }
     }
 

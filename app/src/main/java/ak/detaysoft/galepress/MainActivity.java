@@ -135,6 +135,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     ArrayList<TabHost.TabSpec> specList = new ArrayList<TabHost.TabSpec>();
     private Subscription selectedSubscription;
     private int selectedReaderTabIndex = -1;
+    private String selectedTabTag = "";
 
 
 
@@ -250,14 +251,14 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 }
                 LibraryFragment libraryFragment = getLibraryFragment();
                 libraryFragment.selectedCategory = selectedCategory;
-                libraryFragment.updateCategoryList();
+                libraryFragment.updateSelectedCategoriesList();
                 libraryFragment.updateGridView();
 
 
                 LibraryFragment downloadFragment = getDownloadedLibraryFragment();
                 if(downloadFragment != null) {
                     downloadFragment.selectedCategory = selectedCategory;
-                    downloadFragment.updateCategoryList();
+                    downloadFragment.updateSelectedCategoriesList();
                     downloadFragment.updateGridView();
                 }
 
@@ -1402,7 +1403,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             if(resultCode == 103) {
                 Intent intent = new Intent(this, UserLoginActivity.class);
                 intent.putExtra("action", UserLoginActivity.ACTION_MENU);
-                intent.putExtra("isLaunchOpen", true);
+                intent.putExtra("isLaunchOpen", false);
                 startActivityForResult(intent, 102);
             }
         }
@@ -1453,6 +1454,47 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             selectedReaderTabIndex = -1;
         }
     }
+
+
+    /*TODO eger  3.4.6 versiyonunda sonra aynı hatayı almaya devam edersek bu metodu kullanmak gerekebilir
+    * https://www.fabric.io/galepress/android/apps/ak.detaysoft.carrefoursa1/issues/56afae00f5d3a7f76b80ee4d/sessions/latest?build=37704165
+    * */
+
+    /*@Override
+    protected void onResumeFragments() {
+        super.onResumeFragments();
+        // connectionStatusChangedOnPause aciklamasinda yaziyor neden kullanildigi
+        if(connectionStatusChangedOnPause) {
+            initCustomTabs();
+            connectionStatusChangedOnPause = false;
+        }
+
+        *//*
+        * onActivityResult icinden buraya tasidim
+        * https://fabric.io/galepress/android/apps/ak.detaysoft.carrefoursa1/issues/56afae00f5d3a7f76b80ee4d
+        * Bu hata activity onresume a dusmeden islem yaptigimiz icin olabilir. Devam ederse hata kaldiracagim. (MG)
+        * *//*
+        if(selectedReaderTabIndex != -1){
+            if (selectedReaderTabIndex == 0) {
+                selectedTabTag = HOME_TAB_TAG;
+            } else if (selectedReaderTabIndex == 1) {
+                selectedTabTag = LIBRARY_TAB_TAG;
+            } else if (selectedReaderTabIndex == 2) {
+                selectedTabTag = DOWNLOADED_LIBRARY_TAG;
+            } else if (selectedReaderTabIndex == 3) {
+                selectedTabTag = INFO_TAB_TAG;
+            } else { // 100+ type olanlar servisten gelen buttonlar
+                selectedTabTag = "" + (selectedReaderTabIndex - 100);
+            }
+
+            new Handler().post(new Runnable() {
+                public void run() {
+                    mTabHost.setCurrentTabByTag(selectedTabTag);
+                }
+            });
+            selectedReaderTabIndex = -1;
+        }
+    }*/
 
     @Override
     protected void onResume() {
@@ -1536,7 +1578,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         }
         LibraryFragment libraryFragment = getLibraryFragment();
         libraryFragment.selectedCategory = selectedCategory;
-        libraryFragment.updateCategoryList();
+        libraryFragment.updateSelectedCategoriesList();
         libraryFragment.updateGridView();
 
         Logout.e("Adem", "OnPopUpMenuItem Clicked:"+item.getTitle().toString());
@@ -1638,5 +1680,10 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         GalePressApplication.getInstance().setUserHaveActiveSubscription(true);
         GalePressApplication.getInstance().prepareSubscriptions(null);
         updateMemberListAdapter();
+    }
+
+
+    public LeftMenuCategoryAdapter getCategoriesAdapter() {
+        return categoriesAdapter;
     }
 }

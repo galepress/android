@@ -81,10 +81,11 @@ public class ThumbnailListAdapter extends BaseAdapter {
 
 
         Integer contentId = mContent != null ? mContent.getId():-1;
+        String fileName = (mContent != null &&  mContent.getPdfFileName() != null) ?  mContent.getPdfFileName():"";
         if(mCore.getDisplayPages() == 1){
-            mPath = GalePressApplication.getInstance().getFilesDir() + "/"+contentId+"/previewCache/" + mContent.getPdfFileName()+"/";
+            mPath = GalePressApplication.getInstance().getFilesDir() + "/"+contentId+"/previewCache/" + fileName+"/";
         } else {
-            mPath = GalePressApplication.getInstance().getFilesDir() + "/"+contentId+"/previewCache/" + mContent.getPdfFileName()+"/land/";
+            mPath = GalePressApplication.getInstance().getFilesDir() + "/"+contentId+"/previewCache/" + fileName+"/land/";
         }
 
         File mCacheDirectory = new File(mPath);

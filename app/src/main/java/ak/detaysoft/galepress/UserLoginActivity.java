@@ -432,6 +432,10 @@ public class UserLoginActivity extends Activity {
             }
         });
 
+        if(!isLaunchOpen) {
+            skip.setVisibility(View.GONE);
+        }
+
         Button close = (Button)findViewById(R.id.verification_login_close);
         close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -443,7 +447,6 @@ public class UserLoginActivity extends Activity {
         if(isLaunchOpen) {
             close.setVisibility(View.GONE);
         }
-
     }
 
     public void openSignupView(){

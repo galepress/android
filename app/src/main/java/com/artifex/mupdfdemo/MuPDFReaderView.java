@@ -67,18 +67,20 @@ public class MuPDFReaderView extends ReaderView {
 		LinkInfo link = null;
 
 		if (mMode == Mode.Viewing && !tapDisabled) {
-			final MuPDFView pageView = (MuPDFView) getDisplayedView();
-			Hit item = pageView.passClickEvent(e.getX(), e.getY());
-			onHit(item);
-			if (item == Hit.Nothing) {
-				if (mLinksEnabled && pageView != null && (link = pageView.hitLink(e.getX(), e.getY())) != null) {
-                    link.acceptVisitor(new LinkInfoVisitor() {
-						@Override
-						public void visitInternal(LinkInfoInternal li) {
-							// Clicked on an internal (GoTo) link c
-                            // MuPDF'in kodu burada sacmaliyordu. Bir sonraki sayfaya verilen pagelinkler calismiyordu. Iki sayfa sonrasina gidiyordu.
-                            // Asagidaki sekilde bir sonraki sayfa olup olmadigini kontrol ederek bunu cozdum. (Adem)
-                            // PageLinklerde ki mantik PageView icine tasindi. Ustuste binen durumlarda page link eziliyordu ve calismiyordu. View ekleyerek bunu engelliyorum.
+
+			if(getDisplayedView() != null) {
+				final MuPDFView pageView = (MuPDFView) getDisplayedView();
+				Hit item = pageView.passClickEvent(e.getX(), e.getY());
+				onHit(item);
+				if (item == Hit.Nothing) {
+					if (mLinksEnabled && pageView != null && (link = pageView.hitLink(e.getX(), e.getY())) != null) {
+						link.acceptVisitor(new LinkInfoVisitor() {
+							@Override
+							public void visitInternal(LinkInfoInternal li) {
+								// Clicked on an internal (GoTo) link c
+								// MuPDF'in kodu burada sacmaliyordu. Bir sonraki sayfaya verilen pagelinkler calismiyordu. Iki sayfa sonrasina gidiyordu.
+								// Asagidaki sekilde bir sonraki sayfa olup olmadigini kontrol ederek bunu cozdum. (Adem)
+								// PageLinklerde ki mantik PageView icine tasindi. Ustuste binen durumlarda page link eziliyordu ve calismiyordu. View ekleyerek bunu engelliyorum.
                             /*
                             MuPDFCore core =((MuPDFActivity)mContext).core;
                             if(getDisplayedViewIndex() + 1 == li.pageNumber){
@@ -91,10 +93,10 @@ public class MuPDFReaderView extends ReaderView {
                                 setDisplayedViewIndex(core.convertIndexesForLandscape2Page(li.pageNumber));
                             }
                             */
-						}
+							}
 
-						@Override
-						public void visitExternal(LinkInfoExternal li) {
+							@Override
+							public void visitExternal(LinkInfoExternal li) {
                             /*
                              Linklerde ki mantik PageView icine tasindi. Ustuste binen durumlarda page link eziliyordu ve calismiyordu. View ekleyerek bunu engelliyorum.
                             if(li.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_WEBLINK){
@@ -110,14 +112,14 @@ public class MuPDFReaderView extends ReaderView {
                                     }
                             }
                             */
-						}
+							}
 
-						@Override
-						public void visitRemote(LinkInfoRemote li) {
-							// Clicked on a remote (GoToR) link
-						}
-					});
-				} /*else if (e.getX() < tapPageMargin) {
+							@Override
+							public void visitRemote(LinkInfoRemote li) {
+								// Clicked on a remote (GoToR) link
+							}
+						});
+					} /*else if (e.getX() < tapPageMargin) {
                     if(!((MuPDFActivity)mContext).content.isMaster())
 					    super.smartMoveBackwards();
 				} else if (e.getX() > super.getWidth() - tapPageMargin) {
@@ -130,10 +132,12 @@ public class MuPDFReaderView extends ReaderView {
                     if(!((MuPDFActivity)mContext).content.isMaster())
 					    super.smartMoveForwards();
 				}*/ else {
-                    if(!((MuPDFActivity)mContext).content.isMaster())
-					    onTapMainDocArea();
+						if(!((MuPDFActivity)mContext).content.isMaster())
+							onTapMainDocArea();
+					}
 				}
 			}
+
 		}
 		return super.onSingleTapUp(e);
 	}
