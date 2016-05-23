@@ -246,7 +246,7 @@ public class LibraryFragment extends Fragment {
             if(categoriesOnlyHaveContent == null) {
 
                 /*
-                * Burasi sqlite dan cekilen listenin bos olmasi durumunda hem secili kagetorileri hemde sol medude kategori listesini refresh etmek icin
+                * Burasi sqlite dan cekilen listenin bos olmasi durumunda hem secili kagetorileri hemde sol medude kategori listesini refresh etmek icin (MG)
                 * */
                 repairSelectedCategories();
                 ((MainActivity)getActivity()).getCategoriesAdapter().notifyDataSetChanged();
@@ -259,8 +259,6 @@ public class LibraryFragment extends Fragment {
                     selectedCategories.add(selectedCategory);
                 }
             }
-
-
 
         } else {
             for(int i =  0; i < selectedCategories.size(); i++){

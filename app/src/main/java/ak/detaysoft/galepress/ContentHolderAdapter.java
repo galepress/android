@@ -196,7 +196,6 @@ public class ContentHolderAdapter extends BaseAdapter  {
             @Override
             public void onLoadingCancelled(String s, View view) {
                 loading.setVisibility(View.GONE);
-                Log.e("loadingCanceled", "");
             }
         });
     }

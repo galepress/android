@@ -167,7 +167,6 @@ public class BannerAndTabbarWebViewWithCrosswalk extends XWalkView {
         @Override
         public void onFullscreenToggled(XWalkView view, boolean enterFullscreen) {
             //super.onFullscreenToggled(view, enterFullscreen);
-            Log.e("deneme", ""+enterFullscreen);
         }
 
         @Override

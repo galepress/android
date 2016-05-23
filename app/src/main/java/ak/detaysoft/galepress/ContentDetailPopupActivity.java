@@ -120,7 +120,6 @@ public class ContentDetailPopupActivity extends Activity{
             }
 
         } catch (Exception e){
-            Log.e("Popup Content error", e.toString());
             finish();
         }
 

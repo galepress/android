@@ -5,6 +5,11 @@ import android.location.Location;
 import android.net.Uri;
 import android.util.Log;
 
+import com.crashlytics.android.answers.Answers;
+import com.crashlytics.android.answers.CustomEvent;
+
+import io.fabric.sdk.android.Fabric;
+
 public class LinkInfoExternal extends LinkInfo {
 	 public String url;
 	public String sourceUrl;
@@ -37,6 +42,11 @@ public class LinkInfoExternal extends LinkInfo {
 		super(l, t, r, b);
 		url = u;
         Uri uri = Uri.parse(url);
+
+        if(!uri.isHierarchical()) {
+            Answers.getInstance().logCustom(new CustomEvent("Interaktif Link Test")
+                    .putCustomAttribute("url", ""+url));
+        }
 
         String modalQueryParameterValue = uri.getQueryParameter("modal");
         if(modalQueryParameterValue!=null && !modalQueryParameterValue.isEmpty()){

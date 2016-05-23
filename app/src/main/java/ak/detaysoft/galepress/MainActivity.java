@@ -865,13 +865,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 return true;
             }
         });
-        /*mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
-            @Override
-            public void onTabChanged(String tabId) {
-                Log.e("denemeeeee", "" + tabId);
-                getCustomFragment();
-            }
-        });*/
 
         if(GalePressApplication.getInstance().getDataApi().getMasterContent() != null && GalePressApplication.getInstance().getDataApi().getMasterContent().isPdfDownloaded()){
             addTab(getResources().getString(R.string.HOME),HOME_TAB_TAG, createDrawable(true, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.HOME_ICON),

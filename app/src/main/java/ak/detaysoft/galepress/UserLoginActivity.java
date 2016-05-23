@@ -476,7 +476,6 @@ public class UserLoginActivity extends Activity {
         web.setWebChromeClient(new WebChromeClient() {
             @Override
             public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
-                Log.e("ConsoleMessage", consoleMessage.message());
                 return true;
             }
         });
@@ -519,7 +518,6 @@ public class UserLoginActivity extends Activity {
         web.setWebChromeClient(new WebChromeClient() {
             @Override
             public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
-                Log.e("ConsoleMessage", consoleMessage.message());
                 return true;
             }
         });
