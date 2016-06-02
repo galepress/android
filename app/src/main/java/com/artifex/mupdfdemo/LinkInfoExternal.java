@@ -5,11 +5,6 @@ import android.location.Location;
 import android.net.Uri;
 import android.util.Log;
 
-import com.crashlytics.android.answers.Answers;
-import com.crashlytics.android.answers.CustomEvent;
-
-import io.fabric.sdk.android.Fabric;
-
 public class LinkInfoExternal extends LinkInfo {
 	 public String url;
 	public String sourceUrl;
@@ -37,79 +32,92 @@ public class LinkInfoExternal extends LinkInfo {
     public Location location;
     public float zoom;
     public int mapType = 0;
+    public boolean isHierarchical = true;
+    public boolean isMailto = false;
+    public boolean isInteractiveCompanentLink = true;
 
 	public LinkInfoExternal(float l, float t, float r, float b, String u) {
 		super(l, t, r, b);
 		url = u;
         Uri uri = Uri.parse(url);
 
-        if(!uri.isHierarchical()) {
-            Answers.getInstance().logCustom(new CustomEvent("Interaktif Link Test")
-                    .putCustomAttribute("url", ""+url));
-        }
+        if(uri.isHierarchical()) {
 
-        String modalQueryParameterValue = uri.getQueryParameter("modal");
-        if(modalQueryParameterValue!=null && !modalQueryParameterValue.isEmpty()){
-            int modalValue = Integer.parseInt(modalQueryParameterValue);
-            if(modalValue == 1){
-                isModal = true;
+            String modalQueryParameterValue = uri.getQueryParameter("modal");
+            if(modalQueryParameterValue!=null && !modalQueryParameterValue.isEmpty()){
+                int modalValue = Integer.parseInt(modalQueryParameterValue);
+                if(modalValue == 1){
+                    isModal = true;
+                }
+                removeQueryParameter("modal", modalQueryParameterValue);
             }
-            removeQueryParameter("modal", modalQueryParameterValue);
-        }
 
-        String componentTypeQueryParameterValue = uri.getQueryParameter("componentTypeID");
-        if(componentTypeQueryParameterValue!=null && !componentTypeQueryParameterValue.isEmpty()){
-            componentAnnotationTypeId = Integer.parseInt(componentTypeQueryParameterValue);
-            removeQueryParameter("componentTypeID", componentTypeQueryParameterValue);
-        }
-
-        if(componentAnnotationTypeId == COMPONENT_TYPE_ID_HARİTA){
-            uri = Uri.parse(url);
-            location = new Location("");
-
-            Double lat = 41.0053215;
-            if(uri.getQueryParameter("lat") != null && !uri.getQueryParameter("lat").isEmpty())
-                lat = new Double(uri.getQueryParameter("lat"));
-
-            Double lon = 29.0121795;
-            if(uri.getQueryParameter("lon") != null && !uri.getQueryParameter("lon").isEmpty())
-                lon = new Double(uri.getQueryParameter("lon"));
-            location.setLatitude(lat);
-            location.setLongitude(lon);
-            Double zoomValue = new Double(uri.getQueryParameter("slon"));
-            float zoomlevel = 12 - (int)(zoomValue / new Double("0.01"));
-            zoom = (zoomlevel / 2) + 12;
-            if(url.contains("standard")){
-                mapType = MAP_TYPE_STANDART;
-            }
-            else if(url.contains("hybrid")){
-                mapType = MAP_TYPE_HYBRID;
-            }
-            else if(url.contains("satellite")){
-                mapType = MAP_TYPE_SATELLITE;
-            }
-        }
-        else if(isWebAnnotation()){
-            if(url.length() == 8){ // Eger servisten bos url gelmisse "ylweb://"
-                isInternal = false;
-                sourceUrl = "";
+            String componentTypeQueryParameterValue = uri.getQueryParameter("componentTypeID");
+            if(componentTypeQueryParameterValue!=null && !componentTypeQueryParameterValue.isEmpty()){
+                componentAnnotationTypeId = Integer.parseInt(componentTypeQueryParameterValue);
+                removeQueryParameter("componentTypeID", componentTypeQueryParameterValue);
+                isInteractiveCompanentLink = true;
             } else {
-                try{
-                    if (url.substring(0,17).equals("ylweb://localhost")){
-                        isInternal = true;
-                        sourceUrl = url.substring(18);
-                    }
-                    else{
-                        isInternal = false;
-                        sourceUrl = "http://"+url.substring(8);
-                    }
-                } catch (Exception e){ //Url hatalı
+                componentAnnotationTypeId = COMPONENT_TYPE_ID_WEBLINK;
+                isInteractiveCompanentLink = true;
+            }
+
+
+            if(componentAnnotationTypeId == COMPONENT_TYPE_ID_HARİTA){
+                uri = Uri.parse(url);
+                location = new Location("");
+
+                Double lat = 41.0053215;
+                if(uri.getQueryParameter("lat") != null && !uri.getQueryParameter("lat").isEmpty())
+                    lat = new Double(uri.getQueryParameter("lat"));
+
+                Double lon = 29.0121795;
+                if(uri.getQueryParameter("lon") != null && !uri.getQueryParameter("lon").isEmpty())
+                    lon = new Double(uri.getQueryParameter("lon"));
+                location.setLatitude(lat);
+                location.setLongitude(lon);
+                Double zoomValue = new Double(uri.getQueryParameter("slon"));
+                float zoomlevel = 12 - (int)(zoomValue / new Double("0.01"));
+                zoom = (zoomlevel / 2) + 12;
+                if(url.contains("standard")){
+                    mapType = MAP_TYPE_STANDART;
+                }
+                else if(url.contains("hybrid")){
+                    mapType = MAP_TYPE_HYBRID;
+                }
+                else if(url.contains("satellite")){
+                    mapType = MAP_TYPE_SATELLITE;
+                }
+            }
+            else if(isWebAnnotation()){
+                if(url.length() == 8){ // Eger servisten bos url gelmisse "ylweb://"
                     isInternal = false;
                     sourceUrl = "";
+                } else {
+                    try{
+                        if (url.substring(0,17).equals("ylweb://localhost")){
+                            isInternal = true;
+                            sourceUrl = url.substring(18);
+                        }
+                        else{
+                            isInternal = false;
+                            sourceUrl = "http://"+url.substring(8);
+                        }
+                    } catch (Exception e){ //Url hatalı
+                        isInternal = false;
+                        sourceUrl = "";
+                    }
+
                 }
 
             }
 
+        } else {
+            isHierarchical = false;
+            if(url.startsWith("mailto:")) {
+                isMailto = true;
+                componentAnnotationTypeId = COMPONENT_TYPE_ID_WEBLINK;
+            }
         }
 
 	}

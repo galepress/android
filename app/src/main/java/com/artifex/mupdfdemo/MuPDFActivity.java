@@ -355,7 +355,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                     // Hopefully other file managers will use this same scheme, if not
                     // using explicit paths.
                     Cursor cursor = getContentResolver().query(uri, new String[]{"_data"}, null, null, null);
-                    if (cursor.moveToFirst()) {
+                    if (cursor != null && !cursor.isNull(0) && cursor.moveToFirst()) {
                         String str = cursor.getString(0);
                         String reason = null;
                         if (str == null) {

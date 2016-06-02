@@ -415,7 +415,7 @@ public class MuPDFCore
 	public synchronized LinkInfo [] getPageLinks(int page) {
         String TAG = "Adem2Pages";
         if(displayPages==1 || page == 0) {
-            return getPageLinksInternal(page);
+			return getHierarchicalPageLinksInternal(page);
         }
         LinkInfo[] leftPageLinkInfo = new LinkInfo[0];
         LinkInfo[] rightPageLinkInfo = new LinkInfo[0];
@@ -425,14 +425,14 @@ public class MuPDFCore
         int leftPage = rightPage - 1;
         int count = countPages() * 2;
         if( leftPage > 0 ) {
-            LinkInfo[] leftPageLinkInfoInternal = getPageLinksInternal(leftPage);
+            LinkInfo[] leftPageLinkInfoInternal = getHierarchicalPageLinksInternal(leftPage);
             if (null != leftPageLinkInfoInternal) {
                 leftPageLinkInfo = leftPageLinkInfoInternal;
                 combinedSize += leftPageLinkInfo.length;
             }
         }
         if( rightPage < count ) {
-            LinkInfo[] rightPageLinkInfoInternal = getPageLinksInternal(rightPage);
+            LinkInfo[] rightPageLinkInfoInternal = getHierarchicalPageLinksInternal(rightPage);
             if (null != rightPageLinkInfoInternal) {
                 rightPageLinkInfo = rightPageLinkInfoInternal;
                 combinedSize += rightPageLinkInfo.length;
@@ -452,6 +452,31 @@ public class MuPDFCore
             combinedLinkInfo[j] = temp;
         }
         return combinedLinkInfo;
+	}
+
+	public LinkInfo[] getHierarchicalPageLinksInternal(int page) {
+		LinkInfo[] tempLinks = getPageLinksInternal(page);
+		int hierarchicalLinkSize = 0;
+		for(int i = 0; i < tempLinks.length; i++) {
+			if(tempLinks[i] instanceof LinkInfoExternal && ((((LinkInfoExternal)tempLinks[i]).isHierarchical && ((LinkInfoExternal)tempLinks[i]).isInteractiveCompanentLink) || (((LinkInfoExternal)tempLinks[i]).isMailto))){
+				hierarchicalLinkSize++;
+			}
+		}
+
+
+		if(hierarchicalLinkSize == tempLinks.length)
+			return tempLinks;
+		else {
+			LinkInfo[] links = new LinkInfo[hierarchicalLinkSize];
+			int index = 0;
+			for(int i = 0; i < tempLinks.length; i++) {
+				if(tempLinks[i] instanceof LinkInfoExternal && ((((LinkInfoExternal)tempLinks[i]).isHierarchical && ((LinkInfoExternal)tempLinks[i]).isInteractiveCompanentLink) || (((LinkInfoExternal)tempLinks[i]).isMailto))){
+					links[index] = tempLinks[i];
+					index++;
+				}
+			}
+			return links;
+		}
 	}
 
 	public synchronized RectF [] getWidgetAreas(int page) {

@@ -20,6 +20,7 @@ import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.RemoteException;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
@@ -943,7 +944,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         }
     }
 
-    private void addTab(String title, String tag, Drawable drawable,Class classy, TabbarItem item) {
+    private void addTab(String title, String tag, Drawable drawable, Class classy, TabbarItem item) {
         TabHost.TabSpec spec = mTabHost.newTabSpec(tag);
         spec.setIndicator(createTabIndicator(title, drawable, item));
         mTabHost.addTab(spec, classy, null);
@@ -1417,42 +1418,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         getLibraryFragment().updateGridView();
     }
 
-    @Override
-    protected void onResumeFragments() {
-        super.onResumeFragments();
-        // connectionStatusChangedOnPause aciklamasinda yaziyor neden kullanildigi
-        if(connectionStatusChangedOnPause) {
-            initCustomTabs();
-            connectionStatusChangedOnPause = false;
-        }
-
-        /*
-        * onActivityResult icinden buraya tasidim
-        * https://fabric.io/galepress/android/apps/ak.detaysoft.carrefoursa1/issues/56afae00f5d3a7f76b80ee4d
-        * Bu hata activity onresume a dusmeden islem yaptigimiz icin olabilir. Devam ederse hata kaldiracagim. (MG)
-        * */
-        if(selectedReaderTabIndex != -1){
-            if (selectedReaderTabIndex == 0) {
-                mTabHost.setCurrentTabByTag(HOME_TAB_TAG);
-            } else if (selectedReaderTabIndex == 1) {
-                mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG);
-            } else if (selectedReaderTabIndex == 2) {
-                mTabHost.setCurrentTabByTag(DOWNLOADED_LIBRARY_TAG);
-            } else if (selectedReaderTabIndex == 3) {
-                mTabHost.setCurrentTabByTag(INFO_TAB_TAG);
-            } else { // 100+ type olanlar servisten gelen buttonlar
-                String customTabTag = "" + (selectedReaderTabIndex - 100);
-                mTabHost.setCurrentTabByTag(customTabTag);
-            }
-            selectedReaderTabIndex = -1;
-        }
-    }
-
-
-    /*TODO eger  3.4.6 versiyonunda sonra aynı hatayı almaya devam edersek bu metodu kullanmak gerekebilir
-    * https://www.fabric.io/galepress/android/apps/ak.detaysoft.carrefoursa1/issues/56afae00f5d3a7f76b80ee4d/sessions/latest?build=37704165
-    * */
-
     /*@Override
     protected void onResumeFragments() {
         super.onResumeFragments();
@@ -1467,6 +1432,42 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         * https://fabric.io/galepress/android/apps/ak.detaysoft.carrefoursa1/issues/56afae00f5d3a7f76b80ee4d
         * Bu hata activity onresume a dusmeden islem yaptigimiz icin olabilir. Devam ederse hata kaldiracagim. (MG)
         * *//*
+             if(selectedReaderTabIndex != -1){
+                if (selectedReaderTabIndex == 0) {
+                    mTabHost.setCurrentTabByTag(HOME_TAB_TAG);
+                } else if (selectedReaderTabIndex == 1) {
+                    mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG);
+                } else if (selectedReaderTabIndex == 2) {
+                    mTabHost.setCurrentTabByTag(DOWNLOADED_LIBRARY_TAG);
+                } else if (selectedReaderTabIndex == 3) {
+                    mTabHost.setCurrentTabByTag(INFO_TAB_TAG);
+                } else { // 100+ type olanlar servisten gelen buttonlar
+                    String customTabTag = "" + (selectedReaderTabIndex - 100);
+                    mTabHost.setCurrentTabByTag(customTabTag);
+                }
+                selectedReaderTabIndex = -1;
+            }
+    }*/
+
+
+    /*TODO eger  3.4.10 versiyonundan sonra aynı hatayı almaya devam edersek eski commente donmek gerekebilir
+    * https://fabric.io/galepress/android/apps/ak.detaysoft.carrefoursa1/issues/56afae00f5d3a7f76b80ee4d
+    * */
+
+    @Override
+    protected void onResumeFragments() {
+        super.onResumeFragments();
+        // connectionStatusChangedOnPause aciklamasinda yaziyor neden kullanildigi
+        if(connectionStatusChangedOnPause) {
+            initCustomTabs();
+            connectionStatusChangedOnPause = false;
+        }
+
+
+        /* onActivityResult icinden buraya tasidim
+           https://fabric.io/galepress/android/apps/ak.detaysoft.carrefoursa1/issues/56afae00f5d3a7f76b80ee4d
+           Bu hata activity onresume a dusmeden islem yaptigimiz icin olabilir. Devam ederse hata kaldiracagim. (MG)
+        */
         if(selectedReaderTabIndex != -1){
             if (selectedReaderTabIndex == 0) {
                 selectedTabTag = HOME_TAB_TAG;
@@ -1487,7 +1488,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             });
             selectedReaderTabIndex = -1;
         }
-    }*/
+    }
 
     @Override
     protected void onResume() {

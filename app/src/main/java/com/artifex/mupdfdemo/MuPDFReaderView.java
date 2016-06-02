@@ -279,25 +279,26 @@ public class MuPDFReaderView extends ReaderView {
             if(pages[j]!=-1){
                 Logout.e("Adem","Goruntulenen sayfa : "+pages[j]);
 
-                Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
-                String udid = UUID.randomUUID().toString();
-                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                Calendar cal = Calendar.getInstance();
-                dateFormat .setTimeZone(TimeZone.getTimeZone("GMT"));
-                Location location = GalePressApplication.getInstance().location;
-                L_Statistic statistic;
+				if(core != null && core.content != null && core.content.getId() != null) {
+					Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+					String udid = UUID.randomUUID().toString();
+					DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+					Calendar cal = Calendar.getInstance();
+					dateFormat .setTimeZone(TimeZone.getTimeZone("GMT"));
+					Location location = GalePressApplication.getInstance().location;
+					L_Statistic statistic;
 
-                if(core.getDisplayPages() ==1){
-                    // Portrait
-                    statistic = new L_Statistic(udid, core.content.getId(), location!=null?location.getLatitude():null,location!=null?location.getLongitude():null, pages[j], dateFormat.format(cal.getTime()),L_Statistic.STATISTIC_pageOpenedPortrait, null,null,null);
-                }
-                else{
-                    //landscape
-                    statistic = new L_Statistic(udid, core.content.getId(), location!=null?location.getLatitude():null,location!=null?location.getLongitude():null, pages[j], dateFormat.format(cal.getTime()),L_Statistic.STATISTIC_pageOpenedLandscape, null,null,null);
-                }
+					if(core.getDisplayPages() ==1){
+						// Portrait
+						statistic = new L_Statistic(udid, core.content.getId(), location!=null?location.getLatitude():null,location!=null?location.getLongitude():null, pages[j], dateFormat.format(cal.getTime()),L_Statistic.STATISTIC_pageOpenedPortrait, null,null,null);
+					}
+					else{
+						//landscape
+						statistic = new L_Statistic(udid, core.content.getId(), location!=null?location.getLatitude():null,location!=null?location.getLongitude():null, pages[j], dateFormat.format(cal.getTime()),L_Statistic.STATISTIC_pageOpenedLandscape, null,null,null);
+					}
 
-                GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
-
+					GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
+				}
 
             }
         }

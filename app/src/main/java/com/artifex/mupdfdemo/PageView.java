@@ -17,7 +17,6 @@ import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
@@ -25,6 +24,10 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
+
+import com.crashlytics.android.answers.Answers;
+import com.crashlytics.android.answers.CustomEvent;
 
 import org.xwalk.core.XWalkView;
 import org.xwalk.core.internal.XWalkViewBridge;
@@ -39,6 +42,7 @@ import ak.detaysoft.galepress.web_views.ExtraWebViewWithCrosswalkActivity;
 import ak.detaysoft.galepress.web_views.WebViewAnnotation;
 import ak.detaysoft.galepress.web_views.WebViewAnnotationWithCrosswalk;
 import ak.detaysoft.galepress.util.CustomPulseProgress;
+import io.fabric.sdk.android.Fabric;
 
 
 class PatchInfo {
@@ -777,16 +781,32 @@ public abstract class PageView extends ViewGroup {
 								}
 							}
 							else if(((LinkInfoExternal) link).componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_WEBLINK){
+								final boolean isMailto = ((LinkInfoExternal) link).isMailto;
 								View view = new View(mContext);
 								view.layout(left,top,right,bottom);
 								view.setBackgroundColor(Color.TRANSPARENT);
 								view.setOnClickListener(new OnClickListener() {
 									@Override
 									public void onClick(View v) {
-										Intent intent = new Intent(mContext, ExtraWebViewActivity.class);
-										intent.putExtra("url",linkInfoExternal.url);
-										intent.putExtra("isModal", true);
-										mContext.startActivity(intent);
+										if(isMailto) {
+											Intent intent = new Intent(Intent.ACTION_SEND);
+											intent.setType("message/rfc822");
+											//intent.setType("text/html");
+											intent.putExtra(Intent.EXTRA_EMAIL, new String[]{linkInfoExternal.url});
+											intent.putExtra(Intent.EXTRA_SUBJECT, " ");
+											intent.putExtra(Intent.EXTRA_TEXT, " ");
+											try {
+												mContext.startActivity(Intent.createChooser(intent, "Send mail..."));
+											} catch (android.content.ActivityNotFoundException ex) {
+												Toast.makeText(mContext, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+											}
+										} else {
+											Intent intent = new Intent(mContext, ExtraWebViewActivity.class);
+											intent.putExtra("url",linkInfoExternal.url);
+											intent.putExtra("isModal", true);
+											mContext.startActivity(intent);
+										}
+
 									}
 								});
 								addView(view);
@@ -1013,6 +1033,24 @@ public abstract class PageView extends ViewGroup {
 				mPatch.invalidate();
 			}
 		} else {
+
+			/*
+			* TODO https://fabric.io/galepress/android/apps/ak.detaysoft.carrefoursa1/issues/574a0317ffcdc042508305d1 hatasi var takip edilecek neden kaynaklandigi bulunamadi.
+			* */
+			boolean isNull = false;
+			if(viewArea == null) {
+				Answers.getInstance().logCustom(new CustomEvent("PageView crash").putCustomAttribute("viewArea", "null"));
+				isNull = true;
+			}
+
+			if(mParentSize == null) {
+				Answers.getInstance().logCustom(new CustomEvent("PageView crash").putCustomAttribute("mParentSize", "null"));
+				isNull = true;
+			}
+
+			if(isNull)
+				return;
+
 			Point patchViewSize = new Point(viewArea.width(), viewArea.height());
 			Rect patchArea = new Rect(0, 0, mParentSize.x, mParentSize.y);
 
