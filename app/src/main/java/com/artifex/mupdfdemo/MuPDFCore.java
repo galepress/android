@@ -458,7 +458,9 @@ public class MuPDFCore
 		LinkInfo[] tempLinks = getPageLinksInternal(page);
 		int hierarchicalLinkSize = 0;
 		for(int i = 0; i < tempLinks.length; i++) {
-			if(tempLinks[i] instanceof LinkInfoExternal && ((((LinkInfoExternal)tempLinks[i]).isHierarchical && ((LinkInfoExternal)tempLinks[i]).isInteractiveCompanentLink) || (((LinkInfoExternal)tempLinks[i]).isMailto))){
+			if(tempLinks[i] instanceof LinkInfoExternal && ((LinkInfoExternal)tempLinks[i]).isSuitabale){
+				hierarchicalLinkSize++;
+			} else if(tempLinks[i] instanceof LinkInfoInternal) {
 				hierarchicalLinkSize++;
 			}
 		}
@@ -470,7 +472,10 @@ public class MuPDFCore
 			LinkInfo[] links = new LinkInfo[hierarchicalLinkSize];
 			int index = 0;
 			for(int i = 0; i < tempLinks.length; i++) {
-				if(tempLinks[i] instanceof LinkInfoExternal && ((((LinkInfoExternal)tempLinks[i]).isHierarchical && ((LinkInfoExternal)tempLinks[i]).isInteractiveCompanentLink) || (((LinkInfoExternal)tempLinks[i]).isMailto))){
+				if(tempLinks[i] instanceof LinkInfoExternal && ((LinkInfoExternal)tempLinks[i]).isSuitabale){
+					links[index] = tempLinks[i];
+					index++;
+				} else if(tempLinks[i] instanceof LinkInfoInternal) {
 					links[index] = tempLinks[i];
 					index++;
 				}

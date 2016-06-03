@@ -2,6 +2,20 @@
 <items version="2" >
 
     <item
+        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\classes.jar"
+        jumboMode="true"
+        revision="21.0.0"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-21.0.3_2ef4d6be7f82b877ef46e2f29b1a3364efc2956a\classes.dex" />
+    </item>
+    <item
+        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.facebook.android\facebook-android-sdk\4.1.1\jars\classes.jar"
+        jumboMode="true"
+        revision="21.0.0"
+        sha1="3b0fb927b680e244106145d6ecc59e4ae21c7e5d">
+        <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.facebook.android-facebook-android-sdk-4.1.1_9e980d12902c09164da36258bf2ce4178fd99981\classes.dex" />
+    </item>
+    <item
         jar="C:\Users\p1025\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
         jumboMode="true"
         revision="21.0.0"
@@ -12,8 +26,43 @@
         jar="D:\GalepressMerge\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         revision="21.0.0"
-        sha1="243ecf0b6015025c6c34834e13c85b0f9be1bf1a">
+        sha1="47af4570aca410c53064c0370bc3c47011efb038">
         <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_020261e632dbd008531c15650b35dd2213648571\classes.dex" />
+    </item>
+    <item
+        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.crashlytics.sdk.android\crashlytics-core\2.3.8\jars\classes.jar"
+        jumboMode="true"
+        revision="21.0.0"
+        sha1="c9ef45dcbd082cd63aac09a5e2cd443adb5df837">
+        <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.crashlytics.sdk.android-crashlytics-core-2.3.8_f53680a851f371099c8ffcbb26b95e403a678637\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\p1025\.gradle\caches\modules-2\files-2.1\com.j256.ormlite\ormlite-android\4.45\8ff8c21e8d0162333559f35cafd6a2238a33e5ba\ormlite-android-4.45.jar"
+        jumboMode="true"
+        revision="21.0.0"
+        sha1="8ff8c21e8d0162333559f35cafd6a2238a33e5ba">
+        <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\10\ormlite-android-4.45_293b2b56b5cf4871fc0549012085f14d3a117ec0\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\p1025\.gradle\caches\modules-2\files-2.1\com.j256.ormlite\ormlite-core\4.45\3db7b73aecea723803e10b068777cf09ed42d4be\ormlite-core-4.45.jar"
+        jumboMode="true"
+        revision="21.0.0"
+        sha1="3db7b73aecea723803e10b068777cf09ed42d4be">
+        <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\10\ormlite-core-4.45_459c624c4fa26b5a2b20b6a9dbe76a6dca97cffd\classes.dex" />
+    </item>
+    <item
+        jar="D:\GalepressMerge\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="21.0.0"
+        sha1="fb20a12e2ecada4b81f7297d4666e1d9c810ff57">
+        <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_555151797c2cf5c300f33f3c30584f5915d9678c\classes.dex" />
+    </item>
+    <item
+        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.edmodo\cropper\1.0.1\jars\classes.jar"
+        jumboMode="true"
+        revision="21.0.0"
+        sha1="66467578c335f7a6babdbe01f7f0ac63230f578e">
+        <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.edmodo-cropper-1.0.1_86d1b5d744d82d2e18940f61a91207b449d12ef4\classes.dex" />
     </item>
     <item
         jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.crashlytics.sdk.android\crashlytics\2.5.5\jars\classes.jar"
@@ -51,6 +100,20 @@
         <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-20.0.0_58b03cd357d27fb4216f2755b24fbfa845226416\classes.dex" />
     </item>
     <item
+        jar="D:\GalepressMerge\app\src\main\lib\gcm.jar"
+        jumboMode="true"
+        revision="21.0.0"
+        sha1="a6d7bce795a14c7f86111756c4ceb44b79de14aa">
+        <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\2\gcm_4225603ee88df80376baa85cf50921919fb5cb5e\classes.dex" />
+    </item>
+    <item
+        jar="D:\GalepressMerge\app\src\main\lib\universal-image-loader-1.9.3.jar"
+        jumboMode="true"
+        revision="21.0.0"
+        sha1="a85588bec3e2c4584d593d3f15df1677321bca72">
+        <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\2\universal-image-loader-1.9.3_d309f41a6a7e9f98cdfb86456384e55439339f83\classes.dex" />
+    </item>
+    <item
         jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\GalepressMerge\xwalk_core_library_15\unspecified\jars\libs\xwalk_core_library_java.jar"
         jumboMode="true"
         revision="21.0.0"
@@ -77,69 +140,6 @@
         revision="21.0.0"
         sha1="ad5bb101ced4d3939225c9b57e5a3d81547c1fbb">
         <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.crashlytics.sdk.android-beta-1.1.4_38d4c174eab49bc8375f469d552c2fa32223d792\classes.dex" />
-    </item>
-    <item
-        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\classes.jar"
-        jumboMode="true"
-        revision="21.0.0"
-        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-21.0.3_2ef4d6be7f82b877ef46e2f29b1a3364efc2956a\classes.dex" />
-    </item>
-    <item
-        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.facebook.android\facebook-android-sdk\4.1.1\jars\classes.jar"
-        jumboMode="true"
-        revision="21.0.0"
-        sha1="3b0fb927b680e244106145d6ecc59e4ae21c7e5d">
-        <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.facebook.android-facebook-android-sdk-4.1.1_9e980d12902c09164da36258bf2ce4178fd99981\classes.dex" />
-    </item>
-    <item
-        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.crashlytics.sdk.android\crashlytics-core\2.3.8\jars\classes.jar"
-        jumboMode="true"
-        revision="21.0.0"
-        sha1="c9ef45dcbd082cd63aac09a5e2cd443adb5df837">
-        <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.crashlytics.sdk.android-crashlytics-core-2.3.8_f53680a851f371099c8ffcbb26b95e403a678637\classes.dex" />
-    </item>
-    <item
-        jar="C:\Users\p1025\.gradle\caches\modules-2\files-2.1\com.j256.ormlite\ormlite-android\4.45\8ff8c21e8d0162333559f35cafd6a2238a33e5ba\ormlite-android-4.45.jar"
-        jumboMode="true"
-        revision="21.0.0"
-        sha1="8ff8c21e8d0162333559f35cafd6a2238a33e5ba">
-        <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\10\ormlite-android-4.45_293b2b56b5cf4871fc0549012085f14d3a117ec0\classes.dex" />
-    </item>
-    <item
-        jar="C:\Users\p1025\.gradle\caches\modules-2\files-2.1\com.j256.ormlite\ormlite-core\4.45\3db7b73aecea723803e10b068777cf09ed42d4be\ormlite-core-4.45.jar"
-        jumboMode="true"
-        revision="21.0.0"
-        sha1="3db7b73aecea723803e10b068777cf09ed42d4be">
-        <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\10\ormlite-core-4.45_459c624c4fa26b5a2b20b6a9dbe76a6dca97cffd\classes.dex" />
-    </item>
-    <item
-        jar="D:\GalepressMerge\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        revision="21.0.0"
-        sha1="f14f33433cfaf259779fc7c6a084ef0205b8199e">
-        <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_555151797c2cf5c300f33f3c30584f5915d9678c\classes.dex" />
-    </item>
-    <item
-        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.edmodo\cropper\1.0.1\jars\classes.jar"
-        jumboMode="true"
-        revision="21.0.0"
-        sha1="66467578c335f7a6babdbe01f7f0ac63230f578e">
-        <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.edmodo-cropper-1.0.1_86d1b5d744d82d2e18940f61a91207b449d12ef4\classes.dex" />
-    </item>
-    <item
-        jar="D:\GalepressMerge\app\src\main\lib\gcm.jar"
-        jumboMode="true"
-        revision="21.0.0"
-        sha1="a6d7bce795a14c7f86111756c4ceb44b79de14aa">
-        <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\2\gcm_4225603ee88df80376baa85cf50921919fb5cb5e\classes.dex" />
-    </item>
-    <item
-        jar="D:\GalepressMerge\app\src\main\lib\universal-image-loader-1.9.3.jar"
-        jumboMode="true"
-        revision="21.0.0"
-        sha1="a85588bec3e2c4584d593d3f15df1677321bca72">
-        <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\2\universal-image-loader-1.9.3_d309f41a6a7e9f98cdfb86456384e55439339f83\classes.dex" />
     </item>
     <item
         jar="C:\Users\p1025\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-android\1.2.0\6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd\bolts-android-1.2.0.jar"

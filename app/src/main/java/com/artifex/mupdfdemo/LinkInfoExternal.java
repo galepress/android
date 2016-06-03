@@ -32,14 +32,14 @@ public class LinkInfoExternal extends LinkInfo {
     public Location location;
     public float zoom;
     public int mapType = 0;
-    public boolean isHierarchical = true;
     public boolean isMailto = false;
-    public boolean isInteractiveCompanentLink = true;
+    public boolean isSuitabale = true;
 
 	public LinkInfoExternal(float l, float t, float r, float b, String u) {
 		super(l, t, r, b);
 		url = u;
         Uri uri = Uri.parse(url);
+        Log.e("urlllllllllll", ""+url);
 
         if(uri.isHierarchical()) {
 
@@ -56,10 +56,17 @@ public class LinkInfoExternal extends LinkInfo {
             if(componentTypeQueryParameterValue!=null && !componentTypeQueryParameterValue.isEmpty()){
                 componentAnnotationTypeId = Integer.parseInt(componentTypeQueryParameterValue);
                 removeQueryParameter("componentTypeID", componentTypeQueryParameterValue);
-                isInteractiveCompanentLink = true;
+                isSuitabale = true;
             } else {
-                componentAnnotationTypeId = COMPONENT_TYPE_ID_WEBLINK;
-                isInteractiveCompanentLink = true;
+                if(url.contains("www") || url.contains("http://")) {
+                    componentAnnotationTypeId = COMPONENT_TYPE_ID_WEBLINK;
+                } else if(url.contains("@")){
+                    componentAnnotationTypeId = COMPONENT_TYPE_ID_WEBLINK;
+                    isMailto = true;
+                } else {
+                    isSuitabale = false;
+                    return;
+                }
             }
 
 
@@ -113,10 +120,11 @@ public class LinkInfoExternal extends LinkInfo {
             }
 
         } else {
-            isHierarchical = false;
             if(url.startsWith("mailto:")) {
                 isMailto = true;
                 componentAnnotationTypeId = COMPONENT_TYPE_ID_WEBLINK;
+            } else {
+                isSuitabale = false;
             }
         }
 
