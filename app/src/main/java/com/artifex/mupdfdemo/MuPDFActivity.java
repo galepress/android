@@ -1463,7 +1463,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             mPreviewBarHolder.startAnimation(anim);
         }
 
-        if (!content.isMaster()) {
+        if (content != null && !content.isMaster()) {
             TranslateAnimation menuAnim = new TranslateAnimation(0, 0, bottomButton.getHeight(), 0);
             menuAnim.setStartOffset(500);
             menuAnim.setDuration(250);

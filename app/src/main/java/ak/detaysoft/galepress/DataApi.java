@@ -1211,87 +1211,102 @@ public class DataApi extends Object {
 
     public void deletePdf(final Integer id, Context context) {
         final L_Content content = getDatabaseApi().getContent(id);
-        if(content.isPdfDownloaded()) {
-            AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
-            alertDialog.setTitle(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.UYARI));
-            alertDialog.setMessage(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.CONFIRM_1));
+        if(content != null) {
+            if(content.isPdfDownloaded()) {
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+                alertDialog.setTitle(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.UYARI));
+                alertDialog.setMessage(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.CONFIRM_1));
 
-            alertDialog.setPositiveButton(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.EVET), new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int which) {
-                    File directory = new File(GalePressApplication.getInstance().getFilesDir() + "/" + id);
-                    deleteFolder(directory);
-                    L_Content content = getDatabaseApi().getContent(id);
-                    content.setPdfDownloaded(false);
-                    content.setPdfUpdateAvailable(false);
-                    getDatabaseApi().updateContent(content,true);
+                alertDialog.setPositiveButton(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.EVET), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        File directory = new File(GalePressApplication.getInstance().getFilesDir() + "/" + id);
+                        deleteFolder(directory);
+                        L_Content content = getDatabaseApi().getContent(id);
+                        content.setPdfDownloaded(false);
+                        content.setPdfUpdateAvailable(false);
+                        getDatabaseApi().updateContent(content,true);
 
-                    Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
-                    String udid = UUID.randomUUID().toString();
-                    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    Calendar cal = Calendar.getInstance();
-                    dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
-                    Location location = GalePressApplication.getInstance().location;
-                    L_Statistic statistic = new L_Statistic(udid, content.getId(), location!=null?location.getLatitude():null,location!=null?location.getLongitude():null, null, dateFormat.format(cal.getTime()),L_Statistic.STATISTIC_contentDeleted, null,null,null);
-                    GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
+                        Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+                        String udid = UUID.randomUUID().toString();
+                        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                        Calendar cal = Calendar.getInstance();
+                        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+                        Location location = GalePressApplication.getInstance().location;
+                        L_Statistic statistic = new L_Statistic(udid, content.getId(), location!=null?location.getLatitude():null,location!=null?location.getLongitude():null, null, dateFormat.format(cal.getTime()),L_Statistic.STATISTIC_contentDeleted, null,null,null);
+                        GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
 
-                    L_Application application = getDatabaseApi().getApplication(GalePressApplication.getInstance().getApplicationId());
-                    application.setVersion(application.getVersion()-1);
-                    getDatabaseApi().updateApplication(application);
+                        L_Application application = getDatabaseApi().getApplication(GalePressApplication.getInstance().getApplicationId());
+                        application.setVersion(application.getVersion()-1);
+                        getDatabaseApi().updateApplication(application);
 
                     /*
                      * Silinen icerigin son acilan sayfa bilgileri siliniyor.
                      * Eger silinmezse icerik tekrar indirilirse silinmeden onceki sayfadan basliyor.
                     * */
-                    try{
-                        File samplePdfFile = new File(content.getPdfPath(),"file.pdf");
-                        Uri uri = Uri.parse(samplePdfFile.getAbsolutePath());
-                        String path = Uri.decode(uri.getEncodedPath());
-                        int lastSlashPos = path.lastIndexOf('/');
-                        int penultimateSlashPos = (path.substring(0, path.lastIndexOf("/"))).lastIndexOf('/');
-                        String mFileName = new String((lastSlashPos == -1 ||penultimateSlashPos == -1)
-                                ? path
-                                : path.substring(penultimateSlashPos + 1, lastSlashPos));
+                        try{
+                            File samplePdfFile = new File(content.getPdfPath(),"file.pdf");
+                            Uri uri = Uri.parse(samplePdfFile.getAbsolutePath());
+                            String path = Uri.decode(uri.getEncodedPath());
+                            int lastSlashPos = path.lastIndexOf('/');
+                            int penultimateSlashPos = (path.substring(0, path.lastIndexOf("/"))).lastIndexOf('/');
+                            String mFileName = new String((lastSlashPos == -1 ||penultimateSlashPos == -1)
+                                    ? path
+                                    : path.substring(penultimateSlashPos + 1, lastSlashPos));
 
-                        SharedPreferences prefs = GalePressApplication.getInstance().getApplicationContext().getSharedPreferences("pages", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor edit = prefs.edit();
+                            SharedPreferences prefs = GalePressApplication.getInstance().getApplicationContext().getSharedPreferences("pages", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor edit = prefs.edit();
 
-                        edit.putInt("page" + mFileName, 0);
-                        edit.putInt("lastPortraitPageIndex" + mFileName, 0);
-                        edit.commit();
-                    } catch (Exception e){
-                        Log.e("Content_Delete", ""+e.toString());
+                            edit.putInt("page" + mFileName, 0);
+                            edit.putInt("lastPortraitPageIndex" + mFileName, 0);
+                            edit.commit();
+                        } catch (Exception e){
+                            Log.e("Content_Delete", ""+e.toString());
+                        }
+
+                        //icerik silindigi zaman downloaded ekrani aciksa update etmek icin
+                        if(GalePressApplication.getInstance().getMainActivity() != null){
+                            MainActivity act = GalePressApplication.getInstance().getMainActivity();
+                            if(act.mTabHost.getCurrentTabTag().compareTo(MainActivity.DOWNLOADED_LIBRARY_TAG) == 0)
+                                act.getDownloadedLibraryFragment().updateGridView();
+                        }
+
+
+                        updateApplication();
+
+                        if(GalePressApplication.getInstance().getContentDetailPopupActivity() != null){
+                            if(content.getId().compareTo(GalePressApplication.getInstance().getContentDetailPopupActivity().getContent().getId()) == 0)
+                                GalePressApplication.getInstance().getContentDetailPopupActivity().setContent(content);
+                            GalePressApplication.getInstance().getContentDetailPopupActivity().update();
+                        }
+
                     }
-
-                    //icerik silindigi zaman downloaded ekrani aciksa update etmek icin
-                    if(GalePressApplication.getInstance().getMainActivity() != null){
-                        MainActivity act = GalePressApplication.getInstance().getMainActivity();
-                        if(act.mTabHost.getCurrentTabTag().compareTo(MainActivity.DOWNLOADED_LIBRARY_TAG) == 0)
-                            act.getDownloadedLibraryFragment().updateGridView();
+                });
+                alertDialog.setNegativeButton(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.HAYIR), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                        //GalePressApplication.getInstance().getLibraryActivity().updateGridView();
+                        GalePressApplication.getInstance().getLibraryActivity().updateAdapterList(content, false);
+                        if(GalePressApplication.getInstance().getContentDetailPopupActivity() != null){
+                            GalePressApplication.getInstance().getContentDetailPopupActivity().update();
+                        }
                     }
+                });
+                alertDialog.show();
+            }
+        } else {
+            Toast.makeText(context, context.getResources().getString(R.string.WARNING_0), Toast.LENGTH_SHORT).show();
+            //icerik herhangi bir sebepten dolayi silenemezse popupekranlarini update etmek icin
+            if(GalePressApplication.getInstance().getMainActivity() != null){
+                MainActivity act = GalePressApplication.getInstance().getMainActivity();
+                if(act.mTabHost.getCurrentTabTag().compareTo(MainActivity.DOWNLOADED_LIBRARY_TAG) == 0)
+                    act.getDownloadedLibraryFragment().updateGridView();
+            }
 
-
-                    updateApplication();
-
-                    if(GalePressApplication.getInstance().getContentDetailPopupActivity() != null){
-                        if(content.getId().compareTo(GalePressApplication.getInstance().getContentDetailPopupActivity().getContent().getId()) == 0)
-                            GalePressApplication.getInstance().getContentDetailPopupActivity().setContent(content);
-                        GalePressApplication.getInstance().getContentDetailPopupActivity().update();
-                    }
-
-                }
-            });
-            alertDialog.setNegativeButton(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.HAYIR), new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
-                    //GalePressApplication.getInstance().getLibraryActivity().updateGridView();
-                    GalePressApplication.getInstance().getLibraryActivity().updateAdapterList(content, false);
-                    if(GalePressApplication.getInstance().getContentDetailPopupActivity() != null){
-                        GalePressApplication.getInstance().getContentDetailPopupActivity().update();
-                    }
-                }
-            });
-            alertDialog.show();
+            if(GalePressApplication.getInstance().getContentDetailPopupActivity() != null){
+                GalePressApplication.getInstance().getContentDetailPopupActivity().update();
+            }
         }
+
     }
 
     public void downloadPdf(L_Content content) {
