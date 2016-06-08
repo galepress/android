@@ -159,6 +159,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         }
     };
 
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -1460,7 +1461,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         // connectionStatusChangedOnPause aciklamasinda yaziyor neden kullanildigi
         if(connectionStatusChangedOnPause) {
             initCustomTabs();
-            connectionStatusChangedOnPause = false;
         }
 
 
@@ -1481,12 +1481,23 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 selectedTabTag = "" + (selectedReaderTabIndex - 100);
             }
 
+            final boolean connectionStatusChanged = connectionStatusChangedOnPause;
             new Handler().post(new Runnable() {
                 public void run() {
-                    mTabHost.setCurrentTabByTag(selectedTabTag);
+                    if(!connectionStatusChanged) {
+                        mTabHost.setCurrentTabByTag(selectedTabTag);
+                    } else {
+                        selectedTabTag = LIBRARY_TAB_TAG;
+                        mTabHost.setCurrentTabByTag(selectedTabTag);
+                    }
+
                 }
             });
             selectedReaderTabIndex = -1;
+        }
+
+        if(connectionStatusChangedOnPause) {
+            connectionStatusChangedOnPause = false;
         }
     }
 
@@ -1494,13 +1505,34 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     protected void onResume() {
         super.onResume();
         GalePressApplication.getInstance().setCurrentActivity(this);
+        /*
+        * https://www.fabric.io/galepress/android/apps/ak.detaysoft.carrefoursa1/issues/56afae00f5d3a7f76b80ee4d
+        * bu crash e cozum icin bu yontem belirtilmis
+        * */
+        mTabHost.getTabWidget().setEnabled(true);
 
 
     }
 
     protected void onPause() {
         clearReferences();
+        /*
+        * https://www.fabric.io/galepress/android/apps/ak.detaysoft.carrefoursa1/issues/56afae00f5d3a7f76b80ee4d
+        * bu crash e cozum icin bu yontem belirtilmis
+        * */
+        mTabHost.getTabWidget().setEnabled(false);
         super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        clearReferences();
+        /*
+        * https://www.fabric.io/galepress/android/apps/ak.detaysoft.carrefoursa1/issues/56afae00f5d3a7f76b80ee4d
+        * bu crash e cozum icin bu yontem belirtilmis
+        * */
+        mTabHost.getTabWidget().setEnabled(false);
+        super.onStop();
     }
 
     @Override
