@@ -9,12 +9,6 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.location.Location;
-
-import com.android.vending.billing.IInAppBillingService;
-import com.artifex.mupdfdemo.MuPDFActivity;
-import com.crashlytics.android.Crashlytics;
-import com.google.android.gms.location.LocationListener;
-import com.google.android.gms.location.LocationRequest;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -25,23 +19,25 @@ import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.android.vending.billing.IInAppBillingService;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.Volley;
+import com.artifex.mupdfdemo.MuPDFActivity;
+import com.crashlytics.android.Crashlytics;
 import com.dd.plist.NSDictionary;
 import com.dd.plist.PropertyListParser;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.LocationClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
-import ak.detaysoft.galepress.custom_models.Subscription;
-import ak.detaysoft.galepress.custom_models.UserInformations;
-import io.fabric.sdk.android.Fabric;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -58,21 +54,23 @@ import java.util.TimeZone;
 import java.util.UUID;
 
 import ak.detaysoft.galepress.custom_models.ApplicationPlist;
+import ak.detaysoft.galepress.custom_models.Subscription;
 import ak.detaysoft.galepress.custom_models.TabbarItem;
+import ak.detaysoft.galepress.custom_models.UserInformations;
 import ak.detaysoft.galepress.database_models.L_Application;
 import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.database_models.L_Statistic;
 import ak.detaysoft.galepress.database_models.TestApplicationInf;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
 import ak.detaysoft.galepress.util.MyImageDecoder;
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by adem on 11/02/14.
  */
 public class GalePressApplication
         extends Application
-        implements LocationListener,GooglePlayServicesClient.ConnectionCallbacks,GooglePlayServicesClient.OnConnectionFailedListener
-{
+        implements LocationListener, GooglePlayServicesClient.ConnectionCallbacks, GooglePlayServicesClient.OnConnectionFailedListener {
 
     /**
      * Log or request TAG
@@ -85,7 +83,7 @@ public class GalePressApplication
     private Fragment currentFragment;
     private int requestCount;
 
-     //Global request queue for Volley
+    //Global request queue for Volley
     private RequestQueue mRequestQueue;
     private RequestQueue mRequestQueue4Statistic;
 
@@ -103,7 +101,8 @@ public class GalePressApplication
 
     public Location location;
     private LocationRequest mLocationRequest;
-    private LocationClient mLocationClient;SharedPreferences mPrefs;
+    private LocationClient mLocationClient;
+    SharedPreferences mPrefs;
     private ContentDetailPopupActivity contentDetailPopupActivity;
     SharedPreferences.Editor mEditor;
     boolean mUpdatesRequested = false;
@@ -145,8 +144,8 @@ public class GalePressApplication
     private boolean isAgeVerificationActive = false;
     private boolean applicationHaveActiveSubscription;
 
-    Foreground.Listener myListener = new Foreground.Listener(){
-        public void onBecameForeground(){
+    Foreground.Listener myListener = new Foreground.Listener() {
+        public void onBecameForeground() {
             mLocationClient.connect();
             startUpdates();
 
@@ -154,14 +153,15 @@ public class GalePressApplication
             String udid = UUID.randomUUID().toString();
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Calendar cal = Calendar.getInstance();
-            dateFormat .setTimeZone(TimeZone.getTimeZone("GMT"));
-            L_Statistic statistic = new L_Statistic(udid, null, location!=null?location.getLatitude():null,location!=null?location.getLongitude():null, null, dateFormat.format(cal.getTime()),L_Statistic.STATISTIC_applicationActive, null,null,null);
+            dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+            L_Statistic statistic = new L_Statistic(udid, null, location != null ? location.getLatitude() : null, location != null ? location.getLongitude() : null, null, dateFormat.format(cal.getTime()), L_Statistic.STATISTIC_applicationActive, null, null, null);
             GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
             GalePressApplication.getInstance().getDataApi().startStatisticSend();
 
 
         }
-        public void onBecameBackground(){
+
+        public void onBecameBackground() {
             // ... whatever you want to do
 
             // If the client is connected
@@ -176,12 +176,13 @@ public class GalePressApplication
             String udid = UUID.randomUUID().toString();
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Calendar cal = Calendar.getInstance();
-            dateFormat .setTimeZone(TimeZone.getTimeZone("GMT"));
-            L_Statistic statistic = new L_Statistic(udid, null, location!=null?location.getLatitude():null,location!=null?location.getLongitude():null, null, dateFormat.format(cal.getTime()),L_Statistic.STATISTIC_applicationPassive, null,null,null);
+            dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+            L_Statistic statistic = new L_Statistic(udid, null, location != null ? location.getLatitude() : null, location != null ? location.getLongitude() : null, null, dateFormat.format(cal.getTime()), L_Statistic.STATISTIC_applicationPassive, null, null, null);
             GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
             GalePressApplication.getInstance().getDataApi().stopStatisticSend();
         }
     };
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -207,9 +208,9 @@ public class GalePressApplication
 
 
         SharedPreferences verificationPreferences = getSharedPreferences("ak.detaysoft.galepress", Context.MODE_PRIVATE);
-        setAgeVerificationSubmit(verificationPreferences.getBoolean("ageVerificationSubmit",false));
-        setAgeVerificationActive(verificationPreferences.getBoolean("isAgeVerificationActive",false));
-        setAgeVerificationQuestion(verificationPreferences.getString("ageVerificationQuestion",""));
+        setAgeVerificationSubmit(verificationPreferences.getBoolean("ageVerificationSubmit", false));
+        setAgeVerificationActive(verificationPreferences.getBoolean("isAgeVerificationActive", false));
+        setAgeVerificationQuestion(verificationPreferences.getString("ageVerificationQuestion", ""));
 
         initBillingServices();
         getlocalActiveSubscripton();
@@ -222,11 +223,11 @@ public class GalePressApplication
         setBannerLink(null);
         setTabList(null);
 
-        if(isTestApplication()){
+        if (isTestApplication()) {
             SharedPreferences preferences;
-            preferences= getSharedPreferences("ak.detaysoft.galepress", Context.MODE_PRIVATE);
+            preferences = getSharedPreferences("ak.detaysoft.galepress", Context.MODE_PRIVATE);
             setTestApplicationLoginInf(preferences.getString("AppUserName", ""), preferences.getString("AppPassword", ""), preferences.getString("AppId", "0"),
-                                       preferences.getString("FacebookEmail", ""), preferences.getString("FacebookUserId", ""), false);
+                    preferences.getString("FacebookEmail", ""), preferences.getString("FacebookUserId", ""), false);
         }
 
         Foreground.get(this).addListener(myListener);
@@ -242,8 +243,8 @@ public class GalePressApplication
         requestCount = -101;
     }
 
-    public void destroyBillingServices(){
-        try{
+    public void destroyBillingServices() {
+        try {
             if (mService != null && isBlnBind()) {
                 unbindService(mServiceConn);
             }
@@ -256,7 +257,7 @@ public class GalePressApplication
 
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         switch (requestCode) {
-            case LocationUtils.CONNECTION_FAILURE_RESOLUTION_REQUEST :
+            case LocationUtils.CONNECTION_FAILURE_RESOLUTION_REQUEST:
                 switch (resultCode) {
                     case Activity.RESULT_OK:
                         Logout.e(LocationUtils.APPTAG, getString(R.string.resolved));
@@ -266,7 +267,7 @@ public class GalePressApplication
                         break;
                 }
             default:
-                Logout.e(LocationUtils.APPTAG,getString(R.string.unknown_activity_request_code, requestCode));
+                Logout.e(LocationUtils.APPTAG, getString(R.string.unknown_activity_request_code, requestCode));
                 break;
         }
     }
@@ -328,31 +329,31 @@ public class GalePressApplication
     public void onDisconnected() {
     }
 
-    public void parseApplicationPlist(){
+    public void parseApplicationPlist() {
         applicationPlist = new HashMap();
         extrasHashMap = new ArrayList<ApplicationPlist>();
         Object[] extras;
         try {
             InputStream is = getResources().openRawResource(R.raw.application);
             NSDictionary rootDict = (NSDictionary) PropertyListParser.parse(is);
-            applicationPlist = (HashMap)rootDict.toJavaObject();
+            applicationPlist = (HashMap) rootDict.toJavaObject();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        extras= (Object[])applicationPlist.get("Extras");
+        extras = (Object[]) applicationPlist.get("Extras");
 
-        for(int i=0; i<extras.length; i++){
-            HashMap extra = (HashMap)extras[i];
+        for (int i = 0; i < extras.length; i++) {
+            HashMap extra = (HashMap) extras[i];
             ArrayList<String> keySet = new ArrayList<String>(extra.keySet());
             ArrayList<String> valueSet = new ArrayList<String>(extra.values());
             extrasHashMap.add(new ApplicationPlist(keySet.get(0), valueSet.get(0)));
         }
     }
 
-    public ArrayList<ApplicationPlist> getApplicationPlist(){
+    public ArrayList<ApplicationPlist> getApplicationPlist() {
         parseApplicationPlist();
-        if(extrasHashMap != null)
+        if (extrasHashMap != null)
             return extrasHashMap;
         else
             return new ArrayList<ApplicationPlist>();
@@ -450,10 +451,10 @@ public class GalePressApplication
         }
     }
 
-    public Integer getApplicationId(){
+    public Integer getApplicationId() {
 
         String applicationId;
-        if(isTestApplication())
+        if (isTestApplication())
             applicationId = testApplicationInf.getApplicationId();
         else {
 
@@ -466,17 +467,17 @@ public class GalePressApplication
             if (applicationPlist == null || applicationPlist.get("ApplicationID") == null)
                 applicationId = String.valueOf("-1");
             else
-                applicationId = (String)applicationPlist.get("ApplicationID");
+                applicationId = (String) applicationPlist.get("ApplicationID");
         }
 
         return Integer.valueOf(applicationId);
     }
 
-    public void setTestApplicationLoginInf(String username, String password, String applicationId, String facebookEmail, String facebookUserId, boolean succeeded){
+    public void setTestApplicationLoginInf(String username, String password, String applicationId, String facebookEmail, String facebookUserId, boolean succeeded) {
 
         SharedPreferences preferences;
         SharedPreferences.Editor editor;
-        preferences= getSharedPreferences("ak.detaysoft.galepress", Context.MODE_PRIVATE);
+        preferences = getSharedPreferences("ak.detaysoft.galepress", Context.MODE_PRIVATE);
         editor = preferences.edit();
         editor.putString("AppUserName", username);
         editor.putString("AppPassword", password);
@@ -485,24 +486,24 @@ public class GalePressApplication
         editor.putString("FacebookUserId", facebookUserId);
         editor.commit();
 
-        testApplicationInf = new TestApplicationInf(username,password,applicationId,facebookEmail, facebookUserId, succeeded);
+        testApplicationInf = new TestApplicationInf(username, password, applicationId, facebookEmail, facebookUserId, succeeded);
     }
 
-    public void reCreateApplicationTableData(String applicationId){
-        if(dataApi != null){
+    public void reCreateApplicationTableData(String applicationId) {
+        if (dataApi != null) {
             dataApi.getDatabaseApi().deleteApplication(dataApi.getDatabaseApi().getApplication(getApplicationId()));
             dataApi.getDatabaseApi().createApplication(new L_Application(Integer.parseInt(applicationId), -1));
             setTestApplicationLoginInf(testApplicationInf.getUsername(), testApplicationInf.getPassword(), applicationId, testApplicationInf.getFacebookEmail(), testApplicationInf.getFacebookUserId(), false);
         }
     }
 
-    public TestApplicationInf getTestApplicationLoginInf(){
+    public TestApplicationInf getTestApplicationLoginInf() {
         return testApplicationInf;
     }
 
-    public boolean isTestApplication(){
-        if(applicationPlist != null && applicationPlist.get("isTestApplication") != null)
-            return (Boolean)applicationPlist.get("isTestApplication");
+    public boolean isTestApplication() {
+        if (applicationPlist != null && applicationPlist.get("isTestApplication") != null)
+            return (Boolean) applicationPlist.get("isTestApplication");
         else
             return false;
     }
@@ -514,11 +515,12 @@ public class GalePressApplication
     public void setLibraryActivity(LibraryFragment libraryFragmentActivity) {
         this.libraryFragmentActivity = libraryFragmentActivity;
     }
-    public void setCurrentWebFragment(CustomTabFragment customTabFragment){
+
+    public void setCurrentWebFragment(CustomTabFragment customTabFragment) {
         this.customTabFragment = customTabFragment;
     }
 
-    public CustomTabFragment getCustomTabFragment(){
+    public CustomTabFragment getCustomTabFragment() {
         return this.customTabFragment;
     }
 
@@ -542,8 +544,8 @@ public class GalePressApplication
 
     private PowerManager.WakeLock wakeLock;
 
-    public  void acquireWakeLock(Context context) {
-        if (wakeLock != null){
+    public void acquireWakeLock(Context context) {
+        if (wakeLock != null) {
             try {
                 if (wakeLock.isHeld())
                     wakeLock.release();
@@ -561,8 +563,8 @@ public class GalePressApplication
         wakeLock.acquire();
     }
 
-    public  void releaseWakeLock() {
-        if (wakeLock != null){
+    public void releaseWakeLock() {
+        if (wakeLock != null) {
             try {
                 if (wakeLock.isHeld())
                     wakeLock.release();
@@ -574,7 +576,6 @@ public class GalePressApplication
     }
 
 
-
     /*
      * Called by Location Services if the attempt to
      * Location Services fails.
@@ -582,10 +583,10 @@ public class GalePressApplication
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
         if (connectionResult.hasResolution()) {
-                //connectionResult.startResolutionForResult(this.getLibraryActivity(),LocationUtils.CONNECTION_FAILURE_RESOLUTION_REQUEST);
+            //connectionResult.startResolutionForResult(this.getLibraryActivity(),LocationUtils.CONNECTION_FAILURE_RESOLUTION_REQUEST);
             Logout.e("Adem", "startResolutionForResult: ");
         } else {
-            Logout.e("Adem", "Error Code : "+connectionResult.getErrorCode());
+            Logout.e("Adem", "Error Code : " + connectionResult.getErrorCode());
         }
     }
 
@@ -595,10 +596,10 @@ public class GalePressApplication
 
     public void setRequestCount(int requestCount) {
 
-        if(requestCount == 0){
+        if (requestCount == 0) {
             dataApi.updateCompleted();
         }
-        if(requestCount == -100) {
+        if (requestCount == -100) {
             requestCount = 1;
             // requestCount ilk kez initialize ediliyor. O olsaydi bitmis gibi gorunebilirdi. -101 ile initialize ettim.
         }
@@ -610,8 +611,9 @@ public class GalePressApplication
     public void incrementRequestCount() {
         setRequestCount(getRequestCount() + 1);
     }
+
     public void decrementRequestCount() {
-        setRequestCount(getRequestCount()-1);
+        setRequestCount(getRequestCount() - 1);
     }
 
     public Activity getCurrentActivity() {
@@ -642,19 +644,18 @@ public class GalePressApplication
 
         SharedPreferences preferences;
         SharedPreferences.Editor editor;
-        preferences= PreferenceManager.getDefaultSharedPreferences(GalePressApplication.getInstance().getApplicationContext());
+        preferences = PreferenceManager.getDefaultSharedPreferences(GalePressApplication.getInstance().getApplicationContext());
         editor = preferences.edit();
         String link = "";
-        try{
-            if(!isTestApplication()) {
+        try {
+            if (!isTestApplication()) {
                 if (response.getString("BannerActive").compareTo("1") == 0)
                     link = response.getString("BannerPage");
-            }
-            else
-                    link =  response.getString("BannerPage");
+            } else
+                link = response.getString("BannerPage");
 
-        } catch (Exception e){
-            link = preferences.getString("bannerPage","");
+        } catch (Exception e) {
+            link = preferences.getString("bannerPage", "");
         }
 
         editor.putString("bannerPage", link);
@@ -663,13 +664,13 @@ public class GalePressApplication
         bannerLink = link;
 
         //bannerLink = "http://rastcode.com/test/index.html";
-        if(bannerLink.length() != 0 && getCurrentActivity()!= null && getCurrentActivity().getClass() == MainActivity.class
-                && ((MainActivity)getCurrentActivity()).getLibraryFragment()  != null)
-            ((MainActivity)getCurrentActivity()).getLibraryFragment().updateBanner();
+        if (bannerLink.length() != 0 && getCurrentActivity() != null && getCurrentActivity().getClass() == MainActivity.class
+                && ((MainActivity) getCurrentActivity()).getLibraryFragment() != null)
+            ((MainActivity) getCurrentActivity()).getLibraryFragment().updateBanner();
 
     }
 
-    public int getDeviceDensity(){
+    public int getDeviceDensity() {
         double density = getResources().getDisplayMetrics().density;
         if (density >= 3.0) {
             return XXH_DPI;
@@ -679,8 +680,7 @@ public class GalePressApplication
         }
         if (density >= 1.5 && density < 2.0) {
             return H_DPI;
-        }
-        else {
+        } else {
             return M_DPI;
         }
     }
@@ -689,7 +689,7 @@ public class GalePressApplication
         ArrayList<TabbarItem> newTabList = new ArrayList<TabbarItem>();
         try {
 
-            if(response != null){
+            if (response != null) {
                 JSONArray arrayTabs = response.optJSONArray("Tabs");
                 int contentsLength = arrayTabs.length();
                 for (int i = 0; i < contentsLength; i++) {
@@ -702,14 +702,14 @@ public class GalePressApplication
 
                 SharedPreferences preferences;
                 SharedPreferences.Editor editor;
-                preferences= PreferenceManager.getDefaultSharedPreferences(GalePressApplication.getInstance().getApplicationContext());
+                preferences = PreferenceManager.getDefaultSharedPreferences(GalePressApplication.getInstance().getApplicationContext());
                 editor = preferences.edit();
                 editor.putString("customTabs", arrayTabs.toString());
                 editor.commit();
 
             } else {
                 SharedPreferences preferences;
-                preferences= PreferenceManager.getDefaultSharedPreferences(GalePressApplication.getInstance().getApplicationContext());
+                preferences = PreferenceManager.getDefaultSharedPreferences(GalePressApplication.getInstance().getApplicationContext());
                 JSONArray arrayTabs = new JSONArray(preferences.getString("customTabs", ""));
                 int contentsLength = arrayTabs.length();
                 for (int i = 0; i < contentsLength; i++) {
@@ -725,35 +725,35 @@ public class GalePressApplication
             newTabList = null;
         }
 
-        if(tabList != null && tabList.size() == newTabList.size()){
+        if (tabList != null && tabList.size() == newTabList.size()) {
             int index = 0;
-            for(TabbarItem currentListItem : tabList){
-                for(TabbarItem newListItem : newTabList){
-                    if(currentListItem.toString().compareTo(newListItem.toString()) == 0)
+            for (TabbarItem currentListItem : tabList) {
+                for (TabbarItem newListItem : newTabList) {
+                    if (currentListItem.toString().compareTo(newListItem.toString()) == 0)
                         index++;
                 }
             }
-            if(index == newTabList.size())
+            if (index == newTabList.size())
                 isTablistChanced = false;
         } else
             isTablistChanced = true;
 
         tabList = newTabList;
 
-        if(getCurrentActivity()!= null && getCurrentActivity().getClass() == MainActivity.class && isTablistChanced){
-            ((MainActivity)getCurrentActivity()).initCustomTabs();
+        if (getCurrentActivity() != null && getCurrentActivity().getClass() == MainActivity.class && isTablistChanced) {
+            ((MainActivity) getCurrentActivity()).initCustomTabs();
         }
     }
 
-    public ArrayList<TabbarItem> getTabList(){
-        if(tabList != null)
+    public ArrayList<TabbarItem> getTabList() {
+        if (tabList != null)
             return tabList;
         else
             return null;
     }
 
     public String getBannerLink() {
-        if(bannerLink != null)
+        if (bannerLink != null)
             return bannerLink;
         else
             return "";
@@ -767,7 +767,7 @@ public class GalePressApplication
         this.muPDFActivity = muPDFActivity;
     }
 
-    public void initBillingServices(){
+    public void initBillingServices() {
         mServiceConn = new ServiceConnection() {
             @Override
             public void onServiceDisconnected(ComponentName name) {
@@ -783,7 +783,7 @@ public class GalePressApplication
 
         Intent serviceIntent = new Intent("com.android.vending.billing.InAppBillingService.BIND");
         serviceIntent.setPackage("com.android.vending");
-        try{
+        try {
             blnBind = bindService(serviceIntent, mServiceConn, Context.BIND_AUTO_CREATE);
         } catch (Exception e) {
             blnBind = false;
@@ -809,7 +809,7 @@ public class GalePressApplication
             byte[] array = md.digest(s.getBytes());
             StringBuffer sb = new StringBuffer();
             for (int i = 0; i < array.length; ++i) {
-                sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1,3));
+                sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1, 3));
             }
             return sb.toString();
         } catch (java.security.NoSuchAlgorithmException e) {
@@ -817,22 +817,22 @@ public class GalePressApplication
         return null;
     }
 
-    public String getMD5MixedValue(String s){
+    public String getMD5MixedValue(String s) {
         int mod;
-        try{
-            mod = getApplicationId()%4;
-        } catch (Exception e){
+        try {
+            mod = getApplicationId() % 4;
+        } catch (Exception e) {
             mod = 0;
         }
 
         String str1 = "";
-        if(mod != 0)
-            str1 = s.substring(0,mod);
-        String str2 = s.substring(mod, mod+1);
-        String str3 = s.substring(mod+1, mod+2);
-        String str4 = s.substring(mod+2);
+        if (mod != 0)
+            str1 = s.substring(0, mod);
+        String str2 = s.substring(mod, mod + 1);
+        String str3 = s.substring(mod + 1, mod + 2);
+        String str4 = s.substring(mod + 2);
 
-        return str1+str3+str2+str4;
+        return str1 + str3 + str2 + str4;
     }
 
     public ArrayList<Integer> getMembershipMenuList() {
@@ -843,22 +843,22 @@ public class GalePressApplication
         this.membershipMenuList = membershipMenuList;
     }
 
-    public void prepareMemberShipList(){
+    public void prepareMemberShipList() {
 
         membershipMenuList = new ArrayList<Integer>();
         SharedPreferences preferences = getSharedPreferences("ak.detaysoft.galepress", Context.MODE_PRIVATE);
-        String token = preferences.getString("accessToken","");
-        if(token.length() != 0){ //login olmus kullanici var
+        String token = preferences.getString("accessToken", "");
+        if (token.length() != 0) { //login olmus kullanici var
             try {
                 userInformation = new UserInformations(new JSONObject(token));
                 String recoveryToken = userInformation.getAccessToken();
-                try{
+                try {
                     userInformation.setAccessToken(getMD5MixedValue(userInformation.getAccessToken()));
-                } catch (Exception e){
+                } catch (Exception e) {
                     userInformation.setAccessToken(recoveryToken);
                     e.printStackTrace();
                 }
-                if(!isUserHaveActiveSubscription() && applicationHaveActiveSubscription)
+                if (!isUserHaveActiveSubscription() && applicationHaveActiveSubscription)
                     membershipMenuList.add(LeftMenuMembershipAdapter.SUBSCRIPTION);
 
                 membershipMenuList.add(LeftMenuMembershipAdapter.RESTORE);
@@ -874,25 +874,25 @@ public class GalePressApplication
         }
     }
 
-    public void editMemberShipList(boolean isLogin, JSONObject response){
+    public void editMemberShipList(boolean isLogin, JSONObject response) {
 
         membershipMenuList = new ArrayList<Integer>();
         SharedPreferences preferences = getSharedPreferences("ak.detaysoft.galepress", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor;
-        if(isLogin){ //kullanici login olacak
+        if (isLogin) { //kullanici login olacak
             editor = preferences.edit();
             userInformation = new UserInformations(response);
             String recoveryToken = userInformation.getAccessToken();
-            try{
+            try {
                 userInformation.setAccessToken(getMD5MixedValue(userInformation.getAccessToken()));
-            } catch (Exception e){
+            } catch (Exception e) {
                 userInformation.setAccessToken(recoveryToken);
                 e.printStackTrace();
             }
             editor.putString("accessToken", userInformation.getJSONObject().toString());
             editor.commit();
             userInformation.setAccessToken(recoveryToken);
-            if(!isUserHaveActiveSubscription() && applicationHaveActiveSubscription)
+            if (!isUserHaveActiveSubscription() && applicationHaveActiveSubscription)
                 membershipMenuList.add(LeftMenuMembershipAdapter.SUBSCRIPTION);
             membershipMenuList.add(LeftMenuMembershipAdapter.RESTORE);
             membershipMenuList.add(LeftMenuMembershipAdapter.LOGOUT);
@@ -905,7 +905,7 @@ public class GalePressApplication
         }
     }
 
-    public void restorePurchasedSubscriptions(final boolean applicationFirstOpen, final boolean fullRestore, final Activity activity, final ProgressDialog progress){
+    public void restorePurchasedSubscriptions(final boolean applicationFirstOpen, final boolean fullRestore, final Activity activity, final ProgressDialog progress) {
         AsyncTask<Void, Void, Void> restore = new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
@@ -920,15 +920,15 @@ public class GalePressApplication
                         ownedItems = GalePressApplication.getInstance().getmService().getPurchases(3, getPackageName(), "subs", null);
                         int response = ownedItems.getInt("RESPONSE_CODE");
 
-                        if (response == 0){
+                        if (response == 0) {
                             ownedSkus = ownedItems.getStringArrayList("INAPP_PURCHASE_ITEM_LIST");
                             ownedSubscriptionList = ownedItems.getStringArrayList("INAPP_PURCHASE_DATA_LIST");
                         }
 
-                        if(ownedSkus.size() > 0){
-                            for(String skuItem : ownedSkus){
-                                for(int i = 0; i < subscriptions.size(); i++){
-                                    if(skuItem.compareTo(subscriptions.get(i).getIdentifier()) == 0){
+                        if (ownedSkus.size() > 0) {
+                            for (String skuItem : ownedSkus) {
+                                for (int i = 0; i < subscriptions.size(); i++) {
+                                    if (skuItem.compareTo(subscriptions.get(i).getIdentifier()) == 0) {
                                         subscriptions.get(i).setOwned(true);
                                         break;
                                     }
@@ -943,16 +943,16 @@ public class GalePressApplication
                     * abonelik satin alindiginda sendReceipt isleminin basarisiz olma ihtimaline karsi tekrar deniyoruz (MG)
                     * */
                     try {
-                        if(ownedSubscriptionList != null && ownedSubscriptionList.size() > 0){
+                        if (ownedSubscriptionList != null && ownedSubscriptionList.size() > 0) {
                             JSONObject jpurchase = null;
                             JSONArray productIds = new JSONArray();
                             JSONArray purchaseTokens = new JSONArray();
-                            for(String purchaseData : ownedSubscriptionList){
+                            for (String purchaseData : ownedSubscriptionList) {
                                 jpurchase = new JSONObject(purchaseData);
                                 productIds.put(jpurchase.getString("productId"));
                                 purchaseTokens.put(jpurchase.getString("purchaseToken"));
                             }
-                            if(jpurchase != null)
+                            if (jpurchase != null)
                                 GalePressApplication.getInstance().getDataApi().restoreReceipt(productIds.toString(),
                                         purchaseTokens.toString(), jpurchase.getString("packageName"));
                         }
@@ -962,19 +962,19 @@ public class GalePressApplication
 
                     ArrayList<String> skuList = new ArrayList<String>();
                     Bundle querySkus = new Bundle();
-                    for(int i = 0; i < subscriptions.size(); i++){
+                    for (int i = 0; i < subscriptions.size(); i++) {
                         Subscription subscription = subscriptions.get(i);
                         skuList.add(subscription.getIdentifier());
                         querySkus.putStringArrayList("ITEM_ID_LIST", skuList);
                     }
 
-                    if(subscriptions != null && subscriptions.size() > 0) {
+                    if (subscriptions != null && subscriptions.size() > 0) {
                         Bundle skuDetails;
                         try {
                             skuDetails = GalePressApplication.getInstance().getmService().getSkuDetails(3, getPackageName(), "subs", querySkus);
                             int response = skuDetails.getInt("RESPONSE_CODE");
 
-                            if (response == 0){
+                            if (response == 0) {
                                 ArrayList<String> responseList = skuDetails.getStringArrayList("DETAILS_LIST");
 
                                 if (responseList.size() != 0) {
@@ -982,8 +982,8 @@ public class GalePressApplication
                                         JSONObject object = null;
                                         try {
                                             object = new JSONObject(thisResponse);
-                                            for(int i = 0; i < subscriptions.size(); i++){
-                                                if(object.getString("productId").compareTo(subscriptions.get(i).getIdentifier()) == 0){
+                                            for (int i = 0; i < subscriptions.size(); i++) {
+                                                if (object.getString("productId").compareTo(subscriptions.get(i).getIdentifier()) == 0) {
                                                     subscriptions.get(i).setMarketPrice(object.getString("price"));
                                                     break;
                                                 }
@@ -1007,16 +1007,16 @@ public class GalePressApplication
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
 
-                if(!applicationFirstOpen){
+                if (!applicationFirstOpen) {
                     prepareSubscriptions(null);
 
-                    if(fullRestore) {
+                    if (fullRestore) {
                         dataApi.restoreContentsAndSubscritonsFromServer(activity, progress);
                     } else {
-                        if(activity != null){
-                            ((MainActivity)activity).openSubscriptionChooser();
+                        if (activity != null) {
+                            ((MainActivity) activity).openSubscriptionChooser();
                         }
-                        if(progress != null && progress.isShowing())
+                        if (progress != null && progress.isShowing())
                             progress.dismiss();
                     }
                 }
@@ -1026,7 +1026,7 @@ public class GalePressApplication
         restore.execute();
     }
 
-    public void restorePurchasedProductsFromMarket(final boolean fullRestore, final Activity activity, final ProgressDialog progress){
+    public void restorePurchasedProductsFromMarket(final boolean fullRestore, final Activity activity, final ProgressDialog progress) {
 
         AsyncTask<Void, Void, Void> executePurchase = new AsyncTask<Void, Void, Void>() {
             @Override
@@ -1049,16 +1049,16 @@ public class GalePressApplication
                         int response = ownedItems.getInt("RESPONSE_CODE");
 
 
-                        if (response == 0){
+                        if (response == 0) {
                             ownedSkus = ownedItems.getStringArrayList("INAPP_PURCHASE_ITEM_LIST");
                             ownedProductList = ownedItems.getStringArrayList("INAPP_PURCHASE_DATA_LIST");
                         }
 
-                        if(ownedSkus.size() > 0){
-                            for(String skuItem : ownedSkus){
-                                for(int i = 0; i < localContents.size(); i++){
+                        if (ownedSkus.size() > 0) {
+                            for (String skuItem : ownedSkus) {
+                                for (int i = 0; i < localContents.size(); i++) {
                                     L_Content content = localContents.get(i);
-                                    if(skuItem.compareTo(content.getIdentifier()) == 0){
+                                    if (skuItem.compareTo(content.getIdentifier()) == 0) {
                                         content.setOwnedProduct(true);
                                         GalePressApplication.getInstance().getDatabaseApi().updateContent(content, false);
                                         break;
@@ -1074,16 +1074,16 @@ public class GalePressApplication
                     * Eger urun satin alindiginda sendReceipt isleminin basarisiz olma ihtimaline karsi tekrar deniyoruz (MG)
                     * */
                     try {
-                        if(ownedProductList != null && ownedProductList.size() > 0){
+                        if (ownedProductList != null && ownedProductList.size() > 0) {
                             JSONObject jpurchase = null;
                             JSONArray productIds = new JSONArray();
                             JSONArray purchaseTokens = new JSONArray();
-                            for(String purchaseData : ownedProductList){
+                            for (String purchaseData : ownedProductList) {
                                 jpurchase = new JSONObject(purchaseData);
                                 productIds.put(jpurchase.getString("productId"));
                                 purchaseTokens.put(jpurchase.getString("purchaseToken"));
                             }
-                            if(jpurchase != null)
+                            if (jpurchase != null)
                                 GalePressApplication.getInstance().getDataApi().restoreReceipt(productIds.toString(),
                                         purchaseTokens.toString(), jpurchase.getString("packageName"));
                         }
@@ -1093,9 +1093,9 @@ public class GalePressApplication
 
                     ArrayList<String> skuList = new ArrayList<String>();
                     Bundle querySkus = new Bundle();
-                    for(int i = 0; i < localContents.size(); i++){
+                    for (int i = 0; i < localContents.size(); i++) {
                         L_Content content = localContents.get(i);
-                        if(content.isBuyable()){
+                        if (content.isBuyable()) {
                             //Satin alinabilen urunse fiyati kontrol ediliyor
                             skuList.add(content.getIdentifier());
                             querySkus.putStringArrayList("ITEM_ID_LIST", skuList);
@@ -1107,7 +1107,7 @@ public class GalePressApplication
                         skuDetails = GalePressApplication.getInstance().getmService().getSkuDetails(3, getPackageName(), "inapp", querySkus);
                         int response = skuDetails.getInt("RESPONSE_CODE");
 
-                        if (response == 0){
+                        if (response == 0) {
                             ArrayList<String> responseList = skuDetails.getStringArrayList("DETAILS_LIST");
 
                             if (responseList.size() != 0) {
@@ -1115,9 +1115,9 @@ public class GalePressApplication
                                     JSONObject object = null;
                                     try {
                                         object = new JSONObject(thisResponse);
-                                        for(int i = 0; i < localContents.size(); i++){
+                                        for (int i = 0; i < localContents.size(); i++) {
                                             L_Content content = localContents.get(i);
-                                            if(object.getString("productId").compareTo(content.getIdentifier()) == 0){
+                                            if (object.getString("productId").compareTo(content.getIdentifier()) == 0) {
                                                 content.setMarketPrice(object.getString("price"));
                                                 GalePressApplication.getInstance().getDatabaseApi().updateContent(content, false);
                                                 break;
@@ -1142,9 +1142,9 @@ public class GalePressApplication
                 /*
                 * Eger abonelik yoksa dogrudan server restore adimina geciyoruz.
                 * */
-                if(GalePressApplication.getInstance().getSubscriptions().size() > 0)
+                if (GalePressApplication.getInstance().getSubscriptions().size() > 0)
                     restorePurchasedSubscriptions(false, fullRestore, activity, progress);
-                else{
+                else {
                     dataApi.restoreContentsAndSubscritonsFromServer(activity, progress);
                 }
             }
@@ -1153,31 +1153,31 @@ public class GalePressApplication
         executePurchase.execute();
     }
 
-    public void prepareSubscriptions(JSONObject response){
+    public void prepareSubscriptions(JSONObject response) {
 
         SharedPreferences preferences = getSharedPreferences("ak.detaysoft.galepress", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        if(response != null) { //servisten gelen set edilecek
+        if (response != null) { //servisten gelen set edilecek
             subscriptions = new ArrayList<Subscription>();
             try {
                 JSONArray array = new JSONArray();
                 Subscription weekSubscription = new Subscription(Subscription.WEEK, response.getString("SubscriptionWeekIdentifier").toLowerCase()
-                        , "", "", (response.getInt("SubscriptionWeekActive") == 0) ? false :true , false);
-                if(weekSubscription.isActive()) {
+                        , "", "", (response.getInt("SubscriptionWeekActive") == 0) ? false : true, false);
+                if (weekSubscription.isActive()) {
                     subscriptions.add(weekSubscription);
                     array.put(weekSubscription.getJSONObject());
                 }
 
                 Subscription monthSubscription = new Subscription(Subscription.MONTH, response.getString("SubscriptionMonthIdentifier").toLowerCase()
-                        , "", "", (response.getInt("SubscriptionMonthActive") == 0) ? false :true, false);
-                if(monthSubscription.isActive()) {
+                        , "", "", (response.getInt("SubscriptionMonthActive") == 0) ? false : true, false);
+                if (monthSubscription.isActive()) {
                     subscriptions.add(monthSubscription);
                     array.put(monthSubscription.getJSONObject());
                 }
 
                 Subscription yearSubscription = new Subscription(Subscription.YEAR, response.getString("SubscriptionYearIdentifier").toLowerCase()
-                        , "", "", (response.getInt("SubscriptionYearActive") == 0) ? false :true, false );
-                if(yearSubscription.isActive()) {
+                        , "", "", (response.getInt("SubscriptionYearActive") == 0) ? false : true, false);
+                if (yearSubscription.isActive()) {
                     subscriptions.add(yearSubscription);
                     array.put(yearSubscription.getJSONObject());
                 }
@@ -1191,15 +1191,15 @@ public class GalePressApplication
             } catch (JSONException e) {
                 e.printStackTrace();
                 subscriptions = new ArrayList<Subscription>();
-                editor.putString("Subscription","");
+                editor.putString("Subscription", "");
                 editor.commit();
             }
 
         } else { //lokaldeki set edilecek yada restore sonucu set edilecek
 
-            if(subscriptions != null) { //market restore yapildi sonucu lokale set edilecek
+            if (subscriptions != null) { //market restore yapildi sonucu lokale set edilecek
                 JSONArray array = new JSONArray();
-                for(Subscription sub : subscriptions){
+                for (Subscription sub : subscriptions) {
                     array.put(sub.getJSONObject());
                 }
                 editor.putString("Subscription", array.toString());
@@ -1207,13 +1207,13 @@ public class GalePressApplication
             } else { //uygulama ilk acilista lokalde tutulan subs list alınacak
                 subscriptions = new ArrayList<Subscription>();
                 try {
-                    JSONArray array = new JSONArray(preferences.getString("Subscription",""));
+                    JSONArray array = new JSONArray(preferences.getString("Subscription", ""));
                     Subscription subscription;
-                    for(int i = 0; i < array.length(); i++){
+                    for (int i = 0; i < array.length(); i++) {
                         JSONObject object = (JSONObject) array.get(i);
                         subscription = new Subscription(object);
                         subscriptions.add(subscription);
-                        if(subscription.isActive())
+                        if (subscription.isActive())
                             applicationHaveActiveSubscription = true;
                     }
                     restorePurchasedSubscriptions(true, false, null, null);
@@ -1241,9 +1241,9 @@ public class GalePressApplication
         this.subscriptions = subscriptions;
     }
 
-    private void getlocalActiveSubscripton(){
+    private void getlocalActiveSubscripton() {
         SharedPreferences preferences = getSharedPreferences("ak.detaysoft.galepress", Context.MODE_PRIVATE);
-        userHaveActiveSubscription = preferences.getBoolean("userHaveActiveSubscription",false);
+        userHaveActiveSubscription = preferences.getBoolean("userHaveActiveSubscription", false);
     }
 
     public boolean isUserHaveActiveSubscription() {

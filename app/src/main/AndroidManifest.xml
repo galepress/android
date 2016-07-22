@@ -93,35 +93,6 @@
             android:name=".ContentDetailPopupActivity"
             android:theme="@style/ContentPopupTheme"></activity>
 
-        <activity
-            android:name="ak.detaysoft.galepress.LoginActivity"
-            android:windowSoftInputMode="stateHidden"
-            android:screenOrientation="sensorPortrait"
-            android:theme="@style/LoginPopupTheme"/>
-
-        <activity
-            android:name="ak.detaysoft.galepress.SignupActivity"
-            android:screenOrientation="sensorPortrait"
-            android:theme="@style/SignupPopupTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-
-            </activity>
-        <activity
-            android:name="ak.detaysoft.galepress.ForgotPasswordActivity"
-            android:screenOrientation="sensorPortrait"
-            android:theme="@style/SignupPopupTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-
-            </activity>
-
         <!--<activity-->
         <!--android:name="com.artifex.mupdfdemo.ChoosePDFActivity"-->
         <!--android:theme="@android:style/Theme.Light"-->

@@ -78,7 +78,6 @@ public class CropAndShareActivity extends Activity {
             public void onClick(View v) {
                 String pathofBmp = MediaStore.Images.Media.insertImage(getContentResolver(), cropImageView.getCroppedImage(),"title", null);
 
-
                 if(pathofBmp != null) {
                     Uri bmpUri = Uri.parse(pathofBmp);
                     final Intent shareIntent = new Intent(     android.content.Intent.ACTION_SEND);
@@ -94,7 +93,6 @@ public class CropAndShareActivity extends Activity {
                     Answers.getInstance().logCustom(new CustomEvent("cropandShareImageUrl").putCustomAttribute("url", ""+pathofBmp));
                     Toast.makeText(CropAndShareActivity.this, CropAndShareActivity.this.getResources().getText(R.string.WARNING_0), Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 
