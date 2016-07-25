@@ -26,7 +26,7 @@
         jar="D:\GalepressMerge\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         revision="21.0.0"
-        sha1="ed56d7c381805be24cbc9df8f4578c579d8980f0">
+        sha1="9db3af5849f8fbde27dd69fb43f226c408908bfd">
         <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_020261e632dbd008531c15650b35dd2213648571\classes.dex" />
     </item>
     <item
@@ -54,7 +54,7 @@
         jar="D:\GalepressMerge\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         revision="21.0.0"
-        sha1="26434e93d73bc1045f3f16e28a46cec4d721bca3">
+        sha1="a638686d2d8ad59c170cabd5f8af9c07b9d795d7">
         <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_555151797c2cf5c300f33f3c30584f5915d9678c\classes.dex" />
     </item>
     <item
@@ -91,6 +91,13 @@
         revision="21.0.0"
         sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
         <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-21.0.3_b5dd6b61c62b9f8d52a0adb71f6bbd9ad1e4b232\classes.dex" />
+    </item>
+    <item
+        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\20.0.0\jars\classes.jar"
+        jumboMode="true"
+        revision="21.0.0"
+        sha1="f21927d22fe31889ecce94dd697a2e75b137e0ef">
+        <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-20.0.0_58b03cd357d27fb4216f2755b24fbfa845226416\classes.dex" />
     </item>
     <item
         jar="D:\GalepressMerge\app\src\main\lib\gcm.jar"
@@ -133,13 +140,6 @@
         revision="21.0.0"
         sha1="ad5bb101ced4d3939225c9b57e5a3d81547c1fbb">
         <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.crashlytics.sdk.android-beta-1.1.4_38d4c174eab49bc8375f469d552c2fa32223d792\classes.dex" />
-    </item>
-    <item
-        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\19.1.0\jars\classes.jar"
-        jumboMode="true"
-        revision="21.0.0"
-        sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28">
-        <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-19.1.0_6b640e700e217f229ff558fdcba3a89c30601ad6\classes.dex" />
     </item>
     <item
         jar="C:\Users\p1025\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-android\1.2.0\6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd\bolts-android-1.2.0.jar"
