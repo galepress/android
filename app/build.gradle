@@ -19,7 +19,6 @@ android {
     /*
      * compileSdkVersion 19 dan 20 ye cekildi.
      * Eger webviewlerle ilgili bir sorun olursa yada kompanentler yuklenmezse bundan olabilir buraya dikkat etmek lazım
-     *
      */
     compileSdkVersion 20
     buildToolsVersion '21.0.0'

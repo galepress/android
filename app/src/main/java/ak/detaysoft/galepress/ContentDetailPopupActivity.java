@@ -210,7 +210,7 @@ public class ContentDetailPopupActivity extends Activity{
         viewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(content.isPdfDownloaded() && GalePressApplication.getInstance().getLibraryActivity() != null)
+                if(content != null && content.isPdfDownloaded() && GalePressApplication.getInstance().getLibraryActivity() != null)
                     GalePressApplication.getInstance().getLibraryActivity().viewContent(content);
             }
         });
