@@ -1,10 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config>
+        <devices>
+          <device id="Nexus 5" />
+        </devices>
+        <locale>tr</locale>
+      </config>
+    </shared>
+  </component>
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4591bc09-e445-44c4-a89c-14ca9bceb4e8" name="Default" comment="" />
+    <list default="true" id="4591bc09-e445-44c4-a89c-14ca9bceb4e8" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/answers_1_3_6.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_20_0_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/beta_1_1_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/bolts_android_1_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/crashlytics_2_5_5.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/crashlytics_core_2_3_8.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/cropper_1_0_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/dd_plist.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/fabric_1_3_10.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/facebook_android_sdk_4_1_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/gcm.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/ormlite_android_4_45.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/ormlite_core_4_45.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_4_0_30.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_21_0_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_21_0_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/universal_image_loader_1_9_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/xwalk_core_library_java.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/cache.properties.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileHashes.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileSnapshots.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/outputFileStates.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/outputFileStates.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/taskArtifacts.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_menuDrawer_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_menuDrawer_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_menuDrawer_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_menuDrawer_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_menuDrawer_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_menuDrawer_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_menuDrawer_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_menuDrawer_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_menuDrawer_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_menuDrawer_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_menuDrawer_compileReleaseJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_menuDrawer_compileReleaseJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/bundles/debug/classes.jar" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/bundles/debug/classes.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/bundles/release/classes.jar" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/bundles/release/classes.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/BottomDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/BottomDrawer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/BuildLayerFrameLayout$1.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/BuildLayerFrameLayout$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/BuildLayerFrameLayout$2.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/BuildLayerFrameLayout$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/BuildLayerFrameLayout.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/BuildLayerFrameLayout.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/ColorDrawable$1.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/ColorDrawable$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/ColorDrawable$ColorState.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/ColorDrawable$ColorState.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/ColorDrawable.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/ColorDrawable.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/DraggableDrawer$1.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/DraggableDrawer$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/DraggableDrawer$2.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/DraggableDrawer$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/DraggableDrawer$3.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/DraggableDrawer$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/DraggableDrawer$4.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/DraggableDrawer$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/DraggableDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/DraggableDrawer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/HorizontalDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/HorizontalDrawer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/LeftDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/LeftDrawer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/LeftStaticDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/LeftStaticDrawer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer$1.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer$2.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer$3.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer$SavedState$1.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer$SavedState$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer$SavedState.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer$SavedState.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/Position.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/Position.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/R.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/R.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/RightDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/RightDrawer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/RightStaticDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/RightStaticDrawer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/Scroller.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/Scroller.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/SinusoidalInterpolator.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/SinusoidalInterpolator.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/StaticDrawer$1.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/StaticDrawer$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/StaticDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/StaticDrawer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/TopDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/TopDrawer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/VerticalDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/VerticalDrawer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/BottomDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/BottomDrawer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/BuildLayerFrameLayout$1.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/BuildLayerFrameLayout$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/BuildLayerFrameLayout$2.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/BuildLayerFrameLayout$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/BuildLayerFrameLayout.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/BuildLayerFrameLayout.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/ColorDrawable$1.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/ColorDrawable$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/ColorDrawable$ColorState.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/ColorDrawable$ColorState.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/ColorDrawable.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/ColorDrawable.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/DraggableDrawer$1.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/DraggableDrawer$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/DraggableDrawer$2.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/DraggableDrawer$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/DraggableDrawer$3.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/DraggableDrawer$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/DraggableDrawer$4.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/DraggableDrawer$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/DraggableDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/DraggableDrawer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/HorizontalDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/HorizontalDrawer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/LeftDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/LeftDrawer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/LeftStaticDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/LeftStaticDrawer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer$1.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer$2.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer$3.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer$SavedState$1.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer$SavedState$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer$SavedState.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer$SavedState.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/Position.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/Position.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/R.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/R.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/RightDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/RightDrawer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/RightStaticDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/RightStaticDrawer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/Scroller.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/Scroller.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/SinusoidalInterpolator.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/SinusoidalInterpolator.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/StaticDrawer$1.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/StaticDrawer$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/StaticDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/StaticDrawer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/TopDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/TopDrawer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/VerticalDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/VerticalDrawer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/res/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/res/resources-debug-androidTest.ap_" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/outputs/aar/menuDrawer-debug.aar" afterPath="$PROJECT_DIR$/menuDrawer/build/outputs/aar/menuDrawer-debug.aar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/outputs/aar/menuDrawer-release.aar" afterPath="$PROJECT_DIR$/menuDrawer/build/outputs/aar/menuDrawer-release.aar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/classes.jar" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/classes.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/release/classes.jar" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/release/classes.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/debug/org/xwalk/core/R.class" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/debug/org/xwalk/core/R.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/release/org/xwalk/core/R.class" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/release/org/xwalk/core/R.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/resources-debug-androidTest.ap_" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/outputs/aar/xwalk_core_library_15-debug.aar" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/outputs/aar/xwalk_core_library_15-debug.aar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/outputs/aar/xwalk_core_library_15-release.aar" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/outputs/aar/xwalk_core_library_15-release.aar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_verification_login.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_verification_login.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/packageDebugResources/merger.xml" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/packageDebugResources/merger.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/packageReleaseResources/merger.xml" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/packageReleaseResources/merger.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/menuDrawer.iml" afterPath="$PROJECT_DIR$/menuDrawer/menuDrawer.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable-hdpi-v4.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable-hdpi-v4.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable-xhdpi-v4.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable-xhdpi-v4.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable-xxhdpi-v4.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable-xxhdpi-v4.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/layout-v17.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/layout-v17.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/layout.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/layout.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/raw.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/raw.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merger.xml" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merger.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merger.xml" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merger.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/xwalk_core_library_15.iml" afterPath="$PROJECT_DIR$/xwalk_core_library_15/xwalk_core_library_15.iml" />
+    </list>
     <ignored path="GalepressMerge.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,6 +166,81 @@
   </component>
   <component name="FavoritesManager">
     <favorites_list name="GalepressMerge" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="ContentDetailPopupActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="65" column="33" selection-start-line="65" selection-start-column="11" selection-end-line="65" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#5786#5787#0" expanded="false" />
+                <element signature="e#5824#5825#0" expanded="false" />
+                <element signature="e#32199#32200#0" expanded="false" />
+                <element signature="e#32257#32258#0" expanded="false" />
+                <element signature="e#35534#35535#0" expanded="false" />
+                <element signature="e#35567#35568#0" expanded="false" />
+                <element signature="e#44676#44677#0" expanded="false" />
+                <element signature="e#44706#44707#0" expanded="false" />
+                <element signature="e#44755#44756#0" expanded="false" />
+                <element signature="e#44793#44794#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ThumbnailListAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/ThumbnailListAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1734">
+              <caret line="127" column="13" selection-start-line="127" selection-start-column="13" selection-end-line="127" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#7109#7110#0" expanded="false" />
+                <element signature="e#7165#7166#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CoverImageFixedAspectLayout.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/CoverImageFixedAspectLayout.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="646">
+              <caret line="47" column="65" selection-start-line="47" selection-start-column="65" selection-end-line="47" selection-end-column="65" />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LibraryFragment.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="245">
+              <caret line="236" column="20" selection-start-line="236" selection-start-column="20" selection-end-line="236" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
     <option name="availableProjects">
@@ -3199,6 +3414,15 @@
       <projects_view />
     </option>
   </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fixed_content_popup_layout.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_verification_login.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+      </list>
+    </option>
+  </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
@@ -3212,7 +3436,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="1" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
@@ -3230,8 +3454,26 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
+      <pane id="Scratches">
+        <subPane />
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Problems" />
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane />
+      </pane>
+      <pane id="AndroidView">
+        <subPane />
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -3311,6 +3553,10 @@
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -3337,16 +3583,8 @@
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="galepress" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView">
-        <subPane />
       </pane>
     </panes>
   </component>
@@ -3357,8 +3595,14 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/Kisisel/bitbucket/notebook" />
     <property name="device.picker.selection" value="05c388e5002df79a" />
+    <property name="UI_DESIGNER_EDITOR_MODE.NlPaletteManager-NlEditorPanel.WIDTH" value="309" />
+    <property name="UI_DESIGNER_EDITOR_MODE.NlPaletteManager.STATE" value="right" />
+    <property name="UI_DESIGNER_EDITOR_MODE.NlPaletteManager-NlPreviewForm.SHOW" value="false" />
+    <property name="UI_DESIGNER_EDITOR_MODE.NlPropertiesWindowManager.STATE" value="left" />
+    <property name="UI_DESIGNER_EDITOR_MODE.NlPropertiesWindowManager-NlEditorPanel.WIDTH" value="272" />
+    <property name="UI_DESIGNER_EDITOR_MODE.NlPropertiesWindowManager-NlEditorPanel.SHOW" value="true" />
   </component>
   <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
@@ -3406,6 +3650,50 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method />
     </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+      </Auto>
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+      </Native>
+      <Java />
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+      </Hybrid>
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <method />
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
@@ -3419,6 +3707,22 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -3445,6 +3749,48 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JUnitTestDiscovery" factoryName="JUnit Test Discovery" changeList="All">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SCRATCH_FILE_ID" value="0" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -3467,6 +3813,34 @@
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNGTestDiscovery" factoryName="TestNG Test Discovery" changeList="All">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
       <option name="OUTPUT_DIRECTORY" />
       <option name="ANNOTATION_TYPE" />
       <option name="ENV_VARIABLES" />
@@ -3545,6 +3919,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="4591bc09-e445-44c4-a89c-14ca9bceb4e8" name="Default" comment="" />
@@ -3555,42 +3932,62 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26066098" sideWeight="0.506135" order="3" side_tool="false" content_ui="tabs" x="707" y="139" width="506" height="728" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28272828" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25266525" sideWeight="0.49386504" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find Sample Code" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Assistant" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -3598,5 +3995,283 @@
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="65" column="33" selection-start-line="65" selection-start-column="11" selection-end-line="65" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#5786#5787#0" expanded="false" />
+            <element signature="e#5824#5825#0" expanded="false" />
+            <element signature="e#32199#32200#0" expanded="false" />
+            <element signature="e#32257#32258#0" expanded="false" />
+            <element signature="e#35534#35535#0" expanded="false" />
+            <element signature="e#35567#35568#0" expanded="false" />
+            <element signature="e#44676#44677#0" expanded="false" />
+            <element signature="e#44706#44707#0" expanded="false" />
+            <element signature="e#44755#44756#0" expanded="false" />
+            <element signature="e#44793#44794#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/ThumbnailListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1734">
+          <caret line="127" column="13" selection-start-line="127" selection-start-column="13" selection-end-line="127" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#7109#7110#0" expanded="false" />
+            <element signature="e#7165#7166#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/CoverImageFixedAspectLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="47" column="65" selection-start-line="47" selection-start-column="65" selection-end-line="47" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="60" column="17" selection-start-line="60" selection-start-column="17" selection-end-line="60" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#5786#5787#0" expanded="false" />
+            <element signature="e#5824#5825#0" expanded="false" />
+            <element signature="e#32199#32200#0" expanded="false" />
+            <element signature="e#32257#32258#0" expanded="false" />
+            <element signature="e#35534#35535#0" expanded="false" />
+            <element signature="e#35567#35568#0" expanded="false" />
+            <element signature="e#44676#44677#0" expanded="false" />
+            <element signature="e#44706#44707#0" expanded="false" />
+            <element signature="e#44755#44756#0" expanded="false" />
+            <element signature="e#44793#44794#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#5786#5787#0" expanded="false" />
+            <element signature="e#5824#5825#0" expanded="false" />
+            <element signature="e#32199#32200#0" expanded="false" />
+            <element signature="e#32257#32258#0" expanded="false" />
+            <element signature="e#35534#35535#0" expanded="false" />
+            <element signature="e#35567#35568#0" expanded="false" />
+            <element signature="e#44676#44677#0" expanded="false" />
+            <element signature="e#44706#44707#0" expanded="false" />
+            <element signature="e#44755#44756#0" expanded="false" />
+            <element signature="e#44793#44794#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.07.28_11.07.li" />
+    <entry file="file://$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.07.28_11.08.li" />
+    <entry file="file://$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.07.28_11.09.li" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_verification_signup.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_detail_popup_layout.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fixed_content_popup_layout.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="57" column="16" selection-start-line="57" selection-start-column="16" selection-end-line="57" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/forgot_password_popup.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/viewer_login.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_verification_login.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="-1029">
+          <caret line="215" column="59" selection-start-line="215" selection-start-column="59" selection-end-line="215" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/library_layout.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/UNISAC/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="50" selection-start-line="2" selection-start-column="50" selection-end-line="2" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="65" column="33" selection-start-line="65" selection-start-column="11" selection-end-line="65" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#5786#5787#0" expanded="false" />
+            <element signature="e#5824#5825#0" expanded="false" />
+            <element signature="e#32199#32200#0" expanded="false" />
+            <element signature="e#32257#32258#0" expanded="false" />
+            <element signature="e#35534#35535#0" expanded="false" />
+            <element signature="e#35567#35568#0" expanded="false" />
+            <element signature="e#44676#44677#0" expanded="false" />
+            <element signature="e#44706#44707#0" expanded="false" />
+            <element signature="e#44755#44756#0" expanded="false" />
+            <element signature="e#44793#44794#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/ThumbnailListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1734">
+          <caret line="127" column="13" selection-start-line="127" selection-start-column="13" selection-end-line="127" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#7109#7110#0" expanded="false" />
+            <element signature="e#7165#7166#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/CoverImageFixedAspectLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="47" column="65" selection-start-line="47" selection-start-column="65" selection-end-line="47" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="43" column="37" selection-start-line="43" selection-start-column="37" selection-end-line="43" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="236" column="20" selection-start-line="236" selection-start-column="20" selection-end-line="236" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
