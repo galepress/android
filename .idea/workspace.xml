@@ -11,7 +11,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4591bc09-e445-44c4-a89c-14ca9bceb4e8" name="Default" comment="">
@@ -37,113 +37,15 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/outputFileStates.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/outputFileStates.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_menuDrawer_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_menuDrawer_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_menuDrawer_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_menuDrawer_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_menuDrawer_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_menuDrawer_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_menuDrawer_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_menuDrawer_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_menuDrawer_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_menuDrawer_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_menuDrawer_compileReleaseJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_menuDrawer_compileReleaseJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/bundles/debug/classes.jar" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/bundles/debug/classes.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/bundles/release/classes.jar" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/bundles/release/classes.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/BottomDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/BottomDrawer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/BuildLayerFrameLayout$1.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/BuildLayerFrameLayout$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/BuildLayerFrameLayout$2.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/BuildLayerFrameLayout$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/BuildLayerFrameLayout.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/BuildLayerFrameLayout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/ColorDrawable$1.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/ColorDrawable$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/ColorDrawable$ColorState.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/ColorDrawable$ColorState.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/ColorDrawable.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/ColorDrawable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/DraggableDrawer$1.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/DraggableDrawer$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/DraggableDrawer$2.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/DraggableDrawer$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/DraggableDrawer$3.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/DraggableDrawer$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/DraggableDrawer$4.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/DraggableDrawer$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/DraggableDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/DraggableDrawer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/HorizontalDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/HorizontalDrawer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/LeftDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/LeftDrawer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/LeftStaticDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/LeftStaticDrawer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer$1.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer$2.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer$3.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer$SavedState$1.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer$SavedState$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer$SavedState.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer$SavedState.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/Position.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/Position.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/R.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/R.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/RightDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/RightDrawer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/RightStaticDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/RightStaticDrawer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/Scroller.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/Scroller.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/SinusoidalInterpolator.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/SinusoidalInterpolator.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/StaticDrawer$1.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/StaticDrawer$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/StaticDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/StaticDrawer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/TopDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/TopDrawer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/VerticalDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/VerticalDrawer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/BottomDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/BottomDrawer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/BuildLayerFrameLayout$1.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/BuildLayerFrameLayout$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/BuildLayerFrameLayout$2.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/BuildLayerFrameLayout$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/BuildLayerFrameLayout.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/BuildLayerFrameLayout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/ColorDrawable$1.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/ColorDrawable$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/ColorDrawable$ColorState.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/ColorDrawable$ColorState.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/ColorDrawable.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/ColorDrawable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/DraggableDrawer$1.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/DraggableDrawer$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/DraggableDrawer$2.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/DraggableDrawer$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/DraggableDrawer$3.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/DraggableDrawer$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/DraggableDrawer$4.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/DraggableDrawer$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/DraggableDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/DraggableDrawer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/HorizontalDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/HorizontalDrawer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/LeftDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/LeftDrawer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/LeftStaticDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/LeftStaticDrawer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer$1.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer$2.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer$3.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer$SavedState$1.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer$SavedState$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer$SavedState.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer$SavedState.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/Position.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/Position.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/R.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/R.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/RightDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/RightDrawer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/RightStaticDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/RightStaticDrawer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/Scroller.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/Scroller.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/SinusoidalInterpolator.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/SinusoidalInterpolator.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/StaticDrawer$1.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/StaticDrawer$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/StaticDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/StaticDrawer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/TopDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/TopDrawer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/VerticalDrawer.class" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/VerticalDrawer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/res/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/res/resources-debug-androidTest.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/outputs/aar/menuDrawer-debug.aar" afterPath="$PROJECT_DIR$/menuDrawer/build/outputs/aar/menuDrawer-debug.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/outputs/aar/menuDrawer-release.aar" afterPath="$PROJECT_DIR$/menuDrawer/build/outputs/aar/menuDrawer-release.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/classes.jar" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/classes.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/release/classes.jar" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/release/classes.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/debug/org/xwalk/core/R.class" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/debug/org/xwalk/core/R.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/release/org/xwalk/core/R.class" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/release/org/xwalk/core/R.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/resources-debug-androidTest.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/outputs/aar/xwalk_core_library_15-debug.aar" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/outputs/aar/xwalk_core_library_15-debug.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/outputs/aar/xwalk_core_library_15-release.aar" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/outputs/aar/xwalk_core_library_15-release.aar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_verification_login.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_verification_login.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GCMIntentService.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GCMIntentService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/packageDebugResources/merger.xml" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/packageDebugResources/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/packageReleaseResources/merger.xml" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/packageReleaseResources/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/menuDrawer.iml" afterPath="$PROJECT_DIR$/menuDrawer/menuDrawer.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable-hdpi-v4.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable-hdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable-xhdpi-v4.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable-xhdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable-xxhdpi-v4.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable-xxhdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/layout-v17.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/layout-v17.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/layout.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/layout.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/raw.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/raw.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merger.xml" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merger.xml" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/xwalk_core_library_15.iml" afterPath="$PROJECT_DIR$/xwalk_core_library_15/xwalk_core_library_15.iml" />
     </list>
     <ignored path="GalepressMerge.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -164,74 +66,55 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view />
+      </state>
+    </system>
+  </component>
   <component name="FavoritesManager">
     <favorites_list name="GalepressMerge" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ContentDetailPopupActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="65" column="33" selection-start-line="65" selection-start-column="11" selection-end-line="65" selection-end-column="34" />
+            <state relative-caret-position="202">
+              <caret line="1461" column="29" selection-start-line="1461" selection-start-column="29" selection-end-line="1461" selection-end-column="29" />
               <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#5786#5787#0" expanded="false" />
-                <element signature="e#5824#5825#0" expanded="false" />
-                <element signature="e#32199#32200#0" expanded="false" />
-                <element signature="e#32257#32258#0" expanded="false" />
-                <element signature="e#35534#35535#0" expanded="false" />
-                <element signature="e#35567#35568#0" expanded="false" />
-                <element signature="e#44676#44677#0" expanded="false" />
-                <element signature="e#44706#44707#0" expanded="false" />
-                <element signature="e#44755#44756#0" expanded="false" />
-                <element signature="e#44793#44794#0" expanded="false" />
+                <element signature="method#changeSearchViewColor#0;class#MainActivity#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ThumbnailListAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/ThumbnailListAdapter.java">
+      <file leaf-file-name="GCMIntentService.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GCMIntentService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1734">
-              <caret line="127" column="13" selection-start-line="127" selection-start-column="13" selection-end-line="127" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#7109#7110#0" expanded="false" />
-                <element signature="e#7165#7166#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CoverImageFixedAspectLayout.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/CoverImageFixedAspectLayout.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="47" column="65" selection-start-line="47" selection-start-column="65" selection-end-line="47" selection-end-column="65" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LibraryFragment.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="236" column="20" selection-start-line="236" selection-start-column="20" selection-end-line="236" selection-end-column="20" />
+            <state relative-caret-position="527">
+              <caret line="93" column="8" selection-start-line="93" selection-start-column="8" selection-end-line="93" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <file leaf-file-name="ContentDetailPopupActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+            <state relative-caret-position="527">
+              <caret line="207" column="11" selection-start-line="207" selection-start-column="11" selection-end-line="207" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="button.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/button.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="101" selection-start-line="13" selection-start-column="101" selection-end-line="13" selection-end-column="101" />
               <folding />
             </state>
           </provider>
@@ -3420,6 +3303,10 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fixed_content_popup_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_verification_login.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/ThumbnailListAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/raw/application.plist" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GCMIntentService.java" />
       </list>
     </option>
   </component>
@@ -3467,12 +3354,6 @@
             </PATH_ELEMENT>
           </PATH>
         </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane />
-      </pane>
-      <pane id="AndroidView">
-        <subPane />
       </pane>
       <pane id="ProjectPane">
         <subPane>
@@ -3553,10 +3434,6 @@
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -3583,8 +3460,18 @@
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="galepress" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane />
+      </pane>
+      <pane id="AndroidView">
+        <subPane />
       </pane>
     </panes>
   </component>
@@ -3595,7 +3482,7 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="last_opened_file_path" value="D:/Kisisel/bitbucket/notebook" />
+    <property name="last_opened_file_path" value="D:/Emlak" />
     <property name="device.picker.selection" value="05c388e5002df79a" />
     <property name="UI_DESIGNER_EDITOR_MODE.NlPaletteManager-NlEditorPanel.WIDTH" value="309" />
     <property name="UI_DESIGNER_EDITOR_MODE.NlPaletteManager.STATE" value="right" />
@@ -3603,6 +3490,8 @@
     <property name="UI_DESIGNER_EDITOR_MODE.NlPropertiesWindowManager.STATE" value="left" />
     <property name="UI_DESIGNER_EDITOR_MODE.NlPropertiesWindowManager-NlEditorPanel.WIDTH" value="272" />
     <property name="UI_DESIGNER_EDITOR_MODE.NlPropertiesWindowManager-NlEditorPanel.SHOW" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
@@ -3942,8 +3831,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="0" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26066098" sideWeight="0.506135" order="3" side_tool="false" content_ui="tabs" x="707" y="139" width="506" height="728" />
@@ -3953,7 +3842,7 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28272828" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28272828" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -3962,7 +3851,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25266525" sideWeight="0.49386504" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25266525" sideWeight="0.49386504" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -3997,23 +3886,67 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22814">
+          <caret line="1461" column="29" selection-start-line="1461" selection-start-column="29" selection-end-line="1461" selection-end-column="29" />
+          <folding>
+            <element signature="method#changeSearchViewColor#0;class#MainActivity#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/button.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="101" selection-start-line="13" selection-start-column="101" selection-end-line="13" selection-end-column="101" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="method#changeSearchViewColor#0;class#MainActivity#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="method#changeSearchViewColor#0;class#MainActivity#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="method#changeSearchViewColor#0;class#MainActivity#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="65" column="33" selection-start-line="65" selection-start-column="11" selection-end-line="65" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#5786#5787#0" expanded="false" />
-            <element signature="e#5824#5825#0" expanded="false" />
-            <element signature="e#32199#32200#0" expanded="false" />
-            <element signature="e#32257#32258#0" expanded="false" />
-            <element signature="e#35534#35535#0" expanded="false" />
-            <element signature="e#35567#35568#0" expanded="false" />
-            <element signature="e#44676#44677#0" expanded="false" />
-            <element signature="e#44706#44707#0" expanded="false" />
-            <element signature="e#44755#44756#0" expanded="false" />
-            <element signature="e#44793#44794#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -4021,11 +3954,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1734">
           <caret line="127" column="13" selection-start-line="127" selection-start-column="13" selection-end-line="127" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#7109#7110#0" expanded="false" />
-            <element signature="e#7165#7166#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -4033,9 +3961,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
           <caret line="47" column="65" selection-start-line="47" selection-start-column="65" selection-end-line="47" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -4067,19 +3992,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#5786#5787#0" expanded="false" />
-            <element signature="e#5824#5825#0" expanded="false" />
-            <element signature="e#32199#32200#0" expanded="false" />
-            <element signature="e#32257#32258#0" expanded="false" />
-            <element signature="e#35534#35535#0" expanded="false" />
-            <element signature="e#35567#35568#0" expanded="false" />
-            <element signature="e#44676#44677#0" expanded="false" />
-            <element signature="e#44706#44707#0" expanded="false" />
-            <element signature="e#44755#44756#0" expanded="false" />
-            <element signature="e#44793#44794#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -4087,19 +4000,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#5786#5787#0" expanded="false" />
-            <element signature="e#5824#5825#0" expanded="false" />
-            <element signature="e#32199#32200#0" expanded="false" />
-            <element signature="e#32257#32258#0" expanded="false" />
-            <element signature="e#35534#35535#0" expanded="false" />
-            <element signature="e#35567#35568#0" expanded="false" />
-            <element signature="e#44676#44677#0" expanded="false" />
-            <element signature="e#44706#44707#0" expanded="false" />
-            <element signature="e#44755#44756#0" expanded="false" />
-            <element signature="e#44793#44794#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -4166,17 +4067,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/library_layout.xml">
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main.xml">
       <provider selected="true" editor-type-id="android-designer2">
         <state />
@@ -4201,6 +4091,7 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="50" selection-start-line="2" selection-start-column="50" selection-end-line="2" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -4212,45 +4103,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="65" column="33" selection-start-line="65" selection-start-column="11" selection-end-line="65" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#5786#5787#0" expanded="false" />
-            <element signature="e#5824#5825#0" expanded="false" />
-            <element signature="e#32199#32200#0" expanded="false" />
-            <element signature="e#32257#32258#0" expanded="false" />
-            <element signature="e#35534#35535#0" expanded="false" />
-            <element signature="e#35567#35568#0" expanded="false" />
-            <element signature="e#44676#44677#0" expanded="false" />
-            <element signature="e#44706#44707#0" expanded="false" />
-            <element signature="e#44755#44756#0" expanded="false" />
-            <element signature="e#44793#44794#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/ThumbnailListAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1734">
-          <caret line="127" column="13" selection-start-line="127" selection-start-column="13" selection-end-line="127" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#7109#7110#0" expanded="false" />
-            <element signature="e#7165#7166#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/CoverImageFixedAspectLayout.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
           <caret line="47" column="65" selection-start-line="47" selection-start-column="65" selection-end-line="47" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -4273,5 +4129,131 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/ThumbnailListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="177" column="5" selection-start-line="177" selection-start-column="5" selection-end-line="177" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="357" column="0" selection-start-line="357" selection-start-column="0" selection-end-line="357" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/raw/application.plist">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/button_dark.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/facebook_button.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/page_num.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/search.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/seek_thumb.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/button.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="101" selection-start-line="13" selection-start-column="101" selection-end-line="13" selection-end-column="101" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/library_layout.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="207" column="11" selection-start-line="207" selection-start-column="11" selection-end-line="207" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="1461" column="29" selection-start-line="1461" selection-start-column="29" selection-end-line="1461" selection-end-column="29" />
+          <folding>
+            <element signature="method#changeSearchViewColor#0;class#MainActivity#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GCMIntentService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="93" column="8" selection-start-line="93" selection-start-column="8" selection-end-line="93" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

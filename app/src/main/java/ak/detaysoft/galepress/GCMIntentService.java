@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+
 import com.google.android.gcm.GCMBaseIntentService;
 import com.google.android.gcm.GCMRegistrar;
 
@@ -37,11 +38,11 @@ public class GCMIntentService extends GCMBaseIntentService {
     protected void onRegistered(Context context, String registrationId) {
 
         //Get Global Controller Class object (see application tag in AndroidManifest.xml)
-        if(aController == null)
+        if (aController == null)
             aController = GalePressApplication.getInstance();
 
         Log.i(TAG, "Device registered: regId = " + registrationId);
-        GCMRegistrar.setRegisteredOnServer(GalePressApplication.getInstance().getApplicationContext(),true);
+        GCMRegistrar.setRegisteredOnServer(GalePressApplication.getInstance().getApplicationContext(), true);
         GalePressApplication.getInstance().getDataApi().getAppDetail(context);
 //        Log.d("NAME", MainActivity.name);
 //        aController.register(context, MainActivity.name, MainActivity.email, registrationId);
@@ -49,10 +50,10 @@ public class GCMIntentService extends GCMBaseIntentService {
 
     /**
      * Method called on device unregistred
-     * */
+     */
     @Override
     protected void onUnregistered(Context context, String registrationId) {
-        if(aController == null)
+        if (aController == null)
             aController = (GalePressApplication) getApplicationContext();
         Log.i(TAG, "Device unregistered");
 //        aController.displayMessageOnScreen(context, getString(R.string.gcm_unregistered));
@@ -61,32 +62,36 @@ public class GCMIntentService extends GCMBaseIntentService {
 
     /**
      * Method called on Receiving a new message from GCM server
-     * */
+     */
     @Override
     protected void onMessage(Context context, Intent intent) {
 
-        if(aController == null)
+        if (aController == null)
             aController = GalePressApplication.getInstance();
 
         Log.i(TAG, "Received message");
-        String message = intent.getExtras().getString("message");
-
-        aController.displayMessageOnScreen(context, message);
-        // notifies user
-        generateNotification(context, message);
+        String message = "";
+        if (intent != null && intent.getExtras() != null) {
+            message = intent.getExtras().getString("message", "");
+        }
+        if(message != null && message.length() > 0) {
+            aController.displayMessageOnScreen(context, message);
+            // notifies user
+            generateNotification(context, message);
+        }
     }
 
     /**
      * Method called on receiving a deleted message
-     * */
+     */
     @Override
     protected void onDeletedMessages(Context context, int total) {
 
-        if(aController == null)
+        if (aController == null)
             aController = GalePressApplication.getInstance();
 
         Log.i(TAG, "Received deleted messages notification");
-//        String message = getString(R.string.gcm_deleted, total);
+//      String message = getString(R.string.gcm_deleted, total);
         String message = "R.string.gcm_deleted";
         aController.displayMessageOnScreen(context, message);
         // notifies user
@@ -95,11 +100,11 @@ public class GCMIntentService extends GCMBaseIntentService {
 
     /**
      * Method called on Error
-     * */
+     */
     @Override
     public void onError(Context context, String errorId) {
 
-        if(aController == null)
+        if (aController == null)
             aController = GalePressApplication.getInstance();
 
         Log.i(TAG, "Received error: " + errorId);
@@ -110,7 +115,7 @@ public class GCMIntentService extends GCMBaseIntentService {
     @Override
     protected boolean onRecoverableError(Context context, String errorId) {
 
-        if(aController == null)
+        if (aController == null)
             aController = GalePressApplication.getInstance();
 
         // log message

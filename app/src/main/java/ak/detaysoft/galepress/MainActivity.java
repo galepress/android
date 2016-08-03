@@ -1335,7 +1335,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                     Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESPONSE_RESULT_OK), Toast.LENGTH_SHORT)
                             .show();
 
-
                     JSONObject jo = new JSONObject(purchaseData);
                     String sku = jo.getString("productId");
 
