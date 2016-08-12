@@ -139,8 +139,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     private String selectedTabTag = "";
 
 
-
-
     /*
     * Uygulama arka planda yada content detail ekrani acikken internet baglantisinin degismesi durumunda customtablarin set edilmesi islemini onresume da yapabilmek icin eklendi.
     * Eger bu kontrol yapilmazsa setCurrentTab metodu kullanilirken illegalStateException aliyoruz ve uygulama crash oluyor.

@@ -457,31 +457,36 @@ public class MuPDFCore
 	public LinkInfo[] getHierarchicalPageLinksInternal(int page) {
 		LinkInfo[] tempLinks = getPageLinksInternal(page);
 		int hierarchicalLinkSize = 0;
-		for(int i = 0; i < tempLinks.length; i++) {
-			if(tempLinks[i] instanceof LinkInfoExternal && ((LinkInfoExternal)tempLinks[i]).isSuitabale){
-				hierarchicalLinkSize++;
-			} else if(tempLinks[i] instanceof LinkInfoInternal) {
-				hierarchicalLinkSize++;
-			}
-		}
-
-
-		if(hierarchicalLinkSize == tempLinks.length)
-			return tempLinks;
-		else {
-			LinkInfo[] links = new LinkInfo[hierarchicalLinkSize];
-			int index = 0;
+		if(tempLinks != null) {
 			for(int i = 0; i < tempLinks.length; i++) {
 				if(tempLinks[i] instanceof LinkInfoExternal && ((LinkInfoExternal)tempLinks[i]).isSuitabale){
-					links[index] = tempLinks[i];
-					index++;
+					hierarchicalLinkSize++;
 				} else if(tempLinks[i] instanceof LinkInfoInternal) {
-					links[index] = tempLinks[i];
-					index++;
+					hierarchicalLinkSize++;
 				}
 			}
-			return links;
+
+
+			if(hierarchicalLinkSize == tempLinks.length)
+				return tempLinks;
+			else {
+				LinkInfo[] links = new LinkInfo[hierarchicalLinkSize];
+				int index = 0;
+				for(int i = 0; i < tempLinks.length; i++) {
+					if(tempLinks[i] instanceof LinkInfoExternal && ((LinkInfoExternal)tempLinks[i]).isSuitabale){
+						links[index] = tempLinks[i];
+						index++;
+					} else if(tempLinks[i] instanceof LinkInfoInternal) {
+						links[index] = tempLinks[i];
+						index++;
+					}
+				}
+				return links;
+			}
+		} else {
+			return null;
 		}
+
 	}
 
 	public synchronized RectF [] getWidgetAreas(int page) {
