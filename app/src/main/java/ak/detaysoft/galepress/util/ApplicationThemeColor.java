@@ -36,11 +36,12 @@ public class ApplicationThemeColor {
 
     private static ApplicationThemeColor instance;
 
-    private static int themeType = 1;
+    public static int themeType = 1;
     private static String foregroundColor = "#2980B9";
-
     public static final int DARK_THEME_TYPE = 1;
     public static final int LIGHT_THEME_TYPE = 2;
+
+
     public static final int LIBRARY_ICON = 0;
     public static final int DOWNLOAD_ICON = 1;
     public static final int INFO_ICON = 2;
@@ -114,6 +115,8 @@ public class ApplicationThemeColor {
     public static final int DOWNLOAD_CONTENT_PURCHASE_BUTTON_BACKGROUND = 68;
     public static final int DOWNLOAD_CONTENT_PURCHASE_BOTTOM = 69;
     public static final int VERIFICATION_POPUP_CLOSE_BASE = 70;
+    public static final int READER_SEARCH_OPEN = 71;
+    public static final int READER_SEARCH_CLEAR = 72;
 
     public ApplicationThemeColor(){
 
@@ -165,6 +168,7 @@ public class ApplicationThemeColor {
             return Color.parseColor("#E8E8E8"); //Light Theme
         }
     }
+
 
     public int getLightThemeColor(){
         return Color.parseColor("#E8E8E8"); //Light Theme
@@ -685,6 +689,12 @@ public class ApplicationThemeColor {
         } else if(resourceType == HOME_ICON_SELECTED){
             myIcon = context.getResources().getDrawable(R.drawable.tab_home);
             myIcon.setColorFilter(getForeGroundColorFilterWithAlpha((float)0.5));
+        } else if(resourceType == READER_SEARCH_OPEN) {
+            myIcon = context.getResources().getDrawable(R.drawable.reader_search);
+            myIcon.setColorFilter(getForegroundColorFilter());
+        } else if(resourceType == READER_SEARCH_CLEAR) {
+            myIcon = context.getResources().getDrawable(R.drawable.reader_search_clear);
+            myIcon.setColorFilter(getThemeColorFilter());
         } else if(resourceType == READER_MENU_OPEN){
             if(themeType == DARK_THEME_TYPE) {
                 myIcon = context.getResources().getDrawable(R.drawable.b);
@@ -1294,6 +1304,38 @@ public class ApplicationThemeColor {
     }
 
 
+    public int getReaderSearchResultTextColor(){
+        if(themeType == DARK_THEME_TYPE) {
+            return Color.parseColor("#E9E9E9");
+        } else {
+            return Color.parseColor("#333333");
+        }
+    }
+
+
+    public int getReaderPopupColor(){
+        if(getInstance().themeType == DARK_THEME_TYPE){
+            return Color.parseColor("#333333"); //Dark Theme
+        } else {
+            return Color.parseColor("#E9E9E9"); //Light Theme
+        }
+    }
+
+    //reader menu search tiklandiginda search view in arka planini degistirmek icin bu metod kullaniliyor
+    public Drawable getReaderSearchViewDrawable(Context context) {
+        GradientDrawable drawable =  new GradientDrawable();
+        drawable.setCornerRadius(10);
+        if(themeType == DARK_THEME_TYPE) {
+            drawable.setColor(Color.parseColor("#424242"));
+        } else {
+            drawable.setColor(Color.parseColor("#767676"));
+        }
+        drawable.setStroke(0, getThemeColor());
+        return drawable;
+    }
+
+
+
     /*
     * (MG)
     * Try catch koymamım sebebi lollipop versiyonunda font bulunamadı hatası almamız
@@ -1326,6 +1368,14 @@ public class ApplicationThemeColor {
     public Typeface getOpenSansRegular(Context context){
         try{
             return Typeface.createFromAsset(context.getAssets(), "fonts/OpenSans-Regular.ttf");
+        } catch (Exception e) {
+            return Typeface.DEFAULT;
+        }
+    }
+
+    public Typeface getOpenSansBold(Context context){
+        try{
+            return Typeface.createFromAsset(context.getAssets(), "fonts/OpenSans-Bold.ttf");
         } catch (Exception e) {
             return Typeface.DEFAULT;
         }

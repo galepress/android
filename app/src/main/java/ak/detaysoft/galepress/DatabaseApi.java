@@ -193,6 +193,32 @@ public class DatabaseApi {
         return null;
     }
 
+    public List getAllContentsWithSqlQuery(String searchQuery) {
+        List contents;
+        if(searchQuery!= null && searchQuery.length() != 0)
+            searchQuery = Normalizer.normalize(searchQuery.trim(), Normalizer.Form.NFD)
+                    .replaceAll("[^\\p{ASCII}]", "");
+        try {
+            // Genel kategorisinin olmadigi durumlarda butun contentler listelenir.
+            QueryBuilder<L_Content, Integer> contentQuery = contentsDao.queryBuilder();
+
+            if(searchQuery!= null && searchQuery.length() != 0) {
+                Where where = contentQuery.where();
+                if(searchQuery!= null && searchQuery.length() != 0){
+                    where.like("name_asc", "%"+searchQuery+"%");
+                }
+            }
+
+            contentQuery.orderBy("contentOrderNo", false);
+
+            contents = contentQuery.query();
+
+        } catch (SQLException e) {
+            return new ArrayList<L_Content>();
+        }
+        return contents;
+    }
+
     public List getAllContentsWithSqlQuery(boolean isOnlyDownloaded, String searchQuery, ArrayList<L_Category> categoryList){
         List contents;
         if(searchQuery!= null && searchQuery.length() != 0)

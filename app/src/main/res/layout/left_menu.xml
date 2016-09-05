@@ -31,13 +31,14 @@
                     android:src="@drawable/app_logo"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginTop="20dp" />
+                    android:layout_marginTop="20dp"
+                    android:padding="10dp"/>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/login_input_height"
                     android:orientation="horizontal"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:paddingLeft="20dp"
@@ -60,8 +61,9 @@
                         android:id="@+id/left_menu_search_edit_text"
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
-                        android:singleLine="true"
                         android:hint="@string/search"
+                        android:inputType="text"
+                        android:imeOptions="actionDone"
                         android:textColorHint="@color/black"
                         android:layout_marginRight="25dp"
                         android:textSize="@dimen/left_menu_search_size"
@@ -77,6 +79,27 @@
                         android:layout_centerVertical="true" />
 
                 </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/search_result_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+                    <LinearLayout
+                        android:id="@+id/search_result_item_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+                    <ImageView
+                        android:id="@+id/search_result_layout_divider"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.3dp"
+                        android:layout_marginTop="15dp"/>
+                </LinearLayout>
 
                 <RelativeLayout
                     android:id="@+id/left_categories_layout"

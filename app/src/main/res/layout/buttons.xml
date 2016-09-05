@@ -75,17 +75,30 @@
 
 			<ImageButton
 				android:id="@+id/searchButton"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
+				android:layout_width="35dp"
+				android:layout_height="35dp"
 				android:layout_centerVertical="true"
-				android:layout_toRightOf="@+id/outlineButton"
+				android:layout_toLeftOf="@+id/mailButton"
 				android:contentDescription="@string/search_document"
 				android:background="@android:color/transparent"
-				android:src="@drawable/left_menu_search_icon"
-                android:paddingLeft="10dp"
-                android:layout_margin="7dp"
-                android:visibility="gone" />
-            <ImageButton
+				android:layout_marginBottom="10dp"
+				android:layout_marginLeft="10dp"
+				android:scaleType="centerInside"/>
+
+			<ImageButton
+				android:id="@+id/imageButton"
+				android:layout_width="35dp"
+				android:layout_height="35dp"
+				android:layout_centerVertical="true"
+				android:layout_alignParentRight="true"
+				android:background="@android:color/transparent"
+				android:onClick="OnMoreButtonClick"
+				android:layout_marginRight="10dp"
+				android:layout_marginLeft="15dp"
+				android:layout_marginTop="10dp"
+				android:layout_marginBottom="10dp" />
+
+			<ImageButton
                 android:id="@+id/mailButton"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
@@ -129,50 +142,89 @@
 		<RelativeLayout
 			android:id="@+id/topBar1Search"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content">
+			android:layout_height="wrap_content"
+			android:paddingTop="12.5dp"
+			android:paddingBottom="12.5dp"
+			android:paddingLeft="10dp"
+			android:paddingRight="10dp">
 
-			<ImageButton
+			<Button
 				android:id="@+id/cancelSearch"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
+				android:layout_width="50dp"
+				android:layout_height="35dp"
 				android:layout_centerVertical="true"
-				android:layout_alignParentLeft="true"
+				android:layout_alignParentRight="true"
 				android:contentDescription="@string/cancel"
 				android:background="@android:color/transparent"
 				android:onClick="OnCancelSearchButtonClick"
-				android:src="@drawable/ic_cancel" />
+				android:text="@string/IPTAL" />
 
-			<EditText
-				android:id="@+id/searchText"
-				android:background="@drawable/search"
+			<RelativeLayout
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:layout_toLeftOf="@+id/cancelSearch"
+				android:layout_alignParentLeft="true"
 				android:layout_centerVertical="true"
-				android:layout_toRightOf="@+id/cancelSearch"
-				android:layout_toLeftOf="@+id/searchBack"
-				android:inputType="text"
-				android:hint="@string/search"
-				android:singleLine="true" />
+				android:layout_marginRight="10dp">
+
+				<EditText
+					android:id="@+id/searchText"
+					android:background="@android:color/transparent"
+					android:layout_width="wrap_content"
+					android:layout_height="35dp"
+					android:layout_centerVertical="true"
+					android:layout_toLeftOf="@+id/clear_search_base"
+					android:layout_alignParentLeft="true"
+					android:inputType="text"
+					android:hint="@string/search"
+					android:lines="1"
+					android:layout_marginLeft="10dp"/>
+
+				<LinearLayout
+					android:id="@+id/clear_search_base"
+					android:gravity="center"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:orientation="vertical"
+					android:layout_centerVertical="true"
+					android:layout_alignParentRight="true"
+					android:background="@android:color/transparent"
+					android:onClick="OnClearSearchButtonClick"
+					android:clickable="true"
+					android:paddingRight="5dp"
+					android:paddingLeft="5dp">
+
+					<Button
+						android:id="@+id/clearSearch"
+						android:layout_width="25dp"
+						android:layout_height="25dp" />
+				</LinearLayout>
+
+			</RelativeLayout>
+
+
 
 			<ImageButton
 				android:id="@+id/searchBack"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
+				android:layout_width="35dp"
+				android:layout_height="35dp"
 				android:layout_centerVertical="true"
 				android:layout_toLeftOf="@+id/searchForward"
 				android:contentDescription="@string/search_backwards"
 				android:background="@android:color/transparent"
-				android:src="@drawable/ic_arrow_left" />
+				android:src="@drawable/ic_arrow_left"
+				android:visibility="gone"/>
 
 			<ImageButton
 				android:id="@+id/searchForward"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
+				android:layout_width="35dp"
+				android:layout_height="35dp"
 				android:layout_centerVertical="true"
 				android:layout_alignParentRight="true"
 				android:contentDescription="@string/search_forwards"
 				android:background="@android:color/transparent"
-				android:src="@drawable/ic_arrow_right" />
+				android:src="@drawable/ic_arrow_right"
+				android:visibility="gone"/>
 
 		</RelativeLayout>
 
@@ -412,12 +464,24 @@
 
         </RelativeLayout>
 
-    <RelativeLayout
-		android:id="@+id/lowerButtons"
-		android:layout_width="match_parent"
+
+	<TextView
+		android:id="@+id/info"
+		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_alignParentBottom="true"
-		android:layout_centerHorizontal="true" >
+		android:layout_centerHorizontal="true"
+		android:layout_centerVertical="true"
+		android:background="@drawable/page_num"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:textColor="#FFFFFF" />
+
+	<RelativeLayout
+        android:id="@+id/lowerButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+		android:layout_alignParentTop="true"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentStart="true">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -538,32 +602,32 @@
         </LinearLayout>
 
         <SeekBar
-			android:id="@+id/pageSlider"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_alignParentBottom="false"
-			android:layout_centerHorizontal="true"
-			android:layout_margin="0dp"
-			android:thumb="@drawable/seek_thumb"
-			android:progressDrawable="@drawable/seek_progress"
-			android:paddingLeft="16dp"
-			android:paddingRight="16dp"
-			android:paddingTop="12dp"
-			android:paddingBottom="8dp"
-			android:background="@color/toolbar"
+            android:id="@+id/pageSlider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="false"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="0dp"
+            android:thumb="@drawable/seek_thumb"
+            android:progressDrawable="@drawable/seek_progress"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="8dp"
+            android:background="@color/toolbar"
             android:layout_above="@+id/reader_tabbar"
             android:visibility="gone" />
 
-		<TextView
-			android:id="@+id/pageNumber"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_above="@+id/pageSlider"
-			android:layout_centerHorizontal="true"
-			android:layout_marginBottom="16dp"
-			android:background="@drawable/page_num"
-			android:textColor="#FFFFFF"
-			android:textAppearance="?android:attr/textAppearanceMedium"
+        <TextView
+            android:id="@+id/pageNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/pageSlider"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/page_num"
+            android:textColor="#FFFFFF"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:visibility="gone" />
 
         <RelativeLayout
@@ -592,16 +656,5 @@
 
 
     </RelativeLayout>
-
-
-    <TextView
-		android:id="@+id/info"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_centerHorizontal="true"
-		android:layout_centerVertical="true"
-		android:background="@drawable/page_num"
-		android:textAppearance="?android:attr/textAppearanceMedium"
-		android:textColor="#FFFFFF" />
 
 </RelativeLayout>

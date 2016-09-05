@@ -164,4 +164,105 @@ public abstract class SearchTask {
 
 		mSearchTask.execute();
 	}
+
+
+	public void go2(final String text, int direction, final int displayPage, int searchPage) {
+		if (mCore == null)
+			return;
+		stop();
+
+		final int increment = direction;
+		final int startIndex = searchPage == -1 ? displayPage : searchPage + increment;
+
+		final ProgressDialogX progressDialog = new ProgressDialogX(mContext);
+		progressDialog.setMessage(mContext.getString(R.string.searching_));
+		progressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+			public void onCancel(DialogInterface dialog) {
+				stop();
+			}
+		});
+		//progressDialog.setMax(mCore.countPages());
+
+		mSearchTask = new AsyncTask<Void,Integer,SearchTaskResult>() {
+			@Override
+			protected SearchTaskResult doInBackground(Void... params) {
+				int index = startIndex;
+
+				// Searching in portrait mode or first page of the Landscape mode.
+				if(mCore.getDisplayPages() == 1 || index == 0){
+					//publishProgress(index);
+					RectF searchHits[] = mCore.searchPage(index, text);
+
+					if (searchHits != null && searchHits.length > 0)
+						return new SearchTaskResult(text, index, searchHits);
+				}
+				else if(mCore.getDisplayPages()!=1 && mCore.getNumPages()%2==0 && mCore.getNumPages()/2 == index){
+					// Searching in landscape mode last page. It is single.
+					int index2 = (index*2)-1;
+					//publishProgress(index);
+					RectF searchHits[] = mCore.searchPage(index2, text);
+
+					if (searchHits != null && searchHits.length > 0)
+						return new SearchTaskResult(text, index, searchHits);
+				}
+				else{
+					// Searching landscape mode double pages.
+					int index2 = (index*2)-1;
+					//publishProgress(index2);
+					RectF searchHits1[] = mCore.searchPage(index2, text);
+
+					index2++;
+					//publishProgress(index2);
+					RectF searchHits2[] =  mCore.searchPage(index2, text);
+					for (int i = 0; i < searchHits2.length ; i++) {
+						searchHits2[i].left = searchHits2[i].left+mCore.getPageSize(index).x/2;
+						searchHits2[i].right = searchHits2[i].right+mCore.getPageSize(index).x/2;
+					}
+
+					RectF searchHits[] = new RectF[searchHits1.length+searchHits2.length];
+					System.arraycopy(searchHits1, 0, searchHits, 0, searchHits1.length);
+					System.arraycopy(searchHits2, 0, searchHits, searchHits1.length, searchHits2.length);
+
+					if (searchHits != null && searchHits.length > 0)
+						return new SearchTaskResult(text, index, searchHits);
+				}
+				return null;
+			}
+
+
+			@Override
+			protected void onPostExecute(SearchTaskResult result) {
+				progressDialog.cancel();
+				if (result != null) {
+				    onTextFound(result);
+				}
+			}
+
+			@Override
+			protected void onCancelled() {
+				progressDialog.cancel();
+			}
+
+			@Override
+			protected void onProgressUpdate(Integer... values) {
+				progressDialog.setProgress(values[0].intValue());
+			}
+
+			@Override
+			protected void onPreExecute() {
+				super.onPreExecute();
+				mHandler.postDelayed(new Runnable() {
+					public void run() {
+						if (!progressDialog.isCancelled())
+						{
+							progressDialog.show();
+							progressDialog.setProgress(startIndex);
+						}
+					}
+				}, SEARCH_PROGRESS_DELAY);
+			}
+		};
+
+		mSearchTask.execute();
+	}
 }

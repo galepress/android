@@ -51,7 +51,7 @@ public class LibraryFragment extends Fragment {
     public BannerAndTabbarWebView bannerWebView;
     public BannerAndTabbarWebViewWithCrosswalk bannerWebViewWithCrosswalk;
     private LayoutInflater layoutInflater;
-    private boolean isOnlyDownloaded;
+    public boolean isOnlyDownloaded;
     private List contents;
     public String searchQuery = new String("");
     ArrayList<L_Category> selectedCategories;
@@ -344,6 +344,7 @@ public class LibraryFragment extends Fragment {
             GalePressApplication.getInstance().getDataApi().updateApplication();
         }
     }
+
 
     public void viewContentDetail(L_Content content, float xPoint, float yPoint){
         if(content!=null){

@@ -54,6 +54,7 @@ import java.util.TimeZone;
 import java.util.UUID;
 
 import ak.detaysoft.galepress.custom_models.ApplicationPlist;
+import ak.detaysoft.galepress.search_models.SearchResult;
 import ak.detaysoft.galepress.custom_models.Subscription;
 import ak.detaysoft.galepress.custom_models.TabbarItem;
 import ak.detaysoft.galepress.custom_models.UserInformations;
@@ -143,6 +144,8 @@ public class GalePressApplication
     private String ageVerificationQuestion = "";
     private boolean isAgeVerificationActive = false;
     private boolean applicationHaveActiveSubscription;
+    private SearchResult menuSearchResult;
+
 
     Foreground.Listener myListener = new Foreground.Listener() {
         public void onBecameForeground() {
@@ -1241,6 +1244,14 @@ public class GalePressApplication
         this.subscriptions = subscriptions;
     }
 
+    public SearchResult getMenuSearchResult() {
+        return menuSearchResult;
+    }
+
+    public void setMenuSearchResults(SearchResult menuSearchResult) {
+        this.menuSearchResult = menuSearchResult;
+    }
+
     private void getlocalActiveSubscripton() {
         SharedPreferences preferences = getSharedPreferences("ak.detaysoft.galepress", Context.MODE_PRIVATE);
         userHaveActiveSubscription = preferences.getBoolean("userHaveActiveSubscription", false);
@@ -1306,4 +1317,5 @@ public class GalePressApplication
     public boolean isAgeVerificationActive() {
         return isAgeVerificationActive;
     }
+
 }

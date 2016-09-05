@@ -859,8 +859,11 @@ public abstract class PageView extends ViewGroup {
 
 	public void setSearchBoxes(RectF searchBoxes[]) {
 		mSearchBoxes = searchBoxes;
-		if (mSearchView != null)
+		if (mSearchView != null) {
 			mSearchView.invalidate();
+			mSearchView.setBackgroundColor(Color.parseColor("#00000000"));
+			//mSearchView.bringToFront();
+		}
 	}
 
 	public void setLinkHighlighting(boolean f) {

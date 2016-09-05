@@ -63,6 +63,7 @@ public class L_Content implements Serializable {
     @DatabaseField private String categoryIds;
     @DatabaseField private String marketPrice;
     @DatabaseField private boolean contentBought;
+    @DatabaseField private boolean contentStatus;
 
     private ArrayList<L_Category> categories;
     private String pdfPath;
@@ -395,8 +396,15 @@ public class L_Content implements Serializable {
         this.marketPrice = marketPrice;
     }
 
+    public boolean isContentStatus() {
+        return contentStatus;
+    }
 
-    // Model Methods
+    public void setContentStatus(boolean contentStatus) {
+        this.contentStatus = contentStatus;
+    }
+
+// Model Methods
 
     public L_Content(R_ContentDetail remoteContent){
         this.id = remoteContent.getContentID();
@@ -442,6 +450,7 @@ public class L_Content implements Serializable {
         for(R_Category item : remoteContent.getContentCategories())
             categories.add(new L_Category(item.getCategoryID(), item.getCategoryName()));
         this.categoryIds = prepareCategoryIdsJson();
+        this.contentStatus = remoteContent.getContentStatus();
     }
 
     public String prepareCategoryIdsJson(){
@@ -487,6 +496,7 @@ public class L_Content implements Serializable {
         for(R_Category item : remoteContent.getContentCategories())
             categories.add(new L_Category(item.getCategoryID(), item.getCategoryName()));
         this.categoryIds = prepareCategoryIdsJson();
+        this.contentStatus = remoteContent.getContentStatus();
     }
 
     public void updateWithImageDownloadUrl(String url, boolean isLargeCover){
@@ -533,6 +543,7 @@ public class L_Content implements Serializable {
                 ", largeCoverImageDownloadPath='"+largeCoverImageDownloadPath+'\''+
                 ", smallCoverImageDownloadPath='"+smallCoverImageDownloadPath+'\''+
                 ", isForceDetele=" + isForceDetele +
+                ", contentStatus=" + contentStatus +
                 ", contentBought=" + contentBought +
                 ", identifier='"+identifier+'\''+
                 ", isOwnedProduct=" + isOwnedProduct +
