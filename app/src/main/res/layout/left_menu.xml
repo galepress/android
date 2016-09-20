@@ -91,7 +91,16 @@
                         android:id="@+id/search_result_item_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="40dp">
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/search_recycler_view"
+                            android:scrollbars="vertical"
+                            android:scrollbarSize="0dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
 
                     </LinearLayout>
                     <ImageView

@@ -54,7 +54,6 @@ import java.util.TimeZone;
 import java.util.UUID;
 
 import ak.detaysoft.galepress.custom_models.ApplicationPlist;
-import ak.detaysoft.galepress.search_models.SearchResult;
 import ak.detaysoft.galepress.custom_models.Subscription;
 import ak.detaysoft.galepress.custom_models.TabbarItem;
 import ak.detaysoft.galepress.custom_models.UserInformations;
@@ -62,6 +61,7 @@ import ak.detaysoft.galepress.database_models.L_Application;
 import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.database_models.L_Statistic;
 import ak.detaysoft.galepress.database_models.TestApplicationInf;
+import ak.detaysoft.galepress.search_models.MenuSearchResult;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
 import ak.detaysoft.galepress.util.MyImageDecoder;
 import io.fabric.sdk.android.Fabric;
@@ -144,7 +144,7 @@ public class GalePressApplication
     private String ageVerificationQuestion = "";
     private boolean isAgeVerificationActive = false;
     private boolean applicationHaveActiveSubscription;
-    private SearchResult menuSearchResult;
+    private ArrayList<MenuSearchResult> menuSearchResult;
 
 
     Foreground.Listener myListener = new Foreground.Listener() {
@@ -1244,11 +1244,11 @@ public class GalePressApplication
         this.subscriptions = subscriptions;
     }
 
-    public SearchResult getMenuSearchResult() {
+    public ArrayList<MenuSearchResult> getMenuSearchResult() {
         return menuSearchResult;
     }
 
-    public void setMenuSearchResults(SearchResult menuSearchResult) {
+    public void setMenuSearchResult(ArrayList<MenuSearchResult> menuSearchResult) {
         this.menuSearchResult = menuSearchResult;
     }
 

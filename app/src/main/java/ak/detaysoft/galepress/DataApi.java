@@ -80,10 +80,8 @@ import ak.detaysoft.galepress.database_models.L_Category;
 import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.database_models.L_ContentCategory;
 import ak.detaysoft.galepress.database_models.L_Statistic;
-import ak.detaysoft.galepress.search_models.ContentSearchResult;
-import ak.detaysoft.galepress.search_models.FullTextSearchPageItem;
-import ak.detaysoft.galepress.search_models.SearchResult;
-import ak.detaysoft.galepress.search_models.TextSearchResult;
+import ak.detaysoft.galepress.search_models.ReaderSearchResult;
+import ak.detaysoft.galepress.search_models.MenuSearchResult;
 import ak.detaysoft.galepress.service_models.R_AppCategories;
 import ak.detaysoft.galepress.service_models.R_AppContents;
 import ak.detaysoft.galepress.service_models.R_AppDetail;
@@ -2429,7 +2427,8 @@ public class DataApi extends Object {
         requestQueue.add(request);
     }
 
-    public void fullTextSearch(final String text, final MainActivity mainActivity) {
+
+    public void fullTextSearch(final String text, final MainActivity mainActivity){
         GalePressApplication application = GalePressApplication.getInstance();
         Integer applicationId;
         RequestQueue requestQueue = application.getRequestQueue();
@@ -2454,29 +2453,38 @@ public class DataApi extends Object {
                         }*/
                         try {
                             if (response != null && response.getInt("status") == 1) {
-                                GalePressApplication.getInstance().setMenuSearchResults(new SearchResult());
+                                GalePressApplication.getInstance().setMenuSearchResult(new ArrayList<MenuSearchResult>());
+                                ArrayList<MenuSearchResult> contentList = new ArrayList<MenuSearchResult>();
                                 List contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(text);
+                                if (contents.size() > 0) {
+                                    for (int i = 0; i < contents.size(); i++) {
+                                        MenuSearchResult temp = new MenuSearchResult();
+                                        temp.setContentId(((L_Content) contents.get(i)).getId().toString());
+                                        temp.setContentTitle(((L_Content) contents.get(i)).getName());
+                                        temp.setPage(-1);
+                                        GalePressApplication.getInstance().getMenuSearchResult().add(temp);
+                                    }
+                                }
+
                                 JSONArray result = response.getJSONArray("result");
 
-                                TextSearchResult textSearchResult;
-                                FullTextSearchPageItem pageItem;
                                 for (int i = 0; i < result.length(); i++) {
                                     try {
                                         JSONObject jsonObjectItem = result.getJSONObject(i);
-                                        pageItem = new FullTextSearchPageItem();
-                                        pageItem.setUdid(UUID.randomUUID().toString());
-                                        pageItem.setPage(jsonObjectItem.getInt("page"));
-                                        pageItem.setText(jsonObjectItem.getString("highlightedText"));
 
-                                        textSearchResult = new TextSearchResult();
-                                        if (GalePressApplication.getInstance().getMenuSearchResult().getTextSearchList().size() != 0) {
-                                            ArrayList<TextSearchResult> tempArray = new ArrayList<TextSearchResult>();
-                                            tempArray.addAll(GalePressApplication.getInstance().getMenuSearchResult().getTextSearchList());
+                                        if (contentList.size() != 0) {
 
                                             boolean isArrayContainsContent = true;
-                                            for (int j = 0; j < tempArray.size(); j++) {
-                                                if (tempArray.get(j).getContentId().contains(jsonObjectItem.getString("contentId"))) {
-                                                    GalePressApplication.getInstance().getMenuSearchResult().getTextSearchList().get(j).getPageItems().add(pageItem);
+                                            for (int j = 0; j < contentList.size(); j++) {
+                                                if (contentList.get(j).getContentId().contains(jsonObjectItem.getString("contentId"))) {
+
+                                                    MenuSearchResult temp = new MenuSearchResult();
+                                                    temp.setContentId(jsonObjectItem.getString("contentId"));
+                                                    temp.setContentTitle(jsonObjectItem.getString("contentId"));
+                                                    temp.setPage(jsonObjectItem.getInt("page"));
+                                                    temp.setText(jsonObjectItem.getString("highlightedText"));
+                                                    GalePressApplication.getInstance().getMenuSearchResult().add(temp);
+
                                                     isArrayContainsContent = true;
                                                 } else {
                                                     isArrayContainsContent = false;
@@ -2486,21 +2494,37 @@ public class DataApi extends Object {
                                             if (!isArrayContainsContent) {
                                                 L_Content content = GalePressApplication.getInstance().getDatabaseApi().getContent(Integer.parseInt(jsonObjectItem.getString("contentId")));
                                                 if (content != null && content.isContentStatus()) {
-                                                    textSearchResult.setContentId(jsonObjectItem.getString("contentId"));
-                                                    textSearchResult.setContentTitle(content.getName());
-                                                    textSearchResult.setDownloaded(content.isPdfDownloaded());
-                                                    textSearchResult.getPageItems().add(pageItem);
-                                                    GalePressApplication.getInstance().getMenuSearchResult().getTextSearchList().add(textSearchResult);
+                                                    MenuSearchResult temp = new MenuSearchResult();
+                                                    temp.setContentId(content.getId().toString());
+                                                    temp.setContentTitle(content.getName());
+                                                    temp.setPage(-1);
+                                                    GalePressApplication.getInstance().getMenuSearchResult().add(temp);
+                                                    contentList.add(temp);
+
+                                                    MenuSearchResult temp2 = new MenuSearchResult();
+                                                    temp2.setContentId(content.getId().toString());
+                                                    temp2.setContentTitle(content.getName());
+                                                    temp2.setPage(jsonObjectItem.getInt("page"));
+                                                    temp2.setText(jsonObjectItem.getString("highlightedText"));
+                                                    GalePressApplication.getInstance().getMenuSearchResult().add(temp2);
                                                 }
                                             }
                                         } else {
                                             L_Content content = GalePressApplication.getInstance().getDatabaseApi().getContent(Integer.parseInt(jsonObjectItem.getString("contentId")));
                                             if (content != null && content.isContentStatus()) {
-                                                textSearchResult.setContentId(jsonObjectItem.getString("contentId"));
-                                                textSearchResult.setContentTitle(content.getName());
-                                                textSearchResult.setDownloaded(content.isPdfDownloaded());
-                                                textSearchResult.getPageItems().add(pageItem);
-                                                GalePressApplication.getInstance().getMenuSearchResult().getTextSearchList().add(textSearchResult);
+                                                MenuSearchResult temp = new MenuSearchResult();
+                                                temp.setContentId(content.getId().toString());
+                                                temp.setContentTitle(content.getName());
+                                                temp.setPage(-1);
+                                                GalePressApplication.getInstance().getMenuSearchResult().add(temp);
+                                                contentList.add(temp);
+
+                                                MenuSearchResult temp2 = new MenuSearchResult();
+                                                temp2.setContentId(content.getId().toString());
+                                                temp2.setContentTitle(content.getName());
+                                                temp2.setPage(jsonObjectItem.getInt("page"));
+                                                temp2.setText(jsonObjectItem.getString("highlightedText"));
+                                                GalePressApplication.getInstance().getMenuSearchResult().add(temp2);
                                             }
                                         }
 
@@ -2509,41 +2533,33 @@ public class DataApi extends Object {
                                     }
                                 }
 
-
-                                for (int i = 0; i < contents.size(); i++) {
-                                    ContentSearchResult content = new ContentSearchResult();
-                                    content.setContentId(((L_Content) contents.get(i)).getId().toString());
-                                    content.setContentTitle(((L_Content) contents.get(i)).getName());
-                                    GalePressApplication.getInstance().getMenuSearchResult().getContentSearchList().add(content);
-                                }
-
                                 mainActivity.complateSearch();
                             } else {
-                                GalePressApplication.getInstance().setMenuSearchResults(new SearchResult());
+                                GalePressApplication.getInstance().setMenuSearchResult(new ArrayList<MenuSearchResult>());
                                 List contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(text);
                                 if (contents.size() > 0) {
                                     for (int i = 0; i < contents.size(); i++) {
-                                        ContentSearchResult content = new ContentSearchResult();
-                                        content.setContentId(((L_Content) contents.get(i)).getId().toString());
-                                        content.setContentTitle(((L_Content) contents.get(i)).getName());
-                                        GalePressApplication.getInstance().getMenuSearchResult().getContentSearchList().add(content);
+                                        MenuSearchResult temp = new MenuSearchResult();
+                                        temp.setContentId(((L_Content) contents.get(i)).getId().toString());
+                                        temp.setContentTitle(((L_Content) contents.get(i)).getName());
+                                        temp.setPage(-1);
+                                        GalePressApplication.getInstance().getMenuSearchResult().add(temp);
                                     }
                                 }
-
                                 mainActivity.complateSearch();
                             }
                         } catch (Exception e) {
-                            GalePressApplication.getInstance().setMenuSearchResults(new SearchResult());
+                            GalePressApplication.getInstance().setMenuSearchResult(new ArrayList<MenuSearchResult>());
                             List contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(text);
                             if (contents.size() > 0) {
                                 for (int i = 0; i < contents.size(); i++) {
-                                    ContentSearchResult content = new ContentSearchResult();
-                                    content.setContentId(((L_Content) contents.get(i)).getId().toString());
-                                    content.setContentTitle(((L_Content) contents.get(i)).getName());
-                                    GalePressApplication.getInstance().getMenuSearchResult().getContentSearchList().add(content);
+                                    MenuSearchResult temp = new MenuSearchResult();
+                                    temp.setContentId(((L_Content) contents.get(i)).getId().toString());
+                                    temp.setContentTitle(((L_Content) contents.get(i)).getName());
+                                    temp.setPage(-1);
+                                    GalePressApplication.getInstance().getMenuSearchResult().add(temp);
                                 }
                             }
-
                             mainActivity.complateSearch();
                         }
                     }
@@ -2551,20 +2567,17 @@ public class DataApi extends Object {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        /*if(mainActivity.searchDialog.isShowing()) {
-                            Alltaki kod buradaydi
-                        } */
-                        GalePressApplication.getInstance().setMenuSearchResults(new SearchResult());
+                        GalePressApplication.getInstance().setMenuSearchResult(new ArrayList<MenuSearchResult>());
                         List contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(text);
                         if (contents.size() > 0) {
                             for (int i = 0; i < contents.size(); i++) {
-                                ContentSearchResult content = new ContentSearchResult();
-                                content.setContentId(((L_Content) contents.get(i)).getId().toString());
-                                content.setContentTitle(((L_Content) contents.get(i)).getName());
-                                GalePressApplication.getInstance().getMenuSearchResult().getContentSearchList().add(content);
+                                MenuSearchResult temp = new MenuSearchResult();
+                                temp.setContentId(((L_Content) contents.get(i)).getId().toString());
+                                temp.setContentTitle(((L_Content) contents.get(i)).getName());
+                                temp.setPage(-1);
+                                GalePressApplication.getInstance().getMenuSearchResult().add(temp);
                             }
                         }
-
                         mainActivity.complateSearch();
                     }
                 }
@@ -2601,44 +2614,35 @@ public class DataApi extends Object {
                         if(muPDFActivity.searchDialog.isShowing()) {
                             try {
                                 if (response != null && response.getInt("status") == 1) {
-                                    muPDFActivity.setReaderSearchResult(new SearchResult());
+                                    muPDFActivity.setReaderSearchResult(new ArrayList<ReaderSearchResult>());
                                     JSONArray result = response.getJSONArray("result");
                                     L_Content content = GalePressApplication.getInstance().getDatabaseApi().getContent(Integer.valueOf(contentId));
 
-                                    TextSearchResult textSearchResult;
-                                    FullTextSearchPageItem pageItem;
+                                    ReaderSearchResult pageItem;
                                     for (int i = 0; i < result.length(); i++) {
                                         try {
                                             JSONObject jsonObjectItem = result.getJSONObject(i);
-                                            textSearchResult = new TextSearchResult();
-                                            pageItem = new FullTextSearchPageItem();
-
+                                            pageItem = new ReaderSearchResult();
 
                                             if(content != null) {
-                                                pageItem.setUdid(UUID.randomUUID().toString());
                                                 pageItem.setPage(jsonObjectItem.getInt("page"));
                                                 pageItem.setText(jsonObjectItem.getString("highlightedText"));
-
-                                                textSearchResult.setContentId(jsonObjectItem.getString("contentId"));
-                                                textSearchResult.setContentTitle(content.getName());
-                                                textSearchResult.setDownloaded(content.isPdfDownloaded());
-                                                textSearchResult.getPageItems().add(pageItem);
-                                                muPDFActivity.getReaderSearchResult().getTextSearchList().add(textSearchResult);
+                                                muPDFActivity.getReaderSearchResult().add(pageItem);
                                             }
 
                                         } catch (JSONException e) {
                                             e.printStackTrace();
-                                            muPDFActivity.setReaderSearchResult(new SearchResult());
+                                            muPDFActivity.setReaderSearchResult(new ArrayList<ReaderSearchResult>());
                                             muPDFActivity.complateSearch(true);
                                         }
                                     }
                                     muPDFActivity.complateSearch(true);
                                 } else {
-                                    muPDFActivity.setReaderSearchResult(new SearchResult());
+                                    muPDFActivity.setReaderSearchResult(new ArrayList<ReaderSearchResult>());
                                     muPDFActivity.complateSearch(true);
                                 }
                             } catch (Exception e) {
-                                muPDFActivity.setReaderSearchResult(new SearchResult());
+                                muPDFActivity.setReaderSearchResult(new ArrayList<ReaderSearchResult>());
                                 muPDFActivity.complateSearch(true);
                             }
                         }
@@ -2649,7 +2653,7 @@ public class DataApi extends Object {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         if(muPDFActivity.searchDialog.isShowing()) {
-                            muPDFActivity.setReaderSearchResult(new SearchResult());
+                            muPDFActivity.setReaderSearchResult(new ArrayList<ReaderSearchResult>());
                             muPDFActivity.complateSearch(true);
                         }
                     }

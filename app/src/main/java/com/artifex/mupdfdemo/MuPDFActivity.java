@@ -22,7 +22,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.PowerManager;
 import android.provider.Settings;
 import android.text.Editable;
@@ -85,8 +84,7 @@ import ak.detaysoft.galepress.R;
 import ak.detaysoft.galepress.custom_models.TabbarItem;
 import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.database_models.L_Statistic;
-import ak.detaysoft.galepress.search_models.SearchResult;
-import ak.detaysoft.galepress.search_models.TextSearchResult;
+import ak.detaysoft.galepress.search_models.ReaderSearchResult;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
 import ak.detaysoft.galepress.util.ReaderTabbarStateList;
 
@@ -173,7 +171,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
     public ProgressDialog searchDialog;
     private EditText popupSearchText;
     private String readerSearchWord;
-    private SearchResult readerSearchResult;
+    private ArrayList<ReaderSearchResult> readerSearchResult;
 
 
     public void createAlertWaiter() {
@@ -738,7 +736,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                     searchDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
                         @Override
                         public void onCancel(DialogInterface dialog) {
-                            setReaderSearchResult(new SearchResult());
+                            setReaderSearchResult(new ArrayList<ReaderSearchResult>());
                             complateSearch(false);
                         }
                     });
@@ -759,7 +757,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                     searchDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
                         @Override
                         public void onCancel(DialogInterface dialog) {
-                            setReaderSearchResult(new SearchResult());
+                            setReaderSearchResult(new ArrayList<ReaderSearchResult>());
                             complateSearch(false);
                         }
                     });
@@ -2398,7 +2396,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         * */
         popupSearchText.setText("");
         readerSearchWord = popupSearchText.getText().toString();
-        setReaderSearchResult(new SearchResult());
+        setReaderSearchResult(new ArrayList<ReaderSearchResult>());
         complateSearch(false);
     }
 
@@ -2481,7 +2479,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         popupSearchText.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(this));
         popupSearchText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                if (actionId == EditorInfo.IME_ACTION_DONE  && popupSearchText.getText().length() > 0) {
                     //search(1);
                     searchDialog = new ProgressDialog(MuPDFActivity.this);
                     searchDialog.setMessage(getResources().getString(R.string.search));
@@ -2489,7 +2487,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                     searchDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
                         @Override
                         public void onCancel(DialogInterface dialog) {
-                            setReaderSearchResult(new SearchResult());
+                            setReaderSearchResult(new ArrayList<ReaderSearchResult>());
                             complateSearch(false);
                         }
                     });
@@ -2502,7 +2500,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         });
         popupSearchText.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER && popupSearchText.getText().length() > 0) {
                     //search(1);
                     searchDialog = new ProgressDialog(MuPDFActivity.this);
                     searchDialog.setMessage(getResources().getString(R.string.search));
@@ -2510,7 +2508,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                     searchDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
                         @Override
                         public void onCancel(DialogInterface dialog) {
-                            setReaderSearchResult(new SearchResult());
+                            setReaderSearchResult(new ArrayList<ReaderSearchResult>());
                             complateSearch(false);
                         }
                     });
@@ -2542,29 +2540,33 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                 * */
                 popupSearchText.setText("");
                 readerSearchWord = popupSearchText.getText().toString();
-                setReaderSearchResult(new SearchResult());
+                setReaderSearchResult(new ArrayList<ReaderSearchResult>());
                 complateSearch(false);
             }
         });
 
 
         searhResultList = ((ListView) layout.findViewById(R.id.reader_search_list));
-        if(readerSearchResult != null)
-            searchAdapter = new SearchResultAdapter(readerSearchResult.getTextSearchList(), this);
-        else
-            searchAdapter = new SearchResultAdapter(new ArrayList<TextSearchResult>(), this);
+        if(readerSearchResult != null) {
+            searchAdapter = new SearchResultAdapter(readerSearchResult, MuPDFActivity.this);
+        }
+        else {
+            searchAdapter = new SearchResultAdapter(new ArrayList<ReaderSearchResult>(), this);
+        }
         searhResultList.setAdapter(searchAdapter);
         searhResultList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
-                    mDocView.setDisplayedViewIndex(core.convertIndexes(readerSearchResult.getTextSearchList().get(position).getPageItems().get(0).getPage() - 1, lastPortraitPageIndex, true));
-                } else {
-                    lastPortraitPageIndex = readerSearchResult.getTextSearchList().get(position).getPageItems().get(0).getPage() - 1;
-                    mDocView.setDisplayedViewIndex(readerSearchResult.getTextSearchList().get(position).getPageItems().get(0).getPage() - 1);
+                if(readerSearchResult != null && readerSearchResult != null && readerSearchResult.size() > position) {
+                    if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+                        mDocView.setDisplayedViewIndex(core.convertIndexes(readerSearchResult.get(position).getPage() - 1, lastPortraitPageIndex, true));
+                    } else {
+                        lastPortraitPageIndex = readerSearchResult.get(position).getPage() - 1;
+                        mDocView.setDisplayedViewIndex(readerSearchResult.get(position).getPage() - 1);
+                    }
+                    search(1, popupSearchText.getText().toString());
+                    popup.dismiss();
                 }
-                search(1, popupSearchText.getText().toString());
-                popup.dismiss();
             }
         });
 
@@ -2588,13 +2590,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
         popup.showAsDropDown(mTopBarSwitcher, 0, -mTopBarSwitcher.getHeight());
 
-        new Handler(Looper.getMainLooper()).post(new Runnable() {
-            @Override
-            public void run() {
-                //complateSearch(false);
-            }
-        });
-
     }
 
     public void complateSearch(boolean showNotFoundMessage) {
@@ -2603,13 +2598,13 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             searchDialog.dismiss();
         }
         if (searchAdapter != null && readerSearchResult != null
-                && readerSearchResult.getTextSearchList() != null
-                && readerSearchResult.getTextSearchList().size() > 0) {
-            searchAdapter.textSearchList = readerSearchResult.getTextSearchList();
+                && readerSearchResult != null
+                && readerSearchResult.size() > 0) {
+            searchAdapter.textSearchList = readerSearchResult;
             searchAdapter.notifyDataSetChanged();
         } else {
             if(searchAdapter != null && searhResultList != null) {
-                searchAdapter.textSearchList = new ArrayList<TextSearchResult>();
+                searchAdapter.textSearchList = new ArrayList<ReaderSearchResult>();
                 searchAdapter.notifyDataSetChanged();
             }
             if (showNotFoundMessage) {
@@ -2621,10 +2616,10 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
     public class SearchResultAdapter extends BaseAdapter {
 
-        private ArrayList<TextSearchResult> textSearchList;
+        private ArrayList<ReaderSearchResult> textSearchList;
         private Context mContext;
 
-        public SearchResultAdapter(ArrayList<TextSearchResult> textSearchList, Context mContext) {
+        public SearchResultAdapter(ArrayList<ReaderSearchResult> textSearchList, Context mContext) {
             this.mContext = mContext;
             this.textSearchList = textSearchList;
         }
@@ -2651,15 +2646,15 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                         mContext.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
                 convertView = mInflater.inflate(R.layout.reader_search_listview_item, null);
             }
-            TextSearchResult pageItem = textSearchList.get(position);
+            ReaderSearchResult pageItem = textSearchList.get(position);
             TextView title = ((TextView) convertView.findViewById(R.id.reader_search_result_page_title));
-            title.setText(Html.fromHtml(pageItem.getPageItems().get(0).getText()));
+            title.setText(Html.fromHtml(pageItem.getText()));
             title.setTextColor(ApplicationThemeColor.getInstance().getReaderSearchResultTextColor());
             title.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(mContext));
 
 
             TextView page = ((TextView) convertView.findViewById(R.id.reader_search_result_page_page));
-            page.setText("" + (pageItem.getPageItems().get(0).getPage()));
+            page.setText("" + (pageItem.getPage()));
             page.setTextColor(ApplicationThemeColor.getInstance().getReaderSearchResultTextColor());
             page.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(mContext));
 
@@ -2863,11 +2858,11 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         startActivityForResult(intent, FILEPICK_REQUEST);
     }
 
-    public void setReaderSearchResult(SearchResult readerSearchResult) {
-        this.readerSearchResult = readerSearchResult;
+    public ArrayList<ReaderSearchResult> getReaderSearchResult() {
+        return readerSearchResult;
     }
 
-    public SearchResult getReaderSearchResult() {
-        return readerSearchResult;
+    public void setReaderSearchResult(ArrayList<ReaderSearchResult> readerSearchResult) {
+        this.readerSearchResult = readerSearchResult;
     }
 }

@@ -29,6 +29,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
@@ -40,12 +42,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -92,10 +96,7 @@ import ak.detaysoft.galepress.custom_models.TabbarItem;
 import ak.detaysoft.galepress.database_models.L_Category;
 import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.database_models.L_Statistic;
-import ak.detaysoft.galepress.search_models.ContentSearchResult;
-import ak.detaysoft.galepress.search_models.FullTextSearchPageItem;
-import ak.detaysoft.galepress.search_models.SearchResult;
-import ak.detaysoft.galepress.search_models.TextSearchResult;
+import ak.detaysoft.galepress.search_models.MenuSearchResult;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
 import ak.detaysoft.galepress.util.TabbarStateList;
 import ak.detaysoft.galepress.web_views.ExtraWebViewActivity;
@@ -388,38 +389,26 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE && searchEdittext.getText().length() > 0) {
 
-                    GalePressApplication.getInstance().setMenuSearchResults(new SearchResult());
+                    //GalePressApplication.getInstance().setMenuSearchResults(new SearchResult());
+                    GalePressApplication.getInstance().setMenuSearchResult(new ArrayList<MenuSearchResult>());
                     List contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(searchEdittext.getText().toString());
                     for (int i = 0; i < contents.size(); i++) {
-                        ContentSearchResult content = new ContentSearchResult();
+                        /*ResultForContent content = new ResultForContent();
                         content.setContentId(((L_Content) contents.get(i)).getId().toString());
                         content.setContentTitle(((L_Content) contents.get(i)).getName());
-                        GalePressApplication.getInstance().getMenuSearchResult().getContentSearchList().add(content);
+                        GalePressApplication.getInstance().getMenuSearchResult().getContentSearchList().add(content);*/
+
+                        MenuSearchResult temp = new MenuSearchResult();
+                        temp.setContentId(((L_Content) contents.get(i)).getId().toString());
+                        temp.setContentTitle(((L_Content) contents.get(i)).getName());
+                        temp.setPage(-1);
+                        GalePressApplication.getInstance().getMenuSearchResult().add(temp);
+
                     }
                     complateSearch();
 
+                    //GalePressApplication.getInstance().getDataApi().fullTextSearch(searchEdittext.getText().toString(), MainActivity.this);
                     GalePressApplication.getInstance().getDataApi().fullTextSearch(searchEdittext.getText().toString(), MainActivity.this);
-                    /*
-                    searchDialog = new ProgressDialog(MainActivity.this);
-                    searchDialog.setMessage(getResources().getString(R.string.search));
-                    searchDialog.setCancelable(true);
-                    searchDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-                        @Override
-                        public void onCancel(DialogInterface dialog) {
-                            List contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(searchEdittext.getText().toString());
-                            for (int i = 0; i < contents.size(); i++) {
-                                ContentSearchResult content = new ContentSearchResult();
-                                content.setContentId(((L_Content) contents.get(i)).getId().toString());
-                                content.setContentTitle(((L_Content) contents.get(i)).getName());
-                                GalePressApplication.getInstance().getMenuSearchResult().getContentSearchList().add(content);
-                            }
-                            complateSearch();
-                        }
-                    });
-                    searchDialog.show();
-
-                    GalePressApplication.getInstance().getDataApi().fullTextSearch(searchEdittext.getText().toString(), MainActivity.this);
-                    */
                 }
                 return false;
             }
@@ -429,38 +418,26 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER && searchEdittext.getText().length() > 0) {
 
-                    GalePressApplication.getInstance().setMenuSearchResults(new SearchResult());
+                    //GalePressApplication.getInstance().setMenuSearchResults(new SearchResult());
+                    GalePressApplication.getInstance().setMenuSearchResult(new ArrayList<MenuSearchResult>());
                     List contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(searchEdittext.getText().toString());
                     for (int i = 0; i < contents.size(); i++) {
-                        ContentSearchResult content = new ContentSearchResult();
+                        /*ResultForContent content = new ResultForContent();
                         content.setContentId(((L_Content) contents.get(i)).getId().toString());
                         content.setContentTitle(((L_Content) contents.get(i)).getName());
-                        GalePressApplication.getInstance().getMenuSearchResult().getContentSearchList().add(content);
+                        GalePressApplication.getInstance().getMenuSearchResult().getContentSearchList().add(content);*/
+
+                        MenuSearchResult temp = new MenuSearchResult();
+                        temp.setContentId(((L_Content) contents.get(i)).getId().toString());
+                        temp.setContentTitle(((L_Content) contents.get(i)).getName());
+                        temp.setPage(-1);
+                        GalePressApplication.getInstance().getMenuSearchResult().add(temp);
+
                     }
                     complateSearch();
 
+                    //GalePressApplication.getInstance().getDataApi().fullTextSearch(searchEdittext.getText().toString(), MainActivity.this);
                     GalePressApplication.getInstance().getDataApi().fullTextSearch(searchEdittext.getText().toString(), MainActivity.this);
-                    /*
-                    searchDialog = new ProgressDialog(MainActivity.this);
-                    searchDialog.setMessage(getResources().getString(R.string.search));
-                    searchDialog.setCancelable(true);
-                    searchDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-                        @Override
-                        public void onCancel(DialogInterface dialog) {
-                            List contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(searchEdittext.getText().toString());
-                            for (int i = 0; i < contents.size(); i++) {
-                                ContentSearchResult content = new ContentSearchResult();
-                                content.setContentId(((L_Content) contents.get(i)).getId().toString());
-                                content.setContentTitle(((L_Content) contents.get(i)).getName());
-                                GalePressApplication.getInstance().getMenuSearchResult().getContentSearchList().add(content);
-                            }
-                            complateSearch();
-                        }
-                    });
-                    searchDialog.show();
-
-                    GalePressApplication.getInstance().getDataApi().fullTextSearch(searchEdittext.getText().toString(), MainActivity.this);
-                    */
                 }
                 return false;
             }
@@ -524,7 +501,8 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             @Override
             public void onClick(View v) {
                 searchEdittext.setText("");
-                GalePressApplication.getInstance().setMenuSearchResults(null);
+                //GalePressApplication.getInstance().setMenuSearchResults(null);
+                GalePressApplication.getInstance().setMenuSearchResult(null);
                 complateSearch();
             }
         });
@@ -1799,101 +1777,135 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     }
 
     public void complateSearch() {
-        /*if (searchDialog != null)
-            searchDialog.dismiss();*/
-        LinearLayout itemView = (LinearLayout) findViewById(R.id.search_result_item_layout);
         LinearLayout baseView = (LinearLayout) findViewById(R.id.search_result_layout);
-        if (itemView.getChildCount() > 0) {
-            itemView.removeAllViews();
-        }
-        if (GalePressApplication.getInstance().getMenuSearchResult() != null
-                && (GalePressApplication.getInstance().getMenuSearchResult().getContentSearchList().size() > 0
-                || GalePressApplication.getInstance().getMenuSearchResult().getTextSearchList().size() > 0)) {
-
+        RecyclerView list = (RecyclerView) findViewById(R.id.search_recycler_view);
+        if (GalePressApplication.getInstance().getMenuSearchResult() != null && GalePressApplication.getInstance().getMenuSearchResult().size() > 0) {
             baseView.setVisibility(View.VISIBLE);
             findViewById(R.id.search_result_layout_divider).setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
-            for (final ContentSearchResult result : GalePressApplication.getInstance().getMenuSearchResult().getContentSearchList()) {
-
-                //lokal arama sonucu
-                LayoutInflater factory = LayoutInflater.from(this);
-                View contentSearchView = factory.inflate(R.layout.search_result_content, null);
-                TextView title = ((TextView) contentSearchView.findViewById(R.id.search_result_content_title));
-                title.setText(result.getContentTitle());
-                title.setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
-                title.setTypeface(ApplicationThemeColor.getInstance().getOpenSansBold(this));
-                contentSearchView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        L_Content content = GalePressApplication.getInstance().getDatabaseApi().getContent(Integer.valueOf(result.getContentId()));
-                        if (content != null) {
-                            openContentDetail(content);
-                            mDrawer.closeMenu(true);
-                        } else {
-                            Toast.makeText(MainActivity.this, MainActivity.this.getResources().getString(R.string.cannot_open_document), Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-                });
-                itemView.addView(contentSearchView);
+            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+            list.setLayoutManager(mLayoutManager);
+            if(list.getAdapter() != null) {
+                ((SearchAdapter)list.getAdapter()).searchList = GalePressApplication.getInstance().getMenuSearchResult();
+                ((RecyclerView.Adapter)list.getAdapter()).notifyDataSetChanged();
+            } else {
+                SearchAdapter mAdapter = new SearchAdapter(GalePressApplication.getInstance().getMenuSearchResult());
+                list.setAdapter(mAdapter);
             }
 
-            for (final TextSearchResult result : GalePressApplication.getInstance().getMenuSearchResult().getTextSearchList()) {
-                //her bir arama icin content baslik ekleniyor
-                LayoutInflater factory = LayoutInflater.from(this);
-                View searchView = factory.inflate(R.layout.search_result_content, null);
-                TextView contentTitle = ((TextView) searchView.findViewById(R.id.search_result_content_title));
-                contentTitle.setText(result.getContentTitle());
-                contentTitle.setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
-                contentTitle.setTypeface(ApplicationThemeColor.getInstance().getOpenSansBold(this));
-                itemView.addView(searchView);
-
-                for (final FullTextSearchPageItem pageItem : result.getPageItems()) {
-                    //servis sonucu
-                    LayoutInflater itemFactory = LayoutInflater.from(this);
-                    View itemSearchView = itemFactory.inflate(R.layout.search_result_page, null);
-                    TextView title = ((TextView) itemSearchView.findViewById(R.id.search_result_page_title));
-                    title.setText(Html.fromHtml(pageItem.getText()));
-                    title.setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
-                    title.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(this));
-
-
-                    TextView page = ((TextView) itemSearchView.findViewById(R.id.search_result_page_page));
-                    page.setText("" +pageItem.getPage());
-                    page.setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
-                    page.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(this));
-                    itemSearchView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            L_Content content = GalePressApplication.getInstance().getDatabaseApi().getContent(Integer.valueOf(result.getContentId()));
-                            if (content != null) {
-                                if(content.isPdfDownloaded()) {
-                                    openContentReader(content, pageItem.getPage()-1, searchEdittext.getText().toString());
-                                    mDrawer.closeMenu(true);
-                                } else {
-                                    openContentDetail(content);
-                                    mDrawer.closeMenu(true);
-                                }
-                            } else {
-                                Toast.makeText(MainActivity.this, MainActivity.this.getResources().getString(R.string.cannot_open_document), Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-                    itemView.addView(itemSearchView);
-                }
+            LayoutInflater mInflater = (LayoutInflater) getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+            View resultItem = mInflater.inflate(R.layout.search_result_item_menu, null);
+            resultItem.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+            int listHeight;
+            if(GalePressApplication.getInstance().getMenuSearchResult().size() > 10) {
+                listHeight = resultItem.getMeasuredHeight()*10;
+            } else {
+                listHeight = resultItem.getMeasuredHeight()*GalePressApplication.getInstance().getMenuSearchResult().size();
             }
-            itemView.invalidate();
-
+            list.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listHeight));
         } else {
             baseView.setVisibility(View.GONE);
         }
 
     }
 
-    public void openContentDetail(L_Content content) {
+    public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHolder> {
+        private ArrayList<MenuSearchResult> searchList;
+
+        public class MyViewHolder extends RecyclerView.ViewHolder {
+            public TextView text, page;
+            public MenuSearchResult result = new MenuSearchResult();
+
+            public MyViewHolder(View view) {
+                super(view);
+                text = (TextView) view.findViewById(R.id.search_result_menu_title);
+                page = (TextView) view.findViewById(R.id.search_result_menu_page);
+                view.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(result.getPage() != -1) {
+                            L_Content content = GalePressApplication.getInstance().getDatabaseApi().getContent(Integer.valueOf(result.getContentId()));
+                            if (content != null) {
+                                if (content.isPdfDownloaded()) {
+                                    openContentReader(content, result.getPage() - 1, searchEdittext.getText().toString());
+                                    mDrawer.closeMenu(true);
+                                } else {
+                                    openContentDetail(content, result.getPage() - 1, searchEdittext.getText().toString());
+                                    mDrawer.closeMenu(true);
+                                }
+                            } else {
+                                Toast.makeText(MainActivity.this, MainActivity.this.getResources().getString(R.string.cannot_open_document), Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            L_Content content = GalePressApplication.getInstance().getDatabaseApi().getContent(Integer.valueOf(result.getContentId()));
+                            if (content != null) {
+                                openContentDetail(content, -1, "");
+                                mDrawer.closeMenu(true);
+                            } else {
+                                Toast.makeText(MainActivity.this, MainActivity.this.getResources().getString(R.string.cannot_open_document), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        public SearchAdapter(ArrayList<MenuSearchResult> searchList) {
+            this.searchList = searchList;
+        }
+
+        // Create new views (invoked by the layout manager)
+        @Override
+        public SearchAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
+                                                           int viewType) {
+            // create a new view
+            View v = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.search_result_item_menu, parent, false);
+
+
+            MyViewHolder vh = new MyViewHolder(v);
+            return vh;
+        }
+
+        // Replace the contents of a view (invoked by the layout manager)
+        @Override
+        public void onBindViewHolder(MyViewHolder holder, int position) {
+            // - get element from your dataset at this position
+            // - replace the contents of the view with that element
+            holder.result = searchList.get(position);
+            if(searchList.get(position).getPage() == -1) {
+                holder.text.setText(searchList.get(position).getContentTitle());
+                holder.text.setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
+                holder.text.setTypeface(ApplicationThemeColor.getInstance().getOpenSansBold(MainActivity.this));
+
+                holder.page.setText("");
+            } else {
+                holder.text.setText(Html.fromHtml(searchList.get(position).getText()));
+                holder.text.setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
+                holder.text.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(MainActivity.this));
+
+                holder.page.setText(""+searchList.get(position).getPage());
+                holder.page.setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
+                holder.page.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(MainActivity.this));
+            }
+
+
+        }
+
+        @Override
+        public int getItemCount() {
+            return searchList.size();
+        }
+    }
+
+    public void openContentDetail(L_Content content, int searchPage, String searchQuery) {
         Intent intent = new Intent(this, ContentDetailPopupActivity.class);
         intent.putExtra("content", content);
         intent.putExtra("animationStartX", 0.5f);
         intent.putExtra("animationStartY", 0.5f);
+        if (searchPage != -1) {
+            intent.putExtra("searchPage", searchPage);
+            intent.putExtra("searchQuery", searchQuery);
+        }
         startActivityForResult(intent, 103);
         GalePressApplication.getInstance().getDataApi().updateApplication();
     }

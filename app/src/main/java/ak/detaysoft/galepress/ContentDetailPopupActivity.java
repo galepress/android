@@ -10,10 +10,13 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ClipDrawable;
 import android.graphics.drawable.GradientDrawable;
+import android.location.Location;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.RemoteException;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -30,6 +33,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.artifex.mupdfdemo.MuPDFActivity;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
@@ -39,9 +43,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.TimeZone;
+import java.util.UUID;
 
 import ak.detaysoft.galepress.database_models.L_Content;
+import ak.detaysoft.galepress.database_models.L_Statistic;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
 import ak.detaysoft.galepress.util.CustomDownloadButton;
 import ak.detaysoft.galepress.util.CustomPulseProgress;
@@ -79,6 +89,9 @@ public class ContentDetailPopupActivity extends Activity{
     private final static int RESULT_ITEM_ALREADY_OWNED = 7;
     private final static int RESULT_ITEM_NOT_OWNED = 8; //For consumable product
     private boolean isFinishActionStart = false;
+
+    private int searchPage = -1;
+    private String searchQuery;
 
     public class ContentHolder{
         Button updateButton;
@@ -131,6 +144,11 @@ public class ContentDetailPopupActivity extends Activity{
         else{
             animationStartX = 0.5f;
             animationStartY = 0.5f;
+        }
+
+        if(intent.hasExtra("searchPage")) {
+            searchPage = intent.getExtras().getInt("searchPage", -1);
+            searchQuery = intent.getExtras().getString("searchQuery", "");
         }
 
         if(getResources().getBoolean(R.bool.portrait_only)){
@@ -210,8 +228,8 @@ public class ContentDetailPopupActivity extends Activity{
         viewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(content != null && content.isPdfDownloaded() && GalePressApplication.getInstance().getLibraryActivity() != null)
-                    GalePressApplication.getInstance().getLibraryActivity().viewContent(content);
+                if(content != null && content.isPdfDownloaded())
+                    viewContent();
             }
         });
 
@@ -423,8 +441,8 @@ public class ContentDetailPopupActivity extends Activity{
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(content.isPdfDownloaded() && GalePressApplication.getInstance().getLibraryActivity() != null)
-                    GalePressApplication.getInstance().getLibraryActivity().viewContent(content);
+                if(content != null && content.isPdfDownloaded())
+                    viewContent();
             }
         });
 
@@ -864,5 +882,31 @@ public class ContentDetailPopupActivity extends Activity{
             downloadButton.startAnim();
         }
         GalePressApplication.getInstance().getDataApi().getPdf(content, ContentDetailPopupActivity.this);
+    }
+
+
+    public void viewContent(){
+        File samplePdfFile = new File(content.getPdfPath(),"file.pdf");
+        if(content!=null && content.isPdfDownloaded() && samplePdfFile.exists()){
+
+            Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+            String udid = UUID.randomUUID().toString();
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Calendar cal = Calendar.getInstance();
+            dateFormat .setTimeZone(TimeZone.getTimeZone("GMT"));
+            Location location = GalePressApplication.getInstance().location;
+            L_Statistic statistic = new L_Statistic(udid, content.getId(), location!=null?location.getLatitude():null,location!=null?location.getLongitude():null, null, dateFormat.format(cal.getTime()),L_Statistic.STATISTIC_contentOpened, null,null,null);
+            GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
+
+            Uri uri = Uri.parse(samplePdfFile.getAbsolutePath());
+            Intent intent = new Intent(this, MuPDFActivity.class);
+            intent.putExtra("content", content);
+            intent.putExtra("searchPage", searchPage);
+            intent.putExtra("searchQuery", searchQuery);
+            intent.setAction(Intent.ACTION_VIEW);
+            intent.setData(uri);
+            startActivityForResult(intent, 101);
+            GalePressApplication.getInstance().getDataApi().updateApplication();
+        }
     }
 }
