@@ -145,6 +145,7 @@ public class GalePressApplication
     private boolean isAgeVerificationActive = false;
     private boolean applicationHaveActiveSubscription;
     private ArrayList<MenuSearchResult> menuSearchResult;
+    private String searchQuery;
 
 
     Foreground.Listener myListener = new Foreground.Listener() {
@@ -1318,4 +1319,11 @@ public class GalePressApplication
         return isAgeVerificationActive;
     }
 
+    public String getSearchQuery() {
+        return searchQuery;
+    }
+
+    public void setSearchQuery(String searchQuery) {
+        this.searchQuery = searchQuery;
+    }
 }

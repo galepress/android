@@ -388,16 +388,10 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         searchEdittext.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE && searchEdittext.getText().length() > 0) {
-
-                    //GalePressApplication.getInstance().setMenuSearchResults(new SearchResult());
+                    GalePressApplication.getInstance().setSearchQuery(searchEdittext.getText().toString());
                     GalePressApplication.getInstance().setMenuSearchResult(new ArrayList<MenuSearchResult>());
-                    List contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(searchEdittext.getText().toString());
+                    List contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(GalePressApplication.getInstance().getSearchQuery());
                     for (int i = 0; i < contents.size(); i++) {
-                        /*ResultForContent content = new ResultForContent();
-                        content.setContentId(((L_Content) contents.get(i)).getId().toString());
-                        content.setContentTitle(((L_Content) contents.get(i)).getName());
-                        GalePressApplication.getInstance().getMenuSearchResult().getContentSearchList().add(content);*/
-
                         MenuSearchResult temp = new MenuSearchResult();
                         temp.setContentId(((L_Content) contents.get(i)).getId().toString());
                         temp.setContentTitle(((L_Content) contents.get(i)).getName());
@@ -407,8 +401,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                     }
                     complateSearch();
 
-                    //GalePressApplication.getInstance().getDataApi().fullTextSearch(searchEdittext.getText().toString(), MainActivity.this);
-                    GalePressApplication.getInstance().getDataApi().fullTextSearch(searchEdittext.getText().toString(), MainActivity.this);
+                    GalePressApplication.getInstance().getDataApi().fullTextSearch(GalePressApplication.getInstance().getSearchQuery(), MainActivity.this);
                 }
                 return false;
             }
@@ -418,15 +411,10 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER && searchEdittext.getText().length() > 0) {
 
-                    //GalePressApplication.getInstance().setMenuSearchResults(new SearchResult());
+                    GalePressApplication.getInstance().setSearchQuery(searchEdittext.getText().toString());
                     GalePressApplication.getInstance().setMenuSearchResult(new ArrayList<MenuSearchResult>());
-                    List contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(searchEdittext.getText().toString());
+                    List contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(GalePressApplication.getInstance().getSearchQuery());
                     for (int i = 0; i < contents.size(); i++) {
-                        /*ResultForContent content = new ResultForContent();
-                        content.setContentId(((L_Content) contents.get(i)).getId().toString());
-                        content.setContentTitle(((L_Content) contents.get(i)).getName());
-                        GalePressApplication.getInstance().getMenuSearchResult().getContentSearchList().add(content);*/
-
                         MenuSearchResult temp = new MenuSearchResult();
                         temp.setContentId(((L_Content) contents.get(i)).getId().toString());
                         temp.setContentTitle(((L_Content) contents.get(i)).getName());
@@ -436,8 +424,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                     }
                     complateSearch();
 
-                    //GalePressApplication.getInstance().getDataApi().fullTextSearch(searchEdittext.getText().toString(), MainActivity.this);
-                    GalePressApplication.getInstance().getDataApi().fullTextSearch(searchEdittext.getText().toString(), MainActivity.this);
+                    GalePressApplication.getInstance().getDataApi().fullTextSearch(GalePressApplication.getInstance().getSearchQuery(), MainActivity.this);
                 }
                 return false;
             }
@@ -501,6 +488,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             @Override
             public void onClick(View v) {
                 searchEdittext.setText("");
+                GalePressApplication.getInstance().setSearchQuery("");
                 //GalePressApplication.getInstance().setMenuSearchResults(null);
                 GalePressApplication.getInstance().setMenuSearchResult(null);
                 complateSearch();
@@ -1826,10 +1814,10 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                             L_Content content = GalePressApplication.getInstance().getDatabaseApi().getContent(Integer.valueOf(result.getContentId()));
                             if (content != null) {
                                 if (content.isPdfDownloaded()) {
-                                    openContentReader(content, result.getPage() - 1, searchEdittext.getText().toString());
+                                    openContentReader(content, result.getPage() - 1, GalePressApplication.getInstance().getSearchQuery());
                                     mDrawer.closeMenu(true);
                                 } else {
-                                    openContentDetail(content, result.getPage() - 1, searchEdittext.getText().toString());
+                                    openContentDetail(content, result.getPage() - 1, GalePressApplication.getInstance().getSearchQuery());
                                     mDrawer.closeMenu(true);
                                 }
                             } else {
