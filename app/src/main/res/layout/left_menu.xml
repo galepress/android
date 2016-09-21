@@ -97,7 +97,7 @@
 
                         <android.support.v7.widget.RecyclerView
                             android:id="@+id/search_recycler_view"
-                            android:scrollbars="vertical"
+                            android:scrollbars="none"
                             android:scrollbarSize="0dp"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"/>
