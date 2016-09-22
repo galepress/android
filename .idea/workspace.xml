@@ -16,210 +16,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4591bc09-e445-44c4-a89c-14ca9bceb4e8" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/answers_1_3_6.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_20_0_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/beta_1_1_4.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/bolts_android_1_2_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/crashlytics_2_5_5.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/crashlytics_core_2_3_8.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/cropper_1_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/dd_plist.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/fabric_1_3_10.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/facebook_android_sdk_4_1_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/gcm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/ormlite_android_4_45.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/ormlite_core_4_45.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_4_0_30.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/recyclerview_v7_24_0_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_24_0_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_24_0_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/universal_image_loader_1_9_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/xwalk_core_library_java.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/bundles/debug/aapt/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/bundles/debug/classes.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/bundles/release/aapt/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/BottomDrawer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/BottomStaticDrawer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/BuildConfig.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/BuildLayerFrameLayout$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/BuildLayerFrameLayout$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/BuildLayerFrameLayout.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/ColorDrawable$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/ColorDrawable$ColorState.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/ColorDrawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/DraggableDrawer$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/DraggableDrawer$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/DraggableDrawer$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/DraggableDrawer$4.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/DraggableDrawer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/FloatScroller.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/HorizontalDrawer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/LeftDrawer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/LeftStaticDrawer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer$OnDrawerStateChangeListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer$OnInterceptMoveEventListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer$SavedState$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer$SavedState.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/MenuDrawer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/NoClickThroughFrameLayout.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/PeekInterpolator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/Position.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/RightDrawer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/RightStaticDrawer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/Scroller.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/SinusoidalInterpolator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/SmoothInterpolator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/StaticDrawer$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/StaticDrawer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/TopDrawer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/TopStaticDrawer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/debug/net/simonvt/menudrawer/VerticalDrawer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental-safeguard/debug/tag.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/mergeDebugAndroidTestAssets/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/mergeDebugAndroidTestShaders/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/aapt/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/classes.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/jni/armeabi-v7a/libxwalkcore.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/jni/armeabi-v7a/libxwalkdummy.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/jni/x86/libxwalkcore.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/jni/x86/libxwalkdummy.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/libs/xwalk_core_library_java.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/release/aapt/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/debug/org/xwalk/core/BuildConfig.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/debug/org/xwalk/core/R$array.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/debug/org/xwalk/core/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/debug/org/xwalk/core/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/debug/org/xwalk/core/R$dimen.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/debug/org/xwalk/core/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/debug/org/xwalk/core/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/debug/org/xwalk/core/R$layout.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/debug/org/xwalk/core/R$menu.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/debug/org/xwalk/core/R$raw.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/debug/org/xwalk/core/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/debug/org/xwalk/core/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/debug/org/xwalk/core/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental-safeguard/debug/tag.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestAssets/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestShaders/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/jniLibs/debug/armeabi-v7a/libxwalkcore.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/jniLibs/debug/armeabi-v7a/libxwalkdummy.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/jniLibs/debug/x86/libxwalkcore.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/jniLibs/debug/x86/libxwalkdummy.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/sourceFolderJavaResources/debug/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/transforms/mergeJavaRes/debug/folders/2/3/main/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/transforms/mergeJniLibs/debug/folders/2000/3/main/lib/armeabi-v7a/libxwalkcore.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/transforms/mergeJniLibs/debug/folders/2000/3/main/lib/armeabi-v7a/libxwalkdummy.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/transforms/mergeJniLibs/debug/folders/2000/3/main/lib/x86/libxwalkcore.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/transforms/mergeJniLibs/debug/folders/2000/3/main/lib/x86/libxwalkdummy.so" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/bundles/release/classes.jar" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/bundles/release/classes.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/res/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/res/resources-debug-androidTest.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/outputs/aar/menuDrawer-debug.aar" afterPath="$PROJECT_DIR$/menuDrawer/build/outputs/aar/menuDrawer-debug.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/outputs/aar/menuDrawer-release.aar" afterPath="$PROJECT_DIR$/menuDrawer/build/outputs/aar/menuDrawer-release.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/release/classes.jar" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/release/classes.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/release/libs/xwalk_core_library_java.jar" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/release/libs/xwalk_core_library_java.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/bubble_arrow_up.png" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/bubble_arrow_up.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/color_picker_advanced_select_handle.png" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/color_picker_advanced_select_handle.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ic_menu_share_holo_light.png" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ic_menu_share_holo_light.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ic_search.png" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ic_search.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ic_warning.png" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ic_warning.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/verify_checkmark.png" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/verify_checkmark.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/bubble_arrow_up.png" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/bubble_arrow_up.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/color_picker_advanced_select_handle.png" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/color_picker_advanced_select_handle.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/ic_menu_share_holo_light.png" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/ic_menu_share_holo_light.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/ic_search.png" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/ic_search.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/ic_warning.png" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/ic_warning.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/verify_checkmark.png" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/verify_checkmark.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xxhdpi-v4/ic_menu_share_holo_light.png" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xxhdpi-v4/ic_menu_share_holo_light.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xxhdpi-v4/ic_search.png" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xxhdpi-v4/ic_search.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xxhdpi-v4/ic_warning.png" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xxhdpi-v4/ic_warning.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xxhdpi-v4/verify_checkmark.png" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xxhdpi-v4/verify_checkmark.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xxxhdpi-v4/ic_menu_share_holo_light.png" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xxxhdpi-v4/ic_menu_share_holo_light.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xxxhdpi-v4/ic_search.png" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xxxhdpi-v4/ic_search.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xxxhdpi-v4/ic_warning.png" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xxxhdpi-v4/ic_warning.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xxxhdpi-v4/verify_checkmark.png" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xxxhdpi-v4/verify_checkmark.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable/bubble_arrow_up.png" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable/bubble_arrow_up.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable/color_picker_advanced_select_handle.png" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable/color_picker_advanced_select_handle.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable/ic_menu_share_holo_light.png" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable/ic_menu_share_holo_light.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable/ic_search.png" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable/ic_search.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable/ic_warning.png" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable/ic_warning.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable/verify_checkmark.png" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable/verify_checkmark.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/resources-debug-androidTest.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/outputs/aar/xwalk_core_library_15-debug.aar" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/outputs/aar/xwalk_core_library_15-debug.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/outputs/aar/xwalk_core_library_15-release.aar" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/outputs/aar/xwalk_core_library_15-release.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_verification_login.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_verification_login.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/left_menu.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/left_menu.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/blame/res/androidTest/debug/multi/values.json" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/blame/res/androidTest/debug/multi/values.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/packageDebugResources/merger.xml" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/packageDebugResources/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/packageReleaseResources/merger.xml" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/packageReleaseResources/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/menuDrawer.iml" afterPath="$PROJECT_DIR$/menuDrawer/menuDrawer.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-am.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-am.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-ar.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-ar.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-bg.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-bg.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-ca.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-ca.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-cs.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-cs.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-da.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-da.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-de.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-de.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-el.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-el.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-en-rGB.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-en-rGB.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-es-rUS.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-es-rUS.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-es.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-es.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-fa.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-fa.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-fi.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-fi.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-fr.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-fr.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-hi.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-hi.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-hr.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-hr.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-hu.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-hu.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-in.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-in.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-it.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-it.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-iw.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-iw.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-ja.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-ja.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-ko.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-ko.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-lt.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-lt.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-lv.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-lv.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-nb.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-nb.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-nl.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-nl.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-pl.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-pl.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-pt-rBR.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-pt-rBR.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-pt-rPT.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-pt-rPT.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-ro.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-ro.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-ru.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-ru.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-sk.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-sk.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-sl.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-sl.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-sr.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-sr.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-sv.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-sv.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-sw.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-sw.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-th.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-th.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-tl.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-tl.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-tr.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-tr.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-uk.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-uk.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-v17.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-v17.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-v21.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-v21.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-vi.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-vi.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-zh-rCN.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-zh-rCN.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-zh-rTW.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-zh-rTW.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable-xhdpi-v4.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable-xhdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/xwalk_core_library_15.iml" afterPath="$PROJECT_DIR$/xwalk_core_library_15/xwalk_core_library_15.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
     </list>
     <ignored path="GalepressMerge.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -254,35 +60,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="1853" column="22" selection-start-line="1853" selection-start-column="22" selection-end-line="1853" selection-end-column="22" />
+            <state relative-caret-position="295">
+              <caret line="1831" column="29" selection-start-line="1831" selection-start-column="29" selection-end-line="1831" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#96959#98762#0" expanded="true" />
+                <element signature="e#97967#98040#0" expanded="true" />
+                <element signature="e#98564#98637#0" expanded="true" />
+                <element signature="e#98761#98762#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="left_menu.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="left_menu.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/left_menu.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="84" column="55" selection-start-line="84" selection-start-column="55" selection-end-line="84" selection-end-column="55" />
+            <state relative-caret-position="349">
+              <caret line="97" column="63" selection-start-line="97" selection-start-column="63" selection-end-line="97" selection-end-column="63" />
               <folding />
             </state>
+          </provider>
+          <provider editor-type-id="android-designer2">
+            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="422">
+            <state relative-caret-position="799">
               <caret line="47" column="18" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
               <folding />
             </state>
@@ -294,42 +104,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
               <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GalePressApplication.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="82" column="48" selection-start-line="82" selection-start-column="48" selection-end-line="82" selection-end-column="48" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#243#244#0" expanded="false" />
+                <element signature="e#270#271#0" expanded="false" />
+                <element signature="e#310#311#0" expanded="false" />
+                <element signature="e#342#343#0" expanded="false" />
+                <element signature="e#370#371#0" expanded="false" />
+                <element signature="e#397#398#0" expanded="false" />
+                <element signature="e#434#435#0" expanded="false" />
+                <element signature="e#466#467#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_verification_login.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_verification_login.xml">
-          <provider selected="true" editor-type-id="android-designer2">
-            <state />
-          </provider>
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="styles.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-153">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -3553,10 +3337,10 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/search_result_item_menu.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_verification_login.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/left_menu.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
       </list>
     </option>
   </component>
@@ -3607,12 +3391,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView">
-        <subPane />
-      </pane>
-      <pane id="Scratches">
-        <subPane />
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -3725,6 +3503,12 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="AndroidView">
+        <subPane />
+      </pane>
+      <pane id="PackagesPane">
+        <subPane />
+      </pane>
       <pane id="Scope">
         <subPane subId="Problems" />
         <subPane subId="Project Files">
@@ -3736,7 +3520,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane">
+      <pane id="Scratches">
         <subPane />
       </pane>
     </panes>
@@ -4093,8 +3877,8 @@
     <layout>
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26066098" sideWeight="0.506135" order="3" side_tool="false" content_ui="tabs" x="707" y="139" width="506" height="728" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29922992" sideWeight="0.5740938" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29922992" sideWeight="0.42590618" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29922992" sideWeight="0.57569295" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29922992" sideWeight="0.42430705" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -4254,13 +4038,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/buttons.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values-large-land/dimens.xml">
@@ -4303,33 +4087,33 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/reader_search_popup.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="935">
           <caret line="55" column="46" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="46" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-large/reader_search_popup.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-large/reader_search_popup.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="969">
           <caret line="57" column="47" selection-start-line="57" selection-start-column="47" selection-end-line="57" selection-end-column="47" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-large-land/reader_search_popup.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-large-land/reader_search_popup.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="901">
           <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
@@ -4385,14 +4169,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/left_menu_category_item.xml">
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java">
@@ -4442,7 +4226,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="33" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="33" />
-          <folding />
+          <folding>
+            <element signature="e#243#244#0" expanded="false" />
+            <element signature="e#270#271#0" expanded="false" />
+            <element signature="e#310#311#0" expanded="false" />
+            <element signature="e#342#343#0" expanded="false" />
+            <element signature="e#370#371#0" expanded="false" />
+            <element signature="e#397#398#0" expanded="false" />
+            <element signature="e#434#435#0" expanded="false" />
+            <element signature="e#466#467#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -4466,13 +4259,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/search_result_content.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/reader_search_listview_item.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java">
@@ -4540,21 +4333,49 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/search_result_item_menu.xml">
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="20" column="43" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
           <folding />
         </state>
       </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
+        <state relative-caret-position="799">
           <caret line="47" column="18" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-408">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_verification_login.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-782">
+          <caret line="77" column="7" selection-start-line="77" selection-start-column="7" selection-end-line="77" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -4562,57 +4383,41 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="82" column="48" selection-start-line="82" selection-start-column="48" selection-end-line="82" selection-end-column="48" />
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-153">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_verification_login.xml">
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="1853" column="22" selection-start-line="1853" selection-start-column="22" selection-end-line="1853" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#243#244#0" expanded="false" />
+            <element signature="e#270#271#0" expanded="false" />
+            <element signature="e#310#311#0" expanded="false" />
+            <element signature="e#342#343#0" expanded="false" />
+            <element signature="e#370#371#0" expanded="false" />
+            <element signature="e#397#398#0" expanded="false" />
+            <element signature="e#434#435#0" expanded="false" />
+            <element signature="e#466#467#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/left_menu.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="97" column="63" selection-start-line="97" selection-start-column="63" selection-end-line="97" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="84" column="55" selection-start-line="84" selection-start-column="55" selection-end-line="84" selection-end-column="55" />
-          <folding />
+        <state relative-caret-position="295">
+          <caret line="1831" column="29" selection-start-line="1831" selection-start-column="29" selection-end-line="1831" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#96959#98762#0" expanded="true" />
+            <element signature="e#97967#98040#0" expanded="true" />
+            <element signature="e#98564#98637#0" expanded="true" />
+            <element signature="e#98761#98762#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

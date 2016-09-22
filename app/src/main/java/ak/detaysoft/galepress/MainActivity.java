@@ -1784,8 +1784,15 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             View resultItem = mInflater.inflate(R.layout.search_result_item_menu, null);
             resultItem.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
             int listHeight;
-            if(GalePressApplication.getInstance().getMenuSearchResult().size() > 10) {
-                listHeight = resultItem.getMeasuredHeight()*10;
+            /*
+            * Tablette 15 sonuc telefonda 10 sonuc gosteriyoruz
+            * */
+            int maxItemCount = 15;
+            if (getResources().getBoolean(R.bool.portrait_only)) {
+                maxItemCount = 10;
+            }
+            if(GalePressApplication.getInstance().getMenuSearchResult().size() > maxItemCount) {
+                listHeight = resultItem.getMeasuredHeight()*maxItemCount;
             } else {
                 listHeight = resultItem.getMeasuredHeight()*GalePressApplication.getInstance().getMenuSearchResult().size();
             }
@@ -1848,7 +1855,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             // create a new view
             View v = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.search_result_item_menu, parent, false);
-
 
             MyViewHolder vh = new MyViewHolder(v);
             return vh;
