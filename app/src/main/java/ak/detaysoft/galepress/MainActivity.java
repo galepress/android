@@ -58,6 +58,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupMenu;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -156,7 +157,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     private Subscription selectedSubscription;
     private int selectedReaderTabIndex = -1;
     private String selectedTabTag = "";
-    public ProgressDialog searchDialog;
+    public ProgressBar searchProgress;
 
 
     /*
@@ -399,7 +400,9 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                         GalePressApplication.getInstance().getMenuSearchResult().add(temp);
 
                     }
-                    complateSearch();
+                    searchProgress.setVisibility(View.VISIBLE);
+                    searchClear.setVisibility(View.GONE);
+                    complateSearch(false);
 
                     GalePressApplication.getInstance().getDataApi().fullTextSearch(GalePressApplication.getInstance().getSearchQuery(), MainActivity.this);
                 }
@@ -422,7 +425,9 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                         GalePressApplication.getInstance().getMenuSearchResult().add(temp);
 
                     }
-                    complateSearch();
+                    searchProgress.setVisibility(View.VISIBLE);
+                    searchClear.setVisibility(View.GONE);
+                    complateSearch(false);
 
                     GalePressApplication.getInstance().getDataApi().fullTextSearch(GalePressApplication.getInstance().getSearchQuery(), MainActivity.this);
                 }
@@ -488,12 +493,16 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             @Override
             public void onClick(View v) {
                 searchEdittext.setText("");
+                searchProgress.setVisibility(View.GONE);
                 GalePressApplication.getInstance().setSearchQuery("");
                 //GalePressApplication.getInstance().setMenuSearchResults(null);
                 GalePressApplication.getInstance().setMenuSearchResult(null);
-                complateSearch();
+                complateSearch(false);
             }
         });
+
+        searchProgress = (ProgressBar) findViewById(R.id.search_progress);
+        searchProgress.getIndeterminateDrawable().setColorFilter(ApplicationThemeColor.getInstance().getThemeColor(), android.graphics.PorterDuff.Mode.MULTIPLY);
 
         menuButton = (ImageView) findViewById(R.id.menu_button);
         ((LinearLayout) findViewById(R.id.menu_button_layout)).setOnClickListener(new View.OnClickListener() {
@@ -1764,7 +1773,11 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         updateMemberListAdapter();
     }
 
-    public void complateSearch() {
+    public void complateSearch(boolean isServiceFinishCall) {
+        if(isServiceFinishCall){
+            searchProgress.setVisibility(View.GONE);
+            searchClear.setVisibility(View.VISIBLE);
+        }
         LinearLayout baseView = (LinearLayout) findViewById(R.id.search_result_layout);
         RecyclerView list = (RecyclerView) findViewById(R.id.search_recycler_view);
         if (GalePressApplication.getInstance().getMenuSearchResult() != null && GalePressApplication.getInstance().getMenuSearchResult().size() > 0) {

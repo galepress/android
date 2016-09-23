@@ -2533,7 +2533,7 @@ public class DataApi extends Object {
                                     }
                                 }
 
-                                mainActivity.complateSearch();
+                                mainActivity.complateSearch(true);
                             } else {
                                 GalePressApplication.getInstance().setMenuSearchResult(new ArrayList<MenuSearchResult>());
                                 List contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(text);
@@ -2546,7 +2546,7 @@ public class DataApi extends Object {
                                         GalePressApplication.getInstance().getMenuSearchResult().add(temp);
                                     }
                                 }
-                                mainActivity.complateSearch();
+                                mainActivity.complateSearch(true);
                             }
                         } catch (Exception e) {
                             GalePressApplication.getInstance().setMenuSearchResult(new ArrayList<MenuSearchResult>());
@@ -2560,7 +2560,7 @@ public class DataApi extends Object {
                                     GalePressApplication.getInstance().getMenuSearchResult().add(temp);
                                 }
                             }
-                            mainActivity.complateSearch();
+                            mainActivity.complateSearch(true);
                         }
                     }
                 },
@@ -2578,7 +2578,7 @@ public class DataApi extends Object {
                                 GalePressApplication.getInstance().getMenuSearchResult().add(temp);
                             }
                         }
-                        mainActivity.complateSearch();
+                        mainActivity.complateSearch(true);
                     }
                 }
         );
@@ -2611,40 +2611,38 @@ public class DataApi extends Object {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        if(muPDFActivity.searchDialog.isShowing()) {
-                            try {
-                                if (response != null && response.getInt("status") == 1) {
-                                    muPDFActivity.setReaderSearchResult(new ArrayList<ReaderSearchResult>());
-                                    JSONArray result = response.getJSONArray("result");
-                                    L_Content content = GalePressApplication.getInstance().getDatabaseApi().getContent(Integer.valueOf(contentId));
+                        try {
+                            if (response != null && response.getInt("status") == 1) {
+                                muPDFActivity.setReaderSearchResult(new ArrayList<ReaderSearchResult>());
+                                JSONArray result = response.getJSONArray("result");
+                                L_Content content = GalePressApplication.getInstance().getDatabaseApi().getContent(Integer.valueOf(contentId));
 
-                                    ReaderSearchResult pageItem;
-                                    for (int i = 0; i < result.length(); i++) {
-                                        try {
-                                            JSONObject jsonObjectItem = result.getJSONObject(i);
-                                            pageItem = new ReaderSearchResult();
+                                ReaderSearchResult pageItem;
+                                for (int i = 0; i < result.length(); i++) {
+                                    try {
+                                        JSONObject jsonObjectItem = result.getJSONObject(i);
+                                        pageItem = new ReaderSearchResult();
 
-                                            if(content != null) {
-                                                pageItem.setPage(jsonObjectItem.getInt("page"));
-                                                pageItem.setText(jsonObjectItem.getString("highlightedText"));
-                                                muPDFActivity.getReaderSearchResult().add(pageItem);
-                                            }
-
-                                        } catch (JSONException e) {
-                                            e.printStackTrace();
-                                            muPDFActivity.setReaderSearchResult(new ArrayList<ReaderSearchResult>());
-                                            muPDFActivity.complateSearch(true);
+                                        if(content != null) {
+                                            pageItem.setPage(jsonObjectItem.getInt("page"));
+                                            pageItem.setText(jsonObjectItem.getString("highlightedText"));
+                                            muPDFActivity.getReaderSearchResult().add(pageItem);
                                         }
+
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                        muPDFActivity.setReaderSearchResult(new ArrayList<ReaderSearchResult>());
+                                        muPDFActivity.complateSearch(true);
                                     }
-                                    muPDFActivity.complateSearch(true);
-                                } else {
-                                    muPDFActivity.setReaderSearchResult(new ArrayList<ReaderSearchResult>());
-                                    muPDFActivity.complateSearch(true);
                                 }
-                            } catch (Exception e) {
+                                muPDFActivity.complateSearch(true);
+                            } else {
                                 muPDFActivity.setReaderSearchResult(new ArrayList<ReaderSearchResult>());
                                 muPDFActivity.complateSearch(true);
                             }
+                        } catch (Exception e) {
+                            muPDFActivity.setReaderSearchResult(new ArrayList<ReaderSearchResult>());
+                            muPDFActivity.complateSearch(true);
                         }
 
                     }
@@ -2652,10 +2650,8 @@ public class DataApi extends Object {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        if(muPDFActivity.searchDialog.isShowing()) {
-                            muPDFActivity.setReaderSearchResult(new ArrayList<ReaderSearchResult>());
-                            muPDFActivity.complateSearch(true);
-                        }
+                        muPDFActivity.setReaderSearchResult(new ArrayList<ReaderSearchResult>());
+                        muPDFActivity.complateSearch(true);
                     }
                 }
         );
