@@ -1812,6 +1812,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             list.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listHeight));
         } else {
             baseView.setVisibility(View.GONE);
+            Toast.makeText(this, getResources().getString(R.string.text_not_found), Toast.LENGTH_SHORT).show();
         }
 
     }
