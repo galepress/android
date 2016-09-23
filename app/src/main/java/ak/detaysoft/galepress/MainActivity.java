@@ -402,7 +402,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                     }
                     searchProgress.setVisibility(View.VISIBLE);
                     searchClear.setVisibility(View.GONE);
-                    complateSearch(false);
+                    complateSearch(false,false);
 
                     GalePressApplication.getInstance().getDataApi().fullTextSearch(GalePressApplication.getInstance().getSearchQuery(), MainActivity.this);
                 }
@@ -427,7 +427,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                     }
                     searchProgress.setVisibility(View.VISIBLE);
                     searchClear.setVisibility(View.GONE);
-                    complateSearch(false);
+                    complateSearch(false,false);
 
                     GalePressApplication.getInstance().getDataApi().fullTextSearch(GalePressApplication.getInstance().getSearchQuery(), MainActivity.this);
                 }
@@ -497,7 +497,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 GalePressApplication.getInstance().setSearchQuery("");
                 //GalePressApplication.getInstance().setMenuSearchResults(null);
                 GalePressApplication.getInstance().setMenuSearchResult(null);
-                complateSearch(false);
+                complateSearch(false,false);
             }
         });
 
@@ -1773,7 +1773,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         updateMemberListAdapter();
     }
 
-    public void complateSearch(boolean isServiceFinishCall) {
+    public void complateSearch(boolean isServiceFinishCall, boolean showNotFoundMessage) {
         if(isServiceFinishCall){
             searchProgress.setVisibility(View.GONE);
             searchClear.setVisibility(View.VISIBLE);
@@ -1812,7 +1812,8 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             list.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listHeight));
         } else {
             baseView.setVisibility(View.GONE);
-            Toast.makeText(this, getResources().getString(R.string.text_not_found), Toast.LENGTH_SHORT).show();
+            if(showNotFoundMessage)
+                Toast.makeText(this, getResources().getString(R.string.text_not_found), Toast.LENGTH_SHORT).show();
         }
 
     }

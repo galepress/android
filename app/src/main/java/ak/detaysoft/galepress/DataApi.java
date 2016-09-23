@@ -2455,16 +2455,6 @@ public class DataApi extends Object {
                             if (response != null && response.getInt("status") == 1) {
                                 GalePressApplication.getInstance().setMenuSearchResult(new ArrayList<MenuSearchResult>());
                                 ArrayList<MenuSearchResult> contentList = new ArrayList<MenuSearchResult>();
-                                List contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(text);
-                                if (contents.size() > 0) {
-                                    for (int i = 0; i < contents.size(); i++) {
-                                        MenuSearchResult temp = new MenuSearchResult();
-                                        temp.setContentId(((L_Content) contents.get(i)).getId().toString());
-                                        temp.setContentTitle(((L_Content) contents.get(i)).getName());
-                                        temp.setPage(-1);
-                                        GalePressApplication.getInstance().getMenuSearchResult().add(temp);
-                                    }
-                                }
 
                                 JSONArray result = response.getJSONArray("result");
 
@@ -2533,7 +2523,29 @@ public class DataApi extends Object {
                                     }
                                 }
 
-                                mainActivity.complateSearch(true);
+                                ArrayList<MenuSearchResult> tempList = GalePressApplication.getInstance().getMenuSearchResult();
+                                List contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(text);
+                                if (contents.size() > 0) {
+                                    for (int i = 0; i < contents.size(); i++) {
+                                        boolean searchListContainContent = false;
+                                        for(int k = 0; k < contentList.size(); k++) {
+                                            if(((L_Content)contents.get(i)).getId().toString().contains(contentList.get(k).getContentId())) {
+                                                searchListContainContent = true;
+                                            }
+                                        }
+                                        if(!searchListContainContent){
+                                            MenuSearchResult temp = new MenuSearchResult();
+                                            temp.setContentId(((L_Content) contents.get(i)).getId().toString());
+                                            temp.setContentTitle(((L_Content) contents.get(i)).getName());
+                                            temp.setPage(-1);
+                                            tempList.add(0,temp);
+                                        }
+                                    }
+                                }
+                                GalePressApplication.getInstance().setMenuSearchResult(tempList);
+
+
+                                mainActivity.complateSearch(true, true);
                             } else {
                                 GalePressApplication.getInstance().setMenuSearchResult(new ArrayList<MenuSearchResult>());
                                 List contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(text);
@@ -2546,7 +2558,7 @@ public class DataApi extends Object {
                                         GalePressApplication.getInstance().getMenuSearchResult().add(temp);
                                     }
                                 }
-                                mainActivity.complateSearch(true);
+                                mainActivity.complateSearch(true, true);
                             }
                         } catch (Exception e) {
                             GalePressApplication.getInstance().setMenuSearchResult(new ArrayList<MenuSearchResult>());
@@ -2560,7 +2572,7 @@ public class DataApi extends Object {
                                     GalePressApplication.getInstance().getMenuSearchResult().add(temp);
                                 }
                             }
-                            mainActivity.complateSearch(true);
+                            mainActivity.complateSearch(true, true);
                         }
                     }
                 },
@@ -2578,7 +2590,7 @@ public class DataApi extends Object {
                                 GalePressApplication.getInstance().getMenuSearchResult().add(temp);
                             }
                         }
-                        mainActivity.complateSearch(true);
+                        mainActivity.complateSearch(true, true);
                     }
                 }
         );
