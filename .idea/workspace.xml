@@ -25,8 +25,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/search_result_item_menu.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/search_result_item_menu.xml" />
     </list>
     <ignored path="GalepressMerge.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -125,8 +123,8 @@
       <file leaf-file-name="DataApi.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="2528" column="53" selection-start-line="2528" selection-start-column="53" selection-end-line="2528" selection-end-column="53" />
+            <state relative-caret-position="478">
+              <caret line="2541" column="71" selection-start-line="2541" selection-start-column="71" selection-end-line="2541" selection-end-column="71" />
               <folding>
                 <element signature="method#postStatistic#0;class#DataApi#0" expanded="false" />
                 <element signature="method#removeAllConCatsForContent#0;class#DataApi#0" expanded="false" />
@@ -134,11 +132,11 @@
                 <element signature="method#getRemoteAppCategories#0;class#DataApi#0" expanded="false" />
                 <element signature="method#restoreContentsAndSubscritonsFromServer#0;class#DataApi#0" expanded="false" />
                 <element signature="method#getRemoteApplicationVersion#0;class#DataApi#0" expanded="false" />
-                <element signature="e#133716#143174#0" expanded="true" />
-                <element signature="e#143173#143174#0" expanded="true" />
+                <element signature="e#133716#143299#0" expanded="true" />
+                <element signature="e#143298#143299#0" expanded="true" />
                 <element signature="method#fullTextSearchForReader#0;class#DataApi#0" expanded="false" />
-                <element signature="e#148040#148367#0" expanded="true" />
-                <element signature="e#148366#148367#0" expanded="true" />
+                <element signature="e#148165#148492#0" expanded="true" />
+                <element signature="e#148491#148492#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -4476,8 +4474,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="2528" column="53" selection-start-line="2528" selection-start-column="53" selection-end-line="2528" selection-end-column="53" />
+        <state relative-caret-position="478">
+          <caret line="2541" column="71" selection-start-line="2541" selection-start-column="71" selection-end-line="2541" selection-end-column="71" />
           <folding>
             <element signature="method#postStatistic#0;class#DataApi#0" expanded="false" />
             <element signature="method#removeAllConCatsForContent#0;class#DataApi#0" expanded="false" />
@@ -4485,11 +4483,11 @@
             <element signature="method#getRemoteAppCategories#0;class#DataApi#0" expanded="false" />
             <element signature="method#restoreContentsAndSubscritonsFromServer#0;class#DataApi#0" expanded="false" />
             <element signature="method#getRemoteApplicationVersion#0;class#DataApi#0" expanded="false" />
-            <element signature="e#133716#143174#0" expanded="true" />
-            <element signature="e#143173#143174#0" expanded="true" />
+            <element signature="e#133716#143299#0" expanded="true" />
+            <element signature="e#143298#143299#0" expanded="true" />
             <element signature="method#fullTextSearchForReader#0;class#DataApi#0" expanded="false" />
-            <element signature="e#148040#148367#0" expanded="true" />
-            <element signature="e#148366#148367#0" expanded="true" />
+            <element signature="e#148165#148492#0" expanded="true" />
+            <element signature="e#148491#148492#0" expanded="true" />
           </folding>
         </state>
       </provider>

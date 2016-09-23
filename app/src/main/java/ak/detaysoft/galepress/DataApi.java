@@ -2523,6 +2523,7 @@ public class DataApi extends Object {
                                     }
                                 }
 
+                                int contentIndex = 0;
                                 ArrayList<MenuSearchResult> tempList = GalePressApplication.getInstance().getMenuSearchResult();
                                 List contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(text);
                                 if (contents.size() > 0) {
@@ -2538,7 +2539,8 @@ public class DataApi extends Object {
                                             temp.setContentId(((L_Content) contents.get(i)).getId().toString());
                                             temp.setContentTitle(((L_Content) contents.get(i)).getName());
                                             temp.setPage(-1);
-                                            tempList.add(0,temp);
+                                            tempList.add(contentIndex,temp);
+                                            contentIndex++;
                                         }
                                     }
                                 }
