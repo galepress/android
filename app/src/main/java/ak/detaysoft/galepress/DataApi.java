@@ -1996,6 +1996,14 @@ public class DataApi extends Object {
                                     }
                                 }
                             } else {
+                                /*ArrayList<R_Content> temp = new ArrayList<R_Content>();
+                                for(int i = 0; i < 1000; i++) {
+                                    temp.addAll(RAppContents.getContents());
+
+                                }
+                                RAppContents.getContents().clear();
+                                RAppContents.getContents().addAll(temp);
+                                RAppContents.getContents().addAll(RAppContents.getContents());*/
                                 for (R_Content content : RAppContents.getContents()) {
                                     L_Content localContent = getDatabaseApi().getContent(content.getContentID());
                                     if (content.isForceDelete()) {
