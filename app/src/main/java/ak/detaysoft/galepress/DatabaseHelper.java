@@ -70,7 +70,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         if(dao.queryForId(applicationId) == null){
             L_Application application = new L_Application(GalePressApplication.getInstance().getApplicationId(), -1);
             dao.create(application);
-            Log.i("Adem", "New Application recoded to db with -1 as version");
+            Log.i("Galepress", "New Application recoded to db with -1 as version");
         }
     }
 

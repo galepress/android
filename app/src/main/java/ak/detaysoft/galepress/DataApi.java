@@ -227,7 +227,7 @@ public class DataApi extends Object {
                 URL url = new URL(remoteUrl);
                 connection = (HttpURLConnection) url.openConnection();
                 connection.connect();
-                Logout.e("Adem", "Response Code : " + connection.getResponseCode() + " Response Message : " + connection.getResponseMessage());
+                Logout.e("Galepress", "Response Code : " + connection.getResponseCode() + " Response Message : " + connection.getResponseMessage());
                 if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
                     return "Server returned HTTP " + connection.getResponseCode()
                             + " " + connection.getResponseMessage();
@@ -281,7 +281,7 @@ public class DataApi extends Object {
 
                 tempDirectory.renameTo(directory);
                 Decompress decompressor = new Decompress(directory + "/" + pdfFileName, directory + "/", GalePressApplication.getInstance().getApplicationContext());
-                Logout.e("Adem", "Content Directory : " + directory.getPath() + "");
+                Logout.e("Galepress", "Content Directory : " + directory.getPath() + "");
                 decompressor.unzip();
                 if (checkDownloadSuccessfull(directory)) {
                     new File(directory + "/" + pdfFileName).delete();
@@ -555,7 +555,7 @@ public class DataApi extends Object {
             }
             return result;
         } catch (Exception e) {
-            Logout.e("Adem", "Error on Checking internet connection");
+            Logout.e("Galepress", "Error on Checking internet connection");
             return false;
         }
 
@@ -617,7 +617,7 @@ public class DataApi extends Object {
 
         if (isConnectedToInternet()) {
             getBuildVersion();
-            Logout.e("Adem", "INC");
+            Logout.e("Galepress", "INC");
             GalePressApplication.getInstance().incrementRequestCount();
             GalePressApplication application = GalePressApplication.getInstance();
             RequestQueue requestQueue = application.getRequestQueue();
@@ -694,7 +694,7 @@ public class DataApi extends Object {
                                 }
 
 
-                                Logout.e("Adem", "DECREMENT");
+                                Logout.e("Galepress", "DECREMENT");
                                 GalePressApplication.getInstance().decrementRequestCount();
                             } catch (Exception e) {
                                 GalePressApplication.getInstance().editMemberShipList(false, null);
@@ -702,7 +702,7 @@ public class DataApi extends Object {
                                     ((UserLoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_0));
                                 }
                                 e.printStackTrace();
-                                Logout.e("Adem", "DECREMENT");
+                                Logout.e("Galepress", "DECREMENT");
                                 GalePressApplication.getInstance().decrementRequestCount();
                             }
                         }
@@ -728,7 +728,7 @@ public class DataApi extends Object {
                                 VolleyLog.e("Error: ", error.getMessage());
                             }
                             GalePressApplication.getInstance().editMemberShipList(false, null);
-                            Logout.e("Adem", "DECREMENT");
+                            Logout.e("Galepress", "DECREMENT");
                             GalePressApplication.getInstance().decrementRequestCount();
 
                         }
@@ -964,10 +964,10 @@ public class DataApi extends Object {
                                     }
                                 } else {
                                     isBlockedFromWS = false;
-                                    Logout.e("Adem", "Do Nothing with : " + appDetail.getForce().toString());
+                                    Logout.e("Galepress", "Do Nothing with : " + appDetail.getForce().toString());
                                 }
                             } catch (Exception e) {
-                                Logout.e("Adem", e.getMessage() + e.getLocalizedMessage());
+                                Logout.e("Galepress", e.getMessage() + e.getLocalizedMessage());
                                 e.printStackTrace();
                             }
                         }
@@ -1086,7 +1086,7 @@ public class DataApi extends Object {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         if (error != null && error.getMessage() != null) {
-                            Logout.e("Adem", "Error : " + error.getMessage());
+                            Logout.e("Galepress", "Error : " + error.getMessage());
                             VolleyLog.e("Error: ", error.getMessage());
                         }
 
@@ -1345,7 +1345,7 @@ public class DataApi extends Object {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         if (error != null && error.getMessage() != null) {
-                            Logout.e("Adem", "Error : " + error.getMessage());
+                            Logout.e("Galepress", "Error : " + error.getMessage());
                             VolleyLog.e("Error: ", error.getMessage());
                         }
 
@@ -1447,7 +1447,7 @@ public class DataApi extends Object {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         if (error != null && error.getMessage() != null) {
-                            Logout.e("Adem", "Error : " + error.getMessage());
+                            Logout.e("Galepress", "Error : " + error.getMessage());
                             VolleyLog.e("Error: ", error.getMessage());
                         }
 
@@ -1547,7 +1547,7 @@ public class DataApi extends Object {
     }
 
     private void getRemoteContent(R_Content content) {
-        Logout.e("Adem", "INC");
+        Logout.e("Galepress", "INC");
         GalePressApplication.getInstance().incrementRequestCount();
         GalePressApplication application = GalePressApplication.getInstance();
         RequestQueue requestQueue = application.getRequestQueue();
@@ -1626,12 +1626,12 @@ public class DataApi extends Object {
                             }
 
 
-                            Logout.e("Adem", "DECREMENT");
+                            Logout.e("Galepress", "DECREMENT");
                             GalePressApplication.getInstance().decrementRequestCount();
 
                         } catch (Exception e) {
                             e.printStackTrace();
-                            Logout.e("Adem", "DECREMENT");
+                            Logout.e("Galepress", "DECREMENT");
                             GalePressApplication.getInstance().decrementRequestCount();
                         }
                     }
@@ -1642,7 +1642,7 @@ public class DataApi extends Object {
                         if (error != null && error.getMessage() != null) {
                             VolleyLog.e("Error: ", error.getMessage());
                         }
-                        Logout.e("Adem", "DECREMENT");
+                        Logout.e("Galepress", "DECREMENT");
                         GalePressApplication.getInstance().decrementRequestCount();
                     }
                 }
@@ -1653,7 +1653,7 @@ public class DataApi extends Object {
     }
 
     private void getRemoteAppCategories() {
-        Logout.e("Adem", "INC");
+        Logout.e("Galepress", "INC");
         GalePressApplication.getInstance().incrementRequestCount();
         GalePressApplication application = GalePressApplication.getInstance();
         Integer applicationId = application.getApplicationId();
@@ -1696,11 +1696,11 @@ public class DataApi extends Object {
                                 }
                             }
                             getRemoteAppContents();
-                            Logout.e("Adem", "DECREMENT");
+                            Logout.e("Galepress", "DECREMENT");
                             GalePressApplication.getInstance().decrementRequestCount();
                         } catch (Exception e) {
                             e.printStackTrace();
-                            Logout.e("Adem", "DECREMENT");
+                            Logout.e("Galepress", "DECREMENT");
                             GalePressApplication.getInstance().decrementRequestCount();
                         }
                     }
@@ -1709,11 +1709,11 @@ public class DataApi extends Object {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         if (error != null && error.getMessage() != null) {
-                            Logout.e("Adem", "Error : " + error.getMessage());
+                            Logout.e("Galepress", "Error : " + error.getMessage());
                             VolleyLog.e("Error: ", error.getMessage());
                         }
 
-                        Logout.e("Adem", "DECREMENT");
+                        Logout.e("Galepress", "DECREMENT");
                         GalePressApplication.getInstance().decrementRequestCount();
                     }
                 }
@@ -1871,7 +1871,7 @@ public class DataApi extends Object {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         if (error != null && error.getMessage() != null) {
-                            Logout.e("Adem", "Error : " + error.getMessage());
+                            Logout.e("Galepress", "Error : " + error.getMessage());
                             VolleyLog.e("Error: ", error.getMessage());
                         }
 
@@ -1891,7 +1891,7 @@ public class DataApi extends Object {
     }
 
     private void getRemoteAppContents() {
-        Logout.e("Adem", "INC");
+        Logout.e("Galepress", "INC");
         GalePressApplication.getInstance().incrementRequestCount();
         GalePressApplication application = GalePressApplication.getInstance();
         Integer applicationId = null;
@@ -2054,7 +2054,7 @@ public class DataApi extends Object {
                             if (numberOfContentWillBeUpdated == 0) {
                                 updateApplicationVersion();
                             }
-                            Logout.e("Adem", "DECREMENT");
+                            Logout.e("Galepress", "DECREMENT");
                             GalePressApplication.getInstance().decrementRequestCount();
 
                         } catch (Exception e) {
@@ -2062,7 +2062,7 @@ public class DataApi extends Object {
                             ApplicationThemeColor.getInstance().setParameters(null);
                             GalePressApplication.getInstance().setBannerLink(null);
                             GalePressApplication.getInstance().setTabList(null);
-                            Logout.e("Adem", "DECREMENT");
+                            Logout.e("Galepress", "DECREMENT");
                             GalePressApplication.getInstance().decrementRequestCount();
                         }
                     }
@@ -2074,11 +2074,11 @@ public class DataApi extends Object {
                         GalePressApplication.getInstance().setBannerLink(null);
                         GalePressApplication.getInstance().setTabList(null);
                         if (error != null && error.getMessage() != null) {
-                            Logout.e("Adem", "Error : " + error.getMessage());
+                            Logout.e("Galepress", "Error : " + error.getMessage());
                             VolleyLog.e("Error: ", error.getMessage());
                         }
 
-                        Logout.e("Adem", "DECREMENT");
+                        Logout.e("Galepress", "DECREMENT");
                         GalePressApplication.getInstance().decrementRequestCount();
                     }
                 }
@@ -2088,7 +2088,7 @@ public class DataApi extends Object {
     }
 
     public void getRemoteApplicationVersion() {
-        Logout.e("Adem", "INC");
+        Logout.e("Galepress", "INC");
         GalePressApplication.getInstance().incrementRequestCount();
         GalePressApplication application = GalePressApplication.getInstance();
         Integer applicationID;
@@ -2142,11 +2142,11 @@ public class DataApi extends Object {
                                     getRemoteAppCategories();
                                 }
                             }
-                            Logout.e("Adem", "DECREMENT");
+                            Logout.e("Galepress", "DECREMENT");
                             GalePressApplication.getInstance().decrementRequestCount();
                         } catch (Exception e) {
                             e.printStackTrace();
-                            Logout.e("Adem", "DECREMENT");
+                            Logout.e("Galepress", "DECREMENT");
                             GalePressApplication.getInstance().decrementRequestCount();
                         }
                     }
@@ -2155,11 +2155,11 @@ public class DataApi extends Object {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         if (error != null && error.getMessage() != null) {
-                            Logout.e("Adem", "Error : " + error.getMessage());
+                            Logout.e("Galepress", "Error : " + error.getMessage());
                             VolleyLog.e("Error: ", error.getMessage());
                         }
 
-                        Logout.e("Adem", "DECREMENT");
+                        Logout.e("Galepress", "DECREMENT");
                         GalePressApplication.getInstance().decrementRequestCount();
                     }
                 }
@@ -2170,7 +2170,7 @@ public class DataApi extends Object {
     }
 
     public void updateApplicationVersion() {
-        Logout.e("Adem", "INC");
+        Logout.e("Galepress", "INC");
         GalePressApplication.getInstance().incrementRequestCount();
         GalePressApplication application = GalePressApplication.getInstance();
         RequestQueue requestQueue = application.getRequestQueue();
@@ -2203,11 +2203,11 @@ public class DataApi extends Object {
                             L_Application application = getDatabaseApi().getApplication(GalePressApplication.getInstance().getApplicationId());
                             application.setVersion(r_appVersion.getApplicationVersion());
                             getDatabaseApi().updateApplication(application);
-                            Logout.e("Adem", "DECREMENT");
+                            Logout.e("Galepress", "DECREMENT");
                             GalePressApplication.getInstance().decrementRequestCount();
                         } catch (Exception e) {
                             e.printStackTrace();
-                            Logout.e("Adem", "DECREMENT");
+                            Logout.e("Galepress", "DECREMENT");
                             GalePressApplication.getInstance().decrementRequestCount();
                         }
                     }
@@ -2216,11 +2216,11 @@ public class DataApi extends Object {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         if (error != null && error.getMessage() != null) {
-                            Logout.e("Adem", "Error : " + error.getMessage());
+                            Logout.e("Galepress", "Error : " + error.getMessage());
                             VolleyLog.e("Error: ", error.getMessage());
                         }
 
-                        Logout.e("Adem", "DECREMENT");
+                        Logout.e("Galepress", "DECREMENT");
                         GalePressApplication.getInstance().decrementRequestCount();
 
                     }

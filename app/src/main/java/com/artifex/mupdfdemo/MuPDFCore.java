@@ -283,7 +283,7 @@ public class MuPDFCore
 			int pageW, int pageH,
 			int patchX, int patchY,
 			int patchW, int patchH) {
-        Logout.e("Adem", "page no: "+page);
+        Logout.e("Galepress", "page no: "+page);
 //		updatePageInternal(bm, page, pageW, pageH, patchX, patchY, patchW, patchH);
         String TAG = "Adem2Pages";
         Bitmap bitmap = bm;

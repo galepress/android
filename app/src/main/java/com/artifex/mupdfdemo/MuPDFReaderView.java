@@ -278,7 +278,7 @@ public class MuPDFReaderView extends ReaderView {
         int[] pages = getDisplayedPageNumbers(i);
         for (int j = 0; j < pages.length; j++) {
             if (pages[j] != -1) {
-                Logout.e("Adem", "Goruntulenen sayfa : " + pages[j]);
+                Logout.e("Galepress", "Goruntulenen sayfa : " + pages[j]);
 
                 if (core != null && core.content != null && core.content.getId() != null) {
                     Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);

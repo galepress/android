@@ -985,7 +985,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
     @Override
     protected void onPause() {
         try {
-            Logout.e("Adem", "onPause");
+            Logout.e("Galepress", "onPause");
             super.onPause();
 
             PowerManager powerManager = (PowerManager) getSystemService(POWER_SERVICE);

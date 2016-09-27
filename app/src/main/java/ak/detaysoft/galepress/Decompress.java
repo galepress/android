@@ -84,7 +84,7 @@ public class Decompress {
             }
         }
         catch (Exception e) {
-            Log.e("Adem", "Unzip exception", e);
+            Log.e("Galepress", "Unzip exception", e);
         }
     }
 

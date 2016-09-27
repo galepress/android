@@ -319,7 +319,7 @@ public class ViewerLoginActivity extends Activity {
     public void startMasterDownload(){
         DataApi.DownloadPdfTask downloadPdfTask = GalePressApplication.getInstance().getDataApi().downloadPdfTask;
         if(!(downloadPdfTask!= null && downloadPdfTask.getStatus() == AsyncTask.Status.RUNNING)){
-            Logout.e("Adem", "Start Master Downloaded");
+            Logout.e("Galepress", "Start Master Downloaded");
             GalePressApplication.getInstance().getDataApi().downloadPdf(this.masterContent);
 
             pw_two_layout.setVisibility(View.VISIBLE);
@@ -336,7 +336,7 @@ public class ViewerLoginActivity extends Activity {
     }
 
     public void progressUpdate(long total, long fileLength){
-        Logout.e("Adem", "Total : "+total+" file lenght: "+fileLength);
+        Logout.e("Galepress", "Total : "+total+" file lenght: "+fileLength);
         if(total == fileLength){
 //            openMasterContent();
         }
@@ -351,7 +351,7 @@ public class ViewerLoginActivity extends Activity {
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        Logout.e("Adem","Launch Activity onPostCreate calistirildi.");
+        Logout.e("Galepress","Launch Activity onPostCreate calistirildi.");
         // Trigger the initial hide() shortly after the activity has been
         // created, to briefly hint to the user that UI controls
         // are available.

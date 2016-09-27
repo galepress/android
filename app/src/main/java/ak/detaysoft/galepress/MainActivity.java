@@ -561,7 +561,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         // Check if regid already presents
         if (regId.equals("")) {
             // Register with GCM
-            Logout.e("Adem", "Is Registered " + (GCMRegistrar.isRegisteredOnServer(GalePressApplication.getInstance().getApplicationContext()) ? "YES" : "NO"));
+            Logout.e("Galepress", "Is Registered " + (GCMRegistrar.isRegisteredOnServer(GalePressApplication.getInstance().getApplicationContext()) ? "YES" : "NO"));
             GCMRegistrar.register(GalePressApplication.getInstance().getApplicationContext(), DataApi.GCM_SENDER_ID);
         } else {
             if (!GCMRegistrar.isRegisteredOnServer(GalePressApplication.getInstance().getApplicationContext())) {
@@ -1672,7 +1672,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         libraryFragment.updateSelectedCategoriesList();
         libraryFragment.updateGridView();
 
-        Logout.e("Adem", "OnPopUpMenuItem Clicked:" + item.getTitle().toString());
+        Logout.e("Galepress", "OnPopUpMenuItem Clicked:" + item.getTitle().toString());
         return true;
     }
 

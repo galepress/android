@@ -588,9 +588,9 @@ public class GalePressApplication
     public void onConnectionFailed(ConnectionResult connectionResult) {
         if (connectionResult.hasResolution()) {
             //connectionResult.startResolutionForResult(this.getLibraryActivity(),LocationUtils.CONNECTION_FAILURE_RESOLUTION_REQUEST);
-            Logout.e("Adem", "startResolutionForResult: ");
+            Logout.e("Galepress", "startResolutionForResult: ");
         } else {
-            Logout.e("Adem", "Error Code : " + connectionResult.getErrorCode());
+            Logout.e("Galepress", "Error Code : " + connectionResult.getErrorCode());
         }
     }
 
@@ -608,7 +608,7 @@ public class GalePressApplication
             // requestCount ilk kez initialize ediliyor. O olsaydi bitmis gibi gorunebilirdi. -101 ile initialize ettim.
         }
         this.requestCount = requestCount;
-        Logout.e("Adem", "***Requestler count : " + this.requestCount);
+        Logout.e("Galepress", "***Requestler count : " + this.requestCount);
 
     }
 

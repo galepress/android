@@ -571,7 +571,7 @@ public class UserLoginActivity extends Activity {
 
         DataApi.DownloadPdfTask downloadPdfTask = GalePressApplication.getInstance().getDataApi().downloadPdfTask;
         if(!(downloadPdfTask!= null && downloadPdfTask.getStatus() == AsyncTask.Status.RUNNING)){
-            Logout.e("Adem", "Start Master Downloaded");
+            Logout.e("Galepress", "Start Master Downloaded");
             L_Content masterContent = GalePressApplication.getInstance().getDataApi().getMasterContent();
             GalePressApplication.getInstance().getDataApi().downloadPdf(masterContent);
 
@@ -586,7 +586,7 @@ public class UserLoginActivity extends Activity {
     }
 
     public void progressUpdate(long total, long fileLength){
-        Logout.e("Adem", "Total : "+total+" file lenght: "+fileLength);
+        Logout.e("Galepress", "Total : "+total+" file lenght: "+fileLength);
         if(total == fileLength){
 //            openMasterContent();
         }
