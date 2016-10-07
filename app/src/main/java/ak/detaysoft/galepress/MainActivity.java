@@ -614,7 +614,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
     /*
     * Renk degismedigi zaman servisten gelen tabbar ikonları invalidate edilmiyor.
-    * Yoksa uygulama icinde her update oldugunda ikonlarda yeniden load edildigi cini kotu gorunuyor
+    * Yoksa uygulama icinde her update oldugunda ikonlarda yeniden load edildigi icin kotu gorunuyor
     */
     public void updateActivityViewAndAdapter(boolean isColorChanged) {
 
