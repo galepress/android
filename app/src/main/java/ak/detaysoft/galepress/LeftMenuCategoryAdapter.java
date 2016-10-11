@@ -2,6 +2,7 @@ package ak.detaysoft.galepress;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,26 +48,27 @@ public class LeftMenuCategoryAdapter extends BaseAdapter {
         if (convertView == null) {
             LayoutInflater mInflater = (LayoutInflater)
                     mContext.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            convertView = mInflater.inflate(R.layout.left_menu_category_item, null);
+            convertView = mInflater.inflate(R.layout.left_menu_category_item, parent, false);
         }
 
         TextView txtTitle = (TextView) convertView.findViewById(R.id.category_title);
-        txtTitle.setText(mCategory.get(position).getCategoryName());
-        txtTitle.setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
-        txtTitle.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(mContext));
+        txtTitle.setText(mCategory.get(position).getCategoryName().toUpperCase());
+        //txtTitle.setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
+        txtTitle.setTextColor(Color.WHITE);
+        txtTitle.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(mContext));
 
         ImageView image = (ImageView)convertView.findViewById(R.id.category_icon);
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            image.setBackground(ApplicationThemeColor.getInstance().paintIcons(mContext, ApplicationThemeColor.CATEGORY_UNSELECT));
+            image.setBackground(mContext.getResources().getDrawable(R.drawable.popup_read));
         else
-            image.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(mContext, ApplicationThemeColor.CATEGORY_UNSELECT));
+            image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.popup_read));
 
 
         /*
          * https://fabric.io/galepress/android/apps/ak.detaysoft.yeryuzudergidis/issues/56d3205ff5d3a7f76b2cef6d
          * Seklinde bi hata vardi. selectedCategories null olmasi ihtimaline karsi bende ilk createde oldugu gibi genel kategorisini set ettim
          * */
-        if(((MainActivity)(mContext)).getLibraryFragment() != null) {
+        /*if(((MainActivity)(mContext)).getLibraryFragment() != null) {
             if(((MainActivity)(mContext)).getLibraryFragment().selectedCategories == null) {
                 ((MainActivity)(mContext)).getLibraryFragment().repairSelectedCategories();
             }
@@ -81,7 +83,7 @@ public class LeftMenuCategoryAdapter extends BaseAdapter {
                     txtTitle.setTextColor(ApplicationThemeColor.getInstance().getThemeColor());
                 }
             }
-        }
+        }*/
 
 
          return convertView;

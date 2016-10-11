@@ -49,7 +49,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -68,8 +67,7 @@ import com.artifex.mupdfdemo.MuPDFActivity;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 import com.google.android.gcm.GCMRegistrar;
-
-import net.simonvt.menudrawer.MenuDrawer;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -121,8 +119,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     public Integer content_id = null;
 
 
-    private MenuDrawer mDrawer;
-
+    private SlidingMenu leftMenu;
     //Bağlantılar sekmesi
     private LeftMenuSocialAdapter linksAdapter;
     private ImageView linksListViewCloseIcon;
@@ -205,18 +202,43 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
 
-        mDrawer = MenuDrawer.attach(this, MenuDrawer.MENU_DRAG_WINDOW);
-        mDrawer.setContentView(R.layout.activity_main);
-        mDrawer.setMenuView(R.layout.left_menu);
-        mDrawer.setDropShadowColor(ApplicationThemeColor.getInstance().getMenuShadowColor());
-        mDrawer.setDropShadowSize(2);
-        mDrawer.setMenuSize((int) getResources().getDimension(R.dimen.left_menu_size));
-        mDrawer.setOnDrawerStateChangeListener(new MenuDrawer.OnDrawerStateChangeListener() {
+        setContentView(R.layout.activity_main);
+
+        leftMenu = new SlidingMenu(this);
+        leftMenu.setMode(SlidingMenu.LEFT_RIGHT);
+        leftMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+        leftMenu.setShadowWidth(2);
+        leftMenu.setFadeDegree(0.35f);
+        leftMenu.setBehindWidth((int) getResources().getDimension(R.dimen.left_menu_size));
+        leftMenu.attachToActivity(this, SlidingMenu.SLIDING_WINDOW);
+        leftMenu.setMenu(R.layout.left_menu);
+        leftMenu.setSecondaryMenu(R.layout.right_menu);
+
+        /*mDrawerLeft = MenuDrawer.attach(this, MenuDrawer.MENU_DRAG_WINDOW, Position.LEFT);
+        mDrawerLeft.setContentView(R.layout.activity_main);
+        mDrawerLeft.setMenuView(R.layout.left_menu);
+        mDrawerLeft.setDropShadowColor(ApplicationThemeColor.getInstance().getMenuShadowColor());
+        mDrawerLeft.setDropShadowSize(2);
+        mDrawerLeft.setMenuSize((int) getResources().getDimension(R.dimen.left_menu_size));
+        mDrawerLeft.setOnDrawerStateChangeListener(new MenuDrawer.OnDrawerStateChangeListener() {
             @Override
             public void onDrawerStateChange(int oldState, int newState) {
                 hideKeyboard(searchEdittext);
             }
-        });
+        });*/
+
+        /*mDrawerRight = MenuDrawer.attach(this, MenuDrawer.MENU_DRAG_WINDOW, Position.RIGHT);
+        mDrawerRight.setContentView(R.layout.activity_main);
+        mDrawerRight.setMenuView(R.layout.left_menu);
+        mDrawerRight.setDropShadowColor(ApplicationThemeColor.getInstance().getMenuShadowColor());
+        mDrawerRight.setDropShadowSize(2);
+        mDrawerRight.setMenuSize((int) getResources().getDimension(R.dimen.left_menu_size));
+        mDrawerRight.setOnDrawerStateChangeListener(new MenuDrawer.OnDrawerStateChangeListener() {
+            @Override
+            public void onDrawerStateChange(int oldState, int newState) {
+                hideKeyboard(searchEdittext);
+            }
+        });*/
 
         leftMenuBaseLayout = (LinearLayout) findViewById(R.id.left_menu_layout);
         categoriesTitleLayout = (RelativeLayout) findViewById(R.id.left_categories_layout);
@@ -314,7 +336,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         linksListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                mDrawer.closeMenu(true);
+                leftMenu.showContent(true);
                 ApplicationPlist item = GalePressApplication.getInstance().getApplicationPlist().get(position);
 
                 if (item.getKey().toString().toLowerCase().contains("mail")) {
@@ -502,16 +524,16 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         });
 
         searchProgress = (ProgressBar) findViewById(R.id.search_progress);
-        searchProgress.getIndeterminateDrawable().setColorFilter(ApplicationThemeColor.getInstance().getThemeColor(), android.graphics.PorterDuff.Mode.MULTIPLY);
+        searchProgress.getIndeterminateDrawable().setColorFilter(Color.WHITE, android.graphics.PorterDuff.Mode.MULTIPLY);
 
         menuButton = (ImageView) findViewById(R.id.menu_button);
         ((LinearLayout) findViewById(R.id.menu_button_layout)).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                if (mDrawer.isMenuVisible())
-                    mDrawer.closeMenu(true);
+                if (leftMenu.isMenuShowing())
+                    leftMenu.showContent(true);
                 else {
-                    mDrawer.openMenu(true);
+                    leftMenu.showMenu(true);
                 }
             }
         });
@@ -686,14 +708,16 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
         //Kategori ve baglantilar listviewlerin height hesaplamasi. Scroll engelleyebilmek icin
         LayoutInflater mInflater = (LayoutInflater) getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-        View listItemView = mInflater.inflate(R.layout.left_menu_category_item, null);
+        View listItemView = mInflater.inflate(R.layout.left_menu_category_item, categoriesListView, false);
         listItemView.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
 
         int listHeight = 0;
         for (int i = 0; i < categoryListWithAll.size(); i++) {
-            listHeight += listItemView.getMeasuredHeight();
+            listHeight += (int) getResources().getDimension(R.dimen.menu_category_item_size);
         }
         categoriesListView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listHeight));
+
+
 
         if (!GalePressApplication.getInstance().isTestApplication()) {
             listHeight = 0;
@@ -725,9 +749,9 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
         ((LinearLayout) findViewById(R.id.custom_actionbar_layout)).setBackgroundColor(ApplicationThemeColor.getInstance().getActionAndTabBarColorWithAlpha(98));
 
-        searchEdittext.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(this));
-        searchEdittext.setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
-        searchEdittext.setHintTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
+        searchEdittext.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
+        searchEdittext.setTextColor(Color.WHITE);
+        searchEdittext.setHintTextColor(Color.WHITE);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
             ((RelativeLayout) searchEdittext.getParent()).setBackground(ApplicationThemeColor.getInstance().getPassiveSearchViewDrawable(this));
@@ -1259,7 +1283,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             refreshButton.setVisibility(View.VISIBLE);
             menuButton.setVisibility(View.GONE);
             ((View) menuButton.getParent()).setVisibility(View.GONE);
-            mDrawer.setTouchMode(MenuDrawer.TOUCH_MODE_NONE);
             ((TextView) findViewById(R.id.action_bar_title_text_view)).setVisibility(View.GONE);
         } else {
             ileriButton.setVisibility(View.INVISIBLE);
@@ -1267,7 +1290,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             refreshButton.setVisibility(View.INVISIBLE);
             menuButton.setVisibility(View.VISIBLE);
             ((View) menuButton.getParent()).setVisibility(View.VISIBLE);
-            mDrawer.setTouchMode(MenuDrawer.FOCUSABLES_TOUCH_MODE);
             ((TextView) findViewById(R.id.action_bar_title_text_view)).setVisibility(View.VISIBLE);
         }
 
@@ -1354,8 +1376,8 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
     public void changeSearchViewColor(boolean hasFocus) {
         if (hasFocus) {
-            searchEdittext.setTextColor(ApplicationThemeColor.getInstance().getThemeColor());
-            searchEdittext.setHintTextColor(ApplicationThemeColor.getInstance().getThemeColor());
+            searchEdittext.setTextColor(Color.WHITE);
+            searchEdittext.setHintTextColor(Color.WHITE);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 ((RelativeLayout) searchEdittext.getParent()).setBackground(ApplicationThemeColor.getInstance().getActiveSearchViewDrawable(MainActivity.this));
             else
@@ -1370,8 +1392,8 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             else
                 searchClear.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.SEARCH_CLEAR));
         } else {
-            searchEdittext.setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
-            searchEdittext.setHintTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
+            searchEdittext.setTextColor(Color.WHITE);
+            searchEdittext.setHintTextColor(Color.WHITE);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 ((RelativeLayout) searchEdittext.getParent()).setBackground(ApplicationThemeColor.getInstance().getPassiveSearchViewDrawable(MainActivity.this));
             else
@@ -1793,13 +1815,10 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 list.setAdapter(mAdapter);
             }
 
-            LayoutInflater mInflater = (LayoutInflater) getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+            /*LayoutInflater mInflater = (LayoutInflater) getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
             View resultItem = mInflater.inflate(R.layout.search_result_item_menu, null);
             resultItem.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
             int listHeight;
-            /*
-            * Tablette 15 sonuc telefonda 10 sonuc gosteriyoruz
-            * */
             int maxItemCount = 15;
             if (getResources().getBoolean(R.bool.portrait_only)) {
                 maxItemCount = 10;
@@ -1809,7 +1828,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             } else {
                 listHeight = resultItem.getMeasuredHeight()*GalePressApplication.getInstance().getMenuSearchResult().size();
             }
-            list.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listHeight));
+            list.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listHeight));*/
         } else {
             baseView.setVisibility(View.GONE);
             if(showNotFoundMessage)
@@ -1837,10 +1856,10 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                             if (content != null) {
                                 if (content.isPdfDownloaded()) {
                                     openContentReader(content, result.getPage() - 1, GalePressApplication.getInstance().getSearchQuery());
-                                    mDrawer.closeMenu(true);
+                                    leftMenu.showContent(true);
                                 } else {
                                     openContentDetail(content, result.getPage() - 1, GalePressApplication.getInstance().getSearchQuery());
-                                    mDrawer.closeMenu(true);
+                                    leftMenu.showContent(true);
                                 }
                             } else {
                                 Toast.makeText(MainActivity.this, MainActivity.this.getResources().getString(R.string.cannot_open_document), Toast.LENGTH_SHORT).show();
@@ -1849,7 +1868,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                             L_Content content = GalePressApplication.getInstance().getDatabaseApi().getContent(Integer.valueOf(result.getContentId()));
                             if (content != null) {
                                 openContentDetail(content, -1, "");
-                                mDrawer.closeMenu(true);
+                                leftMenu.showContent(true);
                             } else {
                                 Toast.makeText(MainActivity.this, MainActivity.this.getResources().getString(R.string.cannot_open_document), Toast.LENGTH_SHORT).show();
                             }
@@ -1883,18 +1902,19 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             holder.result = searchList.get(position);
             if(searchList.get(position).getPage() == -1) {
                 holder.text.setText(searchList.get(position).getContentTitle());
-                holder.text.setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
-                holder.text.setTypeface(ApplicationThemeColor.getInstance().getOpenSansBold(MainActivity.this));
+                holder.text.setTextColor(Color.WHITE);
+                holder.text.setTypeface(ApplicationThemeColor.getInstance().getGothamMedium(MainActivity.this));
 
                 holder.page.setText("");
             } else {
+
                 holder.text.setText(Html.fromHtml(searchList.get(position).getText()));
-                holder.text.setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
-                holder.text.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(MainActivity.this));
+                holder.text.setTextColor(Color.WHITE);
+                holder.text.setTypeface(ApplicationThemeColor.getInstance().getGothamBookItalic(MainActivity.this));
 
                 holder.page.setText(""+searchList.get(position).getPage());
-                holder.page.setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
-                holder.page.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(MainActivity.this));
+                holder.page.setTextColor(Color.WHITE);
+                holder.page.setTypeface(ApplicationThemeColor.getInstance().getGothamBookItalic(MainActivity.this));
             }
 
 

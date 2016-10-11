@@ -51,7 +51,7 @@ repositories {
 
 dependencies {
     compile files('../dd-plist.jar')
-    compile fileTree(dir: 'src/main/lib', include: '*.*')
+    compile fileTree(include: '*.*', dir: 'src/main/lib')
     compile files('src/main/lib/gcm.jar')
     compile project(':menuDrawer')
     compile files('src/main/lib/universal-image-loader-1.9.3.jar')
@@ -66,4 +66,5 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
         transitive = true
     }
+    compile project(':slidemenulibrary')
 }

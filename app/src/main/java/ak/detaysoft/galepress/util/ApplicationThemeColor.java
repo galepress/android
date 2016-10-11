@@ -534,6 +534,18 @@ public class ApplicationThemeColor {
         return new ColorMatrixColorFilter(matrix);
     }
 
+    public ColorFilter getWhiteColorFilter(){
+        int color = Color.WHITE;
+        int red = (color & 0xFF0000) / 0xFFFF;
+        int green = (color & 0xFF00) / 0xFF;
+        int blue = color & 0xFF;
+        float[] matrix = { 0, 0, 0, 0, red
+                , 0, 0, 0, 0, green
+                , 0, 0, 0, 0, blue
+                , 0, 0, 0, 1, 0 };
+        return new ColorMatrixColorFilter(matrix);
+    }
+
     public Drawable paintIcons(Context context, int resourceType){
         Drawable myIcon;
         if(resourceType == WEBVIEW_BACK){
@@ -586,10 +598,10 @@ public class ApplicationThemeColor {
             myIcon.setColorFilter(getThemeColorFilter());
         } else if(resourceType == SEARCH_CLEAR){
             myIcon = context.getResources().getDrawable(R.drawable.left_menu_clear_icon_light);
-            myIcon.setColorFilter(getThemeColorFilter());
+            myIcon.setColorFilter(getWhiteColorFilter());
         } else if(resourceType == SEARCH_ICON){
             myIcon = context.getResources().getDrawable(R.drawable.left_menu_search_icon);
-            myIcon.setColorFilter(getThemeColorFilter());
+            myIcon.setColorFilter(getWhiteColorFilter());
         } else if(resourceType == LIBRARY_ICON_SELECTED) {
             myIcon = context.getResources().getDrawable(R.drawable.tab_library);
             myIcon.setColorFilter(getForeGroundColorFilterWithAlpha((float) 0.5));
@@ -667,10 +679,10 @@ public class ApplicationThemeColor {
             myIcon.setColorFilter(getThemeColorFilterWithAlpha((float)0.5));
         } else if(resourceType == PASSIVE_SEARCH_ICON){
             myIcon = context.getResources().getDrawable(R.drawable.left_menu_search_icon);
-            myIcon.setColorFilter(getThemeColorFilterWithAlpha((float)0.5));
+            myIcon.setColorFilter(getWhiteColorFilter());
         } else if(resourceType == PASSIVE_SEARCH_CLEAR_ICON){
             myIcon = context.getResources().getDrawable(R.drawable.left_menu_clear_icon_light);
-            myIcon.setColorFilter(getThemeColorFilterWithAlpha((float)0.5));
+            myIcon.setColorFilter(getWhiteColorFilter());
         } else if(resourceType == READ_CONTENT){
             myIcon = context.getResources().getDrawable(R.drawable.popup_read);
             myIcon.setColorFilter(getReverseThemeColorFilter());
@@ -1290,7 +1302,7 @@ public class ApplicationThemeColor {
         GradientDrawable drawable =  new GradientDrawable();
         drawable.setCornerRadius(context.getResources().getDimension(R.dimen.login_input_height));
         drawable.setColor(Color.TRANSPARENT);
-        drawable.setStroke(1, getThemeColor());
+        drawable.setStroke(1, Color.WHITE);
         return drawable;
     }
 
@@ -1299,7 +1311,7 @@ public class ApplicationThemeColor {
         GradientDrawable drawable =  new GradientDrawable();
         drawable.setCornerRadius(context.getResources().getDimension(R.dimen.login_input_height));
         drawable.setColor(Color.TRANSPARENT);
-        drawable.setStroke(1, getThemeColorWithAlpha(50));
+        drawable.setStroke(1, Color.WHITE);
         return drawable;
     }
 
@@ -1392,6 +1404,38 @@ public class ApplicationThemeColor {
     public Typeface getGothamLight(Context context){
         try{
             return Typeface.createFromAsset(context.getAssets(), "fonts/GothamRnd-Light.otf");
+        } catch (Exception e) {
+            return Typeface.DEFAULT;
+        }
+    }
+
+    public Typeface getGothamMedium(Context context){
+        try{
+            return Typeface.createFromAsset(context.getAssets(), "fonts/GothamRounded-Medium.otf");
+        } catch (Exception e) {
+            return Typeface.DEFAULT;
+        }
+    }
+
+    public Typeface getGothamBookItalic(Context context){
+        try{
+            return Typeface.createFromAsset(context.getAssets(), "fonts/GothamRounded-BookItalic.otf");
+        } catch (Exception e) {
+            return Typeface.DEFAULT;
+        }
+    }
+
+    public Typeface getGothamLightItalic(Context context){
+        try{
+            return Typeface.createFromAsset(context.getAssets(), "fonts/GothamRounded-LightItalic.otf");
+        } catch (Exception e) {
+            return Typeface.DEFAULT;
+        }
+    }
+
+    public Typeface getGothamMediumItalic(Context context){
+        try{
+            return Typeface.createFromAsset(context.getAssets(), "fonts/GothamRounded-MediumItalic.otf");
         } catch (Exception e) {
             return Typeface.DEFAULT;
         }

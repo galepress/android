@@ -14,14 +14,16 @@
 
     <dimen name="actionbar_text_size">17dp</dimen>
 
-    <dimen name="left_menu_size">300dp</dimen>
+    <dimen name="left_menu_size">260dp</dimen>
     <dimen name="reader_search_width">300dp</dimen>
     <dimen name="reader_search_height">450dp</dimen>
     <dimen name="left_menu_text_size">22dp</dimen>
+    <dimen name="menu_category_text_size">14dp</dimen>
     <dimen name="left_menu_title_size">15dp</dimen>
     <dimen name="left_menu_search_size">18dp</dimen>
     <dimen name="left_menu_scroll_size">250dp</dimen>
     <dimen name="left_menu_list_item_size">50dp</dimen>
+    <dimen name="menu_category_item_size">40dp</dimen>
     <dimen name="reader_left_menu_size">280dp</dimen>
 
     <dimen name="reader_bottom_preview_width">100dp</dimen>
@@ -71,5 +73,6 @@
     <dimen name="popup_login_input_height">45dp</dimen>
     <dimen name="popup_login_input_text_size">18sp</dimen>
     <dimen name="popup_login_button_text_size">20sp</dimen>
+    <dimen name="menu_logo_height">55dp</dimen>
 
 </resources>
