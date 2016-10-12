@@ -115,6 +115,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     public FragmentTabHost mTabHost;
     private EditText searchEdittext;
     private ImageView menuButton;
+    private ImageView searchMenuButton;
     AsyncTask<Void, Void, Void> mRegisterTask;
     public Integer content_id = null;
 
@@ -265,7 +266,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         });
 
         categoryListWithAll = GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent();
-        categoryListWithAll.add(0, new L_Category(-1, getString(R.string.show_all)));
+        categoryListWithAll.add(0, new L_Category(-1, getResources().getString(R.string.DOWNLOADED).toUpperCase()));
         categoriesListView = (ListView) findViewById(R.id.left_menu_category_list);
 
         categoriesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -273,35 +274,10 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                                     int position, long id) {
                 hideKeyboard(searchEdittext);
 
-                /*if(GalePressApplication.getInstance().getDataApi().getMasterContent() != null && GalePressApplication.getInstance().getDataApi().getMasterContent().isPdfDownloaded()) {
-                    mTabHost.getTabWidget().setCurrentTab(1);
-                }
-                else
-                    mTabHost.getTabWidget().setCurrentTab(0);
-                mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG);*/
-                L_Category selectedCategory = (L_Category) categoryListWithAll.get(position);
-                if (selectedCategory.getCategoryName().compareTo(getString(R.string.show_all)) != 0) {
-                    for (int i = 0; i < categoryListWithAll.size(); i++) {
-                        L_Category category = (L_Category) categoryListWithAll.get(i);
-                        if (category.getCategoryName().compareTo(selectedCategory.getCategoryName()) == 0) {
-                            selectedCategory = category;
-                        }
-                    }
-                } else {
-                    selectedCategory = new L_Category(-1, getString(R.string.show_all));
-                }
+
                 LibraryFragment libraryFragment = getLibraryFragment();
-                libraryFragment.selectedCategory = selectedCategory;
-                libraryFragment.updateSelectedCategoriesList();
+                libraryFragment.selectedCategory = categoryListWithAll.get(position);
                 libraryFragment.updateGridView();
-
-
-                LibraryFragment downloadFragment = getDownloadedLibraryFragment();
-                if (downloadFragment != null) {
-                    downloadFragment.selectedCategory = selectedCategory;
-                    downloadFragment.updateSelectedCategoriesList();
-                    downloadFragment.updateGridView();
-                }
 
                 categoriesAdapter.notifyDataSetChanged();
             }
@@ -538,6 +514,18 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             }
         });
 
+        searchMenuButton = (ImageView) findViewById(R.id.search_menu_button);
+        ((LinearLayout) findViewById(R.id.search_menu_button_layout)).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                if (leftMenu.isMenuShowing())
+                    leftMenu.showContent(true);
+                else {
+                    leftMenu.showSecondaryMenu(true);
+                }
+            }
+        });
+
 
         logoutButton = (Button) findViewById(R.id.left_menu_logout);
         logoutButton.setOnClickListener(new View.OnClickListener() {
@@ -657,7 +645,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             ((ImageView) findViewById(R.id.left_menu_category_icon)).setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_CATEGORY));
 
         categoryListWithAll = GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent();
-        categoryListWithAll.add(0, new L_Category(-1, getString(R.string.show_all)));
+        categoryListWithAll.add(0, new L_Category(-1, getResources().getString(R.string.DOWNLOADED).toUpperCase()));
 
         categoriesAdapter.setmCategory(categoryListWithAll);
         categoriesAdapter.notifyDataSetChanged();
@@ -772,6 +760,12 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             menuButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.MENU_ICON));
         else
             menuButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.MENU_ICON));
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+            searchMenuButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.MENU_ICON));
+        else
+            searchMenuButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.MENU_ICON));
 
         logoutButton.setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
         logoutButton.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(this));
@@ -1282,14 +1276,18 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             geriButton.setVisibility(View.VISIBLE);
             refreshButton.setVisibility(View.VISIBLE);
             menuButton.setVisibility(View.GONE);
+            searchMenuButton.setVisibility(View.GONE);
             ((View) menuButton.getParent()).setVisibility(View.GONE);
+            ((View) searchMenuButton.getParent()).setVisibility(View.GONE);
             ((TextView) findViewById(R.id.action_bar_title_text_view)).setVisibility(View.GONE);
         } else {
             ileriButton.setVisibility(View.INVISIBLE);
             geriButton.setVisibility(View.INVISIBLE);
             refreshButton.setVisibility(View.INVISIBLE);
             menuButton.setVisibility(View.VISIBLE);
+            searchMenuButton.setVisibility(View.VISIBLE);
             ((View) menuButton.getParent()).setVisibility(View.VISIBLE);
+            ((View) searchMenuButton.getParent()).setVisibility(View.VISIBLE);
             ((TextView) findViewById(R.id.action_bar_title_text_view)).setVisibility(View.VISIBLE);
         }
 
@@ -1691,7 +1689,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         }
         LibraryFragment libraryFragment = getLibraryFragment();
         libraryFragment.selectedCategory = selectedCategory;
-        libraryFragment.updateSelectedCategoriesList();
         libraryFragment.updateGridView();
 
         Logout.e("Galepress", "OnPopUpMenuItem Clicked:" + item.getTitle().toString());

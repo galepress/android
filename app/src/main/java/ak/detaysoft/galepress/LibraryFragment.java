@@ -55,7 +55,6 @@ public class LibraryFragment extends Fragment {
     public boolean isOnlyDownloaded;
     private List contents;
     public String searchQuery = new String("");
-    ArrayList<L_Category> selectedCategories;
     L_Category selectedCategory = null;
     private View v;
     final int KITKAT = 19; // Android 5.0
@@ -109,7 +108,7 @@ public class LibraryFragment extends Fragment {
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        outState.putSerializable("categoryList", selectedCategories);
+        outState.putSerializable("selectedCategory", selectedCategory);
         outState.putString("queryString", searchQuery);
         super.onSaveInstanceState(outState);
     }
@@ -125,7 +124,7 @@ public class LibraryFragment extends Fragment {
         onViewStateRestored(savedInstanceState);
 
         if (savedInstanceState != null) {
-            selectedCategories = (ArrayList<L_Category>) savedInstanceState.getSerializable("categoryList");
+            selectedCategory = (L_Category) savedInstanceState.getSerializable("selectedCategory");
             searchQuery = savedInstanceState.getString("queryString");
         }
 
@@ -170,24 +169,9 @@ public class LibraryFragment extends Fragment {
         banner.setLayoutParams(prepareBannerSize());
         gridview.addHeaderView(banner);
 
-        //Ilk secilen kategori genel oldugu icin ilk create sirasinda listeye eklendi (MG)
-        if (selectedCategories == null) {
-            selectedCategories = new ArrayList<L_Category>();
+        selectedCategory = (L_Category) GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent().get(0);
 
-            /*
-            * Uygulama ilk acildiginda indirilenler sekmesi acilmadan kategori secimi yapilirsa indirilenler sekmesinin selectedCategories duzenlendi.
-            * */
-            if (isOnlyDownloaded && ((MainActivity) getActivity()).getLibraryFragment() != null && ((MainActivity) getActivity()).getLibraryFragment().getSelectedCategories() != null) {
-                selectedCategories.addAll(((MainActivity) getActivity()).getLibraryFragment().getSelectedCategories());
-            } else {
-                if (GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent() != null && GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent().size() > 0) {
-                    selectedCategory = (L_Category) GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent().get(0);
-                    selectedCategories.add(selectedCategory);
-                }
-            }
-        }
-
-        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(isOnlyDownloaded, searchQuery, selectedCategories);
+        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(isOnlyDownloaded, searchQuery, selectedCategory);
         this.contentHolderAdapter = new ContentHolderAdapter(this);
         gridview.setAdapter(this.contentHolderAdapter);
         updateGridView();
@@ -232,70 +216,21 @@ public class LibraryFragment extends Fragment {
 
         if (getTag().compareTo(MainActivity.LIBRARY_TAB_TAG) == 0 && GalePressApplication.getInstance().getBannerLink().length() > 0 && GalePressApplication.getInstance().getDataApi().isConnectedToInternet()) {
             bannerParams = new FrameLayout.LayoutParams(bannerWidth, bannerHeight);
-            gridview.setPadding(gridview.getPaddingLeft(), (int) (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 70, getResources().getDisplayMetrics())), gridview.getPaddingRight(), gridview.getPaddingBottom());
-        } else {
             gridview.setPadding(gridview.getPaddingLeft(), (int) (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())), gridview.getPaddingRight(), gridview.getPaddingBottom());
+        } else {
+            gridview.setPadding(gridview.getPaddingLeft(), (int) (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50, getResources().getDisplayMetrics())), gridview.getPaddingRight(), gridview.getPaddingBottom());
             bannerParams = new FrameLayout.LayoutParams(bannerWidth, 0);
         }
 
         return bannerParams;
     }
 
-    public void updateSelectedCategoriesList() {
-        if (selectedCategory.getCategoryID().compareTo(-1) == 0) {
-            List categoriesOnlyHaveContent = GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent();
-            if (categoriesOnlyHaveContent == null) {
-
-                /*
-                * Burasi sqlite dan cekilen listenin bos olmasi durumunda hem secili kagetorileri hemde sol medude kategori listesini refresh etmek icin (MG)
-                * */
-                repairSelectedCategories();
-                ((MainActivity) getActivity()).getCategoriesAdapter().notifyDataSetChanged();
-            } else {
-                if (selectedCategories.size() == categoriesOnlyHaveContent.size() + 1) {
-                    selectedCategories.clear();
-                } else {
-                    selectedCategories.clear();
-                    selectedCategories.addAll(categoriesOnlyHaveContent);
-                    selectedCategories.add(selectedCategory);
-                }
-            }
-
-        } else {
-            for (int i = 0; i < selectedCategories.size(); i++) {
-                L_Category item = selectedCategories.get(i);
-                if (item.getCategoryID().compareTo(-1) == 0)
-                    selectedCategories.remove(item);
-            }
-
-            boolean isCategorySelectedBefore = false;
-            for (int i = 0; i < selectedCategories.size(); i++) {
-                L_Category item = selectedCategories.get(i);
-                if (item.getCategoryID().compareTo(selectedCategory.categoryID) == 0) {
-                    if (selectedCategories.size() > 1) {
-                        selectedCategories.remove(item);
-                        isCategorySelectedBefore = true;
-                    } else {
-                        isCategorySelectedBefore = true;
-                    }
-
-                }
-            }
-
-            if (!isCategorySelectedBefore) {
-                selectedCategories.add(selectedCategory);
-            }
-        }
-    }
-
     public void updateGridView() {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-                contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(isOnlyDownloaded, searchQuery, selectedCategories);
-                /*for(int i = 0; i < 20; i++){
-                    contents.addAll(contents);
-                }*/
+
+                contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(isOnlyDownloaded, searchQuery, selectedCategory);
                 contentHolderAdapter.notifyDataSetChanged();
                 if (gridview != null) {
                     gridview.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
@@ -308,7 +243,7 @@ public class LibraryFragment extends Fragment {
 
     public void updateAdapterList(L_Content content, boolean isImagePathChanged) {
 
-        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(isOnlyDownloaded, searchQuery, selectedCategories);
+        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(isOnlyDownloaded, searchQuery, selectedCategory);
         /*for(int i = 0; i < 20; i++){
             contents.addAll(contents);
         }*/
@@ -376,17 +311,12 @@ public class LibraryFragment extends Fragment {
     * https://fabric.io/galepress/android/apps/ak.detaysoft.yeryuzudergidis/issues/56d3205ff5d3a7f76b2cef6d
     * Seklinde bi hata vardi. selectedCategories null olmasi ihtimaline karsi bende ilk createde oldugu gibi genel kategorisini set ettim
     * */
-    public void repairSelectedCategories() {
+    public void repairSelectedCategory() {
         //Ilk secilen kategori genel oldugu icin ilk create icin listeye eklendi (MG)
-        selectedCategories = new ArrayList<L_Category>();
         if (GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent() != null && GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent().size() > 0) {
             selectedCategory = (L_Category) GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent().get(0);
-            selectedCategories.add(selectedCategory);
             updateGridView();
         }
     }
 
-    public ArrayList<L_Category> getSelectedCategories() {
-        return selectedCategories;
-    }
 }

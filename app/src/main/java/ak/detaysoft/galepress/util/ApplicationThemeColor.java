@@ -169,7 +169,6 @@ public class ApplicationThemeColor {
         }
     }
 
-
     public int getLightThemeColor(){
         return Color.parseColor("#E8E8E8"); //Light Theme
     }
@@ -571,7 +570,6 @@ public class ApplicationThemeColor {
             myIcon.setColorFilter(getForegroundColorFilter());
         } else if(resourceType == MENU_ICON){
             myIcon = context.getResources().getDrawable(R.drawable.menu);
-            myIcon.setColorFilter(getForegroundColorFilter());
         } else if(resourceType == LIBRARY_ICON){
             myIcon = context.getResources().getDrawable(R.drawable.tab_library);
             myIcon.setColorFilter(getForegroundColorFilter());
@@ -1300,7 +1298,7 @@ public class ApplicationThemeColor {
     //Sol menu search tiklandiginda search view in arka planini degistirmek icin bu metod kullaniliyor
     public Drawable getActiveSearchViewDrawable(Context context) {
         GradientDrawable drawable =  new GradientDrawable();
-        drawable.setCornerRadius(context.getResources().getDimension(R.dimen.login_input_height));
+        drawable.setCornerRadius(context.getResources().getDimension(R.dimen.search_height));
         drawable.setColor(Color.TRANSPARENT);
         drawable.setStroke(1, Color.WHITE);
         return drawable;
@@ -1309,7 +1307,7 @@ public class ApplicationThemeColor {
     //Sol menu search passive oldugunda search view in arka planini degistirmek icin bu metod kullaniliyor
     public Drawable getPassiveSearchViewDrawable(Context context) {
         GradientDrawable drawable =  new GradientDrawable();
-        drawable.setCornerRadius(context.getResources().getDimension(R.dimen.login_input_height));
+        drawable.setCornerRadius(context.getResources().getDimension(R.dimen.search_height));
         drawable.setColor(Color.TRANSPARENT);
         drawable.setStroke(1, Color.WHITE);
         return drawable;
@@ -1439,5 +1437,9 @@ public class ApplicationThemeColor {
         } catch (Exception e) {
             return Typeface.DEFAULT;
         }
+    }
+
+    public int getGPStandForegroundColor(){
+        return Color.parseColor("#2ca0dc");
     }
 }

@@ -340,6 +340,78 @@ public class DatabaseApi {
         return contents;
     }
 
+
+    public List getAllContentsWithSqlQuery(boolean isOnlyDownloaded, String searchQuery, L_Category category){
+        List contents;
+        if(searchQuery!= null && searchQuery.length() != 0)
+            searchQuery = Normalizer.normalize(searchQuery.trim(), Normalizer.Form.NFD)
+                    .replaceAll("[^\\p{ASCII}]", "");
+        try {
+            //KATEGORI NULL ISE GENEL KATEGORISI, GENLE NULL ISE TUM ICERIKLER CEKILIR
+            if(category == null){
+                L_Category generalCategory = getCategory(MainActivity.GENEL_CATEGORY_ID);
+                if(generalCategory != null){
+                    // Genel kategorisine ait contentler listelenecek.
+                    QueryBuilder<L_Content, Integer> contentQuery = contentsDao.queryBuilder();
+
+                    Where where = contentQuery.where();
+
+                    where.like("categoryIds", "%<" + generalCategory.getCategoryID() + ">%");
+                    contentQuery.orderBy("contentOrderNo", false);
+
+                    contents = contentQuery.query();
+                }
+                else {
+                    // Genel kategorisinin olmadigi durumlarda butun contentler listelenir.
+                    QueryBuilder<L_Content, Integer> contentQuery = contentsDao.queryBuilder();
+
+                    if((searchQuery!= null && searchQuery.length() != 0) || isOnlyDownloaded) {
+                        Where where = contentQuery.where();
+                        int andClause = 0;
+                        if(searchQuery!= null && searchQuery.length() != 0){
+                            where.like("name_asc", "%"+searchQuery+"%");
+                            andClause++;
+                        }
+                        if(isOnlyDownloaded){
+                            where.eq("isPdfDownloaded", true);
+                            andClause++;
+                        }
+
+                        if(andClause>1){
+                            where.and(andClause);
+                        }
+                    }
+
+                    contentQuery.orderBy("contentOrderNo", false);
+
+                    contents = contentQuery.query();
+                }
+            } else if(category.getCategoryID() == -1) {
+                QueryBuilder<L_Content, Integer> contentQuery = contentsDao.queryBuilder();
+
+                Where where = contentQuery.where();
+                where.eq("isPdfDownloaded", true);
+
+                contentQuery.orderBy("contentOrderNo", false);
+
+                contents = contentQuery.query();
+            }else {
+                QueryBuilder<L_Content, Integer> contentQuery = contentsDao.queryBuilder();
+
+                Where where = contentQuery.where();
+                where.like("categoryIds", "%<" + category.getCategoryID() + ">%");
+
+                contentQuery.orderBy("contentOrderNo", false);
+
+                contents = contentQuery.query();
+            }
+
+        } catch (SQLException e) {
+            return new ArrayList<L_Content>();
+        }
+        return contents;
+    }
+
     public List getAllContents(boolean isOnlyDownloaded, String searchQuery, ArrayList<L_Category> categoryList)
     {
         List contents = null;
