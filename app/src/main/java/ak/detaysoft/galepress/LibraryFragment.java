@@ -3,7 +3,6 @@ package ak.detaysoft.galepress;
 
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.graphics.Point;
 import android.location.Location;
 import android.net.Uri;
@@ -29,7 +28,6 @@ import org.xwalk.core.XWalkView;
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
@@ -52,9 +50,7 @@ public class LibraryFragment extends Fragment {
     public BannerAndTabbarWebView bannerWebView;
     public BannerAndTabbarWebViewWithCrosswalk bannerWebViewWithCrosswalk;
     private LayoutInflater layoutInflater;
-    public boolean isOnlyDownloaded;
     private List contents;
-    public String searchQuery = new String("");
     L_Category selectedCategory = null;
     private View v;
     final int KITKAT = 19; // Android 5.0
@@ -68,19 +64,14 @@ public class LibraryFragment extends Fragment {
         this.layoutInflater = layoutInflater;
     }
 
+
+    public LibraryFragment(){
+
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
-        /*if(savedInstanceState != null){
-            selectedCategories = (ArrayList<L_Category>)savedInstanceState.getSerializable("categoryList");
-            searchQuery = savedInstanceState.getString("queryString");
-        }*/
-
-        try {
-            isOnlyDownloaded = this.getTag().compareTo(MainActivity.DOWNLOADED_LIBRARY_TAG) == 0;
-        } catch (NullPointerException exception) {
-            isOnlyDownloaded = false;
-        }
         super.onCreate(savedInstanceState);
         if (((MainActivity) this.getActivity()).content_id != null) {
             viewContent(GalePressApplication.getInstance().getDatabaseApi().getContent(((MainActivity) this.getActivity()).content_id));
@@ -109,7 +100,6 @@ public class LibraryFragment extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         outState.putSerializable("selectedCategory", selectedCategory);
-        outState.putString("queryString", searchQuery);
         super.onSaveInstanceState(outState);
     }
 
@@ -125,16 +115,14 @@ public class LibraryFragment extends Fragment {
 
         if (savedInstanceState != null) {
             selectedCategory = (L_Category) savedInstanceState.getSerializable("selectedCategory");
-            searchQuery = savedInstanceState.getString("queryString");
         }
 
         GalePressApplication.getInstance().setLibraryActivity(this);
         GalePressApplication.getInstance().setCurrentFragment(this);
-        ((MainActivity) this.getActivity()).prepareActionBarForCustomTab(null, false, false);
         if (GalePressApplication.getInstance().getDataApi().isConnectedToInternet())
             GalePressApplication.getInstance().getDataApi().updateApplication();
 
-        v = inflater.inflate(R.layout.library_layout, container, false);
+        v = inflater.inflate(R.layout.library_fragment, container, false);
 
         gridview = (HeaderGridView) v.findViewById(R.id.gridview);
         gridview.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
@@ -171,7 +159,7 @@ public class LibraryFragment extends Fragment {
 
         selectedCategory = (L_Category) GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent().get(0);
 
-        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(isOnlyDownloaded, searchQuery, selectedCategory);
+        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(selectedCategory);
         this.contentHolderAdapter = new ContentHolderAdapter(this);
         gridview.setAdapter(this.contentHolderAdapter);
         updateGridView();
@@ -214,7 +202,7 @@ public class LibraryFragment extends Fragment {
 
         FrameLayout.LayoutParams bannerParams;
 
-        if (getTag().compareTo(MainActivity.LIBRARY_TAB_TAG) == 0 && GalePressApplication.getInstance().getBannerLink().length() > 0 && GalePressApplication.getInstance().getDataApi().isConnectedToInternet()) {
+        if (GalePressApplication.getInstance().getBannerLink().length() > 0 && GalePressApplication.getInstance().getDataApi().isConnectedToInternet()) {
             bannerParams = new FrameLayout.LayoutParams(bannerWidth, bannerHeight);
             gridview.setPadding(gridview.getPaddingLeft(), (int) (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())), gridview.getPaddingRight(), gridview.getPaddingBottom());
         } else {
@@ -230,7 +218,7 @@ public class LibraryFragment extends Fragment {
             @Override
             public void run() {
 
-                contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(isOnlyDownloaded, searchQuery, selectedCategory);
+                contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(selectedCategory);
                 contentHolderAdapter.notifyDataSetChanged();
                 if (gridview != null) {
                     gridview.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
@@ -243,15 +231,15 @@ public class LibraryFragment extends Fragment {
 
     public void updateAdapterList(L_Content content, boolean isImagePathChanged) {
 
-        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(isOnlyDownloaded, searchQuery, selectedCategory);
+        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(selectedCategory);
         /*for(int i = 0; i < 20; i++){
             contents.addAll(contents);
         }*/
         ContentHolderAdapter.ViewHolder holder = GalePressApplication.getInstance().getDataApi().getViewHolderForContent(content);
         if (holder != null) {
             if (!content.isPdfDownloading()) {
-                holder.progressBar.setVisibility(View.GONE);
-                holder.progressBar.invalidate();
+                holder.downloadStatus.setVisibility(View.GONE);
+                holder.overlay.setVisibility(View.GONE);
             }
             holder.content = content;
             if (isImagePathChanged)

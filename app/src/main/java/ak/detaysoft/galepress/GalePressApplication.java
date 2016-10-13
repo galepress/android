@@ -80,7 +80,6 @@ public class GalePressApplication
     private static DatabaseApi databaseApi = null;
     private static DataApi dataApi;
     private LibraryFragment libraryFragmentActivity;
-    private CustomTabFragment customTabFragment;
     private Fragment currentFragment;
     private int requestCount;
 
@@ -520,14 +519,6 @@ public class GalePressApplication
         this.libraryFragmentActivity = libraryFragmentActivity;
     }
 
-    public void setCurrentWebFragment(CustomTabFragment customTabFragment) {
-        this.customTabFragment = customTabFragment;
-    }
-
-    public CustomTabFragment getCustomTabFragment() {
-        return this.customTabFragment;
-    }
-
     public Fragment getCurrentFragment() {
         return currentFragment;
     }
@@ -743,10 +734,6 @@ public class GalePressApplication
             isTablistChanced = true;
 
         tabList = newTabList;
-
-        if (getCurrentActivity() != null && getCurrentActivity().getClass() == MainActivity.class && isTablistChanced) {
-            ((MainActivity) getCurrentActivity()).initCustomTabs();
-        }
     }
 
     public ArrayList<TabbarItem> getTabList() {

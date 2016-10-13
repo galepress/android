@@ -169,11 +169,6 @@ public class DatabaseApi {
                 if(GalePressApplication.getInstance().getLibraryActivity()!=null){
                     //GalePressApplication.getInstance().getLibraryActivity().updateGridView();
                     GalePressApplication.getInstance().getLibraryActivity().updateAdapterList(content, false);
-
-                    //icerik panelden mobil uygulamadan kaldir ile kaldirildigi zaman indirilenler ekrani update olmadigi icin bu satiri ekledim (mg)
-                    MainActivity act = GalePressApplication.getInstance().getMainActivity();
-                    if(act.mTabHost.getCurrentTabTag().compareTo(MainActivity.DOWNLOADED_LIBRARY_TAG) == 0)
-                        act.getDownloadedLibraryFragment().updateGridView();
                 }
             }
             catch (Exception e){
@@ -341,11 +336,8 @@ public class DatabaseApi {
     }
 
 
-    public List getAllContentsWithSqlQuery(boolean isOnlyDownloaded, String searchQuery, L_Category category){
+    public List getAllContentsWithSqlQuery(L_Category category){
         List contents;
-        if(searchQuery!= null && searchQuery.length() != 0)
-            searchQuery = Normalizer.normalize(searchQuery.trim(), Normalizer.Form.NFD)
-                    .replaceAll("[^\\p{ASCII}]", "");
         try {
             //KATEGORI NULL ISE GENEL KATEGORISI, GENLE NULL ISE TUM ICERIKLER CEKILIR
             if(category == null){
@@ -364,26 +356,7 @@ public class DatabaseApi {
                 else {
                     // Genel kategorisinin olmadigi durumlarda butun contentler listelenir.
                     QueryBuilder<L_Content, Integer> contentQuery = contentsDao.queryBuilder();
-
-                    if((searchQuery!= null && searchQuery.length() != 0) || isOnlyDownloaded) {
-                        Where where = contentQuery.where();
-                        int andClause = 0;
-                        if(searchQuery!= null && searchQuery.length() != 0){
-                            where.like("name_asc", "%"+searchQuery+"%");
-                            andClause++;
-                        }
-                        if(isOnlyDownloaded){
-                            where.eq("isPdfDownloaded", true);
-                            andClause++;
-                        }
-
-                        if(andClause>1){
-                            where.and(andClause);
-                        }
-                    }
-
                     contentQuery.orderBy("contentOrderNo", false);
-
                     contents = contentQuery.query();
                 }
             } else if(category.getCategoryID() == -1) {

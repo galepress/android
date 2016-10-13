@@ -222,7 +222,7 @@ public class LeftMenuCategoryAdapter extends BaseAdapter {
             }
 
             if(((MainActivity)(mContext)).getLibraryFragment().selectedCategory.getCategoryID().compareTo(mCategory.get(position).categoryID) == 0){
-                ((LinearLayout)image.getParent()).setBackgroundColor(ApplicationThemeColor.getInstance().getGPStandForegroundColor());
+                ((LinearLayout)image.getParent()).setBackgroundColor(ApplicationThemeColor.getInstance().getForegroundColor());
             }
         }
 

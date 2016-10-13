@@ -136,7 +136,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
     private ImageButton mSearchFwd;
     private EditText mSearchText;
     private SearchTask mSearchTask;
-    private LinearLayout bottomTabBar;
     private AlertDialog.Builder mAlertBuilder;
     private boolean mLinkHighlight = true;
     private final Handler mHandler = new Handler();
@@ -1138,24 +1137,8 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                     });
                     mPageSlider.startAnimation(anim);*/
 
-            anim = new TranslateAnimation(0, 0, bottomTabBar.getHeight(), 0);
-            anim.setDuration(200);
-            anim.setAnimationListener(new Animation.AnimationListener() {
-                public void onAnimationStart(Animation animation) {
-                    bottomTabBar.setVisibility(View.VISIBLE);
-                }
-
-                public void onAnimationRepeat(Animation animation) {
-                }
-
-                public void onAnimationEnd(Animation animation) {
-
-                }
-            });
-            bottomTabBar.startAnimation(anim);
-
             scrollToLastThumnail(mDocView.getDisplayedViewIndex());
-            anim = new TranslateAnimation(0, 0, bottomTabBar.getHeight() + mPreviewBarHolder.getHeight(), 0);
+            anim = new TranslateAnimation(0, 0, mPreviewBarHolder.getHeight(), 0);
             anim.setDuration(200);
             anim.setAnimationListener(new Animation.AnimationListener() {
                 public void onAnimationStart(Animation animation) {
@@ -1233,25 +1216,9 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             });
             mPageSlider.startAnimation(anim);*/
 
-            anim = new TranslateAnimation(0, 0, bottomTabBar.getHeight(), 0);
-            anim.setDuration(0);
-            anim.setAnimationListener(new Animation.AnimationListener() {
-                public void onAnimationStart(Animation animation) {
-                    bottomTabBar.setVisibility(View.VISIBLE);
-                }
-
-                public void onAnimationRepeat(Animation animation) {
-                }
-
-                public void onAnimationEnd(Animation animation) {
-
-                }
-            });
-            bottomTabBar.startAnimation(anim);
-
 
             scrollToLastThumnail(mDocView.getDisplayedViewIndex());
-            anim = new TranslateAnimation(0, 0, bottomTabBar.getHeight() + mPreviewBarHolder.getHeight(), 0);
+            anim = new TranslateAnimation(0, 0, mPreviewBarHolder.getHeight(), 0);
             anim.setDuration(0);
             anim.setAnimationListener(new Animation.AnimationListener() {
                 public void onAnimationStart(Animation animation) {
@@ -1316,23 +1283,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             });
             mPageSlider.startAnimation(anim);*/
 
-            anim = new TranslateAnimation(0, 0, 0, bottomTabBar.getHeight());
-            anim.setDuration(200);
-            anim.setAnimationListener(new Animation.AnimationListener() {
-                public void onAnimationStart(Animation animation) {
-                    bottomTabBar.setVisibility(View.INVISIBLE);
-                }
-
-                public void onAnimationRepeat(Animation animation) {
-                }
-
-                public void onAnimationEnd(Animation animation) {
-
-                }
-            });
-            bottomTabBar.startAnimation(anim);
-
-            anim = new TranslateAnimation(0, 0, 0, bottomTabBar.getHeight() + this.mPreviewBarHolder.getHeight());
+            anim = new TranslateAnimation(0, 0, 0,this.mPreviewBarHolder.getHeight());
             anim.setDuration(200);
             anim.setAnimationListener(new Animation.AnimationListener() {
                 public void onAnimationStart(Animation animation) {
@@ -1528,23 +1479,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             });
             mPageSlider.startAnimation(anim);*/
 
-            anim = new TranslateAnimation(0, 0, 0, bottomTabBar.getHeight());
-            anim.setDuration(0);
-            anim.setAnimationListener(new Animation.AnimationListener() {
-                public void onAnimationStart(Animation animation) {
-                    bottomTabBar.setVisibility(View.INVISIBLE);
-                }
-
-                public void onAnimationRepeat(Animation animation) {
-                }
-
-                public void onAnimationEnd(Animation animation) {
-
-                }
-            });
-            bottomTabBar.startAnimation(anim);
-
-            anim = new TranslateAnimation(0, 0, 0, bottomTabBar.getHeight() + this.mPreviewBarHolder.getHeight());
+            anim = new TranslateAnimation(0, 0, 0, this.mPreviewBarHolder.getHeight());
             anim.setDuration(0);
             anim.setAnimationListener(new Animation.AnimationListener() {
                 public void onAnimationStart(Animation animation) {
@@ -1974,156 +1909,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                     startThumnailLeftAnim((int) id);
             }
         });
-        bottomTabBar = (LinearLayout) mButtonsView.findViewById(R.id.reader_tabbar);
-        bottomTabBar.setBackgroundColor(ApplicationThemeColor.getInstance().getActionAndTabBarColor());
-
-
-        //ANA SAYFA
-        ((ImageView) mButtonsView.findViewById(R.id.reader_home)).setImageDrawable(createDrawable(false, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.HOME_ICON_SELECTED),
-                ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.HOME_ICON)));
-
-        TextView reader_home_txt = ((TextView) mButtonsView.findViewById(R.id.reader_home_txt));
-        reader_home_txt.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())
-                , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 18, getResources().getDisplayMetrics())));
-        reader_home_txt.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
-        reader_home_txt.setTextColor(createTabTitleColorStateList());
-        reader_home_txt.setText(getResources().getString(R.string.HOME));
-
-        ((LinearLayout) mButtonsView.findViewById(R.id.reader_home_layout)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tabItemClick(0);
-            }
-        });
-
-        if (GalePressApplication.getInstance().getDataApi().getMasterContent() == null || !GalePressApplication.getInstance().getDataApi().getMasterContent().isPdfDownloaded())
-            ((LinearLayout) mButtonsView.findViewById(R.id.reader_home_layout)).setVisibility(View.GONE);
-
-
-        //KUTUPHANE
-        TextView reader_library_txt = ((TextView) mButtonsView.findViewById(R.id.reader_library_txt));
-        reader_library_txt.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())
-                , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 18, getResources().getDisplayMetrics())));
-        reader_library_txt.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
-        reader_library_txt.setText(getResources().getString(R.string.LIBRARY));
-
-
-        //icerik indirildigi zaman downloaded ekrani aciksa update etmek icin
-        if (GalePressApplication.getInstance().getMainActivity() != null) {
-            MainActivity act = GalePressApplication.getInstance().getMainActivity();
-            if (act.mTabHost.getCurrentTabTag().compareTo(MainActivity.LIBRARY_TAB_TAG) == 0) {
-                ((ImageView) mButtonsView.findViewById(R.id.reader_library)).setImageDrawable(createDrawable(true, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.LIBRARY_ICON),
-                        ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.LIBRARY_ICON_SELECTED)));
-                reader_library_txt.setTextColor(createSelectedTabTitleColorStateList());
-            } else {
-                ((ImageView) mButtonsView.findViewById(R.id.reader_library)).setImageDrawable(createDrawable(false, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.LIBRARY_ICON),
-                        ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.LIBRARY_ICON_SELECTED)));
-                reader_library_txt.setTextColor(createTabTitleColorStateList());
-            }
-        }
-
-        ((LinearLayout) mButtonsView.findViewById(R.id.reader_library_layout)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tabItemClick(1);
-            }
-        });
-
-
-        //INDIRILENLER
-        TextView reader_download_txt = ((TextView) mButtonsView.findViewById(R.id.reader_download_txt));
-        reader_download_txt.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())
-                , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 18, getResources().getDisplayMetrics())));
-        reader_download_txt.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
-        reader_download_txt.setText(getResources().getString(R.string.DOWNLOADED));
-
-        //icerik indirildigi zaman downloaded ekrani aciksa update etmek icin
-        if (GalePressApplication.getInstance().getMainActivity() != null) {
-            MainActivity act = GalePressApplication.getInstance().getMainActivity();
-            if (act.mTabHost.getCurrentTabTag().compareTo(MainActivity.DOWNLOADED_LIBRARY_TAG) == 0) {
-                ((ImageView) mButtonsView.findViewById(R.id.reader_download)).setImageDrawable(createDrawable(true, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.DOWNLOAD_ICON),
-                        ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.DOWNLOAD_ICON_SELECTED)));
-                reader_download_txt.setTextColor(createSelectedTabTitleColorStateList());
-            } else {
-                ((ImageView) mButtonsView.findViewById(R.id.reader_download)).setImageDrawable(createDrawable(false, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.DOWNLOAD_ICON),
-                        ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.DOWNLOAD_ICON_SELECTED)));
-                reader_download_txt.setTextColor(createTabTitleColorStateList());
-            }
-        }
-
-        ((LinearLayout) mButtonsView.findViewById(R.id.reader_download_layout)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tabItemClick(2);
-            }
-        });
-
-
-        //HAKKINDA
-        ((ImageView) mButtonsView.findViewById(R.id.reader_info)).setImageDrawable(createDrawable(false, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.INFO_ICON_SELECTED),
-                ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.INFO_ICON)));
-
-        TextView reader_info_txt = ((TextView) mButtonsView.findViewById(R.id.reader_info_txt));
-        reader_info_txt.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())
-                , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 18, getResources().getDisplayMetrics())));
-        reader_info_txt.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
-        reader_info_txt.setTextColor(createTabTitleColorStateList());
-        reader_info_txt.setText(getResources().getString(R.string.INFO));
-
-        ((LinearLayout) mButtonsView.findViewById(R.id.reader_info_layout)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tabItemClick(3);
-            }
-        });
-
-        ((LinearLayout) mButtonsView.findViewById(R.id.reader_info_layout)).setVisibility(View.GONE);
-
-        //Custom tabbar buttons
-        if (GalePressApplication.getInstance().getDataApi().isConnectedToInternet() && GalePressApplication.getInstance().getTabList() != null) {
-            int index = 0;
-            for (TabbarItem item : GalePressApplication.getInstance().getTabList()) {
-                LinearLayout layout = new LinearLayout(this);
-                layout.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 70, getResources().getDisplayMetrics())
-                        , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50, getResources().getDisplayMetrics())));
-                layout.setGravity(Gravity.CENTER);
-                layout.setId(100 + index);
-                layout.setOrientation(LinearLayout.VERTICAL);
-                layout.setPadding((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0, getResources().getDisplayMetrics()),
-                        (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0, getResources().getDisplayMetrics()),
-                        (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0, getResources().getDisplayMetrics()),
-                        (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0, getResources().getDisplayMetrics()));
-                layout.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        tabItemClick(v.getId());
-                    }
-                });
-
-                ImageView img = new ImageView(this);
-                img.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())
-                        , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 32, getResources().getDisplayMetrics())));
-                ApplicationThemeColor.getInstance().paintRemoteIcon(this, item, img);
-                layout.addView(img);
-
-                TextView txt = new TextView(this);
-                txt.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())
-                        , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 18, getResources().getDisplayMetrics())));
-                txt.setSingleLine();
-                txt.setMaxLines(1);
-                txt.setEllipsize(TextUtils.TruncateAt.END);
-                txt.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 9.5f);
-                txt.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
-                txt.setTextColor(createTabTitleColorStateList());
-                txt.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
-                txt.setText(item.getTitle());
-                layout.addView(txt);
-
-                ((LinearLayout) mButtonsView.findViewById(R.id.reader_tabbar)).addView(layout);
-                index++;
-
-            }
-        }
 
         //mPageNumberView = (TextView)mButtonsView.findViewById(R.id.pageNumber);
         mInfoView = (TextView) mButtonsView.findViewById(R.id.info);
@@ -2182,7 +1967,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         //mPageNumberView.setVisibility(View.INVISIBLE);
         mInfoView.setVisibility(View.INVISIBLE);
         //mPageSlider.setVisibility(View.INVISIBLE);
-        bottomTabBar.setVisibility(View.INVISIBLE);
         mPreviewBarHolder.setVisibility(View.INVISIBLE);
     }
 
@@ -2222,29 +2006,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
         ColorStateList myList = new ColorStateList(states, colors);
         return myList;
-    }
-
-    private void tabItemClick(int type) {
-        if (GalePressApplication.getInstance().getContentDetailPopupActivity() != null)
-            GalePressApplication.getInstance().getContentDetailPopupActivity().finish();
-
-        if (GalePressApplication.getInstance().getDataApi().isLibraryMustBeEnabled()) {
-            Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
-            String udid = UUID.randomUUID().toString();
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            Calendar cal = Calendar.getInstance();
-            dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
-            Location location = GalePressApplication.getInstance().location;
-            L_Statistic statistic = new L_Statistic(udid, this.content.getId(), location != null ? location.getLatitude() : null, location != null ? location.getLongitude() : null, null, dateFormat.format(cal.getTime()), L_Statistic.STATISTIC_contentClosed, null, null, null);
-            GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
-
-            GalePressApplication.getInstance().setMuPDFActivity(null);
-            Intent intent = getIntent();
-            intent.putExtra("SelectedTab", type);
-            setResult(101, intent);
-            finish();
-        }
-
     }
 
     private Drawable createDrawable(boolean isSelected, Drawable res, Drawable selectedRes) {

@@ -371,13 +371,6 @@ public class DataApi extends Object {
         @Override
         protected void onPreExecute() {
 
-            //icerik indirildigi zaman downloaded ekrani aciksa update etmek icin
-            if (GalePressApplication.getInstance().getMainActivity() != null) {
-                MainActivity act = GalePressApplication.getInstance().getMainActivity();
-                if (act.mTabHost.getCurrentTabTag().compareTo(MainActivity.DOWNLOADED_LIBRARY_TAG) == 0)
-                    act.getDownloadedLibraryFragment().updateGridView();
-            }
-
             if (GalePressApplication.getInstance().getLibraryActivity() != null)
                 GalePressApplication.getInstance().getLibraryActivity().updateAdapterList(content, false);
 
@@ -434,12 +427,6 @@ public class DataApi extends Object {
                 GalePressApplication.getInstance().getContentDetailPopupActivity().update();
             }
 
-            //icerik indirildigi zaman indirilenler ekrani aciksa update etmek icin
-            if (GalePressApplication.getInstance().getMainActivity() != null) {
-                MainActivity act = GalePressApplication.getInstance().getMainActivity();
-                if (act.getDownloadedLibraryFragment() != null)
-                    act.getDownloadedLibraryFragment().updateGridView();
-            }
         }
 
     }
@@ -460,8 +447,9 @@ public class DataApi extends Object {
 
                 if (viewHolder != null) {
                     if (viewHolder.content.getId().compareTo(content.getId()) == 0) {
-                        viewHolder.progressBar.setVisibility(View.VISIBLE);
-                        viewHolder.progressBar.setProgress((int) (total * 100 / fileLength));
+                        viewHolder.downloadStatus.setVisibility(View.VISIBLE);
+                        viewHolder.overlay.setVisibility(View.VISIBLE);
+                        viewHolder.downloadPercentage.setText("%"+(int) (total * 100 / fileLength));
                     }
                 }
             }
@@ -1249,14 +1237,6 @@ public class DataApi extends Object {
                             Log.e("Content_Delete", "" + e.toString());
                         }
 
-                        //icerik silindigi zaman downloaded ekrani aciksa update etmek icin
-                        if (GalePressApplication.getInstance().getMainActivity() != null) {
-                            MainActivity act = GalePressApplication.getInstance().getMainActivity();
-                            if (act.mTabHost.getCurrentTabTag().compareTo(MainActivity.DOWNLOADED_LIBRARY_TAG) == 0)
-                                act.getDownloadedLibraryFragment().updateGridView();
-                        }
-
-
                         updateApplication();
 
                         if (GalePressApplication.getInstance().getContentDetailPopupActivity() != null) {
@@ -1281,13 +1261,6 @@ public class DataApi extends Object {
             }
         } else {
             Toast.makeText(context, context.getResources().getString(R.string.WARNING_0), Toast.LENGTH_SHORT).show();
-            //icerik herhangi bir sebepten dolayi silenemezse popupekranlarini update etmek icin
-            if (GalePressApplication.getInstance().getMainActivity() != null) {
-                MainActivity act = GalePressApplication.getInstance().getMainActivity();
-                if (act.mTabHost.getCurrentTabTag().compareTo(MainActivity.DOWNLOADED_LIBRARY_TAG) == 0)
-                    act.getDownloadedLibraryFragment().updateGridView();
-            }
-
             if (GalePressApplication.getInstance().getContentDetailPopupActivity() != null) {
                 GalePressApplication.getInstance().getContentDetailPopupActivity().update();
             }
@@ -1782,9 +1755,7 @@ public class DataApi extends Object {
                                         Toast.makeText(activity, activity.getResources().getString(R.string.WARNING_160), Toast.LENGTH_SHORT).show();
                                         if (isUpdate) {
                                             MainActivity act = (MainActivity) activity;
-                                            if (act.mTabHost.getCurrentTabTag().compareTo(MainActivity.DOWNLOADED_LIBRARY_TAG) == 0
-                                                    || act.mTabHost.getCurrentTabTag().compareTo(MainActivity.LIBRARY_TAB_TAG) == 0)
-                                                act.getLibraryFragment().updateGridView();
+                                            act.getLibraryFragment().updateGridView();
                                         }
                                     } else if (activity instanceof UserLoginActivity) {
                                         ((UserLoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_160));
@@ -1841,9 +1812,7 @@ public class DataApi extends Object {
                                             progress.dismiss();
                                         if (isUpdate) {
                                             MainActivity act = (MainActivity) activity;
-                                            if (act.mTabHost.getCurrentTabTag().compareTo(MainActivity.DOWNLOADED_LIBRARY_TAG) == 0
-                                                    || act.mTabHost.getCurrentTabTag().compareTo(MainActivity.LIBRARY_TAB_TAG) == 0)
-                                                act.getLibraryFragment().updateGridView();
+                                            act.getLibraryFragment().updateGridView();
                                         }
                                     } else if (activity instanceof UserLoginActivity) {
                                         ((UserLoginActivity) activity).closeActivityAndUpdateApplication();

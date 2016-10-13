@@ -269,8 +269,8 @@ public class ContentDetailPopupActivity extends Activity{
             @Override
             public void onClick(View v) {
                 if(DataApi.isConnectedToInternet()){
-
-
+                    downloadButton.setEnabled(false);
+                    downloadButton.setClickable(false);
                     if(content.isBuyable()) {
                         if(content.isContentBought() || GalePressApplication.getInstance().isUserHaveActiveSubscription()) {
                             if (GalePressApplication.getInstance().getDataApi().downloadPdfTask == null
@@ -376,6 +376,9 @@ public class ContentDetailPopupActivity extends Activity{
             @Override
             public void onClick(View v) {
                 v.setEnabled(false);
+                downloadButton.setEnabled(true);
+                downloadButton.setClickable(true);
+
                 GalePressApplication.getInstance().getDataApi().cancelDownload(false, ContentDetailPopupActivity.this, content);
             }
         });
@@ -658,11 +661,6 @@ public class ContentDetailPopupActivity extends Activity{
                         if (GalePressApplication.getInstance().getMainActivity() != null && GalePressApplication.getInstance().getDataApi().downloadPdfTask != null && (GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() == AsyncTask.Status.RUNNING)){
                             if(GalePressApplication.getInstance().getMainActivity().getLibraryFragment() != null) {
                                 LibraryFragment libraryFragment = GalePressApplication.getInstance().getMainActivity().getLibraryFragment();
-                                libraryFragment.updateGridView();
-                            }
-
-                            if(GalePressApplication.getInstance().getMainActivity().getDownloadedLibraryFragment() != null) {
-                                LibraryFragment libraryFragment = GalePressApplication.getInstance().getMainActivity().getDownloadedLibraryFragment();
                                 libraryFragment.updateGridView();
                             }
                         }

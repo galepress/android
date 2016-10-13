@@ -6,21 +6,15 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
-import android.support.v4.app.Fragment;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
-import android.view.View;
 import android.webkit.GeolocationPermissions;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 
 import ak.detaysoft.galepress.GalePressApplication;
-import ak.detaysoft.galepress.MainActivity;
-import ak.detaysoft.galepress.util.ApplicationThemeColor;
 
 /**
  * Created by p1025 on 30.04.2015.
@@ -28,8 +22,6 @@ import ak.detaysoft.galepress.util.ApplicationThemeColor;
 public class BannerAndTabbarWebView extends WebView {
 
     private Context context;
-    private boolean isBannerWebView = true;
-    private ProgressBar progressBar;
     private boolean isBannerUrlUpdated = false;
     private boolean isFirstInit = true;
 
@@ -47,14 +39,6 @@ public class BannerAndTabbarWebView extends WebView {
     public BannerAndTabbarWebView(Context context) {
         super(context);
         this.context = context;
-        initView();
-    }
-
-    public BannerAndTabbarWebView(Context context, ProgressBar progressBar, boolean isBannerWebView) {
-        super(context);
-        this.isBannerWebView = isBannerWebView;
-        this.context = context;
-        this.progressBar = progressBar;
         initView();
     }
 
@@ -97,23 +81,13 @@ public class BannerAndTabbarWebView extends WebView {
 
         this.setHorizontalScrollBarEnabled(false);
         this.setVerticalScrollBarEnabled(false);
-        if (isBannerWebView) {
-            this.setBackgroundColor(Color.parseColor("#00FFFFFF"));
-        }
+        this.setBackgroundColor(Color.parseColor("#00FFFFFF"));
     }
 
     public class MyWebClient extends WebViewClient {
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
-            if (GalePressApplication.getInstance().getCurrentActivity() != null && GalePressApplication.getInstance().getCurrentActivity().getClass() == MainActivity.class) {
-                Fragment fragment = GalePressApplication.getInstance().getCurrentFragment();
-                if (fragment != null && fragment.getTag() != null && fragment.getTag().compareTo(MainActivity.LIBRARY_TAB_TAG) != 0
-                        && fragment.getTag().compareTo(MainActivity.DOWNLOADED_LIBRARY_TAG) != 0 && fragment.getTag().compareTo(MainActivity.INFO_TAB_TAG) != 0 && !isBannerWebView) {
-                    ((MainActivity) context).prepareActionBarForCustomTab(view, true, true);
-                    ((LinearLayout) progressBar.getParent()).setVisibility(View.GONE);
-                }
-            }
             /*
             * isFirstInit kontrolu yapilmazsa ilk acilista redirect edilen sayfalar  ExtraWebviewActivity de aciyor. (MG)
             * */
@@ -124,60 +98,47 @@ public class BannerAndTabbarWebView extends WebView {
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
             super.onPageStarted(view, url, favicon);
-            if (!isBannerWebView) {
-                progressBar.setIndeterminate(true);
-                progressBar.getIndeterminateDrawable().setColorFilter(ApplicationThemeColor.getInstance().getForegroundColor(), android.graphics.PorterDuff.Mode.MULTIPLY);
-                ((LinearLayout) progressBar.getParent()).setVisibility(View.VISIBLE);
-            }
         }
 
         @Override
         public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
             super.onReceivedError(view, errorCode, description, failingUrl);
-            if (!isBannerWebView) {
-                ((LinearLayout) progressBar.getParent()).setVisibility(View.GONE);
-            } else {
-                view.loadUrl("file:///android_asset/banner_not_loaded.html");
-            }
+            view.loadUrl("file:///android_asset/banner_not_loaded.html");
         }
 
 
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            if (isBannerWebView) {
-                if(!isFirstInit){
-                    if(!isBannerUrlUpdated){
+            if(!isFirstInit){
+                if(!isBannerUrlUpdated){
                         /*
                         * isBannerUrlUpdated kontrolu yapilmazsa yeni banner url geldiginde onu ExtraWebviewActivity de aciyor. (MG)
                         * */
-                        isBannerUrlUpdated = false;
-                        if(!url.contains("file:///")){
-                            if(url.compareTo(GalePressApplication.getInstance().getBannerLink()) != 0){
-                                //4.4
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                                    Intent intent = new Intent(context, ExtraWebViewActivity.class);
-                                    intent.putExtra("url", url);
-                                    intent.putExtra("isMainActivitIntent", false);
-                                    context.startActivity(intent);
-                                    return true;
-                                } else {
-                                    Intent intent = new Intent(context, ExtraWebViewWithCrosswalkActivity.class);
-                                    intent.putExtra("url", url);
-                                    intent.putExtra("isMainActivitIntent", false);
-                                    context.startActivity(intent);
-                                    return true;
-                                }
+                    isBannerUrlUpdated = false;
+                    if(!url.contains("file:///")){
+                        if(url.compareTo(GalePressApplication.getInstance().getBannerLink()) != 0){
+                            //4.4
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                                Intent intent = new Intent(context, ExtraWebViewActivity.class);
+                                intent.putExtra("url", url);
+                                intent.putExtra("isMainActivitIntent", false);
+                                context.startActivity(intent);
+                                return true;
+                            } else {
+                                Intent intent = new Intent(context, ExtraWebViewWithCrosswalkActivity.class);
+                                intent.putExtra("url", url);
+                                intent.putExtra("isMainActivitIntent", false);
+                                context.startActivity(intent);
+                                return true;
                             }
-                            return false;
                         }
                         return false;
                     }
                     return false;
                 }
                 return false;
-            } else {
-                return super.shouldOverrideUrlLoading(view, url);
             }
+            return false;
         }
     }
 

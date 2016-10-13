@@ -37,7 +37,7 @@ public class ApplicationThemeColor {
     private static ApplicationThemeColor instance;
 
     public static int themeType = 1;
-    private static String foregroundColor = "#2980B9";
+    private static String foregroundColor = "#2ca0dc";
     public static final int DARK_THEME_TYPE = 1;
     public static final int LIGHT_THEME_TYPE = 2;
 
@@ -117,6 +117,7 @@ public class ApplicationThemeColor {
     public static final int VERIFICATION_POPUP_CLOSE_BASE = 70;
     public static final int READER_SEARCH_OPEN = 71;
     public static final int READER_SEARCH_CLEAR = 72;
+    public static final int SEARCH_MENU_ICON = 73;
 
     public ApplicationThemeColor(){
 
@@ -145,7 +146,7 @@ public class ApplicationThemeColor {
             isColorChanged = true;
 
         getInstance().themeType = Integer.parseInt(backGround);
-        getInstance().foregroundColor = foreGround;
+        getInstance().foregroundColor = "#2ca0dc";
 
         if(isColorChanged && GalePressApplication.getInstance().getCurrentActivity()!= null && GalePressApplication.getInstance().getCurrentActivity().getClass() == MainActivity.class) {
             ((MainActivity) GalePressApplication.getInstance().getCurrentActivity()).updateActivityViewAndAdapter(true);
@@ -162,11 +163,7 @@ public class ApplicationThemeColor {
     }
 
     public int getThemeColor(){
-        if(getInstance().themeType == DARK_THEME_TYPE){
-            return Color.parseColor("#333333"); //Dark Theme
-        } else {
-            return Color.parseColor("#E8E8E8"); //Light Theme
-        }
+        return Color.parseColor("#313131"); //Dark Theme
     }
 
     public int getLightThemeColor(){
@@ -179,11 +176,7 @@ public class ApplicationThemeColor {
 
     //alpha degeri 0-255 arası olmali convertIntAlphaToHex metodunda hex hesaplamasi yapiliyor
     public int getThemeColorWithAlpha(int alpha){
-        if(getInstance().themeType == DARK_THEME_TYPE){
-            return Color.parseColor(convertIntAlphaToHex(alpha)+"333333"); //Dark Theme
-        } else {
-            return Color.parseColor(convertIntAlphaToHex(alpha)+"E8E8E8"); //Light Theme
-        }
+        return Color.parseColor(convertIntAlphaToHex(alpha)+"313131");
     }
 
     public int getReverseThemeColor(){
@@ -242,27 +235,19 @@ public class ApplicationThemeColor {
     }
 
     public int getActionAndTabBarColor(){
-        if(getInstance().themeType == DARK_THEME_TYPE){
-            return Color.parseColor("#282828"); //Light Theme
-        } else {
-            return Color.parseColor("#F7F7F7"); //Dark Theme
-        }
+        return Color.parseColor("#191919");
     }
 
     public int getActionAndTabBarColorWithAlpha(int alpha){
-        if(getInstance().themeType == DARK_THEME_TYPE){
-            return Color.parseColor(convertIntAlphaToHex(alpha)+"282828"); //Light Theme
-        } else {
-            return Color.parseColor(convertIntAlphaToHex(alpha)+"F7F7F7"); //Dark Theme
-        }
+        return Color.parseColor(convertIntAlphaToHex(alpha)+"191919");
     }
 
     public int getCoverImageBackgroundColor(){
-        if(getInstance().themeType == DARK_THEME_TYPE){
-            return Color.parseColor("#575757"); //Light Theme
-        } else {
-            return Color.parseColor("#FFFFFF"); //Dark Theme
-        }
+        return Color.parseColor("#191919");
+    }
+
+    public int getHolderDetailBackround(){
+        return getThemeColorWithAlpha(80);
     }
 
     public int getLightCoverImageBackgroundColor(){
@@ -570,6 +555,8 @@ public class ApplicationThemeColor {
             myIcon.setColorFilter(getForegroundColorFilter());
         } else if(resourceType == MENU_ICON){
             myIcon = context.getResources().getDrawable(R.drawable.menu);
+        }  else if(resourceType == SEARCH_MENU_ICON){
+            myIcon = context.getResources().getDrawable(R.drawable.search_menu);
         } else if(resourceType == LIBRARY_ICON){
             myIcon = context.getResources().getDrawable(R.drawable.tab_library);
             myIcon.setColorFilter(getForegroundColorFilter());
@@ -1344,6 +1331,13 @@ public class ApplicationThemeColor {
         return drawable;
     }
 
+    public int getGridItemNameLabelColor() {
+        return Color.parseColor("#219ed8");
+    }
+
+    public int getGridItemDetailLabelColor() {
+        return Color.WHITE;
+    }
 
 
     /*
@@ -1393,7 +1387,7 @@ public class ApplicationThemeColor {
 
     public Typeface getGothamBook(Context context){
         try{
-            return Typeface.createFromAsset(context.getAssets(), "fonts/GothamRnd-Book.otf");
+            return Typeface.createFromAsset(context.getAssets(), "fonts/GothamRounded-Book.otf");
         } catch (Exception e) {
             return Typeface.DEFAULT;
         }
@@ -1401,7 +1395,7 @@ public class ApplicationThemeColor {
 
     public Typeface getGothamLight(Context context){
         try{
-            return Typeface.createFromAsset(context.getAssets(), "fonts/GothamRnd-Light.otf");
+            return Typeface.createFromAsset(context.getAssets(), "fonts/GothamRounded-Light.otf");
         } catch (Exception e) {
             return Typeface.DEFAULT;
         }
@@ -1437,9 +1431,5 @@ public class ApplicationThemeColor {
         } catch (Exception e) {
             return Typeface.DEFAULT;
         }
-    }
-
-    public int getGPStandForegroundColor(){
-        return Color.parseColor("#2ca0dc");
     }
 }

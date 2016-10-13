@@ -1,11 +1,14 @@
 package ak.detaysoft.galepress.web_views;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.webkit.DownloadListener;
 import android.webkit.GeolocationPermissions;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
@@ -158,6 +161,14 @@ public class ExtraWebViewActivity extends Activity {
                 ((LinearLayout) progressBar.getParent()).setVisibility(View.GONE);
             }
         });
+        /*webView.setDownloadListener(new DownloadListener() {
+            @Override
+            public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+            }
+        });*/
         webView.loadUrl(url);
 
         ((LinearLayout)progressBar.getParent()).bringToFront();

@@ -1,7 +1,9 @@
 package ak.detaysoft.galepress.web_views;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +17,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import org.xwalk.core.XWalkDownloadListener;
 import org.xwalk.core.XWalkNavigationHistory;
 import org.xwalk.core.XWalkPreferences;
 import org.xwalk.core.XWalkResourceClient;
@@ -139,7 +142,14 @@ public class ExtraWebViewWithCrosswalkActivity extends Activity {
 
         webView.setHorizontalScrollBarEnabled(false);
         webView.setVerticalScrollBarEnabled(false);
-
+        /*webView.setDownloadListener(new XWalkDownloadListener(this) {
+            @Override
+            public void onDownloadStart(String s, String s1, String s2, String s3, long l) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(s));
+                startActivity(i);
+            }
+        });*/
         webView.load(url, null);
 
         ((LinearLayout)progressBar.getParent()).bringToFront();

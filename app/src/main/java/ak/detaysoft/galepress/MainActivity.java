@@ -2,6 +2,8 @@ package ak.detaysoft.galepress;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
@@ -11,22 +13,17 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.IntentSender;
 import android.content.pm.ActivityInfo;
-import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.RemoteException;
 import android.provider.Settings;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -35,7 +32,6 @@ import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -51,7 +47,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -91,13 +86,11 @@ import javax.xml.parsers.SAXParserFactory;
 
 import ak.detaysoft.galepress.custom_models.ApplicationPlist;
 import ak.detaysoft.galepress.custom_models.Subscription;
-import ak.detaysoft.galepress.custom_models.TabbarItem;
 import ak.detaysoft.galepress.database_models.L_Category;
 import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.database_models.L_Statistic;
 import ak.detaysoft.galepress.search_models.MenuSearchResult;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
-import ak.detaysoft.galepress.util.TabbarStateList;
 import ak.detaysoft.galepress.web_views.ExtraWebViewActivity;
 
 /**
@@ -108,11 +101,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     public static final int GENEL_CATEGORY_ID = 0;
     public static final int SHOW_ALL_CATEGORY_ID = -1;
     public static final int CONTEXT_MENU_GROUP_ID = 1;
-    public static final String LIBRARY_TAB_TAG = "LIBRARY_TAB";
-    public static final String DOWNLOADED_LIBRARY_TAG = "DOWNLOADED_TAB";
-    public static final String HOME_TAB_TAG = "HOME_TAB";
-    public static final String INFO_TAB_TAG = "INFO_TAB";
-    public FragmentTabHost mTabHost;
     private EditText searchEdittext;
     private ImageView menuButton;
     private ImageView searchMenuButton;
@@ -147,31 +135,16 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     private LinearLayout leftMenuBaseLayout;
     private Button logoutButton;
 
-    private ImageButton geriButton;
-    private ImageButton ileriButton;
-    private ImageButton refreshButton;
-    public boolean isTabFirstInit = true;
-    ArrayList<TabHost.TabSpec> specList = new ArrayList<TabHost.TabSpec>();
+
     private Subscription selectedSubscription;
-    private int selectedReaderTabIndex = -1;
-    private String selectedTabTag = "";
     public ProgressBar searchProgress;
+    private LibraryFragment library;
+    private TextView actionbarTitle;
 
-
-    /*
-    * Uygulama arka planda yada content detail ekrani acikken internet baglantisinin degismesi durumunda customtablarin set edilmesi islemini onresume da yapabilmek icin eklendi.
-    * Eger bu kontrol yapilmazsa setCurrentTab metodu kullanilirken illegalStateException aliyoruz ve uygulama crash oluyor.
-    * */
-    private boolean connectionStatusChangedOnPause = false;
 
     private BroadcastReceiver mConnReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (GalePressApplication.getInstance().getCurrentActivity() == MainActivity.this) {
-                initCustomTabs();
-            } else {
-                connectionStatusChangedOnPause = true;
-            }
 
         }
     };
@@ -205,41 +178,26 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
         setContentView(R.layout.activity_main);
 
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        if (savedInstanceState != null) {
+            fragmentTransaction.replace(R.id.fragment_container, library, library.getTag()).addToBackStack(null);
+            fragmentTransaction.commit();
+        } else {
+            library = new LibraryFragment();
+            fragmentTransaction.replace(R.id.fragment_container, library, "LIBRARY");
+            fragmentTransaction.commit();
+        }
+
         leftMenu = new SlidingMenu(this);
         leftMenu.setMode(SlidingMenu.LEFT_RIGHT);
+        leftMenu.setVisibility(View.VISIBLE);
         leftMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
-        leftMenu.setShadowWidth(2);
         leftMenu.setFadeDegree(0.35f);
         leftMenu.setBehindWidth((int) getResources().getDimension(R.dimen.left_menu_size));
         leftMenu.attachToActivity(this, SlidingMenu.SLIDING_WINDOW);
         leftMenu.setMenu(R.layout.left_menu);
         leftMenu.setSecondaryMenu(R.layout.right_menu);
-
-        /*mDrawerLeft = MenuDrawer.attach(this, MenuDrawer.MENU_DRAG_WINDOW, Position.LEFT);
-        mDrawerLeft.setContentView(R.layout.activity_main);
-        mDrawerLeft.setMenuView(R.layout.left_menu);
-        mDrawerLeft.setDropShadowColor(ApplicationThemeColor.getInstance().getMenuShadowColor());
-        mDrawerLeft.setDropShadowSize(2);
-        mDrawerLeft.setMenuSize((int) getResources().getDimension(R.dimen.left_menu_size));
-        mDrawerLeft.setOnDrawerStateChangeListener(new MenuDrawer.OnDrawerStateChangeListener() {
-            @Override
-            public void onDrawerStateChange(int oldState, int newState) {
-                hideKeyboard(searchEdittext);
-            }
-        });*/
-
-        /*mDrawerRight = MenuDrawer.attach(this, MenuDrawer.MENU_DRAG_WINDOW, Position.RIGHT);
-        mDrawerRight.setContentView(R.layout.activity_main);
-        mDrawerRight.setMenuView(R.layout.left_menu);
-        mDrawerRight.setDropShadowColor(ApplicationThemeColor.getInstance().getMenuShadowColor());
-        mDrawerRight.setDropShadowSize(2);
-        mDrawerRight.setMenuSize((int) getResources().getDimension(R.dimen.left_menu_size));
-        mDrawerRight.setOnDrawerStateChangeListener(new MenuDrawer.OnDrawerStateChangeListener() {
-            @Override
-            public void onDrawerStateChange(int oldState, int newState) {
-                hideKeyboard(searchEdittext);
-            }
-        });*/
 
         leftMenuBaseLayout = (LinearLayout) findViewById(R.id.left_menu_layout);
         categoriesTitleLayout = (RelativeLayout) findViewById(R.id.left_categories_layout);
@@ -274,7 +232,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                                     int position, long id) {
                 hideKeyboard(searchEdittext);
 
-
+                actionbarTitle.setText(categoryListWithAll.get(position).getCategoryName().toUpperCase());
                 LibraryFragment libraryFragment = getLibraryFragment();
                 libraryFragment.selectedCategory = categoryListWithAll.get(position);
                 libraryFragment.updateGridView();
@@ -379,8 +337,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.actionbar);
-
-        initDefaultTabs();
 
         searchEdittext = (EditText) findViewById(R.id.left_menu_search_edit_text);
         //React to Done button on keyboard
@@ -602,7 +558,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 mRegisterTask.execute(null, null, null);
             }
         }
-
+        actionbarTitle = (TextView) findViewById(R.id.action_bar_title_text_view);
         updateActivityViewAndAdapter(true);
 
         GalePressApplication.getInstance().setCurrentActivity(this);
@@ -730,10 +686,10 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             membershipListView.setVisibility(View.GONE);
         }
 
-        TextView title = (TextView) findViewById(R.id.action_bar_title_text_view);
-        title.setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
-        title.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
-        title.setText(title.getText().toString().toUpperCase());
+
+        actionbarTitle.setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
+        actionbarTitle.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
+        actionbarTitle.setText(categoryListWithAll.get(1).getCategoryName().toString().toUpperCase());
 
         ((LinearLayout) findViewById(R.id.custom_actionbar_layout)).setBackgroundColor(ApplicationThemeColor.getInstance().getActionAndTabBarColorWithAlpha(98));
 
@@ -763,9 +719,9 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            searchMenuButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.MENU_ICON));
+            searchMenuButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.SEARCH_MENU_ICON));
         else
-            searchMenuButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.MENU_ICON));
+            searchMenuButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.SEARCH_MENU_ICON));
 
         logoutButton.setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
         logoutButton.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(this));
@@ -774,9 +730,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         else
             logoutButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().getLogoutButtonDrawable(this));
 
-
-        updateTabBars(isColorChanged);
-
         /*
         * forceDelete ile silinen yada pasif hale getirilen icerikler oldugunda gridi update etmek icin yazdim(MG)
         * */
@@ -784,72 +737,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             getLibraryFragment().gridview.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
             getLibraryFragment().getContentHolderAdapter().notifyDataSetChanged();
         }
-
-        if (getDownloadedLibraryFragment() != null && getDownloadedLibraryFragment().gridview != null) {
-            getDownloadedLibraryFragment().gridview.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
-            getDownloadedLibraryFragment().getContentHolderAdapter().notifyDataSetChanged();
-        }
-
-        ileriButton = (ImageButton) findViewById(R.id.main_webview_ileri_button);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            ileriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT_DISABLE));
-        else
-            ileriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT_DISABLE));
-        geriButton = (ImageButton) findViewById(R.id.main_webview_geri_button);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            geriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK_DISABLE));
-        else
-            geriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK_DISABLE));
-        refreshButton = (ImageButton) findViewById(R.id.main_webview_refresh_button);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            refreshButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_REFRESH_DISABLE));
-        else
-            refreshButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_REFRESH_DISABLE));
-
-        ileriButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //4.4
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                    if (((WebView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).canGoForward()) {
-                        ((WebView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).goForward();
-                    }
-                } else {
-                    if (((XWalkView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).getNavigationHistory().canGoForward()) {
-                        ((XWalkView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).getNavigationHistory().navigate(XWalkNavigationHistory.Direction.FORWARD, 1);
-                    }
-                }
-
-            }
-        });
-        geriButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //4.4
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                    if (((WebView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).canGoBack()) {
-                        ((WebView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).goBack();
-                    }
-                } else {
-                    if (((XWalkView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).getNavigationHistory().canGoBack()) {
-                        ((XWalkView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).getNavigationHistory().navigate(XWalkNavigationHistory.Direction.BACKWARD, 1);
-                    }
-                }
-
-            }
-        });
-        refreshButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //4.4
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                    ((WebView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).reload();
-                } else {
-                    ((XWalkView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).reload(XWalkView.RELOAD_NORMAL);
-                }
-
-            }
-        });
 
     }
 
@@ -873,171 +760,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         } else {
             membershipListView.setVisibility(View.GONE);
         }
-    }
-
-    public void updateTabBars(boolean isColorChanged) {
-        mTabHost.getTabWidget().setBackgroundColor(ApplicationThemeColor.getInstance().getActionAndTabBarColor());
-
-        int tabIndex = 0;
-        //Home yoksa (+2 yapilmasinin sebebi static olan iki tab icin (library ve downloaded))
-        if (mTabHost.getTabWidget().getTabCount() == 2 || mTabHost.getTabWidget().getTabCount() == GalePressApplication.getInstance().getTabList().size() + 2) {
-            if (GalePressApplication.getInstance().getDataApi().getMasterContent() != null && GalePressApplication.getInstance().getDataApi().getMasterContent().isPdfDownloaded()) {
-                isTabFirstInit = true;
-                mTabHost.clearAllTabs();
-                initDefaultTabs();
-                initCustomTabs();
-                mTabHost.setCurrentTab(1);
-                //mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG);
-                tabIndex++;
-            }
-        } else {// Home varsa
-            if (GalePressApplication.getInstance().getDataApi().getMasterContent() != null && GalePressApplication.getInstance().getDataApi().getMasterContent().isPdfDownloaded()) {
-                isTabFirstInit = false;
-                ((ImageView) ((LinearLayout) mTabHost.getTabWidget().getChildAt(tabIndex)).getChildAt(0)).setImageDrawable(createDrawable(true, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.HOME_ICON),
-                        ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.HOME_ICON_SELECTED)));
-                ((TextView) ((LinearLayout) mTabHost.getTabWidget().getChildAt(tabIndex)).getChildAt(1)).setTextColor(createTabTitleColorStateList());
-                tabIndex++;
-            } else {
-                mTabHost.clearAllTabs();
-                initDefaultTabs();
-                initCustomTabs();
-                mTabHost.setCurrentTab(0);
-                //mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG);
-            }
-        }
-
-        ((ImageView) ((LinearLayout) mTabHost.getTabWidget().getChildAt(tabIndex)).getChildAt(0)).setImageDrawable(createDrawable(true, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.LIBRARY_ICON),
-                ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.LIBRARY_ICON_SELECTED)));
-        ((TextView) ((LinearLayout) mTabHost.getTabWidget().getChildAt(tabIndex)).getChildAt(1)).setTextColor(createTabTitleColorStateList());
-        tabIndex++;
-
-        ((ImageView) ((LinearLayout) mTabHost.getTabWidget().getChildAt(tabIndex)).getChildAt(0)).setImageDrawable(createDrawable(true, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.DOWNLOAD_ICON),
-                ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.DOWNLOAD_ICON_SELECTED)));
-        ((TextView) ((LinearLayout) mTabHost.getTabWidget().getChildAt(tabIndex)).getChildAt(1)).setTextColor(createTabTitleColorStateList());
-        tabIndex++;
-
-        /*
-        *((ImageView)((LinearLayout)mTabHost.getTabWidget().getChildAt(2)).getChildAt(0)).setImageDrawable(createDrawable(true, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.INFO_ICON),
-        *        ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.INFO_ICON_SELECTED)));
-        *((TextView)((LinearLayout)mTabHost.getTabWidget().getChildAt(tabIndex)).getChildAt(1)).setTextColor(createTabTitleColorStateList());
-        *tabIndex++;
-        */
-
-        //Renk ve tablist lerde bi degisiklik varsa custom tablari update ediyoruz
-        if (GalePressApplication.getInstance().getTabList() != null && isColorChanged && GalePressApplication.getInstance().getDataApi().isConnectedToInternet()) {
-            int customIndex = tabIndex;
-            for (TabbarItem item : GalePressApplication.getInstance().getTabList()) {
-
-                if (mTabHost.getTabWidget().getChildAt(customIndex) != null && ((LinearLayout) mTabHost.getTabWidget().getChildAt(customIndex)).getChildAt(0) != null) {
-                    ImageView img = ((ImageView) ((LinearLayout) mTabHost.getTabWidget().getChildAt(customIndex)).getChildAt(0));
-                    ApplicationThemeColor.getInstance().paintRemoteIcon(this, item, img);
-                }
-
-
-                if (mTabHost.getTabWidget().getChildAt(customIndex) != null && ((LinearLayout) mTabHost.getTabWidget().getChildAt(customIndex)).getChildAt(1) != null) {
-                    TextView txt = ((TextView) ((LinearLayout) mTabHost.getTabWidget().getChildAt(customIndex)).getChildAt(1));
-                    txt.setText(item.getTitle());
-                    txt.setTextColor(createTabTitleColorStateList());
-                }
-
-                customIndex++;
-            }
-        }
-    }
-
-    /*
-    * LIBRARY DOWNLOADED
-    * */
-    private void initDefaultTabs() {
-        //gecici bir nesne atayip ordan devam edersek sorun cozulur
-        mTabHost = (FragmentTabHost) findViewById(R.id.tabhost);
-        mTabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
-        mTabHost.getTabWidget().setDividerDrawable(new ColorDrawable(Color.TRANSPARENT));
-        mTabHost.getTabWidget().setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return true;
-            }
-        });
-
-        if (GalePressApplication.getInstance().getDataApi().getMasterContent() != null && GalePressApplication.getInstance().getDataApi().getMasterContent().isPdfDownloaded()) {
-            addTab(getResources().getString(R.string.HOME), HOME_TAB_TAG, createDrawable(true, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.HOME_ICON),
-                    ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.HOME_ICON_SELECTED)), HomeFragment.class, null);
-        }
-
-        addTab(getResources().getString(R.string.LIBRARY), LIBRARY_TAB_TAG, createDrawable(true, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.LIBRARY_ICON),
-                ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.LIBRARY_ICON_SELECTED)), LibraryFragment.class, null);
-        addTab(getResources().getString(R.string.DOWNLOADED), DOWNLOADED_LIBRARY_TAG, createDrawable(true, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.DOWNLOAD_ICON),
-                ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.DOWNLOAD_ICON_SELECTED)), LibraryFragment.class, null);
-        /*addTab(getResources().getString(R.string.INFO),INFO_TAB_TAG,createDrawable(true, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.INFO_ICON),
-                ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.INFO_ICON_SELECTED)),InfoPageFragment.class, null);*/
-
-        if (GalePressApplication.getInstance().getTabList() != null && GalePressApplication.getInstance().getDataApi().isConnectedToInternet()) {
-            int index = 0;
-            for (TabbarItem item : GalePressApplication.getInstance().getTabList()) {
-                addTab(item.getTitle(), "" + index, createDrawable(true, null, null), CustomTabFragment.class, item);
-                index++;
-            }
-        } else if (getSupportFragmentManager().getFragments() != null) {
-            for (Fragment fragment : getSupportFragmentManager().getFragments()) {
-                if (fragment != null && fragment.getTag().compareTo(LIBRARY_TAB_TAG) != 0 && fragment.getTag().compareTo(DOWNLOADED_LIBRARY_TAG) != 0 && fragment.getTag().compareTo(INFO_TAB_TAG) != 0)
-                    getSupportFragmentManager().beginTransaction().remove(fragment).commit();
-            }
-        }
-
-        if (GalePressApplication.getInstance().getDataApi().getMasterContent() != null && GalePressApplication.getInstance().getDataApi().getMasterContent().isPdfDownloaded()) {
-            mTabHost.setCurrentTab(1);
-        } else
-            mTabHost.setCurrentTab(0);
-        //mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG);
-
-    }
-
-    /*
-    * CUSTOMTABS
-    * */
-    public void initCustomTabs() {
-
-        if (getSupportFragmentManager().getFragments() != null) {
-            if (GalePressApplication.getInstance().getTabList() != null && GalePressApplication.getInstance().getDataApi().isConnectedToInternet()) {
-                int tabCount = 2;
-                if (GalePressApplication.getInstance().getDataApi().getMasterContent() != null && GalePressApplication.getInstance().getDataApi().getMasterContent().isPdfDownloaded())
-                    tabCount = 3;
-                while (mTabHost.getTabWidget().getChildCount() > tabCount) {
-                    int tabSize = mTabHost.getTabWidget().getChildCount();
-                    mTabHost.getTabWidget().removeView(mTabHost.getTabWidget().getChildTabViewAt(tabSize - 1));
-                }
-
-                int index = 0;
-                for (TabbarItem item : GalePressApplication.getInstance().getTabList()) {
-                    addTab(item.getTitle(), "" + index, createDrawable(true, null, null), CustomTabFragment.class, item);
-                    index++;
-                }
-
-                if (GalePressApplication.getInstance().getDataApi().getMasterContent() != null && GalePressApplication.getInstance().getDataApi().getMasterContent().isPdfDownloaded()) {
-                    mTabHost.setCurrentTab(1);
-                } else
-                    mTabHost.setCurrentTab(0);
-            } else {
-                int tabCount = 2;
-                if (GalePressApplication.getInstance().getDataApi().getMasterContent() != null && GalePressApplication.getInstance().getDataApi().getMasterContent().isPdfDownloaded()) {
-                    mTabHost.setCurrentTab(1);
-                    tabCount = 3;
-                } else
-                    mTabHost.setCurrentTab(0);
-                //mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG);
-                while (mTabHost.getTabWidget().getChildCount() > tabCount) {
-                    int tabSize = mTabHost.getTabWidget().getChildCount();
-                    mTabHost.getTabWidget().removeView(mTabHost.getTabWidget().getChildTabViewAt(tabSize - 1));
-                }
-            }
-        }
-    }
-
-    private void addTab(String title, String tag, Drawable drawable, Class classy, TabbarItem item) {
-        TabHost.TabSpec spec = mTabHost.newTabSpec(tag);
-        spec.setIndicator(createTabIndicator(title, drawable, item));
-        mTabHost.addTab(spec, classy, null);
     }
 
     public void selectMembershipListItem(int position) {
@@ -1210,161 +932,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
     }
 
-    private Drawable createDrawable(boolean isSelected, Drawable res, Drawable selectedRes) {
-        if (res != null && selectedRes != null) {
-            TabbarStateList states = new TabbarStateList(isSelected, res, selectedRes);
-            return states;
-        }
-        return null;
-    }
-
-    private ColorStateList createTabTitleColorStateList() {
-        int[][] states = new int[][]{
-                new int[]{android.R.attr.state_pressed},
-                new int[]{android.R.attr.state_focused},
-                new int[]{android.R.attr.state_selected},
-                new int[]{}
-        };
-
-        int[] colors = new int[]{
-                ApplicationThemeColor.getInstance().getForegroundColorWithAlpha(50),
-                ApplicationThemeColor.getInstance().getForegroundColorWithAlpha(50),
-                ApplicationThemeColor.getInstance().getForegroundColorWithAlpha(50),
-                ApplicationThemeColor.getInstance().getForegroundColor()
-        };
-
-        ColorStateList myList = new ColorStateList(states, colors);
-        return myList;
-    }
-
-    private View createTabIndicator(String titleText, Drawable drawable, TabbarItem item) {
-        View tabIndicator = LayoutInflater.from(this).inflate(R.layout.tab_indicator, mTabHost.getTabWidget(), false);
-        tabIndicator.setBackgroundColor(Color.TRANSPARENT);
-        tabIndicator.setLayoutParams(new FrameLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 70, getResources().getDisplayMetrics())
-                , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50, getResources().getDisplayMetrics())));
-        ImageView imgIcon = (ImageView) tabIndicator.findViewById(R.id.image_view_tab_icon);
-        imgIcon.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())
-                , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 32, getResources().getDisplayMetrics())));
-
-        TextView title = (TextView) tabIndicator.findViewById(R.id.text_view_tab_title);
-        title.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())
-                , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 18, getResources().getDisplayMetrics())));
-        title.setTextColor(createTabTitleColorStateList());
-        title.setClickable(true);
-        title.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
-        title.setText(titleText);
-        title.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                ((View) v.getParent()).onTouchEvent(event);
-                return false;
-            }
-        });
-
-        if (drawable != null)
-            imgIcon.setImageDrawable(drawable);
-        else
-            ApplicationThemeColor.getInstance().paintRemoteIcon(this, item, imgIcon);
-
-        return tabIndicator;
-    }
-
-
-    public void prepareActionBarForCustomTab(View webView, boolean isWebFragment, boolean isPageLoadFinish) {
-        if (isWebFragment) {
-            ileriButton.setVisibility(View.VISIBLE);
-            geriButton.setVisibility(View.VISIBLE);
-            refreshButton.setVisibility(View.VISIBLE);
-            menuButton.setVisibility(View.GONE);
-            searchMenuButton.setVisibility(View.GONE);
-            ((View) menuButton.getParent()).setVisibility(View.GONE);
-            ((View) searchMenuButton.getParent()).setVisibility(View.GONE);
-            ((TextView) findViewById(R.id.action_bar_title_text_view)).setVisibility(View.GONE);
-        } else {
-            ileriButton.setVisibility(View.INVISIBLE);
-            geriButton.setVisibility(View.INVISIBLE);
-            refreshButton.setVisibility(View.INVISIBLE);
-            menuButton.setVisibility(View.VISIBLE);
-            searchMenuButton.setVisibility(View.VISIBLE);
-            ((View) menuButton.getParent()).setVisibility(View.VISIBLE);
-            ((View) searchMenuButton.getParent()).setVisibility(View.VISIBLE);
-            ((TextView) findViewById(R.id.action_bar_title_text_view)).setVisibility(View.VISIBLE);
-        }
-
-        if (isPageLoadFinish) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                refreshButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.WEBVIEW_REFRESH_DISABLE));
-            else
-                refreshButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.WEBVIEW_REFRESH_DISABLE));
-        }
-
-
-        if (webView != null) {
-
-            //4.4
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) { //default webview
-                // if has previous page, enable the back button
-                if (((WebView) webView).canGoBack()) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                        geriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK));
-                    else
-                        geriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK));
-                } else {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                        geriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK_DISABLE));
-                    else
-                        geriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK_DISABLE));
-                }
-                // if has next page, enable the next button
-                if (((WebView) webView).canGoForward()) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                        ileriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT));
-                    else
-                        ileriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT));
-                } else {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                        ileriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT_DISABLE));
-                    else
-                        ileriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT_DISABLE));
-                }
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                    refreshButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_REFRESH));
-                else
-                    refreshButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_REFRESH));
-            } else {  //crosswalk
-                // if has previous page, enable the back button
-                if (((XWalkView) webView).getNavigationHistory().canGoBack()) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                        geriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK));
-                    else
-                        geriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK));
-                } else {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                        geriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK_DISABLE));
-                    else
-                        geriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK_DISABLE));
-                }
-                // if has next page, enable the next button
-                if (((XWalkView) webView).getNavigationHistory().canGoForward()) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                        ileriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT));
-                    else
-                        ileriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT));
-                } else {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                        ileriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT_DISABLE));
-                    else
-                        ileriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT_DISABLE));
-                }
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                    refreshButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_REFRESH));
-                else
-                    refreshButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_REFRESH));
-            }
-        }
-    }
 
     public void hideKeyboard(View view) {
         changeSearchViewColor(false);
@@ -1472,11 +1039,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 GalePressApplication.getInstance().prepareSubscriptions(null);
             }
 
-        } else if (requestCode == 101) { //reader view return
-            if (resultCode == 101) {
-                selectedReaderTabIndex = data.getIntExtra("SelectedTab", 0);
-            }
-        } else if (requestCode == 102) { //Login return
+        }  else if (requestCode == 102) { //Login return
             if (resultCode == 102) {
                 updateMembership();
             }
@@ -1505,119 +1068,21 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         getLibraryFragment().updateGridView();
     }
 
-    /*@Override
-    protected void onResumeFragments() {
-        super.onResumeFragments();
-        // connectionStatusChangedOnPause aciklamasinda yaziyor neden kullanildigi
-        if(connectionStatusChangedOnPause) {
-            initCustomTabs();
-            connectionStatusChangedOnPause = false;
-        }
-
-        *//*
-        * onActivityResult icinden buraya tasidim
-        * https://fabric.io/galepress/android/apps/ak.detaysoft.carrefoursa1/issues/56afae00f5d3a7f76b80ee4d
-        * Bu hata activity onresume a dusmeden islem yaptigimiz icin olabilir. Devam ederse hata kaldiracagim. (MG)
-        * *//*
-             if(selectedReaderTabIndex != -1){
-                if (selectedReaderTabIndex == 0) {
-                    mTabHost.setCurrentTabByTag(HOME_TAB_TAG);
-                } else if (selectedReaderTabIndex == 1) {
-                    mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG);
-                } else if (selectedReaderTabIndex == 2) {
-                    mTabHost.setCurrentTabByTag(DOWNLOADED_LIBRARY_TAG);
-                } else if (selectedReaderTabIndex == 3) {
-                    mTabHost.setCurrentTabByTag(INFO_TAB_TAG);
-                } else { // 100+ type olanlar servisten gelen buttonlar
-                    String customTabTag = "" + (selectedReaderTabIndex - 100);
-                    mTabHost.setCurrentTabByTag(customTabTag);
-                }
-                selectedReaderTabIndex = -1;
-            }
-    }*/
-
-
-    /*TODO eger  3.4.10 versiyonundan sonra aynı hatayı almaya devam edersek eski commente donmek gerekebilir
-    * https://fabric.io/galepress/android/apps/ak.detaysoft.carrefoursa1/issues/56afae00f5d3a7f76b80ee4d
-    * */
-
-    @Override
-    protected void onResumeFragments() {
-        super.onResumeFragments();
-        // connectionStatusChangedOnPause aciklamasinda yaziyor neden kullanildigi
-        if (connectionStatusChangedOnPause) {
-            initCustomTabs();
-        }
-
-
-        /* onActivityResult icinden buraya tasidim
-           https://fabric.io/galepress/android/apps/ak.detaysoft.carrefoursa1/issues/56afae00f5d3a7f76b80ee4d
-           Bu hata activity onresume a dusmeden islem yaptigimiz icin olabilir. Devam ederse hata kaldiracagim. (MG)
-        */
-        if (selectedReaderTabIndex != -1) {
-            if (selectedReaderTabIndex == 0) {
-                selectedTabTag = HOME_TAB_TAG;
-            } else if (selectedReaderTabIndex == 1) {
-                selectedTabTag = LIBRARY_TAB_TAG;
-            } else if (selectedReaderTabIndex == 2) {
-                selectedTabTag = DOWNLOADED_LIBRARY_TAG;
-            } else if (selectedReaderTabIndex == 3) {
-                selectedTabTag = INFO_TAB_TAG;
-            } else { // 100+ type olanlar servisten gelen buttonlar
-                selectedTabTag = "" + (selectedReaderTabIndex - 100);
-            }
-
-            final boolean connectionStatusChanged = connectionStatusChangedOnPause;
-            new Handler().post(new Runnable() {
-                public void run() {
-                    if (!connectionStatusChanged) {
-                        mTabHost.setCurrentTabByTag(selectedTabTag);
-                    } else {
-                        selectedTabTag = LIBRARY_TAB_TAG;
-                        mTabHost.setCurrentTabByTag(selectedTabTag);
-                    }
-
-                }
-            });
-            selectedReaderTabIndex = -1;
-        }
-
-        if (connectionStatusChangedOnPause) {
-            connectionStatusChangedOnPause = false;
-        }
-    }
 
     @Override
     protected void onResume() {
         super.onResume();
         GalePressApplication.getInstance().setCurrentActivity(this);
-        /*
-        * https://www.fabric.io/galepress/android/apps/ak.detaysoft.carrefoursa1/issues/56afae00f5d3a7f76b80ee4d
-        * bu crash e cozum icin bu yontem belirtilmis
-        * */
-        mTabHost.getTabWidget().setEnabled(true);
-
-
     }
 
     protected void onPause() {
         clearReferences();
-        /*
-        * https://www.fabric.io/galepress/android/apps/ak.detaysoft.carrefoursa1/issues/56afae00f5d3a7f76b80ee4d
-        * bu crash e cozum icin bu yontem belirtilmis
-        * */
-        mTabHost.getTabWidget().setEnabled(false);
         super.onPause();
     }
 
     @Override
     protected void onStop() {
         clearReferences();
-        /*
-        * https://www.fabric.io/galepress/android/apps/ak.detaysoft.carrefoursa1/issues/56afae00f5d3a7f76b80ee4d
-        * bu crash e cozum icin bu yontem belirtilmis
-        * */
-        mTabHost.getTabWidget().setEnabled(false);
         super.onStop();
     }
 
@@ -1716,40 +1181,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     }
 
     public LibraryFragment getLibraryFragment() {
-        if (getSupportFragmentManager().getFragments() != null) {
-            int count = getSupportFragmentManager().getFragments().size();
-            for (int i = 0; i < count; i++) {
-                Fragment fragment = getSupportFragmentManager().getFragments().get(i);
-                if (fragment != null && fragment.getTag().compareTo(LIBRARY_TAB_TAG) == 0 || fragment.getTag().compareTo(DOWNLOADED_LIBRARY_TAG) == 0)
-                    return (LibraryFragment) fragment;
-            }
-        }
-        return null;
-    }
-
-    public CustomTabFragment getCustomFragment() {
-        if (getSupportFragmentManager().getFragments() != null) {
-            int count = getSupportFragmentManager().getFragments().size();
-            for (int i = 0; i < count; i++) {
-                Fragment fragment = getSupportFragmentManager().getFragments().get(i);
-                if (fragment != null && fragment.getTag().compareTo(LIBRARY_TAB_TAG) != 0 && fragment.getTag().compareTo(DOWNLOADED_LIBRARY_TAG) != 0
-                        && fragment.getTag().compareTo(HOME_TAB_TAG) != 0 && fragment.getTag().compareTo(INFO_TAB_TAG) != 0)
-                    return (CustomTabFragment) fragment;
-            }
-        }
-        return null;
-    }
-
-    public LibraryFragment getDownloadedLibraryFragment() {
-        if (getSupportFragmentManager().getFragments() != null) {
-            int count = getSupportFragmentManager().getFragments().size();
-            for (int i = 0; i < count; i++) {
-                Fragment fragment = getSupportFragmentManager().getFragments().get(i);
-                if (fragment != null && fragment.getTag().compareTo(DOWNLOADED_LIBRARY_TAG) == 0)
-                    return (LibraryFragment) fragment;
-            }
-        }
-        return null;
+        return library;
     }
 
     // Create a broadcast receiver to get message and show on screen
