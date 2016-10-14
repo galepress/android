@@ -8,7 +8,6 @@ import android.content.IntentSender;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.ClipDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.location.Location;
 import android.net.Uri;
@@ -17,8 +16,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.provider.Settings;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -28,7 +25,6 @@ import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -66,16 +62,17 @@ public class ContentDetailPopupActivity extends Activity{
     public PopupFixedAspectLayout popup;
     public TextView nameLabel;
     public TextView detailLabel;
-    public TextView monthLabel;
     public L_Content content;
     public ImageView image;
     public Button updateButton;
     public Button viewButton;
     public Button deleteButton;
     public CustomDownloadButton downloadButton;
-    public ProgressBar progressBar;
     public CustomPulseProgress loading;
-    public Button cancelButton;
+    public ImageView cancelButton;
+    public RelativeLayout downloadStatus;
+    public TextView downloadPercentage;
+    public ImageView overlay;
     public ContentHolder contentHolder;
     public boolean isFirstOpen;
     private float animationStartX, animationStartY;
@@ -98,20 +95,23 @@ public class ContentDetailPopupActivity extends Activity{
         Button viewButton;
         Button deleteButton;
         CustomDownloadButton downloadButton;
-        ProgressBar progressBar;
-        Button cancelButton;
+        RelativeLayout downloadStatus;
+        ImageView overlay;
+        TextView downloadPercentage;
         public ContentHolder(Button updateButton,
                              Button viewButton,
                              Button deleteButton,
                              CustomDownloadButton downloadButton,
-                             ProgressBar progressBar,
-                             Button cancelButton){
+                             RelativeLayout downloadStatus,
+                             ImageView overlay,
+                             TextView downloadPercentage){
             this.updateButton = updateButton;
             this.viewButton = viewButton;
             this.deleteButton = deleteButton;
             this.downloadButton = downloadButton;
-            this.progressBar = progressBar;
-            this.cancelButton = cancelButton;
+            this.downloadStatus = downloadStatus;
+            this.downloadPercentage = downloadPercentage;
+            this.overlay = overlay;
         }
     }
 
@@ -179,17 +179,17 @@ public class ContentDetailPopupActivity extends Activity{
             }
         });
 
-        ((RelativeLayout)findViewById(R.id.content_popup_button_layer)).setBackgroundColor(ApplicationThemeColor.getInstance().getForegroundColor());
+        findViewById(R.id.content_popup_button_layer).setBackgroundColor(ApplicationThemeColor.getInstance().getWhiteColorWithAlpha(80));
 
         //content name ve detail gibi text detaylarinin oldugu layer icin radius
         GradientDrawable gradient =  new GradientDrawable();
         gradient.setCornerRadii(new float[]{0,0,0,0, 2,2,2,2});
-        gradient.setColor(ApplicationThemeColor.getInstance().getCoverImageBackgroundColor());
-        gradient.setStroke(0, ApplicationThemeColor.getInstance().getCoverImageBackgroundColor());
+        gradient.setColor(ApplicationThemeColor.getInstance().getWhiteColorWithAlpha(80));
+        gradient.setStroke(0, ApplicationThemeColor.getInstance().getWhiteColorWithAlpha(80));
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            ((RelativeLayout)findViewById(R.id.content_detail_layer)).setBackground(gradient);
+            findViewById(R.id.content_detail_layer).setBackground(gradient);
         else
-            ((RelativeLayout)findViewById(R.id.content_detail_layer)).setBackgroundDrawable(gradient);
+            findViewById(R.id.content_detail_layer).setBackgroundDrawable(gradient);
 
         //imagein oldugu layer icin radius
         GradientDrawable gradientForCoverImage =  new GradientDrawable();
@@ -205,19 +205,14 @@ public class ContentDetailPopupActivity extends Activity{
 
         //setText
         nameLabel = (TextView)findViewById(R.id.content_detail_name_label);
-        nameLabel.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
-        nameLabel.setTextColor(ApplicationThemeColor.getInstance().getPopupTextColor());
+        nameLabel.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
+        nameLabel.setTextColor(ApplicationThemeColor.getInstance().getGridItemNameLabelColor());
         nameLabel.setText(content.getName());
 
         detailLabel = (TextView)findViewById(R.id.content_detail_detail_label);
-        detailLabel.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
-        detailLabel.setTextColor(ApplicationThemeColor.getInstance().getPopupTextColor());
+        detailLabel.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
+        detailLabel.setTextColor(ApplicationThemeColor.getInstance().getThemeColor());
         detailLabel.setText(content.getDetail());
-
-        monthLabel = (TextView)findViewById(R.id.content_detail_month_label);
-        monthLabel.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
-        monthLabel.setTextColor(ApplicationThemeColor.getInstance().getPopupTextColor());
-        monthLabel.setText(content.getMonthlyName());
 
         //setButtons
         viewButton = (Button)findViewById(R.id.content_detail_view);
@@ -367,41 +362,24 @@ public class ContentDetailPopupActivity extends Activity{
             }
         });
 
-        cancelButton = (Button)findViewById(R.id.content_detail_cancel);
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            cancelButton.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this, ApplicationThemeColor.CANCEL_CONTENT_DOWNLOAD));
-        else
-            cancelButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this, ApplicationThemeColor.CANCEL_CONTENT_DOWNLOAD));
-        cancelButton.setOnClickListener(new View.OnClickListener() {
+        cancelButton = (ImageView)findViewById(R.id.content_detail_download_cancel);
+
+        downloadStatus = (RelativeLayout) findViewById(R.id.content_detail_download_status);
+        downloadStatus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 v.setEnabled(false);
-                downloadButton.setEnabled(true);
-                downloadButton.setClickable(true);
-
+                downloadStatus.setEnabled(true);
+                downloadStatus.setClickable(true);
                 GalePressApplication.getInstance().getDataApi().cancelDownload(false, ContentDetailPopupActivity.this, content);
             }
         });
+        overlay = (ImageView) findViewById(R.id.content_detail_download_overlay);
 
+        downloadPercentage = (TextView) findViewById(R.id.content_detail_download_percentage);
+        downloadPercentage.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
+        downloadPercentage.setTextColor(ApplicationThemeColor.getInstance().getGridItemDetailLabelColor());
 
-        //progress
-        progressBar = (ProgressBar)findViewById(R.id.content_detail_progress_bar);
-
-        GradientDrawable pbBg = new GradientDrawable();
-        pbBg.setCornerRadii(new float[]{0,0,0,0, 2,2,2,2});
-        pbBg.setColor(ApplicationThemeColor.getInstance().getProgressbarBackgroundColor());
-        pbBg.setStroke(0, ApplicationThemeColor.getInstance().getProgressbarBackgroundColor());
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            progressBar.setBackground(pbBg);
-        else
-            progressBar.setBackgroundDrawable(pbBg);
-
-        GradientDrawable shape = new GradientDrawable();
-        shape.setCornerRadii(new float[]{0,0,0,0, 2,2,2,2});
-        shape.setColor(Color.parseColor(ApplicationThemeColor.getInstance().getForegroundHexColor()));
-        shape.setStroke(0, ApplicationThemeColor.getInstance().getForegroundColor());
-        ClipDrawable progress = new ClipDrawable(shape, Gravity.LEFT, ClipDrawable.HORIZONTAL);
-        progressBar.setProgressDrawable(progress);
 
         loading = (CustomPulseProgress)findViewById(R.id.popup_image_loading);
         loading.startAnim();
@@ -453,8 +431,9 @@ public class ContentDetailPopupActivity extends Activity{
                 viewButton,
                 deleteButton,
                 downloadButton,
-                progressBar,
-                cancelButton);
+                downloadStatus,
+                overlay,
+                downloadPercentage);
 
         if(isFirstOpen){
             ScaleAnimation scale = new ScaleAnimation(0f, 1.05f, 0f, 1.05f, Animation.RELATIVE_TO_SELF, animationStartX, Animation.RELATIVE_TO_SELF, animationStartY);
@@ -488,14 +467,14 @@ public class ContentDetailPopupActivity extends Activity{
 
         if(content.isBuyable()) {
             if(content.isContentBought() || GalePressApplication.getInstance().isUserHaveActiveSubscription()) {
-                downloadButton.init(CustomDownloadButton.RESTORE_PURCHASED_DOWNLOAD, "");
+                downloadButton.init(CustomDownloadButton.RESTORE, "");
             } else {
                 AsyncTask<Void, Void ,String> getPrice = new AsyncTask<Void, Void, String>() {
 
                     @Override
                     protected void onPreExecute() {
                         super.onPreExecute();
-                        downloadButton.init(CustomDownloadButton.PURCHASE_DOWNLOAD, "");
+                        downloadButton.init(CustomDownloadButton.PURCHASE, "");
                     }
 
                     @Override
@@ -558,7 +537,7 @@ public class ContentDetailPopupActivity extends Activity{
                 getPrice.execute();
             }
         } else {
-            downloadButton.init(CustomDownloadButton.FREE_DOWNLOAD, "");
+            downloadButton.init(CustomDownloadButton.FREE, "");
         }
 
     }
@@ -786,7 +765,7 @@ public class ContentDetailPopupActivity extends Activity{
                 && GalePressApplication.getInstance().getDataApi().downloadPdfTask.content.getId().compareTo(content.getId()) == 0;
 
         //Cancel butonu aktif oldugu her durumda download butonunun animasyonunu durdurmak icin
-        if(cancelButton.getVisibility() == View.VISIBLE){
+        if(downloadStatus.getVisibility() == View.VISIBLE){
             downloadButton.stopAnim();
         }
 
@@ -800,9 +779,10 @@ public class ContentDetailPopupActivity extends Activity{
             deleteButton.setVisibility(View.VISIBLE);
             deleteButton.setEnabled(true);
 
-            progressBar.setVisibility(View.INVISIBLE);
-            cancelButton.setVisibility(View.GONE);
-            cancelButton.setEnabled(false);
+            downloadStatus.setVisibility(View.GONE);
+            downloadStatus.setEnabled(false);
+            overlay.setVisibility(View.GONE);
+            overlay.setEnabled(false);
             downloadButton.stopAnim();
 
             if(updateAvailable){
@@ -814,10 +794,11 @@ public class ContentDetailPopupActivity extends Activity{
                     updateButton.setVisibility(View.GONE);
                     viewButton.setVisibility(View.GONE);
                     deleteButton.setVisibility(View.GONE);
-                    cancelButton.setEnabled(true);
-                    cancelButton.setVisibility(View.VISIBLE);
+                    downloadStatus.setEnabled(true);
+                    downloadStatus.setVisibility(View.VISIBLE);
+                    overlay.setVisibility(View.VISIBLE);
+                    overlay.setEnabled(true);
                     downloadButton.stopAnim();
-                    progressBar.setVisibility(View.VISIBLE);
                     updateButton.setVisibility(View.GONE);
                     deleteButton.setVisibility(View.GONE);
                 }
@@ -831,9 +812,10 @@ public class ContentDetailPopupActivity extends Activity{
             // not downloaded
             if(downloading){
                 //Content is not downloaded but downloading
-                cancelButton.setVisibility(View.VISIBLE);
-                cancelButton.setEnabled(true);
-                progressBar.setVisibility(View.VISIBLE);
+                downloadStatus.setVisibility(View.VISIBLE);
+                downloadStatus.setEnabled(true);
+                overlay.setVisibility(View.VISIBLE);
+                overlay.setEnabled(true);
                 downloadButton.setEnabled(false);
                 downloadButton.setVisibility(View.GONE);
                 downloadButton.stopAnim();
@@ -845,19 +827,22 @@ public class ContentDetailPopupActivity extends Activity{
                 // Content Download edilmemis. ilk acildigi durum.
                 downloadButton.setVisibility(View.VISIBLE);
                 downloadButton.setEnabled(true);
+                downloadButton.setClickable(true);
                 deleteButton.setVisibility(View.GONE);
                 updateButton.setVisibility(View.GONE);
                 viewButton.setVisibility(View.GONE);
-                progressBar.setVisibility(View.INVISIBLE);
-                cancelButton.setVisibility(View.GONE);
-                cancelButton.setEnabled(false);
+                downloadStatus.setVisibility(View.GONE);
+                downloadStatus.setEnabled(false);
+                overlay.setVisibility(View.GONE);
+                overlay.setEnabled(false);
             }
         }
 
         if(viewButton.getVisibility() == View.VISIBLE){
-            progressBar.setVisibility(View.INVISIBLE);
-            cancelButton.setVisibility(View.GONE);
-            cancelButton.setEnabled(false);
+            downloadStatus.setVisibility(View.GONE);
+            downloadStatus.setEnabled(false);
+            overlay.setVisibility(View.GONE);
+            overlay.setEnabled(false);
             downloadButton.stopAnim();
         }
         baseView.invalidate();

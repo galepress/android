@@ -34,7 +34,9 @@ public class PopupFixedAspectLayout extends FrameLayout {
         * */
 
         float pxh = (float)(getResources().getDimension(R.dimen.content_popup_detail)
-                + getResources().getDimension(R.dimen.content_popup_button_layer));
+                + getResources().getDimension(R.dimen.content_popup_detail)
+                + getResources().getDimension(R.dimen.content_popup_layer_padding)
+                + getResources().getDimension(R.dimen.content_popup_layer_padding));
         float padding = (float)getResources().getDimension(R.dimen.content_popup_padding);
         int w = MeasureSpec.getSize(widthMeasureSpec);
         int h = MeasureSpec.getSize(heightMeasureSpec);

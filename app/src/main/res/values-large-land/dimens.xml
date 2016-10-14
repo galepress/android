@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="content_popup_padding">50dp</dimen>
-    <dimen name="content_popup_detail">70dp</dimen>
-    <dimen name="content_popup_button_layer">40dp</dimen>
-    <dimen name="content_popup_button_size">30dp</dimen>
+    <dimen name="content_popup_detail">50dp</dimen>
+    <dimen name="content_popup_button_size">40dp</dimen>
     <dimen name="content_popup_progress_height">5dp</dimen>
     <dimen name="content_popup_progress_label_height">10dp</dimen>
     <dimen name="content_popup_large_textsize">13dp</dimen>
