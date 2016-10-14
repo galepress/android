@@ -66,7 +66,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/content_detail_download_percentage"
-                            android:text="100%"
+                            android:text="0%"
                             android:textSize="18dp"
                             android:lines="1"
                             android:layout_centerVertical="true"

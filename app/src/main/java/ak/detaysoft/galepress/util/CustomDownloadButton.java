@@ -42,9 +42,7 @@ public class CustomDownloadButton extends RelativeLayout{
     }
 
     public void init(int typ, String price){
-        //this.type = typ;
-        this.type = PURCHASE;
-        price = "9.99 TL";
+        this.type = typ;
         int defaultWith = 0;
 
         if(this.type == PURCHASE){
