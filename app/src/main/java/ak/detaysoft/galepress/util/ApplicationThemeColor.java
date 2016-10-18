@@ -533,29 +533,35 @@ public class ApplicationThemeColor {
         return new ColorMatrixColorFilter(matrix);
     }
 
+
+    public ColorFilter getCustomColorFilterWithAlpha(String colorHex, float alpha){
+        int color = Color.parseColor(colorHex);
+        int red = (color & 0xFF0000) / 0xFFFF;
+        int green = (color & 0xFF00) / 0xFF;
+        int blue = color & 0xFF;
+        float[] matrix = { 0, 0, 0, 0, red
+                , 0, 0, 0, 0, green
+                , 0, 0, 0, 0, blue
+                , 0, 0, 0, alpha, 0 };
+        return new ColorMatrixColorFilter(matrix);
+    }
+
     public Drawable paintIcons(Context context, int resourceType){
         Drawable myIcon;
         if(resourceType == WEBVIEW_BACK){
             myIcon = context.getResources().getDrawable(R.drawable.extra_web_back);
-            myIcon.setColorFilter(getForegroundColorFilter());
         } else if(resourceType == WEBVIEW_BACK_DISABLE){
-            myIcon = context.getResources().getDrawable(R.drawable.extra_web_back);
-            myIcon.setColorFilter(getUnselectedColorFilter());
+            myIcon = context.getResources().getDrawable(R.drawable.extra_web_back_disable);
         } else if(resourceType == WEBVIEW_NEXT){
             myIcon = context.getResources().getDrawable(R.drawable.extra_web_next);
-            myIcon.setColorFilter(getForegroundColorFilter());
         } else if(resourceType == WEBVIEW_NEXT_DISABLE) {
-            myIcon = context.getResources().getDrawable(R.drawable.extra_web_next);
-            myIcon.setColorFilter(getUnselectedColorFilter());
+            myIcon = context.getResources().getDrawable(R.drawable.extra_web_next_disable);
         } else  if( resourceType == WEBVIEW_REFRESH) {
-            myIcon = context.getResources().getDrawable(R.drawable.web_refresh);
-            myIcon.setColorFilter(getForegroundColorFilter());
+            myIcon = context.getResources().getDrawable(R.drawable.extra_web_refresh);
         } else if(resourceType == WEBVIEW_REFRESH_DISABLE){
-            myIcon = context.getResources().getDrawable(R.drawable.web_refresh);
-            myIcon.setColorFilter(getUnselectedColorFilter());
+            myIcon = context.getResources().getDrawable(R.drawable.extra_web_refresh_disable);
         } else if(resourceType == WEBVIEW_CLOSE) {
             myIcon = context.getResources().getDrawable(R.drawable.extra_web_close);
-            myIcon.setColorFilter(getForegroundColorFilter());
         } else if(resourceType == MENU_ICON){
             myIcon = context.getResources().getDrawable(R.drawable.menu);
         }  else if(resourceType == SEARCH_MENU_ICON){
@@ -619,10 +625,8 @@ public class ApplicationThemeColor {
             myIcon.setColorFilter(getReverseThemeColorFilter());
         } else if(resourceType == READER_MENU) {
             myIcon = context.getResources().getDrawable(R.drawable.table_of_contents);
-            myIcon.setColorFilter(getForegroundColorFilter());
         } else if(resourceType == READER_MAIL){
             myIcon = context.getResources().getDrawable(R.drawable.reader_share);
-            myIcon.setColorFilter(getForegroundColorFilter());
         } else if(resourceType == GOOGLE_PLUS_ICON){
             myIcon = context.getResources().getDrawable(R.drawable.google_plus);
             myIcon.setColorFilter(getReverseThemeColorFilter());
@@ -685,7 +689,6 @@ public class ApplicationThemeColor {
             myIcon.setColorFilter(getForeGroundColorFilterWithAlpha((float)0.5));
         } else if(resourceType == READER_SEARCH_OPEN) {
             myIcon = context.getResources().getDrawable(R.drawable.reader_search);
-            myIcon.setColorFilter(getForegroundColorFilter());
         } else if(resourceType == READER_SEARCH_CLEAR) {
             myIcon = context.getResources().getDrawable(R.drawable.reader_search_clear);
             myIcon.setColorFilter(getThemeColorFilter());
@@ -1016,10 +1019,8 @@ public class ApplicationThemeColor {
         Drawable myIcon;
         if(resourceType == CROP_PAGE_SUBMIT){
             myIcon = context.getResources().getDrawable(R.drawable.crop_submit);
-            myIcon.setColorFilter(getForegroundColorFilter());
         } else {
             myIcon = context.getResources().getDrawable(R.drawable.crop_cancel);
-            myIcon.setColorFilter(getForegroundColorFilter());
         }
 
         return myIcon;

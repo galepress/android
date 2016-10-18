@@ -9,9 +9,9 @@
     <ViewAnimator
 		android:id="@+id/switcher"
 		android:layout_width="wrap_content"
-		android:layout_height="60dp"
 		android:layout_alignParentTop="true"
-		android:layout_centerHorizontal="true">
+		android:layout_centerHorizontal="true"
+		android:layout_height="@dimen/actionbar_height">
 
 		<RelativeLayout
 			android:id="@+id/topBar0Main"
@@ -63,32 +63,31 @@
 
 			<ImageButton
 				android:id="@+id/outlineButton"
-				android:layout_width="35dp"
-				android:layout_height="35dp"
 				android:layout_centerVertical="true"
                 android:layout_alignParentLeft="true"
 				android:contentDescription="@string/outline_title"
                 android:background="@android:color/transparent"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginBottom="10dp"
+				android:layout_width="30dp"
+				android:layout_height="30dp" />
 
 			<ImageButton
 				android:id="@+id/searchButton"
-				android:layout_width="35dp"
-				android:layout_height="35dp"
 				android:layout_centerVertical="true"
-				android:layout_toLeftOf="@+id/mailButton"
 				android:contentDescription="@string/search_document"
 				android:background="@android:color/transparent"
 				android:layout_marginBottom="10dp"
-				android:layout_marginLeft="10dp"
-				android:scaleType="centerInside"/>
+				android:layout_marginLeft="5dp"
+				android:scaleType="centerInside"
+				android:layout_alignParentRight="true"
+				android:layout_marginRight="10dp"
+				android:layout_width="30dp"
+				android:layout_height="30dp" />
 
 			<ImageButton
 				android:id="@+id/imageButton"
-				android:layout_width="35dp"
-				android:layout_height="35dp"
 				android:layout_centerVertical="true"
 				android:layout_alignParentRight="true"
 				android:background="@android:color/transparent"
@@ -96,20 +95,23 @@
 				android:layout_marginRight="10dp"
 				android:layout_marginLeft="15dp"
 				android:layout_marginTop="10dp"
-				android:layout_marginBottom="10dp" />
+				android:layout_marginBottom="10dp"
+				android:layout_width="30dp"
+				android:layout_height="30dp"
+				android:visibility="gone"/>
 
 			<ImageButton
                 android:id="@+id/mailButton"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
+				android:layout_centerVertical="true"
                 android:background="@android:color/transparent"
                 android:onClick="OnMoreButtonClick"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginBottom="10dp"
+				android:layout_toLeftOf="@+id/searchButton"
+				android:layout_width="30dp"
+				android:layout_height="30dp" />
 
             <ImageButton
                 android:id="@+id/moreButton"
@@ -138,95 +140,6 @@
                 android:layout_marginLeft="10dp" />
 
         </RelativeLayout>
-
-		<RelativeLayout
-			android:id="@+id/topBar1Search"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:paddingTop="12.5dp"
-			android:paddingBottom="12.5dp"
-			android:paddingLeft="10dp"
-			android:paddingRight="10dp">
-
-			<Button
-				android:id="@+id/cancelSearch"
-				android:layout_width="50dp"
-				android:layout_height="35dp"
-				android:layout_centerVertical="true"
-				android:layout_alignParentRight="true"
-				android:contentDescription="@string/cancel"
-				android:background="@android:color/transparent"
-				android:onClick="OnCancelSearchButtonClick"
-				android:text="@string/IPTAL" />
-
-			<RelativeLayout
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_toLeftOf="@+id/cancelSearch"
-				android:layout_alignParentLeft="true"
-				android:layout_centerVertical="true"
-				android:layout_marginRight="10dp">
-
-				<EditText
-					android:id="@+id/searchText"
-					android:background="@android:color/transparent"
-					android:layout_width="wrap_content"
-					android:layout_height="35dp"
-					android:layout_centerVertical="true"
-					android:layout_toLeftOf="@+id/clear_search_base"
-					android:layout_alignParentLeft="true"
-					android:inputType="text"
-					android:hint="@string/search"
-					android:lines="1"
-					android:layout_marginLeft="10dp"/>
-
-				<LinearLayout
-					android:id="@+id/clear_search_base"
-					android:gravity="center"
-					android:layout_width="wrap_content"
-					android:layout_height="match_parent"
-					android:orientation="vertical"
-					android:layout_centerVertical="true"
-					android:layout_alignParentRight="true"
-					android:background="@android:color/transparent"
-					android:onClick="OnClearSearchButtonClick"
-					android:clickable="true"
-					android:paddingRight="5dp"
-					android:paddingLeft="5dp">
-
-					<Button
-						android:id="@+id/clearSearch"
-						android:layout_width="25dp"
-						android:layout_height="25dp" />
-				</LinearLayout>
-
-			</RelativeLayout>
-
-
-
-			<ImageButton
-				android:id="@+id/searchBack"
-				android:layout_width="35dp"
-				android:layout_height="35dp"
-				android:layout_centerVertical="true"
-				android:layout_toLeftOf="@+id/searchForward"
-				android:contentDescription="@string/search_backwards"
-				android:background="@android:color/transparent"
-				android:src="@drawable/ic_arrow_left"
-				android:visibility="gone"/>
-
-			<ImageButton
-				android:id="@+id/searchForward"
-				android:layout_width="35dp"
-				android:layout_height="35dp"
-				android:layout_centerVertical="true"
-				android:layout_alignParentRight="true"
-				android:contentDescription="@string/search_forwards"
-				android:background="@android:color/transparent"
-				android:src="@drawable/ic_arrow_right"
-				android:visibility="gone"/>
-
-		</RelativeLayout>
 
 		<RelativeLayout
 			android:id="@+id/topBar2Annot"

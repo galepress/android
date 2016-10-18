@@ -14,18 +14,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-
-import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.answers.Answers;
 import com.crashlytics.android.answers.CustomEvent;
 import com.edmodo.cropper.CropImageView;
-
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
 import ak.detaysoft.galepress.GalePressApplication;
 import ak.detaysoft.galepress.R;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;

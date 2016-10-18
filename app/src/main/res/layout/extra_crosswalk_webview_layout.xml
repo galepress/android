@@ -12,50 +12,51 @@
 
         <ImageButton
             android:id="@+id/crosswalk_extra_web_view_close_button"
-            android:layout_width="29dp"
-            android:layout_height="29dp"
+            android:layout_width="20dp"
             android:layout_alignParentRight="true"
             android:background="@android:color/transparent"
-            android:layout_marginRight="5dp"
-            android:layout_centerVertical="true" />
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:layout_height="20dp"
+            android:layout_marginLeft="10dp" />
 
 
         <ImageButton
-            android:layout_width="29dp"
-            android:layout_height="29dp"
+            android:layout_width="20dp"
             android:id="@+id/crosswalk_extra_web_view_geri_button"
             android:layout_alignParentTop="false"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:background="@android:color/transparent"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="3dp"
-            android:clickable="true" />
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:clickable="true"
+            android:layout_height="20dp" />
 
         <ImageButton
-            android:layout_width="29dp"
-            android:layout_height="29dp"
+            android:layout_width="20dp"
             android:id="@+id/crosswalk_extra_web_view_ileri_button"
             android:background="@android:color/transparent"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/crosswalk_extra_web_view_geri_button"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="3dp"
-            android:clickable="true" />
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:clickable="true"
+            android:layout_height="20dp" />
 
         <ImageButton
-            android:layout_width="29dp"
-            android:layout_height="29dp"
+            android:layout_width="20dp"
             android:id="@+id/crosswalk_extra_web_view_refresh_button"
             android:background="@android:color/transparent"
-            android:layout_toRightOf="@+id/crosswalk_extra_web_view_ileri_button"
+            android:layout_toLeftOf="@+id/crosswalk_extra_web_view_close_button"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="3dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:clickable="true"
             android:padding="0dp"
-            android:baselineAlignBottom="true" />
+            android:baselineAlignBottom="true"
+            android:layout_height="20dp" />
         <TextView
             android:id="@+id/crosswalk_extra_web_view_title"
             android:layout_width="wrap_content"
@@ -70,7 +71,8 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:textSize="20sp"
-            android:layout_centerInParent="true" />
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
 
         <ImageView
             android:layout_width="match_parent"

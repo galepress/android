@@ -1243,21 +1243,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 SearchAdapter mAdapter = new SearchAdapter(GalePressApplication.getInstance().getMenuSearchResult());
                 list.setAdapter(mAdapter);
             }
-
-            /*LayoutInflater mInflater = (LayoutInflater) getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            View resultItem = mInflater.inflate(R.layout.search_result_item_menu, null);
-            resultItem.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
-            int listHeight;
-            int maxItemCount = 15;
-            if (getResources().getBoolean(R.bool.portrait_only)) {
-                maxItemCount = 10;
-            }
-            if(GalePressApplication.getInstance().getMenuSearchResult().size() > maxItemCount) {
-                listHeight = resultItem.getMeasuredHeight()*maxItemCount;
-            } else {
-                listHeight = resultItem.getMeasuredHeight()*GalePressApplication.getInstance().getMenuSearchResult().size();
-            }
-            list.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listHeight));*/
         } else {
             baseView.setVisibility(View.GONE);
             if(showNotFoundMessage)

@@ -29,13 +29,13 @@
             android:layout_height="60dp"
             android:orientation="vertical"
             android:id="@+id/crop_cancel_layer"
-            android:gravity="center_vertical|right"
+            android:gravity="top|right"
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp">
 
             <Button
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:id="@+id/crop_cancel_button" />
         </LinearLayout>
 
@@ -45,7 +45,7 @@
             android:orientation="vertical"
             android:layout_alignParentBottom="true"
             android:id="@+id/crop_submit_layer"
-            android:gravity="center_vertical|right"
+            android:gravity="center"
             android:layout_marginBottom="10dp"
             android:layout_marginRight="10dp">
 

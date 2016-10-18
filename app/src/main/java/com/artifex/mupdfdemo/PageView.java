@@ -509,7 +509,11 @@ public abstract class PageView extends ViewGroup {
 					}
 
 					if (!mIsBlank && mLinks != null && mHighlightLinks) {
-						paint.setColor(LINK_COLOR);
+						/*
+						* Burası
+						* paint.setColor(LINK_COLOR); seklindeydi ben degistirdim.
+						* */
+						paint.setColor(Color.TRANSPARENT);
 						for (LinkInfo link : mLinks){
                             boolean insOf = link instanceof LinkInfoExternal;
                             boolean insOf2 = link.getClass().isAssignableFrom(LinkInfoExternal.class);
