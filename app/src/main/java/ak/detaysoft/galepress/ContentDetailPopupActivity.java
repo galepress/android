@@ -550,7 +550,7 @@ public class ContentDetailPopupActivity extends Activity{
                             isDescriptionShowing = false;
                             descriptionTopYClose = descriptionTopYOpen + descriptionBase.getHeight()-findViewById(R.id.popup_swipe_open).getHeight();
 
-                            descriptionBase.animate().y(descriptionTopYClose).setInterpolator(new AccelerateInterpolator()).setDuration(1000).setListener(new Animator.AnimatorListener() {
+                            descriptionBase.animate().y(descriptionTopYClose).setInterpolator(new AccelerateInterpolator()).setDuration(750).setListener(new Animator.AnimatorListener() {
                                 @Override
                                 public void onAnimationStart(Animator animation) {
 

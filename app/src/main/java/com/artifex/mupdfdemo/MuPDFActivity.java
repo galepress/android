@@ -62,8 +62,6 @@ import android.widget.ViewAnimator;
 import com.artifex.mupdfdemo.ReaderView.ViewMapper;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
-import net.simonvt.menudrawer.ColorDrawable;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

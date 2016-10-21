@@ -53,7 +53,6 @@ dependencies {
     compile files('../dd-plist.jar')
     compile fileTree(include: '*.*', dir: 'src/main/lib')
     compile files('src/main/lib/gcm.jar')
-    compile project(':menuDrawer')
     compile files('src/main/lib/universal-image-loader-1.9.3.jar')
     compile 'com.android.support:appcompat-v7:20.+'
     compile 'com.android.support:recyclerview-v7:+'
@@ -67,5 +66,4 @@ dependencies {
         transitive = true
     }
     compile project(':slidemenulibrary')
-    compile 'com.github.traex.expandablelayout:library:1.2.2'
 }
