@@ -1,5 +1,6 @@
 package ak.detaysoft.galepress;
 
+import android.animation.Animator;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
@@ -14,14 +15,19 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.RemoteException;
 import android.provider.Settings;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
+import android.view.animation.DecelerateInterpolator;
 import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -62,6 +68,7 @@ public class ContentDetailPopupActivity extends Activity{
     public PopupFixedAspectLayout popup;
     public TextView nameLabel;
     public TextView detailLabel;
+    public TextView descriptionLabel;
     public L_Content content;
     public ImageView image;
     public Button updateButton;
@@ -89,6 +96,12 @@ public class ContentDetailPopupActivity extends Activity{
 
     private int searchPage = -1;
     private String searchQuery;
+    private boolean isDescriptionShowing = true;
+    private LinearLayout descriptionBase;
+    private float descriptionTopYClose;
+    private float descriptionTopYOpen;
+    float touchDownY = 0;
+    float touchUpY = 0;
 
     public class ContentHolder{
         Button updateButton;
@@ -209,7 +222,7 @@ public class ContentDetailPopupActivity extends Activity{
         nameLabel.setTextColor(ApplicationThemeColor.getInstance().getGridItemNameLabelColor());
         nameLabel.setText(content.getName());
 
-        detailLabel = (TextView)findViewById(R.id.content_detail_detail_label);
+        detailLabel = (TextView)findViewById(R.id.content_detail_month_label);
         detailLabel.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
         detailLabel.setTextColor(ApplicationThemeColor.getInstance().getThemeColor());
         detailLabel.setText(content.getDetail());
@@ -386,6 +399,79 @@ public class ContentDetailPopupActivity extends Activity{
         //loading.setIndeterminate(true);
         //loading.getIndeterminateDrawable().setColorFilter(ApplicationThemeColor.getInstance().getForegroundColor(), android.graphics.PorterDuff.Mode.MULTIPLY);
 
+        descriptionBase = (LinearLayout) findViewById(R.id.description_base);
+        descriptionBase.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                float threshold = (descriptionTopYClose - descriptionTopYOpen)/4;
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        touchDownY = event.getRawY();
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        if(isDescriptionShowing) {
+                            float y = descriptionTopYOpen + event.getRawY()- touchDownY;
+                            if(y >= descriptionTopYOpen && y <= descriptionTopYClose)
+                                descriptionBase.setY(y);
+                        } else {
+                            float y = descriptionTopYClose + event.getRawY()- touchDownY;
+                            if(y >= descriptionTopYOpen && y <= descriptionTopYClose)
+                                descriptionBase.setY(y);
+                        }
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        touchUpY = event.getRawY();
+
+                        if(touchDownY > touchUpY) {
+                            if(touchDownY - touchUpY >= threshold) {
+                                descriptionBase.setY(descriptionTopYOpen);
+                                isDescriptionShowing = true;
+                                ((ImageView)findViewById(R.id.popup_swipe_icon)).setImageResource(R.drawable.swipe_close);
+                            } else {
+                                descriptionBase.setY(descriptionTopYClose);
+                                isDescriptionShowing = false;
+                                ((ImageView)findViewById(R.id.popup_swipe_icon)).setImageResource(R.drawable.swipe_open);
+                            }
+                        } else if(touchDownY < touchUpY) {
+                            if(touchUpY - touchDownY >= threshold) {
+                                descriptionBase.setY(descriptionTopYClose);
+                                isDescriptionShowing = false;
+                                ((ImageView)findViewById(R.id.popup_swipe_icon)).setImageResource(R.drawable.swipe_open);
+                            } else {
+                                descriptionBase.setY(descriptionTopYOpen);
+                                isDescriptionShowing = true;
+                                ((ImageView)findViewById(R.id.popup_swipe_icon)).setImageResource(R.drawable.swipe_close);
+                            }
+                        } else {
+
+                            if(isDescriptionShowing) {
+                                descriptionBase.setY(descriptionTopYClose);
+                                isDescriptionShowing = false;
+                                ((ImageView)findViewById(R.id.popup_swipe_icon)).setImageResource(R.drawable.swipe_open);
+                            } else {
+                                descriptionBase.setY(descriptionTopYOpen);
+                                isDescriptionShowing = true;
+                                ((ImageView)findViewById(R.id.popup_swipe_icon)).setImageResource(R.drawable.swipe_close);
+                            }
+                        }
+
+
+                        break;
+                }
+                return true;
+            }
+        });
+
+        descriptionLabel = (TextView)findViewById(R.id.content_detail_description_label);
+        descriptionLabel.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
+        descriptionLabel.setTextColor(ApplicationThemeColor.getInstance().getThemeColor());
+        descriptionLabel.setText("Yinelenen bir sayfa içeriğinin okuyucunun dikkatini dağıttığıbilinen bir gerçektir. " +
+                "Lorem Ipsum kullanmanın amacı, sürekli 'buraya metin gelecek, " +
+                "buraya metin gelecek' yazmaya kıyasla daha dengeli bir harf dağılımı sağlayarak okunurluğu artırmasıdır.");
+
+
+        //disableDescription();
+
         update();
 
         //setImage
@@ -450,6 +536,48 @@ public class ContentDetailPopupActivity extends Activity{
                     ScaleAnimation scaleLast = new ScaleAnimation(1.05f, 1f, 1.05f, 1f, Animation.RELATIVE_TO_SELF, animationStartX, Animation.RELATIVE_TO_SELF, animationStartY);
                     scaleLast.setFillAfter(true);
                     scaleLast.setDuration(100);
+                    scaleLast.setAnimationListener(new Animation.AnimationListener() {
+                        @Override
+                        public void onAnimationStart(Animation animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
+
+                            descriptionTopYOpen = descriptionBase.getY();
+
+                            isDescriptionShowing = false;
+                            descriptionTopYClose = descriptionTopYOpen + descriptionBase.getHeight()-findViewById(R.id.popup_swipe_open).getHeight();
+
+                            descriptionBase.animate().y(descriptionTopYClose).setInterpolator(new AccelerateInterpolator()).setDuration(1000).setListener(new Animator.AnimatorListener() {
+                                @Override
+                                public void onAnimationStart(Animator animation) {
+
+                                }
+
+                                @Override
+                                public void onAnimationEnd(Animator animation) {
+                                    ((ImageView)findViewById(R.id.popup_swipe_icon)).setImageResource(R.drawable.swipe_open);
+                                }
+
+                                @Override
+                                public void onAnimationCancel(Animator animation) {
+
+                                }
+
+                                @Override
+                                public void onAnimationRepeat(Animator animation) {
+
+                                }
+                            }).start();
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) {
+
+                        }
+                    });
                     popup.startAnimation(scaleLast);
                 }
 

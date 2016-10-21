@@ -70,7 +70,7 @@
         jumboMode="true"
         optimize="true"
         revision="21.0.0"
-        sha1="3e668591400ce92b4980066e2b8e834b8cda5ef5">
+        sha1="eae729486a2a170541f61b023921135d57fb81ec">
         <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_020261e632dbd008531c15650b35dd2213648571\classes.dex" />
     </item>
     <item
@@ -106,7 +106,7 @@
         jumboMode="true"
         optimize="true"
         revision="21.0.0"
-        sha1="fb4b9d7cd6a105be78453f52914e6d4f1683066f">
+        sha1="1a7064e99ec93b67663bc968880632abe1929385">
         <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_555151797c2cf5c300f33f3c30584f5915d9678c\classes.dex" />
     </item>
     <item
@@ -144,6 +144,15 @@
         revision="21.0.0"
         sha1="894922f67adeaaef51f077a29e315da21a3382d3">
         <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-24.0.0_7022190a12f312ef529efb1980e58fff053170e9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.github.traex.expandablelayout\library\1.2.2\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.0.0"
+        sha1="abeff860f55e6b771b5053b593886c20bbc3fe84">
+        <dex dex="D:\GalepressMerge\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.github.traex.expandablelayout-library-1.2.2_03d83ef83f08e5ed7781122c41dc000af5e33669\classes.dex" />
     </item>
     <item
         is-multidex="true"

@@ -693,11 +693,7 @@ public class ApplicationThemeColor {
             myIcon = context.getResources().getDrawable(R.drawable.reader_search_clear);
             myIcon.setColorFilter(getThemeColorFilter());
         } else if(resourceType == READER_MENU_OPEN){
-            if(themeType == DARK_THEME_TYPE) {
-                myIcon = context.getResources().getDrawable(R.drawable.b);
-            } else {
-                myIcon = context.getResources().getDrawable(R.drawable.s);
-            }
+            myIcon = context.getResources().getDrawable(R.drawable.reader_bottom_menu);
         } else if(resourceType == READER_MENU_OPEN2){
             if(themeType == DARK_THEME_TYPE) {
                 myIcon = context.getResources().getDrawable(R.drawable.ks);

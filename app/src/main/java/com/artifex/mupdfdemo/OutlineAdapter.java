@@ -1,6 +1,7 @@
 package com.artifex.mupdfdemo;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,7 @@ public class OutlineAdapter extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View v;
 		if (convertView == null) {
-			v = mInflater.inflate(R.layout.outline_entry, null);
+			v = mInflater.inflate(R.layout.outline_entry, parent, false);
 		} else {
 			v = convertView;
 		}
@@ -45,12 +46,12 @@ public class OutlineAdapter extends BaseAdapter {
 		for (int i=0; i<level;i++)
 			space += "   ";
 		((TextView)v.findViewById(R.id.title)).setText(space+mItems[position].title);
-        ((TextView)v.findViewById(R.id.title)).setTextColor(ApplicationThemeColor.getInstance().getThemeColor());
-        ((TextView)v.findViewById(R.id.title)).setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(mContext));
+        ((TextView)v.findViewById(R.id.title)).setTextColor(Color.WHITE);
+        ((TextView)v.findViewById(R.id.title)).setTypeface(ApplicationThemeColor.getInstance().getGothamBook(mContext));
 
 		((TextView)v.findViewById(R.id.page)).setText(String.valueOf(mItems[position].page + 1));
-        ((TextView)v.findViewById(R.id.page)).setTextColor(ApplicationThemeColor.getInstance().getThemeColor());
-        ((TextView)v.findViewById(R.id.page)).setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(mContext));
+        ((TextView)v.findViewById(R.id.page)).setTextColor(Color.WHITE);
+        ((TextView)v.findViewById(R.id.page)).setTypeface(ApplicationThemeColor.getInstance().getGothamBook(mContext));
 		return v;
 	}
 

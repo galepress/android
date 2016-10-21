@@ -48,6 +48,48 @@
                         android:adjustViewBounds="true"
                         android:scaleType="fitXY" />
 
+                    <LinearLayout
+                        android:id="@+id/description_base"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible"
+                        android:layout_alignParentBottom="true">
+
+                        <LinearLayout
+                            android:id="@+id/popup_swipe_open"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:gravity="bottom|center_horizontal"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:id="@+id/popup_swipe_icon"
+                                android:layout_width="40dp"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/swipe_close"
+                                android:layout_height="20dp" />
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="10dp"
+                                android:background="#CCFFFFFF"/>
+                        </LinearLayout>
+
+                        <TextView
+                            android:background="#CCFFFFFF"
+                            android:id="@+id/content_detail_description_label"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:paddingBottom="10dp"
+                            android:gravity="center"
+                            android:textSize="@dimen/content_popup_large_textsize"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="visible"
+                            android:text="sdfsdfsdfşjsdlfjsdkljflksdjfsldjfsdkljfsdlkfjsdkljflkdsjfklsdjfksldfjdslkfjsdlkfjsdklfjsdlkfjlsdkf\nsdkjhdfjksddfhjksdhfkjsdhfsdf\nsdjkfhsdkjhfsdkfhksdjhf" />
+
+
+                    </LinearLayout>
+
                     <ImageView
                         android:id="@+id/content_detail_download_overlay"
                         android:layout_width="match_parent"
@@ -84,6 +126,7 @@
                             />
 
                     </RelativeLayout>
+
 
                 </ak.detaysoft.galepress.CoverImageFixedAspectLayout>
 
@@ -164,7 +207,7 @@
                             android:text="Yuzme Egitimine Giris Kitapcigi"
                             android:textStyle="normal"
                             android:textSize="@dimen/content_popup_large_textsize"
-                            android:singleLine="true"
+                            android:lines="1"
                             android:ellipsize="end"
                             android:gravity="center_vertical|left"
                             android:layout_alignParentLeft="true"
@@ -176,9 +219,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Spor A.S"
-                            android:id="@+id/content_detail_detail_label"
+                            android:id="@+id/content_detail_month_label"
                             android:textSize="@dimen/content_popup_large_textsize"
-                            android:singleLine="true"
+                            android:lines="1"
                             android:ellipsize="end"
                             android:gravity="left|top"
                             android:layout_alignParentLeft="true"

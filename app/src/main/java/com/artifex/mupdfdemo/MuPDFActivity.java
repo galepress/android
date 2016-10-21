@@ -149,7 +149,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
     private ThumbnailHorizontalListView mPreview;
     private RelativeLayout bottomButton;
     private ImageView bottomButtonImg1;
-    private RelativeLayout bottomButtonImg2;
     private RelativeLayout mPreviewBarHolder;
     //private CustomThumnailAdapter thumnailAdapter;
     private ThumbnailListAdapter thumnailAdapter;
@@ -804,7 +803,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             leftList.setAdapter(new OutlineAdapter(this, getLayoutInflater(), core.getOutline()));
         }
 
-
         readerSearchEdittext = (EditText) findViewById(R.id.reader_menu_search_edit_text);
         readerSearchEdittext.addTextChangedListener(new TextWatcher() {
             @Override
@@ -903,7 +901,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         else
             readerSearchClear.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.SEARCH_CLEAR));
 
-        if (savedInstanceState == null && getIntent().hasExtra("searchPage")) {
+        if (savedInstanceState == null && getIntent().hasExtra("searchPage") && getIntent().getIntExtra("searchPage", -1) != -1) {
             /*
             * Burada yapilan kontrol sayfa yatay yada dikey acilmaya zorlandigi durumda indexler onresume() da duzenlendigi icin search iki defa cagriliyor.
             * bunu engellemek icin dogru ekran yondeyse search calisiyor
@@ -1438,7 +1436,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
                                                     }
                                                 });
-                                                bottomButtonImg2.startAnimation(s32);
+                                                bottomButtonImg1.startAnimation(s32);
                                             }
 
                                             @Override
@@ -1446,7 +1444,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
                                             }
                                         });
-                                        bottomButtonImg2.startAnimation(s31);
+                                        bottomButtonImg1.startAnimation(s31);
                                     }
 
                                     @Override
@@ -1454,7 +1452,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
                                     }
                                 });
-                                bottomButtonImg2.startAnimation(s22);
+                                bottomButtonImg1.startAnimation(s22);
                             }
 
                             @Override
@@ -1462,7 +1460,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
                             }
                         });
-                        bottomButtonImg2.startAnimation(s21);
+                        bottomButtonImg1.startAnimation(s21);
                     }
 
                     @Override
@@ -1470,7 +1468,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
                     }
                 });
-                bottomButtonImg2.startAnimation(s12);
+                bottomButtonImg1.startAnimation(s12);
             }
 
             @Override
@@ -1478,7 +1476,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
             }
         });
-        bottomButtonImg2.startAnimation(s11);
+        bottomButtonImg1.startAnimation(s11);
 
 
     }
@@ -1897,10 +1895,10 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         divider.bringToFront();
         mPreviewBarHolder.setBackgroundColor(Color.TRANSPARENT);
 
-        bottomButton = (RelativeLayout) mButtonsView.findViewById(R.id.reader_bottom_page_button);
+        bottomButton = (RelativeLayout) mButtonsView.findViewById(R.id.reader_bottom_menu_button);
         bottomButton.setBackgroundColor(Color.TRANSPARENT);
 
-        bottomButtonImg1 = (ImageView) mButtonsView.findViewById(R.id.reader_bottom_page_img1);
+        bottomButtonImg1 = (ImageView) mButtonsView.findViewById(R.id.reader_bottom_menu_icon);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
             bottomButtonImg1.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_MENU_OPEN));
         else
@@ -1911,23 +1909,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                 showButtons();
             }
         });
-
-        bottomButtonImg2 = (RelativeLayout) mButtonsView.findViewById(R.id.reader_bottom_page_img2);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            bottomButtonImg2.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_MENU_OPEN2));
-        else
-            bottomButtonImg2.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_MENU_OPEN2));
-        bottomButtonImg2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showButtons();
-            }
-        });
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            ((ImageView) mButtonsView.findViewById(R.id.reader_bottom_page_img_ok)).setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_MENU_OPEN_OK));
-        else
-            ((ImageView) mButtonsView.findViewById(R.id.reader_bottom_page_img_ok)).setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_MENU_OPEN_OK));
-
         mPreview = (ThumbnailHorizontalListView) mButtonsView.findViewById(R.id.reader_preview_bar_listView);
         mPreview.setBackgroundColor(ApplicationThemeColor.getInstance().getActionAndTabBarColor());
         thumnailAdapter = new ThumbnailListAdapter(this, core, mDocView, this.content);

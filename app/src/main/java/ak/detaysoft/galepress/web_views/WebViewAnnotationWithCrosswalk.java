@@ -1,12 +1,14 @@
 package ak.detaysoft.galepress.web_views;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
 import com.artifex.mupdfdemo.LinkInfoExternal;
+import com.artifex.mupdfdemo.Logout;
 import com.artifex.mupdfdemo.MuPDFReaderView;
 
 import org.xwalk.core.XWalkResourceClient;
@@ -65,6 +67,26 @@ public class WebViewAnnotationWithCrosswalk extends XWalkView {
             super.onLoadStarted(view, url);
         }
 
+        @Override
+        public boolean shouldOverrideUrlLoading(XWalkView view, String url) {
+            ak.detaysoft.galepress.Logout.e("Adem CrosswalkWebView", "shouldOverrideUrlLoading: " + url);
+            // don't override URL so that stuff within iframe can work properly
+            // view.loadUrl(url);
+            if(isLoadingFinished) {
+                Logout.e("denemeeeeeeee", "redirect");
+                Intent intent = new Intent(context, ExtraWebViewActivity.class);
+                intent.putExtra("url", url);
+                intent.putExtra("isMainActivitIntent", false);
+                context.startActivity(intent);
+                if(linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_SES
+                        || linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_VIDEO
+                        || linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_WEB
+                        || linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_ANIMATION)
+                    isLoadingFinished = false;
+                return true;
+            }
+            return false;
+        }
     }
 
     class MyXUIClient extends XWalkUIClient {

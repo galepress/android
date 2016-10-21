@@ -2,6 +2,7 @@ package ak.detaysoft.galepress.web_views;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
@@ -59,6 +60,19 @@ public class WebViewAnnotation extends WebView {
             ak.detaysoft.galepress.Logout.e("Adem WebView", "shouldOverrideUrlLoading: " + url);
             // don't override URL so that stuff within iframe can work properly
             // view.loadUrl(url);
+            if(isLoadingFinished) {
+                Logout.e("denemeeeeeeee", "redirect");
+                Intent intent = new Intent(context, ExtraWebViewActivity.class);
+                intent.putExtra("url", url);
+                intent.putExtra("isMainActivitIntent", false);
+                context.startActivity(intent);
+                if(linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_SES
+                        || linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_VIDEO
+                        || linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_WEB
+                        || linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_ANIMATION)
+                    isLoadingFinished = false;
+                return true;
+            }
             return false;
         }
 
@@ -66,6 +80,7 @@ public class WebViewAnnotation extends WebView {
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
             isLoadingFinished = true;
+            Logout.e("denemeeeeeeee", "finish");
             if(loading != null) {
                 loading.setVisibility(GONE);
             }
@@ -77,6 +92,7 @@ public class WebViewAnnotation extends WebView {
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
             super.onPageStarted(view, url, favicon);
             isLoadingFinished = false;
+            Logout.e("denemeeeeeeee", "start");
             if(loading != null) {
                 loading.setVisibility(VISIBLE);
             }
