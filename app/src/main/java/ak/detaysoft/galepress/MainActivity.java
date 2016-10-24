@@ -191,8 +191,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
         leftMenu = new SlidingMenu(this);
         leftMenu.setMode(SlidingMenu.LEFT_RIGHT);
-        leftMenu.setVisibility(View.VISIBLE);
-        leftMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+        leftMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
         leftMenu.setFadeDegree(0.35f);
         leftMenu.setBehindWidth((int) getResources().getDimension(R.dimen.left_menu_size));
         leftMenu.attachToActivity(this, SlidingMenu.SLIDING_WINDOW);

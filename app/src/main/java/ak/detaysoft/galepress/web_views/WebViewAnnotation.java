@@ -241,6 +241,11 @@ public class WebViewAnnotation extends WebView {
             this.previousMotionEvent = MotionEvent.obtain(event);
     }
 
+    public boolean isLoadingFinished() {
+        return isLoadingFinished;
+    }
 
-
+    public void setLoadingFinished(boolean loadingFinished) {
+        isLoadingFinished = loadingFinished;
+    }
 }
