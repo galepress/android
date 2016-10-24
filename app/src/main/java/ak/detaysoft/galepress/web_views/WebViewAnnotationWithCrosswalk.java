@@ -234,4 +234,12 @@ public class WebViewAnnotationWithCrosswalk extends XWalkView {
         else
             this.previousMotionEvent = MotionEvent.obtain(event);
     }
+
+    public boolean isLoadingFinished() {
+        return isLoadingFinished;
+    }
+
+    public void setLoadingFinished(boolean loadingFinished) {
+        isLoadingFinished = loadingFinished;
+    }
 }

@@ -638,6 +638,7 @@ public class MuPDFPageView extends PageView implements MuPDFView {
 							//webView.loadUrl("");
 							if(!webView.isLoadingFinished)
 								webView.stopLoading();
+							webView.setLoadingFinished(false);
 							webView.loadUrl("javascript:" + stopScriptVideo );
 						}
 					}
@@ -656,6 +657,7 @@ public class MuPDFPageView extends PageView implements MuPDFView {
 						//webView.loadUrl("");
 						if(!webView.isLoadingFinished)
 							webView.stopLoading();
+						webView.setLoadingFinished(false);
 						webView.load("javascript:" + stopScriptVideo, null );
 					}
 				}
