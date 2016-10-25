@@ -597,7 +597,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                 }
             }
         };
-        mDocView.setBackgroundColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
+        mDocView.setBackgroundColor(ApplicationThemeColor.getInstance().getReaderBackground());
         mDocView.setAdapter(new MuPDFPageAdapter(this, this, core));
 
         mSearchTask = new SearchTask(this, core) {

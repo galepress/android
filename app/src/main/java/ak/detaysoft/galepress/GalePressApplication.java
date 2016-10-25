@@ -111,7 +111,6 @@ public class GalePressApplication
     private String bannerLink = "";
     private ArrayList<TabbarItem> tabList;
     public boolean isTablistChanced = true;
-    private ArrayList<Integer> membershipMenuList;
     private ArrayList<Subscription> subscriptions;
     private boolean userHaveActiveSubscription = false;
 
@@ -218,7 +217,7 @@ public class GalePressApplication
         initBillingServices();
         getlocalActiveSubscripton();
         prepareSubscriptions(null);
-        prepareMemberShipList();
+        initUser();
 
 
         //Uygulama ilk acildiginda localde tutulan renk, banner ve tabbar datalarini alabilmek icin
@@ -826,22 +825,16 @@ public class GalePressApplication
         return str1 + str3 + str2 + str4;
     }
 
-    public ArrayList<Integer> getMembershipMenuList() {
-        return membershipMenuList;
-    }
-
-    public void setMembershipMenuList(ArrayList<Integer> membershipMenuList) {
-        this.membershipMenuList = membershipMenuList;
-    }
-
-    public void prepareMemberShipList() {
-
-        membershipMenuList = new ArrayList<Integer>();
+    public void initUser(){
         SharedPreferences preferences = getSharedPreferences("ak.detaysoft.galepress", Context.MODE_PRIVATE);
         String token = preferences.getString("accessToken", "");
+        String userName = preferences.getString("userName", "");
         if (token.length() != 0) { //login olmus kullanici var
             try {
-                userInformation = new UserInformations(new JSONObject(token));
+                JSONObject user = new JSONObject();
+                user.put("accessToken", token);
+                user.put("userName", userName);
+                userInformation = new UserInformations(user);
                 String recoveryToken = userInformation.getAccessToken();
                 try {
                     userInformation.setAccessToken(getMD5MixedValue(userInformation.getAccessToken()));
@@ -849,25 +842,17 @@ public class GalePressApplication
                     userInformation.setAccessToken(recoveryToken);
                     e.printStackTrace();
                 }
-                if (!isUserHaveActiveSubscription() && applicationHaveActiveSubscription)
-                    membershipMenuList.add(LeftMenuMembershipAdapter.SUBSCRIPTION);
-
-                membershipMenuList.add(LeftMenuMembershipAdapter.RESTORE);
-                membershipMenuList.add(LeftMenuMembershipAdapter.LOGOUT);
             } catch (JSONException e) {
                 userInformation = null;
-                membershipMenuList.add(LeftMenuMembershipAdapter.LOGIN);
                 e.printStackTrace();
             }
         } else { //login olmus kullanici yok
             userInformation = null;
-            membershipMenuList.add(LeftMenuMembershipAdapter.LOGIN);
         }
     }
 
-    public void editMemberShipList(boolean isLogin, JSONObject response) {
 
-        membershipMenuList = new ArrayList<Integer>();
+    public void createUser(boolean isLogin, JSONObject response){
         SharedPreferences preferences = getSharedPreferences("ak.detaysoft.galepress", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor;
         if (isLogin) { //kullanici login olacak
@@ -880,19 +865,16 @@ public class GalePressApplication
                 userInformation.setAccessToken(recoveryToken);
                 e.printStackTrace();
             }
-            editor.putString("accessToken", userInformation.getJSONObject().toString());
+            editor.putString("accessToken", userInformation.getAccessToken());
+            editor.putString("userName", userInformation.getUserName());
             editor.commit();
             userInformation.setAccessToken(recoveryToken);
-            if (!isUserHaveActiveSubscription() && applicationHaveActiveSubscription)
-                membershipMenuList.add(LeftMenuMembershipAdapter.SUBSCRIPTION);
-            membershipMenuList.add(LeftMenuMembershipAdapter.RESTORE);
-            membershipMenuList.add(LeftMenuMembershipAdapter.LOGOUT);
         } else { //kullanici logout olacak
             editor = preferences.edit();
             editor.putString("accessToken", "");
+            editor.putString("userName", "");
             userInformation = null;
             editor.commit();
-            membershipMenuList.add(LeftMenuMembershipAdapter.LOGIN);
         }
     }
 

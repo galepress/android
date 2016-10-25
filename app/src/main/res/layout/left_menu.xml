@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="@dimen/left_menu_size" android:layout_height="match_parent"
-        android:background="@color/white"
-        android:orientation="vertical"
-        android:id="@+id/left_menu_layout"
-        android:focusable="true"
-        android:focusableInTouchMode="true">
+    android:id="@+id/left_menu_layout"
+    android:layout_width="@dimen/left_menu_size"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,79 +14,121 @@
         android:background="@android:color/transparent">
 
         <ImageView
-            android:src="@drawable/menu_bg"
-            android:scaleType="centerCrop"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/menu_bg" />
 
         <ImageView
+            android:id="@+id/left_menu_app_icon"
             android:layout_width="match_parent"
             android:layout_height="@dimen/menu_logo_height"
-            android:id="@+id/left_menu_app_icon"
-            android:adjustViewBounds="true"
-            android:src="@drawable/app_logo"
+            android:layout_marginBottom="30dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="30dp"
+            android:adjustViewBounds="true"
             android:scaleType="centerInside"
-            android:layout_marginBottom="30dp" />
+            android:src="@drawable/app_logo" />
+
+        <RelativeLayout
+            android:id="@+id/left_menu_login"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/menu_category_item_size"
+            android:layout_below="@+id/left_menu_app_icon"
+            android:layout_marginBottom="10dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center_vertical|left"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/left_menu_login_signup" />
+
+                <TextView
+                    android:id="@+id/left_menu_login_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|left"
+                    android:lines="1"
+                    android:text="@string/login_stand"
+                    android:textSize="@dimen/menu_category_text_size" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_below="@+id/left_menu_login"
+            android:background="#FFFFFF"
+            android:layout_height="0.75dp" />
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/transparent"
-            android:layout_above="@+id/left_menu_logout"
-            android:layout_below="@+id/left_menu_app_icon">
+            android:layout_below="@+id/left_menu_login"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/transparent">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingTop="10dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingTop="10dp">
+
                 <RelativeLayout
                     android:id="@+id/left_categories_layout"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="15dp"
                     android:gravity="center"
-                    android:paddingTop="5dp"
                     android:paddingBottom="5dp"
                     android:paddingRight="5dp"
+                    android:paddingTop="5dp"
                     android:visibility="gone">
 
                     <ImageView
+                        android:id="@+id/left_menu_category_icon"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:id="@+id/left_menu_category_icon"
-                        android:adjustViewBounds="true"
-                        android:layout_margin="5dp"
                         android:layout_alignParentLeft="true"
+                        android:layout_margin="5dp"
+                        android:adjustViewBounds="true"
                         android:visibility="invisible" />
 
                     <TextView
+                        android:id="@+id/left_menu_category_text"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/left_menu_category_text"
-                        android:textSize="@dimen/left_menu_title_size"
-                        android:textStyle="bold"
                         android:layout_marginLeft="40dp"
-                        android:text="@string/KATEGORILER"
+                        android:layout_toLeftOf="@+id/left_menu_categories_close"
                         android:background="@android:color/transparent"
                         android:gravity="center_vertical|left"
-                        android:layout_toLeftOf="@+id/left_menu_categories_close" />
+                        android:text="@string/KATEGORILER"
+                        android:textSize="@dimen/left_menu_title_size"
+                        android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/left_menu_categories_close"
                         android:layout_width="18dp"
                         android:layout_height="18dp"
-                        android:id="@+id/left_menu_categories_close"
-                        android:adjustViewBounds="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="35dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true" />
+                        android:adjustViewBounds="true" />
 
                 </RelativeLayout>
-
-
 
 
                 <ListView
@@ -95,145 +137,14 @@
                     android:layout_height="match_parent"
                     android:divider="@android:color/transparent"
                     android:listSelector="@android:color/transparent"
-                    android:visibility="visible"
-                    >
+                    android:visibility="visible">
 
-                </ListView>
-
-                <RelativeLayout
-                    android:id="@+id/left_social_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingRight="5dp"
-                    android:paddingBottom="5dp"
-                    android:visibility="gone">
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:adjustViewBounds="true"
-                        android:layout_margin="5dp"
-                        android:focusableInTouchMode="false"
-                        android:id="@+id/left_menu_link_icon"
-                        android:layout_alignParentLeft="true"
-                        android:visibility="invisible" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/left_menu_social_text"
-                        android:textSize="@dimen/left_menu_title_size"
-                        android:textStyle="bold"
-                        android:text="@string/links"
-                        android:layout_marginLeft="40dp"
-                        android:background="@android:color/transparent"
-                        android:gravity="center_vertical|left"
-                        android:layout_toLeftOf="@+id/left_menu_social_close" />
-
-                    <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:adjustViewBounds="true"
-                        android:id="@+id/left_menu_social_close"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="35dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true" />
-
-                </RelativeLayout>
-
-
-                <ListView
-                    android:id="@+id/left_menu_social_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:divider="@android:color/transparent"
-                    android:listSelector="@android:color/transparent"
-                    android:visibility="gone">
-                    android:listSelector="@android:color/transparent"
-                    android:visibility="gone">
-                </ListView>
-
-                <RelativeLayout
-                    android:id="@+id/left_membership_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingRight="5dp"
-                    android:paddingBottom="5dp"
-                    android:visibility="gone">
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:adjustViewBounds="true"
-                        android:layout_margin="5dp"
-                        android:focusableInTouchMode="false"
-                        android:id="@+id/left_menu_membership_icon"
-                        android:layout_alignParentLeft="true"
-                        android:visibility="invisible" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/left_menu_membership_text"
-                        android:textSize="@dimen/left_menu_title_size"
-                        android:textStyle="bold"
-                        android:text="@string/membership"
-                        android:layout_marginLeft="40dp"
-                        android:background="@android:color/transparent"
-                        android:gravity="center_vertical|left"
-                        android:layout_toLeftOf="@+id/left_menu_membership_close" />
-
-                    <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:adjustViewBounds="true"
-                        android:id="@+id/left_menu_membership_close"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="35dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true" />
-
-                </RelativeLayout>
-
-                <ListView
-                    android:id="@+id/left_menu_membership_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:divider="@android:color/transparent"
-                    android:listSelector="@android:color/transparent"
-                    android:clickable="false"
-                    android:visibility="gone">
                 </ListView>
 
             </LinearLayout>
         </ScrollView>
 
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/login_input_height"
-            android:text="@string/logout"
-            android:id="@+id/left_menu_logout"
-            android:layout_gravity="center_horizontal|bottom"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginBottom="25dp"
-            android:textSize="@dimen/login_button_text_size"
-            android:layout_alignParentBottom="true"
-            android:visibility="gone"
-            android:layout_marginTop="15dp" />
-
-        </RelativeLayout>
-
-
-
+    </RelativeLayout>
 
 
 </LinearLayout>

@@ -651,11 +651,11 @@ public class DataApi extends Object {
                                 if (!response.isNull("accessToken")) {
                                     String accessToken = response.getString("accessToken");
                                     if (accessToken != null && accessToken.length() != 0) {
-                                        GalePressApplication.getInstance().editMemberShipList(true, response);
+                                        GalePressApplication.getInstance().createUser(true, response);
                                         ((UserLoginActivity) activity).getUpdateDialog().setMessage(activity.getResources().getString(R.string.Restore) + "...");
                                         GalePressApplication.getInstance().restorePurchasedProductsFromMarket(true, activity, ((UserLoginActivity) activity).getUpdateDialog());
                                     } else {
-                                        GalePressApplication.getInstance().editMemberShipList(false, null);
+                                        GalePressApplication.getInstance().createUser(false, null);
 
                                         if (activity instanceof UserLoginActivity) {
                                             ((UserLoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_0));
@@ -677,7 +677,7 @@ public class DataApi extends Object {
                                         }
                                     }
                                 } else {
-                                    GalePressApplication.getInstance().editMemberShipList(false, null);
+                                    GalePressApplication.getInstance().createUser(false, null);
                                     if (activity instanceof UserLoginActivity) {
                                         ((UserLoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_0));
                                     }
@@ -687,7 +687,7 @@ public class DataApi extends Object {
                                 Logout.e("Galepress", "DECREMENT");
                                 GalePressApplication.getInstance().decrementRequestCount();
                             } catch (Exception e) {
-                                GalePressApplication.getInstance().editMemberShipList(false, null);
+                                GalePressApplication.getInstance().createUser(false, null);
                                 if (activity instanceof UserLoginActivity) {
                                     ((UserLoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_0));
                                 }
@@ -717,7 +717,7 @@ public class DataApi extends Object {
                                 }
                                 VolleyLog.e("Error: ", error.getMessage());
                             }
-                            GalePressApplication.getInstance().editMemberShipList(false, null);
+                            GalePressApplication.getInstance().createUser(false, null);
                             Logout.e("Galepress", "DECREMENT");
                             GalePressApplication.getInstance().decrementRequestCount();
 
@@ -1734,11 +1734,6 @@ public class DataApi extends Object {
                                 boolean isUpdate = false;
                                 if (code == 160) { //Kullanici bulunamadi
                                     GalePressApplication.getInstance().setUserHaveActiveSubscription(false); // Kullanici yoksa server abonelik false
-                                    GalePressApplication.getInstance().prepareMemberShipList();
-                                    if (activity != null) {
-                                        if (activity instanceof MainActivity)
-                                            ((MainActivity) activity).updateMemberListAdapter();
-                                    }
                                     List<L_Content> localContents = databaseApi.getAllContents(null);
                                     for (L_Content l_content : localContents) {
                                         if (l_content.isContentBought()) {
@@ -1787,11 +1782,6 @@ public class DataApi extends Object {
                                 }
 
                                 GalePressApplication.getInstance().setUserHaveActiveSubscription(response.getBoolean("ActiveSubscription")); // Server abonelik aliniyor
-                                GalePressApplication.getInstance().prepareMemberShipList();
-                                if (activity != null) {
-                                    if (activity instanceof MainActivity)
-                                        ((MainActivity) activity).updateMemberListAdapter();
-                                }
 
                                 List<L_Content> localContents = databaseApi.getAllContents(null);
                                 boolean isUpdate = false;
@@ -1924,11 +1914,6 @@ public class DataApi extends Object {
                             }
 
                             GalePressApplication.getInstance().setUserHaveActiveSubscription(response.getBoolean("ActiveSubscription")); // Server abonelik aliniyor
-                            GalePressApplication.getInstance().prepareMemberShipList();
-                            if (GalePressApplication.getInstance().getCurrentActivity() != null) {
-                                if (GalePressApplication.getInstance().getCurrentActivity() instanceof MainActivity)
-                                    ((MainActivity) GalePressApplication.getInstance().getCurrentActivity()).updateMemberListAdapter();
-                            }
 
 
                             if (GalePressApplication.getInstance().isTestApplication()) {

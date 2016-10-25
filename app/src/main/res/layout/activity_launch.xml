@@ -1,44 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:ProgressWheel="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    tools:context="ak.detaysoft.galepress.LaunchActivity"
-    android:theme="@style/NoActionBar"
-    >
-    <FrameLayout
+    android:layout_height="match_parent">
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:src="@drawable/launch"/>
-        <FrameLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/menu_bg"
+        android:contentDescription="@string/login_stand"/>
 
-            >
-            <ak.detaysoft.galepress.view.ProgressWheel
-                android:id="@+id/progressBarTwo"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                ProgressWheel:text=""
-                ProgressWheel:textColor="#222222"
-                ProgressWheel:textSize="14sp"
-                ProgressWheel:rimColor="#51000000"
-                ProgressWheel:barLength="110dp"
-                ProgressWheel:barColor="#99FFFFFF"
-                ProgressWheel:barWidth="30dp"
-                ProgressWheel:rimWidth="30dp"
-                ProgressWheel:contourSize="0dp"
-                ProgressWheel:contourColor="#99FFFFFF"
-                />
-            </FrameLayout>
-    </FrameLayout>
+    <ImageView
+        android:layout_width="@dimen/launch_logo_width"
+        android:layout_height="@dimen/launch_logo_width"
+        android:layout_centerInParent="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/launch_logo"
+        android:contentDescription="@string/login_stand"/>
 
-</FrameLayout>
+
+    <ak.detaysoft.galepress.view.ProgressWheel
+        android:id="@+id/progressBarTwo"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerInParent="true"
+        ProgressWheel:text=""
+        ProgressWheel:textColor="#222222"
+        ProgressWheel:textSize="14sp"
+        ProgressWheel:rimColor="#51000000"
+        ProgressWheel:barLength="110dp"
+        ProgressWheel:barColor="#99FFFFFF"
+        ProgressWheel:barWidth="30dp"
+        ProgressWheel:rimWidth="30dp"
+        ProgressWheel:contourSize="0dp"
+        ProgressWheel:contourColor="#99FFFFFF"
+        android:visibility="gone" />
+</RelativeLayout>

@@ -225,7 +225,7 @@ public class ContentDetailPopupActivity extends Activity{
         detailLabel = (TextView)findViewById(R.id.content_detail_month_label);
         detailLabel.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
         detailLabel.setTextColor(ApplicationThemeColor.getInstance().getThemeColor());
-        detailLabel.setText(content.getDetail());
+        detailLabel.setText(content.getMonthlyName());
 
         //setButtons
         viewButton = (Button)findViewById(R.id.content_detail_view);
@@ -465,9 +465,7 @@ public class ContentDetailPopupActivity extends Activity{
         descriptionLabel = (TextView)findViewById(R.id.content_detail_description_label);
         descriptionLabel.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
         descriptionLabel.setTextColor(ApplicationThemeColor.getInstance().getThemeColor());
-        descriptionLabel.setText("Yinelenen bir sayfa içeriğinin okuyucunun dikkatini dağıttığıbilinen bir gerçektir. " +
-                "Lorem Ipsum kullanmanın amacı, sürekli 'buraya metin gelecek, " +
-                "buraya metin gelecek' yazmaya kıyasla daha dengeli bir harf dağılımı sağlayarak okunurluğu artırmasıdır.");
+        descriptionLabel.setText(content.getDetail());
 
 
         //disableDescription();
@@ -1017,7 +1015,6 @@ public class ContentDetailPopupActivity extends Activity{
             intent.setAction(Intent.ACTION_VIEW);
             intent.setData(uri);
             startActivityForResult(intent, 101);
-            GalePressApplication.getInstance().getDataApi().updateApplication();
         }
     }
 }

@@ -270,7 +270,6 @@ public class LibraryFragment extends Fragment {
             intent.setAction(Intent.ACTION_VIEW);
             intent.setData(uri);
             getActivity().startActivityForResult(intent, 101);
-            GalePressApplication.getInstance().getDataApi().updateApplication();
         }
     }
 
@@ -285,7 +284,6 @@ public class LibraryFragment extends Fragment {
             intent.putExtra("animationStartX", 0.5f);
             intent.putExtra("animationStartY", 0.5f);
             getActivity().startActivityForResult(intent, 103);
-            GalePressApplication.getInstance().getDataApi().updateApplication();
         }
     }
 

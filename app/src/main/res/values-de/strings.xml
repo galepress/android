@@ -173,6 +173,7 @@
 	<string name="user_information_check">Überprüfen Benutzerinformationen ...</string>
 
 	<string name="login">Login</string>
+	<string name="login_stand">LOGIN / ANMELDEN</string>
 	<string name="logout">Logout</string>
 	<string name="viewer_facebook_login_warning">Kann nicht mit Facebook anmelden</string>
 	<string name="viewer_facebook_login_appId_warning">Bitte geben Sie Anwendungs-ID</string>
@@ -209,5 +210,6 @@
 	<string name="product_price_error">Die Produktpreise konnten nicht erreicht werden.</string>
 	<string name="skip">Überspringen Konto anmelden</string>
 	<string name="connect_with">Verbindung mit</string>
+	<string name="BILLING_ITEM_ALREADY_OWNED">Product already owned</string>
 
 </resources>

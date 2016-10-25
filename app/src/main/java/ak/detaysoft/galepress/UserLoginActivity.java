@@ -660,7 +660,8 @@ public class UserLoginActivity extends Activity {
                     if(url.indexOf("usertoken=") != -1){ // kayit-basarili?usertoken= üzerindede yapılabilir
                         String accessToken = url.substring(url.indexOf("usertoken=")+"usertoken=".length());
                         obj.put("accessToken", accessToken);
-                        GalePressApplication.getInstance().editMemberShipList(true, obj);
+                        obj.put("userName", "GÜNEŞ");
+                        GalePressApplication.getInstance().createUser(true, obj);
                         updateDialog = ProgressDialog.show(UserLoginActivity.this, "",
                                 UserLoginActivity.this.getString(R.string.user_information_check), true);
                         GalePressApplication.getInstance().restorePurchasedProductsFromMarket(true, UserLoginActivity.this, updateDialog);
@@ -671,7 +672,7 @@ public class UserLoginActivity extends Activity {
                         finish();
                     }
                 } catch (JSONException e) {
-                    GalePressApplication.getInstance().editMemberShipList(false, null);
+                    GalePressApplication.getInstance().createUser(false, null);
                     customFailLoginWarning(getResources().getString(R.string.WARNING_0));
                     openLoginView();
                     e.printStackTrace();

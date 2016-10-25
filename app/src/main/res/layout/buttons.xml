@@ -350,10 +350,10 @@
         android:visibility="invisible">
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/reader_bottom_menu_icon"
-            android:layout_centerInParent="true" />
+			android:id="@+id/reader_bottom_menu_icon"
+            android:layout_centerInParent="true"
+			android:layout_height="45dp"
+			android:layout_width="45dp" />
 
 
 	</RelativeLayout>

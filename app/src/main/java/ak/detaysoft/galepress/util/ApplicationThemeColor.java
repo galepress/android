@@ -162,7 +162,7 @@ public class ApplicationThemeColor {
     }
 
     public int getThemeColor(){
-        return Color.parseColor("#313131"); //Dark Theme
+        return Color.parseColor("#313131");
     }
 
     public int getLightThemeColor(){
@@ -176,6 +176,10 @@ public class ApplicationThemeColor {
     //alpha degeri 0-255 arası olmali convertIntAlphaToHex metodunda hex hesaplamasi yapiliyor
     public int getThemeColorWithAlpha(int alpha){
         return Color.parseColor(convertIntAlphaToHex(alpha)+"313131");
+    }
+
+    public int getReaderBackground(){
+        return Color.parseColor("#1e1e1e");
     }
 
     public int getReverseThemeColor(){
