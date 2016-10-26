@@ -344,6 +344,28 @@ public class ApplicationThemeColor {
         return myList;
     }
 
+    public ColorStateList defaultWhiteAlphaPressedWhiteStateList(){
+        int[][] states = new int[][] {
+                new int[] {android.R.attr.state_pressed},
+                new int[] {android.R.attr.state_focused},
+                new int[] {android.R.attr.state_selected},
+                new int [] {}
+        };
+
+        int[] colors;
+
+        colors = new int[] {
+                Color.parseColor("#FFFFFF"),
+                Color.parseColor("#FFFFFF"),
+                Color.parseColor("#FFFFFF"),
+                Color.parseColor("#80FFFFFF")
+
+        };
+
+        ColorStateList myList = new ColorStateList(states, colors);
+        return myList;
+    }
+
     public ColorStateList leftmenuListViewColorStateList(){
         int[][] states = new int[][] {
                 new int[] {android.R.attr.state_pressed},
@@ -877,21 +899,34 @@ public class ApplicationThemeColor {
     //Verification giris butonu background
     public Drawable getVerificationLoginButtonDrawable(Context context) {
         GradientDrawable normal =  new GradientDrawable();
-        normal.setCornerRadii(new float [] {
-                context.getResources().getDimension(R.dimen.verification_input_height)/2, context.getResources().getDimension(R.dimen.verification_input_height)/2,
-                0, 0,
-                0, 0,
-                context.getResources().getDimension(R.dimen.verification_input_height)/2, context.getResources().getDimension(R.dimen.verification_input_height)/2});
-        normal.setColor(getDarkThemeColor());
+        normal.setCornerRadius(context.getResources().getDimension(R.dimen.verification_input_height));
+        normal.setColor(Color.parseColor("#2ca0dc"));
         normal.setStroke(0, Color.TRANSPARENT);
 
         GradientDrawable pressed =  new GradientDrawable();
-        pressed.setCornerRadii(new float [] {
-                context.getResources().getDimension(R.dimen.verification_input_height)/2, context.getResources().getDimension(R.dimen.verification_input_height)/2,
-                0, 0,
-                0, 0,
-                context.getResources().getDimension(R.dimen.verification_input_height)/2, context.getResources().getDimension(R.dimen.verification_input_height)/2});
-        pressed.setColor(getLightThemeColor());
+        pressed.setCornerRadius(context.getResources().getDimension(R.dimen.verification_input_height));
+        pressed.setColor(Color.parseColor("#CC2ca0dc"));
+        pressed.setStroke(0, Color.TRANSPARENT);
+
+        StateListDrawable drawable = new StateListDrawable();
+        drawable.addState(new int[] { android.R.attr.state_pressed },
+                pressed);
+        drawable.addState(new int[] { android.R.attr.state_enabled },
+                normal);
+
+        return drawable;
+    }
+
+    //Verification signup butonu background
+    public Drawable getVerificationSignupButtonDrawable(Context context) {
+        GradientDrawable normal =  new GradientDrawable();
+        normal.setCornerRadius(context.getResources().getDimension(R.dimen.verification_input_height));
+        normal.setColor(Color.parseColor("#39b54a"));
+        normal.setStroke(0, Color.TRANSPARENT);
+
+        GradientDrawable pressed =  new GradientDrawable();
+        pressed.setCornerRadius(context.getResources().getDimension(R.dimen.verification_input_height));
+        pressed.setColor(Color.parseColor("#CC39b54a"));
         pressed.setStroke(0, Color.TRANSPARENT);
 
         StateListDrawable drawable = new StateListDrawable();
@@ -925,35 +960,7 @@ public class ApplicationThemeColor {
     }
 
 
-    //Verification login butonu background
-    public Drawable getVerificationSignupButtonDrawable(Context context) {
-        GradientDrawable normal =  new GradientDrawable();
-        normal.setCornerRadii(new float [] {
-                0, 0,
-                context.getResources().getDimension(R.dimen.verification_input_height)/2, context.getResources().getDimension(R.dimen.verification_input_height)/2,
-                context.getResources().getDimension(R.dimen.verification_input_height)/2, context.getResources().getDimension(R.dimen.verification_input_height)/2,
-                0, 0
-        });
-        normal.setColor(getDarkThemeColor());
-        normal.setStroke(0, Color.TRANSPARENT);
 
-        GradientDrawable pressed =  new GradientDrawable();
-        pressed.setCornerRadii(new float [] {
-                0, 0,
-                context.getResources().getDimension(R.dimen.verification_input_height)/2, context.getResources().getDimension(R.dimen.verification_input_height)/2,
-                context.getResources().getDimension(R.dimen.verification_input_height)/2, context.getResources().getDimension(R.dimen.verification_input_height)/2,
-                0, 0});
-        pressed.setColor(getLightThemeColor());
-        pressed.setStroke(0, Color.TRANSPARENT);
-
-        StateListDrawable drawable = new StateListDrawable();
-        drawable.addState(new int[] { android.R.attr.state_pressed },
-                pressed);
-        drawable.addState(new int[] { android.R.attr.state_enabled },
-                normal);
-
-        return drawable;
-    }
 
     //Verification login-signup-facebook butonu background
     public Drawable getVerificationFacebookButtonDrawable(Context context) {
@@ -980,13 +987,13 @@ public class ApplicationThemeColor {
     public Drawable getVerificationLoginInputDrawable(Context context) {
         GradientDrawable normal =  new GradientDrawable();
         normal.setCornerRadius(context.getResources().getDimension(R.dimen.verification_input_height));
-        normal.setColor(getDarkThemeColor());
-        normal.setStroke(0, Color.TRANSPARENT);
+        normal.setColor(Color.TRANSPARENT);
+        normal.setStroke(1, getWhiteColorWithAlpha(50));
 
         GradientDrawable focused =  new GradientDrawable();
         focused.setCornerRadius(context.getResources().getDimension(R.dimen.verification_input_height));
-        focused.setColor(getLightThemeColor());
-        focused.setStroke(0, Color.TRANSPARENT);
+        focused.setColor(Color.TRANSPARENT);
+        focused.setStroke(1, Color.WHITE);
 
         StateListDrawable drawable = new StateListDrawable();
         drawable.addState(new int[] { android.R.attr.state_focused },

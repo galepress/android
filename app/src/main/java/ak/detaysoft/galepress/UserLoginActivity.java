@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
+import android.graphics.Color;
 import android.graphics.Shader;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RectShape;
@@ -26,6 +27,8 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -192,9 +195,9 @@ public class UserLoginActivity extends Activity {
             unameField.setBackground(ApplicationThemeColor.getInstance().getVerificationLoginInputDrawable(this));
         else
             unameField.setBackgroundDrawable(ApplicationThemeColor.getInstance().getVerificationLoginInputDrawable(this));
-        unameField.setTextColor(ApplicationThemeColor.getInstance().defaultLightAlphaPressedDarkStateList());
-        unameField.setTypeface(ApplicationThemeColor.getInstance().getGothamLight(this));
-        unameField.setHintTextColor(ApplicationThemeColor.getInstance().defaultLightAlphaPressedDarkStateList());
+        unameField.setTextColor(ApplicationThemeColor.getInstance().defaultWhiteAlphaPressedWhiteStateList());
+        unameField.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
+        unameField.setHintTextColor(ApplicationThemeColor.getInstance().defaultWhiteAlphaPressedWhiteStateList());
 
 
         passwordField = (EditText)findViewById(R.id.verification_login_password);
@@ -202,15 +205,15 @@ public class UserLoginActivity extends Activity {
             passwordField.setBackground(ApplicationThemeColor.getInstance().getVerificationLoginInputDrawable(this));
         else
             passwordField.setBackgroundDrawable(ApplicationThemeColor.getInstance().getVerificationLoginInputDrawable(this));
-        passwordField.setTextColor(ApplicationThemeColor.getInstance().defaultLightAlphaPressedDarkStateList());
-        passwordField.setTypeface(ApplicationThemeColor.getInstance().getGothamLight(this));
-        passwordField.setHintTextColor(ApplicationThemeColor.getInstance().defaultLightAlphaPressedDarkStateList());
+        passwordField.setTextColor(ApplicationThemeColor.getInstance().defaultWhiteAlphaPressedWhiteStateList());
+        passwordField.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
+        passwordField.setHintTextColor(ApplicationThemeColor.getInstance().defaultWhiteAlphaPressedWhiteStateList());
 
 
 
         TextView forgot = ((TextView)findViewById(R.id.verification_forgot_password));
         forgot.setTextColor(ApplicationThemeColor.getInstance().defaultLightPressedDarkStateList());
-        forgot.setTypeface(ApplicationThemeColor.getInstance().getGothamLight(this));
+        forgot.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
         forgot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -253,8 +256,8 @@ public class UserLoginActivity extends Activity {
             login.setBackground(ApplicationThemeColor.getInstance().getVerificationLoginButtonDrawable(this));
         else
             login.setBackgroundDrawable(ApplicationThemeColor.getInstance().getVerificationLoginButtonDrawable(this));
-        login.setTextColor(ApplicationThemeColor.getInstance().defaultLightPressedDarkStateList());
-        login.setTypeface(ApplicationThemeColor.getInstance().getGothamLight(this));
+        login.setTextColor(Color.WHITE);
+        login.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -317,8 +320,8 @@ public class UserLoginActivity extends Activity {
             signup.setBackground(ApplicationThemeColor.getInstance().getVerificationSignupButtonDrawable(this));
         else
             signup.setBackgroundDrawable(ApplicationThemeColor.getInstance().getVerificationSignupButtonDrawable(this));
-        signup.setTextColor(ApplicationThemeColor.getInstance().defaultLightPressedDarkStateList());
-        signup.setTypeface(ApplicationThemeColor.getInstance().getGothamLight(this));
+        signup.setTextColor(Color.WHITE);
+        signup.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -357,19 +360,8 @@ public class UserLoginActivity extends Activity {
             }
         });
 
-        TextView connect_with_txt = ((TextView)findViewById(R.id.verification_connect_with_txt));
-        connect_with_txt.setTextColor(ApplicationThemeColor.getInstance().getLightThemeColor());
-        connect_with_txt.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
 
-        TextView facebook_txt = ((TextView)findViewById(R.id.verification_facebook_txt));
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            facebook_txt.setBackground(ApplicationThemeColor.getInstance().getVerificationFacebookButtonDrawable(this));
-        else
-            facebook_txt.setBackgroundDrawable(ApplicationThemeColor.getInstance().getVerificationFacebookButtonDrawable(this));
-        facebook_txt.setTextColor(ApplicationThemeColor.getInstance().getLightThemeColor());
-        facebook_txt.setTypeface(ApplicationThemeColor.getInstance().getGothamLight(this));
-
-        FrameLayout facebook = ((FrameLayout)findViewById(R.id.verification_facebook_button_base));
+        RelativeLayout facebook = ((RelativeLayout)findViewById(R.id.verification_facebook_button_base));
         facebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -436,7 +428,7 @@ public class UserLoginActivity extends Activity {
             skip.setVisibility(View.GONE);
         }
 
-        Button close = (Button)findViewById(R.id.verification_login_close);
+        LinearLayout close = (LinearLayout)findViewById(R.id.verification_login_close);
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -457,7 +449,7 @@ public class UserLoginActivity extends Activity {
         pw_two = (ProgressWheel) findViewById(R.id.verification_signup_progressBarTwo);
         pw_two_layout = (FrameLayout) findViewById(R.id.verification_signup_proggress_layout);
 
-        Button close = (Button)findViewById(R.id.verification_signup_close);
+        LinearLayout close = (LinearLayout)findViewById(R.id.verification_signup_close);
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -499,7 +491,7 @@ public class UserLoginActivity extends Activity {
         pw_two = (ProgressWheel) findViewById(R.id.verification_forgot_progressBarTwo);
         pw_two_layout = (FrameLayout) findViewById(R.id.verification_forgot_proggress_layout);
 
-        Button close = (Button)findViewById(R.id.verification_forgot_close);
+        LinearLayout close = (LinearLayout)findViewById(R.id.verification_forgot_close);
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

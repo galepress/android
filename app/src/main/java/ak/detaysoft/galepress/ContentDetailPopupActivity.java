@@ -445,13 +445,59 @@ public class ContentDetailPopupActivity extends Activity{
                         } else {
 
                             if(isDescriptionShowing) {
-                                descriptionBase.setY(descriptionTopYClose);
+                                descriptionBase.animate().y(descriptionTopYClose).setInterpolator(new AccelerateInterpolator()).setDuration(500).setListener(new Animator.AnimatorListener() {
+                                    @Override
+                                    public void onAnimationStart(Animator animation) {
+                                        descriptionBase.setEnabled(false);
+                                    }
+
+                                    @Override
+                                    public void onAnimationEnd(Animator animation) {
+                                        descriptionBase.setEnabled(true);
+                                        isDescriptionShowing = false;
+                                        ((ImageView)findViewById(R.id.popup_swipe_icon)).setImageResource(R.drawable.swipe_open);
+                                    }
+
+                                    @Override
+                                    public void onAnimationCancel(Animator animation) {
+
+                                    }
+
+                                    @Override
+                                    public void onAnimationRepeat(Animator animation) {
+
+                                    }
+                                }).start();
+                                /*descriptionBase.setY(descriptionTopYClose);
                                 isDescriptionShowing = false;
-                                ((ImageView)findViewById(R.id.popup_swipe_icon)).setImageResource(R.drawable.swipe_open);
+                                ((ImageView)findViewById(R.id.popup_swipe_icon)).setImageResource(R.drawable.swipe_open);*/
                             } else {
-                                descriptionBase.setY(descriptionTopYOpen);
+                                descriptionBase.animate().y(descriptionTopYOpen).setInterpolator(new AccelerateInterpolator()).setDuration(500).setListener(new Animator.AnimatorListener() {
+                                    @Override
+                                    public void onAnimationStart(Animator animation) {
+                                        descriptionBase.setEnabled(false);
+                                    }
+
+                                    @Override
+                                    public void onAnimationEnd(Animator animation) {
+                                        descriptionBase.setEnabled(true);
+                                        isDescriptionShowing = true;
+                                        ((ImageView)findViewById(R.id.popup_swipe_icon)).setImageResource(R.drawable.swipe_close);
+                                    }
+
+                                    @Override
+                                    public void onAnimationCancel(Animator animation) {
+
+                                    }
+
+                                    @Override
+                                    public void onAnimationRepeat(Animator animation) {
+
+                                    }
+                                }).start();
+                                /*descriptionBase.setY(descriptionTopYOpen);
                                 isDescriptionShowing = true;
-                                ((ImageView)findViewById(R.id.popup_swipe_icon)).setImageResource(R.drawable.swipe_close);
+                                ((ImageView)findViewById(R.id.popup_swipe_icon)).setImageResource(R.drawable.swipe_close);*/
                             }
                         }
 
@@ -544,18 +590,18 @@ public class ContentDetailPopupActivity extends Activity{
                         public void onAnimationEnd(Animation animation) {
 
                             descriptionTopYOpen = descriptionBase.getY();
-
                             isDescriptionShowing = false;
                             descriptionTopYClose = descriptionTopYOpen + descriptionBase.getHeight()-findViewById(R.id.popup_swipe_open).getHeight();
 
                             descriptionBase.animate().y(descriptionTopYClose).setInterpolator(new AccelerateInterpolator()).setDuration(750).setListener(new Animator.AnimatorListener() {
                                 @Override
                                 public void onAnimationStart(Animator animation) {
-
+                                    descriptionBase.setEnabled(false);
                                 }
 
                                 @Override
                                 public void onAnimationEnd(Animator animation) {
+                                    descriptionBase.setEnabled(true);
                                     ((ImageView)findViewById(R.id.popup_swipe_icon)).setImageResource(R.drawable.swipe_open);
                                 }
 

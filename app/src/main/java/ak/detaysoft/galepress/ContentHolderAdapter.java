@@ -136,7 +136,11 @@ public class ContentHolderAdapter extends BaseAdapter  {
 
         boolean downloaded = content.isPdfDownloaded();
         boolean updateAvailable = content.isPdfUpdateAvailable();
-        boolean downloading = content.isPdfDownloading() && GalePressApplication.getInstance().getDataApi().downloadPdfTask !=null && GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() == AsyncTask.Status.RUNNING && GalePressApplication.getInstance().getDataApi().downloadPdfTask.content !=null && GalePressApplication.getInstance().getDataApi().downloadPdfTask.content.getId().compareTo(content.getId()) == 0;
+        boolean downloading = content.isPdfDownloading()
+                && GalePressApplication.getInstance().getDataApi().downloadPdfTask !=null
+                && GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() == AsyncTask.Status.RUNNING
+                && GalePressApplication.getInstance().getDataApi().downloadPdfTask.content !=null
+                && GalePressApplication.getInstance().getDataApi().downloadPdfTask.content.getId().compareTo(content.getId()) == 0;
 
         if(downloaded){
             // Content is downloaded and ready to view.
