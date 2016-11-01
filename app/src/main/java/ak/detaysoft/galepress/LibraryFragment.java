@@ -3,6 +3,7 @@ package ak.detaysoft.galepress;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.location.Location;
 import android.net.Uri;
@@ -12,22 +13,34 @@ import android.os.Handler;
 import android.os.Looper;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.artifex.mupdfdemo.MuPDFActivity;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 
 import org.xwalk.core.XWalkView;
 
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
@@ -53,7 +66,16 @@ public class LibraryFragment extends Fragment {
     private List contents;
     L_Category selectedCategory = null;
     private View v;
-    final int KITKAT = 19; // Android 5.0
+    public int selectedCategoryPosition = 0;
+    private int categoriesItemWidth = 0;
+
+
+    private RecyclerView categoryView;
+    private float categoryViewEnableYPosition = 0;
+    private float categoryViewDisableYPosition = 0;
+    private float categoryViewLastYPosition = 0;
+    private CategoryAdapter categoryAdapter;
+    private float lastScrollY = 0;
 
 
     public LayoutInflater getLayoutInflater() {
@@ -65,7 +87,7 @@ public class LibraryFragment extends Fragment {
     }
 
 
-    public LibraryFragment(){
+    public LibraryFragment() {
 
     }
 
@@ -100,6 +122,7 @@ public class LibraryFragment extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         outState.putSerializable("selectedCategory", selectedCategory);
+        outState.putInt("selectedCategoryPosition", selectedCategoryPosition);
         super.onSaveInstanceState(outState);
     }
 
@@ -115,6 +138,7 @@ public class LibraryFragment extends Fragment {
 
         if (savedInstanceState != null) {
             selectedCategory = (L_Category) savedInstanceState.getSerializable("selectedCategory");
+            selectedCategoryPosition = savedInstanceState.getInt("selectedCategoryPosition");
         }
 
         GalePressApplication.getInstance().setLibraryActivity(this);
@@ -140,7 +164,58 @@ public class LibraryFragment extends Fragment {
             }
         });
 
-        banner = (LinearLayout) LayoutInflater.from(this.getActivity()).inflate(R.layout.library_banner, null, false);
+        gridview.setOnScrollListener(new AbsListView.OnScrollListener() {
+
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+                if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE) {
+                    lastScrollY = gridview.computeVerticalScrollOffset();
+                    categoryViewLastYPosition = categoryView.getY();
+                    Log.e("denemedeneme", "finsih :" + lastScrollY + " -- " + categoryViewLastYPosition + " --" + categoryViewEnableYPosition + " -- " + categoryViewDisableYPosition);
+                }
+            }
+
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                if (gridview != null && categoryView != null) {
+                    if (lastScrollY > gridview.computeVerticalScrollOffset()) {
+                        //gorunecek
+                        float scrollDistance = lastScrollY - gridview.computeVerticalScrollOffset();
+                        if (categoryView.getY() <= categoryViewDisableYPosition && categoryView.getY() >= categoryViewEnableYPosition && (categoryViewLastYPosition + scrollDistance * 4) <= categoryViewDisableYPosition) {
+                            categoryView.setY(categoryViewLastYPosition + scrollDistance * 4);
+                        } else {
+                            categoryView.setY(categoryViewDisableYPosition);
+                            lastScrollY = gridview.computeVerticalScrollOffset();
+                            categoryViewLastYPosition = categoryView.getY();
+                        }
+                    } else if (lastScrollY < gridview.computeVerticalScrollOffset()) {
+                        //saklanacak
+                        float scrollDistance = gridview.computeVerticalScrollOffset() - lastScrollY;
+                        if (categoryView.getY() <= categoryViewDisableYPosition && categoryView.getY() >= categoryViewEnableYPosition && (categoryViewLastYPosition - scrollDistance * 4) >= categoryViewEnableYPosition) {
+                            categoryView.setY(categoryViewLastYPosition - scrollDistance * 4);
+                        } else {
+                            categoryView.setY(categoryViewEnableYPosition);
+                            lastScrollY = gridview.computeVerticalScrollOffset();
+                            categoryViewLastYPosition = categoryView.getY();
+                        }
+                    }
+                }
+            }
+        });
+
+        categoryView = (RecyclerView) v.findViewById(R.id.category_slider_recyclerview);
+        categoryView.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        categoryView.setLayoutManager(mLayoutManager);
+
+        ArrayList<L_Category> categories = new ArrayList<L_Category>();
+        categories.addAll(((MainActivity) getActivity()).getCategoryListWithAll());
+        categoryAdapter = new CategoryAdapter(categories);
+        categoryView.setAdapter(categoryAdapter);
+
+        banner = (LinearLayout) LayoutInflater.from(this.getActivity()).inflate(R.layout.slider_banner, null, false);
         //4.4
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             bannerWebView = new BannerAndTabbarWebView(this.getActivity());
@@ -158,6 +233,7 @@ public class LibraryFragment extends Fragment {
         gridview.addHeaderView(banner);
 
         selectedCategory = (L_Category) GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent().get(0);
+        selectedCategoryPosition = 0;
 
         contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(selectedCategory);
         this.contentHolderAdapter = new ContentHolderAdapter(this);
@@ -204,9 +280,9 @@ public class LibraryFragment extends Fragment {
 
         if (GalePressApplication.getInstance().getBannerLink().length() > 0 && GalePressApplication.getInstance().getDataApi().isConnectedToInternet()) {
             bannerParams = new FrameLayout.LayoutParams(bannerWidth, bannerHeight);
-            gridview.setPadding(gridview.getPaddingLeft(), (int) (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())), gridview.getPaddingRight(), gridview.getPaddingBottom());
+            gridview.setPadding(gridview.getPaddingLeft(), (int) (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 70, getResources().getDisplayMetrics())), gridview.getPaddingRight(), gridview.getPaddingBottom());
         } else {
-            gridview.setPadding(gridview.getPaddingLeft(), (int) (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50, getResources().getDisplayMetrics())), gridview.getPaddingRight(), gridview.getPaddingBottom());
+            gridview.setPadding(gridview.getPaddingLeft(), (int) (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())), gridview.getPaddingRight(), gridview.getPaddingBottom());
             bannerParams = new FrameLayout.LayoutParams(bannerWidth, 0);
         }
 
@@ -223,6 +299,15 @@ public class LibraryFragment extends Fragment {
                 if (gridview != null) {
                     gridview.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
                     gridview.invalidateViews();
+                    if (categoryAdapter != null) {
+                        int selectedItemRight = categoriesItemWidth*(3+1);
+                        categoryView.smoothScrollBy(selectedItemRight
+                                - ApplicationThemeColor.getInstance().getScreenSizes(getActivity()).widthPixels/2
+                                - categoriesItemWidth/2, 0);
+                        categoryAdapter.notifyDataSetChanged();
+                    }
+                    categoryViewEnableYPosition = categoryView.getY() - categoryView.getLayoutParams().height - ((RelativeLayout.LayoutParams) categoryView.getLayoutParams()).topMargin;
+                    categoryViewDisableYPosition = ((RelativeLayout.LayoutParams) categoryView.getLayoutParams()).topMargin;
                 }
 
             }
@@ -301,8 +386,105 @@ public class LibraryFragment extends Fragment {
         //Ilk secilen kategori genel oldugu icin ilk create icin listeye eklendi (MG)
         if (GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent() != null && GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent().size() > 0) {
             selectedCategory = (L_Category) GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent().get(0);
+            selectedCategoryPosition = 0;
             updateGridView();
         }
     }
 
+
+    public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyViewHolder> {
+        private ArrayList<L_Category> categories;
+        private CategoryAdapter.MyViewHolder selectedItem;
+
+        public CategoryAdapter(ArrayList<L_Category> searchList) {
+            this.categories = searchList;
+        }
+
+        public class MyViewHolder extends RecyclerView.ViewHolder {
+            public RelativeLayout border;
+            public TextView text;
+            public ImageView icon;
+            public L_Category category;
+            public int position;
+
+            public MyViewHolder(View view) {
+                super(view);
+                border = (RelativeLayout) view.findViewById(R.id.library_category_border);
+                icon = (ImageView) view.findViewById(R.id.library_category_icon);
+                text = (TextView) view.findViewById(R.id.library_category_title);
+                if (position == 0) {
+                    view.setPadding(gridview.getPaddingLeft(), gridview.getPaddingLeft(), 0, gridview.getPaddingLeft());
+                } else {
+                    view.setPadding(0, gridview.getPaddingLeft(), gridview.getPaddingLeft(), gridview.getPaddingLeft());
+                }
+                categoriesItemWidth = view.getLayoutParams().width;
+                view.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        selectedCategory = categories.get(position);
+                        selectedCategoryPosition = position;
+                        updateGridView();
+                        ((MainActivity) getActivity()).choseCategory(position);
+                        notifyDataSetChanged();
+                    }
+                });
+            }
+        }
+
+        // Create new views (invoked by the layout manager)
+        @Override
+        public CategoryAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
+                                                               int viewType) {
+            // create a new view
+            View v = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.library_category_item, parent, false);
+
+            MyViewHolder vh = new MyViewHolder(v);
+            return vh;
+        }
+
+        // Replace the contents of a view (invoked by the layout manager)
+        @Override
+        public void onBindViewHolder(MyViewHolder holder, int position) {
+            // - get element from your dataset at this position
+            // - replace the contents of the view with that element
+            holder.position = position;
+            if (categories.get(position).getCategoryID() == selectedCategory.getCategoryID()) {
+                selectedItem = holder;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                    holder.border.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.library_category_active));
+                else
+                    holder.border.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.library_category_active));
+
+            } else {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                    holder.border.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.library_category_passive));
+                else
+                    holder.border.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.library_category_passive));
+            }
+
+            holder.category = categories.get(position);
+            holder.text.setText(categories.get(position).getCategoryName().toUpperCase());
+            holder.text.setTextColor(Color.WHITE);
+            holder.text.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(getActivity()));
+
+            holder.icon.setScaleType(ImageView.ScaleType.CENTER_CROP);
+
+            DisplayImageOptions options = new DisplayImageOptions.Builder()
+                    .displayer(new RoundedBitmapDisplayer(5))
+                    .build();
+            ImageLoader.getInstance().displayImage("drawable://" + R.drawable.library_category_icon, holder.icon, options);
+
+
+        }
+
+        public MyViewHolder getSelectedItem() {
+            return selectedItem;
+        }
+
+        @Override
+        public int getItemCount() {
+            return categories.size();
+        }
+    }
 }

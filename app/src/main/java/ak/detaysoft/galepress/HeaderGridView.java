@@ -19,9 +19,9 @@ import android.content.Context;
 import android.database.DataSetObservable;
 import android.database.DataSetObserver;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Filter;
 import android.widget.Filterable;
@@ -30,15 +30,15 @@ import android.widget.GridView;
 import android.widget.ListAdapter;
 import android.widget.WrapperListAdapter;
 
-import com.crashlytics.android.Crashlytics;
 
 import java.util.ArrayList;
 /**
  * A {@link GridView} that supports adding header rows in a
  * See {@link HeaderGridView#addHeaderView(View, Object, boolean)}
  */
-public class HeaderGridView extends GridView {
+public class HeaderGridView extends GridView{
     private static final String TAG = "HeaderGridView";
+
     /**
      * A class that represents a fixed view in a list, for example a header at the top
      * or a footer at the bottom.
@@ -186,6 +186,24 @@ public class HeaderGridView extends GridView {
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         }
     }
+
+
+
+    @Override
+    public void setOnTouchListener(OnTouchListener l) {
+        super.setOnTouchListener(l);
+    }
+
+    @Override
+    public void setOnScrollListener(OnScrollListener l) {
+        super.setOnScrollListener(l);
+    }
+
+    @Override
+    public int computeVerticalScrollOffset() {
+        return super.computeVerticalScrollOffset();
+    }
+
     /**
      * ListAdapter used when a HeaderGridView has header views. This ListAdapter
      * wraps another one and also keeps track of the header views and their

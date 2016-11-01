@@ -221,6 +221,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 actionbarTitle.setText(categoryListWithAll.get(position).getCategoryName().toUpperCase());
                 LibraryFragment libraryFragment = getLibraryFragment();
                 libraryFragment.selectedCategory = categoryListWithAll.get(position);
+                libraryFragment.selectedCategoryPosition = position;
                 libraryFragment.updateGridView();
 
                 categoriesAdapter.notifyDataSetChanged();
@@ -469,6 +470,10 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
     }
 
+    public void choseCategory(int position){
+        actionbarTitle.setText(categoryListWithAll.get(position).getCategoryName().toUpperCase());
+        categoriesAdapter.notifyDataSetChanged();
+    }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -886,12 +891,14 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         L_Category selectedCategory = null;
+        int selectedCategoryPosition = 0;
         if (item.getTitle().toString().compareTo(getString(R.string.show_all)) != 0) {
             List categories = GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent();
             for (int i = 0; i < categories.size(); i++) {
                 L_Category category = (L_Category) categories.get(i);
                 if (category.getCategoryName().compareTo(item.getTitle().toString()) == 0) {
                     selectedCategory = category;
+                    selectedCategoryPosition = i;
                 }
             }
         } else {
@@ -899,6 +906,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         }
         LibraryFragment libraryFragment = getLibraryFragment();
         libraryFragment.selectedCategory = selectedCategory;
+        libraryFragment.selectedCategoryPosition = selectedCategoryPosition;
         libraryFragment.updateGridView();
 
         Logout.e("Galepress", "OnPopUpMenuItem Clicked:" + item.getTitle().toString());
@@ -1123,5 +1131,13 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
     public LeftMenuCategoryAdapter getCategoriesAdapter() {
         return categoriesAdapter;
+    }
+
+    public List<L_Category> getCategoryListWithAll() {
+        return categoryListWithAll;
+    }
+
+    public void setCategoryListWithAll(List<L_Category> categoryListWithAll) {
+        this.categoryListWithAll = categoryListWithAll;
     }
 }
