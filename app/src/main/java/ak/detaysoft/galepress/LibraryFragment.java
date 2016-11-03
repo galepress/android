@@ -1,6 +1,9 @@
 package ak.detaysoft.galepress;
 
 
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -9,6 +12,7 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.Settings;
@@ -50,6 +54,7 @@ import ak.detaysoft.galepress.database_models.L_Category;
 import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.database_models.L_Statistic;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
+import ak.detaysoft.galepress.util.CustomCategoryRecyclerView;
 import ak.detaysoft.galepress.web_views.BannerAndTabbarWebView;
 import ak.detaysoft.galepress.web_views.BannerAndTabbarWebViewWithCrosswalk;
 
@@ -76,6 +81,7 @@ public class LibraryFragment extends Fragment {
     private float categoryViewLastYPosition = 0;
     private CategoryAdapter categoryAdapter;
     private float lastScrollY = 0;
+    private CustomCategoryRecyclerView mLayoutManager;
 
 
     public LayoutInflater getLayoutInflater() {
@@ -207,7 +213,7 @@ public class LibraryFragment extends Fragment {
 
         categoryView = (RecyclerView) v.findViewById(R.id.category_slider_recyclerview);
         categoryView.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        mLayoutManager = new CustomCategoryRecyclerView(categoryView, getActivity(), LinearLayoutManager.HORIZONTAL, false);
         categoryView.setLayoutManager(mLayoutManager);
 
         ArrayList<L_Category> categories = new ArrayList<L_Category>();
@@ -300,11 +306,17 @@ public class LibraryFragment extends Fragment {
                     gridview.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
                     gridview.invalidateViews();
                     if (categoryAdapter != null) {
-                        int selectedItemRight = categoriesItemWidth*(3+1);
-                        categoryView.smoothScrollBy(selectedItemRight
-                                - ApplicationThemeColor.getInstance().getScreenSizes(getActivity()).widthPixels/2
-                                - categoriesItemWidth/2, 0);
-                        categoryAdapter.notifyDataSetChanged();
+                        final int scrollDistance = categoriesItemWidth*(selectedCategoryPosition+1)-categoryView.computeHorizontalScrollOffset()- ApplicationThemeColor.getInstance().getScreenSizes(getActivity()).widthPixels/2
+                                - categoriesItemWidth/2;
+                        categoryView.scrollBy(scrollDistance, 0);
+                        categoryView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+                            @Override
+                            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                                super.onScrollStateChanged(recyclerView, newState);
+                                categoryAdapter.notifyDataSetChanged();
+                            }
+                        });
+
                     }
                     categoryViewEnableYPosition = categoryView.getY() - categoryView.getLayoutParams().height - ((RelativeLayout.LayoutParams) categoryView.getLayoutParams()).topMargin;
                     categoryViewDisableYPosition = ((RelativeLayout.LayoutParams) categoryView.getLayoutParams()).topMargin;
@@ -417,7 +429,8 @@ public class LibraryFragment extends Fragment {
                 } else {
                     view.setPadding(0, gridview.getPaddingLeft(), gridview.getPaddingLeft(), gridview.getPaddingLeft());
                 }
-                categoriesItemWidth = view.getLayoutParams().width;
+                if(categoriesItemWidth == 0)
+                    categoriesItemWidth = view.getLayoutParams().width;
                 view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -425,7 +438,6 @@ public class LibraryFragment extends Fragment {
                         selectedCategoryPosition = position;
                         updateGridView();
                         ((MainActivity) getActivity()).choseCategory(position);
-                        notifyDataSetChanged();
                     }
                 });
             }

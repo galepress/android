@@ -66,4 +66,5 @@ dependencies {
         transitive = true
     }
     compile project(':slidemenulibrary')
+    compile 'org.lucasr.twowayview:twowayview:0.1.4'
 }
