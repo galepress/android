@@ -215,6 +215,21 @@ public class LibraryFragment extends Fragment {
         categoryView.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
         mLayoutManager = new CustomCategoryRecyclerView(categoryView, getActivity(), LinearLayoutManager.HORIZONTAL, false);
         categoryView.setLayoutManager(mLayoutManager);
+        categoryView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if(recyclerView.getScrollState() == RecyclerView.SCROLL_STATE_IDLE) {
+                    categoryAdapter.notifyDataSetChanged();
+                }
+                super.onScrolled(recyclerView, dx, dy);
+
+            }
+        });
 
         ArrayList<L_Category> categories = new ArrayList<L_Category>();
         categories.addAll(((MainActivity) getActivity()).getCategoryListWithAll());
@@ -309,13 +324,6 @@ public class LibraryFragment extends Fragment {
                         final int scrollDistance = categoriesItemWidth*(selectedCategoryPosition+1)-categoryView.computeHorizontalScrollOffset()- ApplicationThemeColor.getInstance().getScreenSizes(getActivity()).widthPixels/2
                                 - categoriesItemWidth/2;
                         categoryView.scrollBy(scrollDistance, 0);
-                        categoryView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-                            @Override
-                            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                                super.onScrollStateChanged(recyclerView, newState);
-                                categoryAdapter.notifyDataSetChanged();
-                            }
-                        });
 
                     }
                     categoryViewEnableYPosition = categoryView.getY() - categoryView.getLayoutParams().height - ((RelativeLayout.LayoutParams) categoryView.getLayoutParams()).topMargin;
@@ -461,7 +469,7 @@ public class LibraryFragment extends Fragment {
             // - get element from your dataset at this position
             // - replace the contents of the view with that element
             holder.position = position;
-            if (categories.get(position).getCategoryID() == selectedCategory.getCategoryID()) {
+            if (categories.get(position).getCategoryID().intValue() == selectedCategory.getCategoryID().intValue()) {
                 selectedItem = holder;
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                     holder.border.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.library_category_active));
