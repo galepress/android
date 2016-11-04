@@ -1167,13 +1167,13 @@ public class ApplicationThemeColor {
 
         if(resourceType == HEADER_CONTENT_READ){
             normal = context.getResources().getDrawable(R.drawable.header_content_read_default);
-            pressed = context.getResources().getDrawable(R.drawable.popup_download_bg);
+            pressed = context.getResources().getDrawable(R.drawable.header_content_read_pressed);
         } else if(resourceType == HEADER_CONTENT_DELETE){
             normal = context.getResources().getDrawable(R.drawable.header_content_delete_default);
-            pressed = context.getResources().getDrawable(R.drawable.popup_download_bg);
+            pressed = context.getResources().getDrawable(R.drawable.header_content_delete_pressed);
         } else if(resourceType == HEADER_CONTENT_UPDATE){
             normal = context.getResources().getDrawable(R.drawable.header_content_update_default);
-            pressed = context.getResources().getDrawable(R.drawable.popup_download_bg);
+            pressed = context.getResources().getDrawable(R.drawable.header_content_update_pressed);
         } else if(resourceType == HEADER_CONTENT_BG) {
             normal = context.getResources().getDrawable(R.drawable.header_content_download_bg);
             pressed = context.getResources().getDrawable(R.drawable.header_content_download_bg);
