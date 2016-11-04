@@ -396,8 +396,6 @@ public class ContentDetailPopupActivity extends Activity{
 
         loading = (CustomPulseProgress)findViewById(R.id.popup_image_loading);
         loading.startAnim();
-        //loading.setIndeterminate(true);
-        //loading.getIndeterminateDrawable().setColorFilter(ApplicationThemeColor.getInstance().getForegroundColor(), android.graphics.PorterDuff.Mode.MULTIPLY);
 
         descriptionBase = (LinearLayout) findViewById(R.id.description_base);
         descriptionBase.setOnTouchListener(new View.OnTouchListener() {

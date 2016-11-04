@@ -55,6 +55,11 @@
     <dimen name="library_grid_cell_width">165dp</dimen>
     <dimen name="library_grid_cell_height">220dp</dimen>
 
+    <dimen name="library_header_cell_height">240dp</dimen>
+    <dimen name="library_header_cell_padding">10dp</dimen>
+    <dimen name="library_header_cell_image_width">165dp</dimen>
+    <dimen name="header_content_button_size">30dp</dimen>
+
     <dimen name="login_input_width">300dp</dimen>
     <dimen name="login_input_height">55dp</dimen>
     <dimen name="search_height">50dp</dimen>

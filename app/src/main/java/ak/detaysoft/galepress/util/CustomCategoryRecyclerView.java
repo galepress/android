@@ -1,13 +1,9 @@
 package ak.detaysoft.galepress.util;
 
 import android.content.Context;
-import android.graphics.PointF;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.LinearSmoothScroller;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
-import android.view.View;
 
 /**
  * Created by p1025 on 02.11.2016.

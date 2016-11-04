@@ -2,8 +2,6 @@ package ak.detaysoft.galepress;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
@@ -24,6 +22,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.provider.Settings;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -42,19 +42,15 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -68,8 +64,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
-import org.xwalk.core.XWalkNavigationHistory;
-import org.xwalk.core.XWalkView;
 
 import java.io.File;
 import java.io.InputStream;
@@ -84,14 +78,12 @@ import java.util.UUID;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-import ak.detaysoft.galepress.custom_models.ApplicationPlist;
 import ak.detaysoft.galepress.custom_models.Subscription;
 import ak.detaysoft.galepress.database_models.L_Category;
 import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.database_models.L_Statistic;
 import ak.detaysoft.galepress.search_models.MenuSearchResult;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
-import ak.detaysoft.galepress.web_views.ExtraWebViewActivity;
 
 /**
  * Created by adem on 31/03/14.
@@ -222,8 +214,13 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 LibraryFragment libraryFragment = getLibraryFragment();
                 libraryFragment.selectedCategory = categoryListWithAll.get(position);
                 libraryFragment.selectedCategoryPosition = position;
-                libraryFragment.updateGridView();
-
+                if(libraryFragment.isHeaderContentIsEnable) {
+                    libraryFragment.isHeaderContentIsEnable = false;
+                    getSupportFragmentManager().beginTransaction().detach(libraryFragment).attach(libraryFragment).commit();
+                } else {
+                    libraryFragment.isHeaderContentIsEnable = false;
+                    libraryFragment.updateGridView();
+                }
                 categoriesAdapter.notifyDataSetChanged();
             }
         });
@@ -254,7 +251,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                     }
                     searchProgress.setVisibility(View.VISIBLE);
                     searchClear.setVisibility(View.GONE);
-                    complateSearch(false,false);
+                    complateSearch(false, false);
 
                     GalePressApplication.getInstance().getDataApi().fullTextSearch(GalePressApplication.getInstance().getSearchQuery(), MainActivity.this);
                 }
@@ -279,7 +276,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                     }
                     searchProgress.setVisibility(View.VISIBLE);
                     searchClear.setVisibility(View.GONE);
-                    complateSearch(false,false);
+                    complateSearch(false, false);
 
                     GalePressApplication.getInstance().getDataApi().fullTextSearch(GalePressApplication.getInstance().getSearchQuery(), MainActivity.this);
                 }
@@ -349,7 +346,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 GalePressApplication.getInstance().setSearchQuery("");
                 //GalePressApplication.getInstance().setMenuSearchResults(null);
                 GalePressApplication.getInstance().setMenuSearchResult(null);
-                complateSearch(false,false);
+                complateSearch(false, false);
             }
         });
 
@@ -385,7 +382,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             @Override
             public void onClick(View v) {
 
-                if(GalePressApplication.getInstance().getUserInformation() != null) {
+                if (GalePressApplication.getInstance().getUserInformation() != null) {
                     logout();
                     ProgressDialog progress = new ProgressDialog(MainActivity.this);
                     progress.setMessage(getResources().getString(R.string.logout) + "...");
@@ -401,10 +398,10 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             }
         });
 
-        TextView userInfo = ((TextView)findViewById(R.id.left_menu_login_text));
+        TextView userInfo = ((TextView) findViewById(R.id.left_menu_login_text));
         userInfo.setTextColor(Color.WHITE);
         userInfo.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
-        if(GalePressApplication.getInstance().getUserInformation() != null) {
+        if (GalePressApplication.getInstance().getUserInformation() != null) {
             userInfo.setText(GalePressApplication.getInstance().getUserInformation().getUserName());
         } else {
             userInfo.setText(getResources().getText(R.string.login_stand));
@@ -470,7 +467,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
     }
 
-    public void choseCategory(int position){
+    public void choseCategory(int position) {
         actionbarTitle.setText(categoryListWithAll.get(position).getCategoryName().toUpperCase());
         categoriesAdapter.notifyDataSetChanged();
     }
@@ -578,7 +575,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         FacebookSdk.sdkInitialize(this.getApplicationContext());
         LoginManager.getInstance().logOut();
         GalePressApplication.getInstance().createUser(false, null);
-        ((TextView)findViewById(R.id.left_menu_login_text)).setText(getResources().getText(R.string.login_stand));
+        ((TextView) findViewById(R.id.left_menu_login_text)).setText(getResources().getText(R.string.login_stand));
     }
 
 
@@ -805,9 +802,67 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 GalePressApplication.getInstance().prepareSubscriptions(null);
             }
 
-        }  else if (requestCode == 102) { //Login return
+        }
+        if (requestCode == 1002) {
+            int responseCode = data.getIntExtra("RESPONSE_CODE", 0);
+            String purchaseData = data.getStringExtra("INAPP_PURCHASE_DATA");
+            String dataSignature = data.getStringExtra("INAPP_DATA_SIGNATURE");
+
+            if (resultCode == RESULT_OK && responseCode == LibraryFragment.BILLING_RESPONSE_RESULT_OK) {
+                try {
+                    Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESPONSE_RESULT_OK), Toast.LENGTH_SHORT)
+                            .show();
+
+                    JSONObject jo = new JSONObject(purchaseData);
+                    ProgressDialog progress = new ProgressDialog(this);
+                    progress.setMessage(getResources().getString(R.string.purchase_validation_checking));
+                    progress.setCancelable(false);
+                    progress.show();
+                    GalePressApplication.getInstance().getDataApi().sendReceipt(jo.getString("productId"), jo.getString("purchaseToken"), jo.getString("packageName"), progress, this);
+                } catch (JSONException e) {
+                    Toast.makeText(this, "act result json parse error - " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
+            } else if (resultCode == RESULT_OK && responseCode == LibraryFragment.RESULT_ITEM_ALREADY_OWNED) {
+
+                try {
+                    Toast.makeText(this, this.getResources().getString(R.string.BILLING_ITEM_ALREADY_OWNED), Toast.LENGTH_SHORT)
+                            .show();
+
+                    JSONObject jo = new JSONObject(purchaseData);
+                    ProgressDialog progress = new ProgressDialog(this);
+                    progress.setMessage(getResources().getString(R.string.purchase_validation_checking));
+                    progress.setCancelable(false);
+                    progress.show();
+                    GalePressApplication.getInstance().getDataApi().sendReceipt(jo.getString("productId"), jo.getString("purchaseToken"), jo.getString("packageName"), progress, this);
+                } catch (JSONException e) {
+                    Toast.makeText(this, this.getResources().getString(R.string.BILLING_UNEXPECTED), Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
+            } else if (responseCode == LibraryFragment.RESULT_USER_CANCELED) { // Hata var
+                Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESULT_USER_CANCELED), Toast.LENGTH_SHORT)
+                        .show();
+                getLibraryFragment().getHeaderContentHolder().downloadButton.getPriceTextView().setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
+            } else if (responseCode == LibraryFragment.RESULT_BILLING_UNAVAILABLE) { // Hata var
+                Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESULT_BILLING_UNAVAILABLE), Toast.LENGTH_SHORT)
+                        .show();
+                getLibraryFragment().getHeaderContentHolder().downloadButton.getPriceTextView().setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
+            } else if (responseCode == LibraryFragment.RESULT_ITEM_UNAVAILABLE) { // Hata var
+                Toast.makeText(this, this.getResources().getString(R.string.BILLIN_RESULT_ITEM_UNAVAILABLE), Toast.LENGTH_SHORT)
+                        .show();
+                getLibraryFragment().getHeaderContentHolder().downloadButton.getPriceTextView().setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
+            } else if (responseCode == LibraryFragment.RESULT_ERROR) { // Hata var
+                Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESULT_ERROR), Toast.LENGTH_SHORT)
+                        .show();
+                getLibraryFragment().getHeaderContentHolder().downloadButton.getPriceTextView().setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
+            } else { //  Beklenmedik Hata var
+                Toast.makeText(this, this.getResources().getString(R.string.BILLING_UNEXPECTED), Toast.LENGTH_SHORT)
+                        .show();
+                getLibraryFragment().getHeaderContentHolder().downloadButton.getPriceTextView().setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
+            }
+        } else if (requestCode == 102) { //Login return
             if (resultCode == 102) {
-                ((TextView)findViewById(R.id.left_menu_login_text)).setText(GalePressApplication.getInstance().getUserInformation().getUserName());
+                ((TextView) findViewById(R.id.left_menu_login_text)).setText(GalePressApplication.getInstance().getUserInformation().getUserName());
             }
         } else if (requestCode == 103) { //contentdetailactivity ekraninda kullanici login degilse kullaniciyi logine gönderiyoruz
             if (resultCode == 103) {
@@ -907,6 +962,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         LibraryFragment libraryFragment = getLibraryFragment();
         libraryFragment.selectedCategory = selectedCategory;
         libraryFragment.selectedCategoryPosition = selectedCategoryPosition;
+        libraryFragment.isHeaderContentIsEnable = false;
         libraryFragment.updateGridView();
 
         Logout.e("Galepress", "OnPopUpMenuItem Clicked:" + item.getTitle().toString());
@@ -977,7 +1033,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     }
 
     public void complateSearch(boolean isServiceFinishCall, boolean showNotFoundMessage) {
-        if(isServiceFinishCall){
+        if (isServiceFinishCall) {
             searchProgress.setVisibility(View.GONE);
             searchClear.setVisibility(View.VISIBLE);
         }
@@ -988,16 +1044,16 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             findViewById(R.id.search_result_layout_divider).setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
             list.setLayoutManager(mLayoutManager);
-            if(list.getAdapter() != null) {
-                ((SearchAdapter)list.getAdapter()).searchList = GalePressApplication.getInstance().getMenuSearchResult();
-                ((RecyclerView.Adapter)list.getAdapter()).notifyDataSetChanged();
+            if (list.getAdapter() != null) {
+                ((SearchAdapter) list.getAdapter()).searchList = GalePressApplication.getInstance().getMenuSearchResult();
+                ((RecyclerView.Adapter) list.getAdapter()).notifyDataSetChanged();
             } else {
                 SearchAdapter mAdapter = new SearchAdapter(GalePressApplication.getInstance().getMenuSearchResult());
                 list.setAdapter(mAdapter);
             }
         } else {
             baseView.setVisibility(View.GONE);
-            if(showNotFoundMessage)
+            if (showNotFoundMessage)
                 Toast.makeText(this, getResources().getString(R.string.text_not_found), Toast.LENGTH_SHORT).show();
         }
 
@@ -1017,7 +1073,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(result.getPage() != -1) {
+                        if (result.getPage() != -1) {
                             L_Content content = GalePressApplication.getInstance().getDatabaseApi().getContent(Integer.valueOf(result.getContentId()));
                             if (content != null) {
                                 if (content.isPdfDownloaded()) {
@@ -1051,7 +1107,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         // Create new views (invoked by the layout manager)
         @Override
         public SearchAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
-                                                           int viewType) {
+                                                             int viewType) {
             // create a new view
             View v = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.search_result_item_menu, parent, false);
@@ -1066,7 +1122,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             // - get element from your dataset at this position
             // - replace the contents of the view with that element
             holder.result = searchList.get(position);
-            if(searchList.get(position).getPage() == -1) {
+            if (searchList.get(position).getPage() == -1) {
                 holder.text.setText(searchList.get(position).getContentTitle());
                 holder.text.setTextColor(Color.WHITE);
                 holder.text.setTypeface(ApplicationThemeColor.getInstance().getGothamMedium(MainActivity.this));
@@ -1078,7 +1134,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 holder.text.setTextColor(Color.WHITE);
                 holder.text.setTypeface(ApplicationThemeColor.getInstance().getGothamBookItalic(MainActivity.this));
 
-                holder.page.setText(""+searchList.get(position).getPage());
+                holder.page.setText("" + searchList.get(position).getPage());
                 holder.page.setTextColor(Color.WHITE);
                 holder.page.setTypeface(ApplicationThemeColor.getInstance().getGothamBookItalic(MainActivity.this));
             }
@@ -1139,5 +1195,13 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
     public void setCategoryListWithAll(List<L_Category> categoryListWithAll) {
         this.categoryListWithAll = categoryListWithAll;
+    }
+
+    public TextView getActionbarTitle() {
+        return actionbarTitle;
+    }
+
+    public void setActionbarTitle(TextView actionbarTitle) {
+        this.actionbarTitle = actionbarTitle;
     }
 }

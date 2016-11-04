@@ -379,6 +379,14 @@ public class DataApi extends Object {
                     GalePressApplication.getInstance().getContentDetailPopupActivity().setContent(content);
                 GalePressApplication.getInstance().getContentDetailPopupActivity().update();
             }
+
+            if(GalePressApplication.getInstance().getMainActivity() != null
+                    && GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder() != null) {
+                if (content.getId().compareTo(GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder().content.getId()) == 0) {
+                    GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder().content = content;
+                    GalePressApplication.getInstance().getMainActivity().getLibraryFragment().updateHeaderContent();
+                }
+            }
         }
 
         @Override
@@ -392,6 +400,14 @@ public class DataApi extends Object {
                 if (content.getId().compareTo(GalePressApplication.getInstance().getContentDetailPopupActivity().getContent().getId()) == 0)
                     GalePressApplication.getInstance().getContentDetailPopupActivity().setContent(content);
                 GalePressApplication.getInstance().getContentDetailPopupActivity().update();
+            }
+
+            if(GalePressApplication.getInstance().getMainActivity() != null
+                    && GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder() != null) {
+                if (content.getId().compareTo(GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder().content.getId()) == 0) {
+                    GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder().content = content;
+                    GalePressApplication.getInstance().getMainActivity().getLibraryFragment().updateHeaderContent();
+                }
             }
 
             super.onCancelled();
@@ -427,6 +443,15 @@ public class DataApi extends Object {
                 GalePressApplication.getInstance().getContentDetailPopupActivity().update();
             }
 
+            if(GalePressApplication.getInstance().getMainActivity() != null
+                    && GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder() != null) {
+                if (content.getId().compareTo(GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder().content.getId()) == 0) {
+                    GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder().content = content;
+                    GalePressApplication.getInstance().getMainActivity().getLibraryFragment().updateHeaderContent();
+                }
+            }
+
+
         }
 
     }
@@ -442,6 +467,13 @@ public class DataApi extends Object {
             } else if (content.isMaster() && GalePressApplication.getInstance().getCurrentActivity().getClass().equals(UserLoginActivity.class)) {
                 UserLoginActivity loginActivity = (UserLoginActivity) GalePressApplication.getInstance().getCurrentActivity();
                 loginActivity.progressUpdate(total, fileLength);
+            } else if(GalePressApplication.getInstance().getCurrentActivity().getClass().equals(MainActivity.class)
+                    && GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder() != null
+                    && GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder().content.getId().compareTo(content.getId()) == 0){
+                LibraryFragment library = GalePressApplication.getInstance().getMainActivity().getLibraryFragment();
+                library.getHeaderContentHolder().downloadStatus.setVisibility(View.VISIBLE);
+                library.getHeaderContentHolder().overlay.setVisibility(View.VISIBLE);
+                library.getHeaderContentHolder().downloadPercentage.setText("%"+(int) (total * 100 / fileLength));
             } else {
                 ContentHolderAdapter.ViewHolder viewHolder = getViewHolderForContent(content);
 
@@ -459,6 +491,13 @@ public class DataApi extends Object {
             act.contentHolder.downloadStatus.setVisibility(View.VISIBLE);
             act.contentHolder.overlay.setVisibility(View.VISIBLE);
             act.contentHolder.downloadPercentage.setText("%"+(int) (total * 100 / fileLength));
+        } else if(GalePressApplication.getInstance().getMainActivity() != null
+                && GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder() != null
+                && GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder().content.getId().compareTo(content.getId()) == 0){
+            LibraryFragment library = GalePressApplication.getInstance().getMainActivity().getLibraryFragment();
+            library.getHeaderContentHolder().downloadStatus.setVisibility(View.VISIBLE);
+            library.getHeaderContentHolder().overlay.setVisibility(View.VISIBLE);
+            library.getHeaderContentHolder().downloadPercentage.setText("%"+(int) (total * 100 / fileLength));
         }
     }
 
@@ -1107,6 +1146,14 @@ public class DataApi extends Object {
                     GalePressApplication.getInstance().getLibraryActivity().updateAdapterList(content, false);
                     if (GalePressApplication.getInstance().getContentDetailPopupActivity() != null)
                         GalePressApplication.getInstance().getContentDetailPopupActivity().update();
+
+                    if(GalePressApplication.getInstance().getMainActivity() != null
+                            && GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder() != null) {
+                        if (content.getId().compareTo(GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder().content.getId()) == 0) {
+                            GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder().content = content;
+                            GalePressApplication.getInstance().getMainActivity().getLibraryFragment().updateHeaderContent();
+                        }
+                    }
                 }
             });
             alertDialog.show();
@@ -1118,6 +1165,14 @@ public class DataApi extends Object {
         GalePressApplication.getInstance().getLibraryActivity().updateAdapterList(content, false);
         if (GalePressApplication.getInstance().getContentDetailPopupActivity() != null)
             GalePressApplication.getInstance().getContentDetailPopupActivity().update();
+
+        if(GalePressApplication.getInstance().getMainActivity() != null
+                && GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder() != null) {
+            if (content.getId().compareTo(GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder().content.getId()) == 0) {
+                GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder().content = content;
+                GalePressApplication.getInstance().getMainActivity().getLibraryFragment().updateHeaderContent();
+            }
+        }
         content.setPdfDownloading(true);
         getDatabaseApi().updateContent(content, false);
         if (downloadPdfTask != null && (downloadPdfTask.getStatus() == AsyncTask.Status.RUNNING)) {
@@ -1174,6 +1229,15 @@ public class DataApi extends Object {
                         if (GalePressApplication.getInstance().getContentDetailPopupActivity() != null) {
                             GalePressApplication.getInstance().getContentDetailPopupActivity().contentHolder.downloadButton.stopAnim();
                             GalePressApplication.getInstance().getContentDetailPopupActivity().update();
+                        }
+
+                        if(GalePressApplication.getInstance().getMainActivity() != null
+                                && GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder() != null) {
+                            if (content.getId().compareTo(GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder().content.getId()) == 0) {
+                                GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder().content = content;
+                                GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder().downloadButton.stopAnim();
+                                GalePressApplication.getInstance().getMainActivity().getLibraryFragment().updateHeaderContent();
+                            }
                         }
                         dialog.cancel();
                     }
@@ -1247,6 +1311,13 @@ public class DataApi extends Object {
                             GalePressApplication.getInstance().getContentDetailPopupActivity().update();
                         }
 
+                        if(GalePressApplication.getInstance().getMainActivity() != null
+                                && GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder() != null) {
+                            if (content.getId().compareTo(GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder().content.getId()) == 0) {
+                                GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder().content = content;
+                                GalePressApplication.getInstance().getMainActivity().getLibraryFragment().updateHeaderContent();
+                            }
+                        }
                     }
                 });
                 alertDialog.setNegativeButton(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.HAYIR), new DialogInterface.OnClickListener() {
@@ -1257,6 +1328,14 @@ public class DataApi extends Object {
                         if (GalePressApplication.getInstance().getContentDetailPopupActivity() != null) {
                             GalePressApplication.getInstance().getContentDetailPopupActivity().update();
                         }
+
+                        if(GalePressApplication.getInstance().getMainActivity() != null
+                                && GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder() != null) {
+                            if (content.getId().compareTo(GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder().content.getId()) == 0) {
+                                GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder().content = content;
+                                GalePressApplication.getInstance().getMainActivity().getLibraryFragment().updateHeaderContent();
+                            }
+                        }
                     }
                 });
                 alertDialog.show();
@@ -1265,6 +1344,14 @@ public class DataApi extends Object {
             Toast.makeText(context, context.getResources().getString(R.string.WARNING_0), Toast.LENGTH_SHORT).show();
             if (GalePressApplication.getInstance().getContentDetailPopupActivity() != null) {
                 GalePressApplication.getInstance().getContentDetailPopupActivity().update();
+            }
+
+            if(GalePressApplication.getInstance().getMainActivity() != null
+                    && GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder() != null) {
+                if (content.getId().compareTo(GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder().content.getId()) == 0) {
+                    GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder().content = content;
+                    GalePressApplication.getInstance().getMainActivity().getLibraryFragment().updateHeaderContent();
+                }
             }
         }
 
@@ -1597,6 +1684,14 @@ public class DataApi extends Object {
                                     if (localContent.getId().compareTo(GalePressApplication.getInstance().getContentDetailPopupActivity().getContent().getId()) == 0)
                                         GalePressApplication.getInstance().getContentDetailPopupActivity().setContent(localContent);
                                     GalePressApplication.getInstance().getContentDetailPopupActivity().update();
+                                }
+
+                                if(GalePressApplication.getInstance().getMainActivity() != null
+                                        && GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder() != null) {
+                                    if (localContent.getId().compareTo(GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder().content.getId()) == 0) {
+                                        GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder().content = localContent;
+                                        GalePressApplication.getInstance().getMainActivity().getLibraryFragment().updateHeaderContent();
+                                    }
                                 }
                             }
 
