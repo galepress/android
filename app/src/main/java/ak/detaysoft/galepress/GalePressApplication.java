@@ -59,6 +59,7 @@ import ak.detaysoft.galepress.custom_models.TabbarItem;
 import ak.detaysoft.galepress.custom_models.UserInformations;
 import ak.detaysoft.galepress.database_models.L_Application;
 import ak.detaysoft.galepress.database_models.L_Content;
+import ak.detaysoft.galepress.database_models.L_CustomerApplication;
 import ak.detaysoft.galepress.database_models.L_Statistic;
 import ak.detaysoft.galepress.database_models.TestApplicationInf;
 import ak.detaysoft.galepress.search_models.MenuSearchResult;
@@ -79,7 +80,8 @@ public class GalePressApplication
     public static final String TAG = "VolleyPatterns";
     private static DatabaseApi databaseApi = null;
     private static DataApi dataApi;
-    private LibraryFragment libraryFragmentActivity;
+    private LibraryFragment libraryFragment;
+    private ApplicationFragment applicationFragment;
     private Fragment currentFragment;
     private int requestCount;
 
@@ -145,6 +147,8 @@ public class GalePressApplication
     private ArrayList<MenuSearchResult> menuSearchResult;
     private String searchQuery;
 
+    private ArrayList<L_CustomerApplication> customerApplications;
+    private L_CustomerApplication selectedCustomerApplication;
 
     Foreground.Listener myListener = new Foreground.Listener() {
         public void onBecameForeground() {
@@ -511,11 +515,19 @@ public class GalePressApplication
     }
 
     public LibraryFragment getLibraryActivity() {
-        return libraryFragmentActivity;
+        return libraryFragment;
     }
 
     public void setLibraryActivity(LibraryFragment libraryFragmentActivity) {
-        this.libraryFragmentActivity = libraryFragmentActivity;
+        this.libraryFragment = libraryFragmentActivity;
+    }
+
+    public ApplicationFragment getApplicationFragment() {
+        return applicationFragment;
+    }
+
+    public void setApplicationFragment(ApplicationFragment applicationFragment) {
+        this.applicationFragment = applicationFragment;
     }
 
     public Fragment getCurrentFragment() {
@@ -656,11 +668,6 @@ public class GalePressApplication
         editor.commit();
 
         bannerLink = link;
-
-        //bannerLink = "http://rastcode.com/test/index.html";
-        if (bannerLink.length() != 0 && getCurrentActivity() != null && getCurrentActivity().getClass() == MainActivity.class
-                && ((MainActivity) getCurrentActivity()).getLibraryFragment() != null)
-            ((MainActivity) getCurrentActivity()).getLibraryFragment().updateBanner();
 
     }
 

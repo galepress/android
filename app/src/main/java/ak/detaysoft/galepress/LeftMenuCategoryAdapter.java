@@ -53,152 +53,152 @@ public class LeftMenuCategoryAdapter extends BaseAdapter {
         }
 
         TextView txtTitle = (TextView) convertView.findViewById(R.id.category_title);
-        txtTitle.setText(mCategory.get(position).getCategoryName().toUpperCase());
+        txtTitle.setText(mCategory.get(position).getName().toUpperCase());
         txtTitle.setTextColor(Color.WHITE);
         txtTitle.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(mContext));
 
         ImageView image = (ImageView)convertView.findViewById(R.id.category_icon);
-        if(mCategory.get(position).getCategoryName().toLowerCase().contains("genel")){
+        if(mCategory.get(position).getName().toLowerCase().contains("genel")){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_stand));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_stand));
-        } else if(mCategory.get(position).getCategoryName().toLowerCase().contains("alışveriş")){
+        } else if(mCategory.get(position).getName().toLowerCase().contains("alışveriş")){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_alisveris));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_alisveris));
-        }  else if(mCategory.get(position).getCategoryName().toLowerCase().contains("indirilenler")){
+        }  else if(mCategory.get(position).getName().toLowerCase().contains("indirilenler")){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_indirilenler));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_indirilenler));
-        } else if(mCategory.get(position).getCategoryName().toLowerCase().contains("çocuk")){
+        } else if(mCategory.get(position).getName().toLowerCase().contains("çocuk")){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_cocuk));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_cocuk));
-        } else if(mCategory.get(position).getCategoryName().toLowerCase().contains("edebiyat")){
+        } else if(mCategory.get(position).getName().toLowerCase().contains("edebiyat")){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_edebiyat));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_edebiyat));
-        } else if(mCategory.get(position).getCategoryName().toLowerCase().contains("erkek")){
+        } else if(mCategory.get(position).getName().toLowerCase().contains("erkek")){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_erkek));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_erkek));
-        } else if(mCategory.get(position).getCategoryName().toLowerCase().contains("dekor")){
+        } else if(mCategory.get(position).getName().toLowerCase().contains("dekor")){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_dekorasyon));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_dekorasyon));
-        } else if(mCategory.get(position).getCategoryName().toLowerCase().contains("fotoğraf")){
+        } else if(mCategory.get(position).getName().toLowerCase().contains("fotoğraf")){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_fotograf));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_fotograf));
-        } else if(mCategory.get(position).getCategoryName().toLowerCase().contains("gelin")){
+        } else if(mCategory.get(position).getName().toLowerCase().contains("gelin")){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_gelin));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_gelin));
-        } else if(mCategory.get(position).getCategoryName().toLowerCase().contains("gezi")){
+        } else if(mCategory.get(position).getName().toLowerCase().contains("gezi")){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_gezi));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_gezi));
-        } else if(mCategory.get(position).getCategoryName().toLowerCase().contains("haber")){
+        } else if(mCategory.get(position).getName().toLowerCase().contains("haber")){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_haber));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_haber));
-        } else if(mCategory.get(position).getCategoryName().toLowerCase().contains("hayvan")){
+        } else if(mCategory.get(position).getName().toLowerCase().contains("hayvan")){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_hayvan));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_hayvan));
-        } else if(mCategory.get(position).getCategoryName().toLowerCase().contains("hobi")){
+        } else if(mCategory.get(position).getName().toLowerCase().contains("hobi")){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_hobi));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_hobi));
-        } else if(mCategory.get(position).getCategoryName().toLowerCase().contains("indirilen")){
+        } else if(mCategory.get(position).getName().toLowerCase().contains("indirilen")){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_indirilenler));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_indirilenler));
-        } else if(mCategory.get(position).getCategoryName().toLowerCase().contains("iş")){
+        } else if(mCategory.get(position).getName().toLowerCase().contains("iş")){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_is));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_is));
-        } else if(mCategory.get(position).getCategoryName().toLowerCase().contains("kadın")){
+        } else if(mCategory.get(position).getName().toLowerCase().contains("kadın")){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_kadin));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_kadin));
-        } else if(mCategory.get(position).getCategoryName().toLowerCase().contains("moda")){
+        } else if(mCategory.get(position).getName().toLowerCase().contains("moda")){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_moda));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_moda));
-        } else if(mCategory.get(position).getCategoryName().toLowerCase().contains("otomotiv")){
+        } else if(mCategory.get(position).getName().toLowerCase().contains("otomotiv")){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_otomobil));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_otomobil));
-        } else if(mCategory.get(position).getCategoryName().toLowerCase().contains("sağlık")){
+        } else if(mCategory.get(position).getName().toLowerCase().contains("sağlık")){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_saglik));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_saglik));
-        } else if(mCategory.get(position).getCategoryName().toLowerCase().contains("sanat") || mCategory.get(position).getCategoryName().toLowerCase().contains("tasarım")){
+        } else if(mCategory.get(position).getName().toLowerCase().contains("sanat") || mCategory.get(position).getName().toLowerCase().contains("tasarım")){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_sanat));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_sanat));
-        } else if(mCategory.get(position).getCategoryName().toLowerCase().contains("sinema")){
+        } else if(mCategory.get(position).getName().toLowerCase().contains("sinema")){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_sinema));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_sinema));
-        } else if(mCategory.get(position).getCategoryName().toLowerCase().contains("spor")){
+        } else if(mCategory.get(position).getName().toLowerCase().contains("spor")){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_spor));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_spor));
-        } else if(mCategory.get(position).getCategoryName().toLowerCase().contains("stand")){
+        } else if(mCategory.get(position).getName().toLowerCase().contains("stand")){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_stand));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_stand));
-        } else if(mCategory.get(position).getCategoryName().toLowerCase().contains("tarih")){
+        } else if(mCategory.get(position).getName().toLowerCase().contains("tarih")){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_tarih));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_tarih));
-        } else if(mCategory.get(position).getCategoryName().toLowerCase().contains("teknoloji")){
+        } else if(mCategory.get(position).getName().toLowerCase().contains("teknoloji")){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_teknoloji));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_teknoloji));
-        } else if(mCategory.get(position).getCategoryName().toLowerCase().contains("yaşam")){
+        } else if(mCategory.get(position).getName().toLowerCase().contains("yaşam")){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_yasam));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_yasam));
-        } else if(mCategory.get(position).getCategoryName().toLowerCase().contains("yemek")){
+        } else if(mCategory.get(position).getName().toLowerCase().contains("yemek")){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_yemek));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_yemek));
-        }  else if(mCategory.get(position).getCategoryName().toLowerCase().contains("müzik")){
+        }  else if(mCategory.get(position).getName().toLowerCase().contains("müzik")){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_muzik));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_muzik));
-        }   else if(mCategory.get(position).getCategoryName().toLowerCase().contains("bilim")){
+        }   else if(mCategory.get(position).getName().toLowerCase().contains("bilim")){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_bilim));
             else
@@ -216,12 +216,12 @@ public class LeftMenuCategoryAdapter extends BaseAdapter {
          * https://fabric.io/galepress/android/apps/ak.detaysoft.yeryuzudergidis/issues/56d3205ff5d3a7f76b2cef6d
          * Seklinde bi hata vardi. selectedCategories null olmasi ihtimaline karsi bende ilk createde oldugu gibi genel kategorisini set ettim
          * */
-        if(((MainActivity)(mContext)).getLibraryFragment() != null) {
-            if(((MainActivity)(mContext)).getLibraryFragment().selectedCategory == null) {
-                ((MainActivity)(mContext)).getLibraryFragment().repairSelectedCategory();
+        if(((MainActivity)(mContext)).getApplicationFragment() != null) {
+            if(((MainActivity)(mContext)).getApplicationFragment().selectedCategory == null) {
+                ((MainActivity)(mContext)).getApplicationFragment().repairSelectedCategory();
             }
 
-            if(((MainActivity)(mContext)).getLibraryFragment().selectedCategory.getCategoryID().compareTo(mCategory.get(position).categoryID) == 0){
+            if(((MainActivity)(mContext)).getApplicationFragment().selectedCategory.getId().compareTo(mCategory.get(position).id) == 0){
                 ((LinearLayout)image.getParent()).setBackgroundColor(ApplicationThemeColor.getInstance().getForegroundColor());
             }
         }

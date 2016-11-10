@@ -1,6 +1,5 @@
 package ak.detaysoft.galepress;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -56,7 +55,6 @@ public class ContentHolderAdapter extends BaseAdapter  {
         public LinearLayout detailLayout;
         public ImageView coverImageView;
         public TextView nameLabel;
-        public TextView detailLabel;
         public ImageView overlay;
         public RelativeLayout downloadStatus;
         public TextView downloadPercentage;
@@ -81,7 +79,6 @@ public class ContentHolderAdapter extends BaseAdapter  {
             viewHolder.detailLayout = (LinearLayout)convertView.findViewById(R.id.detailLayout);
             viewHolder.coverImageView= (ImageView)convertView.findViewById(R.id.coverImage);
             viewHolder.nameLabel = (TextView)convertView.findViewById(R.id.nameLabel);
-            viewHolder.detailLabel = (TextView)convertView.findViewById(R.id.detailLabel);
             viewHolder.downloadStatus = (RelativeLayout) convertView.findViewById(R.id.grid_download_status);
             viewHolder.downloadPercentage = (TextView) convertView.findViewById(R.id.grid_download_percentage);
             viewHolder.loading = (CustomPulseProgress)convertView.findViewById(R.id.grid_image_loading);
@@ -113,7 +110,6 @@ public class ContentHolderAdapter extends BaseAdapter  {
         });*/
         viewHolder.detailLayout.setBackgroundColor(ApplicationThemeColor.getInstance().getHolderDetailBackround());
         viewHolder.nameLabel.setTextColor(ApplicationThemeColor.getInstance().getGridItemNameLabelColor());
-        viewHolder.detailLabel.setTextColor(ApplicationThemeColor.getInstance().getGridItemDetailLabelColor());
         viewHolder.downloadPercentage.setTextColor(ApplicationThemeColor.getInstance().getGridItemDetailLabelColor());
 
         File coverImageFile = new File(GalePressApplication.getInstance().getFilesDir(), content.getCoverImageFileName());
@@ -125,10 +121,8 @@ public class ContentHolderAdapter extends BaseAdapter  {
             Log.e("imageDisplayed", "noimage");
         }
 
-        viewHolder.nameLabel.setText(content.getName());
+        viewHolder.nameLabel.setText(content.getMonthlyName());
         viewHolder.nameLabel.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(libraryFragment.getActivity()));
-        viewHolder.detailLabel.setText(content.getMonthlyName());
-        viewHolder.detailLabel.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(libraryFragment.getActivity()));
         viewHolder.downloadPercentage.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(libraryFragment.getActivity()));
 
         viewHolder.downloadStatus.setVisibility(View.GONE);

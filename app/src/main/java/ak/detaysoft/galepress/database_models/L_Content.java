@@ -1,8 +1,5 @@
 package ak.detaysoft.galepress.database_models;
 
-import android.os.Parcelable;
-
-import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -420,7 +417,7 @@ public class L_Content implements Serializable {
         this.isPdfDownloaded = false;
         /*
         for (R_Category remoteCategory : remoteContent.getContentCategories()){
-            L_Category localCategory = GalePressApplication.getInstance().getDatabaseApi().getCategory(remoteCategory.getCategoryID());
+            L_Category localCategory = GalePressApplication.getInstance().getDatabaseApi().getCategory(remoteCategory.getId());
             if(localCategory == null){
                 localCategory = new L_Category(remoteCategory);
             }
@@ -448,7 +445,7 @@ public class L_Content implements Serializable {
         this.identifier = remoteContent.getContentIdentifier();
         this.categories = new ArrayList<L_Category>();
         for(R_Category item : remoteContent.getContentCategories())
-            categories.add(new L_Category(item.getCategoryID(), item.getCategoryName()));
+            categories.add(new L_Category(item.getId(), item.getName()));
         this.categoryIds = prepareCategoryIdsJson();
         this.contentStatus = remoteContent.getContentStatus();
     }
@@ -457,7 +454,7 @@ public class L_Content implements Serializable {
         JSONArray array = new JSONArray();
         if(categories != null) {
             for(L_Category item : categories)
-                array.put("<"+item.getCategoryID().toString()+">");
+                array.put("<"+item.getId().toString()+">");
         }
 
         return array.toString();
@@ -466,7 +463,7 @@ public class L_Content implements Serializable {
     public void updateWithRemoteContent(R_ContentDetail remoteContent){
         /*
         for (R_Category remoteCategory : remoteContent.getContentCategories()){
-            L_Category localCategory = GalePressApplication.getInstance().getDatabaseApi().getCategory(remoteCategory.getCategoryID());
+            L_Category localCategory = GalePressApplication.getInstance().getDatabaseApi().getCategory(remoteCategory.getId());
             if(localCategory == null){
                 localCategory = new L_Category(remoteCategory);
                 GalePressApplication.getInstance().getDatabaseApi().setCategory(localCategory);
@@ -494,7 +491,7 @@ public class L_Content implements Serializable {
         this.identifier = remoteContent.getContentIdentifier();
         this.categories = new ArrayList<L_Category>();
         for(R_Category item : remoteContent.getContentCategories())
-            categories.add(new L_Category(item.getCategoryID(), item.getCategoryName()));
+            categories.add(new L_Category(item.getId(), item.getName()));
         this.categoryIds = prepareCategoryIdsJson();
         this.contentStatus = remoteContent.getContentStatus();
     }

@@ -8,9 +8,10 @@ import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.SelectArg;
 import com.j256.ormlite.stmt.Where;
-import com.j256.ormlite.stmt.query.OrderBy;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.sql.SQLException;
 import java.text.Normalizer;
@@ -21,12 +22,13 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import ak.detaysoft.galepress.custom_models.ApplicationCategory;
 import ak.detaysoft.galepress.database_models.L_Application;
 import ak.detaysoft.galepress.database_models.L_Category;
 import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.database_models.L_ContentCategory;
+import ak.detaysoft.galepress.database_models.L_CustomerApplication;
 import ak.detaysoft.galepress.database_models.L_Statistic;
-import ak.detaysoft.galepress.service_models.R_Category;
 
 /**
  * Created by adem on 25/02/14.
@@ -39,6 +41,7 @@ public class DatabaseApi {
     private Dao<L_ContentCategory, Integer> contentCategoryDao;
     private Dao<L_Application, Integer> applicationsDao;
     private Dao<L_Statistic, Integer> statisticsDao;
+    private Dao<L_CustomerApplication, Integer> customerApplicationDao;
     private PreparedQuery<L_Content> contentsByCategoryQuery = null;
     private PreparedQuery<L_Content> contentsQuery = null;
     private PreparedQuery<L_Content> downloadedContentsQuery = null;
@@ -50,6 +53,7 @@ public class DatabaseApi {
         try {
             DatabaseManager dbManager = new DatabaseManager();
             db = dbManager.getHelper(ctx);
+            customerApplicationDao = db.getcustomerApplicationDao();
             categoriesDao = db.getCategoriesDao();
             contentsDao = db.getContentsDao();
             contentCategoryDao = db.getContentCategoryDao();
@@ -59,6 +63,106 @@ public class DatabaseApi {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Methods for CUSTOMERAPPLICATION
+     * */
+    public int createCustomerApplication(L_CustomerApplication customerApplication)
+    {
+        try {
+            return customerApplicationDao.create(customerApplication);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    public int updateCustomerApplication(L_CustomerApplication customerApplication)
+    {
+        try {
+            return customerApplicationDao.update(customerApplication);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    public int deleteCustomerApplication(L_CustomerApplication customerApplication)
+    {
+        try {
+            return customerApplicationDao.delete(customerApplication);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public List getAllCustomerApplications()
+    {
+        try {
+            List customerList = customerApplicationDao.queryForAll();
+            for(int i = 0; i < customerList.size(); i++){
+                ((L_CustomerApplication)customerList.get(i)).setCategories(new ArrayList<ApplicationCategory>());
+                try {
+                    JSONArray categoryArray = new JSONArray(((L_CustomerApplication)customerList.get(i)).getCategoryJson());
+                    for(int categoryIndex = 0; categoryIndex < categoryArray.length(); categoryIndex++){
+                        JSONObject categoryObject = (JSONObject) categoryArray.get(categoryIndex);
+                        ApplicationCategory applicationCategory = new ApplicationCategory();
+                        applicationCategory.setId(categoryObject.optInt("id"));
+                        applicationCategory.setCoverImageUrl(categoryObject.optString("coverImageUrl"));
+                        ((L_CustomerApplication)customerList.get(i)).getCategories().add(applicationCategory);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+            return customerList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    public List getAllCustomerApplicationsByCategory(int selectedCategoryId)
+    {
+        try {
+            List customerList = customerApplicationDao.queryForAll();
+            List returnList = new ArrayList();
+            for(int i = 0; i < customerList.size(); i++){
+                ((L_CustomerApplication)customerList.get(i)).setCategories(new ArrayList<ApplicationCategory>());
+                try {
+                    JSONArray categoryArray = new JSONArray(((L_CustomerApplication)customerList.get(i)).getCategoryJson());
+                    for(int categoryIndex = 0; categoryIndex < categoryArray.length(); categoryIndex++){
+                        JSONObject categoryObject = (JSONObject) categoryArray.get(categoryIndex);
+                        ApplicationCategory applicationCategory = new ApplicationCategory();
+                        applicationCategory.setId(categoryObject.optInt("id"));
+                        applicationCategory.setCoverImageUrl(categoryObject.optString("coverImageUrl"));
+                        ((L_CustomerApplication)customerList.get(i)).getCategories().add(applicationCategory);
+                        if(applicationCategory.getId().intValue() == selectedCategoryId){
+                            returnList.add(customerList.get(i));
+                        }
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            return returnList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public L_CustomerApplication getCustomerApplication(Integer id)
+    {
+        try {
+            return customerApplicationDao.queryForId(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
     /**
      * Methods for CATEGORY
@@ -229,7 +333,7 @@ public class DatabaseApi {
 
                     Where where = contentQuery.where();
 
-                    where.like("categoryIds", "%<" + generalCategory.getCategoryID() + ">%");
+                    where.like("categoryIds", "%<" + generalCategory.getId() + ">%");
 
                     if(searchQuery!= null && searchQuery.length() != 0){
                         where.and();
@@ -308,7 +412,7 @@ public class DatabaseApi {
                 //Kategori
                 for(int i = 0 ; i < categoryList.size(); i++){
                     L_Category item = categoryList.get(i);
-                    where.like("categoryIds", "%<" + item.getCategoryID() + ">%");
+                    where.like("categoryIds", "%<" + item.getId() + ">%");
                 }
 
                 if(categoryList.size() > 1)
@@ -348,7 +452,7 @@ public class DatabaseApi {
 
                     Where where = contentQuery.where();
 
-                    where.like("categoryIds", "%<" + generalCategory.getCategoryID() + ">%");
+                    where.like("categoryIds", "%<" + generalCategory.getId() + ">%");
                     contentQuery.orderBy("contentOrderNo", false);
 
                     contents = contentQuery.query();
@@ -359,7 +463,7 @@ public class DatabaseApi {
                     contentQuery.orderBy("contentOrderNo", false);
                     contents = contentQuery.query();
                 }
-            } else if(category.getCategoryID() == -1) {
+            } else if(category.getId() == -1) {
                 QueryBuilder<L_Content, Integer> contentQuery = contentsDao.queryBuilder();
 
                 Where where = contentQuery.where();
@@ -372,7 +476,7 @@ public class DatabaseApi {
                 QueryBuilder<L_Content, Integer> contentQuery = contentsDao.queryBuilder();
 
                 Where where = contentQuery.where();
-                where.like("categoryIds", "%<" + category.getCategoryID() + ">%");
+                where.like("categoryIds", "%<" + category.getId() + ">%");
 
                 contentQuery.orderBy("contentOrderNo", false);
 

@@ -18,22 +18,11 @@
         android:paddingRight="10dp"
         android:paddingLeft="10dp"
         android:paddingBottom="10dp"
+        android:paddingTop="10dp"
         android:clipToPadding="false"
         android:stretchMode="spacingWidth"
         android:background="@color/canvas"
         android:listSelector="@android:color/transparent"
         android:choiceMode="singleChoice" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/category_slider_recyclerview"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/category_banner_height"
-        android:orientation="horizontal"
-        android:background="@android:color/white"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager">
-
-    </android.support.v7.widget.RecyclerView>
-
-
 
 </RelativeLayout>

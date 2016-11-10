@@ -55,9 +55,9 @@ public class LaunchActivity extends ActionBarActivity implements  XWalkInitializ
             if(GalePressApplication.getInstance().getTestApplicationLoginInf().getUsername().isEmpty())
                 openLoginActivity();
             else
-                GalePressApplication.getInstance().getDataApi().updateApplication();
+                GalePressApplication.getInstance().getDataApi().getCustomerApplicationsAndCategories();
         } else {
-            GalePressApplication.getInstance().getDataApi().updateApplication();
+            GalePressApplication.getInstance().getDataApi().getCustomerApplicationsAndCategories();
         }
 
         masterContent = GalePressApplication.getInstance().getDataApi().getMasterContent();
@@ -93,7 +93,7 @@ public class LaunchActivity extends ActionBarActivity implements  XWalkInitializ
         }
     }
 
-    public void openLibraryFragment(){
+    public void openMainActivity(){
 
         boolean openLogin = GalePressApplication.getInstance().isAgeVerificationActive()
                 && !GalePressApplication.getInstance().isAgeVerificationSubmit()
@@ -182,9 +182,9 @@ public class LaunchActivity extends ActionBarActivity implements  XWalkInitializ
                     if(GalePressApplication.getInstance().getTestApplicationLoginInf().getUsername().isEmpty())
                         openLoginActivity();
                     else
-                        GalePressApplication.getInstance().getDataApi().updateApplication();
+                        GalePressApplication.getInstance().getDataApi().getCustomerApplicationsAndCategories();
                 } else {
-                    GalePressApplication.getInstance().getDataApi().updateApplication();
+                    GalePressApplication.getInstance().getDataApi().getCustomerApplicationsAndCategories();
                 }
             }
         }

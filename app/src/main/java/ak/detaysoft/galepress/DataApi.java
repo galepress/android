@@ -74,11 +74,13 @@ import java.util.concurrent.ExecutionException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import ak.detaysoft.galepress.custom_models.ApplicationCategory;
 import ak.detaysoft.galepress.custom_models.ApplicationIds;
 import ak.detaysoft.galepress.database_models.L_Application;
 import ak.detaysoft.galepress.database_models.L_Category;
 import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.database_models.L_ContentCategory;
+import ak.detaysoft.galepress.database_models.L_CustomerApplication;
 import ak.detaysoft.galepress.database_models.L_Statistic;
 import ak.detaysoft.galepress.search_models.ReaderSearchResult;
 import ak.detaysoft.galepress.search_models.MenuSearchResult;
@@ -134,7 +136,7 @@ public class DataApi extends Object {
                         launchActivity.startMasterDownload();
                     } else {
                         if (otherContents) {
-                            launchActivity.openLibraryFragment();
+                            launchActivity.openMainActivity();
                         } else {
                             // Do Nothing
                         }
@@ -142,7 +144,7 @@ public class DataApi extends Object {
 
                 }
             } else {
-                launchActivity.openLibraryFragment();
+                launchActivity.openMainActivity();
             }
 
         } else if (GalePressApplication.getInstance().getCurrentActivity() != null && GalePressApplication.getInstance().getCurrentActivity().getClass().equals(MainActivity.class)) {
@@ -171,14 +173,14 @@ public class DataApi extends Object {
                         loginActivity.startMasterDownload();
                     } else {
                         if (otherContents) {
-                            loginActivity.openLibraryFragment();
+                            loginActivity.openMainActivity();
                         } else {
                             // Do Nothing
                         }
                     }
                 }
             } else {
-                loginActivity.openLibraryFragment();
+                loginActivity.openMainActivity();
             }
         }
     }
@@ -1279,10 +1281,10 @@ public class DataApi extends Object {
                         application.setVersion(application.getVersion() - 1);
                         getDatabaseApi().updateApplication(application);
 
-                    /*
-                     * Silinen icerigin son acilan sayfa bilgileri siliniyor.
-                     * Eger silinmezse icerik tekrar indirilirse silinmeden onceki sayfadan basliyor.
-                    * */
+                        /*
+                        * Silinen icerigin son acilan sayfa bilgileri siliniyor.
+                        * Eger silinmezse icerik tekrar indirilirse silinmeden onceki sayfadan basliyor.
+                        * */
                         try {
                             File samplePdfFile = new File(content.getPdfPath(), "file.pdf");
                             Uri uri = Uri.parse(samplePdfFile.getAbsolutePath());
@@ -1303,7 +1305,10 @@ public class DataApi extends Object {
                             Log.e("Content_Delete", "" + e.toString());
                         }
 
-                        updateApplication();
+                        /*
+                        * gp-stand icin Burayi kaldirdim.
+                        * */
+                        //updateApplication();
 
                         if (GalePressApplication.getInstance().getContentDetailPopupActivity() != null) {
                             if (content.getId().compareTo(GalePressApplication.getInstance().getContentDetailPopupActivity().getContent().getId()) == 0)
@@ -1465,6 +1470,28 @@ public class DataApi extends Object {
         }
     }
 
+
+    public void saveApplicationCoverImage(Bitmap bitmap, String fileName, L_CustomerApplication application) {
+        File f = new File(GalePressApplication.getInstance().getFilesDir(), fileName);
+        try {
+            f.createNewFile();
+            //Convert bitmap to byte array
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
+            byte[] bitmapdata = bos.toByteArray();
+
+            //write the bytes in file
+            FileOutputStream fos = new FileOutputStream(f);
+            fos.write(bitmapdata);
+            fos.flush();
+            fos.close();
+            application.setUpdated(false);
+            getDatabaseApi().updateCustomerApplication(application);
+        } catch (Exception e) {
+            f.delete();
+        }
+    }
+
     public void getCoverImageVersionToUpdate(Integer id, final boolean islocalVersionUpdate, final boolean isLarge) {
         GalePressApplication application = GalePressApplication.getInstance();
         RequestQueue requestQueue = application.getRequestQueue();
@@ -1602,7 +1629,7 @@ public class DataApi extends Object {
         ArrayList<R_Category> categories = r_content.getContentCategories();
         for (int i = 0; i < categories.size(); i++) {
             R_Category r_category = categories.get(i);
-            L_Category l_category = databaseApi.getCategory(r_category.getCategoryID());
+            L_Category l_category = databaseApi.getCategory(r_category.getId());
             L_ContentCategory l_contentCategory = new L_ContentCategory(l_category, l_content);
             getDatabaseApi().createContentCategory(l_contentCategory);
         }
@@ -1742,7 +1769,7 @@ public class DataApi extends Object {
                         try {
                             R_AppCategories rAppCategories = new R_AppCategories(response);
                             for (R_Category category : rAppCategories.getCategories()) {
-                                L_Category localCategory = getDatabaseApi().getCategory(category.getCategoryID());
+                                L_Category localCategory = getDatabaseApi().getCategory(category.getId());
                                 if (localCategory == null) {
                                     localCategory = new L_Category(category);
                                     getDatabaseApi().createCategory(localCategory);
@@ -1756,7 +1783,7 @@ public class DataApi extends Object {
                             for (L_Category l_category : localCategories) {
                                 Boolean deletedInServer = true;
                                 for (R_Category r_category : rAppCategories.getCategories()) {
-                                    if (l_category.getCategoryID().compareTo(r_category.getCategoryID()) == 0) {
+                                    if (l_category.getId().compareTo(r_category.getId()) == 0) {
                                         deletedInServer = false;
                                         break;
                                     }
@@ -2049,12 +2076,12 @@ public class DataApi extends Object {
                             } else {
                                 /*ArrayList<R_Content> temp = new ArrayList<R_Content>();
                                 for(int i = 0; i < 1000; i++) {
-                                    temp.addAll(RAppContents.getContents());
+                                    temp.addAll(RAppContents.getApplications());
 
                                 }
-                                RAppContents.getContents().clear();
-                                RAppContents.getContents().addAll(temp);
-                                RAppContents.getContents().addAll(RAppContents.getContents());*/
+                                RAppContents.getApplications().clear();
+                                RAppContents.getApplications().addAll(temp);
+                                RAppContents.getApplications().addAll(RAppContents.getApplications());*/
                                 for (R_Content content : RAppContents.getContents()) {
                                     L_Content localContent = getDatabaseApi().getContent(content.getContentID());
                                     if (content.isForceDelete()) {
@@ -2194,6 +2221,116 @@ public class DataApi extends Object {
                                 }
                             }
                             Logout.e("Galepress", "DECREMENT");
+                            GalePressApplication.getInstance().decrementRequestCount();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            Logout.e("Galepress", "DECREMENT");
+                            GalePressApplication.getInstance().decrementRequestCount();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        if (error != null && error.getMessage() != null) {
+                            Logout.e("Galepress", "Error : " + error.getMessage());
+                            VolleyLog.e("Error: ", error.getMessage());
+                        }
+
+                        Logout.e("Galepress", "DECREMENT");
+                        GalePressApplication.getInstance().decrementRequestCount();
+                    }
+                }
+        );
+
+        request.setShouldCache(Boolean.FALSE);
+        requestQueue.add(request);
+    }
+
+    public void getCustomerApplicationsAndCategories(){
+        Logout.e("Galepress", "INC");
+        GalePressApplication.getInstance().incrementRequestCount();
+        GalePressApplication application = GalePressApplication.getInstance();
+
+        RequestQueue requestQueue = application.getRequestQueue();
+        int seqNo = requestQueue.getSequenceNumber();
+        JsonObjectRequest request;
+
+        Uri.Builder uriBuilder = getWebServiceUrlBuilder();
+        uriBuilder.appendPath("topic");
+        float scale;
+        try {
+            DisplayMetrics metrics = GalePressApplication.getInstance().getApplicationContext().getResources().getDisplayMetrics();
+            scale = metrics.density > 1 ? metrics.density : 1;
+        } catch (Exception e) {
+            scale = 1;
+        }
+
+        uriBuilder.appendQueryParameter("width", ""+(int) (155 * scale));
+        uriBuilder.appendQueryParameter("width", ""+(int) (206 * scale));
+
+        request = new JsonObjectRequest(Request.Method.POST, uriBuilder.build().toString(), null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            /*
+                            * KATEGORILER
+                            * */
+
+                            R_AppCategories rAppCategories = new R_AppCategories(response);
+                            for (R_Category category : rAppCategories.getCategories()) {
+                                L_Category localCategory = getDatabaseApi().getCategory(category.getId());
+                                if (localCategory == null) {
+                                    localCategory = new L_Category(category);
+                                    getDatabaseApi().createCategory(localCategory);
+                                } else {
+                                    localCategory.updateWithRemoteCategory(category);
+                                    getDatabaseApi().updateCategory(localCategory);
+                                }
+                            }
+                            // Category'nin sunucudan silinmis olmasi durumu icin local category'lerin sunucudan gelenler icinde olup olmadigini kontrol ediyoruz.
+                            List<L_Category> localCategories = databaseApi.getAllCategories();
+                            for (L_Category l_category : localCategories) {
+                                Boolean deletedInServer = true;
+                                for (R_Category r_category : rAppCategories.getCategories()) {
+                                    if (l_category.getId().compareTo(r_category.getId()) == 0) {
+                                        deletedInServer = false;
+                                        break;
+                                    }
+                                }
+                                if (deletedInServer) {
+                                    deleteCategory(l_category);
+                                }
+                            }
+
+                            JSONArray array = response.getJSONArray("applications");
+                            for(int i = 0; i < array.length(); i++){
+                                JSONObject item = (JSONObject) array.get(i);
+                                L_CustomerApplication localCustomer = getDatabaseApi().getCustomerApplication(Integer.valueOf(item.optString("ApplicationID")));
+
+                                L_CustomerApplication customerApplication = new L_CustomerApplication();
+                                customerApplication.setId(item.optString("ApplicationID"));
+                                customerApplication.setAppName(item.optString("ApplicationName"));
+                                customerApplication.setVersion(Integer.valueOf(item.optString("Version")));
+                                customerApplication.setCategories(new ArrayList<ApplicationCategory>());
+                                for(int k = 0; k < item.getJSONArray("Topics").length(); k++){
+                                    JSONObject categoryObject = (JSONObject) item.getJSONArray("Topics").get(k);
+                                    ApplicationCategory category = new ApplicationCategory();
+                                    category.setCoverImageUrl(categoryObject.getString("CoverImageUrl"));
+                                    category.setId(Integer.valueOf(categoryObject.getString("TopicID")));
+                                    customerApplication.getCategories().add(category);
+                                }
+                                customerApplication.setCategoryJson(customerApplication.prepareCategoryIdsJson());
+                                if(localCustomer == null) {
+                                    getDatabaseApi().createCustomerApplication(customerApplication);
+                                } else {
+                                    if(localCustomer.getVersion().intValue() != customerApplication.getVersion().intValue())
+                                        customerApplication.setUpdated(true);
+                                    getDatabaseApi().updateCustomerApplication(customerApplication);
+                                }
+                            }
+
                             GalePressApplication.getInstance().decrementRequestCount();
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -2463,9 +2600,12 @@ public class DataApi extends Object {
                         try {
                             if (response.getString("error").length() == 0 && response.getInt("status") == 0) {
                                 /*
+                                * gp-stand icin Burayi kaldirdim. (MG)
+                                * */
+                                /*
                                 * Islem basarili olursa uygulama update ediliyor. Eger bi degisiklik olursa appversion artiyor kontrol ediliyor.
                                 * */
-                                updateApplication();
+                                //updateApplication();
                             }
                         } catch (Exception e) {
                             Log.e("androidrestore", "parse error :" + response.toString());

@@ -192,13 +192,13 @@ public class ContentDetailPopupActivity extends Activity{
             }
         });
 
-        findViewById(R.id.content_popup_button_layer).setBackgroundColor(ApplicationThemeColor.getInstance().getWhiteColorWithAlpha(80));
+        findViewById(R.id.content_popup_button_layer).setBackgroundColor(ApplicationThemeColor.getInstance().getWhiteColorWithAlpha(90));
 
         //content name ve detail gibi text detaylarinin oldugu layer icin radius
         GradientDrawable gradient =  new GradientDrawable();
         gradient.setCornerRadii(new float[]{0,0,0,0, 2,2,2,2});
-        gradient.setColor(ApplicationThemeColor.getInstance().getWhiteColorWithAlpha(80));
-        gradient.setStroke(0, ApplicationThemeColor.getInstance().getWhiteColorWithAlpha(80));
+        gradient.setColor(ApplicationThemeColor.getInstance().getWhiteColorWithAlpha(90));
+        gradient.setStroke(0, ApplicationThemeColor.getInstance().getWhiteColorWithAlpha(90));
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
             findViewById(R.id.content_detail_layer).setBackground(gradient);
         else
@@ -466,9 +466,6 @@ public class ContentDetailPopupActivity extends Activity{
 
                                     }
                                 }).start();
-                                /*descriptionBase.setY(descriptionTopYClose);
-                                isDescriptionShowing = false;
-                                ((ImageView)findViewById(R.id.popup_swipe_icon)).setImageResource(R.drawable.swipe_open);*/
                             } else {
                                 descriptionBase.animate().y(descriptionTopYOpen).setInterpolator(new AccelerateInterpolator()).setDuration(500).setListener(new Animator.AnimatorListener() {
                                     @Override
@@ -493,9 +490,6 @@ public class ContentDetailPopupActivity extends Activity{
 
                                     }
                                 }).start();
-                                /*descriptionBase.setY(descriptionTopYOpen);
-                                isDescriptionShowing = true;
-                                ((ImageView)findViewById(R.id.popup_swipe_icon)).setImageResource(R.drawable.swipe_close);*/
                             }
                         }
 

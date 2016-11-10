@@ -73,16 +73,9 @@ import ak.detaysoft.galepress.web_views.BannerAndTabbarWebViewWithCrosswalk;
 public class LibraryFragment extends Fragment {
     public ContentHolderAdapter contentHolderAdapter;
     public HeaderGridView gridview;
-    public LinearLayout banner;
-    public BannerAndTabbarWebView bannerWebView;
-    public BannerAndTabbarWebViewWithCrosswalk bannerWebViewWithCrosswalk;
     private LayoutInflater layoutInflater;
     private List contents;
-    L_Category selectedCategory = null;
     private View v;
-    public int selectedCategoryPosition = 0;
-    private int categoriesItemWidth = 0;
-
 
     public final static int BILLING_RESPONSE_RESULT_OK = 0;
     public final static int RESULT_USER_CANCELED = 1;
@@ -93,18 +86,8 @@ public class LibraryFragment extends Fragment {
     public final static int RESULT_ITEM_ALREADY_OWNED = 7;
     public final static int RESULT_ITEM_NOT_OWNED = 8; //For consumable product
 
-
-    private RecyclerView categoryView;
-    private float categoryViewEnableYPosition = 0;
-    private float categoryViewDisableYPosition = 0;
-    private float categoryViewLastYPosition = 0;
-    private CategoryAdapter categoryAdapter;
-    private float lastScrollY = 0;
-    private CustomCategoryRecyclerView mLayoutManager;
-    public RelativeLayout contentHeader;
-    public boolean isHeaderContentIsEnable = false;
-
     private HeaderContentHolder headerContentHolder;
+    private View contentHeader;
 
 
     public LayoutInflater getLayoutInflater() {
@@ -135,30 +118,19 @@ public class LibraryFragment extends Fragment {
         // cihaz orientation degistiginde banner boyutu yeniden ayarlaniyor ve reload ediliyor. (MG)
         if (!getResources().getBoolean(R.bool.portrait_only) &&
                 (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE || newConfig.orientation == Configuration.ORIENTATION_PORTRAIT)) {
-            banner.setLayoutParams(resizeSliderBanner());
             contentHeader.setLayoutParams(resizeHeaderContent());
-            resizeGridPadding();
-            //4.4
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                bannerWebView.reload();
-                bannerWebView.setVisibility(View.INVISIBLE);
-            } else {
-                bannerWebViewWithCrosswalk.reload(XWalkView.RELOAD_NORMAL);
-                bannerWebViewWithCrosswalk.setVisibility(View.INVISIBLE);
-            }
         }
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        outState.putSerializable("selectedCategory", selectedCategory);
-        outState.putInt("selectedCategoryPosition", selectedCategoryPosition);
         super.onSaveInstanceState(outState);
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        GalePressApplication.getInstance().setCurrentFragment(this);
     }
 
     @Override
@@ -166,15 +138,8 @@ public class LibraryFragment extends Fragment {
         this.setLayoutInflater(inflater);
         onViewStateRestored(savedInstanceState);
 
-        if (savedInstanceState != null) {
-            selectedCategory = (L_Category) savedInstanceState.getSerializable("selectedCategory");
-            selectedCategoryPosition = savedInstanceState.getInt("selectedCategoryPosition");
-        }
-
         GalePressApplication.getInstance().setLibraryActivity(this);
         GalePressApplication.getInstance().setCurrentFragment(this);
-/*        if (GalePressApplication.getInstance().getDataApi().isConnectedToInternet())
-            GalePressApplication.getInstance().getDataApi().updateApplication();*/
 
         v = inflater.inflate(R.layout.library_fragment, container, false);
 
@@ -186,162 +151,27 @@ public class LibraryFragment extends Fragment {
                 if (!GalePressApplication.getInstance().getDataApi().isBlockedFromWS) {
 
                     if (gridview.getHeaderViewCount() != 0)
-                        position = position - gridview.getNumColumns() * 2;
+                        position = position - gridview.getNumColumns();
                     int[] values = new int[2];
                     v.getLocationInWindow(values);
                     L_Content content;
-                    if(isHeaderContentIsEnable)
-                        content = (L_Content) contents.get(position+1);
-                    else
-                        content = (L_Content) contents.get(position);
-                    if(isHeaderContentIsEnable){
-                        viewContentDetail(content, values[0] + v.getWidth(), values[1]);
-                    } else {
-                        recreateFragment(true, content.getName());
-                    }
+                    content = (L_Content) contents.get(position+1);
+                    viewContentDetail(content, values[0] + v.getWidth(), values[1]);
                 }
             }
         });
-
-        gridview.setOnScrollListener(new AbsListView.OnScrollListener() {
-
-            @Override
-            public void onScrollStateChanged(AbsListView view, int scrollState) {
-
-                if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE) {
-                    lastScrollY = gridview.computeVerticalScrollOffset();
-                    categoryViewLastYPosition = categoryView.getY();
-                }
-            }
-
-
-            @Override
-            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                if (gridview != null && categoryView != null) {
-                    if (lastScrollY > gridview.computeVerticalScrollOffset()) {
-                        //gorunecek
-                        float scrollDistance = lastScrollY - gridview.computeVerticalScrollOffset();
-                        if (categoryView.getY() <= categoryViewDisableYPosition && categoryView.getY() >= categoryViewEnableYPosition && (categoryViewLastYPosition + scrollDistance * 4) <= categoryViewDisableYPosition) {
-                            categoryView.setY(categoryViewLastYPosition + scrollDistance * 4);
-                        } else {
-                            categoryView.setY(categoryViewDisableYPosition);
-                            lastScrollY = gridview.computeVerticalScrollOffset();
-                            categoryViewLastYPosition = categoryView.getY();
-                        }
-                    } else if (lastScrollY < gridview.computeVerticalScrollOffset()) {
-                        //saklanacak
-                        float scrollDistance = gridview.computeVerticalScrollOffset() - lastScrollY;
-                        if (categoryView.getY() <= categoryViewDisableYPosition && categoryView.getY() >= categoryViewEnableYPosition && (categoryViewLastYPosition - scrollDistance * 4) >= categoryViewEnableYPosition) {
-                            categoryView.setY(categoryViewLastYPosition - scrollDistance * 4);
-                        } else {
-                            categoryView.setY(categoryViewEnableYPosition);
-                            lastScrollY = gridview.computeVerticalScrollOffset();
-                            categoryViewLastYPosition = categoryView.getY();
-                        }
-                    }
-                }
-            }
-        });
-
-        categoryView = (RecyclerView) v.findViewById(R.id.category_slider_recyclerview);
-        categoryView.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
-        mLayoutManager = new CustomCategoryRecyclerView(categoryView, getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        categoryView.setLayoutManager(mLayoutManager);
-        categoryView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-            }
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                if (recyclerView.getScrollState() == RecyclerView.SCROLL_STATE_IDLE) {
-                    categoryAdapter.notifyDataSetChanged();
-                }
-                super.onScrolled(recyclerView, dx, dy);
-
-            }
-        });
-
-        ArrayList<L_Category> categories = new ArrayList<L_Category>();
-        categories.addAll(((MainActivity) getActivity()).getCategoryListWithAll());
-        categoryAdapter = new CategoryAdapter(categories);
-        categoryView.setAdapter(categoryAdapter);
-
-        banner = (LinearLayout) LayoutInflater.from(this.getActivity()).inflate(R.layout.slider_banner, null, false);
-        //4.4
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            bannerWebView = new BannerAndTabbarWebView(this.getActivity());
-            bannerWebView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-            bannerWebView.loadUrl(GalePressApplication.getInstance().getBannerLink());
-            banner.addView(bannerWebView);
-        } else {
-            bannerWebViewWithCrosswalk = new BannerAndTabbarWebViewWithCrosswalk(this.getActivity());
-            bannerWebViewWithCrosswalk.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-            bannerWebViewWithCrosswalk.load(GalePressApplication.getInstance().getBannerLink(), null);
-            banner.addView(bannerWebViewWithCrosswalk);
-        }
-
-        if(selectedCategory == null)
-            selectedCategory = (L_Category) GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent().get(0);
-
-
-        /*
-        * TODO burada cekilen icerige gore kontrol yapilacak eger dergi icerikleri gosteriliyosa buraya content_header eklenecek
-        * ve categoryView disable edilecek ve layoutparamslar ona gore duzenlenecek.
-        * ya content_header olacak yada categoryView
-        * slider simdilik yok kesin eklerler. kod dursun.
-        * */
-        banner.setLayoutParams(resizeSliderBanner());
-        gridview.addHeaderView(banner);
 
         contentHeader = (RelativeLayout) LayoutInflater.from(this.getActivity()).inflate(R.layout.header_content, null, false);
         contentHeader.setLayoutParams(resizeHeaderContent());
         gridview.addHeaderView(contentHeader);
-        resizeGridPadding();
 
-        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(selectedCategory);
+        L_Category category = null;
+        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(category);
         this.contentHolderAdapter = new ContentHolderAdapter(this);
         gridview.setAdapter(this.contentHolderAdapter);
         updateGridView();
 
         return v;
-    }
-
-    public void recreateFragment(boolean isHeaderContentIsEnable, String title){
-        this.isHeaderContentIsEnable = isHeaderContentIsEnable;
-        ((MainActivity) getActivity()).getActionbarTitle().setText(title.toUpperCase());
-        ((MainActivity) getActivity()).getSupportFragmentManager().beginTransaction().detach(((MainActivity) getActivity()).getLibraryFragment()).attach(((MainActivity) getActivity()).getLibraryFragment()).commit();
-    }
-
-    public void updateBanner() {
-        banner.setLayoutParams(resizeSliderBanner());
-        contentHeader.setLayoutParams(resizeHeaderContent());
-        resizeGridPadding();
-        //4.4
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            bannerWebView.loadBannerUrl(GalePressApplication.getInstance().getBannerLink());
-        } else {
-            bannerWebViewWithCrosswalk.loadBannerUrl(GalePressApplication.getInstance().getBannerLink());
-        }
-        gridview.invalidateViews();
-    }
-
-    public void resizeGridPadding() {
-        if (isHeaderContentIsEnable) {
-            categoryView.setVisibility(View.GONE);
-            gridview.setPadding(gridview.getPaddingLeft(),
-                    (int) (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0, getResources().getDisplayMetrics())), gridview.getPaddingRight(), gridview.getPaddingBottom());
-        } else {
-            categoryView.setVisibility(View.VISIBLE);
-            if (GalePressApplication.getInstance().getBannerLink().length() > 0 && GalePressApplication.getInstance().getDataApi().isConnectedToInternet()) {
-                gridview.setPadding(gridview.getPaddingLeft(),
-                        (int) (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())), gridview.getPaddingRight(), gridview.getPaddingBottom());
-            } else {
-                gridview.setPadding(gridview.getPaddingLeft(),
-                        (int) (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50, getResources().getDisplayMetrics())), gridview.getPaddingRight(), gridview.getPaddingBottom());
-            }
-        }
     }
 
     public FrameLayout.LayoutParams resizeHeaderContent() {
@@ -356,68 +186,23 @@ public class LibraryFragment extends Fragment {
 
         FrameLayout.LayoutParams headerContentParams;
 
-        if (isHeaderContentIsEnable) {
-            headerContentParams = new FrameLayout.LayoutParams(headerContentWidth, headerContentHeight);
-        } else {
-            headerContentParams = new FrameLayout.LayoutParams(headerContentWidth, 0);
-        }
+        headerContentParams = new FrameLayout.LayoutParams(headerContentWidth, headerContentHeight);
 
         return headerContentParams;
     }
 
-    public FrameLayout.LayoutParams resizeSliderBanner() {
-        Display display = ((MainActivity) getActivity()).getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        //Banner height degeri her zaman portrait duruma gore ayarlaniyor
-        int heightReference = 0;
-        if (size.x < size.y) {
-            heightReference = size.x
-                    - gridview.getPaddingLeft()
-                    - gridview.getPaddingRight();
-        } else {
-            heightReference = size.y
-                    - gridview.getPaddingLeft()
-                    - gridview.getPaddingRight();
-        }
-
-        int bannerWidth = size.x
-                - gridview.getPaddingLeft()
-                - gridview.getPaddingRight();
-        int bannerHeight = (int) (heightReference * (320f / 740f));
-
-        FrameLayout.LayoutParams bannerParams;
-
-        if (!isHeaderContentIsEnable && GalePressApplication.getInstance().getBannerLink().length() > 0 && GalePressApplication.getInstance().getDataApi().isConnectedToInternet()) {
-            bannerParams = new FrameLayout.LayoutParams(bannerWidth, bannerHeight);
-        } else {
-            bannerParams = new FrameLayout.LayoutParams(bannerWidth, 0);
-        }
-
-        return bannerParams;
-    }
 
     public void updateGridView() {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-
-                contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(selectedCategory);
-                if (isHeaderContentIsEnable) {
-                    initHeaderContent();
-                }
+                L_Category category = null;
+                contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(category);
+                initHeaderContent();
                 contentHolderAdapter.notifyDataSetChanged();
                 if (gridview != null) {
                     gridview.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
                     gridview.invalidateViews();
-                    if (categoryAdapter != null) {
-                        final int scrollDistance = categoriesItemWidth * (selectedCategoryPosition + 1) - categoryView.computeHorizontalScrollOffset() - ApplicationThemeColor.getInstance().getScreenSizes(getActivity()).widthPixels / 2
-                                - categoriesItemWidth / 2;
-                        categoryView.scrollBy(scrollDistance, 0);
-                        categoryAdapter.notifyDataSetChanged();
-                    }
-                    categoryViewEnableYPosition = categoryView.getY() - categoryView.getLayoutParams().height - ((RelativeLayout.LayoutParams) categoryView.getLayoutParams()).topMargin;
-                    categoryViewDisableYPosition = ((RelativeLayout.LayoutParams) categoryView.getLayoutParams()).topMargin;
                 }
             }
         });
@@ -425,7 +210,8 @@ public class LibraryFragment extends Fragment {
 
     public void updateAdapterList(L_Content content, boolean isImagePathChanged) {
 
-        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(selectedCategory);
+        L_Category category = null;
+        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(category);
         ContentHolderAdapter.ViewHolder holder = GalePressApplication.getInstance().getDataApi().getViewHolderForContent(content);
         if (holder != null) {
             if (!content.isPdfDownloading()) {
@@ -479,130 +265,11 @@ public class LibraryFragment extends Fragment {
     }
 
     public List getContents() {
-        if(!isHeaderContentIsEnable)
-            return contents;
-        else {
-            List<L_Content> subContents = new ArrayList<L_Content>();
-            subContents.addAll(contents);
+        List<L_Content> subContents = new ArrayList<L_Content>();
+        subContents.addAll(contents);
+        if(subContents.size() > 0)
             subContents.remove(0);
-            return subContents;
-        }
-    }
-
-
-    /*
-    * LeftMenuCategoryAdapter classinda kullanildi.
-    * https://fabric.io/galepress/android/apps/ak.detaysoft.yeryuzudergidis/issues/56d3205ff5d3a7f76b2cef6d
-    * Seklinde bi hata vardi. selectedCategories null olmasi ihtimaline karsi bende ilk createde oldugu gibi genel kategorisini set ettim
-    * */
-    public void repairSelectedCategory() {
-        //Ilk secilen kategori genel oldugu icin ilk create icin listeye eklendi (MG)
-        if (GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent() != null && GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent().size() > 0) {
-            selectedCategory = (L_Category) GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent().get(0);
-            selectedCategoryPosition = 0;
-            updateGridView();
-        }
-    }
-
-
-    public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyViewHolder> {
-        private ArrayList<L_Category> categories;
-        private CategoryAdapter.MyViewHolder selectedItem;
-
-        public CategoryAdapter(ArrayList<L_Category> searchList) {
-            this.categories = searchList;
-        }
-
-        public class MyViewHolder extends RecyclerView.ViewHolder {
-            public RelativeLayout border;
-            public TextView text;
-            public ImageView icon;
-            public L_Category category;
-            public int position;
-
-            public MyViewHolder(View view) {
-                super(view);
-                border = (RelativeLayout) view.findViewById(R.id.library_category_border);
-                icon = (ImageView) view.findViewById(R.id.library_category_icon);
-                text = (TextView) view.findViewById(R.id.library_category_title);
-                if (position == 0) {
-                    view.setPadding(gridview.getPaddingLeft(), gridview.getPaddingLeft(), 0, gridview.getPaddingLeft());
-                } else {
-                    view.setPadding(0, gridview.getPaddingLeft(), gridview.getPaddingLeft(), gridview.getPaddingLeft());
-                }
-                if (categoriesItemWidth == 0)
-                    categoriesItemWidth = view.getLayoutParams().width;
-                view.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        selectedCategory = categories.get(position);
-                        selectedCategoryPosition = position;
-                        ((MainActivity) getActivity()).choseCategory(position);
-                        if(isHeaderContentIsEnable) {
-                            recreateFragment(false, selectedCategory.getCategoryName());
-                        } else {
-                            updateGridView();
-                        }
-                    }
-                });
-            }
-        }
-
-        // Create new views (invoked by the layout manager)
-        @Override
-        public CategoryAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
-                                                               int viewType) {
-            // create a new view
-            View v = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.library_category_item, parent, false);
-
-            MyViewHolder vh = new MyViewHolder(v);
-            return vh;
-        }
-
-        // Replace the contents of a view (invoked by the layout manager)
-        @Override
-        public void onBindViewHolder(MyViewHolder holder, int position) {
-            // - get element from your dataset at this position
-            // - replace the contents of the view with that element
-            holder.position = position;
-            if (categories.get(position).getCategoryID().intValue() == selectedCategory.getCategoryID().intValue()) {
-                selectedItem = holder;
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                    holder.border.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.library_category_active));
-                else
-                    holder.border.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.library_category_active));
-
-            } else {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                    holder.border.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.library_category_passive));
-                else
-                    holder.border.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.library_category_passive));
-            }
-
-            holder.category = categories.get(position);
-            holder.text.setText(categories.get(position).getCategoryName().toUpperCase());
-            holder.text.setTextColor(Color.WHITE);
-            holder.text.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(getActivity()));
-
-            holder.icon.setScaleType(ImageView.ScaleType.CENTER_CROP);
-
-            DisplayImageOptions options = new DisplayImageOptions.Builder()
-                    .displayer(new RoundedBitmapDisplayer(5))
-                    .build();
-            ImageLoader.getInstance().displayImage("drawable://" + R.drawable.library_category_icon, holder.icon, options);
-
-
-        }
-
-        public MyViewHolder getSelectedItem() {
-            return selectedItem;
-        }
-
-        @Override
-        public int getItemCount() {
-            return categories.size();
-        }
+        return subContents;
     }
 
     public void initHeaderContent() {

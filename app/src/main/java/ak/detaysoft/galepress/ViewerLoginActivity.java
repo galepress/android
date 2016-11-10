@@ -252,7 +252,7 @@ public class ViewerLoginActivity extends Activity {
 
     }
 
-    public void openLibraryFragment(){
+    public void openMainActivity(){
 
         submit.setClickable(true);
         unameField.setEnabled(true);

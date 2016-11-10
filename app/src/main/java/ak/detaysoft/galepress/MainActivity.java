@@ -2,6 +2,7 @@ package ak.detaysoft.galepress;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Fragment;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
@@ -98,6 +99,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     private ImageView searchMenuButton;
     AsyncTask<Void, Void, Void> mRegisterTask;
     public Integer content_id = null;
+    private ArrayList<Fragment> fragmentList;
 
 
     private SlidingMenu leftMenu;
@@ -116,7 +118,8 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
     private Subscription selectedSubscription;
     public ProgressBar searchProgress;
-    private LibraryFragment library;
+    private LibraryFragment libraryFragment;
+    private ApplicationFragment applicationFragment;
     private TextView actionbarTitle;
 
 
@@ -159,11 +162,11 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         if (savedInstanceState != null) {
-            fragmentTransaction.replace(R.id.fragment_container, library, library.getTag()).addToBackStack(null);
+            fragmentTransaction.replace(R.id.fragment_container, applicationFragment, applicationFragment.getTag()).addToBackStack(null);
             fragmentTransaction.commit();
         } else {
-            library = new LibraryFragment();
-            fragmentTransaction.replace(R.id.fragment_container, library, "LIBRARY");
+            applicationFragment = new ApplicationFragment();
+            fragmentTransaction.replace(R.id.fragment_container, applicationFragment, "APPLICATION").addToBackStack(null);
             fragmentTransaction.commit();
         }
 
@@ -201,25 +204,24 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             }
         });
 
-        categoryListWithAll = GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent();
+        categoryListWithAll = GalePressApplication.getInstance().getDatabaseApi().getAllCategories();
         categoryListWithAll.add(0, new L_Category(-1, getResources().getString(R.string.DOWNLOADED).toUpperCase()));
         categoriesListView = (ListView) findViewById(R.id.left_menu_category_list);
 
         categoriesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
+                if(GalePressApplication.getInstance().getCurrentFragment().getTag().equals("LIBRARY")){
+                    getSupportFragmentManager().popBackStack();
+                }
                 hideKeyboard(searchEdittext);
-
-                actionbarTitle.setText(categoryListWithAll.get(position).getCategoryName().toUpperCase());
-                LibraryFragment libraryFragment = getLibraryFragment();
-                libraryFragment.selectedCategory = categoryListWithAll.get(position);
-                libraryFragment.selectedCategoryPosition = position;
-                if(libraryFragment.isHeaderContentIsEnable) {
-                    libraryFragment.isHeaderContentIsEnable = false;
-                    getSupportFragmentManager().beginTransaction().detach(libraryFragment).attach(libraryFragment).commit();
+                actionbarTitle.setText(categoryListWithAll.get(position).getName().toUpperCase());
+                applicationFragment.selectedCategory = categoryListWithAll.get(position);
+                applicationFragment.selectedCategoryPosition = position;
+                if(!GalePressApplication.getInstance().getCurrentFragment().getTag().equals(applicationFragment.getTag())) {
+                    getSupportFragmentManager().beginTransaction().detach(libraryFragment).attach(applicationFragment).commit();
                 } else {
-                    libraryFragment.isHeaderContentIsEnable = false;
-                    libraryFragment.updateGridView();
+                    applicationFragment.updateGridView();
                 }
                 categoriesAdapter.notifyDataSetChanged();
             }
@@ -467,8 +469,10 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
     }
 
+
+
     public void choseCategory(int position) {
-        actionbarTitle.setText(categoryListWithAll.get(position).getCategoryName().toUpperCase());
+        actionbarTitle.setText(categoryListWithAll.get(position).getName().toUpperCase());
         categoriesAdapter.notifyDataSetChanged();
     }
 
@@ -504,7 +508,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         else
             ((ImageView) findViewById(R.id.left_menu_category_icon)).setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_CATEGORY));
 
-        categoryListWithAll = GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent();
+        categoryListWithAll = GalePressApplication.getInstance().getDatabaseApi().getAllCategories();
         categoryListWithAll.add(0, new L_Category(-1, getResources().getString(R.string.DOWNLOADED).toUpperCase()));
 
         categoriesAdapter.setmCategory(categoryListWithAll);
@@ -526,7 +530,8 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
         actionbarTitle.setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
         actionbarTitle.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
-        actionbarTitle.setText(categoryListWithAll.get(1).getCategoryName().toString().toUpperCase());
+        if(categoryListWithAll.get(1) != null)
+            actionbarTitle.setText(categoryListWithAll.get(1).getName().toString().toUpperCase());
 
         ((LinearLayout) findViewById(R.id.custom_actionbar_layout)).setBackgroundColor(ApplicationThemeColor.getInstance().getActionAndTabBarColor());
 
@@ -563,9 +568,9 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         /*
         * forceDelete ile silinen yada pasif hale getirilen icerikler oldugunda gridi update etmek icin yazdim(MG)
         * */
-        if (getLibraryFragment() != null && getLibraryFragment().gridview != null) {
-            getLibraryFragment().gridview.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
-            getLibraryFragment().getContentHolderAdapter().notifyDataSetChanged();
+        if (applicationFragment != null && applicationFragment.gridview != null) {
+            applicationFragment.gridview.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
+            applicationFragment.getContentHolderAdapter().notifyDataSetChanged();
         }
 
     }
@@ -913,58 +918,44 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         super.onDestroy();
     }
 
-    @Override
-    public void onBackPressed() {
-        GalePressApplication.getInstance().destroyBillingServices();
-        try {
-            unregisterReceiver(mConnReceiver);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        super.onBackPressed();
+    public void openLibraryFragment(){
+        libraryFragment = new LibraryFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, libraryFragment, "LIBRARY").addToBackStack(null);
+        fragmentTransaction.commit();
     }
 
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (event.getAction() == KeyEvent.ACTION_DOWN) {
-            switch (keyCode) {
-                case KeyEvent.KEYCODE_BACK:
-                    GalePressApplication.getInstance().destroyBillingServices();
-                    try {
-                        unregisterReceiver(mConnReceiver);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    finish();
-                    return true;
-            }
+    public void onBackPressed() {
 
+        if(getSupportFragmentManager().getBackStackEntryCount() == 1) {
+            GalePressApplication.getInstance().destroyBillingServices();
+            try {
+                unregisterReceiver(mConnReceiver);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            finish();
+        } else {
+            getSupportFragmentManager().popBackStack();
+            actionbarTitle.setText(applicationFragment.selectedCategory.getName().toUpperCase());
         }
-        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onAttachFragment(Fragment fragment) {
+        if(fragmentList == null){
+            fragmentList = new ArrayList<Fragment>();
+            fragmentList.add(fragment);
+        } else {
+            if(fragmentList.get(fragmentList.size()-1).getTag() != null && fragment.getTag().compareTo(fragmentList.get(fragmentList.size()-1).getTag()) != 0)
+                fragmentList.add(fragment);
+        }
     }
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
-        L_Category selectedCategory = null;
-        int selectedCategoryPosition = 0;
-        if (item.getTitle().toString().compareTo(getString(R.string.show_all)) != 0) {
-            List categories = GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent();
-            for (int i = 0; i < categories.size(); i++) {
-                L_Category category = (L_Category) categories.get(i);
-                if (category.getCategoryName().compareTo(item.getTitle().toString()) == 0) {
-                    selectedCategory = category;
-                    selectedCategoryPosition = i;
-                }
-            }
-        } else {
-            selectedCategory = new L_Category(-1, getString(R.string.show_all));
-        }
-        LibraryFragment libraryFragment = getLibraryFragment();
-        libraryFragment.selectedCategory = selectedCategory;
-        libraryFragment.selectedCategoryPosition = selectedCategoryPosition;
-        libraryFragment.isHeaderContentIsEnable = false;
-        libraryFragment.updateGridView();
-
         Logout.e("Galepress", "OnPopUpMenuItem Clicked:" + item.getTitle().toString());
         return true;
     }
@@ -990,7 +981,11 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     }
 
     public LibraryFragment getLibraryFragment() {
-        return library;
+        return libraryFragment;
+    }
+
+    public ApplicationFragment getApplicationFragment() {
+        return applicationFragment;
     }
 
     // Create a broadcast receiver to get message and show on screen

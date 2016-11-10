@@ -1,41 +1,35 @@
 package ak.detaysoft.galepress.service_models;
-
 import org.json.JSONObject;
 
 
 public class R_Category {
 
-    private Integer categoryID;
-    private String categoryName;
+    private Integer id;
+    private String name;
 
 
     public R_Category() {
 
     }
 
-    public R_Category(JSONObject json) {
-
-        this.categoryID = json.optInt("CategoryID");
-        this.categoryName = json.optString("CategoryName");
-
+    public R_Category(JSONObject categoryObject) {
+        this.id = categoryObject.optInt("id");
+        this.name = categoryObject.optString("name");
     }
 
-    public Integer getCategoryID() {
-        return this.categoryID;
+    public Integer getId() {
+        return id;
     }
 
-    public void setCategoryID(Integer categoryID) {
-        this.categoryID = categoryID;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getCategoryName() {
-        return this.categoryName;
+    public String getName() {
+        return name;
     }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    public void setName(String name) {
+        this.name = name;
     }
-
-
-
 }

@@ -47,35 +47,18 @@
             <TextView
                 android:id="@+id/nameLabel"
                 android:text=""
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:textColor="@android:color/darker_gray"
-                android:textSize="13dp"
-                android:gravity="center_horizontal"
+                android:textSize="15dp"
                 android:maxLines="1"
                 android:ellipsize="end"
                 android:lines="1"
                 android:paddingLeft="2dp"
                 android:paddingRight="2dp"
                 android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp" />
-
-            <TextView
-                android:id="@+id/detailLabel"
-                android:text=""
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:textColor="@color/text_color_cyan"
-                android:textSize="10dp"
-                android:gravity="center_horizontal"
-                android:maxLines="1"
-                android:ellipsize="end"
-                android:lines="1"
-                android:paddingLeft="2dp"
-                android:paddingRight="2dp"
-                android:paddingTop="2dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp" />
+                android:layout_marginRight="4dp"
+                android:gravity="center" />
 
         </LinearLayout>
 

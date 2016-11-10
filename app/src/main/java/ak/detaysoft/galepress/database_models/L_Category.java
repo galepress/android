@@ -15,41 +15,41 @@ public class L_Category implements Serializable { //implement serializable (MG) 
     public final static  String ID_FIELD_NAME= "id";
 
     @DatabaseField(id = true, columnName = ID_FIELD_NAME)
-    public Integer categoryID;
+    public Integer id;
 
     @DatabaseField
-    public  String categoryName;
+    public  String name;
 
     public L_Category() {
     }
 
-    public L_Category(Integer categoryID, String categoryName) {
-        this.categoryID = categoryID;
-        this.categoryName = categoryName;
+    public L_Category(Integer id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     public L_Category(R_Category remoteCategory) {
-        this.categoryID = remoteCategory.getCategoryID();
-        this.categoryName =remoteCategory.getCategoryName();
+        this.id = remoteCategory.getId();
+        this.name =remoteCategory.getName();
     }
 
-    public Integer getCategoryID() {
-        return this.categoryID;
+    public Integer getId() {
+        return this.id;
     }
 
-    public void setCategoryID(Integer categoryID) {
-        this.categoryID = categoryID;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getCategoryName() {
-        return this.categoryName;
+    public String getName() {
+        return this.name;
     }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void updateWithRemoteCategory(R_Category remoteCategory){
-        this.categoryName = remoteCategory.getCategoryName();
+        this.name = remoteCategory.getName();
     }
 }

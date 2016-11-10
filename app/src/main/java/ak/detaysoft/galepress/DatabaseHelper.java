@@ -15,6 +15,7 @@ import ak.detaysoft.galepress.database_models.L_Application;
 import ak.detaysoft.galepress.database_models.L_Category;
 import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.database_models.L_ContentCategory;
+import ak.detaysoft.galepress.database_models.L_CustomerApplication;
 import ak.detaysoft.galepress.database_models.L_Statistic;
 
 /**
@@ -23,9 +24,12 @@ import ak.detaysoft.galepress.database_models.L_Statistic;
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     private static final String DATABASE_NAME = "Galepress.db";
-    private static final int DATABASE_VERSION = 13;
+    private static final int DATABASE_VERSION = 14;
 
     // the DAO object we use to access the SimpleData table
+    private Dao<L_CustomerApplication, Integer> customerApplicationDao = null;
+    private RuntimeExceptionDao<L_Category, Integer> customerApplicationRuntimeDao = null;
+
     private Dao<L_Category, Integer> categoriesDao = null;
     private RuntimeExceptionDao<L_Category, Integer> categoriesRuntimeDao = null;
 
@@ -54,6 +58,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     public void onCreate(SQLiteDatabase db, ConnectionSource connectionSource) {
         try {
             Log.i(DatabaseHelper.class.getName(), "onCreate");
+            TableUtils.createTable(connectionSource, L_CustomerApplication.class);
             TableUtils.createTable(connectionSource, L_Category.class);
             TableUtils.createTable(connectionSource, L_Content.class);
             TableUtils.createTable(connectionSource, L_Application.class);
@@ -79,6 +84,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         // TODO: This part must be reconfigured for new versions.
         try {
             Log.i(DatabaseHelper.class.getName(), "onUpgrade");
+            TableUtils.dropTable(connectionSource, L_CustomerApplication.class, true);
             TableUtils.dropTable(connectionSource, L_Category.class, true);
             TableUtils.dropTable(connectionSource, L_Content.class, true);
             TableUtils.dropTable(connectionSource, L_Application.class, true);
@@ -95,6 +101,14 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
      * Returns the Database Access Object (DAO) for our SimpleData class. It will create it or just give the cached
      * value.
      */
+
+    public Dao<L_CustomerApplication, Integer> getcustomerApplicationDao() throws SQLException {
+        if (customerApplicationDao == null) {
+            customerApplicationDao = getDao(L_CustomerApplication.class);
+        }
+        return customerApplicationDao;
+    }
+
 
     public Dao<L_Category, Integer> getCategoriesDao() throws SQLException {
         if (categoriesDao == null) {
@@ -180,6 +194,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     public void close() {
         super.close();
         contentsDao = null;
+        customerApplicationDao = null;
         categoriesDao = null;
         contentCategoryDao = null;
         applicationDao = null;

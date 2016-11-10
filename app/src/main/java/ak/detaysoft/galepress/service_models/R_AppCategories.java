@@ -9,8 +9,6 @@ import java.util.ArrayList;
  * Created by adem on 10/03/14.
  */
 public class R_AppCategories {
-    private Integer status;
-    private String error;
     private ArrayList<R_Category> categories;
 
     public R_AppCategories() {
@@ -18,11 +16,8 @@ public class R_AppCategories {
 
     public R_AppCategories(JSONObject json) {
 
-        this.status = json.optInt("status");
-        this.error = json.optString("error");
-
         this.categories = new ArrayList<R_Category>();
-        JSONArray arrayCategories = json.optJSONArray("Categories");
+        JSONArray arrayCategories = json.optJSONArray("topics");
         if (null != arrayCategories) {
             int contentsLength = arrayCategories.length();
             for (int i = 0; i < contentsLength; i++) {
@@ -32,27 +27,8 @@ public class R_AppCategories {
                 }
             }
         } else {
-            JSONObject item = json.optJSONObject("Categories");
-            if (null != item) {
-                this.categories.add(new R_Category(item));
-            }
+            this.categories.clear();
         }
-    }
-
-    public Integer getStatus() {
-        return this.status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public String getError() {
-        return this.error;
-    }
-
-    public void setError(String error) {
-        this.error = error;
     }
 
     public ArrayList<R_Category> getCategories() {
@@ -63,12 +39,4 @@ public class R_AppCategories {
         this.categories = categories;
     }
 
-    @Override
-    public String toString() {
-        return "R_AppCategories{" +
-                "status=" + status +
-                ", error='" + error + '\'' +
-                ", categories=" + categories +
-                '}';
-    }
 }
