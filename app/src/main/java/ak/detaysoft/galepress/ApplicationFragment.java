@@ -11,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -33,7 +35,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ak.detaysoft.galepress.database_models.L_Category;
-import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.database_models.L_CustomerApplication;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
 import ak.detaysoft.galepress.util.CustomCategoryRecyclerView;
@@ -57,6 +58,7 @@ public class ApplicationFragment extends Fragment {
     L_Category selectedCategory = null;
     public int selectedCategoryPosition = 0;
     private int categoriesItemWidth = 0;
+    public boolean isDownloaded = false;
 
 
     private RecyclerView categoryView;
@@ -74,6 +76,7 @@ public class ApplicationFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.e("oncreate", "applicationFragment");
     }
 
     @Override
@@ -96,16 +99,14 @@ public class ApplicationFragment extends Fragment {
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (!GalePressApplication.getInstance().getDataApi().isBlockedFromWS) {
-
-                    if (gridview.getHeaderViewCount() != 0)
-                        position = position - gridview.getNumColumns();
-                    int[] values = new int[2];
-                    v.getLocationInWindow(values);
-                    L_CustomerApplication application = (L_CustomerApplication) applications.get(position);
-                    ((MainActivity)getActivity()).getActionbarTitle().setText(application.getAppName().toUpperCase());
-                    ((MainActivity)getActivity()).openLibraryFragment();
-                }
+                if (gridview.getHeaderViewCount() != 0)
+                    position = position - gridview.getNumColumns();
+                int[] values = new int[2];
+                v.getLocationInWindow(values);
+                L_CustomerApplication application = (L_CustomerApplication) applications.get(position);
+                ((MainActivity)getActivity()).getActionbarTitle().setText(application.getAppName().toUpperCase());
+                GalePressApplication.getInstance().setSelectedCustomerApplication(application);
+                ((MainActivity)getActivity()).openLibraryFragment();
             }
         });
 
@@ -165,12 +166,6 @@ public class ApplicationFragment extends Fragment {
 
 
         if (GalePressApplication.getInstance().getBannerLink().length() > 0 && GalePressApplication.getInstance().getDataApi().isConnectedToInternet()) {
-            /*
-            * TODO burada cekilen icerige gore kontrol yapilacak eger dergi icerikleri gosteriliyosa buraya content_header eklenecek
-            * ve categoryView disable edilecek ve layoutparamslar ona gore duzenlenecek.
-            * ya content_header olacak yada categoryView
-            * slider simdilik yok kesin eklerler. kod dursun.
-            * */
             banner.setLayoutParams(resizeSliderBanner());
             gridview.addHeaderView(banner);
         }
@@ -203,7 +198,7 @@ public class ApplicationFragment extends Fragment {
         if (selectedCategory == null)
             selectedCategory = (L_Category) GalePressApplication.getInstance().getDatabaseApi().getAllCategories().get(0);
 
-        applications = GalePressApplication.getInstance().getDatabaseApi().getAllCustomerApplicationsByCategory(selectedCategory.getId().intValue());
+        applications = GalePressApplication.getInstance().getDatabaseApi().getAllCustomerApplicationsByCategory(selectedCategory.getId().intValue(), isDownloaded);
         this.contentHolderAdapter = new ApplicationHolderAdapter(this);
         gridview.setAdapter(this.contentHolderAdapter);
         updateGridView();
@@ -248,7 +243,7 @@ public class ApplicationFragment extends Fragment {
             @Override
             public void run() {
 
-                applications = GalePressApplication.getInstance().getDatabaseApi().getAllCustomerApplicationsByCategory(selectedCategory.getId().intValue());
+                applications = GalePressApplication.getInstance().getDatabaseApi().getAllCustomerApplicationsByCategory(selectedCategory.getId().intValue(), isDownloaded);
                 contentHolderAdapter.notifyDataSetChanged();
                 if (gridview != null) {
                     gridview.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
@@ -276,6 +271,7 @@ public class ApplicationFragment extends Fragment {
         if (GalePressApplication.getInstance().getDatabaseApi().getAllCategories() != null && GalePressApplication.getInstance().getDatabaseApi().getAllCategories().size() > 0) {
             selectedCategory = (L_Category) GalePressApplication.getInstance().getDatabaseApi().getAllCategories().get(0);
             selectedCategoryPosition = 0;
+            isDownloaded = false;
             updateGridView();
         }
     }
@@ -345,6 +341,10 @@ public class ApplicationFragment extends Fragment {
                         selectedCategory = categories.get(position);
                         selectedCategoryPosition = position;
                         ((MainActivity) getActivity()).choseCategory(position);
+                        if(selectedCategory.getId().intValue() == -1)
+                            isDownloaded = true;
+                        else
+                            isDownloaded = false;
                         updateGridView();
                     }
                 });

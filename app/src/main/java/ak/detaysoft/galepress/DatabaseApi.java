@@ -18,7 +18,10 @@ import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -123,33 +126,64 @@ public class DatabaseApi {
     }
 
 
-    public List getAllCustomerApplicationsByCategory(int selectedCategoryId)
+    public List getAllCustomerApplicationsByCategory(int selectedCategoryId, boolean isDownloaded)
     {
-        try {
-            List customerList = customerApplicationDao.queryForAll();
-            List returnList = new ArrayList();
-            for(int i = 0; i < customerList.size(); i++){
-                ((L_CustomerApplication)customerList.get(i)).setCategories(new ArrayList<ApplicationCategory>());
+        if(isDownloaded) {
+            List contentList = getdownloadedContents(isDownloaded);
+            Set<Integer> mapList = new HashSet<Integer>();
+            for(int content_counter = 0; content_counter < contentList.size(); content_counter++){
+                L_Content content = (L_Content) contentList.get(content_counter);
+                mapList.add(Integer.valueOf(content.getApplicationId()));
+            }
+
+            List customerApplicationList = new ArrayList();
+            for(Integer mapItem : mapList){
+                L_CustomerApplication application = getCustomerApplication(mapItem);
+                ((L_CustomerApplication)application).setCategories(new ArrayList<ApplicationCategory>());
                 try {
-                    JSONArray categoryArray = new JSONArray(((L_CustomerApplication)customerList.get(i)).getCategoryJson());
+                    JSONArray categoryArray = new JSONArray(((L_CustomerApplication)application).getCategoryJson());
                     for(int categoryIndex = 0; categoryIndex < categoryArray.length(); categoryIndex++){
                         JSONObject categoryObject = (JSONObject) categoryArray.get(categoryIndex);
                         ApplicationCategory applicationCategory = new ApplicationCategory();
                         applicationCategory.setId(categoryObject.optInt("id"));
                         applicationCategory.setCoverImageUrl(categoryObject.optString("coverImageUrl"));
-                        ((L_CustomerApplication)customerList.get(i)).getCategories().add(applicationCategory);
-                        if(applicationCategory.getId().intValue() == selectedCategoryId){
-                            returnList.add(customerList.get(i));
-                        }
+                        ((L_CustomerApplication)application).getCategories().add(applicationCategory);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+                customerApplicationList.add(application);
             }
-            return returnList;
-        } catch (SQLException e) {
-            e.printStackTrace();
+            return customerApplicationList;
+
+        } else {
+            try {
+                List customerList = customerApplicationDao.queryForAll();
+                List returnList = new ArrayList();
+                for(int i = 0; i < customerList.size(); i++){
+                    ((L_CustomerApplication)customerList.get(i)).setCategories(new ArrayList<ApplicationCategory>());
+                    try {
+                        JSONArray categoryArray = new JSONArray(((L_CustomerApplication)customerList.get(i)).getCategoryJson());
+                        for(int categoryIndex = 0; categoryIndex < categoryArray.length(); categoryIndex++){
+                            JSONObject categoryObject = (JSONObject) categoryArray.get(categoryIndex);
+                            ApplicationCategory applicationCategory = new ApplicationCategory();
+                            applicationCategory.setId(categoryObject.optInt("id"));
+                            applicationCategory.setCoverImageUrl(categoryObject.optString("coverImageUrl"));
+                            ((L_CustomerApplication)customerList.get(i)).getCategories().add(applicationCategory);
+                            if(applicationCategory.getId().intValue() == selectedCategoryId){
+                                returnList.add(customerList.get(i));
+                            }
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                return returnList;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
+
         return null;
     }
 
@@ -252,9 +286,9 @@ public class DatabaseApi {
             e.printStackTrace();
         } finally {
             if(updateUI) {
-                if(GalePressApplication.getInstance().getLibraryActivity()!=null){
-                    //GalePressApplication.getInstance().getLibraryActivity().updateGridView();
-                    GalePressApplication.getInstance().getLibraryActivity().updateAdapterList(content, false);
+                if(GalePressApplication.getInstance().getLibraryFragment()!=null){
+                    //GalePressApplication.getInstance().getLibraryFragment().updateGridView();
+                    GalePressApplication.getInstance().getLibraryFragment().updateAdapterList(content, false);
                 }
             }
         }
@@ -270,9 +304,9 @@ public class DatabaseApi {
             e.printStackTrace();
         } finally {
             try{
-                if(GalePressApplication.getInstance().getLibraryActivity()!=null){
-                    //GalePressApplication.getInstance().getLibraryActivity().updateGridView();
-                    GalePressApplication.getInstance().getLibraryActivity().updateAdapterList(content, false);
+                if(GalePressApplication.getInstance().getLibraryFragment()!=null){
+                    //GalePressApplication.getInstance().getLibraryFragment().updateGridView();
+                    GalePressApplication.getInstance().getLibraryFragment().updateAdapterList(content, false);
                 }
             }
             catch (Exception e){
@@ -318,120 +352,26 @@ public class DatabaseApi {
         return contents;
     }
 
-    public List getAllContentsWithSqlQuery(boolean isOnlyDownloaded, String searchQuery, ArrayList<L_Category> categoryList){
+    public List getdownloadedContents(boolean isOnlyDownloaded){
         List contents;
-        if(searchQuery!= null && searchQuery.length() != 0)
-            searchQuery = Normalizer.normalize(searchQuery.trim(), Normalizer.Form.NFD)
-                    .replaceAll("[^\\p{ASCII}]", "");
         try {
-            //KATEGORI LISTESI NULL ISE
-            if(categoryList == null){
-                L_Category generalCategory = getCategory(MainActivity.GENEL_CATEGORY_ID);
-                if(generalCategory != null){
-                    // Genel kategorisine ait contentler listelenecek.
-                    QueryBuilder<L_Content, Integer> contentQuery = contentsDao.queryBuilder();
+            QueryBuilder<L_Content, Integer> contentQuery = contentsDao.queryBuilder();
 
-                    Where where = contentQuery.where();
-
-                    where.like("categoryIds", "%<" + generalCategory.getId() + ">%");
-
-                    if(searchQuery!= null && searchQuery.length() != 0){
-                        where.and();
-                        where.like("name_asc", "%"+searchQuery+"%");
-                    }
-                    if(isOnlyDownloaded){
-                        where.and();
-                        where.eq("isPdfDownloaded", true);
-                    }
-
-                    contentQuery.orderBy("contentOrderNo", false);
-
-                    contents = contentQuery.query();
-                }
-                else {
-                    // Genel kategorisinin olmadigi durumlarda butun contentler listelenir.
-                    QueryBuilder<L_Content, Integer> contentQuery = contentsDao.queryBuilder();
-
-                    if((searchQuery!= null && searchQuery.length() != 0) || isOnlyDownloaded) {
-                        Where where = contentQuery.where();
-                        int andClause = 0;
-                        if(searchQuery!= null && searchQuery.length() != 0){
-                            where.like("name_asc", "%"+searchQuery+"%");
-                            andClause++;
-                        }
-                        if(isOnlyDownloaded){
-                            where.eq("isPdfDownloaded", true);
-                            andClause++;
-                        }
-
-                        if(andClause>1){
-                            where.and(andClause);
-                        }
-                    }
-
-                    contentQuery.orderBy("contentOrderNo", false);
-
-                    contents = contentQuery.query();
-                }
-            }
-
-            //KATEGORI LISTESI BOS ISE
-            else if(categoryList.size() == 0){
-                return new ArrayList<L_Content>();
-            }
-
-            //KATEGORILERIN HEPSI SECILMISSE
-            else if(isSelectedCategoriesContainAll(categoryList)){
-                QueryBuilder<L_Content, Integer> contentQuery = contentsDao.queryBuilder();
-
-                if((searchQuery!= null && searchQuery.length() != 0) || isOnlyDownloaded) {
-                    Where where = contentQuery.where();
-                    int andClause = 0;
-                    if(searchQuery!= null && searchQuery.length() != 0){
-                        where.like("name_asc", "%"+searchQuery+"%");
-                        andClause++;
-                    }
-                    if(isOnlyDownloaded){
-                        if(andClause > 0)
-                            where.and();
-                        where.eq("isPdfDownloaded", true);
-                    }
-                }
-
-                contentQuery.orderBy("contentOrderNo", false);
-
-                contents = contentQuery.query();
-            }
-            //KATEGORILERDEN BIKACI SECILMISSE
-            else {
-                QueryBuilder<L_Content, Integer> contentQuery = contentsDao.queryBuilder();
-
+            if(isOnlyDownloaded) {
                 Where where = contentQuery.where();
-
-
-                //Kategori
-                for(int i = 0 ; i < categoryList.size(); i++){
-                    L_Category item = categoryList.get(i);
-                    where.like("categoryIds", "%<" + item.getId() + ">%");
-                }
-
-                if(categoryList.size() > 1)
-                    where.or(categoryList.size());
-
-
-                if(searchQuery!= null && searchQuery.length() != 0) {
-                    where.and();
-                    where.like("name_asc", "%"+searchQuery+"%");
-                }
+                int andClause = 0;
                 if(isOnlyDownloaded){
-                    where.and();
                     where.eq("isPdfDownloaded", true);
+                    andClause++;
                 }
-
-                contentQuery.orderBy("contentOrderNo", false);
-
-                contents = contentQuery.query();
+                if(andClause>1){
+                    where.and(andClause);
+                }
             }
+
+            contentQuery.orderBy("contentOrderNo", false);
+
+            contents = contentQuery.query();
 
         } catch (SQLException e) {
             return new ArrayList<L_Content>();
@@ -482,6 +422,31 @@ public class DatabaseApi {
 
                 contents = contentQuery.query();
             }
+
+        } catch (SQLException e) {
+            return new ArrayList<L_Content>();
+        }
+        return contents;
+    }
+
+
+    public List getAllContentsForApplicationId(final String applicationId, final boolean isOnlyDownloaded){
+        List contents;
+        try {
+            // Genel kategorisine ait contentler listelenecek.
+            QueryBuilder<L_Content, Integer> contentQuery = contentsDao.queryBuilder();
+
+            Where where = contentQuery.where();
+            if(isOnlyDownloaded){
+                where.eq("isPdfDownloaded", true);
+                where.and();
+            }
+            where.eq("applicationId", applicationId);
+            where.and();
+
+            contentQuery.orderBy("contentOrderNo", false);
+
+            contents = contentQuery.query();
 
         } catch (SQLException e) {
             return new ArrayList<L_Content>();

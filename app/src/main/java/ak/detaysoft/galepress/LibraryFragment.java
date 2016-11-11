@@ -74,7 +74,8 @@ public class LibraryFragment extends Fragment {
     public ContentHolderAdapter contentHolderAdapter;
     public HeaderGridView gridview;
     private LayoutInflater layoutInflater;
-    private List contents;
+    public boolean isDownloaded = false;
+    public List contents;
     private View v;
 
     public final static int BILLING_RESPONSE_RESULT_OK = 0;
@@ -88,7 +89,6 @@ public class LibraryFragment extends Fragment {
 
     private HeaderContentHolder headerContentHolder;
     private View contentHeader;
-
 
     public LayoutInflater getLayoutInflater() {
         return layoutInflater;
@@ -106,6 +106,7 @@ public class LibraryFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        Log.e("oncreate", "libraryfragment");
         if (((MainActivity) this.getActivity()).content_id != null) {
             viewContent(GalePressApplication.getInstance().getDatabaseApi().getContent(((MainActivity) this.getActivity()).content_id));
             ((MainActivity) this.getActivity()).content_id = null;
@@ -141,9 +142,12 @@ public class LibraryFragment extends Fragment {
         GalePressApplication.getInstance().setLibraryActivity(this);
         GalePressApplication.getInstance().setCurrentFragment(this);
 
+        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsForApplicationId(GalePressApplication.getInstance().getSelectedCustomerApplication().getId(), isDownloaded);
         v = inflater.inflate(R.layout.library_fragment, container, false);
 
         gridview = (HeaderGridView) v.findViewById(R.id.gridview);
+        if(contents == null || contents.size() == 0)
+            v.findViewById(R.id.library_mask_view).setVisibility(View.VISIBLE);
         gridview.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -155,7 +159,11 @@ public class LibraryFragment extends Fragment {
                     int[] values = new int[2];
                     v.getLocationInWindow(values);
                     L_Content content;
-                    content = (L_Content) contents.get(position+1);
+                    if(!isDownloaded)
+                        content = (L_Content) contents.get(position+1);
+                    else {
+                        content = (L_Content) contents.get(position);
+                    }
                     viewContentDetail(content, values[0] + v.getWidth(), values[1]);
                 }
             }
@@ -163,13 +171,15 @@ public class LibraryFragment extends Fragment {
 
         contentHeader = (RelativeLayout) LayoutInflater.from(this.getActivity()).inflate(R.layout.header_content, null, false);
         contentHeader.setLayoutParams(resizeHeaderContent());
-        gridview.addHeaderView(contentHeader);
+        if(!isDownloaded)
+            gridview.addHeaderView(contentHeader);
 
-        L_Category category = null;
-        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(category);
         this.contentHolderAdapter = new ContentHolderAdapter(this);
         gridview.setAdapter(this.contentHolderAdapter);
         updateGridView();
+
+        GalePressApplication.getInstance().getDataApi().getApplicationContents(GalePressApplication.getInstance().getSelectedCustomerApplication().getId()
+                , String.valueOf(GalePressApplication.getInstance().getApplicationFragment().selectedCategory.getId()));
 
         return v;
     }
@@ -196,22 +206,24 @@ public class LibraryFragment extends Fragment {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-                L_Category category = null;
-                contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(category);
-                initHeaderContent();
+                contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsForApplicationId(GalePressApplication.getInstance().getSelectedCustomerApplication().getId(), isDownloaded);
+                if(!isDownloaded)
+                    initHeaderContent();
                 contentHolderAdapter.notifyDataSetChanged();
                 if (gridview != null) {
                     gridview.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
                     gridview.invalidateViews();
                 }
+
+                if(contents != null && contents.size() > 0)
+                    v.findViewById(R.id.library_mask_view).setVisibility(View.GONE);
             }
         });
     }
 
     public void updateAdapterList(L_Content content, boolean isImagePathChanged) {
 
-        L_Category category = null;
-        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsWithSqlQuery(category);
+        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsForApplicationId(GalePressApplication.getInstance().getSelectedCustomerApplication().getId(), isDownloaded);
         ContentHolderAdapter.ViewHolder holder = GalePressApplication.getInstance().getDataApi().getViewHolderForContent(content);
         if (holder != null) {
             if (!content.isPdfDownloading()) {
@@ -265,11 +277,18 @@ public class LibraryFragment extends Fragment {
     }
 
     public List getContents() {
-        List<L_Content> subContents = new ArrayList<L_Content>();
-        subContents.addAll(contents);
-        if(subContents.size() > 0)
-            subContents.remove(0);
-        return subContents;
+
+        if(!isDownloaded){
+            List<L_Content> subContents = new ArrayList<L_Content>();
+            subContents.addAll(contents);
+            if(subContents.size() > 0)
+                subContents.remove(0);
+            return subContents;
+        } else {
+            return contents;
+        }
+
+
     }
 
     public void initHeaderContent() {

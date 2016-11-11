@@ -39,6 +39,7 @@ public class LaunchActivity extends ActionBarActivity implements  XWalkInitializ
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.e("oncreate", "launch");
 
         XWalkInitializer mXWalkInitializer = new XWalkInitializer(this, this);
         mXWalkInitializer.initAsync();

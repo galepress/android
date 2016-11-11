@@ -5,13 +5,13 @@
     android:layout_height="match_parent"
     tools:ignore="HardcodedText">
 
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/fragment_container"
         android:orientation="vertical"
         android:layout_marginTop="@dimen/actionbar_height"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </LinearLayout>
+    </FrameLayout>
 </RelativeLayout>
 

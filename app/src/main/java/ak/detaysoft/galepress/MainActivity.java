@@ -133,6 +133,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.e("oncreate", "mainActivity");
 
         Intent intent = getIntent();
         if (intent.hasExtra("content_id")) {
@@ -161,14 +162,9 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        if (savedInstanceState != null) {
-            fragmentTransaction.replace(R.id.fragment_container, applicationFragment, applicationFragment.getTag()).addToBackStack(null);
-            fragmentTransaction.commit();
-        } else {
-            applicationFragment = new ApplicationFragment();
-            fragmentTransaction.replace(R.id.fragment_container, applicationFragment, "APPLICATION").addToBackStack(null);
-            fragmentTransaction.commit();
-        }
+        applicationFragment = new ApplicationFragment();
+        fragmentTransaction.add(R.id.fragment_container, applicationFragment, "APPLICATION").addToBackStack(null);
+        fragmentTransaction.commit();
 
         leftMenu = new SlidingMenu(this);
         leftMenu.setMode(SlidingMenu.LEFT_RIGHT);
@@ -215,8 +211,14 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                     getSupportFragmentManager().popBackStack();
                 }
                 hideKeyboard(searchEdittext);
+                GalePressApplication.getInstance().setSelectedCustomerApplication(null);
+                GalePressApplication.getInstance().setLibraryActivity(null);
                 actionbarTitle.setText(categoryListWithAll.get(position).getName().toUpperCase());
                 applicationFragment.selectedCategory = categoryListWithAll.get(position);
+                if(applicationFragment.selectedCategory.getId().intValue() == -1)
+                    applicationFragment.isDownloaded = true;
+                else
+                    applicationFragment.isDownloaded = false;
                 applicationFragment.selectedCategoryPosition = position;
                 if(!GalePressApplication.getInstance().getCurrentFragment().getTag().equals(applicationFragment.getTag())) {
                     getSupportFragmentManager().beginTransaction().detach(libraryFragment).attach(applicationFragment).commit();
@@ -472,6 +474,8 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
 
     public void choseCategory(int position) {
+        GalePressApplication.getInstance().setSelectedCustomerApplication(null);
+        GalePressApplication.getInstance().setLibraryActivity(null);
         actionbarTitle.setText(categoryListWithAll.get(position).getName().toUpperCase());
         categoriesAdapter.notifyDataSetChanged();
     }
@@ -526,7 +530,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             listHeight += (int) getResources().getDimension(R.dimen.menu_category_item_size);
         }
         categoriesListView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listHeight));
-
 
         actionbarTitle.setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
         actionbarTitle.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
@@ -920,10 +923,12 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
     public void openLibraryFragment(){
         libraryFragment = new LibraryFragment();
+        libraryFragment.isDownloaded = applicationFragment.isDownloaded;
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container, libraryFragment, "LIBRARY").addToBackStack(null);
+        fragmentTransaction.add(R.id.fragment_container, libraryFragment, "LIBRARY").addToBackStack(null);
         fragmentTransaction.commit();
+
     }
 
     @Override
@@ -939,6 +944,8 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             finish();
         } else {
             getSupportFragmentManager().popBackStack();
+            GalePressApplication.getInstance().setSelectedCustomerApplication(null);
+            GalePressApplication.getInstance().setLibraryActivity(null);
             actionbarTitle.setText(applicationFragment.selectedCategory.getName().toUpperCase());
         }
     }

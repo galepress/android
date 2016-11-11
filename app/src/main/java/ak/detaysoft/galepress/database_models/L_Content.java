@@ -61,6 +61,7 @@ public class L_Content implements Serializable {
     @DatabaseField private String marketPrice;
     @DatabaseField private boolean contentBought;
     @DatabaseField private boolean contentStatus;
+    @DatabaseField private String applicationId;
 
     private ArrayList<L_Category> categories;
     private String pdfPath;
@@ -401,7 +402,15 @@ public class L_Content implements Serializable {
         this.contentStatus = contentStatus;
     }
 
-// Model Methods
+    public String getApplicationId() {
+        return applicationId;
+    }
+
+    public void setApplicationId(String applicationId) {
+        this.applicationId = applicationId;
+    }
+
+    // Model Methods
 
     public L_Content(R_ContentDetail remoteContent){
         this.id = remoteContent.getContentID();
@@ -546,6 +555,7 @@ public class L_Content implements Serializable {
                 ", isOwnedProduct=" + isOwnedProduct +
                 ", categoryIds='" + categoryIds+'\''+
                 ", marketPrice='"+marketPrice+'\''+
+                ", applicationId='"+applicationId+'\''+
                 '}';
     }
 }

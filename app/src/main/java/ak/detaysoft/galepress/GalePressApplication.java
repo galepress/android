@@ -84,6 +84,7 @@ public class GalePressApplication
     private ApplicationFragment applicationFragment;
     private Fragment currentFragment;
     private int requestCount;
+    private int contentRequestCount;
 
     //Global request queue for Volley
     private RequestQueue mRequestQueue;
@@ -147,7 +148,6 @@ public class GalePressApplication
     private ArrayList<MenuSearchResult> menuSearchResult;
     private String searchQuery;
 
-    private ArrayList<L_CustomerApplication> customerApplications;
     private L_CustomerApplication selectedCustomerApplication;
 
     Foreground.Listener myListener = new Foreground.Listener() {
@@ -192,6 +192,7 @@ public class GalePressApplication
     @Override
     public void onCreate() {
         super.onCreate();
+        Log.e("oncreate", "galepressApplication");
 
         Fabric.with(this, new Crashlytics());
 
@@ -247,6 +248,7 @@ public class GalePressApplication
         mEditor = mPrefs.edit();
         mLocationClient = new LocationClient(this, this, this);
         requestCount = -101;
+        contentRequestCount = -101;
     }
 
     public void destroyBillingServices() {
@@ -514,7 +516,7 @@ public class GalePressApplication
             return false;
     }
 
-    public LibraryFragment getLibraryActivity() {
+    public LibraryFragment getLibraryFragment() {
         return libraryFragment;
     }
 
@@ -589,7 +591,7 @@ public class GalePressApplication
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
         if (connectionResult.hasResolution()) {
-            //connectionResult.startResolutionForResult(this.getLibraryActivity(),LocationUtils.CONNECTION_FAILURE_RESOLUTION_REQUEST);
+            //connectionResult.startResolutionForResult(this.getLibraryFragment(),LocationUtils.CONNECTION_FAILURE_RESOLUTION_REQUEST);
             Logout.e("Galepress", "startResolutionForResult: ");
         } else {
             Logout.e("Galepress", "Error Code : " + connectionResult.getErrorCode());
@@ -620,6 +622,39 @@ public class GalePressApplication
 
     public void decrementRequestCount() {
         setRequestCount(getRequestCount() - 1);
+    }
+
+
+
+    public void setContentRequestCount(int contentRequestCount) {
+
+        if (contentRequestCount == 0) {
+            if(GalePressApplication.getInstance().getMainActivity() != null
+                    && GalePressApplication.getInstance().getLibraryFragment() != null
+                    && GalePressApplication.getInstance().getCurrentFragment() != null
+                    && GalePressApplication.getInstance().getLibraryFragment().getTag().equals(GalePressApplication.getInstance().getCurrentFragment().getTag())) {
+                GalePressApplication.getInstance().getLibraryFragment().updateGridView();
+            }
+        }
+        if (contentRequestCount == -100) {
+            contentRequestCount = 1;
+            // contentRequestCount ilk kez initialize ediliyor. O olsaydi bitmis gibi gorunebilirdi. -101 ile initialize ettim.
+        }
+        this.contentRequestCount = contentRequestCount;
+        Logout.e("Galepress", "***contentRequest count : " + this.contentRequestCount);
+
+    }
+
+    public int getContentRequestCount() {
+        return contentRequestCount;
+    }
+
+    public void incrementContentRequestCount() {
+        setContentRequestCount(getContentRequestCount() + 1);
+    }
+
+    public void decrementContentRequestCount() {
+        setContentRequestCount(getContentRequestCount() - 1);
     }
 
     public Activity getCurrentActivity() {
@@ -1301,5 +1336,13 @@ public class GalePressApplication
 
     public void setSearchQuery(String searchQuery) {
         this.searchQuery = searchQuery;
+    }
+
+    public L_CustomerApplication getSelectedCustomerApplication() {
+        return selectedCustomerApplication;
+    }
+
+    public void setSelectedCustomerApplication(L_CustomerApplication selectedCustomerApplication) {
+        this.selectedCustomerApplication = selectedCustomerApplication;
     }
 }

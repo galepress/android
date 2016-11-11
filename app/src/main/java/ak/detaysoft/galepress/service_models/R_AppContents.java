@@ -45,6 +45,21 @@ public class R_AppContents {
 
     }
 
+    public R_AppContents(JSONArray json) {
+
+        this.contents = new ArrayList<R_Content>();
+        if (null != json) {
+            int contentsLength = json.length();
+            for (int i = 0; i < contentsLength; i++) {
+                JSONObject item = json.optJSONObject(i);
+                if (null != item) {
+                    this.contents.add(new R_Content(item));
+                }
+            }
+        }
+
+    }
+
     public Integer getStatus() {
         return this.status;
     }

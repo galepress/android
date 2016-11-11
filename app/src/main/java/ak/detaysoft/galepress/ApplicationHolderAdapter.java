@@ -91,23 +91,43 @@ public class ApplicationHolderAdapter extends BaseAdapter {
         viewHolder.nameLabel.setTextColor(ApplicationThemeColor.getInstance().getGridItemNameLabelColor());
         viewHolder.downloadPercentage.setTextColor(ApplicationThemeColor.getInstance().getGridItemDetailLabelColor());
 
-        for (ApplicationCategory category : application.getCategories()){
-            if(applicationFragment.selectedCategory.getId().intValue() == category.getId().intValue()){
-                File coverImageFile = new File(GalePressApplication.getInstance().getFilesDir(), application.getId()+"_"+category.getId());
-                if(application.isUpdated()){
+        if(applicationFragment.isDownloaded) {
+            /*
+            * Uygulama kategorilerinden ilk cover image gosteriliyor.
+            * */
+            ApplicationCategory category = application.getCategories().get(0);
+            File coverImageFile = new File(GalePressApplication.getInstance().getFilesDir(), application.getId()+"_"+category.getId());
+            if(application.isUpdated()){
+                displayImage(true, viewHolder.coverImageView, viewHolder.loading, category.getCoverImageUrl(), application.getId()+"_"+category.getId(), application);
+            } else {
+                if(coverImageFile.exists()){
+                    displayImage(false, viewHolder.coverImageView, viewHolder.loading, "file://"+coverImageFile.getPath(), application.getId()+"_"+category.getId(), application);
+                } else if (category.getCoverImageUrl() != null){
                     displayImage(true, viewHolder.coverImageView, viewHolder.loading, category.getCoverImageUrl(), application.getId()+"_"+category.getId(), application);
                 } else {
-                    if(coverImageFile.exists()){
-                        displayImage(false, viewHolder.coverImageView, viewHolder.loading, "file://"+coverImageFile.getPath(), application.getId()+"_"+category.getId(), application);
-                    } else if (category.getCoverImageUrl() != null){
+                    Log.e("imageDisplayed", "noimage");
+                }
+            }
+        } else {
+            for (ApplicationCategory category : application.getCategories()){
+                if(applicationFragment.selectedCategory.getId().intValue() == category.getId().intValue()){
+                    File coverImageFile = new File(GalePressApplication.getInstance().getFilesDir(), application.getId()+"_"+category.getId());
+                    if(application.isUpdated()){
                         displayImage(true, viewHolder.coverImageView, viewHolder.loading, category.getCoverImageUrl(), application.getId()+"_"+category.getId(), application);
                     } else {
-                        Log.e("imageDisplayed", "noimage");
+                        if(coverImageFile.exists()){
+                            displayImage(false, viewHolder.coverImageView, viewHolder.loading, "file://"+coverImageFile.getPath(), application.getId()+"_"+category.getId(), application);
+                        } else if (category.getCoverImageUrl() != null){
+                            displayImage(true, viewHolder.coverImageView, viewHolder.loading, category.getCoverImageUrl(), application.getId()+"_"+category.getId(), application);
+                        } else {
+                            Log.e("imageDisplayed", "noimage");
+                        }
                     }
-                }
 
+                }
             }
         }
+
 
         viewHolder.nameLabel.setText(application.getAppName());
         viewHolder.nameLabel.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(applicationFragment.getActivity()));
