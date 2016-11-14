@@ -23,7 +23,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -34,6 +33,7 @@ import org.xwalk.core.XWalkView;
 import java.util.ArrayList;
 import java.util.List;
 
+import ak.detaysoft.galepress.database_models.L_ApplicationCategory;
 import ak.detaysoft.galepress.database_models.L_Category;
 import ak.detaysoft.galepress.database_models.L_CustomerApplication;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
@@ -103,8 +103,8 @@ public class ApplicationFragment extends Fragment {
                     position = position - gridview.getNumColumns();
                 int[] values = new int[2];
                 v.getLocationInWindow(values);
-                L_CustomerApplication application = (L_CustomerApplication) applications.get(position);
-                ((MainActivity)getActivity()).getActionbarTitle().setText(application.getAppName().toUpperCase());
+                L_ApplicationCategory application = (L_ApplicationCategory) applications.get(position);
+                ((MainActivity)getActivity()).getActionbarTitle().setText(application.getApplication().getAppName().toUpperCase());
                 GalePressApplication.getInstance().setSelectedCustomerApplication(application);
                 ((MainActivity)getActivity()).openLibraryFragment();
             }
@@ -198,7 +198,7 @@ public class ApplicationFragment extends Fragment {
         if (selectedCategory == null)
             selectedCategory = (L_Category) GalePressApplication.getInstance().getDatabaseApi().getAllCategories().get(0);
 
-        applications = GalePressApplication.getInstance().getDatabaseApi().getAllCustomerApplicationsByCategory(selectedCategory.getId().intValue(), isDownloaded);
+        applications = GalePressApplication.getInstance().getDatabaseApi().getApplicationCategoryByCategory(selectedCategory, isDownloaded);
         this.contentHolderAdapter = new ApplicationHolderAdapter(this);
         gridview.setAdapter(this.contentHolderAdapter);
         updateGridView();
@@ -243,7 +243,7 @@ public class ApplicationFragment extends Fragment {
             @Override
             public void run() {
 
-                applications = GalePressApplication.getInstance().getDatabaseApi().getAllCustomerApplicationsByCategory(selectedCategory.getId().intValue(), isDownloaded);
+                applications = GalePressApplication.getInstance().getDatabaseApi().getApplicationCategoryByCategory(selectedCategory, isDownloaded);
                 contentHolderAdapter.notifyDataSetChanged();
                 if (gridview != null) {
                     gridview.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());

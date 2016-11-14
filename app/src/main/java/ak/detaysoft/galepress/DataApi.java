@@ -74,9 +74,9 @@ import java.util.concurrent.ExecutionException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import ak.detaysoft.galepress.custom_models.ApplicationCategory;
 import ak.detaysoft.galepress.custom_models.ApplicationIds;
 import ak.detaysoft.galepress.database_models.L_Application;
+import ak.detaysoft.galepress.database_models.L_ApplicationCategory;
 import ak.detaysoft.galepress.database_models.L_Category;
 import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.database_models.L_ContentCategory;
@@ -2778,6 +2778,7 @@ public class DataApi extends Object {
                             }
                             // Category'nin sunucudan silinmis olmasi durumu icin local category'lerin sunucudan gelenler icinde olup olmadigini kontrol ediyoruz.
                             List<L_Category> localCategories = databaseApi.getAllCategories();
+
                             for (L_Category l_category : localCategories) {
                                 Boolean deletedInServer = true;
                                 for (R_Category r_category : rAppCategories.getCategories()) {
@@ -2786,38 +2787,72 @@ public class DataApi extends Object {
                                         break;
                                     }
                                 }
+                                /*
+                                * Kategori ve kategorinin uygulamalari siliniyor
+                                * */
                                 if (deletedInServer) {
+                                    List<L_ApplicationCategory> categoryApplications = databaseApi.getApplicationCategoryByCategory(l_category);
+                                    for(L_ApplicationCategory app : categoryApplications){
+                                        getDatabaseApi().deleteApplicationCategory(app);
+                                        File coverImageFile = new File(GalePressApplication.getInstance().getFilesDir()
+                                                , app.getApplication().getId()+"_"+app.getCategory().getId());
+                                        if(coverImageFile.exists())
+                                            coverImageFile.delete();
+                                    }
                                     deleteCategory(l_category);
                                 }
                             }
 
+                            /*
+                            * UYGULAMALAR
+                            * */
                             JSONArray array = response.getJSONArray("applications");
                             for(int i = 0; i < array.length(); i++){
                                 JSONObject item = (JSONObject) array.get(i);
-                                L_CustomerApplication localCustomer = getDatabaseApi().getCustomerApplication(Integer.valueOf(item.optString("ApplicationID")));
 
-                                L_CustomerApplication customerApplication = new L_CustomerApplication();
-                                customerApplication.setId(item.optString("ApplicationID"));
-                                customerApplication.setAppName(item.optString("ApplicationName"));
-                                customerApplication.setVersion(Integer.valueOf(item.optString("Version")));
-                                customerApplication.setCategories(new ArrayList<ApplicationCategory>());
+
+                                L_CustomerApplication remoteApplication = new L_CustomerApplication();
+                                remoteApplication.setId(item.optString("ApplicationID"));
+                                remoteApplication.setAppName(item.optString("ApplicationName"));
+                                remoteApplication.setVersion(Integer.valueOf(item.optString("Version")));
+
+                                L_CustomerApplication localApplication = getDatabaseApi().getCustomerApplication(Integer.valueOf(item.optString("ApplicationID")));
+                                if(localApplication == null) {
+                                    getDatabaseApi().createCustomerApplication(remoteApplication);
+                                } else {
+                                    if(remoteApplication.getVersion().intValue() != localApplication.getVersion().intValue()){
+
+                                    }
+                                    remoteApplication.setAppName("xx");
+                                    getDatabaseApi().updateCustomerApplication(remoteApplication);
+                                }
+
                                 for(int k = 0; k < item.getJSONArray("Topics").length(); k++){
                                     JSONObject categoryObject = (JSONObject) item.getJSONArray("Topics").get(k);
-                                    ApplicationCategory category = new ApplicationCategory();
-                                    category.setCoverImageUrl(categoryObject.getString("CoverImageUrl"));
-                                    category.setId(Integer.valueOf(categoryObject.getString("TopicID")));
-                                    customerApplication.getCategories().add(category);
-                                }
-                                customerApplication.setCategoryJson(customerApplication.prepareCategoryIdsJson());
-                                if(localCustomer == null) {
-                                    getDatabaseApi().createCustomerApplication(customerApplication);
-                                } else {
-                                    if(localCustomer.getVersion().intValue() != customerApplication.getVersion().intValue())
-                                        customerApplication.setUpdated(true);
-                                    getDatabaseApi().updateCustomerApplication(customerApplication);
-                                }
-                            }
+                                    L_Category category = getDatabaseApi().getCategory(Integer.valueOf(categoryObject.getString("TopicID")));
+                                    L_ApplicationCategory local = getDatabaseApi().getApplicationCategory(remoteApplication, category);
 
+                                    L_ApplicationCategory remote = new L_ApplicationCategory();
+                                    remote.setApplication(remoteApplication);
+                                    remote.setCoverImageUrl(categoryObject.getString("CoverImageUrl"));
+                                    remote.setOrder(k);
+                                    remote.setUpdated(false);
+                                    remote.setCategory(category);
+
+                                    if(local == null) {
+                                        getDatabaseApi().createApplicationCategory(remote);
+                                    } else {
+                                        if(local.getApplication().getVersion().intValue() != remote.getApplication().getVersion().intValue())
+                                            remote.setUpdated(true);
+                                        getDatabaseApi().updateApplicationCategory(remote);
+                                    }
+                                }
+
+
+                                /**
+                                 * TODO burada servisten gelemeyen ama localde olan uygulama kategorileri silinecek
+                                 * */
+                            }
 
                             // serverdan gelmeyen lokal uygulamalari siliyoruz.
                             List<L_CustomerApplication> localCustomerApplications = databaseApi.getAllCustomerApplications();
@@ -2831,13 +2866,15 @@ public class DataApi extends Object {
                                     }
                                 }
                                 if (deletedInServer) {
-                                    getDatabaseApi().deleteCustomerApplication(l_CustomerApplication);
-                                    for (int category = 0; category < l_CustomerApplication.getCategories().size(); category++) {
+                                    List<L_ApplicationCategory> categoryApplications = databaseApi.getApplicationCategoryByApplication(l_CustomerApplication);
+                                    for(L_ApplicationCategory app : categoryApplications){
+                                        getDatabaseApi().deleteApplicationCategory(app);
                                         File coverImageFile = new File(GalePressApplication.getInstance().getFilesDir()
-                                                , l_CustomerApplication.getId()+"_"+l_CustomerApplication.getCategories().get(category).getId());
+                                                , app.getApplication().getId()+"_"+app.getCategory().getId());
                                         if(coverImageFile.exists())
                                             coverImageFile.delete();
                                     }
+                                    getDatabaseApi().deleteCustomerApplication(l_CustomerApplication);
                                 }
                             }
                             GalePressApplication.getInstance().decrementRequestCount();
@@ -2890,12 +2927,11 @@ public class DataApi extends Object {
                                 L_Content localContent = getDatabaseApi().getContent(content.getContentID());
                                 if (content.isForceDelete()) {
                                     if (localContent != null && !localContent.isContentBought()) {
-                                        removeAllConCatsForContent(localContent);
                                         deleteContent(localContent);
                                         numberOfContentWillBeUpdated++;
                                     }
                                 } else {
-                                    if (GalePressApplication.getInstance().isTestApplication() || (content.getContentStatus() && !content.getContentBlocked())) {
+                                    if (content.getContentStatus() && !content.getContentBlocked()) {
                                         Integer remoteContentVersion = content.getContentVersion();
                                         if (localContent == null || (localContent.getVersion() < remoteContentVersion)) {
                                             // Content updating
@@ -2912,7 +2948,7 @@ public class DataApi extends Object {
                             }
 
                             // Content'in sunucudan silinmis olmasi durumu icin local content'lerin sunucudan gelenler icinde olup olmadigini kontrol ediyoruz.
-                            List<L_Content> localContents = databaseApi.getAllContents(null);
+                            List<L_Content> localContents = databaseApi.getAllContentsForApplicationId(applicationId, false);
                             for (L_Content l_content : localContents) {
                                 Boolean deletedInServer = true;
                                 for (R_Content r_content : RAppContents.getContents()) {
@@ -3070,7 +3106,7 @@ public class DataApi extends Object {
         requestQueue.add(request);
     }
 
-    public void saveApplicationCoverImage(Bitmap bitmap, String fileName, L_CustomerApplication application) {
+    public void saveApplicationCoverImage(Bitmap bitmap, String fileName, L_ApplicationCategory application) {
         File f = new File(GalePressApplication.getInstance().getFilesDir(), fileName);
         try {
             f.createNewFile();
@@ -3085,7 +3121,7 @@ public class DataApi extends Object {
             fos.flush();
             fos.close();
             application.setUpdated(false);
-            getDatabaseApi().updateCustomerApplication(application);
+            getDatabaseApi().updateApplicationCategory(application);
         } catch (Exception e) {
             f.delete();
         }

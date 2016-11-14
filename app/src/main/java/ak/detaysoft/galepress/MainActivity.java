@@ -533,8 +533,15 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
         actionbarTitle.setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
         actionbarTitle.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
-        if(categoryListWithAll.get(1) != null)
-            actionbarTitle.setText(categoryListWithAll.get(1).getName().toString().toUpperCase());
+
+        if(GalePressApplication.getInstance().getLibraryFragment() != null
+                && GalePressApplication.getInstance().getCurrentFragment() != null
+                && GalePressApplication.getInstance().getLibraryFragment().getTag().equals(GalePressApplication.getInstance().getCurrentFragment().getTag())) {
+            if(categoryListWithAll.get(1) != null)
+                actionbarTitle.setText(categoryListWithAll.get(1).getName().toString().toUpperCase());
+        }
+
+
 
         ((LinearLayout) findViewById(R.id.custom_actionbar_layout)).setBackgroundColor(ApplicationThemeColor.getInstance().getActionAndTabBarColor());
 

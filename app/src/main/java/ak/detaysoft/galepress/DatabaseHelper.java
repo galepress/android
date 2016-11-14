@@ -12,6 +12,7 @@ import com.j256.ormlite.table.TableUtils;
 import java.sql.SQLException;
 
 import ak.detaysoft.galepress.database_models.L_Application;
+import ak.detaysoft.galepress.database_models.L_ApplicationCategory;
 import ak.detaysoft.galepress.database_models.L_Category;
 import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.database_models.L_ContentCategory;
@@ -32,6 +33,10 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     private Dao<L_Category, Integer> categoriesDao = null;
     private RuntimeExceptionDao<L_Category, Integer> categoriesRuntimeDao = null;
+
+
+    private Dao<L_ApplicationCategory, Integer> applicationCategoryDao = null;
+    private RuntimeExceptionDao<L_Category, Integer> applicationCategoryRuntimeDao = null;
 
     private Dao<L_Content, Integer> contentsDao = null;
     private RuntimeExceptionDao<L_Content, Integer> contentsRuntimeDao = null;
@@ -60,6 +65,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             Log.i(DatabaseHelper.class.getName(), "onCreate");
             TableUtils.createTable(connectionSource, L_CustomerApplication.class);
             TableUtils.createTable(connectionSource, L_Category.class);
+            TableUtils.createTable(connectionSource, L_ApplicationCategory.class);
             TableUtils.createTable(connectionSource, L_Content.class);
             TableUtils.createTable(connectionSource, L_Application.class);
             TableUtils.createTable(connectionSource, L_Statistic.class);
@@ -86,6 +92,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             Log.i(DatabaseHelper.class.getName(), "onUpgrade");
             TableUtils.dropTable(connectionSource, L_CustomerApplication.class, true);
             TableUtils.dropTable(connectionSource, L_Category.class, true);
+            TableUtils.dropTable(connectionSource, L_ApplicationCategory.class, true);
             TableUtils.dropTable(connectionSource, L_Content.class, true);
             TableUtils.dropTable(connectionSource, L_Application.class, true);
             TableUtils.dropTable(connectionSource, L_Statistic.class, true);
@@ -115,6 +122,14 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             categoriesDao = getDao(L_Category.class);
         }
         return categoriesDao;
+    }
+
+
+    public Dao<L_ApplicationCategory, Integer> getApplicationCategoryDao() throws SQLException {
+        if (applicationCategoryDao == null) {
+            applicationCategoryDao = getDao(L_ApplicationCategory.class);
+        }
+        return applicationCategoryDao;
     }
     /**
      * Returns the RuntimeExceptionDao (Database Access Object) version of a Dao for our SimpleData class. It will
@@ -196,6 +211,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         contentsDao = null;
         customerApplicationDao = null;
         categoriesDao = null;
+        applicationCategoryDao = null;
         contentCategoryDao = null;
         applicationDao = null;
         statisticsDao = null;

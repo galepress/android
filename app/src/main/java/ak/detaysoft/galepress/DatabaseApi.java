@@ -4,29 +4,25 @@ import android.content.Context;
 import android.util.Log;
 
 import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.SelectArg;
+import com.j256.ormlite.stmt.UpdateBuilder;
 import com.j256.ormlite.stmt.Where;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.sql.SQLException;
 import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
-import ak.detaysoft.galepress.custom_models.ApplicationCategory;
 import ak.detaysoft.galepress.database_models.L_Application;
+import ak.detaysoft.galepress.database_models.L_ApplicationCategory;
 import ak.detaysoft.galepress.database_models.L_Category;
 import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.database_models.L_ContentCategory;
@@ -45,9 +41,9 @@ public class DatabaseApi {
     private Dao<L_Application, Integer> applicationsDao;
     private Dao<L_Statistic, Integer> statisticsDao;
     private Dao<L_CustomerApplication, Integer> customerApplicationDao;
+    private Dao<L_ApplicationCategory, Integer> applicationCategoryDao;
     private PreparedQuery<L_Content> contentsByCategoryQuery = null;
     private PreparedQuery<L_Content> contentsQuery = null;
-    private PreparedQuery<L_Content> downloadedContentsQuery = null;
     private PreparedQuery<L_ContentCategory> contentCategoryByContentQuery = null;
 
 
@@ -57,6 +53,7 @@ public class DatabaseApi {
             DatabaseManager dbManager = new DatabaseManager();
             db = dbManager.getHelper(ctx);
             customerApplicationDao = db.getcustomerApplicationDao();
+            applicationCategoryDao = db.getApplicationCategoryDao();
             categoriesDao = db.getCategoriesDao();
             contentsDao = db.getContentsDao();
             contentCategoryDao = db.getContentCategoryDao();
@@ -79,6 +76,7 @@ public class DatabaseApi {
         }
         return 0;
     }
+
     public int updateCustomerApplication(L_CustomerApplication customerApplication)
     {
         try {
@@ -88,6 +86,7 @@ public class DatabaseApi {
         }
         return 0;
     }
+
     public int deleteCustomerApplication(L_CustomerApplication customerApplication)
     {
         try {
@@ -102,22 +101,6 @@ public class DatabaseApi {
     {
         try {
             List customerList = customerApplicationDao.queryForAll();
-            for(int i = 0; i < customerList.size(); i++){
-                ((L_CustomerApplication)customerList.get(i)).setCategories(new ArrayList<ApplicationCategory>());
-                try {
-                    JSONArray categoryArray = new JSONArray(((L_CustomerApplication)customerList.get(i)).getCategoryJson());
-                    for(int categoryIndex = 0; categoryIndex < categoryArray.length(); categoryIndex++){
-                        JSONObject categoryObject = (JSONObject) categoryArray.get(categoryIndex);
-                        ApplicationCategory applicationCategory = new ApplicationCategory();
-                        applicationCategory.setId(categoryObject.optInt("id"));
-                        applicationCategory.setCoverImageUrl(categoryObject.optString("coverImageUrl"));
-                        ((L_CustomerApplication)customerList.get(i)).getCategories().add(applicationCategory);
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
             return customerList;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -138,47 +121,15 @@ public class DatabaseApi {
 
             List customerApplicationList = new ArrayList();
             for(Integer mapItem : mapList){
-                L_CustomerApplication application = getCustomerApplication(mapItem);
-                ((L_CustomerApplication)application).setCategories(new ArrayList<ApplicationCategory>());
-                try {
-                    JSONArray categoryArray = new JSONArray(((L_CustomerApplication)application).getCategoryJson());
-                    for(int categoryIndex = 0; categoryIndex < categoryArray.length(); categoryIndex++){
-                        JSONObject categoryObject = (JSONObject) categoryArray.get(categoryIndex);
-                        ApplicationCategory applicationCategory = new ApplicationCategory();
-                        applicationCategory.setId(categoryObject.optInt("id"));
-                        applicationCategory.setCoverImageUrl(categoryObject.optString("coverImageUrl"));
-                        ((L_CustomerApplication)application).getCategories().add(applicationCategory);
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                L_CustomerApplication application = getCustomerApplication(mapItem, selectedCategoryId);
                 customerApplicationList.add(application);
             }
             return customerApplicationList;
 
         } else {
             try {
-                List customerList = customerApplicationDao.queryForAll();
-                List returnList = new ArrayList();
-                for(int i = 0; i < customerList.size(); i++){
-                    ((L_CustomerApplication)customerList.get(i)).setCategories(new ArrayList<ApplicationCategory>());
-                    try {
-                        JSONArray categoryArray = new JSONArray(((L_CustomerApplication)customerList.get(i)).getCategoryJson());
-                        for(int categoryIndex = 0; categoryIndex < categoryArray.length(); categoryIndex++){
-                            JSONObject categoryObject = (JSONObject) categoryArray.get(categoryIndex);
-                            ApplicationCategory applicationCategory = new ApplicationCategory();
-                            applicationCategory.setId(categoryObject.optInt("id"));
-                            applicationCategory.setCoverImageUrl(categoryObject.optString("coverImageUrl"));
-                            ((L_CustomerApplication)customerList.get(i)).getCategories().add(applicationCategory);
-                            if(applicationCategory.getId().intValue() == selectedCategoryId){
-                                returnList.add(customerList.get(i));
-                            }
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-                return returnList;
+                List customerList = customerApplicationDao.queryBuilder().where().eq("categoryid", ""+selectedCategoryId).query();
+                return customerList;
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -197,6 +148,120 @@ public class DatabaseApi {
         return null;
     }
 
+    public L_CustomerApplication getCustomerApplication(Integer id, Integer categoryid)
+    {
+        try {
+            return customerApplicationDao.queryBuilder().where().eq("id", ""+id).and().eq("categoryid", ""+categoryid).queryForFirst();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    /**
+    * Methods for ApplicationCategory
+    * */
+
+    public int createApplicationCategory(L_ApplicationCategory applicationCategory)
+    {
+        try {
+            return applicationCategoryDao.create(applicationCategory);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int updateApplicationCategory(L_ApplicationCategory applicationCategory)
+    {
+        try {
+
+            UpdateBuilder<L_ApplicationCategory, Integer> updateBuilder = applicationCategoryDao.updateBuilder();
+            updateBuilder.where().eq("category", applicationCategory.getCategory()).and().eq("application", applicationCategory.getApplication());
+            return updateBuilder.update();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int deleteApplicationCategory(L_ApplicationCategory applicationCategory)
+    {
+        try {
+            DeleteBuilder<L_ApplicationCategory, Integer> deleteBuilder = applicationCategoryDao.deleteBuilder();
+            deleteBuilder.where().eq("category", applicationCategory.getCategory()).and().eq("application", applicationCategory.getApplication());
+            return deleteBuilder.delete();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public L_ApplicationCategory getApplicationCategory(L_CustomerApplication application, L_Category category)
+    {
+        try {
+            QueryBuilder<L_ApplicationCategory, Integer> applicationCategoryQB = applicationCategoryDao.queryBuilder();
+            return applicationCategoryQB.where().eq("application", application).and().eq("category", category).queryForFirst();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<L_ApplicationCategory> getApplicationCategoryByCategory(L_Category category, boolean isDownloaded)
+    {
+
+        try {
+            if(isDownloaded) {
+                List contentList = getdownloadedContents(isDownloaded);
+                Set<Integer> mapList = new HashSet<Integer>();
+                for(int content_counter = 0; content_counter < contentList.size(); content_counter++){
+                    L_Content content = (L_Content) contentList.get(content_counter);
+                    mapList.add(Integer.valueOf(content.getApplicationId()));
+                }
+
+                List customerApplicationList = new ArrayList();
+                for(Integer mapItem : mapList){
+                    L_CustomerApplication application = getCustomerApplication(mapItem);
+                    L_ApplicationCategory applicationCategory = getApplicationCategoryByApplication(application).get(0);
+                    customerApplicationList.add(applicationCategory);
+                }
+                return customerApplicationList;
+
+            } else {
+                List customerList = applicationCategoryDao.queryBuilder().where().eq("category", category).query();
+                return customerList;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return new ArrayList();
+    }
+
+    public List<L_ApplicationCategory> getApplicationCategoryByCategory(L_Category category) {
+        try {
+        QueryBuilder<L_ApplicationCategory, Integer> applicationCategoryQB = applicationCategoryDao.queryBuilder();
+        return applicationCategoryQB.where().eq("category", category).query();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+        return null;
+
+    }
+
+
+
+    public List<L_ApplicationCategory> getApplicationCategoryByApplication(L_CustomerApplication application)
+    {
+        try {
+            QueryBuilder<L_ApplicationCategory, Integer> applicationCategoryQB = applicationCategoryDao.queryBuilder();
+            return applicationCategoryQB.where().eq("application", application).query();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     /**
      * Methods for CATEGORY

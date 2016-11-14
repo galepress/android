@@ -17,7 +17,7 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import java.io.File;
 
-import ak.detaysoft.galepress.custom_models.ApplicationCategory;
+import ak.detaysoft.galepress.database_models.L_ApplicationCategory;
 import ak.detaysoft.galepress.database_models.L_CustomerApplication;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
 import ak.detaysoft.galepress.util.CustomPulseProgress;
@@ -48,7 +48,7 @@ public class ApplicationHolderAdapter extends BaseAdapter {
     }
 
     public long getItemId(int position) {
-        return Long.parseLong(((L_CustomerApplication)applicationFragment.getApplications().get(position)).getId());
+        return Long.parseLong(((L_ApplicationCategory)applicationFragment.getApplications().get(position)).getApplication().getId());
     }
 
     public class ViewHolder
@@ -60,7 +60,7 @@ public class ApplicationHolderAdapter extends BaseAdapter {
         public RelativeLayout downloadStatus;
         public TextView downloadPercentage;
         public CustomPulseProgress loading;
-        public L_CustomerApplication application;
+        public L_ApplicationCategory application;
 
     }
 
@@ -69,7 +69,7 @@ public class ApplicationHolderAdapter extends BaseAdapter {
 
 
         final ApplicationHolderAdapter.ViewHolder viewHolder;
-        final L_CustomerApplication application = (L_CustomerApplication) applicationFragment.getApplications().get(position);
+        final L_ApplicationCategory application = (L_ApplicationCategory) applicationFragment.getApplications().get(position);
         if (convertView == null) {  // if it's not recycled, initialize some attributes
             viewHolder = new ApplicationHolderAdapter.ViewHolder();
             convertView = applicationFragment.getLayoutInflater().inflate(R.layout.grid_cell, null);
@@ -95,41 +95,35 @@ public class ApplicationHolderAdapter extends BaseAdapter {
             /*
             * Uygulama kategorilerinden ilk cover image gosteriliyor.
             * */
-            ApplicationCategory category = application.getCategories().get(0);
-            File coverImageFile = new File(GalePressApplication.getInstance().getFilesDir(), application.getId()+"_"+category.getId());
+            File coverImageFile = new File(GalePressApplication.getInstance().getFilesDir(), application.getApplication().getId()+"_"+application.getCategory().getId());
             if(application.isUpdated()){
-                displayImage(true, viewHolder.coverImageView, viewHolder.loading, category.getCoverImageUrl(), application.getId()+"_"+category.getId(), application);
+                displayImage(true, viewHolder.coverImageView, viewHolder.loading, application.getCoverImageUrl(), application.getApplication().getId()+"_"+application.getCategory().getId(), application);
             } else {
                 if(coverImageFile.exists()){
-                    displayImage(false, viewHolder.coverImageView, viewHolder.loading, "file://"+coverImageFile.getPath(), application.getId()+"_"+category.getId(), application);
-                } else if (category.getCoverImageUrl() != null){
-                    displayImage(true, viewHolder.coverImageView, viewHolder.loading, category.getCoverImageUrl(), application.getId()+"_"+category.getId(), application);
+                    displayImage(false, viewHolder.coverImageView, viewHolder.loading, "file://"+coverImageFile.getPath(), application.getApplication().getId()+"_"+application.getCategory().getId(), application);
+                } else if (application.getCoverImageUrl() != null){
+                    displayImage(true, viewHolder.coverImageView, viewHolder.loading, application.getCoverImageUrl(), application.getApplication().getId()+"_"+application.getCategory().getId(), application);
                 } else {
                     Log.e("imageDisplayed", "noimage");
                 }
             }
         } else {
-            for (ApplicationCategory category : application.getCategories()){
-                if(applicationFragment.selectedCategory.getId().intValue() == category.getId().intValue()){
-                    File coverImageFile = new File(GalePressApplication.getInstance().getFilesDir(), application.getId()+"_"+category.getId());
-                    if(application.isUpdated()){
-                        displayImage(true, viewHolder.coverImageView, viewHolder.loading, category.getCoverImageUrl(), application.getId()+"_"+category.getId(), application);
-                    } else {
-                        if(coverImageFile.exists()){
-                            displayImage(false, viewHolder.coverImageView, viewHolder.loading, "file://"+coverImageFile.getPath(), application.getId()+"_"+category.getId(), application);
-                        } else if (category.getCoverImageUrl() != null){
-                            displayImage(true, viewHolder.coverImageView, viewHolder.loading, category.getCoverImageUrl(), application.getId()+"_"+category.getId(), application);
-                        } else {
-                            Log.e("imageDisplayed", "noimage");
-                        }
-                    }
-
+            File coverImageFile = new File(GalePressApplication.getInstance().getFilesDir(), application.getApplication().getId()+"_"+application.getCategory().getId());
+            if(application.isUpdated()){
+                displayImage(true, viewHolder.coverImageView, viewHolder.loading, application.getCoverImageUrl(), application.getApplication().getId()+"_"+application.getCategory().getId(), application);
+            } else {
+                if(coverImageFile.exists()){
+                    displayImage(false, viewHolder.coverImageView, viewHolder.loading, "file://"+coverImageFile.getPath(), application.getApplication().getId()+"_"+application.getCategory().getId(), application);
+                } else if (application.getCoverImageUrl() != null){
+                    displayImage(true, viewHolder.coverImageView, viewHolder.loading, application.getCoverImageUrl(), application.getApplication().getId()+"_"+application.getCategory().getId(), application);
+                } else {
+                    Log.e("imageDisplayed", "noimage");
                 }
             }
         }
 
 
-        viewHolder.nameLabel.setText(application.getAppName());
+        viewHolder.nameLabel.setText(application.getApplication().getAppName());
         viewHolder.nameLabel.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(applicationFragment.getActivity()));
         viewHolder.downloadPercentage.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(applicationFragment.getActivity()));
 
@@ -140,7 +134,7 @@ public class ApplicationHolderAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public void displayImage(final boolean isDownload, final ImageView image, final CustomPulseProgress loading, final String imagePath, final String fileName, final L_CustomerApplication application){
+    public void displayImage(final boolean isDownload, final ImageView image, final CustomPulseProgress loading, final String imagePath, final String fileName, final L_ApplicationCategory application){
         DisplayImageOptions displayConfig;
         if (isDownload) {
             displayConfig = new DisplayImageOptions.Builder()

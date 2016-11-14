@@ -58,6 +58,7 @@ import ak.detaysoft.galepress.custom_models.Subscription;
 import ak.detaysoft.galepress.custom_models.TabbarItem;
 import ak.detaysoft.galepress.custom_models.UserInformations;
 import ak.detaysoft.galepress.database_models.L_Application;
+import ak.detaysoft.galepress.database_models.L_ApplicationCategory;
 import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.database_models.L_CustomerApplication;
 import ak.detaysoft.galepress.database_models.L_Statistic;
@@ -148,7 +149,7 @@ public class GalePressApplication
     private ArrayList<MenuSearchResult> menuSearchResult;
     private String searchQuery;
 
-    private L_CustomerApplication selectedCustomerApplication;
+    private L_ApplicationCategory selectedCustomerApplication;
 
     Foreground.Listener myListener = new Foreground.Listener() {
         public void onBecameForeground() {
@@ -1338,11 +1339,11 @@ public class GalePressApplication
         this.searchQuery = searchQuery;
     }
 
-    public L_CustomerApplication getSelectedCustomerApplication() {
+    public L_ApplicationCategory getSelectedCustomerApplication() {
         return selectedCustomerApplication;
     }
 
-    public void setSelectedCustomerApplication(L_CustomerApplication selectedCustomerApplication) {
+    public void setSelectedCustomerApplication(L_ApplicationCategory selectedCustomerApplication) {
         this.selectedCustomerApplication = selectedCustomerApplication;
     }
 }

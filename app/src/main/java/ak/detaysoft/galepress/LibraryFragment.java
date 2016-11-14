@@ -142,7 +142,7 @@ public class LibraryFragment extends Fragment {
         GalePressApplication.getInstance().setLibraryActivity(this);
         GalePressApplication.getInstance().setCurrentFragment(this);
 
-        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsForApplicationId(GalePressApplication.getInstance().getSelectedCustomerApplication().getId(), isDownloaded);
+        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsForApplicationId(GalePressApplication.getInstance().getSelectedCustomerApplication().getApplication().getId(), isDownloaded);
         v = inflater.inflate(R.layout.library_fragment, container, false);
 
         gridview = (HeaderGridView) v.findViewById(R.id.gridview);
@@ -178,7 +178,7 @@ public class LibraryFragment extends Fragment {
         gridview.setAdapter(this.contentHolderAdapter);
         updateGridView();
 
-        GalePressApplication.getInstance().getDataApi().getApplicationContents(GalePressApplication.getInstance().getSelectedCustomerApplication().getId()
+        GalePressApplication.getInstance().getDataApi().getApplicationContents(GalePressApplication.getInstance().getSelectedCustomerApplication().getApplication().getId()
                 , String.valueOf(GalePressApplication.getInstance().getApplicationFragment().selectedCategory.getId()));
 
         return v;
@@ -206,7 +206,7 @@ public class LibraryFragment extends Fragment {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-                contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsForApplicationId(GalePressApplication.getInstance().getSelectedCustomerApplication().getId(), isDownloaded);
+                contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsForApplicationId(GalePressApplication.getInstance().getSelectedCustomerApplication().getApplication().getId(), isDownloaded);
                 if(!isDownloaded)
                     initHeaderContent();
                 contentHolderAdapter.notifyDataSetChanged();
@@ -223,7 +223,7 @@ public class LibraryFragment extends Fragment {
 
     public void updateAdapterList(L_Content content, boolean isImagePathChanged) {
 
-        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsForApplicationId(GalePressApplication.getInstance().getSelectedCustomerApplication().getId(), isDownloaded);
+        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsForApplicationId(GalePressApplication.getInstance().getSelectedCustomerApplication().getApplication().getId(), isDownloaded);
         ContentHolderAdapter.ViewHolder holder = GalePressApplication.getInstance().getDataApi().getViewHolderForContent(content);
         if (holder != null) {
             if (!content.isPdfDownloading()) {
