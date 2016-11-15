@@ -2809,7 +2809,7 @@ public class DataApi extends Object {
                             JSONArray array = response.getJSONArray("applications");
                             for(int i = 0; i < array.length(); i++){
                                 JSONObject item = (JSONObject) array.get(i);
-
+                                boolean updated = false;
 
                                 L_CustomerApplication remoteApplication = new L_CustomerApplication();
                                 remoteApplication.setId(item.optString("ApplicationID"));
@@ -2818,13 +2818,13 @@ public class DataApi extends Object {
 
                                 L_CustomerApplication localApplication = getDatabaseApi().getCustomerApplication(Integer.valueOf(item.optString("ApplicationID")));
                                 if(localApplication == null) {
+                                    updated = true;
                                     getDatabaseApi().createCustomerApplication(remoteApplication);
                                 } else {
                                     if(remoteApplication.getVersion().intValue() != localApplication.getVersion().intValue()){
-
+                                        updated = true;
+                                        getDatabaseApi().updateCustomerApplication(remoteApplication);
                                     }
-                                    remoteApplication.setAppName("xx");
-                                    getDatabaseApi().updateCustomerApplication(remoteApplication);
                                 }
 
                                 for(int k = 0; k < item.getJSONArray("Topics").length(); k++){
@@ -2835,23 +2835,38 @@ public class DataApi extends Object {
                                     L_ApplicationCategory remote = new L_ApplicationCategory();
                                     remote.setApplication(remoteApplication);
                                     remote.setCoverImageUrl(categoryObject.getString("CoverImageUrl"));
-                                    remote.setOrder(k);
-                                    remote.setUpdated(false);
+                                    remote.setOrder(categoryObject.getString("Order"));
+                                    remote.setUpdated(updated);
                                     remote.setCategory(category);
 
                                     if(local == null) {
                                         getDatabaseApi().createApplicationCategory(remote);
                                     } else {
-                                        if(local.getApplication().getVersion().intValue() != remote.getApplication().getVersion().intValue())
-                                            remote.setUpdated(true);
+                                        if(updated){
+                                            File coverImageFile = new File(GalePressApplication.getInstance().getFilesDir()
+                                                    , remote.getApplication().getId()+"_"+remote.getCategory().getId());
+                                            if(coverImageFile.exists()) {
+                                                coverImageFile.delete();
+                                            }
+                                        }
                                         getDatabaseApi().updateApplicationCategory(remote);
                                     }
                                 }
 
-
-                                /**
-                                 * TODO burada servisten gelemeyen ama localde olan uygulama kategorileri silinecek
-                                 * */
+                                List<L_ApplicationCategory> localAppCatgoryList = getDatabaseApi().getApplicationCategoryByApplication(remoteApplication);
+                                for(L_ApplicationCategory localApp : localAppCatgoryList){
+                                    Boolean deletedInServer = true;
+                                    for(int m = 0; m < item.getJSONArray("Topics").length(); m++){
+                                        JSONObject categoryObject = (JSONObject) item.getJSONArray("Topics").get(m);
+                                        if(categoryObject.optString("TopicID").equals(localApp.getCategory().getId().toString())){
+                                            deletedInServer = false;
+                                            break;
+                                        }
+                                    }
+                                    if(deletedInServer){
+                                        getDatabaseApi().deleteApplicationCategory(localApp);
+                                    }
+                                }
                             }
 
                             // serverdan gelmeyen lokal uygulamalari siliyoruz.

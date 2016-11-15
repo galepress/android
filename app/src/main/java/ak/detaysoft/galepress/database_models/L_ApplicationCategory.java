@@ -15,10 +15,10 @@ public class L_ApplicationCategory {
 
 
     @DatabaseField
-    private Integer order;
+    private String order;
 
     @DatabaseField
-    private boolean isUpdated = false;
+    private boolean isUpdated;
 
     @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = "application")
     private L_CustomerApplication application;
@@ -55,11 +55,11 @@ public class L_ApplicationCategory {
         this.category = category;
     }
 
-    public Integer getOrder() {
+    public String getOrder() {
         return order;
     }
 
-    public void setOrder(Integer order) {
+    public void setOrder(String order) {
         this.order = order;
     }
 

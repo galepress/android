@@ -172,23 +172,6 @@ public class LaunchActivity extends ActionBarActivity implements  XWalkInitializ
     protected void onResume() {
         super.onResume();
         GalePressApplication.getInstance().setCurrentActivity(this);
-        if(GalePressApplication.getInstance().getDataApi() != null){
-            if(masterContent != null){
-                if(GalePressApplication.getInstance().getDataApi().downloadPdfTask != null
-                        && GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() == AsyncTask.Status.FINISHED){
-                    openMasterContent();
-                }
-            } else {
-                if(GalePressApplication.getInstance().isTestApplication()){
-                    if(GalePressApplication.getInstance().getTestApplicationLoginInf().getUsername().isEmpty())
-                        openLoginActivity();
-                    else
-                        GalePressApplication.getInstance().getDataApi().getCustomerApplicationsAndCategories();
-                } else {
-                    GalePressApplication.getInstance().getDataApi().getCustomerApplicationsAndCategories();
-                }
-            }
-        }
     }
 
     protected void onPause() {

@@ -179,6 +179,11 @@ public class DatabaseApi {
 
             UpdateBuilder<L_ApplicationCategory, Integer> updateBuilder = applicationCategoryDao.updateBuilder();
             updateBuilder.where().eq("category", applicationCategory.getCategory()).and().eq("application", applicationCategory.getApplication());
+            updateBuilder.updateColumnValue("application",applicationCategory.getApplication());
+            updateBuilder.updateColumnValue("category",applicationCategory.getCategory());
+            updateBuilder.updateColumnValue("order",applicationCategory.getOrder());
+            updateBuilder.updateColumnValue("coverImageUrl",applicationCategory.getCoverImageUrl());
+            updateBuilder.updateColumnValue("isUpdated",applicationCategory.isUpdated());
             return updateBuilder.update();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -230,7 +235,7 @@ public class DatabaseApi {
                 return customerApplicationList;
 
             } else {
-                List customerList = applicationCategoryDao.queryBuilder().where().eq("category", category).query();
+                List customerList = applicationCategoryDao.queryBuilder().orderBy("order", false).where().eq("category", category).query();
                 return customerList;
             }
         } catch (SQLException e) {

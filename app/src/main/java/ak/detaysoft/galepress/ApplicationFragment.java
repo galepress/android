@@ -198,6 +198,8 @@ public class ApplicationFragment extends Fragment {
         if (selectedCategory == null)
             selectedCategory = (L_Category) GalePressApplication.getInstance().getDatabaseApi().getAllCategories().get(0);
 
+        ((MainActivity)getActivity()).choseCategory(1);
+
         applications = GalePressApplication.getInstance().getDatabaseApi().getApplicationCategoryByCategory(selectedCategory, isDownloaded);
         this.contentHolderAdapter = new ApplicationHolderAdapter(this);
         gridview.setAdapter(this.contentHolderAdapter);
