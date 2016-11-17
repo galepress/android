@@ -20,8 +20,8 @@ public class L_Category implements Serializable { //implement serializable (MG) 
     @DatabaseField
     public  String name;
 
-    @DatabaseField
-    public  String order;
+    @DatabaseField(columnName = "order")
+    public  Integer order;
 
     public L_Category() {
     }
@@ -56,11 +56,11 @@ public class L_Category implements Serializable { //implement serializable (MG) 
         this.name = remoteCategory.getName();
     }
 
-    public String getOrder() {
+    public Integer getOrder() {
         return order;
     }
 
-    public void setOrder(String order) {
+    public void setOrder(Integer order) {
         this.order = order;
     }
 }

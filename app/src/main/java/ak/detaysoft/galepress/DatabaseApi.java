@@ -302,7 +302,7 @@ public class DatabaseApi {
     public List getAllCategories()
     {
         try {
-            return categoriesDao.queryForAll();
+            return categoriesDao.queryBuilder().orderBy("order", true).query();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -500,7 +500,7 @@ public class DatabaseApi {
     }
 
 
-    public List getAllContentsForApplicationId(final String applicationId, final boolean isOnlyDownloaded){
+    public List getAllContentsForApplicationIdAndcategoryId(final String applicationId, final Integer categoryId, final boolean isOnlyDownloaded){
         List contents;
         try {
             // Genel kategorisine ait contentler listelenecek.
@@ -521,7 +521,22 @@ public class DatabaseApi {
         } catch (SQLException e) {
             return new ArrayList<L_Content>();
         }
-        return contents;
+
+        List newContentList = new ArrayList();
+        if(categoryId.intValue() != -1){
+            for(int i = 0; i < contents.size(); i++){
+                L_Content content = (L_Content)contents.get(i);
+                for(L_Category category : content.getCategorList()){
+                    if(category.getId().intValue() == categoryId.intValue()){
+                        newContentList.add(content);
+                        break;
+                    }
+                }
+            }
+        } else {
+            return contents;
+        }
+        return newContentList;
     }
 
     public List getAllContents(boolean isOnlyDownloaded, String searchQuery, ArrayList<L_Category> categoryList)

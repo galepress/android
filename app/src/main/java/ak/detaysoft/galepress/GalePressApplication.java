@@ -521,8 +521,8 @@ public class GalePressApplication
         return libraryFragment;
     }
 
-    public void setLibraryActivity(LibraryFragment libraryFragmentActivity) {
-        this.libraryFragment = libraryFragmentActivity;
+    public void setLibraryFragment(LibraryFragment libraryFragment) {
+        this.libraryFragment = libraryFragment;
     }
 
     public ApplicationFragment getApplicationFragment() {

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.Point;
 import android.location.Location;
 import android.net.Uri;
@@ -18,21 +17,15 @@ import android.os.Looper;
 import android.os.RemoteException;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,12 +34,10 @@ import com.artifex.mupdfdemo.MuPDFActivity;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.xwalk.core.XWalkView;
 
 import java.io.File;
 import java.text.DateFormat;
@@ -57,15 +48,12 @@ import java.util.List;
 import java.util.TimeZone;
 import java.util.UUID;
 
-import ak.detaysoft.galepress.database_models.L_Category;
 import ak.detaysoft.galepress.database_models.L_Content;
+import ak.detaysoft.galepress.database_models.L_CustomerApplication;
 import ak.detaysoft.galepress.database_models.L_Statistic;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
-import ak.detaysoft.galepress.util.CustomCategoryRecyclerView;
 import ak.detaysoft.galepress.util.CustomDownloadButton;
 import ak.detaysoft.galepress.util.CustomPulseProgress;
-import ak.detaysoft.galepress.web_views.BannerAndTabbarWebView;
-import ak.detaysoft.galepress.web_views.BannerAndTabbarWebViewWithCrosswalk;
 
 /**
  * Created by adem on 31/03/14.
@@ -135,14 +123,25 @@ public class LibraryFragment extends Fragment {
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.setLayoutInflater(inflater);
         onViewStateRestored(savedInstanceState);
 
-        GalePressApplication.getInstance().setLibraryActivity(this);
+        GalePressApplication.getInstance().setLibraryFragment(this);
         GalePressApplication.getInstance().setCurrentFragment(this);
 
-        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsForApplicationId(GalePressApplication.getInstance().getSelectedCustomerApplication().getApplication().getId(), isDownloaded);
+        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsForApplicationIdAndcategoryId(GalePressApplication.getInstance().getSelectedCustomerApplication().getApplication().getId()
+                ,GalePressApplication.getInstance().getApplicationFragment().selectedCategory.getId(), isDownloaded);
         v = inflater.inflate(R.layout.library_fragment, container, false);
 
         gridview = (HeaderGridView) v.findViewById(R.id.gridview);
@@ -206,7 +205,8 @@ public class LibraryFragment extends Fragment {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-                contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsForApplicationId(GalePressApplication.getInstance().getSelectedCustomerApplication().getApplication().getId(), isDownloaded);
+                contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsForApplicationIdAndcategoryId(GalePressApplication.getInstance().getSelectedCustomerApplication().getApplication().getId()
+                        ,GalePressApplication.getInstance().getApplicationFragment().selectedCategory.getId(), isDownloaded);
                 if(!isDownloaded)
                     initHeaderContent();
                 contentHolderAdapter.notifyDataSetChanged();
@@ -223,7 +223,8 @@ public class LibraryFragment extends Fragment {
 
     public void updateAdapterList(L_Content content, boolean isImagePathChanged) {
 
-        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsForApplicationId(GalePressApplication.getInstance().getSelectedCustomerApplication().getApplication().getId(), isDownloaded);
+        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsForApplicationIdAndcategoryId(GalePressApplication.getInstance().getSelectedCustomerApplication().getApplication().getId()
+                ,GalePressApplication.getInstance().getApplicationFragment().selectedCategory.getId(), isDownloaded);
         ContentHolderAdapter.ViewHolder holder = GalePressApplication.getInstance().getDataApi().getViewHolderForContent(content);
         if (holder != null) {
             if (!content.isPdfDownloading()) {
@@ -481,6 +482,23 @@ public class LibraryFragment extends Fragment {
             headerContentHolder.overlay = (ImageView) contentHeader.findViewById(R.id.header_content_download_overlay);
 
             headerContentHolder.coverImageView = (ImageView) contentHeader.findViewById(R.id.header_coverImage);
+            headerContentHolder.coverImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(headerContentHolder.content != null){
+                        L_CustomerApplication application =
+                                GalePressApplication.getInstance().getDatabaseApi().getCustomerApplication(Integer.valueOf(headerContentHolder.content.getApplicationId()));
+                        if(application != null && application.getPlayUrl() != null && application.getPlayUrl().length() > 0){
+                            String appPackageName = Uri.parse(application.getPlayUrl()).getQueryParameter("id");
+                            try {
+                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                            } catch (android.content.ActivityNotFoundException anfe) {
+                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+                            }
+                        }
+                    }
+                }
+            });
 
             File coverImageFile = new File(GalePressApplication.getInstance().getFilesDir(), headerContentHolder.content.getCoverImageFileName());
             if (coverImageFile.exists()) {

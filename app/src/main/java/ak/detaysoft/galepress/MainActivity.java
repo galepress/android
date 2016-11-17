@@ -207,12 +207,9 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         categoriesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                if(GalePressApplication.getInstance().getCurrentFragment().getTag().equals("LIBRARY")){
-                    getSupportFragmentManager().popBackStack();
-                }
                 hideKeyboard(searchEdittext);
                 GalePressApplication.getInstance().setSelectedCustomerApplication(null);
-                GalePressApplication.getInstance().setLibraryActivity(null);
+                GalePressApplication.getInstance().setLibraryFragment(null);
                 actionbarTitle.setText(categoryListWithAll.get(position).getName().toUpperCase());
                 applicationFragment.selectedCategory = categoryListWithAll.get(position);
                 if(applicationFragment.selectedCategory.getId().intValue() == -1)
@@ -220,11 +217,11 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 else
                     applicationFragment.isDownloaded = false;
                 applicationFragment.selectedCategoryPosition = position;
-                if(!GalePressApplication.getInstance().getCurrentFragment().getTag().equals(applicationFragment.getTag())) {
-                    getSupportFragmentManager().beginTransaction().detach(libraryFragment).attach(applicationFragment).commit();
-                } else {
-                    applicationFragment.updateGridView();
+                if(libraryFragment != null && libraryFragment.isVisible()) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, applicationFragment).addToBackStack(null).commit();
                 }
+
+                applicationFragment.updateGridView();
                 categoriesAdapter.notifyDataSetChanged();
             }
         });
@@ -309,20 +306,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 }
                 changeSearchViewColor(true);
 
-                /*
-                * Burasi arama sol menuye alindiktan sonra kaldirildi.
-                * Eger arama kutuphane ekraninda filtrelemeye geri donulmek istenirse burasi acilacak
-                * ayrica searchEdittext.setOnEditorActionListener ve searchEdittext.setOnKeyListener metodlari kaldirilacak.
-                *
-                *
-                if(getLibraryFragment() != null) {
-                    LibraryFragment libraryFragment = getLibraryFragment();
-                    libraryFragment.searchQuery = s.toString();
-                    libraryFragment.updateGridView();
-                }
-                *
-                *
-                */
             }
         });
         searchEdittext.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -475,7 +458,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
     public void choseCategory(int position) {
         GalePressApplication.getInstance().setSelectedCustomerApplication(null);
-        GalePressApplication.getInstance().setLibraryActivity(null);
+        GalePressApplication.getInstance().setLibraryFragment(null);
         actionbarTitle.setText(categoryListWithAll.get(position).getName().toUpperCase());
         categoriesAdapter.notifyDataSetChanged();
     }
@@ -941,9 +924,9 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             }
             finish();
         } else {
-            getSupportFragmentManager().popBackStack();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, applicationFragment).addToBackStack(null).commit();
             GalePressApplication.getInstance().setSelectedCustomerApplication(null);
-            GalePressApplication.getInstance().setLibraryActivity(null);
+            GalePressApplication.getInstance().setLibraryFragment(null);
             actionbarTitle.setText(applicationFragment.selectedCategory.getName().toUpperCase());
         }
     }

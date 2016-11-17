@@ -52,14 +52,7 @@ public class LaunchActivity extends ActionBarActivity implements  XWalkInitializ
         GalePressApplication.getInstance().setCurrentActivity(this);
         FacebookSdk.sdkInitialize(this.getApplicationContext());
 
-        if(GalePressApplication.getInstance().isTestApplication()){
-            if(GalePressApplication.getInstance().getTestApplicationLoginInf().getUsername().isEmpty())
-                openLoginActivity();
-            else
-                GalePressApplication.getInstance().getDataApi().getCustomerApplicationsAndCategories();
-        } else {
-            GalePressApplication.getInstance().getDataApi().getCustomerApplicationsAndCategories();
-        }
+        GalePressApplication.getInstance().getDataApi().getCustomerApplicationsAndCategories();
 
         masterContent = GalePressApplication.getInstance().getDataApi().getMasterContent();
     }

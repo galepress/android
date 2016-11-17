@@ -106,7 +106,6 @@ public class ApplicationHolderAdapter extends BaseAdapter {
         } else {
             File coverImageFile = new File(GalePressApplication.getInstance().getFilesDir(), application.getApplication().getId()+"_"+application.getCategory().getId());
             if(coverImageFile.exists()){
-                Log.e("resimindirildi", coverImageFile.getAbsolutePath());
                 displayImage(false, viewHolder.coverImageView, viewHolder.loading, "file://"+coverImageFile.getPath(), application.getApplication().getId()+"_"+application.getCategory().getId(), application);
             } else if (application.getCoverImageUrl() != null){
                 displayImage(true, viewHolder.coverImageView, viewHolder.loading, application.getCoverImageUrl(), application.getApplication().getId()+"_"+application.getCategory().getId(), application);

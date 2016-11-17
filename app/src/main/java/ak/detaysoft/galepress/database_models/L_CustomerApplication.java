@@ -12,8 +12,14 @@ import com.j256.ormlite.table.DatabaseTable;
 public class L_CustomerApplication {
 
     @DatabaseField (id = true, columnName = "id") private String id;
-    @DatabaseField private String appName;
-    @DatabaseField private Integer version;
+    @DatabaseField
+    private String appName;
+
+    @DatabaseField(columnName = "playUrl")
+    private String playUrl;
+
+    @DatabaseField
+    private Integer version;
 
     public L_CustomerApplication(){
 
@@ -42,4 +48,11 @@ public class L_CustomerApplication {
         this.version = version;
     }
 
+    public String getPlayUrl() {
+        return playUrl;
+    }
+
+    public void setPlayUrl(String playUrl) {
+        this.playUrl = playUrl;
+    }
 }

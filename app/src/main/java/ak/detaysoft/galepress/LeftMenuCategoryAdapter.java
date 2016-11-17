@@ -58,152 +58,97 @@ public class LeftMenuCategoryAdapter extends BaseAdapter {
         txtTitle.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(mContext));
 
         ImageView image = (ImageView)convertView.findViewById(R.id.category_icon);
-        if(mCategory.get(position).getName().toLowerCase().contains("genel")){
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_stand));
-            else
-                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_stand));
-        } else if(mCategory.get(position).getName().toLowerCase().contains("alışveriş")){
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_alisveris));
-            else
-                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_alisveris));
-        }  else if(mCategory.get(position).getName().toLowerCase().contains("indirilenler")){
+        if(mCategory.get(position).getId().intValue() == -1){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_indirilenler));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_indirilenler));
-        } else if(mCategory.get(position).getName().toLowerCase().contains("çocuk")){
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_cocuk));
-            else
-                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_cocuk));
-        } else if(mCategory.get(position).getName().toLowerCase().contains("edebiyat")){
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_edebiyat));
-            else
-                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_edebiyat));
-        } else if(mCategory.get(position).getName().toLowerCase().contains("erkek")){
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_erkek));
-            else
-                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_erkek));
-        } else if(mCategory.get(position).getName().toLowerCase().contains("dekor")){
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_dekorasyon));
-            else
-                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_dekorasyon));
-        } else if(mCategory.get(position).getName().toLowerCase().contains("fotoğraf")){
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_fotograf));
-            else
-                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_fotograf));
-        } else if(mCategory.get(position).getName().toLowerCase().contains("gelin")){
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_gelin));
-            else
-                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_gelin));
-        } else if(mCategory.get(position).getName().toLowerCase().contains("gezi")){
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_gezi));
-            else
-                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_gezi));
-        } else if(mCategory.get(position).getName().toLowerCase().contains("haber")){
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_haber));
-            else
-                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_haber));
-        } else if(mCategory.get(position).getName().toLowerCase().contains("hayvan")){
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_hayvan));
-            else
-                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_hayvan));
-        } else if(mCategory.get(position).getName().toLowerCase().contains("hobi")){
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_hobi));
-            else
-                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_hobi));
-        } else if(mCategory.get(position).getName().toLowerCase().contains("indirilen")){
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_indirilenler));
-            else
-                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_indirilenler));
-        } else if(mCategory.get(position).getName().toLowerCase().contains("iş")){
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_is));
-            else
-                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_is));
-        } else if(mCategory.get(position).getName().toLowerCase().contains("kadın")){
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_kadin));
-            else
-                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_kadin));
-        } else if(mCategory.get(position).getName().toLowerCase().contains("moda")){
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_moda));
-            else
-                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_moda));
-        } else if(mCategory.get(position).getName().toLowerCase().contains("otomotiv")){
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_otomobil));
-            else
-                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_otomobil));
-        } else if(mCategory.get(position).getName().toLowerCase().contains("sağlık")){
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_saglik));
-            else
-                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_saglik));
-        } else if(mCategory.get(position).getName().toLowerCase().contains("sanat") || mCategory.get(position).getName().toLowerCase().contains("tasarım")){
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_sanat));
-            else
-                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_sanat));
-        } else if(mCategory.get(position).getName().toLowerCase().contains("sinema")){
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_sinema));
-            else
-                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_sinema));
-        } else if(mCategory.get(position).getName().toLowerCase().contains("spor")){
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_spor));
-            else
-                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_spor));
-        } else if(mCategory.get(position).getName().toLowerCase().contains("stand")){
+        } else if(mCategory.get(position).getId().intValue() == 1){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_stand));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_stand));
-        } else if(mCategory.get(position).getName().toLowerCase().contains("tarih")){
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_tarih));
-            else
-                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_tarih));
-        } else if(mCategory.get(position).getName().toLowerCase().contains("teknoloji")){
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_teknoloji));
-            else
-                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_teknoloji));
-        } else if(mCategory.get(position).getName().toLowerCase().contains("yaşam")){
+        } else if(mCategory.get(position).getId().intValue() == 2){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_yasam));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_yasam));
-        } else if(mCategory.get(position).getName().toLowerCase().contains("yemek")){
+        }  else if(mCategory.get(position).getId().intValue() == 3){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_yemek));
+                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_dekorasyon));
             else
-                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_yemek));
-        }  else if(mCategory.get(position).getName().toLowerCase().contains("müzik")){
+                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_dekorasyon));
+        } else if(mCategory.get(position).getId().intValue() == 4){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_muzik));
+                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_kadin));
             else
-                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_muzik));
-        }   else if(mCategory.get(position).getName().toLowerCase().contains("bilim")){
+                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_kadin));
+        } else if(mCategory.get(position).getId().intValue() == 5){
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_moda));
+            else
+                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_moda));
+        } else if(mCategory.get(position).getId().intValue() == 6){
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_alisveris));
+            else
+                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_alisveris));
+        } else if(mCategory.get(position).getId().intValue() == 7){
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_is));
+            else
+                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_is));
+        } else if(mCategory.get(position).getId().intValue() == 8){
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_erkek));
+            else
+                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_erkek));
+        } else if(mCategory.get(position).getId().intValue() == 9){
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_stand));
+            else
+                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_stand));
+        } else if(mCategory.get(position).getId().intValue() == 10){
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_cocuk));
+            else
+                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_cocuk));
+        } else if(mCategory.get(position).getId().intValue() == 11){
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_stand));
+            else
+                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_stand));
+        } else if(mCategory.get(position).getId().intValue() == 12){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_bilim));
             else
                 image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_bilim));
-        } else {
+        } else if(mCategory.get(position).getId().intValue() == 13){
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_otomobil));
+            else
+                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_otomobil));
+        } else if(mCategory.get(position).getId().intValue() == 14){
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_sanat));
+            else
+                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_sanat));
+        } else if(mCategory.get(position).getId().intValue() == 15){
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_stand));
+            else
+                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_stand));
+        } else if(mCategory.get(position).getId().intValue() == 16){
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_spor));
+            else
+                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_spor));
+        } else if(mCategory.get(position).getId().intValue() == 17){
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_stand));
+            else
+                image.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.kategori_stand));
+        }  else {
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 image.setBackground(mContext.getResources().getDrawable(R.drawable.kategori_stand));
             else

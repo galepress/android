@@ -3,7 +3,7 @@
     <item>
         <shape>
             <corners
-                android:radius="5dp"/>
+                android:radius="@dimen/category_padding"/>
             <stroke android:color="#fff" android:width="1dp"></stroke>
         </shape>
     </item>

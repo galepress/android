@@ -1,5 +1,6 @@
 package ak.detaysoft.galepress.database_models;
 
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -62,6 +63,7 @@ public class L_Content implements Serializable {
     @DatabaseField private boolean contentBought;
     @DatabaseField private boolean contentStatus;
     @DatabaseField private String applicationId;
+    @DatabaseField(dataType= DataType.SERIALIZABLE, columnName = "categoryList") private ArrayList<L_Category> categorList;
 
     private ArrayList<L_Category> categories;
     private String pdfPath;
@@ -408,6 +410,14 @@ public class L_Content implements Serializable {
 
     public void setApplicationId(String applicationId) {
         this.applicationId = applicationId;
+    }
+
+    public ArrayList<L_Category> getCategorList() {
+        return categorList;
+    }
+
+    public void setCategorList(ArrayList<L_Category> categorList) {
+        this.categorList = categorList;
     }
 
     // Model Methods

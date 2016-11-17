@@ -302,6 +302,10 @@ public class ApplicationFragment extends Fragment {
         GalePressApplication.getInstance().setCurrentFragment(this);
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
@@ -392,10 +396,52 @@ public class ApplicationFragment extends Fragment {
 
             holder.icon.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
+
+            String displayUrl;
+            if(holder.category.getId().intValue() == -1){
+                displayUrl = "drawable://" + R.drawable.slider_kategori_indirilenler;
+            } else if(holder.category.getId().intValue() == 1){
+                displayUrl = "drawable://" + R.drawable.slider_kategori_raff;
+            } else if(holder.category.getId().intValue() == 2){
+                displayUrl = "drawable://" + R.drawable.slider_kategori_yasam;
+            } else if(holder.category.getId().intValue() == 3){
+                displayUrl = "drawable://" + R.drawable.slider_kategori_yasam;
+            }else if(holder.category.getId().intValue() == 4){
+                displayUrl = "drawable://" + R.drawable.slider_kategori_kadin;
+            }else if(holder.category.getId().intValue() == 5){
+                displayUrl = "drawable://" + R.drawable.slider_kategori_moda;
+            }else if(holder.category.getId().intValue() == 6){
+                displayUrl = "drawable://" + R.drawable.slider_kategori_alisveris;
+            }else if(holder.category.getId().intValue() == 7){
+                displayUrl = "drawable://" + R.drawable.slider_kategori_isdunyasi;
+            }else if(holder.category.getId().intValue() == 8){
+                displayUrl = "drawable://" + R.drawable.slider_kategori_erkek;
+            }else if(holder.category.getId().intValue() == 9){
+                displayUrl = "drawable://" + R.drawable.slider_kategori_sektorel;
+            }else if(holder.category.getId().intValue() == 10){
+                displayUrl = "drawable://" + R.drawable.slider_kategori_ailecocuk;
+            }else if(holder.category.getId().intValue() == 11){
+                displayUrl = "drawable://" + R.drawable.slider_kategori_mizah;
+            }else if(holder.category.getId().intValue() == 12){
+                displayUrl = "drawable://" + R.drawable.slider_kategori_bilimteknoloji;
+            }else if(holder.category.getId().intValue() == 13){
+                displayUrl = "drawable://" + R.drawable.slider_kategori_otomobil;
+            }else if(holder.category.getId().intValue() == 14){
+                displayUrl = "drawable://" + R.drawable.slider_kategori_sanat;
+            }else if(holder.category.getId().intValue() == 15){
+                displayUrl = "drawable://" + R.drawable.slider_kategori_kultur;
+            }else if(holder.category.getId().intValue() == 16){
+                displayUrl = "drawable://" + R.drawable.slider_kategori_spor;
+            }else if(holder.category.getId().intValue() == 17){
+                displayUrl = "drawable://" + R.drawable.slider_kategori_katalog;
+            } else {
+                displayUrl = "drawable://" + R.drawable.slider_kategori_raff;
+            }
+
             DisplayImageOptions options = new DisplayImageOptions.Builder()
-                    .displayer(new RoundedBitmapDisplayer(5))
+                    .displayer(new RoundedBitmapDisplayer((int) getResources().getDimension(R.dimen.category_padding)))
                     .build();
-            ImageLoader.getInstance().displayImage("drawable://" + R.drawable.library_category_icon, holder.icon, options);
+            ImageLoader.getInstance().displayImage(displayUrl, holder.icon, options);
 
 
         }
