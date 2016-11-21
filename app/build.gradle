@@ -20,8 +20,8 @@ android {
      * compileSdkVersion 19 dan 20 ye cekildi.
      * Eger webviewlerle ilgili bir sorun olursa yada kompanentler yuklenmezse bundan olabilir buraya dikkat etmek lazım
      */
-    compileSdkVersion 20
-    buildToolsVersion '21.0.0'
+    compileSdkVersion 21
+    buildToolsVersion '21.0.1'
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 19
@@ -54,8 +54,8 @@ dependencies {
     compile fileTree(include: '*.*', dir: 'src/main/lib')
     compile files('src/main/lib/gcm.jar')
     compile files('src/main/lib/universal-image-loader-1.9.3.jar')
-    compile 'com.android.support:appcompat-v7:20.+'
-    compile 'com.android.support:recyclerview-v7:+'
+    compile 'com.android.support:appcompat-v7:21.+'
+    compile 'com.android.support:recyclerview-v7:21.+'
     compile 'com.j256.ormlite:ormlite-android:4.45@jar'
     compile 'com.j256.ormlite:ormlite-core:4.45@jar'
     compile 'com.facebook.android:facebook-android-sdk:4.1.1'

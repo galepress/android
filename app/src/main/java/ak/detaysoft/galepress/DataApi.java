@@ -148,7 +148,7 @@ public class DataApi extends Object {
             }
 
         } else if (GalePressApplication.getInstance().getCurrentActivity() != null && GalePressApplication.getInstance().getCurrentActivity().getClass().equals(MainActivity.class)) {
-            ((MainActivity) GalePressApplication.getInstance().getCurrentActivity()).updateActivityViewAndAdapter(false);
+            ((MainActivity) GalePressApplication.getInstance().getCurrentActivity()).updateActivityViewAndAdapter();
         } else if (GalePressApplication.getInstance().getCurrentActivity() != null && GalePressApplication.getInstance().getCurrentActivity().getClass().equals(ViewerLoginActivity.class)) {
             ViewerLoginActivity loginActivity = (ViewerLoginActivity) GalePressApplication.getInstance().getCurrentActivity();
             L_Content masterContent = getMasterContent();
@@ -1237,7 +1237,6 @@ public class DataApi extends Object {
                                 && GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder() != null) {
                             if (content.getId().compareTo(GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder().content.getId()) == 0) {
                                 GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder().content = content;
-                                GalePressApplication.getInstance().getMainActivity().getLibraryFragment().getHeaderContentHolder().downloadButton.stopAnim();
                                 GalePressApplication.getInstance().getMainActivity().getLibraryFragment().updateHeaderContent();
                             }
                         }

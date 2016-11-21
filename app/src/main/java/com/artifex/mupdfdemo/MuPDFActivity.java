@@ -2,7 +2,6 @@ package com.artifex.mupdfdemo;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,7 +13,6 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Rect;
-import android.graphics.drawable.GradientDrawable;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Build;
@@ -160,6 +158,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
     private ImageView readerSearchClear;
     private ProgressBar readerSearchProgress;
     private EditText readerSearchEdittext;
+    private SearchRecyclerView searchList;
 
 
 
@@ -874,9 +873,18 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         readerSearchProgress = (ProgressBar) findViewById(R.id.reader_search_progress);
         readerSearchProgress.getIndeterminateDrawable().setColorFilter(Color.WHITE, android.graphics.PorterDuff.Mode.MULTIPLY);
 
+
+        searchList = (SearchRecyclerView) findViewById(R.id.reader_search_recycler_view);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        searchList.setLayoutManager(mLayoutManager);
+
+
         readerSearchEdittext.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
         readerSearchEdittext.setTextColor(Color.WHITE);
         readerSearchEdittext.setHintTextColor(Color.WHITE);
+
+
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
             ((RelativeLayout) readerSearchEdittext.getParent()).setBackground(ApplicationThemeColor.getInstance().getPassiveSearchViewDrawable(this));
@@ -1961,17 +1969,14 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         readerSearchProgress.setVisibility(View.GONE);
         readerSearchClear.setVisibility(View.VISIBLE);
         LinearLayout baseView = (LinearLayout) findViewById(R.id.reader_search_result_layout);
-        RecyclerView list = (RecyclerView) findViewById(R.id.reader_search_recycler_view);
         if (readerSearchResult != null && readerSearchResult.size() > 0) {
             baseView.setVisibility(View.VISIBLE);
             findViewById(R.id.reader_search_result_layout_divider).setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
-            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-            list.setLayoutManager(mLayoutManager);
-            if(list.getAdapter() != null) {
-                ((RecyclerView.Adapter)list.getAdapter()).notifyDataSetChanged();
+            if(searchList.getAdapter() != null) {
+                ((RecyclerView.Adapter) searchList.getAdapter()).notifyDataSetChanged();
             } else {
                 MuPDFActivity.SearchAdapter mAdapter = new MuPDFActivity.SearchAdapter();
-                list.setAdapter(mAdapter);
+                searchList.setAdapter(mAdapter);
             }
         } else {
             baseView.setVisibility(View.GONE);

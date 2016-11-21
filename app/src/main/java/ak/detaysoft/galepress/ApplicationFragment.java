@@ -61,7 +61,7 @@ public class ApplicationFragment extends Fragment {
     public boolean isDownloaded = false;
 
 
-    private RecyclerView categoryView;
+    private CategoryRecyclerView categoryView;
     private float categoryViewEnableYPosition = 0;
     private float categoryViewDisableYPosition = 0;
     private float categoryViewLastYPosition = 0;
@@ -170,11 +170,11 @@ public class ApplicationFragment extends Fragment {
             gridview.addHeaderView(banner);
         }
 
-        categoryView = (RecyclerView) v.findViewById(R.id.category_slider_recyclerview);
+        categoryView = (CategoryRecyclerView) v.findViewById(R.id.category_slider_recyclerview);
         categoryView.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
         mLayoutManager = new CustomCategoryRecyclerView(categoryView, getActivity(), LinearLayoutManager.HORIZONTAL, false);
         categoryView.setLayoutManager(mLayoutManager);
-        categoryView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        categoryView.setOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);

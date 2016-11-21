@@ -120,18 +120,6 @@ public class ApplicationThemeColor {
     public static final int READER_SEARCH_CLEAR = 72;
     public static final int SEARCH_MENU_ICON = 73;
 
-    public static final int HEADER_CONTENT_READ = 74;
-    public static final int HEADER_CONTENT_UPDATE = 75;
-    public static final int HEADER_CONTENT_DELETE = 76;
-    public static final int HEADER_CONTENT_BG = 77;
-    public static final int HEADER_CONTENT_PURCHASE_BACKGROUND = 78;
-    public static final int HEADER_CONTENT_FREE = 79;
-    public static final int HEADER_CONTENT_FREE_ARROW = 80;
-    public static final int HEADER_CONTENT_CLOUD = 81;
-    public static final int HEADER_CONTENT_CLOUD_ARROW = 82;
-    public static final int HEADER_CONTENT_PURCHASE = 83;
-    public static final int HEADER_CONTENT_PURCHASE_ARROW = 84;
-
     public ApplicationThemeColor(){
 
     }
@@ -162,7 +150,7 @@ public class ApplicationThemeColor {
         getInstance().foregroundColor = "#2ca0dc";
 
         if(isColorChanged && GalePressApplication.getInstance().getCurrentActivity()!= null && GalePressApplication.getInstance().getCurrentActivity().getClass() == MainActivity.class) {
-            ((MainActivity) GalePressApplication.getInstance().getCurrentActivity()).updateActivityViewAndAdapter(true);
+            ((MainActivity) GalePressApplication.getInstance().getCurrentActivity()).updateActivityViewAndAdapter();
             if(GalePressApplication.getInstance().getCurrentFragment() != null)
                 ((LibraryFragment)GalePressApplication.getInstance().getCurrentFragment()).gridview.setBackgroundColor(getThemeColor());
         }
@@ -176,7 +164,7 @@ public class ApplicationThemeColor {
     }
 
     public int getThemeColor(){
-        return Color.parseColor("#313131");
+        return Color.parseColor("#353535");
     }
 
     public int getLightThemeColor(){
@@ -264,7 +252,7 @@ public class ApplicationThemeColor {
     }
 
     public int getHolderDetailBackround(){
-        return getThemeColorWithAlpha(80);
+        return Color.parseColor(convertIntAlphaToHex(90)+"219ED8");
     }
 
     public int getLightCoverImageBackgroundColor(){
@@ -1160,49 +1148,6 @@ public class ApplicationThemeColor {
         return new PopupButtonStateList(normal, pressed);
     }
 
-
-    public Drawable getHeaderContentDrawable(Context context, int resourceType) {
-        Drawable normal;
-        Drawable pressed;
-
-        if(resourceType == HEADER_CONTENT_READ){
-            normal = context.getResources().getDrawable(R.drawable.header_content_read_default);
-            pressed = context.getResources().getDrawable(R.drawable.header_content_read_pressed);
-        } else if(resourceType == HEADER_CONTENT_DELETE){
-            normal = context.getResources().getDrawable(R.drawable.header_content_delete_default);
-            pressed = context.getResources().getDrawable(R.drawable.header_content_delete_pressed);
-        } else if(resourceType == HEADER_CONTENT_UPDATE){
-            normal = context.getResources().getDrawable(R.drawable.header_content_update_default);
-            pressed = context.getResources().getDrawable(R.drawable.header_content_update_pressed);
-        } else if(resourceType == HEADER_CONTENT_BG) {
-            normal = context.getResources().getDrawable(R.drawable.header_content_download_bg);
-            pressed = context.getResources().getDrawable(R.drawable.header_content_download_bg);
-        } else if(resourceType == HEADER_CONTENT_FREE) {
-            normal = context.getResources().getDrawable(R.drawable.header_content_download_free);
-            pressed = context.getResources().getDrawable(R.drawable.header_content_download_free);
-        } else if(resourceType == HEADER_CONTENT_FREE_ARROW) {
-            normal = context.getResources().getDrawable(R.drawable.header_content_download_free_arrow);
-            pressed = context.getResources().getDrawable(R.drawable.header_content_download_free_arrow);
-        } else if(resourceType == HEADER_CONTENT_CLOUD) {
-            normal = context.getResources().getDrawable(R.drawable.header_content_download_cloud);
-            pressed = context.getResources().getDrawable(R.drawable.header_content_download_cloud);
-        }  else if(resourceType == HEADER_CONTENT_CLOUD_ARROW) {
-            normal = context.getResources().getDrawable(R.drawable.header_content_download_cloud_arrow);
-            pressed = context.getResources().getDrawable(R.drawable.header_content_download_cloud_arrow);
-        }   else if(resourceType == HEADER_CONTENT_PURCHASE) {
-            normal = context.getResources().getDrawable(R.drawable.header_content_download_purchase);
-            pressed = context.getResources().getDrawable(R.drawable.header_content_download_purchase);
-        }   else if(resourceType == HEADER_CONTENT_PURCHASE_ARROW) {
-            normal = context.getResources().getDrawable(R.drawable.header_content_download_purchase_arrow);
-            pressed = context.getResources().getDrawable(R.drawable.header_content_download_purchase_arrow);
-        }  else {
-            normal = context.getResources().getDrawable(R.drawable.header_content_download_purchase_bg);
-            pressed = context.getResources().getDrawable(R.drawable.header_content_download_purchase_bg);
-        }
-
-        return new PopupButtonStateList(normal, pressed);
-    }
-
     public Drawable getLeftMenuIconDrawable(Context context, int resourceType) {
 
         Drawable normal;
@@ -1363,7 +1308,7 @@ public class ApplicationThemeColor {
     }
 
     public int getGridItemNameLabelColor() {
-        return Color.parseColor("#219ed8");
+        return Color.parseColor("#FFFFFF");
     }
 
     public int getGridItemNameLabelColorWithAlpha(int alpha) {

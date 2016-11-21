@@ -28,10 +28,4 @@ public class CustomCategoryRecyclerView extends LinearLayoutManager {
         this.recyclerView = recyclerView;
         this.context = context;
     }
-
-    public CustomCategoryRecyclerView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-    }
-
-
 }

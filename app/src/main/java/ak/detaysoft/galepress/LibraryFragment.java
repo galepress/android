@@ -1,20 +1,16 @@
 package ak.detaysoft.galepress;
 
 
-import android.app.PendingIntent;
 import android.content.Intent;
-import android.content.IntentSender;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.location.Location;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.RemoteException;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -23,21 +19,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.artifex.mupdfdemo.MuPDFActivity;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.File;
 import java.text.DateFormat;
@@ -52,7 +43,6 @@ import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.database_models.L_CustomerApplication;
 import ak.detaysoft.galepress.database_models.L_Statistic;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
-import ak.detaysoft.galepress.util.CustomDownloadButton;
 import ak.detaysoft.galepress.util.CustomPulseProgress;
 
 /**
@@ -77,6 +67,7 @@ public class LibraryFragment extends Fragment {
 
     private HeaderContentHolder headerContentHolder;
     private View contentHeader;
+    private L_CustomerApplication application;
 
     public LayoutInflater getLayoutInflater() {
         return layoutInflater;
@@ -142,6 +133,11 @@ public class LibraryFragment extends Fragment {
 
         contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsForApplicationIdAndcategoryId(GalePressApplication.getInstance().getSelectedCustomerApplication().getApplication().getId()
                 ,GalePressApplication.getInstance().getApplicationFragment().selectedCategory.getId(), isDownloaded);
+
+        if(contents != null && contents.size() > 0) {
+            application = GalePressApplication.getInstance().getDatabaseApi().getCustomerApplication(Integer.valueOf(((L_Content) contents.get(0)).getApplicationId()));
+        }
+
         v = inflater.inflate(R.layout.library_fragment, container, false);
 
         gridview = (HeaderGridView) v.findViewById(R.id.gridview);
@@ -300,7 +296,7 @@ public class LibraryFragment extends Fragment {
 
             headerContentHolder.nameLabel = ((TextView) contentHeader.findViewById(R.id.header_nameLabel));
             headerContentHolder.nameLabel.setText(headerContentHolder.content.getName());
-            headerContentHolder.nameLabel.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(getActivity()));
+            headerContentHolder.nameLabel.setTypeface(ApplicationThemeColor.getInstance().getGothamMedium(getActivity()));
 
             headerContentHolder.monthLabel = ((TextView) contentHeader.findViewById(R.id.header_monthLabel));
             headerContentHolder.monthLabel.setText(headerContentHolder.content.getMonthlyName());
@@ -310,154 +306,25 @@ public class LibraryFragment extends Fragment {
             headerContentHolder.detailLabel.setText(headerContentHolder.content.getDetail());
             headerContentHolder.detailLabel.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(getActivity()));
 
-            headerContentHolder.updateButton = (Button) contentHeader.findViewById(R.id.header_content_update);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                headerContentHolder.updateButton.setBackground(ApplicationThemeColor.getInstance().getHeaderContentDrawable(getActivity(), ApplicationThemeColor.HEADER_CONTENT_UPDATE));
-            else
-                headerContentHolder.updateButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().getHeaderContentDrawable(getActivity(), ApplicationThemeColor.HEADER_CONTENT_UPDATE));
-            headerContentHolder.updateButton.setOnClickListener(new View.OnClickListener() {
+            headerContentHolder.playLinkButton = (ImageView) contentHeader.findViewById(R.id.header_content_play_link);
+            headerContentHolder.playLinkButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (DataApi.isConnectedToInternet()) {
-                        v.setEnabled(false);
-                        v.setVisibility(View.GONE);
-                        GalePressApplication.getInstance().getDataApi().getPdf(headerContentHolder.content, getActivity());
-                    }
-                }
-            });
-
-            headerContentHolder.deleteButton = (Button) contentHeader.findViewById(R.id.header_content_delete);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                headerContentHolder.deleteButton.setBackground(ApplicationThemeColor.getInstance().getHeaderContentDrawable(getActivity(), ApplicationThemeColor.HEADER_CONTENT_DELETE));
-            else
-                headerContentHolder.deleteButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().getHeaderContentDrawable(getActivity(), ApplicationThemeColor.HEADER_CONTENT_DELETE));
-            headerContentHolder.deleteButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    v.setEnabled(false);
-                    GalePressApplication.getInstance().getDataApi().deletePdf(headerContentHolder.content.getId(), getActivity());
-                }
-            });
-
-            headerContentHolder.readButton = (Button) contentHeader.findViewById(R.id.header_content_view);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                headerContentHolder.readButton.setBackground(ApplicationThemeColor.getInstance().getHeaderContentDrawable(getActivity(), ApplicationThemeColor.HEADER_CONTENT_READ));
-            else
-                headerContentHolder.readButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().getHeaderContentDrawable(getActivity(), ApplicationThemeColor.HEADER_CONTENT_READ));
-            headerContentHolder.readButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (headerContentHolder.content != null && headerContentHolder.content.isPdfDownloaded())
-                        viewContent(headerContentHolder.content);
-                }
-            });
-
-            headerContentHolder.downloadButton = (CustomDownloadButton) contentHeader.findViewById(R.id.header_content_download);
-            headerContentHolder.downloadButton.isHeaderContentDownload = true;
-            initDownloadButton(headerContentHolder.content);
-            headerContentHolder.downloadButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (DataApi.isConnectedToInternet()) {
-                        headerContentHolder.downloadButton.setEnabled(false);
-                        headerContentHolder.downloadButton.setClickable(false);
-                        if (headerContentHolder.content.isBuyable()) {
-                            if (headerContentHolder.content.isContentBought() || GalePressApplication.getInstance().isUserHaveActiveSubscription()) {
-                                if (GalePressApplication.getInstance().getDataApi().downloadPdfTask == null
-                                        || (GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() != AsyncTask.Status.RUNNING)) {
-                                    headerContentHolder.downloadButton.startAnim();
-                                }
-                                GalePressApplication.getInstance().getDataApi().getPdf(headerContentHolder.content, getActivity());
-                            } else {
-/*
-                            * Login olmayan kullanici urun alamaz
-                            * */
-                                if (GalePressApplication.getInstance().getUserInformation() != null
-                                        && GalePressApplication.getInstance().getUserInformation().getAccessToken() != null
-                                        && GalePressApplication.getInstance().getUserInformation().getAccessToken().length() != 0) {
-                                    if (!GalePressApplication.getInstance().isBlnBind() && GalePressApplication.getInstance().getmService() == null) {
-                                        Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.BILLING_RESULT_BILLING_UNAVAILABLE), Toast.LENGTH_SHORT)
-                                                .show();
-                                        return;
-                                    }
-
-                                    try {
-                                        headerContentHolder.downloadButton.getPriceTextView().setTextColor(ApplicationThemeColor.getInstance().getThemeColor());
-                                        Bundle buyIntentBundle = GalePressApplication.getInstance().getmService().getBuyIntent(3, getActivity().getPackageName(),
-                                                headerContentHolder.content.getIdentifier(), "inapp", "bGoa+V7g/yqDXvKRqq+JTFn4uQZbPiQJo4pf9RzJ");
-                                        PendingIntent pendingIntent = buyIntentBundle.getParcelable("BUY_INTENT");
-
-                                        if (buyIntentBundle.getInt("RESPONSE_CODE") == BILLING_RESPONSE_RESULT_OK) { // Urun satin alinmamis
-                                            // Start purchase flow (this brings up the Google Play UI).
-                                            // Result will be delivered through onActivityResult().
-                                            getActivity().startIntentSenderForResult(pendingIntent.getIntentSender(),
-                                                    1002, new Intent(), Integer.valueOf(0), Integer.valueOf(0),
-                                                    Integer.valueOf(0));
-                                        } else if (buyIntentBundle.getInt("RESPONSE_CODE") == RESULT_ITEM_ALREADY_OWNED) { // Urun daha once alinmis
-                                            Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.BILLING_ITEM_ALREADY_OWNED), Toast.LENGTH_SHORT)
-                                                    .show();
-                                            if (GalePressApplication.getInstance().getDataApi().downloadPdfTask == null
-                                                    || (GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() != AsyncTask.Status.RUNNING)) {
-                                                headerContentHolder.downloadButton.startAnim();
-                                            }
-                                            GalePressApplication.getInstance().getDataApi().getPdf(headerContentHolder.content, getActivity());
-                                            headerContentHolder.downloadButton.getPriceTextView().setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
-                                        } else if (buyIntentBundle.getInt("RESPONSE_CODE") == RESULT_USER_CANCELED) { // Hata var
-                                            Toast.makeText(getContext(), getActivity().getResources().getString(R.string.BILLING_RESULT_USER_CANCELED), Toast.LENGTH_SHORT)
-                                                    .show();
-                                            headerContentHolder.downloadButton.getPriceTextView().setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
-                                        } else if (buyIntentBundle.getInt("RESPONSE_CODE") == RESULT_BILLING_UNAVAILABLE) { // Hata var
-                                            Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.BILLING_RESULT_BILLING_UNAVAILABLE), Toast.LENGTH_SHORT)
-                                                    .show();
-                                            headerContentHolder.downloadButton.getPriceTextView().setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
-                                        } else if (buyIntentBundle.getInt("RESPONSE_CODE") == RESULT_ITEM_UNAVAILABLE) { // Hata var
-                                            Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.BILLIN_RESULT_ITEM_UNAVAILABLE), Toast.LENGTH_SHORT)
-                                                    .show();
-                                            headerContentHolder.downloadButton.getPriceTextView().setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
-                                        } else if (buyIntentBundle.getInt("RESPONSE_CODE") == RESULT_ERROR) { // Hata var
-                                            Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.BILLING_RESULT_ERROR), Toast.LENGTH_SHORT)
-                                                    .show();
-                                            headerContentHolder.downloadButton.getPriceTextView().setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
-                                        } else { //  Beklenmedik Hata var
-                                            Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.BILLING_UNEXPECTED), Toast.LENGTH_SHORT)
-                                                    .show();
-                                            headerContentHolder.downloadButton.getPriceTextView().setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
-                                        }
-
-                                    } catch (RemoteException e) {
-                                        e.printStackTrace();
-                                        headerContentHolder.downloadButton.getPriceTextView().setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
-                                    } catch (IntentSender.SendIntentException e) {
-                                        e.printStackTrace();
-                                        headerContentHolder.downloadButton.getPriceTextView().setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                        headerContentHolder.downloadButton.getPriceTextView().setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
-                                    }
-                                } else {
-                                    //Giris yapin uyarisi
-                                    Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.login_warning_inapp_billing), Toast.LENGTH_SHORT)
-                                            .show();
-                                    /*
-                                    * Mainactivity onActivityResult da logine yonlendirme yapacagiz
-                                    * */
-                                    Intent intent = new Intent(getActivity(), UserLoginActivity.class);
-                                    intent.putExtra("action", UserLoginActivity.ACTION_MENU);
-                                    intent.putExtra("isLaunchOpen", false);
-                                    startActivityForResult(intent, 102);
-                                }
-                            }
-                        } else {
-                            if (GalePressApplication.getInstance().getDataApi().downloadPdfTask == null
-                                    || (GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() != AsyncTask.Status.RUNNING)) {
-                                headerContentHolder.downloadButton.startAnim();
-                            }
-                            GalePressApplication.getInstance().getDataApi().getPdf(headerContentHolder.content, getActivity());
+                    if (application != null && application.getPlayUrl() != null && application.getPlayUrl().length() > 0) {
+                        String appPackageName = Uri.parse(application.getPlayUrl()).getQueryParameter("id");
+                        try {
+                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                        } catch (android.content.ActivityNotFoundException anfe) {
+                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
                         }
                     }
                 }
             });
-
+            if (application != null && (application.getPlayUrl() == null || application.getPlayUrl().length() == 0)){
+                headerContentHolder.playLinkButton.setVisibility(View.GONE);
+            } else {
+                headerContentHolder.playLinkButton.setVisibility(View.VISIBLE);
+            }
 
             headerContentHolder.loading = (CustomPulseProgress) contentHeader.findViewById(R.id.header_content_image_loading);
             headerContentHolder.loading.startAnim();
@@ -486,16 +353,11 @@ public class LibraryFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     if(headerContentHolder.content != null){
-                        L_CustomerApplication application =
-                                GalePressApplication.getInstance().getDatabaseApi().getCustomerApplication(Integer.valueOf(headerContentHolder.content.getApplicationId()));
-                        if(application != null && application.getPlayUrl() != null && application.getPlayUrl().length() > 0){
-                            String appPackageName = Uri.parse(application.getPlayUrl()).getQueryParameter("id");
-                            try {
-                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
-                            } catch (android.content.ActivityNotFoundException anfe) {
-                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
-                            }
-                        }
+
+                        int[] values = new int[2];
+                        v.getLocationInWindow(values);
+                        viewContentDetail(headerContentHolder.content, values[0] + v.getWidth(), values[1]);
+
                     }
                 }
             });
@@ -511,86 +373,6 @@ public class LibraryFragment extends Fragment {
 
             updateHeaderContent();
         }
-    }
-
-    private void initDownloadButton(final L_Content content) {
-
-
-        if (content.isBuyable()) {
-            if (content.isContentBought() || GalePressApplication.getInstance().isUserHaveActiveSubscription()) {
-                headerContentHolder.downloadButton.init(CustomDownloadButton.RESTORE, "");
-            } else {
-                AsyncTask<Void, Void, String> getPrice = new AsyncTask<Void, Void, String>() {
-
-                    @Override
-                    protected void onPreExecute() {
-                        super.onPreExecute();
-                        headerContentHolder.downloadButton.init(CustomDownloadButton.PURCHASE, "");
-                    }
-
-                    @Override
-                    protected String doInBackground(Void... params) {
-                        String price = "";
-                        if (GalePressApplication.getInstance().isUserHaveActiveSubscription() || GalePressApplication.getInstance().getmService() == null) {
-                            return price;
-                        } else {
-                            //Satin alinabilen urunse fiyati kontrol ediliyor
-                            ArrayList<String> skuList = new ArrayList<String>();
-                            skuList.add(content.getIdentifier());
-                            Bundle querySkus = new Bundle();
-                            querySkus.putStringArrayList("ITEM_ID_LIST", skuList);
-
-                            Bundle skuDetails;
-                            try {
-                                skuDetails = GalePressApplication.getInstance().getmService().getSkuDetails(3, getActivity().getPackageName(), "inapp", querySkus);
-
-                                int response = skuDetails.getInt("RESPONSE_CODE");
-
-                                if (response == 0) {
-                                    ArrayList<String> responseList = skuDetails.getStringArrayList("DETAILS_LIST");
-
-                                    if (responseList.size() != 0) {
-                                        for (String thisResponse : responseList) {
-                                            JSONObject object = null;
-                                            try {
-                                                object = new JSONObject(thisResponse);
-                                                price = object.getString("price");
-                                            } catch (JSONException e) {
-                                                e.printStackTrace();
-                                            }
-                                        }
-                                    }
-                                }
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                                price = "";
-                            }
-                            if (price == null || price.length() == 0) {
-                                price = (content.getMarketPrice() == null || content.getMarketPrice().length() == 0) ? "" : content.getMarketPrice();
-                            }
-                        }
-                        return price;
-                    }
-
-                    @Override
-                    protected void onPostExecute(String s) {
-                        super.onPostExecute(s);
-                        if (s.compareTo("") != 0)
-                            headerContentHolder.downloadButton.getPriceTextView().setText(s);
-                        else {
-                            Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.product_price_error), Toast.LENGTH_SHORT).show();
-                            headerContentHolder.downloadButton.getPriceTextView().setText(content.getPrice());
-                        }
-                        //downloadButton.getPriceTextView().setText("12.99 TL");
-                        headerContentHolder.downloadButton.invalidate();
-                    }
-                };
-                getPrice.execute();
-            }
-        } else {
-            headerContentHolder.downloadButton.init(CustomDownloadButton.FREE, "");
-        }
-
     }
 
     public void displayImage(final boolean isDownload, final ImageView image, final CustomPulseProgress loading, String imagePath, final L_Content content) {
@@ -648,47 +430,25 @@ public class LibraryFragment extends Fragment {
                 && GalePressApplication.getInstance().getDataApi().downloadPdfTask.content != null
                 && GalePressApplication.getInstance().getDataApi().downloadPdfTask.content.getId().compareTo(headerContentHolder.content.getId()) == 0;
 
-        //Cancel butonu aktif oldugu her durumda download butonunun animasyonunu durdurmak icin
-        if (headerContentHolder.downloadStatus.getVisibility() == View.VISIBLE) {
-            headerContentHolder.downloadButton.stopAnim();
-        }
-
         if (downloaded) {
             // Content is downloaded and ready to view.
-            headerContentHolder.downloadButton.setVisibility(View.GONE);
-
-            headerContentHolder.readButton.setVisibility(View.VISIBLE);
-            headerContentHolder.readButton.setEnabled(true);
-
-            headerContentHolder.deleteButton.setVisibility(View.VISIBLE);
-            headerContentHolder.deleteButton.setEnabled(true);
 
             headerContentHolder.downloadStatus.setVisibility(View.GONE);
             headerContentHolder.downloadStatus.setEnabled(false);
             headerContentHolder.overlay.setVisibility(View.GONE);
             headerContentHolder.overlay.setEnabled(false);
-            headerContentHolder.downloadButton.stopAnim();
 
             if (updateAvailable) {
-                headerContentHolder.updateButton.setVisibility(View.VISIBLE);
-                headerContentHolder.updateButton.setEnabled(true);
 
                 if (downloading) {
                     // update downloading
-                    headerContentHolder.updateButton.setVisibility(View.GONE);
-                    headerContentHolder.readButton.setVisibility(View.GONE);
-                    headerContentHolder.deleteButton.setVisibility(View.GONE);
                     headerContentHolder.downloadStatus.setEnabled(true);
                     headerContentHolder.downloadStatus.setVisibility(View.VISIBLE);
                     headerContentHolder.overlay.setVisibility(View.VISIBLE);
                     headerContentHolder.overlay.setEnabled(true);
-                    headerContentHolder.downloadButton.stopAnim();
-                    headerContentHolder.updateButton.setVisibility(View.GONE);
-                    headerContentHolder.deleteButton.setVisibility(View.GONE);
                 }
             } else {
-                // update not available
-                headerContentHolder.updateButton.setVisibility(View.GONE);
+
             }
         } else {
             // not downloaded
@@ -698,20 +458,8 @@ public class LibraryFragment extends Fragment {
                 headerContentHolder.downloadStatus.setEnabled(true);
                 headerContentHolder.overlay.setVisibility(View.VISIBLE);
                 headerContentHolder.overlay.setEnabled(true);
-                headerContentHolder.downloadButton.setEnabled(false);
-                headerContentHolder.downloadButton.setVisibility(View.GONE);
-                headerContentHolder.downloadButton.stopAnim();
-                headerContentHolder.updateButton.setVisibility(View.GONE);
-                headerContentHolder.deleteButton.setVisibility(View.GONE);
-                headerContentHolder.readButton.setVisibility(View.GONE);
             } else {
                 // Content Download edilmemis. ilk acildigi durum.
-                headerContentHolder.downloadButton.setVisibility(View.VISIBLE);
-                headerContentHolder.downloadButton.setEnabled(true);
-                headerContentHolder.downloadButton.setClickable(true);
-                headerContentHolder.deleteButton.setVisibility(View.GONE);
-                headerContentHolder.updateButton.setVisibility(View.GONE);
-                headerContentHolder.readButton.setVisibility(View.GONE);
                 headerContentHolder.downloadStatus.setVisibility(View.GONE);
                 headerContentHolder.downloadStatus.setEnabled(false);
                 headerContentHolder.overlay.setVisibility(View.GONE);
@@ -719,13 +467,12 @@ public class LibraryFragment extends Fragment {
             }
         }
 
-        if (headerContentHolder.readButton.getVisibility() == View.VISIBLE) {
-            headerContentHolder.downloadStatus.setVisibility(View.GONE);
-            headerContentHolder.downloadStatus.setEnabled(false);
-            headerContentHolder.overlay.setVisibility(View.GONE);
-            headerContentHolder.overlay.setEnabled(false);
-            headerContentHolder.downloadButton.stopAnim();
+        if (application != null && (application.getPlayUrl() == null || application.getPlayUrl().length() == 0)){
+            headerContentHolder.playLinkButton.setVisibility(View.GONE);
+        } else {
+            headerContentHolder.playLinkButton.setVisibility(View.VISIBLE);
         }
+
         contentHeader.invalidate();
     }
 
@@ -734,10 +481,7 @@ public class LibraryFragment extends Fragment {
         public TextView nameLabel;
         public TextView monthLabel;
         public TextView detailLabel;
-        public Button readButton;
-        public Button updateButton;
-        public Button deleteButton;
-        public CustomDownloadButton downloadButton;
+        public ImageView playLinkButton;
         public ImageView overlay;
         public RelativeLayout downloadStatus;
         public TextView downloadPercentage;

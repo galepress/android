@@ -29,6 +29,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
@@ -132,6 +133,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
 
     public void onCreate(Bundle savedInstanceState) {
+        getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
         super.onCreate(savedInstanceState);
         Log.e("oncreate", "mainActivity");
 
@@ -148,7 +150,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             Log.e("ConnectivityManager", e.toString());
         }
 
-        getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
         getSupportActionBar().setDisplayUseLogoEnabled(false);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -231,8 +232,13 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         categoriesListView.setAdapter(categoriesAdapter);
 
 
+        View customView = getLayoutInflater().inflate(R.layout.actionbar, null);
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.actionbar);
+        getSupportActionBar().setCustomView(customView);
+        Toolbar parent =(Toolbar) customView.getParent();
+        parent.setPadding(0,0,0,0);//for tab otherwise give space in tab
+        parent.setContentInsetsAbsolute(0,0);
+        parent.setContentInsetsRelative(0,0);
 
         searchEdittext = (EditText) findViewById(R.id.left_menu_search_edit_text);
         //React to Done button on keyboard
@@ -446,7 +452,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             }
         }
         actionbarTitle = (TextView) findViewById(R.id.action_bar_title_text_view);
-        updateActivityViewAndAdapter(true);
+        updateActivityViewAndAdapter();
 
         GalePressApplication.getInstance().setCurrentActivity(this);
         GalePressApplication.getInstance().setMainActivity(this);
@@ -477,7 +483,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     * Renk degismedigi zaman servisten gelen tabbar ikonları invalidate edilmiyor.
     * Yoksa uygulama icinde her update oldugunda ikonlarda yeniden load edildigi icin kotu gorunuyor
     */
-    public void updateActivityViewAndAdapter(boolean isColorChanged) {
+    public void updateActivityViewAndAdapter() {
 
         leftMenuBaseLayout.setBackgroundColor(ApplicationThemeColor.getInstance().getForegroundColor());
 
@@ -831,23 +837,18 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             } else if (responseCode == LibraryFragment.RESULT_USER_CANCELED) { // Hata var
                 Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESULT_USER_CANCELED), Toast.LENGTH_SHORT)
                         .show();
-                getLibraryFragment().getHeaderContentHolder().downloadButton.getPriceTextView().setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
             } else if (responseCode == LibraryFragment.RESULT_BILLING_UNAVAILABLE) { // Hata var
                 Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESULT_BILLING_UNAVAILABLE), Toast.LENGTH_SHORT)
                         .show();
-                getLibraryFragment().getHeaderContentHolder().downloadButton.getPriceTextView().setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
             } else if (responseCode == LibraryFragment.RESULT_ITEM_UNAVAILABLE) { // Hata var
                 Toast.makeText(this, this.getResources().getString(R.string.BILLIN_RESULT_ITEM_UNAVAILABLE), Toast.LENGTH_SHORT)
                         .show();
-                getLibraryFragment().getHeaderContentHolder().downloadButton.getPriceTextView().setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
             } else if (responseCode == LibraryFragment.RESULT_ERROR) { // Hata var
                 Toast.makeText(this, this.getResources().getString(R.string.BILLING_RESULT_ERROR), Toast.LENGTH_SHORT)
                         .show();
-                getLibraryFragment().getHeaderContentHolder().downloadButton.getPriceTextView().setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
             } else { //  Beklenmedik Hata var
                 Toast.makeText(this, this.getResources().getString(R.string.BILLING_UNEXPECTED), Toast.LENGTH_SHORT)
                         .show();
-                getLibraryFragment().getHeaderContentHolder().downloadButton.getPriceTextView().setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
             }
         } else if (requestCode == 102) { //Login return
             if (resultCode == 102) {

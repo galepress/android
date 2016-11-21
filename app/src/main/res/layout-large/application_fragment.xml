@@ -25,7 +25,7 @@
         android:listSelector="@android:color/transparent"
         android:choiceMode="singleChoice" />
 
-    <android.support.v7.widget.RecyclerView
+    <ak.detaysoft.galepress.CategoryRecyclerView
         android:id="@+id/category_slider_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="@dimen/category_banner_height"
@@ -33,7 +33,7 @@
         android:background="@android:color/white"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager">
 
-    </android.support.v7.widget.RecyclerView>
+    </ak.detaysoft.galepress.CategoryRecyclerView>
 
 
 

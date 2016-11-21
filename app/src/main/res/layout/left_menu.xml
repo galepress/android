@@ -24,12 +24,12 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/menu_logo_height"
             android:layout_marginBottom="30dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
             android:layout_marginTop="30dp"
             android:adjustViewBounds="true"
             android:scaleType="centerInside"
-            android:src="@drawable/app_logo" />
+            android:src="@drawable/left_menu_logo" />
 
         <RelativeLayout
             android:id="@+id/left_menu_login"
@@ -70,8 +70,8 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_below="@+id/left_menu_login"
-            android:background="#FFFFFF"
-            android:layout_height="0.75dp" />
+            android:background="#80FFFFFF"
+            android:layout_height="0.40dp" />
 
         <ScrollView
             android:layout_width="match_parent"
