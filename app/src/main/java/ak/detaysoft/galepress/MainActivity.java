@@ -525,7 +525,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
         ((LinearLayout) findViewById(R.id.custom_actionbar_layout)).setBackgroundColor(ApplicationThemeColor.getInstance().getActionAndTabBarColor());
 
-        searchEdittext.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
+        searchEdittext.setTypeface(ApplicationThemeColor.getInstance().getGothamLight(this));
         searchEdittext.setTextColor(Color.WHITE);
         searchEdittext.setHintTextColor(Color.WHITE);
 
@@ -1116,11 +1116,11 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
                 holder.text.setText(Html.fromHtml(searchList.get(position).getText()));
                 holder.text.setTextColor(Color.WHITE);
-                holder.text.setTypeface(ApplicationThemeColor.getInstance().getGothamBookItalic(MainActivity.this));
+                holder.text.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(MainActivity.this));
 
                 holder.page.setText("" + searchList.get(position).getPage());
                 holder.page.setTextColor(Color.WHITE);
-                holder.page.setTypeface(ApplicationThemeColor.getInstance().getGothamBookItalic(MainActivity.this));
+                holder.page.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(MainActivity.this));
             }
 
 

@@ -879,7 +879,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         searchList.setLayoutManager(mLayoutManager);
 
 
-        readerSearchEdittext.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
+        readerSearchEdittext.setTypeface(ApplicationThemeColor.getInstance().getGothamLight(this));
         readerSearchEdittext.setTextColor(Color.WHITE);
         readerSearchEdittext.setHintTextColor(Color.WHITE);
 
@@ -2037,11 +2037,11 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             holder.result = readerSearchResult.get(position);
             holder.text.setText(Html.fromHtml(readerSearchResult.get(position).getText()));
             holder.text.setTextColor(Color.WHITE);
-            holder.text.setTypeface(ApplicationThemeColor.getInstance().getGothamBookItalic(MuPDFActivity.this));
+            holder.text.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(MuPDFActivity.this));
 
             holder.page.setText(""+readerSearchResult.get(position).getPage());
             holder.page.setTextColor(Color.WHITE);
-            holder.page.setTypeface(ApplicationThemeColor.getInstance().getGothamBookItalic(MuPDFActivity.this));
+            holder.page.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(MuPDFActivity.this));
 
 
         }

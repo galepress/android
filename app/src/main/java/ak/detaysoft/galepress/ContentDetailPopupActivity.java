@@ -218,8 +218,8 @@ public class ContentDetailPopupActivity extends Activity{
 
         //setText
         nameLabel = (TextView)findViewById(R.id.content_detail_name_label);
-        nameLabel.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
-        nameLabel.setTextColor(ApplicationThemeColor.getInstance().getGridItemNameLabelColor());
+        nameLabel.setTypeface(ApplicationThemeColor.getInstance().getGothamMedium(this));
+        nameLabel.setTextColor(Color.parseColor("#219ed8"));
         nameLabel.setText(content.getName());
 
         detailLabel = (TextView)findViewById(R.id.content_detail_month_label);
@@ -502,7 +502,7 @@ public class ContentDetailPopupActivity extends Activity{
 
         descriptionLabel = (TextView)findViewById(R.id.content_detail_description_label);
         descriptionLabel.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
-        descriptionLabel.setTextColor(ApplicationThemeColor.getInstance().getThemeColor());
+        descriptionLabel.setTextColor(ApplicationThemeColor.getInstance().getWhiteColorWithAlpha(100));
         descriptionLabel.setText(content.getDetail());
 
 

@@ -68,14 +68,10 @@
                                 android:scaleType="centerInside"
                                 android:src="@drawable/swipe_close"
                                 android:layout_height="20dp" />
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="10dp"
-                                android:background="#CCFFFFFF"/>
                         </LinearLayout>
 
                         <TextView
-                            android:background="#CCFFFFFF"
+                            android:background="#E6219ED8"
                             android:id="@+id/content_detail_description_label"
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
@@ -85,7 +81,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:visibility="visible"
-                            android:text="sdfsdfsdfşjsdlfjsdkljflksdjfsldjfsdkljfsdlkfjsdkljflkdsjfklsdjfksldfjdslkfjsdlkfjsdklfjsdlkfjlsdkf\nsdkjhdfjksddfhjksdhfkjsdhfsdf\nsdjkfhsdkjhfsdkfhksdjhf" />
+                            android:text="sdfsdfsdfşjsdlfjsdkljflksdjfsldjfsdkljfsdlkfjsdkljflkdsjfklsdjfksldfjdslkfjsdlkfjsdklfjsdlkfjlsdkf\nsdkjhdfjksddfhjksdhfkjsdhfsdf\nsdjkfhsdkjhfsdkfhksdjhf"
+                            android:paddingTop="10dp" />
 
 
                     </LinearLayout>
