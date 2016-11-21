@@ -31,6 +31,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
@@ -180,6 +181,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
 
     public void onCreate(Bundle savedInstanceState) {
+        getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
         super.onCreate(savedInstanceState);
 
         Intent intent = getIntent();
@@ -195,7 +197,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             Log.e("ConnectivityManager", e.toString());
         }
 
-        getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
+
         getSupportActionBar().setDisplayUseLogoEnabled(false);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -379,8 +381,13 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         membershipAdapter = new LeftMenuMembershipAdapter(this);
         membershipListView.setAdapter(membershipAdapter);
 
+        View customView = getLayoutInflater().inflate(R.layout.actionbar, null);
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.actionbar);
+        getSupportActionBar().setCustomView(customView);
+        Toolbar parent =(Toolbar) customView.getParent();
+        parent.setPadding(0,0,0,0);//for tab otherwise give space in tab
+        parent.setContentInsetsAbsolute(0,0);
+        parent.setContentInsetsRelative(0,0);
 
         initDefaultTabs();
 

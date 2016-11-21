@@ -16,30 +16,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4591bc09-e445-44c4-a89c-14ca9bceb4e8" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/answers_1_3_6.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_20_0_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/beta_1_1_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/bolts_android_1_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/crashlytics_2_5_5.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/crashlytics_core_2_3_8.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/cropper_1_0_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/dd_plist.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/fabric_1_3_10.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/facebook_android_sdk_4_1_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/gcm.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/ormlite_android_4_45.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/ormlite_core_4_45.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_4_0_30.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/recyclerview_v7_24_0_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_24_0_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_24_0_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/universal_image_loader_1_9_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/xwalk_core_library_java.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_menuDrawer_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_menuDrawer_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_menuDrawer_compileReleaseJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_menuDrawer_compileReleaseJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/res/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/menuDrawer/build/intermediates/res/resources-debug-androidTest.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/outputs/aar/menuDrawer-debug.aar" afterPath="$PROJECT_DIR$/menuDrawer/build/outputs/aar/menuDrawer-debug.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/outputs/aar/menuDrawer-release.aar" afterPath="$PROJECT_DIR$/menuDrawer/build/outputs/aar/menuDrawer-release.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/resources-debug-androidTest.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/outputs/aar/xwalk_core_library_15-debug.aar" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/outputs/aar/xwalk_core_library_15-debug.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/outputs/aar/xwalk_core_library_15-release.aar" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/outputs/aar/xwalk_core_library_15-release.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/WebViewAnnotation.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/WebViewAnnotation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/WebViewAnnotationWithCrosswalk.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/WebViewAnnotationWithCrosswalk.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/generated/source/buildConfig/androidTest/debug/net/simonvt/menudrawer/test/BuildConfig.java" afterPath="$PROJECT_DIR$/menuDrawer/build/generated/source/buildConfig/androidTest/debug/net/simonvt/menudrawer/test/BuildConfig.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/menuDrawer/build/generated/source/buildConfig/debug/net/simonvt/menudrawer/BuildConfig.java" afterPath="$PROJECT_DIR$/menuDrawer/build/generated/source/buildConfig/debug/net/simonvt/menudrawer/BuildConfig.java" />
@@ -71,10 +82,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable-hdpi-v4.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable-hdpi-v4.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable-xhdpi-v4.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable-xhdpi-v4.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/layout.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/layout.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" />
     </list>
     <ignored path="GalepressMerge.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -112,15 +120,14 @@
       <file leaf-file-name="WebViewAnnotation.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/WebViewAnnotation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3876">
-              <caret line="250" column="1" selection-start-line="250" selection-start-column="1" selection-end-line="250" selection-end-column="1" />
+            <state relative-caret-position="3893">
+              <caret line="248" column="1" selection-start-line="248" selection-start-column="1" selection-end-line="248" selection-end-column="1" />
               <folding>
-                <element signature="e#9856#9857#0" expanded="true" />
-                <element signature="e#9898#9899#0" expanded="true" />
-                <element signature="e#10157#10158#0" expanded="true" />
-                <element signature="e#10197#10198#0" expanded="true" />
-                <element signature="e#10260#10261#0" expanded="true" />
-                <element signature="e#10311#10312#0" expanded="true" />
+                <element signature="e#9856#9857#0" expanded="false" />
+                <element signature="e#9898#9899#0" expanded="false" />
+                <element signature="e#10157#10158#0" expanded="false" />
+                <element signature="e#10197#10198#0" expanded="false" />
+                <marker date="1479710020374" expanded="false" signature="50:246" ph="..." />
               </folding>
             </state>
           </provider>
@@ -129,48 +136,217 @@
       <file leaf-file-name="MuPDFPageView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10132">
-              <caret line="659" column="58" selection-start-line="659" selection-start-column="58" selection-end-line="659" selection-end-column="58" />
-              <folding />
+            <state relative-caret-position="10115">
+              <caret line="658" column="50" selection-start-line="658" selection-start-column="50" selection-end-line="658" selection-end-column="50" />
+              <folding>
+                <element signature="e#24776#24777#0" expanded="false" />
+                <element signature="e#24820#24821#0" expanded="false" />
+                <element signature="e#24884#24885#0" expanded="false" />
+                <element signature="e#24928#24929#0" expanded="false" />
+                <element signature="e#25826#25827#0" expanded="false" />
+                <element signature="e#25854#25855#0" expanded="false" />
+                <marker date="1479710020419" expanded="false" signature="39:818" ph="..." />
+                <marker date="1479710020419" expanded="true" signature="920:954" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="994:1194" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="1218:1387" ph="{...}" />
+                <marker date="1479710020419" expanded="false" signature="1293:1298" ph=" { " />
+                <marker date="1479710020419" expanded="false" signature="1317:1320" ph=" }" />
+                <marker date="1479710020419" expanded="true" signature="1439:1662" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="1529:1568" ph="{...}" />
+                <marker date="1479710020419" expanded="false" signature="1628:1633" ph=" { " />
+                <marker date="1479710020419" expanded="false" signature="1657:1660" ph=" }" />
+                <marker date="1479710020419" expanded="true" signature="1716:2040" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="1875:1944" ph="{...}" />
+                <marker date="1479710020419" expanded="false" signature="2004:2009" ph=" { " />
+                <marker date="1479710020419" expanded="false" signature="2035:2038" ph=" }" />
+                <marker date="1479710020419" expanded="true" signature="2097:2364" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="2199:2265" ph="{...}" />
+                <marker date="1479710020419" expanded="false" signature="2325:2330" ph=" { " />
+                <marker date="1479710020419" expanded="false" signature="2359:2362" ph=" }" />
+                <marker date="1479710020419" expanded="true" signature="2431:25857" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="3743:6751" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="4272:4364" ph="{...}" />
+                <marker date="1479710020419" expanded="false" signature="4331:4338" ph=" { " />
+                <marker date="1479710020419" expanded="false" signature="4355:4360" ph=" }" />
+                <marker date="1479710020419" expanded="true" signature="4458:4976" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="4518:4972" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="4579:4905" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="4650:4721" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="4787:4899" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="5372:5477" ph="{...}" />
+                <marker date="1479710020419" expanded="false" signature="5444:5451" ph=" { " />
+                <marker date="1479710020419" expanded="false" signature="5468:5473" ph=" }" />
+                <marker date="1479710020419" expanded="true" signature="5575:5824" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="5648:5820" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="5709:5794" ph="{...}" />
+                <marker date="1479710020419" expanded="false" signature="5751:5760" ph=" { " />
+                <marker date="1479710020419" expanded="false" signature="5781:5788" ph=" }" />
+                <marker date="1479710020419" expanded="true" signature="6038:6143" ph="{...}" />
+                <marker date="1479710020419" expanded="false" signature="6110:6117" ph=" { " />
+                <marker date="1479710020419" expanded="false" signature="6134:6139" ph=" }" />
+                <marker date="1479710020419" expanded="true" signature="6589:6694" ph="{...}" />
+                <marker date="1479710020419" expanded="false" signature="6661:6668" ph=" { " />
+                <marker date="1479710020419" expanded="false" signature="6685:6690" ph=" }" />
+                <marker date="1479710020419" expanded="true" signature="6798:7218" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="7009:7187" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="7082:7183" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="7299:7734" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="7346:7710" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="7413:7502" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="7564:7705" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="7779:8330" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="7783:8006" ph="//..." />
+                <marker date="1479710020419" expanded="true" signature="8376:8531" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="8591:9210" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="8671:9135" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="8731:9131" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="8792:9078" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="8862:8972" ph="{...}" />
+                <marker date="1479710020419" expanded="false" signature="9035:9044" ph=" { " />
+                <marker date="1479710020419" expanded="false" signature="9065:9072" ph=" }" />
+                <marker date="1479710020419" expanded="true" signature="9258:9643" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="9315:9609" ph="{...}" />
+                <marker date="1479710020419" expanded="false" signature="9380:9387" ph=" { " />
+                <marker date="1479710020419" expanded="false" signature="9424:9429" ph=" }" />
+                <marker date="1479710020419" expanded="true" signature="9490:9605" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="9681:9757" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="9798:9934" ph="{...}" />
+                <marker date="1479710020419" expanded="false" signature="9985:9990" ph=" { " />
+                <marker date="1479710020419" expanded="false" signature="10016:10019" ph=" }" />
+                <marker date="1479710020419" expanded="true" signature="10066:12072" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="11033:11993" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="11108:11180" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="11253:11988" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="11373:11980" ph="{...}" />
+                <marker date="1479710020419" expanded="false" signature="11446:11456" ph=" { " />
+                <marker date="1479710020419" expanded="false" signature="11486:11494" ph=" }" />
+                <marker date="1479710020419" expanded="false" signature="11571:11581" ph=" { " />
+                <marker date="1479710020419" expanded="false" signature="11616:11624" ph=" }" />
+                <marker date="1479710020419" expanded="true" signature="11708:11973" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="12106:13092" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="12201:12527" ph="{...}" />
+                <marker date="1479710020419" expanded="false" signature="12255:12262" ph=" { " />
+                <marker date="1479710020419" expanded="false" signature="12289:12294" ph=" }" />
+                <marker date="1479710020419" expanded="true" signature="12333:12414" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="12443:12523" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="13154:14154" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="13262:13702" ph="{...}" />
+                <marker date="1479710020419" expanded="false" signature="13308:13315" ph=" { " />
+                <marker date="1479710020419" expanded="false" signature="13334:13339" ph=" }" />
+                <marker date="1479710020419" expanded="false" signature="13377:13384" ph=" { " />
+                <marker date="1479710020419" expanded="false" signature="13401:13406" ph=" }" />
+                <marker date="1479710020419" expanded="true" signature="13435:13698" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="13808:14038" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="13876:13931" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="13991:14034" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="14196:14754" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="14367:14627" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="14436:14514" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="14576:14622" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="14790:14853" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="14882:15397" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="15077:15330" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="15147:15222" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="15282:15325" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="15528:15649" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="15782:15905" ph="{...}" />
+                <marker date="1479710020419" expanded="false" signature="15953:15958" ph=" { " />
+                <marker date="1479710020419" expanded="false" signature="15997:16000" ph=" }" />
+                <marker date="1479710020419" expanded="false" signature="16046:16051" ph=" { " />
+                <marker date="1479710020419" expanded="false" signature="16087:16090" ph=" }" />
+                <marker date="1479710020419" expanded="true" signature="16172:16236" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="16270:16686" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="16423:16651" ph="{...}" />
+                <marker date="1479710020419" expanded="true" signature="16495:16546" ph="{...}" />
+                <marker date="1479710020419" expanded="false" signature="16613:16620" ph=" { " />
+                <marker date="1479710020419" expanded="false" signature="16642:16647" ph=" }" />
+                <marker date="1479710020419" expanded="true" signature="16851:19675" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WebViewAnnotationWithCrosswalk.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WebViewAnnotationWithCrosswalk.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/WebViewAnnotationWithCrosswalk.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="219" column="31" selection-start-line="219" selection-start-column="31" selection-end-line="219" selection-end-column="31" />
+            <state relative-caret-position="320">
+              <caret line="212" column="30" selection-start-line="212" selection-start-column="30" selection-end-line="212" selection-end-column="30" />
               <folding>
-                <element signature="e#5698#9022#0" expanded="true" />
-                <element signature="e#9021#9022#0" expanded="true" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#1477#1478#0" expanded="false" />
+                <element signature="e#1512#1513#0" expanded="false" />
+                <element signature="e#2036#2037#0" expanded="false" />
+                <element signature="e#2091#2092#0" expanded="false" />
+                <element signature="e#2174#2175#0" expanded="false" />
+                <element signature="e#2228#2229#0" expanded="false" />
+                <element signature="e#3546#3547#0" expanded="false" />
+                <element signature="e#3581#3582#0" expanded="false" />
+                <element signature="e#9091#9092#0" expanded="false" />
+                <element signature="e#9133#9134#0" expanded="false" />
+                <element signature="e#9392#9393#0" expanded="false" />
+                <element signature="e#9432#9433#0" expanded="false" />
+                <element signature="e#9495#9496#0" expanded="false" />
+                <element signature="e#9546#9547#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <file leaf-file-name="SearchRecyclerView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/SearchRecyclerView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
+            <state relative-caret-position="357">
+              <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
               <folding>
-                <marker date="1477295127385" expanded="true" signature="722:798" ph="{...}" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#292#293#0" expanded="true" />
+                <element signature="e#322#323#0" expanded="true" />
+                <element signature="e#392#393#0" expanded="true" />
+                <element signature="e#429#430#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="249" column="0" selection-start-line="249" selection-start-column="0" selection-end-line="249" selection-end-column="0" />
+              <folding>
+                <element signature="e#9788#9816#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ak.detaysoft.galepress_2016.11.21_08.50.li" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.11.21_08.50.li">
+          <provider selected="true" editor-type-id="capture-editor">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LibraryFragment.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="239" column="28" selection-start-line="239" selection-start-column="28" selection-end-line="239" selection-end-column="28" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-          <provider editor-type-id="android-manifest">
-            <state />
-          </provider>
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
               <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
               <folding />
             </state>
+          </provider>
+          <provider editor-type-id="android-manifest">
+            <state />
           </provider>
         </entry>
       </file>
@@ -180,8 +356,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="resourceFile" />
-        <option value="ASClass" />
         <option value="layoutResourceFile_vertical" />
+        <option value="ASClass" />
       </list>
     </option>
   </component>
@@ -458,11 +634,6 @@
                 <option name="name" value="processReleaseUnitTestJavaRes" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Prepare com.android.support:support-v4:24.0.0" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="prepareComAndroidSupportSupportV42400Library" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
                 <option name="description" value="Uninstalls the Release build." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="uninstallRelease" />
@@ -490,6 +661,11 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="incrementalDebugAndroidTestJavaCompilationSafeguard" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.android.support:support-v4:21.0.3" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareComAndroidSupportSupportV42103Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
@@ -565,6 +741,11 @@
                 <option name="name" value="preReleaseBuild" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Prepare com.android.support:recyclerview-v7:21.0.3" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareComAndroidSupportRecyclerviewV72103Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Assembles all variants of all applications and secondary packages." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="assemble" />
@@ -576,11 +757,6 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="incrementalReleaseJavaCompilationSafeguard" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Prepare com.android.support:recyclerview-v7:24.0.0" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="prepareComAndroidSupportRecyclerviewV72400Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Displays a help message." />
@@ -697,6 +873,11 @@
                 <option name="description" value="Prepare com.google.android.gms:play-services:4.0.30" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="prepareComGoogleAndroidGmsPlayServices4030Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.android.support:appcompat-v7:21.0.3" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareComAndroidSupportAppcompatV72103Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
@@ -836,11 +1017,6 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="compileReleaseAidl" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Prepare com.android.support:appcompat-v7:20.0.0" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="prepareComAndroidSupportAppcompatV72000Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Runs lint on the Release build." />
@@ -1177,11 +1353,6 @@
                 <option name="name" value="processReleaseUnitTestJavaRes" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Prepare com.android.support:support-v4:24.0.0" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
-                <option name="name" value="prepareComAndroidSupportSupportV42400Library" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
                 <option name="description" value="Uninstalls the Release build." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="uninstallRelease" />
@@ -1205,6 +1376,11 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="incrementalDebugAndroidTestJavaCompilationSafeguard" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.android.support:support-v4:21.0.3" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareComAndroidSupportSupportV42103Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
@@ -1272,6 +1448,11 @@
                 <option name="name" value="preReleaseBuild" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Prepare com.android.support:recyclerview-v7:21.0.3" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareComAndroidSupportRecyclerviewV72103Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Assembles all variants of all applications and secondary packages." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="assemble" />
@@ -1283,11 +1464,6 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="incrementalReleaseJavaCompilationSafeguard" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Prepare com.android.support:recyclerview-v7:24.0.0" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
-                <option name="name" value="prepareComAndroidSupportRecyclerviewV72400Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Displays a help message." />
@@ -1399,6 +1575,11 @@
                 <option name="description" value="Prepare com.google.android.gms:play-services:4.0.30" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="prepareComGoogleAndroidGmsPlayServices4030Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.android.support:appcompat-v7:21.0.3" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareComAndroidSupportAppcompatV72103Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
@@ -1534,11 +1715,6 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="compileReleaseAidl" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Prepare com.android.support:appcompat-v7:20.0.0" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
-                <option name="name" value="prepareComAndroidSupportAppcompatV72000Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Runs lint on the Release build." />
@@ -2911,7 +3087,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="D:\GalepressMerge" value="7365506274794" />
+        <entry key="D:\GalepressMerge" value="7372754583562" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -3433,7 +3609,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/custom_models/ContentSearchResult.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/search_models/ContentSearchResult.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PageView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseApi.java" />
@@ -3466,7 +3641,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-de/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/search_result_item_menu.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/Decompress.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LaunchActivity.java" />
@@ -3477,13 +3651,15 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFReaderView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/LinkInfoExternal.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/WebViewAnnotationWithCrosswalk.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/WebViewAnnotation.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageView.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/SearchRecyclerView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java" />
       </list>
     </option>
   </component>
@@ -3534,9 +3710,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView">
-        <subPane />
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -3613,11 +3786,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
+              <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -3647,7 +3816,46 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GalepressMerge" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GalepressMerge" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="galepress" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
+      </pane>
+      <pane id="Scratches">
+        <subPane />
+      </pane>
+      <pane id="AndroidView">
+        <subPane />
+      </pane>
+      <pane id="PackagesPane">
+        <subPane />
       </pane>
       <pane id="Scope">
         <subPane subId="Problems" />
@@ -3659,12 +3867,6 @@
             </PATH_ELEMENT>
           </PATH>
         </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane />
-      </pane>
-      <pane id="Scratches">
-        <subPane />
       </pane>
     </panes>
   </component>
@@ -4027,30 +4229,32 @@
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26066098" sideWeight="0.506135" order="3" side_tool="false" content_ui="tabs" x="707" y="139" width="506" height="728" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.48507464" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2970297" sideWeight="0.6076759" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2970297" sideWeight="0.3923241" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28272828" sideWeight="0.61886996" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.48507464" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2970297" sideWeight="0.60287845" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2970297" sideWeight="0.39712155" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24752475" sideWeight="0.4914712" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.49573562" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19722815" sideWeight="0.49386504" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2948295" sideWeight="0.32356077" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28272828" sideWeight="0.61886996" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -4060,8 +4264,6 @@
       <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2948295" sideWeight="0.32675907" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -4086,7 +4288,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LaunchActivity.java</url>
-          <line>42</line>
+          <line>48</line>
           <properties />
           <option name="timeStamp" value="108" />
         </line-breakpoint>
@@ -4104,29 +4306,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuCategoryAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="46" column="8" selection-start-line="46" selection-start-column="8" selection-end-line="50" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.09.20_14.28.li" />
-    <entry file="file://$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.09.20_14.25.li" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_verification_login.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/search_models/ReaderSearchResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/left_menu.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -4173,13 +4352,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/reader_search_popup.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="63" column="36" selection-start-line="63" selection-start-column="36" selection-end-line="63" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -4250,13 +4422,6 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="6" column="19" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="44" column="18" selection-start-line="44" selection-start-column="14" selection-end-line="44" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -4401,13 +4566,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17134">
-          <caret line="1937" column="37" selection-start-line="1937" selection-start-column="37" selection-end-line="1937" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="407">
@@ -4416,57 +4574,271 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
-          <folding>
-            <marker date="1477295127385" expanded="true" signature="722:798" ph="{...}" />
-          </folding>
-        </state>
+      <provider editor-type-id="android-manifest">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/WebViewAnnotation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3876">
-          <caret line="250" column="1" selection-start-line="250" selection-start-column="1" selection-end-line="250" selection-end-column="1" />
+        <state relative-caret-position="3893">
+          <caret line="248" column="1" selection-start-line="248" selection-start-column="1" selection-end-line="248" selection-end-column="1" />
           <folding>
-            <element signature="e#9856#9857#0" expanded="true" />
-            <element signature="e#9898#9899#0" expanded="true" />
-            <element signature="e#10157#10158#0" expanded="true" />
-            <element signature="e#10197#10198#0" expanded="true" />
-            <element signature="e#10260#10261#0" expanded="true" />
-            <element signature="e#10311#10312#0" expanded="true" />
+            <element signature="e#9856#9857#0" expanded="false" />
+            <element signature="e#9898#9899#0" expanded="false" />
+            <element signature="e#10157#10158#0" expanded="false" />
+            <element signature="e#10197#10198#0" expanded="false" />
+            <marker date="1479710020374" expanded="false" signature="50:246" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10132">
-          <caret line="659" column="58" selection-start-line="659" selection-start-column="58" selection-end-line="659" selection-end-column="58" />
-          <folding />
+        <state relative-caret-position="10115">
+          <caret line="658" column="50" selection-start-line="658" selection-start-column="50" selection-end-line="658" selection-end-column="50" />
+          <folding>
+            <element signature="e#24776#24777#0" expanded="false" />
+            <element signature="e#24820#24821#0" expanded="false" />
+            <element signature="e#24884#24885#0" expanded="false" />
+            <element signature="e#24928#24929#0" expanded="false" />
+            <element signature="e#25826#25827#0" expanded="false" />
+            <element signature="e#25854#25855#0" expanded="false" />
+            <marker date="1479710020419" expanded="false" signature="39:818" ph="..." />
+            <marker date="1479710020419" expanded="true" signature="920:954" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="994:1194" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="1218:1387" ph="{...}" />
+            <marker date="1479710020419" expanded="false" signature="1293:1298" ph=" { " />
+            <marker date="1479710020419" expanded="false" signature="1317:1320" ph=" }" />
+            <marker date="1479710020419" expanded="true" signature="1439:1662" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="1529:1568" ph="{...}" />
+            <marker date="1479710020419" expanded="false" signature="1628:1633" ph=" { " />
+            <marker date="1479710020419" expanded="false" signature="1657:1660" ph=" }" />
+            <marker date="1479710020419" expanded="true" signature="1716:2040" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="1875:1944" ph="{...}" />
+            <marker date="1479710020419" expanded="false" signature="2004:2009" ph=" { " />
+            <marker date="1479710020419" expanded="false" signature="2035:2038" ph=" }" />
+            <marker date="1479710020419" expanded="true" signature="2097:2364" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="2199:2265" ph="{...}" />
+            <marker date="1479710020419" expanded="false" signature="2325:2330" ph=" { " />
+            <marker date="1479710020419" expanded="false" signature="2359:2362" ph=" }" />
+            <marker date="1479710020419" expanded="true" signature="2431:25857" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="3743:6751" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="4272:4364" ph="{...}" />
+            <marker date="1479710020419" expanded="false" signature="4331:4338" ph=" { " />
+            <marker date="1479710020419" expanded="false" signature="4355:4360" ph=" }" />
+            <marker date="1479710020419" expanded="true" signature="4458:4976" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="4518:4972" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="4579:4905" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="4650:4721" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="4787:4899" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="5372:5477" ph="{...}" />
+            <marker date="1479710020419" expanded="false" signature="5444:5451" ph=" { " />
+            <marker date="1479710020419" expanded="false" signature="5468:5473" ph=" }" />
+            <marker date="1479710020419" expanded="true" signature="5575:5824" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="5648:5820" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="5709:5794" ph="{...}" />
+            <marker date="1479710020419" expanded="false" signature="5751:5760" ph=" { " />
+            <marker date="1479710020419" expanded="false" signature="5781:5788" ph=" }" />
+            <marker date="1479710020419" expanded="true" signature="6038:6143" ph="{...}" />
+            <marker date="1479710020419" expanded="false" signature="6110:6117" ph=" { " />
+            <marker date="1479710020419" expanded="false" signature="6134:6139" ph=" }" />
+            <marker date="1479710020419" expanded="true" signature="6589:6694" ph="{...}" />
+            <marker date="1479710020419" expanded="false" signature="6661:6668" ph=" { " />
+            <marker date="1479710020419" expanded="false" signature="6685:6690" ph=" }" />
+            <marker date="1479710020419" expanded="true" signature="6798:7218" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="7009:7187" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="7082:7183" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="7299:7734" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="7346:7710" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="7413:7502" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="7564:7705" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="7779:8330" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="7783:8006" ph="//..." />
+            <marker date="1479710020419" expanded="true" signature="8376:8531" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="8591:9210" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="8671:9135" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="8731:9131" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="8792:9078" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="8862:8972" ph="{...}" />
+            <marker date="1479710020419" expanded="false" signature="9035:9044" ph=" { " />
+            <marker date="1479710020419" expanded="false" signature="9065:9072" ph=" }" />
+            <marker date="1479710020419" expanded="true" signature="9258:9643" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="9315:9609" ph="{...}" />
+            <marker date="1479710020419" expanded="false" signature="9380:9387" ph=" { " />
+            <marker date="1479710020419" expanded="false" signature="9424:9429" ph=" }" />
+            <marker date="1479710020419" expanded="true" signature="9490:9605" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="9681:9757" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="9798:9934" ph="{...}" />
+            <marker date="1479710020419" expanded="false" signature="9985:9990" ph=" { " />
+            <marker date="1479710020419" expanded="false" signature="10016:10019" ph=" }" />
+            <marker date="1479710020419" expanded="true" signature="10066:12072" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="11033:11993" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="11108:11180" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="11253:11988" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="11373:11980" ph="{...}" />
+            <marker date="1479710020419" expanded="false" signature="11446:11456" ph=" { " />
+            <marker date="1479710020419" expanded="false" signature="11486:11494" ph=" }" />
+            <marker date="1479710020419" expanded="false" signature="11571:11581" ph=" { " />
+            <marker date="1479710020419" expanded="false" signature="11616:11624" ph=" }" />
+            <marker date="1479710020419" expanded="true" signature="11708:11973" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="12106:13092" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="12201:12527" ph="{...}" />
+            <marker date="1479710020419" expanded="false" signature="12255:12262" ph=" { " />
+            <marker date="1479710020419" expanded="false" signature="12289:12294" ph=" }" />
+            <marker date="1479710020419" expanded="true" signature="12333:12414" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="12443:12523" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="13154:14154" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="13262:13702" ph="{...}" />
+            <marker date="1479710020419" expanded="false" signature="13308:13315" ph=" { " />
+            <marker date="1479710020419" expanded="false" signature="13334:13339" ph=" }" />
+            <marker date="1479710020419" expanded="false" signature="13377:13384" ph=" { " />
+            <marker date="1479710020419" expanded="false" signature="13401:13406" ph=" }" />
+            <marker date="1479710020419" expanded="true" signature="13435:13698" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="13808:14038" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="13876:13931" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="13991:14034" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="14196:14754" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="14367:14627" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="14436:14514" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="14576:14622" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="14790:14853" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="14882:15397" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="15077:15330" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="15147:15222" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="15282:15325" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="15528:15649" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="15782:15905" ph="{...}" />
+            <marker date="1479710020419" expanded="false" signature="15953:15958" ph=" { " />
+            <marker date="1479710020419" expanded="false" signature="15997:16000" ph=" }" />
+            <marker date="1479710020419" expanded="false" signature="16046:16051" ph=" { " />
+            <marker date="1479710020419" expanded="false" signature="16087:16090" ph=" }" />
+            <marker date="1479710020419" expanded="true" signature="16172:16236" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="16270:16686" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="16423:16651" ph="{...}" />
+            <marker date="1479710020419" expanded="true" signature="16495:16546" ph="{...}" />
+            <marker date="1479710020419" expanded="false" signature="16613:16620" ph=" { " />
+            <marker date="1479710020419" expanded="false" signature="16642:16647" ph=" }" />
+            <marker date="1479710020419" expanded="true" signature="16851:19675" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/WebViewAnnotationWithCrosswalk.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="219" column="31" selection-start-line="219" selection-start-column="31" selection-end-line="219" selection-end-column="31" />
+        <state relative-caret-position="320">
+          <caret line="212" column="30" selection-start-line="212" selection-start-column="30" selection-end-line="212" selection-end-column="30" />
           <folding>
-            <element signature="e#5698#9022#0" expanded="true" />
-            <element signature="e#9021#9022#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1477#1478#0" expanded="false" />
+            <element signature="e#1512#1513#0" expanded="false" />
+            <element signature="e#2036#2037#0" expanded="false" />
+            <element signature="e#2091#2092#0" expanded="false" />
+            <element signature="e#2174#2175#0" expanded="false" />
+            <element signature="e#2228#2229#0" expanded="false" />
+            <element signature="e#3546#3547#0" expanded="false" />
+            <element signature="e#3581#3582#0" expanded="false" />
+            <element signature="e#9091#9092#0" expanded="false" />
+            <element signature="e#9133#9134#0" expanded="false" />
+            <element signature="e#9392#9393#0" expanded="false" />
+            <element signature="e#9432#9433#0" expanded="false" />
+            <element signature="e#9495#9496#0" expanded="false" />
+            <element signature="e#9546#9547#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="57" column="39" selection-start-line="57" selection-start-column="39" selection-end-line="57" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/reader_search_popup.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="63" column="36" selection-start-line="63" selection-start-column="36" selection-end-line="63" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/SearchRecyclerView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#292#293#0" expanded="true" />
+            <element signature="e#322#323#0" expanded="true" />
+            <element signature="e#392#393#0" expanded="true" />
+            <element signature="e#429#430#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="26" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/home_fragment.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/library_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="249" column="0" selection-start-line="249" selection-start-column="0" selection-end-line="249" selection-end-column="0" />
+          <folding>
+            <element signature="e#9788#9816#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.11.21_08.50.li">
+      <provider selected="true" editor-type-id="capture-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="239" column="28" selection-start-line="239" selection-start-column="28" selection-end-line="239" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>

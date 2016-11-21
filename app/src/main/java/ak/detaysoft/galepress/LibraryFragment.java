@@ -231,9 +231,9 @@ public class LibraryFragment extends Fragment {
 
         if (getTag().compareTo(MainActivity.LIBRARY_TAB_TAG) == 0 && GalePressApplication.getInstance().getBannerLink().length() > 0 && GalePressApplication.getInstance().getDataApi().isConnectedToInternet()) {
             bannerParams = new FrameLayout.LayoutParams(bannerWidth, bannerHeight);
-            gridview.setPadding(gridview.getPaddingLeft(), (int) (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 70, getResources().getDisplayMetrics())), gridview.getPaddingRight(), gridview.getPaddingBottom());
+            gridview.setPadding(gridview.getPaddingLeft(), (int) (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, getResources().getDisplayMetrics())), gridview.getPaddingRight(), gridview.getPaddingBottom());
         } else {
-            gridview.setPadding(gridview.getPaddingLeft(), (int) (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())), gridview.getPaddingRight(), gridview.getPaddingBottom());
+            gridview.setPadding(gridview.getPaddingLeft(), (int) (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0, getResources().getDisplayMetrics())), gridview.getPaddingRight(), gridview.getPaddingBottom());
             bannerParams = new FrameLayout.LayoutParams(bannerWidth, 0);
         }
 
