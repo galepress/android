@@ -1422,11 +1422,10 @@ public class DataApi extends Object {
         requestQueue.add(request);
     }
 
-    public void downloadUpdatedImage(String url, final String fileName, final int id, final boolean isLarge) {
+    public void downloadUpdatedImage(String url, final String fileName) {
         ImageLoader.getInstance().loadImage(url, new ImageLoadingListener() {
             @Override
             public void onLoadingStarted(String s, View view) {
-                Log.e("downloadTry", "" + id);
             }
 
             @Override
@@ -1436,9 +1435,8 @@ public class DataApi extends Object {
 
             @Override
             public void onLoadingComplete(String s, View view, Bitmap bitmap) {
-                saveImage(bitmap, fileName, id, isLarge);
+                saveImage(bitmap, fileName);
                 ImageLoader.getInstance().getMemoryCache().clear();
-                Log.e("imageUpdate", "" + isLarge);
             }
 
             @Override
@@ -1448,24 +1446,40 @@ public class DataApi extends Object {
         });
     }
 
-    public void saveImage(Bitmap bitmap, String fileName, int id, boolean isLarge) {
-        File f = new File(GalePressApplication.getInstance().getFilesDir(), fileName);
-        try {
-            f.createNewFile();
-            //Convert bitmap to byte array
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
-            byte[] bitmapdata = bos.toByteArray();
+    public void saveImage(final Bitmap bitmap, final String fileName) {
 
-            //write the bytes in file
-            FileOutputStream fos = new FileOutputStream(f);
-            fos.write(bitmapdata);
-            fos.flush();
-            fos.close();
+        AsyncTask<Void, Void, Void> saveAsync = new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+                File f = new File(GalePressApplication.getInstance().getFilesDir(), fileName);
+                try {
+                    f.createNewFile();
+                    //Convert bitmap to byte array
+                    ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
+                    byte[] bitmapdata = bos.toByteArray();
 
-        } catch (Exception e) {
-            f.delete();
-        }
+                    //write the bytes in file
+                    FileOutputStream fos = new FileOutputStream(f);
+                    fos.write(bitmapdata);
+                    fos.flush();
+                    fos.close();
+
+                } catch (Exception e) {
+                    f.delete();
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                Log.e("denemedeneme", "");
+            }
+        };
+        saveAsync.execute();
+
+
     }
 
     public void getCoverImageVersionToUpdate(Integer id, final boolean islocalVersionUpdate, final boolean isLarge) {
@@ -2996,6 +3010,18 @@ public class DataApi extends Object {
                                         if (localContent == null || (localContent.getVersion() < remoteContentVersion)) {
                                             // Content updating
                                             getApplicationContentDetail(content.getContentID().toString(), applicationId, categoryId);
+                                        } else {
+                                            ArrayList<L_Category> contentCategories = localContent.getCategorList();
+                                            boolean isContentContainsCategory = false;
+                                            for(L_Category category : contentCategories){
+                                                if(category.getId().intValue() == Integer.valueOf(categoryId).intValue()){
+                                                    isContentContainsCategory = true;
+                                                }
+                                            }
+                                            if(!isContentContainsCategory){
+                                                localContent.getCategorList().add(getDatabaseApi().getCategory(Integer.valueOf(categoryId)));
+                                            }
+                                            getDatabaseApi().updateContent(localContent, false);
                                         }
                                     } else {
                                         if (localContent != null && !localContent.isPdfDownloaded()) {

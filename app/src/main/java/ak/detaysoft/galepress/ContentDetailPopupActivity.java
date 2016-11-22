@@ -517,25 +517,25 @@ public class ContentDetailPopupActivity extends Activity{
 
         if(content.getRemoteLargeCoverImageVersion() < content.getCoverImageVersion()){
             if(content.getRemoteCoverImageVersion() < content.getCoverImageVersion()) {
-                displayImage(true, false, image, loading, content.getLargeCoverImageDownloadPath());
+                displayImage(true, false, content.getLargeCoverImageDownloadPath());
             } else {
                 File thumnailFile = new File(GalePressApplication.getInstance().getFilesDir(), content.getCoverImageFileName());
                 if(thumnailFile.exists()){
-                    displayImage(false, true, image, loading, "file://"+thumnailFile.getPath());
+                    displayImage(false, true, "file://"+thumnailFile.getPath());
                 } else {
-                    displayImage(true, false, image, loading, content.getLargeCoverImageDownloadPath());
+                    displayImage(true, false, content.getLargeCoverImageDownloadPath());
                 }
             }
         } else {
             if(coverImageFile.exists()){
-                displayImage(false, false, image, loading, "file://"+coverImageFile.getPath());
+                displayImage(false, false, "file://"+coverImageFile.getPath());
             } else if(content.getLargeCoverImageDownloadPath() != null){
                 if(content.getSmallCoverImageDownloadPath() != null){
                     File thumnailFile = new File(GalePressApplication.getInstance().getFilesDir(), content.getCoverImageFileName());
                     if(thumnailFile.exists()){
-                        displayImage(false, true, image, loading, "file://"+thumnailFile.getPath());
+                        displayImage(false, true, "file://"+thumnailFile.getPath());
                     } else {
-                        displayImage(true, false, image, loading, content.getLargeCoverImageDownloadPath());
+                        displayImage(true, false, content.getLargeCoverImageDownloadPath());
                     }
                 }
             }
@@ -701,12 +701,12 @@ public class ContentDetailPopupActivity extends Activity{
                 getPrice.execute();
             }
         } else {
-            downloadButton.init(CustomDownloadButton.FREE, "");
+            downloadButton.init(CustomDownloadButton.FREE, "9.89TL");
         }
 
     }
 
-    private void displayImage(final boolean isDownload, final boolean isThumnail, final ImageView image, final CustomPulseProgress loading, String imagePath) {
+    private void displayImage(final boolean isDownload, final boolean isThumnail, String imagePath) {
         DisplayImageOptions displayConfig;
         if (isThumnail) {
             displayConfig = new DisplayImageOptions.Builder()
@@ -733,16 +733,15 @@ public class ContentDetailPopupActivity extends Activity{
             public void onLoadingComplete(String s, View view, Bitmap bitmap) {
                 loading.setVisibility(View.GONE);
                 if(isDownload) {
-                    GalePressApplication.getInstance().getDataApi().saveImage(bitmap, content.getBigCoverImageFileName(), content.getId(), true);
+                    GalePressApplication.getInstance().getDataApi().saveImage(bitmap, content.getBigCoverImageFileName());
                 }
                 if(isThumnail && GalePressApplication.getInstance().getDataApi().isConnectedToInternet()) {
-                    displayImage(true, false, image, loading, content.getLargeCoverImageDownloadPath());
+                    displayImage(true, false, content.getLargeCoverImageDownloadPath());
                 }
 
                 if(!isDownload && (content.getRemoteLargeCoverImageVersion() < content.getCoverImageVersion()))
                     GalePressApplication.getInstance().getDataApi().downloadUpdatedImage(content.getLargeCoverImageDownloadPath()
-                            , content.getBigCoverImageFileName()
-                            , content.getId(), true);
+                            , content.getBigCoverImageFileName());
             }
 
             @Override
@@ -777,6 +776,11 @@ public class ContentDetailPopupActivity extends Activity{
                     @Override
                     public void onAnimationEnd(Animation animation) {
                         GalePressApplication.getInstance().setContentDetailPopupActivity(null);
+                        Intent intent = getIntent();
+                        if(GalePressApplication.getInstance().getDataApi().downloadPdfTask != null && (GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() == AsyncTask.Status.RUNNING))
+                            setResult(105, intent);
+                        else
+                            setResult(106, intent);
                         finish();
 
                     }
@@ -798,15 +802,6 @@ public class ContentDetailPopupActivity extends Activity{
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
-                        /*
-                        * Eger indirme islemi devame diyorsa library ve downloads ekranlari update ediliyor.
-                        * */
-                        if (GalePressApplication.getInstance().getMainActivity() != null && GalePressApplication.getInstance().getDataApi().downloadPdfTask != null && (GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() == AsyncTask.Status.RUNNING)){
-                            if(GalePressApplication.getInstance().getMainActivity().getLibraryFragment() != null) {
-                                LibraryFragment libraryFragment = GalePressApplication.getInstance().getMainActivity().getLibraryFragment();
-                                libraryFragment.updateGridView();
-                            }
-                        }
                         popup.setAlpha(0);
                     }
 
@@ -904,19 +899,11 @@ public class ContentDetailPopupActivity extends Activity{
         super.onSaveInstanceState(outState);
     }
 
-
-
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (!isFinishActionStart && event.getAction() == KeyEvent.ACTION_DOWN) {
-            switch (keyCode) {
-                case KeyEvent.KEYCODE_BACK:
-                    finishActivityWithAnimation();
-                    return true;
-            }
-
+    public void onBackPressed() {
+        if(!isFinishActionStart){
+            finishActivityWithAnimation();
         }
-        return super.onKeyDown(keyCode, event);
     }
 
     public void update(){

@@ -403,11 +403,10 @@ public class LibraryFragment extends Fragment {
             public void onLoadingComplete(String s, View view, Bitmap bitmap) {
                 loading.setVisibility(View.GONE);
                 if (isDownload)
-                    GalePressApplication.getInstance().getDataApi().saveImage(bitmap, content.getCoverImageFileName(), content.getId(), false);
+                    GalePressApplication.getInstance().getDataApi().saveImage(bitmap, content.getCoverImageFileName());
                 else if (content.getRemoteCoverImageVersion() < content.getCoverImageVersion())
                     GalePressApplication.getInstance().getDataApi().downloadUpdatedImage(content.getSmallCoverImageDownloadPath()
-                            , content.getCoverImageFileName()
-                            , content.getId(), false);
+                            , content.getCoverImageFileName());
             }
 
             @Override

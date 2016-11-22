@@ -64,10 +64,10 @@
                             android:orientation="vertical">
                             <ImageView
                                 android:id="@+id/popup_swipe_icon"
-                                android:layout_width="40dp"
-                                android:scaleType="centerInside"
+                                android:scaleType="fitEnd"
                                 android:src="@drawable/swipe_close"
-                                android:layout_height="20dp" />
+                                android:layout_height="wrap_content"
+                                android:layout_width="@dimen/content_popup_button_size" />
                         </LinearLayout>
 
                         <TextView

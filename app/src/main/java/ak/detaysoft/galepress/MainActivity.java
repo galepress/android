@@ -122,6 +122,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     private LibraryFragment libraryFragment;
     private ApplicationFragment applicationFragment;
     private TextView actionbarTitle;
+    private RecyclerView searchList;
 
 
     private BroadcastReceiver mConnReceiver = new BroadcastReceiver() {
@@ -346,6 +347,10 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         searchProgress = (ProgressBar) findViewById(R.id.search_progress);
         searchProgress.getIndeterminateDrawable().setColorFilter(Color.WHITE, android.graphics.PorterDuff.Mode.MULTIPLY);
 
+        searchList = (RecyclerView) findViewById(R.id.search_recycler_view);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        searchList.setLayoutManager(mLayoutManager);
+
         menuButton = (ImageView) findViewById(R.id.menu_button);
         ((LinearLayout) findViewById(R.id.menu_button_layout)).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -543,6 +548,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             searchClear.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.SEARCH_CLEAR));
         else
             searchClear.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.SEARCH_CLEAR));
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
             menuButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.MENU_ICON));
@@ -861,6 +867,14 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 intent.putExtra("isLaunchOpen", false);
                 startActivityForResult(intent, 102);
             }
+            if(resultCode == 105) {
+                /*
+                * Eger indirme islemi devame diyorsa library update ediliyor.
+                * */
+                if(libraryFragment != null) {
+                    libraryFragment.updateGridView();
+                }
+            }
         }
     }
 
@@ -1022,18 +1036,15 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             searchClear.setVisibility(View.VISIBLE);
         }
         LinearLayout baseView = (LinearLayout) findViewById(R.id.search_result_layout);
-        RecyclerView list = (RecyclerView) findViewById(R.id.search_recycler_view);
         if (GalePressApplication.getInstance().getMenuSearchResult() != null && GalePressApplication.getInstance().getMenuSearchResult().size() > 0) {
             baseView.setVisibility(View.VISIBLE);
             findViewById(R.id.search_result_layout_divider).setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
-            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-            list.setLayoutManager(mLayoutManager);
-            if (list.getAdapter() != null) {
-                ((SearchAdapter) list.getAdapter()).searchList = GalePressApplication.getInstance().getMenuSearchResult();
-                ((RecyclerView.Adapter) list.getAdapter()).notifyDataSetChanged();
+            if (searchList.getAdapter() != null) {
+                ((SearchAdapter) searchList.getAdapter()).searchList = GalePressApplication.getInstance().getMenuSearchResult();
+                ((RecyclerView.Adapter) searchList.getAdapter()).notifyDataSetChanged();
             } else {
                 SearchAdapter mAdapter = new SearchAdapter(GalePressApplication.getInstance().getMenuSearchResult());
-                list.setAdapter(mAdapter);
+                searchList.setAdapter(mAdapter);
             }
         } else {
             baseView.setVisibility(View.GONE);

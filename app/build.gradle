@@ -17,7 +17,7 @@ android {
     signingConfigs {
     }
     /*
-     * compileSdkVersion 19 dan 20 ye cekildi.
+     * compileSdkVersion 19 dan 21 ye cekildi. Yoksa recyclerview calismiyordu
      * Eger webviewlerle ilgili bir sorun olursa yada kompanentler yuklenmezse bundan olabilir buraya dikkat etmek lazım
      */
     compileSdkVersion 21

@@ -195,8 +195,8 @@ public class ApplicationFragment extends Fragment {
         categoryAdapter = new CategoryAdapter(categories);
         categoryView.setAdapter(categoryAdapter);
 
-        if (selectedCategory == null)
-            selectedCategory = (L_Category) GalePressApplication.getInstance().getDatabaseApi().getAllCategories().get(0);
+        if (selectedCategory == null && ((MainActivity)getActivity()).getCategoryListWithAll() != null && ((MainActivity)getActivity()).getCategoryListWithAll().size() > 2)
+            selectedCategory = ((MainActivity)getActivity()).getCategoryListWithAll().get(1);
 
         ((MainActivity)getActivity()).choseCategory(1);
 
