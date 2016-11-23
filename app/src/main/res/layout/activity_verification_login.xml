@@ -21,15 +21,17 @@
             android:layout_width="@dimen/verification_input_width"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginTop="25dp"
-            android:id="@+id/verification_logo_base">
+            android:layout_marginTop="55dp"
+            android:id="@+id/verification_logo_base"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="@dimen/verification_input_width"
                 android:id="@+id/verification_login_logo"
                 android:adjustViewBounds="true"
-                android:src="@drawable/app_logo" />
+                android:src="@drawable/left_menu_logo"
+                android:layout_height="30dp" />
         </LinearLayout>
 
         <LinearLayout

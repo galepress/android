@@ -17,6 +17,11 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -170,11 +175,65 @@ public class ThumbnailListAdapter extends BaseAdapter {
         mPreviewPageImageView.invalidate();
         mPreviewPageImageView.requestLayout();
 
-        drawPageImageView(mPreviewPageImageView, position);
+        drawPageImageViewWithLoader(mPreviewPageImageView, position);
 
         pageView.setLayoutParams(new AbsListView.LayoutParams((int)itemSizeList.get(position).x, (int)itemSizeList.get(position).y));
 
         return pageView;
+    }
+
+    private void drawPageImageViewWithLoader(final ImageView v, final int position) {
+        final String mCachedBitmapFilePath = mPath  + position
+                + ".jpg";
+        ThumbnailSafeAsyncTask<Void, Void, Bitmap> drawTask = new ThumbnailSafeAsyncTask<Void, Void, Bitmap>() {
+
+            @Override
+            protected Bitmap doInBackground(Void... pParams) {
+
+                File mCachedBitmapFile = new File(mCachedBitmapFilePath);
+                if(!mCachedBitmapFile.exists() || !mCachedBitmapFile.canRead()){
+                    Bitmap lq = Bitmap.createBitmap((int)itemSizeList.get(position).x, (int)itemSizeList.get(position).y,
+                            Bitmap.Config.ARGB_8888);
+                    mCore.drawPage(lq, position, (int)(itemSizeList.get(position).x), (int)(itemSizeList.get(position).y), 0,0,(int)(itemSizeList.get(position).x), (int)(itemSizeList.get(position).y) );
+                    try {
+                        lq.compress(Bitmap.CompressFormat.JPEG, 50, new FileOutputStream(
+                                mCachedBitmapFile));
+                    } catch (FileNotFoundException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                        mCachedBitmapFile.delete();
+                    }
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Bitmap result) {
+                DisplayImageOptions displayConfig = new DisplayImageOptions.Builder()
+                        .showImageOnFail(mContext.getResources().getDrawable(R.drawable.no_connection))
+                        .cacheInMemory(true).build();
+                ImageLoader.getInstance().displayImage("file://"+mCachedBitmapFilePath, v, displayConfig, new ImageLoadingListener() {
+                    @Override
+                    public void onLoadingStarted(String s, View view) {
+                    }
+
+                    @Override
+                    public void onLoadingFailed(String s, View view, FailReason failReason) {
+                    }
+
+                    @Override
+                    public void onLoadingComplete(String s, View view, Bitmap bitmap) {
+
+                    }
+
+                    @Override
+                    public void onLoadingCancelled(String s, View view) {
+                    }
+                });
+            }
+
+        };
+        drawTask.safeExecute((Void) null);
     }
 
     private void drawPageImageView(final ImageView v, final int position) {
