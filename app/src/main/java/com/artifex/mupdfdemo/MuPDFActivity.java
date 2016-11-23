@@ -866,7 +866,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             setContentView(layout);
         }
 
-        if (savedInstanceState == null && getIntent().hasExtra("searchPage")) {
+        if (savedInstanceState == null && getIntent().hasExtra("searchPage") && getIntent().getIntExtra("searchPage", -1) != -1) {
             /*
             * Burada yapilan kontrol sayfa yatay yada dikey acilmaya zorlandigi durumda indexler onresume() da duzenlendigi icin search iki defa cagriliyor.
             * bunu engellemek icin dogru ekran yondeyse search calisiyor
