@@ -163,7 +163,7 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         applicationFragment = new ApplicationFragment();
-        fragmentTransaction.add(R.id.fragment_container, applicationFragment, "APPLICATION");
+        fragmentTransaction.add(R.id.fragment_container, applicationFragment, "APPLICATION").addToBackStack(null);
         fragmentTransaction.commit();
 
         leftMenu = new SlidingMenu(this);
@@ -218,7 +218,8 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
                     applicationFragment.isDownloaded = false;
                 applicationFragment.selectedCategoryPosition = position;
                 if(libraryFragment != null && libraryFragment.isVisible()) {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, applicationFragment).commit();
+//                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, applicationFragment).commit();
+                    getSupportFragmentManager().popBackStack();
                     changeMenuButtonImage(false);
                 }
                 applicationFragment.updateGridView();
@@ -344,7 +345,8 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         findViewById(R.id.menu_button_layout).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if(libraryFragment != null && libraryFragment.isVisible()) {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, applicationFragment).commit();
+//                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, applicationFragment).commit();
+                    getSupportFragmentManager().popBackStack();
                     GalePressApplication.getInstance().setSelectedCustomerApplication(null);
                     GalePressApplication.getInstance().setLibraryFragment(null);
                     changeMenuButtonImage(false);
@@ -536,7 +538,7 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         categoriesListView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listHeight));
 
         actionbarTitle.setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
-        actionbarTitle.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
+        actionbarTitle.setTypeface(ApplicationThemeColor.getInstance().getGothamMedium(this));
 
         ((LinearLayout) findViewById(R.id.custom_actionbar_layout)).setBackgroundColor(ApplicationThemeColor.getInstance().getActionAndTabBarColor());
 
@@ -929,7 +931,7 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         libraryFragment.isDownloaded = applicationFragment.isDownloaded;
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.fragment_container, libraryFragment, "LIBRARY");
+        fragmentTransaction.add(R.id.fragment_container, libraryFragment, "LIBRARY").addToBackStack(null);
         fragmentTransaction.commit();
 
     }
@@ -938,7 +940,8 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
     public void onBackPressed() {
 
         if(libraryFragment != null && libraryFragment.isVisible()) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, applicationFragment).commit();
+//            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, applicationFragment).commit();
+            getSupportFragmentManager().popBackStack();
             GalePressApplication.getInstance().setSelectedCustomerApplication(null);
             GalePressApplication.getInstance().setLibraryFragment(null);
             changeMenuButtonImage(false);

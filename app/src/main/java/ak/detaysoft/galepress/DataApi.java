@@ -2678,19 +2678,12 @@ public class DataApi extends Object {
 
     public void fullTextSearchForReader(final String text, final String contentId, final MuPDFActivity muPDFActivity) {
         GalePressApplication application = GalePressApplication.getInstance();
-        Integer applicationId;
         RequestQueue requestQueue = application.getRequestQueue();
         JsonObjectRequest request;
 
-        if (GalePressApplication.getInstance().isTestApplication()) {
-            applicationId = new Integer(application.getTestApplicationLoginInf().getApplicationId());
-        } else {
-            applicationId = application.getApplicationId();
-        }
-
         Uri.Builder uriBuilder = getFullTextSearchWebServiceUrlBuilder();
         uriBuilder.appendQueryParameter("query", text);
-        uriBuilder.appendQueryParameter("applicationID", applicationId.toString());
+        uriBuilder.appendQueryParameter("applicationID", GalePressApplication.getInstance().getSelectedCustomerApplication().getApplication().getId());
         uriBuilder.appendQueryParameter("contentID", contentId);
 
         request = new JsonObjectRequest(Request.Method.POST, uriBuilder.build().toString(), null,

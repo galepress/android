@@ -13,9 +13,11 @@ import android.os.Handler;
 import android.os.Looper;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -131,8 +133,11 @@ public class LibraryFragment extends Fragment {
         GalePressApplication.getInstance().setLibraryFragment(this);
         GalePressApplication.getInstance().setCurrentFragment(this);
 
-        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsForApplicationIdAndcategoryId(GalePressApplication.getInstance().getSelectedCustomerApplication().getApplication().getId()
-                ,GalePressApplication.getInstance().getApplicationFragment().selectedCategory.getId(), isDownloaded);
+        if(GalePressApplication.getInstance().getSelectedCustomerApplication() != null) {
+            contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsForApplicationIdAndcategoryId(GalePressApplication.getInstance().getSelectedCustomerApplication().getApplication().getId()
+                    ,GalePressApplication.getInstance().getApplicationFragment().selectedCategory.getId(), isDownloaded);
+        }
+
 
         if(contents != null && contents.size() > 0) {
             application = GalePressApplication.getInstance().getDatabaseApi().getCustomerApplication(Integer.valueOf(((L_Content) contents.get(0)).getApplicationId()));
@@ -173,8 +178,11 @@ public class LibraryFragment extends Fragment {
         gridview.setAdapter(this.contentHolderAdapter);
         updateGridView();
 
-        GalePressApplication.getInstance().getDataApi().getApplicationContents(GalePressApplication.getInstance().getSelectedCustomerApplication().getApplication().getId()
-                , String.valueOf(GalePressApplication.getInstance().getApplicationFragment().selectedCategory.getId()));
+        if(GalePressApplication.getInstance().getSelectedCustomerApplication() != null) {
+            GalePressApplication.getInstance().getDataApi().getApplicationContents(GalePressApplication.getInstance().getSelectedCustomerApplication().getApplication().getId()
+                    , String.valueOf(GalePressApplication.getInstance().getApplicationFragment().selectedCategory.getId()));
+        }
+
 
         return v;
     }
@@ -201,8 +209,11 @@ public class LibraryFragment extends Fragment {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-                contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsForApplicationIdAndcategoryId(GalePressApplication.getInstance().getSelectedCustomerApplication().getApplication().getId()
-                        ,GalePressApplication.getInstance().getApplicationFragment().selectedCategory.getId(), isDownloaded);
+                if(GalePressApplication.getInstance().getSelectedCustomerApplication() != null) {
+                    contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsForApplicationIdAndcategoryId(GalePressApplication.getInstance().getSelectedCustomerApplication().getApplication().getId()
+                            ,GalePressApplication.getInstance().getApplicationFragment().selectedCategory.getId(), isDownloaded);
+                }
+
                 if(!isDownloaded)
                     initHeaderContent();
                 contentHolderAdapter.notifyDataSetChanged();
@@ -218,9 +229,11 @@ public class LibraryFragment extends Fragment {
     }
 
     public void updateAdapterList(L_Content content, boolean isImagePathChanged) {
+        if(GalePressApplication.getInstance().getSelectedCustomerApplication() != null) {
+            contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsForApplicationIdAndcategoryId(GalePressApplication.getInstance().getSelectedCustomerApplication().getApplication().getId()
+                    ,GalePressApplication.getInstance().getApplicationFragment().selectedCategory.getId(), isDownloaded);
+        }
 
-        contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsForApplicationIdAndcategoryId(GalePressApplication.getInstance().getSelectedCustomerApplication().getApplication().getId()
-                ,GalePressApplication.getInstance().getApplicationFragment().selectedCategory.getId(), isDownloaded);
         ContentHolderAdapter.ViewHolder holder = GalePressApplication.getInstance().getDataApi().getViewHolderForContent(content);
         if (holder != null) {
             if (!content.isPdfDownloading()) {
@@ -321,9 +334,9 @@ public class LibraryFragment extends Fragment {
                 }
             });
             if (application != null && (application.getPlayUrl() == null || application.getPlayUrl().length() == 0)){
-                headerContentHolder.playLinkButton.setVisibility(View.GONE);
+                ((RelativeLayout)headerContentHolder.playLinkButton.getParent()).setVisibility(View.GONE);
             } else {
-                headerContentHolder.playLinkButton.setVisibility(View.VISIBLE);
+                ((RelativeLayout)headerContentHolder.playLinkButton.getParent()).setVisibility(View.VISIBLE);
             }
 
             headerContentHolder.loading = (CustomPulseProgress) contentHeader.findViewById(R.id.header_content_image_loading);

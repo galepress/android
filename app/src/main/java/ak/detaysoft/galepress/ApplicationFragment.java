@@ -407,7 +407,7 @@ public class ApplicationFragment extends Fragment {
             } else if(holder.category.getId().intValue() == 2){
                 displayUrl = "drawable://" + R.drawable.slider_kategori_yasam;
             } else if(holder.category.getId().intValue() == 3){
-                displayUrl = "drawable://" + R.drawable.slider_kategori_yasam;
+                displayUrl = "drawable://" + R.drawable.slider_kategori_evdekorasyon;
             }else if(holder.category.getId().intValue() == 4){
                 displayUrl = "drawable://" + R.drawable.slider_kategori_kadin;
             }else if(holder.category.getId().intValue() == 5){

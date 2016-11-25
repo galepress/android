@@ -116,7 +116,7 @@ public class ApplicationHolderAdapter extends BaseAdapter {
 
 
         viewHolder.nameLabel.setText(application.getApplication().getAppName());
-        viewHolder.nameLabel.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(applicationFragment.getActivity()));
+        viewHolder.nameLabel.setTypeface(ApplicationThemeColor.getInstance().getGothamMedium(applicationFragment.getActivity()));
         viewHolder.downloadPercentage.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(applicationFragment.getActivity()));
 
         viewHolder.downloadStatus.setVisibility(View.GONE);

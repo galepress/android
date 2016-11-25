@@ -122,7 +122,7 @@ public class ContentHolderAdapter extends BaseAdapter  {
         }
 
         viewHolder.nameLabel.setText(content.getMonthlyName());
-        viewHolder.nameLabel.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(libraryFragment.getActivity()));
+        viewHolder.nameLabel.setTypeface(ApplicationThemeColor.getInstance().getGothamMedium(libraryFragment.getActivity()));
         viewHolder.downloadPercentage.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(libraryFragment.getActivity()));
 
         viewHolder.downloadStatus.setVisibility(View.GONE);
