@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.IntentSender;
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -21,8 +22,10 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.os.RemoteException;
 import android.provider.Settings;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
@@ -33,6 +36,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -90,7 +94,7 @@ import ak.detaysoft.galepress.util.ApplicationThemeColor;
 /**
  * Created by adem on 31/03/14.
  */
-public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuItemClickListener {
+public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuItemClickListener {
 
     public static final int GENEL_CATEGORY_ID = 0;
     public static final int SHOW_ALL_CATEGORY_ID = -1;
@@ -134,7 +138,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
 
     public void onCreate(Bundle savedInstanceState) {
-        getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
         super.onCreate(savedInstanceState);
         Log.e("oncreate", "mainActivity");
 
@@ -151,11 +154,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             Log.e("ConnectivityManager", e.toString());
         }
 
-        getSupportActionBar().setDisplayUseLogoEnabled(false);
-        getSupportActionBar().setDisplayShowHomeEnabled(false);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
         if (getResources().getBoolean(R.bool.portrait_only)) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
@@ -165,7 +163,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         applicationFragment = new ApplicationFragment();
-        fragmentTransaction.add(R.id.fragment_container, applicationFragment, "APPLICATION").addToBackStack(null);
+        fragmentTransaction.add(R.id.fragment_container, applicationFragment, "APPLICATION");
         fragmentTransaction.commit();
 
         leftMenu = new SlidingMenu(this);
@@ -220,9 +218,9 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                     applicationFragment.isDownloaded = false;
                 applicationFragment.selectedCategoryPosition = position;
                 if(libraryFragment != null && libraryFragment.isVisible()) {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, applicationFragment).addToBackStack(null).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, applicationFragment).commit();
+                    changeMenuButtonImage(false);
                 }
-
                 applicationFragment.updateGridView();
                 categoriesAdapter.notifyDataSetChanged();
             }
@@ -231,15 +229,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
         categoriesAdapter = new LeftMenuCategoryAdapter(this, categoryListWithAll);
         categoriesListView.setAdapter(categoriesAdapter);
-
-
-        View customView = getLayoutInflater().inflate(R.layout.actionbar, null);
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(customView);
-        Toolbar parent =(Toolbar) customView.getParent();
-        parent.setPadding(0,0,0,0);//for tab otherwise give space in tab
-        parent.setContentInsetsAbsolute(0,0);
-        parent.setContentInsetsRelative(0,0);
 
         searchEdittext = (EditText) findViewById(R.id.left_menu_search_edit_text);
         //React to Done button on keyboard
@@ -352,14 +341,22 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         searchList.setLayoutManager(mLayoutManager);
 
         menuButton = (ImageView) findViewById(R.id.menu_button);
-        ((LinearLayout) findViewById(R.id.menu_button_layout)).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.menu_button_layout).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
-                if (leftMenu.isMenuShowing())
-                    leftMenu.showContent(true);
-                else {
-                    leftMenu.showMenu(true);
+                if(libraryFragment != null && libraryFragment.isVisible()) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, applicationFragment).commit();
+                    GalePressApplication.getInstance().setSelectedCustomerApplication(null);
+                    GalePressApplication.getInstance().setLibraryFragment(null);
+                    changeMenuButtonImage(false);
+                    actionbarTitle.setText(applicationFragment.selectedCategory.getName().toUpperCase());
+                } else {
+                    if (leftMenu.isMenuShowing())
+                        leftMenu.showContent(true);
+                    else {
+                        leftMenu.showMenu(true);
+                    }
                 }
+
             }
         });
 
@@ -465,7 +462,21 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
     }
 
-
+    public void changeMenuButtonImage(boolean isBack){
+        if(isBack) {
+            leftMenu.setSlidingEnabled(false);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                menuButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.MENU_ICON_BACK));
+            else
+                menuButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.MENU_ICON_BACK));
+        } else {
+            leftMenu.setSlidingEnabled(true);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                menuButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.MENU_ICON));
+            else
+                menuButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.MENU_ICON));
+        }
+    }
 
     public void choseCategory(int position) {
         GalePressApplication.getInstance().setSelectedCustomerApplication(null);
@@ -475,19 +486,18 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        /*
-        * Eger super cagrilirsa initCustomTabs() metodunda mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG); satirinda crash oluyor uygulama.
-        * Bu durum her zaman olmuyor sadece eger o sirada baska bi activity aciksa internet state degisirse crash oluyor.
-        * (MG)
-        * */
-        //super.onSaveInstanceState(outState);
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        leftMenu.setBehindWidth((int) getResources().getDimension(R.dimen.left_menu_size));
+        if(leftMenu.isSecondaryMenuShowing() ||leftMenu.isMenuShowing()){
+            leftMenu.showContent();
+        }
     }
 
     /*
-    * Renk degismedigi zaman servisten gelen tabbar ikonları invalidate edilmiyor.
-    * Yoksa uygulama icinde her update oldugunda ikonlarda yeniden load edildigi icin kotu gorunuyor
-    */
+        * Renk degismedigi zaman servisten gelen tabbar ikonları invalidate edilmiyor.
+        * Yoksa uygulama icinde her update oldugunda ikonlarda yeniden load edildigi icin kotu gorunuyor
+        */
     public void updateActivityViewAndAdapter() {
 
         leftMenuBaseLayout.setBackgroundColor(ApplicationThemeColor.getInstance().getForegroundColor());
@@ -550,10 +560,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             searchClear.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.SEARCH_CLEAR));
 
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            menuButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.MENU_ICON));
-        else
-            menuButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.MENU_ICON));
+        changeMenuButtonImage(false);
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
@@ -922,7 +929,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         libraryFragment.isDownloaded = applicationFragment.isDownloaded;
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.fragment_container, libraryFragment, "LIBRARY").addToBackStack(null);
+        fragmentTransaction.add(R.id.fragment_container, libraryFragment, "LIBRARY");
         fragmentTransaction.commit();
 
     }
@@ -930,7 +937,13 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     @Override
     public void onBackPressed() {
 
-        if(getSupportFragmentManager().getBackStackEntryCount() == 1) {
+        if(libraryFragment != null && libraryFragment.isVisible()) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, applicationFragment).commit();
+            GalePressApplication.getInstance().setSelectedCustomerApplication(null);
+            GalePressApplication.getInstance().setLibraryFragment(null);
+            changeMenuButtonImage(false);
+            actionbarTitle.setText(applicationFragment.selectedCategory.getName().toUpperCase());
+        } else {
             GalePressApplication.getInstance().destroyBillingServices();
             try {
                 unregisterReceiver(mConnReceiver);
@@ -938,11 +951,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 e.printStackTrace();
             }
             finish();
-        } else {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, applicationFragment).addToBackStack(null).commit();
-            GalePressApplication.getInstance().setSelectedCustomerApplication(null);
-            GalePressApplication.getInstance().setLibraryFragment(null);
-            actionbarTitle.setText(applicationFragment.selectedCategory.getName().toUpperCase());
         }
     }
 

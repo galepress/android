@@ -398,6 +398,9 @@ public class ContentDetailPopupActivity extends Activity{
         loading.startAnim();
 
         descriptionBase = (LinearLayout) findViewById(R.id.description_base);
+        if(content.getDetail() == null || content.getDetail().length() == 0){
+            descriptionBase.setVisibility(View.GONE);
+        }
         descriptionBase.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -581,32 +584,34 @@ public class ContentDetailPopupActivity extends Activity{
                         @Override
                         public void onAnimationEnd(Animation animation) {
 
-                            descriptionTopYOpen = descriptionBase.getY();
-                            isDescriptionShowing = false;
-                            descriptionTopYClose = descriptionTopYOpen + descriptionBase.getHeight()-findViewById(R.id.popup_swipe_open).getHeight();
+                            if(content.getDetail() != null && content.getDetail().length() > 0){
+                                descriptionTopYOpen = descriptionBase.getY();
+                                isDescriptionShowing = false;
+                                descriptionTopYClose = descriptionTopYOpen + descriptionBase.getHeight()-findViewById(R.id.popup_swipe_open).getHeight();
 
-                            descriptionBase.animate().y(descriptionTopYClose).setInterpolator(new AccelerateInterpolator()).setDuration(750).setListener(new Animator.AnimatorListener() {
-                                @Override
-                                public void onAnimationStart(Animator animation) {
-                                    descriptionBase.setEnabled(false);
-                                }
+                                descriptionBase.animate().y(descriptionTopYClose).setInterpolator(new AccelerateInterpolator()).setDuration(750).setListener(new Animator.AnimatorListener() {
+                                    @Override
+                                    public void onAnimationStart(Animator animation) {
+                                        descriptionBase.setEnabled(false);
+                                    }
 
-                                @Override
-                                public void onAnimationEnd(Animator animation) {
-                                    descriptionBase.setEnabled(true);
-                                    ((ImageView)findViewById(R.id.popup_swipe_icon)).setImageResource(R.drawable.swipe_open);
-                                }
+                                    @Override
+                                    public void onAnimationEnd(Animator animation) {
+                                        descriptionBase.setEnabled(true);
+                                        ((ImageView)findViewById(R.id.popup_swipe_icon)).setImageResource(R.drawable.swipe_open);
+                                    }
 
-                                @Override
-                                public void onAnimationCancel(Animator animation) {
+                                    @Override
+                                    public void onAnimationCancel(Animator animation) {
 
-                                }
+                                    }
 
-                                @Override
-                                public void onAnimationRepeat(Animator animation) {
+                                    @Override
+                                    public void onAnimationRepeat(Animator animation) {
 
-                                }
-                            }).start();
+                                    }
+                                }).start();
+                            }
                         }
 
                         @Override

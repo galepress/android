@@ -29,7 +29,7 @@ import org.xwalk.core.XWalkInitializer;
  *
  * @see SystemUiHider
  */
-public class LaunchActivity extends ActionBarActivity implements  XWalkInitializer.XWalkInitListener {
+public class LaunchActivity extends Activity implements  XWalkInitializer.XWalkInitListener {
     private SystemUiHider mSystemUiHider;
     boolean running;
     ProgressWheel pw_two;
@@ -44,8 +44,6 @@ public class LaunchActivity extends ActionBarActivity implements  XWalkInitializ
         XWalkInitializer mXWalkInitializer = new XWalkInitializer(this, this);
         mXWalkInitializer.initAsync();
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
         setContentView(R.layout.activity_launch);
         pw_two = (ProgressWheel) findViewById(R.id.progressBarTwo);
         pw_two.setVisibility(View.INVISIBLE);

@@ -119,6 +119,7 @@ public class ApplicationThemeColor {
     public static final int READER_SEARCH_OPEN = 71;
     public static final int READER_SEARCH_CLEAR = 72;
     public static final int SEARCH_MENU_ICON = 73;
+    public static final int MENU_ICON_BACK = 74;
 
     public ApplicationThemeColor(){
 
@@ -592,6 +593,8 @@ public class ApplicationThemeColor {
             myIcon = context.getResources().getDrawable(R.drawable.extra_web_close);
         } else if(resourceType == MENU_ICON){
             myIcon = context.getResources().getDrawable(R.drawable.menu);
+        } else if(resourceType == MENU_ICON_BACK){
+            myIcon = context.getResources().getDrawable(R.drawable.menu_back);
         }  else if(resourceType == SEARCH_MENU_ICON){
             myIcon = context.getResources().getDrawable(R.drawable.search_menu);
         } else if(resourceType == LIBRARY_ICON){

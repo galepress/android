@@ -227,13 +227,13 @@
 
     <LinearLayout
         android:id="@+id/verification_login_close"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
         android:orientation="vertical"
         android:layout_marginTop="5dp"
         android:layout_gravity="right|top"
         android:layout_marginRight="5dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_width="40dp"
+        android:layout_height="40dp">
 
         <Button
             android:background="@drawable/verification_close"

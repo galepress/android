@@ -107,6 +107,7 @@ public class ApplicationFragment extends Fragment {
                 ((MainActivity)getActivity()).getActionbarTitle().setText(application.getApplication().getAppName().toUpperCase());
                 GalePressApplication.getInstance().setSelectedCustomerApplication(application);
                 ((MainActivity)getActivity()).openLibraryFragment();
+                ((MainActivity)getActivity()).changeMenuButtonImage(true);
             }
         });
 
@@ -282,6 +283,7 @@ public class ApplicationFragment extends Fragment {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         // cihaz orientation degistiginde banner boyutu yeniden ayarlaniyor ve reload ediliyor. (MG)
+        updateGridView();
         if (!getResources().getBoolean(R.bool.portrait_only) &&
                 (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE || newConfig.orientation == Configuration.ORIENTATION_PORTRAIT)) {
             banner.setLayoutParams(resizeSliderBanner());

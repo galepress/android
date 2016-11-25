@@ -5,11 +5,85 @@
     android:layout_height="match_parent"
     tools:ignore="HardcodedText">
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/actionbar_height"
+        android:weightSum="100"
+        android:orientation="vertical"
+        android:id="@+id/custom_actionbar_layout">
+
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="49dp">
+
+            <LinearLayout
+                android:id="@+id/menu_button_layout"
+                android:layout_width="39dp"
+                android:layout_height="39dp"
+                android:background="@android:color/transparent"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/menu_button"
+                    android:adjustViewBounds="true"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/action_bar_title_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@android:color/transparent"
+                android:layout_gravity="center"
+                android:text="@string/app_name"
+                android:textSize="@dimen/actionbar_text_size"
+                android:gravity="center"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp" />
+
+
+            <LinearLayout
+                android:id="@+id/search_menu_button_layout"
+                android:layout_width="49dp"
+                android:layout_height="49dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/search_menu_button"
+                    android:adjustViewBounds="true"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:id="@+id/shadow"
+            android:background="@android:color/transparent"
+            android:alpha="0.2"
+            android:adjustViewBounds="false" />
+
+
+    </LinearLayout>
+
     <FrameLayout
         android:id="@+id/fragment_container"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/actionbar_height">
 
     </FrameLayout>
 </RelativeLayout>

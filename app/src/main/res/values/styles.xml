@@ -9,7 +9,9 @@
         <item name="android:textAppearanceLargePopupMenu">@style/PopupMenu.MenuItemTextAppearance</item>
         <item name="android:textAppearanceSmallPopupMenu">@style/PopupMenu.MenuItemTextAppearance</item>
         <item name="android:windowContentOverlay">@null</item>
-        <item name="android:actionBarSize">@dimen/actionbar_height</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
     </style>
 
     <style name="LoginTheme" parent="Theme.AppCompat.Light.DarkActionBar">

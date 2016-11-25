@@ -76,8 +76,8 @@
 
         <LinearLayout
             android:id="@+id/verification_signup_close"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:orientation="vertical"
             android:layout_marginTop="5dp"
             android:layout_gravity="right|top"
