@@ -74,7 +74,7 @@
                 android:layout_height="40dp"
                 android:id="@+id/header_content_play_link"
                 android:gravity="center"
-                android:scaleType="centerInside"
+                android:scaleType="fitEnd"
                 android:src="@drawable/play_download"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true" />

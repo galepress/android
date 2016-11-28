@@ -522,6 +522,9 @@ public class DatabaseApi {
             return new ArrayList<L_Content>();
         }
 
+        /*
+        * Eger gelen kategori id -1 ise tum icerikler listeleniyor.
+        * */
         List newContentList = new ArrayList();
         if(categoryId.intValue() != -1){
             for(int i = 0; i < contents.size(); i++){
@@ -533,10 +536,12 @@ public class DatabaseApi {
                     }
                 }
             }
+            return newContentList;
         } else {
             return contents;
         }
-        return newContentList;
+
+
     }
 
     public List getAllContents(boolean isOnlyDownloaded, String searchQuery, ArrayList<L_Category> categoryList)

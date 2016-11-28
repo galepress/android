@@ -929,6 +929,22 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
     public void openLibraryFragment(){
         libraryFragment = new LibraryFragment();
         libraryFragment.isDownloaded = applicationFragment.isDownloaded;
+        libraryFragment.searchPage = -1;
+        libraryFragment.searchQuery = "";
+        libraryFragment.searchContentId = -1;
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.fragment_container, libraryFragment, "LIBRARY").addToBackStack(null);
+        fragmentTransaction.commit();
+
+    }
+
+    public void openLibraryFragmentWithSearch(int searchPageId, String searchQuery, Integer searchContentId){
+        libraryFragment = new LibraryFragment();
+        libraryFragment.isDownloaded = false;
+        libraryFragment.searchPage = searchPageId;
+        libraryFragment.searchQuery = searchQuery;
+        libraryFragment.searchContentId = searchContentId;
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.fragment_container, libraryFragment, "LIBRARY").addToBackStack(null);
