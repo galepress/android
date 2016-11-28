@@ -317,6 +317,20 @@ public class LibraryFragment extends Fragment {
 
             headerContentHolder.detailLabel = ((TextView) contentHeader.findViewById(R.id.header_detailLabel));
             headerContentHolder.detailLabel.setText(headerContentHolder.content.getDetail());
+            headerContentHolder.detailLabel.setMovementMethod(new ScrollingMovementMethod());
+            headerContentHolder.detailLabel.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                        headerContentHolder.detailLabel.getParent().requestDisallowInterceptTouchEvent(true);
+                    }
+                    if (event.getAction() == MotionEvent.ACTION_UP) {
+                        headerContentHolder.detailLabel.getParent().requestDisallowInterceptTouchEvent(false);
+                    }
+
+                    return headerContentHolder.detailLabel.onTouchEvent(event);
+                }
+            });
             headerContentHolder.detailLabel.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(getActivity()));
 
             headerContentHolder.playLinkButton = (ImageView) contentHeader.findViewById(R.id.header_content_play_link);

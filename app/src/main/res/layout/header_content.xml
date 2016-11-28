@@ -55,8 +55,8 @@
                 android:textColor="#ffffff"
                 android:textSize="11dp"
                 android:gravity="left|center_vertical"
-                android:layout_marginTop="@dimen/library_header_cell_padding"
-                android:layout_marginBottom="@dimen/library_header_cell_padding"/>
+                android:scrollbars="vertical"
+                android:layout_marginTop="@dimen/library_header_cell_padding"/>
 
 
         </LinearLayout>
@@ -66,7 +66,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_marginTop="@dimen/library_header_cell_padding">
 
             <ImageView
                 android:layout_width="120dp"
@@ -74,8 +75,9 @@
                 android:id="@+id/header_content_play_link"
                 android:gravity="center"
                 android:scaleType="centerInside"
-                android:layout_centerInParent="true"
-                android:src="@drawable/play_download" />
+                android:src="@drawable/play_download"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
         </RelativeLayout>
 
     </RelativeLayout>

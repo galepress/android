@@ -27,24 +27,15 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/ic_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ApplicationFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ApplicationFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ApplicationHolderAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ApplicationHolderAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentHolderAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentHolderAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/HeaderGridView.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/HeaderGridView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-large/grid_cell.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-large/grid_cell.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/grid_cell.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/grid_cell.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/header_content.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/header_content.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/raw/application.plist" afterPath="$PROJECT_DIR$/app/src/main/res/raw/application.plist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/slidemenulibrary/slidemenulibrary.iml" afterPath="$PROJECT_DIR$/slidemenulibrary/slidemenulibrary.iml" />
     </list>
     <ignored path="GalepressMerge.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -79,150 +70,59 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
+      <file leaf-file-name="ContentDetailPopupActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="540" column="87" selection-start-line="540" selection-start-column="87" selection-end-line="540" selection-end-column="87" />
+            <state relative-caret-position="349">
+              <caret line="596" column="0" selection-start-line="596" selection-start-column="0" selection-end-line="596" selection-end-column="0" />
               <folding>
-                <element signature="docComment;class#MainActivity#0" expanded="false" />
-                <element signature="class#4389:4509" expanded="false" />
-                <element signature="method#onReceive#0;class#4389:4509" expanded="false" />
-                <element signature="class#12947:13746" expanded="false" />
-                <element signature="method#beforeTextChanged#0;class#12947:13746" expanded="false" />
-                <element signature="method#onTextChanged#0;class#12947:13746" expanded="false" />
-                <element signature="method#afterTextChanged#0;class#12947:13746" expanded="false" />
-                <element signature="e#19588#19639#0" expanded="false" />
-                <element signature="class#19867:20551" expanded="false" />
-                <element signature="method#doInBackground#0;class#19867:20551" expanded="false" />
-                <element signature="e#20152#20177#0" expanded="false" />
-                <element signature="method#changeMenuButtonImage#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#onConfigurationChanged#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#logout#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#openSubscriptionChooser#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#subscribe#0;class#MainActivity#0" expanded="false" />
-                <element signature="e#32056#32079#0" expanded="false" />
-                <element signature="method#hideKeyboard#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#changeSearchViewColor#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#onActivityResult#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#onResume#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#onPause#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#onStop#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#onDestroy#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#openLibraryFragment#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#onAttachFragment#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#onMenuItemClick#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#onPrepareOptionsMenu#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#onOptionsItemSelected#0;class#MainActivity#0" expanded="false" />
-                <element signature="e#51079#51111#0" expanded="false" />
-                <element signature="method#clearReferences#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#completePurchase#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#complateSearch#0;class#MainActivity#0" expanded="false" />
-                <element signature="class#SearchAdapter#0;class#MainActivity#0" expanded="false" />
-                <element signature="class#MyViewHolder#0;class#SearchAdapter#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#MyViewHolder#0;class#MyViewHolder#0;class#SearchAdapter#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#SearchAdapter#0;class#SearchAdapter#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#onCreateViewHolder#0;class#SearchAdapter#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#onBindViewHolder#0;class#SearchAdapter#0;class#MainActivity#0" expanded="false" />
-                <element signature="e#56901#56952#0" expanded="false" />
-                <element signature="method#openContentDetail#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#openContentReader#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#setCategoryListWithAll#0;class#MainActivity#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LibraryFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="318" column="93" selection-start-line="318" selection-start-column="93" selection-end-line="318" selection-end-column="93" />
-              <folding>
-                <element signature="docComment;class#LibraryFragment#0" expanded="false" />
-                <element signature="method#setLayoutInflater#0;class#LibraryFragment#0" expanded="false" />
-                <element signature="method#LibraryFragment#0;class#LibraryFragment#0" expanded="false" />
-                <element signature="method#onCreate#0;class#LibraryFragment#0" expanded="false" />
-                <element signature="method#onConfigurationChanged#0;class#LibraryFragment#0" expanded="false" />
-                <element signature="method#onResume#0;class#LibraryFragment#0" expanded="false" />
-                <element signature="method#resizeHeaderContent#0;class#LibraryFragment#0" expanded="false" />
-                <element signature="method#updateGridView#0;class#LibraryFragment#0" expanded="false" />
-                <element signature="e#8083#9134#0" expanded="true" />
-                <element signature="e#9133#9134#0" expanded="true" />
-                <element signature="method#updateAdapterList#0;class#LibraryFragment#0" expanded="false" />
-                <element signature="method#viewContent#0;class#LibraryFragment#0" expanded="false" />
-                <element signature="method#viewContentDetail#0;class#LibraryFragment#0" expanded="false" />
-                <element signature="method#getContents#0;class#LibraryFragment#0" expanded="false" />
-                <element signature="method#displayImage#0;class#LibraryFragment#0" expanded="false" />
-                <element signature="class#18601:19804" expanded="false" />
-                <element signature="method#onLoadingStarted#0;class#18601:19804" expanded="false" />
-                <element signature="method#onLoadingFailed#0;class#18601:19804" expanded="false" />
-                <element signature="method#onLoadingComplete#0;class#18601:19804" expanded="false" />
-                <element signature="method#onLoadingCancelled#0;class#18601:19804" expanded="false" />
-                <element signature="method#updateHeaderContent#0;class#LibraryFragment#0" expanded="false" />
-                <element signature="class#HeaderContentHolder#0;class#LibraryFragment#0" expanded="false" />
-                <element signature="method#refreshImageLoading#0;class#HeaderContentHolder#0;class#LibraryFragment#0" expanded="false" />
-                <element signature="method#setHeaderContentHolder#0;class#LibraryFragment#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HeaderGridView.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/HeaderGridView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-411">
-              <caret line="271" column="32" selection-start-line="271" selection-start-column="32" selection-end-line="271" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="header_content.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/header_content.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="56" column="54" selection-start-line="56" selection-start-column="54" selection-end-line="56" selection-end-column="54" />
-              <folding>
-                <element signature="e#240#276#0" expanded="true" />
-                <element signature="e#2305#2341#0" expanded="true" />
-                <element signature="e#2386#2422#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ApplicationFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ApplicationFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="752">
-              <caret line="340" column="24" selection-start-line="340" selection-start-column="24" selection-end-line="340" selection-end-column="24" />
-              <folding>
-                <element signature="docComment;class#ApplicationFragment#0" expanded="false" />
-                <element signature="method#ApplicationFragment#0;class#ApplicationFragment#0" expanded="false" />
-                <element signature="method#onCreate#0;class#ApplicationFragment#0" expanded="false" />
-                <element signature="method#onCreateView#0;class#ApplicationFragment#0" expanded="false" />
-                <element signature="class#4534:6863" expanded="false" />
-                <element signature="method#onScrollStateChanged#0;class#4534:6863" expanded="false" />
-                <element signature="method#onScroll#0;class#4534:6863" expanded="false" />
-                <element signature="class#8566:9140" expanded="false" />
-                <element signature="method#onScrollStateChanged#0;class#8566:9140" expanded="false" />
-                <element signature="method#onScrolled#0;class#8566:9140" expanded="false" />
-                <element signature="method#resizeSliderBanner#0;class#ApplicationFragment#0" expanded="false" />
-                <element signature="method#updateGridView#0;class#ApplicationFragment#0" expanded="false" />
-                <element signature="method#repairSelectedCategory#0;class#ApplicationFragment#0" expanded="false" />
-                <element signature="method#onConfigurationChanged#0;class#ApplicationFragment#0" expanded="false" />
-                <element signature="method#onResume#0;class#ApplicationFragment#0" expanded="false" />
-                <element signature="method#onSaveInstanceState#0;class#ApplicationFragment#0" expanded="false" />
-                <element signature="e#16403#17001#0" expanded="true" />
-                <element signature="e#17000#17001#0" expanded="true" />
-                <element signature="method#onCreateViewHolder#0;class#CategoryAdapter#0;class#ApplicationFragment#0" expanded="false" />
-                <element signature="method#onBindViewHolder#0;class#CategoryAdapter#0;class#ApplicationFragment#0" expanded="false" />
-                <element signature="e#17703#17754#0" expanded="false" />
-                <element signature="method#setLayoutInflater#0;class#ApplicationFragment#0" expanded="false" />
+                <element signature="docComment;class#ContentDetailPopupActivity#0" expanded="false" />
+                <element signature="class#ContentHolder#0;class#ContentDetailPopupActivity#0" expanded="false" />
+                <element signature="method#ContentHolder#0;class#ContentHolder#0;class#ContentDetailPopupActivity#0" expanded="false" />
+                <element signature="e#14272#14295#0" expanded="false" />
+                <element signature="class#24792:25893" expanded="false" />
+                <element signature="method#onAnimationStart#0;class#24792:25893" expanded="false" />
+                <element signature="method#onAnimationEnd#0;class#24792:25893" expanded="false" />
+                <element signature="method#onAnimationCancel#0;class#24792:25893" expanded="false" />
+                <element signature="method#onAnimationRepeat#0;class#24792:25893" expanded="false" />
+                <element signature="class#26101:27202" expanded="false" />
+                <element signature="method#onAnimationStart#0;class#26101:27202" expanded="false" />
+                <element signature="method#onAnimationEnd#0;class#26101:27202" expanded="false" />
+                <element signature="method#onAnimationCancel#0;class#26101:27202" expanded="false" />
+                <element signature="method#onAnimationRepeat#0;class#26101:27202" expanded="false" />
+                <element signature="method#onAnimationStart#0;class#30206:33068" expanded="false" />
+                <element signature="method#onAnimationStart#0;class#30776:32866" expanded="false" />
+                <element signature="method#onAnimationCancel#0;class#31608:32639" expanded="false" />
+                <element signature="method#onAnimationRepeat#0;class#31608:32639" expanded="false" />
+                <element signature="method#onAnimationRepeat#0;class#30776:32866" expanded="false" />
+                <element signature="method#onAnimationRepeat#0;class#30206:33068" expanded="false" />
+                <element signature="method#initDownloadButton#0;class#ContentDetailPopupActivity#0" expanded="false" />
+                <element signature="class#33470:37000" expanded="false" />
+                <element signature="method#onPreExecute#0;class#33470:37000" expanded="false" />
+                <element signature="method#doInBackground#0;class#33470:37000" expanded="false" />
+                <element signature="method#onPostExecute#0;class#33470:37000" expanded="false" />
+                <element signature="method#displayImage#0;class#ContentDetailPopupActivity#0" expanded="false" />
+                <element signature="class#37803:39282" expanded="false" />
+                <element signature="method#onLoadingStarted#0;class#37803:39282" expanded="false" />
+                <element signature="method#onLoadingFailed#0;class#37803:39282" expanded="false" />
+                <element signature="method#onLoadingComplete#0;class#37803:39282" expanded="false" />
+                <element signature="method#onLoadingCancelled#0;class#37803:39282" expanded="false" />
+                <element signature="method#finishActivityWithAnimation#0;class#ContentDetailPopupActivity#0" expanded="false" />
+                <element signature="class#39608:42169" expanded="false" />
+                <element signature="method#onAnimationEnd#0;class#39608:42169" expanded="false" />
+                <element signature="class#40185:41206" expanded="false" />
+                <element signature="method#onAnimationStart#0;class#40185:41206" expanded="false" />
+                <element signature="method#onAnimationEnd#0;class#40185:41206" expanded="false" />
+                <element signature="method#onAnimationRepeat#0;class#40185:41206" expanded="false" />
+                <element signature="class#41430:41897" expanded="false" />
+                <element signature="method#onAnimationStart#0;class#41430:41897" expanded="false" />
+                <element signature="method#onAnimationRepeat#0;class#41430:41897" expanded="false" />
+                <element signature="method#onActivityResult#0;class#ContentDetailPopupActivity#0" expanded="false" />
+                <element signature="method#onSaveInstanceState#0;class#ContentDetailPopupActivity#0" expanded="false" />
+                <element signature="method#onBackPressed#0;class#ContentDetailPopupActivity#0" expanded="false" />
+                <element signature="method#update#0;class#ContentDetailPopupActivity#0" expanded="false" />
+                <element signature="method#completePurchase#0;class#ContentDetailPopupActivity#0" expanded="false" />
+                <element signature="method#viewContent#0;class#ContentDetailPopupActivity#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -3572,8 +3472,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_ApplicationCategory.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_Content.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_Category.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseApi.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_CustomerApplication.java" />
@@ -3592,19 +3490,16 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_crop_and_share.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fixed_content_popup_layout.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_launch.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/ThumbnailListAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_verification_login.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_verification_signup.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_verification_forgot.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/ApplicationThemeColor.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/actionbar.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-large/dimens.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-large-land/dimens.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LaunchActivity.java" />
         <option value="$PROJECT_DIR$/slidemenulibrary/src/com/jeremyfeinstein/slidingmenu/lib/SlidingMenu.java" />
         <option value="$PROJECT_DIR$/slidemenulibrary/src/com/jeremyfeinstein/slidingmenu/lib/CustomViewBehind.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
@@ -3621,8 +3516,13 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/grid_cell.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout-large/library_fragment.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/library_fragment.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/header_content.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/HeaderGridView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/header_content.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LaunchActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/raw/application.plist" />
       </list>
     </option>
   </component>
@@ -3673,26 +3573,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Problems" />
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scratches">
-        <subPane />
-      </pane>
-      <pane id="AndroidView">
-        <subPane />
-      </pane>
-      <pane id="PackagesPane">
-        <subPane />
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -3804,6 +3684,26 @@
             </PATH_ELEMENT>
           </PATH>
         </subPane>
+      </pane>
+      <pane id="AndroidView">
+        <subPane />
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Problems" />
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane />
+      </pane>
+      <pane id="Scratches">
+        <subPane />
       </pane>
     </panes>
   </component>
@@ -4172,8 +4072,8 @@
     <layout>
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26066098" sideWeight="0.506135" order="2" side_tool="false" content_ui="tabs" x="707" y="139" width="506" height="728" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36193618" sideWeight="0.6151386" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36193618" sideWeight="0.3848614" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36193618" sideWeight="0.6167377" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36193618" sideWeight="0.38326225" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -4192,7 +4092,6 @@
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27722773" sideWeight="0.6119403" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21695095" sideWeight="0.49386504" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31023103" sideWeight="0.3400853" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -4205,6 +4104,7 @@
       <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31023103" sideWeight="0.3400853" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -4249,13 +4149,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFReaderView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="282" column="0" selection-start-line="282" selection-start-column="0" selection-end-line="282" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="212">
@@ -4283,22 +4176,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_launch.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="37" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_verification_login.xml">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="680">
           <caret line="40" column="17" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
       <provider selected="true" editor-type-id="android-designer2">
@@ -4319,7 +4200,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
           <caret line="79" column="36" selection-start-line="79" selection-start-column="36" selection-end-line="79" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -4340,7 +4220,6 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="163">
           <caret line="63" column="29" selection-start-line="63" selection-start-column="29" selection-end-line="63" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
       <provider selected="true" editor-type-id="android-designer2">
@@ -4352,67 +4231,6 @@
         <state relative-caret-position="318">
           <caret line="232" column="29" selection-start-line="232" selection-start-column="29" selection-end-line="232" selection-end-column="29" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="586" column="57" selection-start-line="586" selection-start-column="57" selection-end-line="586" selection-end-column="57" />
-          <folding>
-            <element signature="docComment;class#ContentDetailPopupActivity#0" expanded="false" />
-            <element signature="class#ContentHolder#0;class#ContentDetailPopupActivity#0" expanded="false" />
-            <element signature="method#ContentHolder#0;class#ContentHolder#0;class#ContentDetailPopupActivity#0" expanded="false" />
-            <element signature="e#14272#14295#0" expanded="false" />
-            <element signature="e#21988#27372#0" expanded="false" />
-            <element signature="class#24792:25893" expanded="false" />
-            <element signature="method#onAnimationStart#0;class#24792:25893" expanded="false" />
-            <element signature="method#onAnimationEnd#0;class#24792:25893" expanded="false" />
-            <element signature="method#onAnimationCancel#0;class#24792:25893" expanded="false" />
-            <element signature="method#onAnimationRepeat#0;class#24792:25893" expanded="false" />
-            <element signature="class#26101:27202" expanded="false" />
-            <element signature="method#onAnimationStart#0;class#26101:27202" expanded="false" />
-            <element signature="method#onAnimationEnd#0;class#26101:27202" expanded="false" />
-            <element signature="method#onAnimationCancel#0;class#26101:27202" expanded="false" />
-            <element signature="method#onAnimationRepeat#0;class#26101:27202" expanded="false" />
-            <element signature="e#27371#27372#0" expanded="false" />
-            <element signature="method#onAnimationStart#0;class#30206:33068" expanded="false" />
-            <element signature="method#onAnimationStart#0;class#30776:32866" expanded="false" />
-            <element signature="class#31608:32639" expanded="false" />
-            <element signature="method#onAnimationStart#0;class#31608:32639" expanded="false" />
-            <element signature="method#onAnimationEnd#0;class#31608:32639" expanded="false" />
-            <element signature="method#onAnimationCancel#0;class#31608:32639" expanded="false" />
-            <element signature="method#onAnimationRepeat#0;class#31608:32639" expanded="false" />
-            <element signature="method#onAnimationRepeat#0;class#30776:32866" expanded="false" />
-            <element signature="method#onAnimationRepeat#0;class#30206:33068" expanded="false" />
-            <element signature="method#initDownloadButton#0;class#ContentDetailPopupActivity#0" expanded="false" />
-            <element signature="class#33470:37000" expanded="false" />
-            <element signature="method#onPreExecute#0;class#33470:37000" expanded="false" />
-            <element signature="method#doInBackground#0;class#33470:37000" expanded="false" />
-            <element signature="method#onPostExecute#0;class#33470:37000" expanded="false" />
-            <element signature="method#displayImage#0;class#ContentDetailPopupActivity#0" expanded="false" />
-            <element signature="class#37803:39282" expanded="false" />
-            <element signature="method#onLoadingStarted#0;class#37803:39282" expanded="false" />
-            <element signature="method#onLoadingFailed#0;class#37803:39282" expanded="false" />
-            <element signature="method#onLoadingComplete#0;class#37803:39282" expanded="false" />
-            <element signature="method#onLoadingCancelled#0;class#37803:39282" expanded="false" />
-            <element signature="method#finishActivityWithAnimation#0;class#ContentDetailPopupActivity#0" expanded="false" />
-            <element signature="class#39608:42169" expanded="false" />
-            <element signature="method#onAnimationEnd#0;class#39608:42169" expanded="false" />
-            <element signature="class#40185:41206" expanded="false" />
-            <element signature="method#onAnimationStart#0;class#40185:41206" expanded="false" />
-            <element signature="method#onAnimationEnd#0;class#40185:41206" expanded="false" />
-            <element signature="method#onAnimationRepeat#0;class#40185:41206" expanded="false" />
-            <element signature="class#41430:41897" expanded="false" />
-            <element signature="method#onAnimationStart#0;class#41430:41897" expanded="false" />
-            <element signature="method#onAnimationRepeat#0;class#41430:41897" expanded="false" />
-            <element signature="method#onActivityResult#0;class#ContentDetailPopupActivity#0" expanded="false" />
-            <element signature="method#onSaveInstanceState#0;class#ContentDetailPopupActivity#0" expanded="false" />
-            <element signature="method#onBackPressed#0;class#ContentDetailPopupActivity#0" expanded="false" />
-            <element signature="method#update#0;class#ContentDetailPopupActivity#0" expanded="false" />
-            <element signature="method#completePurchase#0;class#ContentDetailPopupActivity#0" expanded="false" />
-            <element signature="method#viewContent#0;class#ContentDetailPopupActivity#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -4510,41 +4328,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-large/dimens.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LaunchActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="34" column="21" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values-large-land/dimens.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="27" column="45" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="17" column="51" selection-start-line="17" selection-start-column="51" selection-end-line="17" selection-end-column="51" />
           <folding />
         </state>
       </provider>
@@ -4567,18 +4360,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="282" column="5" selection-start-line="282" selection-start-column="5" selection-end-line="282" selection-end-column="5" />
-          <folding>
-            <element signature="e#4748#4749#0" expanded="false" />
-            <element signature="e#4774#4775#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4599,7 +4380,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4615,7 +4395,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -4687,7 +4466,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="199">
           <caret line="78" column="24" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4762,7 +4540,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2104">
           <caret line="3" column="47" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -4795,7 +4572,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4878,7 +4654,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
+        <state relative-caret-position="6511">
           <caret line="540" column="87" selection-start-line="540" selection-start-column="87" selection-end-line="540" selection-end-column="87" />
           <folding>
             <element signature="docComment;class#MainActivity#0" expanded="false" />
@@ -4928,9 +4704,98 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/header_content.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="69" column="36" selection-start-line="69" selection-start-column="36" selection-end-line="69" selection-end-column="36" />
+          <folding>
+            <element signature="e#2716#2752#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/HeaderGridView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="217" column="52" selection-start-line="217" selection-start-column="52" selection-end-line="217" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="305" column="0" selection-start-line="305" selection-start-column="0" selection-end-line="305" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#LibraryFragment#0" expanded="false" />
+            <element signature="method#setLayoutInflater#0;class#LibraryFragment#0" expanded="false" />
+            <element signature="method#LibraryFragment#0;class#LibraryFragment#0" expanded="false" />
+            <element signature="method#onCreate#0;class#LibraryFragment#0" expanded="false" />
+            <element signature="method#onConfigurationChanged#0;class#LibraryFragment#0" expanded="false" />
+            <element signature="method#onResume#0;class#LibraryFragment#0" expanded="false" />
+            <element signature="method#resizeHeaderContent#0;class#LibraryFragment#0" expanded="false" />
+            <element signature="method#updateGridView#0;class#LibraryFragment#0" expanded="false" />
+            <element signature="method#updateAdapterList#0;class#LibraryFragment#0" expanded="false" />
+            <element signature="method#viewContent#0;class#LibraryFragment#0" expanded="false" />
+            <element signature="method#viewContentDetail#0;class#LibraryFragment#0" expanded="false" />
+            <element signature="method#getContents#0;class#LibraryFragment#0" expanded="false" />
+            <element signature="e#13798#14440#0" expanded="true" />
+            <element signature="e#14439#14440#0" expanded="true" />
+            <element signature="method#displayImage#0;class#LibraryFragment#0" expanded="false" />
+            <element signature="class#19403:20606" expanded="false" />
+            <element signature="method#onLoadingStarted#0;class#19403:20606" expanded="false" />
+            <element signature="method#onLoadingFailed#0;class#19403:20606" expanded="false" />
+            <element signature="method#onLoadingComplete#0;class#19403:20606" expanded="false" />
+            <element signature="method#onLoadingCancelled#0;class#19403:20606" expanded="false" />
+            <element signature="method#updateHeaderContent#0;class#LibraryFragment#0" expanded="false" />
+            <element signature="class#HeaderContentHolder#0;class#LibraryFragment#0" expanded="false" />
+            <element signature="method#refreshImageLoading#0;class#HeaderContentHolder#0;class#LibraryFragment#0" expanded="false" />
+            <element signature="method#setHeaderContentHolder#0;class#LibraryFragment#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-large/dimens.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="46" column="17" selection-start-line="46" selection-start-column="17" selection-end-line="46" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_launch.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LaunchActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="47" column="67" selection-start-line="47" selection-start-column="67" selection-end-line="47" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="86" column="49" selection-start-line="86" selection-start-column="49" selection-end-line="86" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ApplicationFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="752">
+        <state relative-caret-position="518">
           <caret line="340" column="24" selection-start-line="340" selection-start-column="24" selection-end-line="340" selection-end-column="24" />
           <folding>
             <element signature="docComment;class#ApplicationFragment#0" expanded="false" />
@@ -4949,8 +4814,6 @@
             <element signature="method#onConfigurationChanged#0;class#ApplicationFragment#0" expanded="false" />
             <element signature="method#onResume#0;class#ApplicationFragment#0" expanded="false" />
             <element signature="method#onSaveInstanceState#0;class#ApplicationFragment#0" expanded="false" />
-            <element signature="e#16403#17001#0" expanded="true" />
-            <element signature="e#17000#17001#0" expanded="true" />
             <element signature="method#onCreateViewHolder#0;class#CategoryAdapter#0;class#ApplicationFragment#0" expanded="false" />
             <element signature="method#onBindViewHolder#0;class#CategoryAdapter#0;class#ApplicationFragment#0" expanded="false" />
             <element signature="e#17703#17754#0" expanded="false" />
@@ -4959,59 +4822,75 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/header_content.xml">
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="56" column="54" selection-start-line="56" selection-start-column="54" selection-end-line="56" selection-end-column="54" />
-          <folding>
-            <element signature="e#240#276#0" expanded="true" />
-            <element signature="e#2305#2341#0" expanded="true" />
-            <element signature="e#2386#2422#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="318" column="93" selection-start-line="318" selection-start-column="93" selection-end-line="318" selection-end-column="93" />
-          <folding>
-            <element signature="docComment;class#LibraryFragment#0" expanded="false" />
-            <element signature="method#setLayoutInflater#0;class#LibraryFragment#0" expanded="false" />
-            <element signature="method#LibraryFragment#0;class#LibraryFragment#0" expanded="false" />
-            <element signature="method#onCreate#0;class#LibraryFragment#0" expanded="false" />
-            <element signature="method#onConfigurationChanged#0;class#LibraryFragment#0" expanded="false" />
-            <element signature="method#onResume#0;class#LibraryFragment#0" expanded="false" />
-            <element signature="method#resizeHeaderContent#0;class#LibraryFragment#0" expanded="false" />
-            <element signature="method#updateGridView#0;class#LibraryFragment#0" expanded="false" />
-            <element signature="e#8083#9134#0" expanded="true" />
-            <element signature="e#9133#9134#0" expanded="true" />
-            <element signature="method#updateAdapterList#0;class#LibraryFragment#0" expanded="false" />
-            <element signature="method#viewContent#0;class#LibraryFragment#0" expanded="false" />
-            <element signature="method#viewContentDetail#0;class#LibraryFragment#0" expanded="false" />
-            <element signature="method#getContents#0;class#LibraryFragment#0" expanded="false" />
-            <element signature="method#displayImage#0;class#LibraryFragment#0" expanded="false" />
-            <element signature="class#18601:19804" expanded="false" />
-            <element signature="method#onLoadingStarted#0;class#18601:19804" expanded="false" />
-            <element signature="method#onLoadingFailed#0;class#18601:19804" expanded="false" />
-            <element signature="method#onLoadingComplete#0;class#18601:19804" expanded="false" />
-            <element signature="method#onLoadingCancelled#0;class#18601:19804" expanded="false" />
-            <element signature="method#updateHeaderContent#0;class#LibraryFragment#0" expanded="false" />
-            <element signature="class#HeaderContentHolder#0;class#LibraryFragment#0" expanded="false" />
-            <element signature="method#refreshImageLoading#0;class#HeaderContentHolder#0;class#LibraryFragment#0" expanded="false" />
-            <element signature="method#setHeaderContentHolder#0;class#LibraryFragment#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/HeaderGridView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-411">
-          <caret line="271" column="32" selection-start-line="271" selection-start-column="32" selection-end-line="271" selection-end-column="32" />
+        <state relative-caret-position="344">
+          <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/raw/application.plist">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="596" column="0" selection-start-line="596" selection-start-column="0" selection-end-line="596" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#ContentDetailPopupActivity#0" expanded="false" />
+            <element signature="class#ContentHolder#0;class#ContentDetailPopupActivity#0" expanded="false" />
+            <element signature="method#ContentHolder#0;class#ContentHolder#0;class#ContentDetailPopupActivity#0" expanded="false" />
+            <element signature="e#14272#14295#0" expanded="false" />
+            <element signature="class#24792:25893" expanded="false" />
+            <element signature="method#onAnimationStart#0;class#24792:25893" expanded="false" />
+            <element signature="method#onAnimationEnd#0;class#24792:25893" expanded="false" />
+            <element signature="method#onAnimationCancel#0;class#24792:25893" expanded="false" />
+            <element signature="method#onAnimationRepeat#0;class#24792:25893" expanded="false" />
+            <element signature="class#26101:27202" expanded="false" />
+            <element signature="method#onAnimationStart#0;class#26101:27202" expanded="false" />
+            <element signature="method#onAnimationEnd#0;class#26101:27202" expanded="false" />
+            <element signature="method#onAnimationCancel#0;class#26101:27202" expanded="false" />
+            <element signature="method#onAnimationRepeat#0;class#26101:27202" expanded="false" />
+            <element signature="method#onAnimationStart#0;class#30206:33068" expanded="false" />
+            <element signature="method#onAnimationStart#0;class#30776:32866" expanded="false" />
+            <element signature="method#onAnimationCancel#0;class#31608:32639" expanded="false" />
+            <element signature="method#onAnimationRepeat#0;class#31608:32639" expanded="false" />
+            <element signature="method#onAnimationRepeat#0;class#30776:32866" expanded="false" />
+            <element signature="method#onAnimationRepeat#0;class#30206:33068" expanded="false" />
+            <element signature="method#initDownloadButton#0;class#ContentDetailPopupActivity#0" expanded="false" />
+            <element signature="class#33470:37000" expanded="false" />
+            <element signature="method#onPreExecute#0;class#33470:37000" expanded="false" />
+            <element signature="method#doInBackground#0;class#33470:37000" expanded="false" />
+            <element signature="method#onPostExecute#0;class#33470:37000" expanded="false" />
+            <element signature="method#displayImage#0;class#ContentDetailPopupActivity#0" expanded="false" />
+            <element signature="class#37803:39282" expanded="false" />
+            <element signature="method#onLoadingStarted#0;class#37803:39282" expanded="false" />
+            <element signature="method#onLoadingFailed#0;class#37803:39282" expanded="false" />
+            <element signature="method#onLoadingComplete#0;class#37803:39282" expanded="false" />
+            <element signature="method#onLoadingCancelled#0;class#37803:39282" expanded="false" />
+            <element signature="method#finishActivityWithAnimation#0;class#ContentDetailPopupActivity#0" expanded="false" />
+            <element signature="class#39608:42169" expanded="false" />
+            <element signature="method#onAnimationEnd#0;class#39608:42169" expanded="false" />
+            <element signature="class#40185:41206" expanded="false" />
+            <element signature="method#onAnimationStart#0;class#40185:41206" expanded="false" />
+            <element signature="method#onAnimationEnd#0;class#40185:41206" expanded="false" />
+            <element signature="method#onAnimationRepeat#0;class#40185:41206" expanded="false" />
+            <element signature="class#41430:41897" expanded="false" />
+            <element signature="method#onAnimationStart#0;class#41430:41897" expanded="false" />
+            <element signature="method#onAnimationRepeat#0;class#41430:41897" expanded="false" />
+            <element signature="method#onActivityResult#0;class#ContentDetailPopupActivity#0" expanded="false" />
+            <element signature="method#onSaveInstanceState#0;class#ContentDetailPopupActivity#0" expanded="false" />
+            <element signature="method#onBackPressed#0;class#ContentDetailPopupActivity#0" expanded="false" />
+            <element signature="method#update#0;class#ContentDetailPopupActivity#0" expanded="false" />
+            <element signature="method#completePurchase#0;class#ContentDetailPopupActivity#0" expanded="false" />
+            <element signature="method#viewContent#0;class#ContentDetailPopupActivity#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
