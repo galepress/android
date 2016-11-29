@@ -7,6 +7,7 @@ package ak.detaysoft.galepress.search_models;
 public class MenuSearchResult {
 
     private String contentId;
+    private String applicationId;
     private String contentTitle;
     private String text;
     private int page;
@@ -45,5 +46,13 @@ public class MenuSearchResult {
 
     public void setPage(int page) {
         this.page = page;
+    }
+
+    public String getApplicationId() {
+        return applicationId;
+    }
+
+    public void setApplicationId(String applicationId) {
+        this.applicationId = applicationId;
     }
 }

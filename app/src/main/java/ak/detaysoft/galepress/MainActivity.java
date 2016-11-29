@@ -85,8 +85,10 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 import ak.detaysoft.galepress.custom_models.Subscription;
+import ak.detaysoft.galepress.database_models.L_ApplicationCategory;
 import ak.detaysoft.galepress.database_models.L_Category;
 import ak.detaysoft.galepress.database_models.L_Content;
+import ak.detaysoft.galepress.database_models.L_CustomerApplication;
 import ak.detaysoft.galepress.database_models.L_Statistic;
 import ak.detaysoft.galepress.search_models.MenuSearchResult;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
@@ -242,6 +244,7 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
                     for (int i = 0; i < contents.size(); i++) {
                         MenuSearchResult temp = new MenuSearchResult();
                         temp.setContentId(((L_Content) contents.get(i)).getId().toString());
+                        temp.setApplicationId(((L_Content) contents.get(i)).getApplicationId().toString());
                         temp.setContentTitle(((L_Content) contents.get(i)).getName());
                         temp.setPage(-1);
                         GalePressApplication.getInstance().getMenuSearchResult().add(temp);
@@ -267,6 +270,7 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
                     for (int i = 0; i < contents.size(); i++) {
                         MenuSearchResult temp = new MenuSearchResult();
                         temp.setContentId(((L_Content) contents.get(i)).getId().toString());
+                        temp.setApplicationId(((L_Content) contents.get(i)).getApplicationId().toString());
                         temp.setContentTitle(((L_Content) contents.get(i)).getName());
                         temp.setPage(-1);
                         GalePressApplication.getInstance().getMenuSearchResult().add(temp);
@@ -929,9 +933,7 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
     public void openLibraryFragment(){
         libraryFragment = new LibraryFragment();
         libraryFragment.isDownloaded = applicationFragment.isDownloaded;
-        libraryFragment.searchPage = -1;
-        libraryFragment.searchQuery = "";
-        libraryFragment.searchContentId = -1;
+        libraryFragment.searchResult = null;
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.fragment_container, libraryFragment, "LIBRARY").addToBackStack(null);
@@ -939,12 +941,11 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
 
     }
 
-    public void openLibraryFragmentWithSearch(int searchPageId, String searchQuery, Integer searchContentId){
+    public void openLibraryFragmentWithSearch(MenuSearchResult result){
         libraryFragment = new LibraryFragment();
         libraryFragment.isDownloaded = false;
-        libraryFragment.searchPage = searchPageId;
-        libraryFragment.searchQuery = searchQuery;
-        libraryFragment.searchContentId = searchContentId;
+        libraryFragment.searchResult = result;
+        libraryFragment.isSearchOpened = false;
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.fragment_container, libraryFragment, "LIBRARY").addToBackStack(null);
@@ -1095,28 +1096,35 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
                 view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (result.getPage() != -1) {
-                            L_Content content = GalePressApplication.getInstance().getDatabaseApi().getContent(Integer.valueOf(result.getContentId()));
-                            if (content != null) {
-                                if (content.isPdfDownloaded()) {
-                                    openContentReader(content, result.getPage() - 1, GalePressApplication.getInstance().getSearchQuery());
-                                    leftMenu.showContent(true);
+                        L_CustomerApplication customerApplication = GalePressApplication.getInstance().getDatabaseApi().getCustomerApplication(Integer.valueOf(result.getApplicationId()));
+                        if(customerApplication != null) {
+                            List applicationCategoryList = GalePressApplication.getInstance().getDatabaseApi().getApplicationCategoryByApplication(customerApplication);
+                            if(applicationCategoryList != null && applicationCategoryList.size() > 0){
+                                L_ApplicationCategory application = (L_ApplicationCategory) applicationCategoryList.get(0);
+                                getActionbarTitle().setText(application.getApplication().getAppName().toUpperCase());
+                                GalePressApplication.getInstance().setSelectedCustomerApplication(application);
+
+                                if(libraryFragment != null && libraryFragment.isVisible()){
+                                    libraryFragment.isDownloaded = applicationFragment.isDownloaded;
+                                    libraryFragment.searchResult = result;
+                                    libraryFragment.isSearchOpened = false;
+                                    libraryFragment.updateGridView();
                                 } else {
-                                    openContentDetail(content, result.getPage() - 1, GalePressApplication.getInstance().getSearchQuery());
-                                    leftMenu.showContent(true);
+                                    openLibraryFragmentWithSearch(result);
                                 }
+                                changeMenuButtonImage(true);
+                                leftMenu.showContent();
                             } else {
-                                Toast.makeText(MainActivity.this, MainActivity.this.getResources().getString(R.string.cannot_open_document), Toast.LENGTH_SHORT).show();
+
+                                Toast.makeText(MainActivity.this, MainActivity.this.getResources().getString(R.string.no_customer_application), Toast.LENGTH_SHORT)
+                                        .show();
                             }
                         } else {
-                            L_Content content = GalePressApplication.getInstance().getDatabaseApi().getContent(Integer.valueOf(result.getContentId()));
-                            if (content != null) {
-                                openContentDetail(content, -1, "");
-                                leftMenu.showContent(true);
-                            } else {
-                                Toast.makeText(MainActivity.this, MainActivity.this.getResources().getString(R.string.cannot_open_document), Toast.LENGTH_SHORT).show();
-                            }
+                            Toast.makeText(MainActivity.this, MainActivity.this.getResources().getString(R.string.no_customer_application), Toast.LENGTH_SHORT)
+                                    .show();
                         }
+
+
                     }
                 });
             }

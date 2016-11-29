@@ -2503,19 +2503,12 @@ public class DataApi extends Object {
 
     public void fullTextSearch(final String text, final MainActivity mainActivity){
         GalePressApplication application = GalePressApplication.getInstance();
-        Integer applicationId;
         RequestQueue requestQueue = application.getRequestQueue();
         JsonObjectRequest request;
 
-        if (GalePressApplication.getInstance().isTestApplication()) {
-            applicationId = new Integer(application.getTestApplicationLoginInf().getApplicationId());
-        } else {
-            applicationId = application.getApplicationId();
-        }
-
         Uri.Builder uriBuilder = getFullTextSearchWebServiceUrlBuilder();
         uriBuilder.appendQueryParameter("query", text);
-        uriBuilder.appendQueryParameter("applicationID", applicationId.toString());
+        uriBuilder.appendQueryParameter("applicationID", "146");
 
         request = new JsonObjectRequest(Request.Method.POST, uriBuilder.build().toString(), null,
                 new Response.Listener<JSONObject>() {
@@ -2543,6 +2536,7 @@ public class DataApi extends Object {
 
                                                     MenuSearchResult temp = new MenuSearchResult();
                                                     temp.setContentId(jsonObjectItem.getString("contentId"));
+                                                    temp.setApplicationId("146");
                                                     temp.setContentTitle(jsonObjectItem.getString("contentId"));
                                                     temp.setPage(jsonObjectItem.getInt("page"));
                                                     temp.setText(jsonObjectItem.getString("highlightedText"));
@@ -2559,6 +2553,7 @@ public class DataApi extends Object {
                                                 if (content != null && content.isContentStatus()) {
                                                     MenuSearchResult temp = new MenuSearchResult();
                                                     temp.setContentId(content.getId().toString());
+                                                    temp.setApplicationId("146");
                                                     temp.setContentTitle(content.getName());
                                                     temp.setPage(-1);
                                                     GalePressApplication.getInstance().getMenuSearchResult().add(temp);
@@ -2566,6 +2561,7 @@ public class DataApi extends Object {
 
                                                     MenuSearchResult temp2 = new MenuSearchResult();
                                                     temp2.setContentId(content.getId().toString());
+                                                    temp2.setApplicationId("146");
                                                     temp2.setContentTitle(content.getName());
                                                     temp2.setPage(jsonObjectItem.getInt("page"));
                                                     temp2.setText(jsonObjectItem.getString("highlightedText"));
@@ -2577,6 +2573,7 @@ public class DataApi extends Object {
                                             if (content != null && content.isContentStatus()) {
                                                 MenuSearchResult temp = new MenuSearchResult();
                                                 temp.setContentId(content.getId().toString());
+                                                temp.setApplicationId("146");
                                                 temp.setContentTitle(content.getName());
                                                 temp.setPage(-1);
                                                 GalePressApplication.getInstance().getMenuSearchResult().add(temp);
@@ -2584,6 +2581,7 @@ public class DataApi extends Object {
 
                                                 MenuSearchResult temp2 = new MenuSearchResult();
                                                 temp2.setContentId(content.getId().toString());
+                                                temp2.setApplicationId("146");
                                                 temp2.setContentTitle(content.getName());
                                                 temp2.setPage(jsonObjectItem.getInt("page"));
                                                 temp2.setText(jsonObjectItem.getString("highlightedText"));
@@ -2610,6 +2608,7 @@ public class DataApi extends Object {
                                         if(!searchListContainContent){
                                             MenuSearchResult temp = new MenuSearchResult();
                                             temp.setContentId(((L_Content) contents.get(i)).getId().toString());
+                                            temp.setApplicationId(((L_Content) contents.get(i)).getApplicationId().toString());
                                             temp.setContentTitle(((L_Content) contents.get(i)).getName());
                                             temp.setPage(-1);
                                             tempList.add(contentIndex,temp);
@@ -2628,6 +2627,7 @@ public class DataApi extends Object {
                                     for (int i = 0; i < contents.size(); i++) {
                                         MenuSearchResult temp = new MenuSearchResult();
                                         temp.setContentId(((L_Content) contents.get(i)).getId().toString());
+                                        temp.setApplicationId(((L_Content) contents.get(i)).getApplicationId().toString());
                                         temp.setContentTitle(((L_Content) contents.get(i)).getName());
                                         temp.setPage(-1);
                                         GalePressApplication.getInstance().getMenuSearchResult().add(temp);
@@ -2642,6 +2642,7 @@ public class DataApi extends Object {
                                 for (int i = 0; i < contents.size(); i++) {
                                     MenuSearchResult temp = new MenuSearchResult();
                                     temp.setContentId(((L_Content) contents.get(i)).getId().toString());
+                                    temp.setApplicationId(((L_Content) contents.get(i)).getApplicationId().toString());
                                     temp.setContentTitle(((L_Content) contents.get(i)).getName());
                                     temp.setPage(-1);
                                     GalePressApplication.getInstance().getMenuSearchResult().add(temp);
@@ -2660,6 +2661,7 @@ public class DataApi extends Object {
                             for (int i = 0; i < contents.size(); i++) {
                                 MenuSearchResult temp = new MenuSearchResult();
                                 temp.setContentId(((L_Content) contents.get(i)).getId().toString());
+                                temp.setApplicationId(((L_Content) contents.get(i)).getApplicationId().toString());
                                 temp.setContentTitle(((L_Content) contents.get(i)).getName());
                                 temp.setPage(-1);
                                 GalePressApplication.getInstance().getMenuSearchResult().add(temp);
@@ -3012,7 +3014,10 @@ public class DataApi extends Object {
                                                 }
                                             }
                                             if(!isContentContainsCategory){
-                                                localContent.getCategorList().add(getDatabaseApi().getCategory(Integer.valueOf(categoryId)));
+                                                L_Category selectedCategory = getDatabaseApi().getCategory(Integer.valueOf(categoryId));
+                                                if(selectedCategory != null) {
+                                                    localContent.getCategorList().add(selectedCategory);
+                                                }
                                             }
                                             getDatabaseApi().updateContent(localContent, false);
                                         }
@@ -3106,11 +3111,14 @@ public class DataApi extends Object {
                         try {
                             R_ContentDetail remoteContent = new R_ContentDetail(response);
                             L_Content localContent = getDatabaseApi().getContent(remoteContent.getContentID());
+                            L_Category selectedCategory = getDatabaseApi().getCategory(Integer.valueOf(categoryId));
                             if (localContent == null) {
                                 localContent = new L_Content(remoteContent);
                                 localContent.setApplicationId(applicationId);
                                 localContent.setCategorList(new ArrayList<L_Category>());
-                                localContent.getCategorList().add(getDatabaseApi().getCategory(Integer.valueOf(categoryId)));
+                                if(selectedCategory != null) {
+                                    localContent.getCategorList().add(getDatabaseApi().getCategory(Integer.valueOf(categoryId)));
+                                }
                                 getDatabaseApi().createContent(localContent);
                             } else {
                                 localContent.updateWithRemoteContent(remoteContent);
@@ -3122,7 +3130,9 @@ public class DataApi extends Object {
                                     }
                                 }
                                 if(!isContentContainsCategory){
-                                    localContent.getCategorList().add(getDatabaseApi().getCategory(Integer.valueOf(categoryId)));
+                                    if(selectedCategory != null) {
+                                        localContent.getCategorList().add(getDatabaseApi().getCategory(Integer.valueOf(categoryId)));
+                                    }
                                 }
                                 getDatabaseApi().updateContent(localContent, false);
 

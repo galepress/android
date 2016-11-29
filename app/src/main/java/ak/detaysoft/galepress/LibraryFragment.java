@@ -25,6 +25,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.artifex.mupdfdemo.MuPDFActivity;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -44,6 +45,7 @@ import java.util.UUID;
 import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.database_models.L_CustomerApplication;
 import ak.detaysoft.galepress.database_models.L_Statistic;
+import ak.detaysoft.galepress.search_models.MenuSearchResult;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
 import ak.detaysoft.galepress.util.CustomPulseProgress;
 
@@ -55,9 +57,8 @@ public class LibraryFragment extends Fragment {
     public HeaderGridView gridview;
     private LayoutInflater layoutInflater;
     public boolean isDownloaded = false;
-    public Integer searchContentId = null;
-    public int searchPage = -1;
-    public String searchQuery = "";
+    public MenuSearchResult searchResult;
+    public boolean isSearchOpened = false;
     public List contents;
     private View v;
 
@@ -136,26 +137,24 @@ public class LibraryFragment extends Fragment {
         GalePressApplication.getInstance().setLibraryFragment(this);
         GalePressApplication.getInstance().setCurrentFragment(this);
 
-        if(searchPage != -1) {
+        if (searchResult != null) {
             contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsForApplicationIdAndcategoryId(GalePressApplication.getInstance().getSelectedCustomerApplication().getApplication().getId()
-                    ,-1, isDownloaded);
+                    , -1, isDownloaded);
         } else {
-            if(GalePressApplication.getInstance().getSelectedCustomerApplication() != null) {
+            if (GalePressApplication.getInstance().getSelectedCustomerApplication() != null) {
                 contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsForApplicationIdAndcategoryId(GalePressApplication.getInstance().getSelectedCustomerApplication().getApplication().getId()
-                        ,GalePressApplication.getInstance().getApplicationFragment().selectedCategory.getId(), isDownloaded);
+                        , GalePressApplication.getInstance().getApplicationFragment().selectedCategory.getId(), isDownloaded);
             }
         }
 
-
-
-        if(contents != null && contents.size() > 0) {
+        if (contents != null && contents.size() > 0) {
             application = GalePressApplication.getInstance().getDatabaseApi().getCustomerApplication(Integer.valueOf(((L_Content) contents.get(0)).getApplicationId()));
         }
 
         v = inflater.inflate(R.layout.library_fragment, container, false);
 
         gridview = (HeaderGridView) v.findViewById(R.id.gridview);
-        if(contents == null || contents.size() == 0)
+        if (contents == null || contents.size() == 0)
             v.findViewById(R.id.library_mask_view).setVisibility(View.VISIBLE);
         gridview.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -168,8 +167,8 @@ public class LibraryFragment extends Fragment {
                     int[] values = new int[2];
                     v.getLocationInWindow(values);
                     L_Content content;
-                    if(!isDownloaded)
-                        content = (L_Content) contents.get(position+1);
+                    if (!isDownloaded)
+                        content = (L_Content) contents.get(position + 1);
                     else {
                         content = (L_Content) contents.get(position);
                     }
@@ -180,23 +179,22 @@ public class LibraryFragment extends Fragment {
 
         contentHeader = LayoutInflater.from(this.getActivity()).inflate(R.layout.header_content, null, false);
         contentHeader.setLayoutParams(resizeHeaderContent());
-        if(!isDownloaded)
+        if (!isDownloaded)
             gridview.addHeaderView(contentHeader);
 
         this.contentHolderAdapter = new ContentHolderAdapter(this);
         gridview.setAdapter(this.contentHolderAdapter);
         updateGridView();
 
-        if(searchPage != -1) {
+        if (searchResult != null) {
             GalePressApplication.getInstance().getDataApi().getApplicationContents(GalePressApplication.getInstance().getSelectedCustomerApplication().getApplication().getId()
                     , String.valueOf(-1));
         } else {
-            if(GalePressApplication.getInstance().getSelectedCustomerApplication() != null) {
+            if (GalePressApplication.getInstance().getSelectedCustomerApplication() != null) {
                 GalePressApplication.getInstance().getDataApi().getApplicationContents(GalePressApplication.getInstance().getSelectedCustomerApplication().getApplication().getId()
                         , String.valueOf(GalePressApplication.getInstance().getApplicationFragment().selectedCategory.getId()));
             }
         }
-
 
 
         return v;
@@ -224,17 +222,17 @@ public class LibraryFragment extends Fragment {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-                if(searchPage != -1) {
+                if (searchResult != null) {
                     contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsForApplicationIdAndcategoryId(GalePressApplication.getInstance().getSelectedCustomerApplication().getApplication().getId()
-                            ,-1, isDownloaded);
+                            , -1, isDownloaded);
                 } else {
-                    if(GalePressApplication.getInstance().getSelectedCustomerApplication() != null) {
+                    if (GalePressApplication.getInstance().getSelectedCustomerApplication() != null) {
                         contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsForApplicationIdAndcategoryId(GalePressApplication.getInstance().getSelectedCustomerApplication().getApplication().getId()
-                                ,GalePressApplication.getInstance().getApplicationFragment().selectedCategory.getId(), isDownloaded);
+                                , GalePressApplication.getInstance().getApplicationFragment().selectedCategory.getId(), isDownloaded);
                     }
                 }
 
-                if(!isDownloaded)
+                if (!isDownloaded)
                     initHeaderContent();
                 contentHolderAdapter.notifyDataSetChanged();
                 if (gridview != null) {
@@ -242,34 +240,50 @@ public class LibraryFragment extends Fragment {
                     gridview.invalidateViews();
                 }
 
-                if(contents != null && contents.size() > 0)
+                if (contents != null && contents.size() > 0)
                     v.findViewById(R.id.library_mask_view).setVisibility(View.GONE);
 
-                if(searchPage != -1){
-                    L_Content content = GalePressApplication.getInstance().getDatabaseApi().getContent(searchContentId);
-                    if(content != null) {
-                        if(content.isPdfDownloaded()){
-                            int[] values = new int[2];
-                            v.getLocationInWindow(values);
-                            viewContentDetail(content, values[0], values[1]);
-                        } else {
-                            viewContent(content);
-                        }
-                    }
-
+                if (searchResult != null && !isSearchOpened) {
+                    openSearchResult();
                 }
             }
         });
     }
 
-    public void updateAdapterList(L_Content content, boolean isImagePathChanged) {
-        if(searchPage != -1) {
-            contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsForApplicationIdAndcategoryId(GalePressApplication.getInstance().getSelectedCustomerApplication().getApplication().getId()
-                    ,-1, isDownloaded);
+    public void openSearchResult() {
+        final L_Content content = GalePressApplication.getInstance().getDatabaseApi().getContent(Integer.valueOf(searchResult.getContentId()));
+        if (content != null) {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    int[] values = new int[2];
+                    v.getLocationInWindow(values);
+                    if (searchResult.getPage() != -1) {
+                        if (content.isPdfDownloaded()) {
+                            viewContent(content);
+                        } else {
+                            viewContentDetail(content, values[0], values[1]);
+                        }
+                    } else {
+                        viewContentDetail(content, values[0], values[1]);
+                    }
+                }
+            }, 750);
+            isSearchOpened = true;
         } else {
-            if(GalePressApplication.getInstance().getSelectedCustomerApplication() != null) {
+            Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.cannot_open_document), Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    public void updateAdapterList(L_Content content, boolean isImagePathChanged) {
+        if (searchResult != null) {
+            contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsForApplicationIdAndcategoryId(GalePressApplication.getInstance().getSelectedCustomerApplication().getApplication().getId()
+                    , -1, isDownloaded);
+        } else {
+            if (GalePressApplication.getInstance().getSelectedCustomerApplication() != null) {
                 contents = GalePressApplication.getInstance().getDatabaseApi().getAllContentsForApplicationIdAndcategoryId(GalePressApplication.getInstance().getSelectedCustomerApplication().getApplication().getId()
-                        ,GalePressApplication.getInstance().getApplicationFragment().selectedCategory.getId(), isDownloaded);
+                        , GalePressApplication.getInstance().getApplicationFragment().selectedCategory.getId(), isDownloaded);
             }
         }
 
@@ -305,9 +319,9 @@ public class LibraryFragment extends Fragment {
             Uri uri = Uri.parse(samplePdfFile.getAbsolutePath());
             Intent intent = new Intent(getActivity(), MuPDFActivity.class);
             intent.putExtra("content", content);
-            if (searchPage != -1) {
-                intent.putExtra("searchPage", searchPage);
-                intent.putExtra("searchQuery", searchQuery);
+            if (searchResult != null) {
+                intent.putExtra("searchPage", searchResult.getPage());
+                intent.putExtra("searchQuery", GalePressApplication.getInstance().getSearchQuery());
             }
             intent.setAction(Intent.ACTION_VIEW);
             intent.setData(uri);
@@ -325,9 +339,9 @@ public class LibraryFragment extends Fragment {
             intent.putExtra("content", content);
             intent.putExtra("animationStartX", 0.5f);
             intent.putExtra("animationStartY", 0.5f);
-            if (searchPage != -1) {
-                intent.putExtra("searchPage", searchPage);
-                intent.putExtra("searchQuery", searchQuery);
+            if (searchResult != null) {
+                intent.putExtra("searchPage", searchResult.getPage());
+                intent.putExtra("searchQuery", GalePressApplication.getInstance().getSearchQuery());
             }
             getActivity().startActivityForResult(intent, 103);
         }
@@ -335,10 +349,10 @@ public class LibraryFragment extends Fragment {
 
     public List getContents() {
 
-        if(!isDownloaded){
+        if (!isDownloaded) {
             List<L_Content> subContents = new ArrayList<L_Content>();
             subContents.addAll(contents);
-            if(subContents.size() > 0)
+            if (subContents.size() > 0)
                 subContents.remove(0);
             return subContents;
         } else {
@@ -394,10 +408,10 @@ public class LibraryFragment extends Fragment {
                     }
                 }
             });
-            if (application != null && (application.getPlayUrl() == null || application.getPlayUrl().length() == 0)){
-                ((RelativeLayout)headerContentHolder.playLinkButton.getParent()).setVisibility(View.GONE);
+            if (application != null && (application.getPlayUrl() == null || application.getPlayUrl().length() == 0)) {
+                ((RelativeLayout) headerContentHolder.playLinkButton.getParent()).setVisibility(View.GONE);
             } else {
-                ((RelativeLayout)headerContentHolder.playLinkButton.getParent()).setVisibility(View.VISIBLE);
+                ((RelativeLayout) headerContentHolder.playLinkButton.getParent()).setVisibility(View.VISIBLE);
             }
 
             headerContentHolder.loading = (CustomPulseProgress) contentHeader.findViewById(R.id.header_content_image_loading);
@@ -426,7 +440,7 @@ public class LibraryFragment extends Fragment {
             headerContentHolder.coverImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(headerContentHolder.content != null){
+                    if (headerContentHolder.content != null) {
 
                         int[] values = new int[2];
                         v.getLocationInWindow(values);
@@ -540,7 +554,7 @@ public class LibraryFragment extends Fragment {
             }
         }
 
-        if (application != null && (application.getPlayUrl() == null || application.getPlayUrl().length() == 0)){
+        if (application != null && (application.getPlayUrl() == null || application.getPlayUrl().length() == 0)) {
             headerContentHolder.playLinkButton.setVisibility(View.GONE);
         } else {
             headerContentHolder.playLinkButton.setVisibility(View.VISIBLE);

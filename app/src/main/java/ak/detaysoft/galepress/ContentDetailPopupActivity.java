@@ -216,7 +216,6 @@ public class ContentDetailPopupActivity extends Activity{
 
         baseView.getRootView().setBackgroundColor(Color.TRANSPARENT);
 
-        //setText
         nameLabel = (TextView)findViewById(R.id.content_detail_name_label);
         nameLabel.setTypeface(ApplicationThemeColor.getInstance().getGothamMedium(this));
         nameLabel.setTextColor(Color.parseColor("#219ed8"));

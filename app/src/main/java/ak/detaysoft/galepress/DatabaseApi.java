@@ -530,7 +530,7 @@ public class DatabaseApi {
             for(int i = 0; i < contents.size(); i++){
                 L_Content content = (L_Content)contents.get(i);
                 for(L_Category category : content.getCategorList()){
-                    if(category.getId().intValue() == categoryId.intValue()){
+                    if(category != null && category.getId().intValue() == categoryId.intValue()){
                         newContentList.add(content);
                         break;
                     }
