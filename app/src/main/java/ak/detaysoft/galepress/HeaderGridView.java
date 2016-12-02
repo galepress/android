@@ -68,6 +68,7 @@ public class HeaderGridView extends GridView{
         super(context, attrs, defStyle);
         initHeaderGridView();
     }
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -76,10 +77,12 @@ public class HeaderGridView extends GridView{
             ((HeaderViewGridAdapter) adapter).setNumColumns(getNumColumns());
         }
     }
+
     @Override
     public void setClipChildren(boolean clipChildren) {
         // Ignore, since the header rows depend on not being clipped
     }
+
     /**
      * Add a fixed view to appear at the top of the grid. If addHeaderView is
      * called more than once, the views will appear in the order they were
@@ -112,6 +115,7 @@ public class HeaderGridView extends GridView{
             ((HeaderViewGridAdapter) adapter).notifyDataSetChanged();
         }
     }
+
     /**
      * Add a fixed view to appear at the top of the grid. If addHeaderView is
      * called more than once, the views will appear in the order they were
@@ -125,9 +129,11 @@ public class HeaderGridView extends GridView{
     public void addHeaderView(View v) {
         addHeaderView(v, null, false);
     }
+
     public int getHeaderViewCount() {
         return mHeaderViewInfos.size();
     }
+
     /**
      * Removes a previously-added header view.
      *
@@ -147,6 +153,7 @@ public class HeaderGridView extends GridView{
         }
         return false;
     }
+
     private void removeFixedViewInfo(View v, ArrayList<FixedViewInfo> where) {
         int len = where.size();
         for (int i = 0; i < len; ++i) {
@@ -157,6 +164,7 @@ public class HeaderGridView extends GridView{
             }
         }
     }
+
     @Override
     public void setAdapter(ListAdapter adapter) {
         if (mHeaderViewInfos.size() > 0) {
@@ -170,6 +178,7 @@ public class HeaderGridView extends GridView{
             super.setAdapter(adapter);
         }
     }
+
     private class FullWidthFixedViewLayout extends FrameLayout {
         public FullWidthFixedViewLayout(Context context) {
             super(context);
@@ -186,8 +195,6 @@ public class HeaderGridView extends GridView{
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         }
     }
-
-
 
     @Override
     public void setOnTouchListener(OnTouchListener l) {

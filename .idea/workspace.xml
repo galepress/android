@@ -27,13 +27,13 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/grid_download_cancel_icon.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/grid_download_cancel_icon.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseApi.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseApi.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/HeaderGridView.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/HeaderGridView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/search_models/MenuSearchResult.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/search_models/MenuSearchResult.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/header_content.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/header_content.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
     </list>
     <ignored path="GalepressMerge.iws" />
@@ -72,21 +72,21 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="946" column="8" selection-start-line="946" selection-start-column="8" selection-end-line="946" selection-end-column="8" />
+            <state relative-caret-position="-779">
+              <caret line="647" column="22" selection-start-line="647" selection-start-column="22" selection-end-line="647" selection-end-column="22" />
               <folding>
                 <element signature="docComment;class#MainActivity#0" expanded="false" />
-                <element signature="class#4527:4647" expanded="false" />
-                <element signature="method#onReceive#0;class#4527:4647" expanded="false" />
+                <element signature="class#4547:4667" expanded="false" />
+                <element signature="method#onReceive#0;class#4547:4667" expanded="false" />
                 <element signature="method#onCreate#0;class#MainActivity#0" expanded="false" />
-                <element signature="class#13301:14100" expanded="false" />
-                <element signature="method#beforeTextChanged#0;class#13301:14100" expanded="false" />
-                <element signature="method#onTextChanged#0;class#13301:14100" expanded="false" />
-                <element signature="method#afterTextChanged#0;class#13301:14100" expanded="false" />
-                <element signature="e#19942#19993#0" expanded="false" />
-                <element signature="class#20221:20905" expanded="false" />
-                <element signature="method#doInBackground#0;class#20221:20905" expanded="false" />
-                <element signature="e#20506#20531#0" expanded="false" />
+                <element signature="class#13367:14166" expanded="false" />
+                <element signature="method#beforeTextChanged#0;class#13367:14166" expanded="false" />
+                <element signature="method#onTextChanged#0;class#13367:14166" expanded="false" />
+                <element signature="method#afterTextChanged#0;class#13367:14166" expanded="false" />
+                <element signature="e#20008#20059#0" expanded="false" />
+                <element signature="class#20287:20971" expanded="false" />
+                <element signature="method#doInBackground#0;class#20287:20971" expanded="false" />
+                <element signature="e#20572#20597#0" expanded="false" />
                 <element signature="method#changeMenuButtonImage#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#choseCategory#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#onConfigurationChanged#0;class#MainActivity#0" expanded="false" />
@@ -94,7 +94,7 @@
                 <element signature="method#logout#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#openSubscriptionChooser#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#subscribe#0;class#MainActivity#0" expanded="false" />
-                <element signature="e#32410#32433#0" expanded="false" />
+                <element signature="e#32265#32288#0" expanded="false" />
                 <element signature="method#hideKeyboard#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#changeSearchViewColor#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#onActivityResult#0;class#MainActivity#0" expanded="false" />
@@ -102,19 +102,24 @@
                 <element signature="method#onPause#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#onStop#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#onDestroy#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#openLibraryFragment#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#openLibraryFragmentWithSearch#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#onBackPressed#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#onAttachFragment#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#onMenuItemClick#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#onPrepareOptionsMenu#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#onOptionsItemSelected#0;class#MainActivity#0" expanded="false" />
-                <element signature="e#52050#52082#0" expanded="false" />
+                <element signature="e#52071#52103#0" expanded="false" />
                 <element signature="method#clearReferences#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#completePurchase#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#complateSearch#0;class#MainActivity#0" expanded="false" />
+                <element signature="class#SearchAdapter#0;class#MainActivity#0" expanded="false" />
+                <element signature="class#MyViewHolder#0;class#SearchAdapter#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#MyViewHolder#0;class#MyViewHolder#0;class#SearchAdapter#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#SearchAdapter#0;class#SearchAdapter#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#onCreateViewHolder#0;class#SearchAdapter#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#onBindViewHolder#0;class#SearchAdapter#0;class#MainActivity#0" expanded="false" />
-                <element signature="e#58308#58359#0" expanded="false" />
+                <element signature="e#58328#58379#0" expanded="false" />
                 <element signature="method#openContentDetail#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#openContentReader#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#setCategoryListWithAll#0;class#MainActivity#0" expanded="false" />
@@ -123,11 +128,95 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="DataApi.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="339">
+              <caret line="3122" column="0" selection-start-line="3122" selection-start-column="0" selection-end-line="3122" selection-end-column="0" />
+              <folding>
+                <element signature="method#updateCompleted#0;class#DataApi#0" expanded="false" />
+                <element signature="method#isLibraryMustBeEnabled#0;class#DataApi#0" expanded="false" />
+                <element signature="class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
+                <element signature="method#DownloadPdfTask#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
+                <element signature="method#doInBackground#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
+                <element signature="e#9864#9917#0" expanded="false" />
+                <element signature="e#11123#11155#0" expanded="false" />
+                <element signature="method#checkDownloadSuccessfull#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
+                <element signature="method#onProgressUpdate#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
+                <element signature="method#onPreExecute#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
+                <element signature="method#onCancelled#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
+                <element signature="method#onPostExecute#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
+                <element signature="method#progressUpdate#0;class#DataApi#0" expanded="false" />
+                <element signature="class#StatisticSendTask#0;class#DataApi#0" expanded="false" />
+                <element signature="method#doInBackground#0;class#StatisticSendTask#0;class#DataApi#0" expanded="false" />
+                <element signature="method#onCancelled#0;class#StatisticSendTask#0;class#DataApi#0" expanded="false" />
+                <element signature="method#onCancelled#1;class#StatisticSendTask#0;class#DataApi#0" expanded="false" />
+                <element signature="method#getWebServiceUrlBuilder#0;class#DataApi#0" expanded="false" />
+                <element signature="method#getFullTextSearchWebServiceUrlBuilder#0;class#DataApi#0" expanded="false" />
+                <element signature="method#DataApi#0;class#DataApi#0" expanded="false" />
+                <element signature="method#getDatabaseApi#0;class#DataApi#0" expanded="false" />
+                <element signature="method#isConnectedToInternet#0;class#DataApi#0" expanded="false" />
+                <element signature="method#getDeviceName#0;class#DataApi#0" expanded="false" />
+                <element signature="method#capitalize#0;class#DataApi#0" expanded="false" />
+                <element signature="method#updateApplication#0;class#DataApi#0" expanded="false" />
+                <element signature="method#getMasterContent#0;class#DataApi#0" expanded="false" />
+                <element signature="method#commitStatisticsToDB#0;class#DataApi#0" expanded="false" />
+                <element signature="method#login#0;class#DataApi#0" expanded="false" />
+                <element signature="method#getCustomerApplications#0;class#DataApi#0" expanded="false" />
+                <element signature="method#getAppDetail#0;class#DataApi#0" expanded="false" />
+                <element signature="class#50020:50233" expanded="false" />
+                <element signature="method#onClick#0;class#50020:50233" expanded="false" />
+                <element signature="method#deleteEverythingAndUpdateApplication#0;class#DataApi#0" expanded="false" />
+                <element signature="method#deleteEverything#0;class#DataApi#0" expanded="false" />
+                <element signature="method#downloadFile#0;class#DataApi#0" expanded="false" />
+                <element signature="method#getCoverImage#0;class#DataApi#0" expanded="false" />
+                <element signature="method#cancelDownload#0;class#DataApi#0" expanded="false" />
+                <element signature="method#getPdf#0;class#DataApi#0" expanded="false" />
+                <element signature="method#deletePdf#0;class#DataApi#0" expanded="false" />
+                <element signature="method#downloadPdf#0;class#DataApi#0" expanded="false" />
+                <element signature="method#downloadUpdatedImage#0;class#DataApi#0" expanded="false" />
+                <element signature="class#78704:79296" expanded="false" />
+                <element signature="method#onLoadingStarted#0;class#78704:79296" expanded="false" />
+                <element signature="method#onLoadingFailed#0;class#78704:79296" expanded="false" />
+                <element signature="method#onLoadingComplete#0;class#78704:79296" expanded="false" />
+                <element signature="method#onLoadingCancelled#0;class#78704:79296" expanded="false" />
+                <element signature="method#saveImage#0;class#DataApi#0" expanded="false" />
+                <element signature="class#79431:80526" expanded="false" />
+                <element signature="method#doInBackground#0;class#79431:80526" expanded="false" />
+                <element signature="method#onPostExecute#0;class#79431:80526" expanded="false" />
+                <element signature="method#getCoverImageVersionToUpdate#0;class#DataApi#0" expanded="false" />
+                <element signature="method#startStatisticSend#0;class#DataApi#0" expanded="false" />
+                <element signature="method#stopStatisticSend#0;class#DataApi#0" expanded="false" />
+                <element signature="method#postStatistic#0;class#DataApi#0" expanded="false" />
+                <element signature="method#removeAllConCatsForContent#0;class#DataApi#0" expanded="false" />
+                <element signature="method#createConCat#0;class#DataApi#0" expanded="false" />
+                <element signature="method#getRemoteContent#0;class#DataApi#0" expanded="false" />
+                <element signature="method#getRemoteAppCategories#0;class#DataApi#0" expanded="false" />
+                <element signature="method#restoreContentsAndSubscritonsFromServer#0;class#DataApi#0" expanded="false" />
+                <element signature="method#getRemoteAppContents#0;class#DataApi#0" expanded="false" />
+                <element signature="method#getRemoteApplicationVersion#0;class#DataApi#0" expanded="false" />
+                <element signature="method#updateApplicationVersion#0;class#DataApi#0" expanded="false" />
+                <element signature="method#deleteContent#0;class#DataApi#0" expanded="false" />
+                <element signature="method#deleteFolder#0;class#DataApi#0" expanded="false" />
+                <element signature="method#getViewHolderForContent#0;class#DataApi#0" expanded="false" />
+                <element signature="method#getErrorMessageFromXMLFile#0;class#DataApi#0" expanded="false" />
+                <element signature="method#sendReceipt#0;class#DataApi#0" expanded="false" />
+                <element signature="method#restoreReceipt#0;class#DataApi#0" expanded="false" />
+                <element signature="method#fullTextSearch#0;class#DataApi#0" expanded="false" />
+                <element signature="method#fullTextSearchForReader#0;class#DataApi#0" expanded="false" />
+                <element signature="method#getCustomerApplicationsAndCategories#0;class#DataApi#0" expanded="false" />
+                <element signature="method#getApplicationContents#0;class#DataApi#0" expanded="false" />
+                <element signature="method#saveApplicationCoverImage#0;class#DataApi#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="LibraryFragment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="251" column="0" selection-start-line="251" selection-start-column="0" selection-end-line="251" selection-end-column="0" />
+            <state relative-caret-position="254">
+              <caret line="404" column="66" selection-start-line="404" selection-start-column="66" selection-end-line="404" selection-end-column="66" />
               <folding>
                 <element signature="docComment;class#LibraryFragment#0" expanded="false" />
                 <element signature="method#setLayoutInflater#0;class#LibraryFragment#0" expanded="false" />
@@ -141,13 +230,13 @@
                 <element signature="e#10689#11322#0" expanded="true" />
                 <element signature="e#11321#11322#0" expanded="true" />
                 <element signature="e#11424#11493#0" expanded="true" />
-                <element signature="method#getContents#0;class#LibraryFragment#0" expanded="false" />
+                <element signature="e#15508#15519#0" expanded="true" />
                 <element signature="method#displayImage#0;class#LibraryFragment#0" expanded="false" />
-                <element signature="class#22594:23797" expanded="false" />
-                <element signature="method#onLoadingStarted#0;class#22594:23797" expanded="false" />
-                <element signature="method#onLoadingFailed#0;class#22594:23797" expanded="false" />
-                <element signature="method#onLoadingComplete#0;class#22594:23797" expanded="false" />
-                <element signature="method#onLoadingCancelled#0;class#22594:23797" expanded="false" />
+                <element signature="class#22627:23830" expanded="false" />
+                <element signature="method#onLoadingStarted#0;class#22627:23830" expanded="false" />
+                <element signature="method#onLoadingFailed#0;class#22627:23830" expanded="false" />
+                <element signature="method#onLoadingComplete#0;class#22627:23830" expanded="false" />
+                <element signature="method#onLoadingCancelled#0;class#22627:23830" expanded="false" />
                 <element signature="method#updateHeaderContent#0;class#LibraryFragment#0" expanded="false" />
                 <element signature="class#HeaderContentHolder#0;class#LibraryFragment#0" expanded="false" />
                 <element signature="method#refreshImageLoading#0;class#HeaderContentHolder#0;class#LibraryFragment#0" expanded="false" />
@@ -157,11 +246,27 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="header_content.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/header_content.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="267">
+              <caret line="80" column="40" selection-start-line="80" selection-start-column="40" selection-end-line="80" selection-end-column="40" />
+              <folding>
+                <element signature="e#3770#4104#0" expanded="false" />
+                <element signature="e#4338#5601#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ContentDetailPopupActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1475">
-              <caret line="279" column="28" selection-start-line="279" selection-start-column="28" selection-end-line="279" selection-end-column="28" />
+            <state relative-caret-position="378">
+              <caret line="238" column="34" selection-start-line="238" selection-start-column="34" selection-end-line="238" selection-end-column="34" />
               <folding>
                 <element signature="docComment;class#ContentDetailPopupActivity#0" expanded="false" />
                 <element signature="class#ContentHolder#0;class#ContentDetailPopupActivity#0" expanded="false" />
@@ -169,6 +274,7 @@
                 <element signature="e#6495#6704#0" expanded="true" />
                 <element signature="e#6703#6704#0" expanded="true" />
                 <element signature="e#14254#14277#0" expanded="false" />
+                <element signature="e#21970#27354#0" expanded="true" />
                 <element signature="class#24774:25875" expanded="false" />
                 <element signature="method#onAnimationStart#0;class#24774:25875" expanded="false" />
                 <element signature="method#onAnimationEnd#0;class#24774:25875" expanded="false" />
@@ -179,6 +285,7 @@
                 <element signature="method#onAnimationEnd#0;class#26083:27184" expanded="false" />
                 <element signature="method#onAnimationCancel#0;class#26083:27184" expanded="false" />
                 <element signature="method#onAnimationRepeat#0;class#26083:27184" expanded="false" />
+                <element signature="e#27353#27354#0" expanded="true" />
                 <element signature="method#onAnimationStart#0;class#30188:33050" expanded="false" />
                 <element signature="method#onAnimationStart#0;class#30758:32848" expanded="false" />
                 <element signature="method#onAnimationCancel#0;class#31590:32621" expanded="false" />
@@ -217,57 +324,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatabaseApi.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseApi.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="97">
-              <caret line="502" column="16" selection-start-line="502" selection-start-column="16" selection-end-line="502" selection-end-column="16" />
-              <folding>
-                <element signature="method#getdownloadedContents#0;class#DatabaseApi#0" expanded="false" />
-                <element signature="method#getAllContentsWithSqlQuery#1;class#DatabaseApi#0" expanded="false" />
-                <element signature="method#getAllContents#0;class#DatabaseApi#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ApplicationFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ApplicationFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="424">
-              <caret line="109" column="55" selection-start-line="109" selection-start-column="55" selection-end-line="109" selection-end-column="55" />
-              <folding>
-                <element signature="docComment;class#ApplicationFragment#0" expanded="false" />
-                <element signature="method#ApplicationFragment#0;class#ApplicationFragment#0" expanded="false" />
-                <element signature="method#onCreate#0;class#ApplicationFragment#0" expanded="false" />
-                <element signature="method#onScrollStateChanged#0;class#4534:6863" expanded="false" />
-                <element signature="method#onScroll#0;class#4534:6863" expanded="false" />
-                <element signature="class#8566:9140" expanded="false" />
-                <element signature="method#onScrollStateChanged#0;class#8566:9140" expanded="false" />
-                <element signature="method#onScrolled#0;class#8566:9140" expanded="false" />
-                <element signature="method#resizeSliderBanner#0;class#ApplicationFragment#0" expanded="false" />
-                <element signature="method#updateGridView#0;class#ApplicationFragment#0" expanded="false" />
-                <element signature="method#repairSelectedCategory#0;class#ApplicationFragment#0" expanded="false" />
-                <element signature="method#onConfigurationChanged#0;class#ApplicationFragment#0" expanded="false" />
-                <element signature="method#onResume#0;class#ApplicationFragment#0" expanded="false" />
-                <element signature="method#onSaveInstanceState#0;class#ApplicationFragment#0" expanded="false" />
-                <element signature="method#onCreateViewHolder#0;class#CategoryAdapter#0;class#ApplicationFragment#0" expanded="false" />
-                <element signature="method#onBindViewHolder#0;class#CategoryAdapter#0;class#ApplicationFragment#0" expanded="false" />
-                <element signature="e#17703#17754#0" expanded="false" />
-                <element signature="method#setLayoutInflater#0;class#ApplicationFragment#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="resourceFile" />
         <option value="layoutResourceFile_vertical" />
         <option value="ASClass" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -3604,8 +3668,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_CustomerApplication.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/library_category_active.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/library_category_passive.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/application_fragment.xml" />
@@ -3642,18 +3704,20 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/grid_cell.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout-large/library_fragment.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/library_fragment.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/HeaderGridView.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LaunchActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/raw/application.plist" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-large/dimens.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/header_content.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ApplicationFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/search_models/MenuSearchResult.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseApi.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/animator/fragment_fadeout.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/animator/fragment_fadein.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/HeaderGridView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/header_content.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java" />
       </list>
     </option>
@@ -3852,7 +3916,7 @@
     <property name="UI_DESIGNER_EDITOR_MODE.NlPaletteManager.STATE" value="right" />
     <property name="UI_DESIGNER_EDITOR_MODE.NlPaletteManager-NlPreviewForm.SHOW" value="false" />
     <property name="UI_DESIGNER_EDITOR_MODE.NlPropertiesWindowManager.STATE" value="left" />
-    <property name="UI_DESIGNER_EDITOR_MODE.NlPropertiesWindowManager-NlEditorPanel.WIDTH" value="307" />
+    <property name="UI_DESIGNER_EDITOR_MODE.NlPropertiesWindowManager-NlEditorPanel.WIDTH" value="458" />
     <property name="UI_DESIGNER_EDITOR_MODE.NlPropertiesWindowManager-NlEditorPanel.SHOW" value="true" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.folding" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
@@ -3862,15 +3926,15 @@
     <property name="com.android.hv.first.comp.width" value="0" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\GalepressMerge\app\src\main\res\anim" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\GalepressMerge\app\src\main\res\drawable" />
       <recent name="D:\GalepressMerge\app\src\main\res\drawable-hdpi" />
       <recent name="D:\GalepressMerge\app\src\main\res\drawable-ldpi" />
       <recent name="D:\GalepressMerge\app\src\main\res\drawable-mdpi" />
       <recent name="D:\GalepressMerge\app\src\main\res\drawable-xhdpi" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\GalepressMerge\app\src\main\res\anim" />
     </key>
   </component>
   <component name="RunManager" selected="Android App.app">
@@ -4204,14 +4268,14 @@
     <layout>
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26066098" sideWeight="0.506135" order="2" side_tool="false" content_ui="tabs" x="707" y="139" width="506" height="728" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26952696" sideWeight="0.33315566" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36193618" sideWeight="0.37846482" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3542354" sideWeight="0.33582088" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30033004" sideWeight="0.37526652" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26952696" sideWeight="0.66684437" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3542354" sideWeight="0.6641791" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.4978678" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.3491471" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -4224,7 +4288,7 @@
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27722773" sideWeight="0.6119403" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21695095" sideWeight="0.49386504" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31023103" sideWeight="0.31449893" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2739274" sideWeight="0.3128998" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -4271,165 +4335,18 @@
           <properties />
           <option name="timeStamp" value="182" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java</url>
-          <line>3113</line>
-          <properties />
-          <option name="timeStamp" value="626" />
-        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="630" />
+      <option name="time" value="633" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="app">
         <watch expression="GalePressApplication.getInstance().getDatabaseApi().getCategory(2)" language="JAVA" custom="" />
+        <watch expression="application.getPlayUrl()" />
+        <watch expression="application.getPlayUrl().length() == 0" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-large-land/activity_verification_signup.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-755">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_verification_signup.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="79" column="36" selection-start-line="79" selection-start-column="36" selection-end-line="79" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-large-land/activity_verification_forgot.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-772">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_verification_forgot.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="63" column="29" selection-start-line="63" selection-start-column="29" selection-end-line="63" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/menu.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/ApplicationThemeColor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="121" column="39" selection-start-line="121" selection-start-column="39" selection-end-line="121" selection-end-column="39" />
-          <folding>
-            <element signature="docComment;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#ApplicationThemeColor#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#setParameters#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getInstance#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getThemeColorWithAlpha#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getReverseThemeColor#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getLibraryItemTextColor#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getReverseThemeColorWithAlpha#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#convertIntAlphaToHex#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getTransperentThemeColor#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getTransperentPopupColor#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getMenuShadowColor#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getActionAndTabBarColorWithAlpha#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getHolderDetailBackround#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getLightCoverImageBackgroundColor#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getPopupTextColor#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#downloadButtonPriceColorStateList#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#defaultLightPressedDarkStateList#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#defaultLightAlphaPressedDarkStateList#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#defaultWhiteAlphaPressedWhiteStateList#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#leftmenuListViewColorStateList#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getProgressbarBackgroundColor#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getForegroundColorWithAlpha#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getWhiteColorWithAlpha#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getForegroundColorFilter#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getThemeColorFilter#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getThemeColorFilterWithAlpha#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getForeGroundColorFilterWithAlpha#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getReverseThemeColorFilterWithAlpha#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getReverseThemeColorFilter#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getUnselectedColorFilter#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getLightThemeColorFilter#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getDarkThemeColorFilter#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getDarkThemeColorFilterWithAlpha#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getWhiteColorFilter#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getCustomColorFilterWithAlpha#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#paintIcons#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#paintRemoteIcon#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="class#34417:35803" expanded="false" />
-            <element signature="method#onLoadingStarted#0;class#34417:35803" expanded="false" />
-            <element signature="method#onLoadingComplete#0;class#34417:35803" expanded="false" />
-            <element signature="method#onLoadingCancelled#0;class#34417:35803" expanded="false" />
-            <element signature="method#getThemeTranperentForegroundColor#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getContentActionButtonsDrawable#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getLoginButtonDrawable#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getPopupLoginButtonDrawable#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getLogoutButtonDrawable#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getVerificationLoginButtonDrawable#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getVerificationSignupButtonDrawable#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getVerificationSubmitButtonDrawable#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getVerificationFacebookButtonDrawable#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getVerificationLoginInputDrawable#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getVerificationClose#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getCropPageButtonDrawable#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getPopupButtonDrawable#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getLeftMenuIconDrawable#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getLoginInputDrawable#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getPopupLoginInputDrawable#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getActiveSearchViewDrawable#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getPassiveSearchViewDrawable#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getReaderSearchResultTextColor#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getReaderPopupColor#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getReaderSearchViewDrawable#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getGridItemNameLabelColorWithAlpha#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getScreenSizes#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getFont#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getMediumFont#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getOpenSansLight#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getOpenSansRegular#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getOpenSansBold#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getGothamBook#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getGothamLight#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getGothamMedium#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getGothamBookItalic#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getGothamLightItalic#0;class#ApplicationThemeColor#0" expanded="false" />
-            <element signature="method#getGothamMediumItalic#0;class#ApplicationThemeColor#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/actionbar.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/slidemenulibrary/src/com/jeremyfeinstein/slidingmenu/lib/app/SlidingActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
@@ -4587,17 +4504,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/grid_cell.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="52" column="36" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentHolderAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-323">
@@ -4643,14 +4549,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/HeaderGridView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="217" column="52" selection-start-line="217" selection-start-column="52" selection-end-line="217" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4716,22 +4614,6 @@
           <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/header_content.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="71" column="12" selection-start-line="71" selection-start-column="12" selection-end-line="71" selection-end-column="12" />
-          <folding>
-            <element signature="e#2716#2752#0" expanded="true" />
-            <element signature="e#3323#3363#0" expanded="true" />
-            <element signature="e#3729#4063#0" expanded="false" />
-            <element signature="e#4297#5560#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/search_models/MenuSearchResult.java">
@@ -4837,98 +4719,183 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java">
+    <entry file="jar://$USER_HOME$/AppData/Local/Android/sdk/extras/android/m2repository/com/android/support/support-v4/21.0.3/support-v4-21.0.3-sources.jar!/android/support/v4/app/FragmentTransaction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="3011" column="63" selection-start-line="3011" selection-start-column="63" selection-end-line="3011" selection-end-column="63" />
+        <state relative-caret-position="184">
+          <caret line="185" column="40" selection-start-line="185" selection-start-column="40" selection-end-line="185" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/animator/fragment_fadeout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/grid_download_selector.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/grid_download_cancel_icon.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/grid_download_cancel.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/grid_cell.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="94" column="56" selection-start-line="94" selection-start-column="56" selection-end-line="94" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/animator/fragment_fadein.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fixed_content_popup_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/HeaderGridView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="581">
+          <caret line="451" column="1" selection-start-line="451" selection-start-column="1" selection-end-line="451" selection-end-column="1" />
           <folding>
-            <element signature="method#updateCompleted#0;class#DataApi#0" expanded="false" />
-            <element signature="method#isLibraryMustBeEnabled#0;class#DataApi#0" expanded="false" />
-            <element signature="class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
-            <element signature="method#DownloadPdfTask#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
-            <element signature="method#doInBackground#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
-            <element signature="e#9924#9977#0" expanded="false" />
-            <element signature="e#11183#11215#0" expanded="false" />
-            <element signature="method#checkDownloadSuccessfull#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
-            <element signature="method#onProgressUpdate#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
-            <element signature="method#onPreExecute#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
-            <element signature="method#onCancelled#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
-            <element signature="method#onPostExecute#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
-            <element signature="method#progressUpdate#0;class#DataApi#0" expanded="false" />
-            <element signature="class#StatisticSendTask#0;class#DataApi#0" expanded="false" />
-            <element signature="method#doInBackground#0;class#StatisticSendTask#0;class#DataApi#0" expanded="false" />
-            <element signature="method#onCancelled#0;class#StatisticSendTask#0;class#DataApi#0" expanded="false" />
-            <element signature="method#onCancelled#1;class#StatisticSendTask#0;class#DataApi#0" expanded="false" />
-            <element signature="method#getWebServiceUrlBuilder#0;class#DataApi#0" expanded="false" />
-            <element signature="method#getFullTextSearchWebServiceUrlBuilder#0;class#DataApi#0" expanded="false" />
-            <element signature="method#DataApi#0;class#DataApi#0" expanded="false" />
-            <element signature="method#getDatabaseApi#0;class#DataApi#0" expanded="false" />
-            <element signature="method#isConnectedToInternet#0;class#DataApi#0" expanded="false" />
-            <element signature="method#getDeviceName#0;class#DataApi#0" expanded="false" />
-            <element signature="method#capitalize#0;class#DataApi#0" expanded="false" />
-            <element signature="method#updateApplication#0;class#DataApi#0" expanded="false" />
-            <element signature="method#getMasterContent#0;class#DataApi#0" expanded="false" />
-            <element signature="method#commitStatisticsToDB#0;class#DataApi#0" expanded="false" />
-            <element signature="method#login#0;class#DataApi#0" expanded="false" />
-            <element signature="method#getCustomerApplications#0;class#DataApi#0" expanded="false" />
-            <element signature="method#getAppDetail#0;class#DataApi#0" expanded="false" />
-            <element signature="class#50082:50295" expanded="false" />
-            <element signature="method#onClick#0;class#50082:50295" expanded="false" />
-            <element signature="method#deleteEverythingAndUpdateApplication#0;class#DataApi#0" expanded="false" />
-            <element signature="method#deleteEverything#0;class#DataApi#0" expanded="false" />
-            <element signature="method#downloadFile#0;class#DataApi#0" expanded="false" />
-            <element signature="method#getCoverImage#0;class#DataApi#0" expanded="false" />
-            <element signature="method#cancelDownload#0;class#DataApi#0" expanded="false" />
-            <element signature="method#getPdf#0;class#DataApi#0" expanded="false" />
-            <element signature="method#deletePdf#0;class#DataApi#0" expanded="false" />
-            <element signature="method#downloadPdf#0;class#DataApi#0" expanded="false" />
-            <element signature="method#downloadUpdatedImage#0;class#DataApi#0" expanded="false" />
-            <element signature="class#78766:79358" expanded="false" />
-            <element signature="method#onLoadingStarted#0;class#78766:79358" expanded="false" />
-            <element signature="method#onLoadingFailed#0;class#78766:79358" expanded="false" />
-            <element signature="method#onLoadingComplete#0;class#78766:79358" expanded="false" />
-            <element signature="method#onLoadingCancelled#0;class#78766:79358" expanded="false" />
-            <element signature="method#saveImage#0;class#DataApi#0" expanded="false" />
-            <element signature="class#79493:80588" expanded="false" />
-            <element signature="method#doInBackground#0;class#79493:80588" expanded="false" />
-            <element signature="method#onPostExecute#0;class#79493:80588" expanded="false" />
-            <element signature="method#getCoverImageVersionToUpdate#0;class#DataApi#0" expanded="false" />
-            <element signature="method#startStatisticSend#0;class#DataApi#0" expanded="false" />
-            <element signature="method#stopStatisticSend#0;class#DataApi#0" expanded="false" />
-            <element signature="method#postStatistic#0;class#DataApi#0" expanded="false" />
-            <element signature="method#removeAllConCatsForContent#0;class#DataApi#0" expanded="false" />
-            <element signature="method#createConCat#0;class#DataApi#0" expanded="false" />
-            <element signature="method#getRemoteContent#0;class#DataApi#0" expanded="false" />
-            <element signature="method#getRemoteAppCategories#0;class#DataApi#0" expanded="false" />
-            <element signature="method#restoreContentsAndSubscritonsFromServer#0;class#DataApi#0" expanded="false" />
-            <element signature="method#getRemoteAppContents#0;class#DataApi#0" expanded="false" />
-            <element signature="method#getRemoteApplicationVersion#0;class#DataApi#0" expanded="false" />
-            <element signature="method#updateApplicationVersion#0;class#DataApi#0" expanded="false" />
-            <element signature="method#deleteContent#0;class#DataApi#0" expanded="false" />
-            <element signature="method#deleteFolder#0;class#DataApi#0" expanded="false" />
-            <element signature="method#getViewHolderForContent#0;class#DataApi#0" expanded="false" />
-            <element signature="method#getErrorMessageFromXMLFile#0;class#DataApi#0" expanded="false" />
-            <element signature="method#sendReceipt#0;class#DataApi#0" expanded="false" />
-            <element signature="method#restoreReceipt#0;class#DataApi#0" expanded="false" />
-            <element signature="e#139967#150326#0" expanded="true" />
-            <element signature="e#140526#140544#0" expanded="true" />
-            <element signature="e#150325#150326#0" expanded="true" />
-            <element signature="e#150344#151540#0" expanded="true" />
-            <element signature="e#151539#151540#0" expanded="true" />
-            <element signature="method#getCustomerApplicationsAndCategories#0;class#DataApi#0" expanded="false" />
-            <element signature="e#171741#177538#0" expanded="true" />
-            <element signature="e#177537#177538#0" expanded="true" />
-            <element signature="e#179007#184257#0" expanded="true" />
-            <element signature="e#184256#184257#0" expanded="true" />
-            <element signature="method#saveApplicationCoverImage#0;class#DataApi#0" expanded="false" />
+            <element signature="docComment;class#HeaderGridView#0" expanded="false" />
+            <element signature="docComment;class#FixedViewInfo#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="class#FixedViewInfo#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="docComment;field#view#0;class#FixedViewInfo#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="docComment;field#data#0;class#FixedViewInfo#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="docComment;field#isSelectable#0;class#FixedViewInfo#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="method#HeaderGridView#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="method#HeaderGridView#1;class#HeaderGridView#0" expanded="false" />
+            <element signature="method#HeaderGridView#2;class#HeaderGridView#0" expanded="false" />
+            <element signature="method#onMeasure#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="method#setClipChildren#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="docComment;method#addHeaderView#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="method#addHeaderView#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="e#4242#4308#0" expanded="false" />
+            <element signature="docComment;method#addHeaderView#1;class#HeaderGridView#0" expanded="false" />
+            <element signature="method#removeHeaderView#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="method#removeFixedViewInfo#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="method#setAdapter#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="class#FullWidthFixedViewLayout#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="method#onMeasure#0;class#FullWidthFixedViewLayout#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="docComment;class#HeaderViewGridAdapter#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="class#HeaderViewGridAdapter#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="method#HeaderViewGridAdapter#0;class#HeaderViewGridAdapter#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="method#isEmpty#0;class#HeaderViewGridAdapter#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="method#setNumColumns#0;class#HeaderViewGridAdapter#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="method#areAllListInfosSelectable#0;class#HeaderViewGridAdapter#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="method#removeHeader#0;class#HeaderViewGridAdapter#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="method#getCount#0;class#HeaderViewGridAdapter#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="method#areAllItemsEnabled#0;class#HeaderViewGridAdapter#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="method#isEnabled#0;class#HeaderViewGridAdapter#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="method#getItem#0;class#HeaderViewGridAdapter#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="method#getItemId#0;class#HeaderViewGridAdapter#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="method#hasStableIds#0;class#HeaderViewGridAdapter#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="method#getView#0;class#HeaderViewGridAdapter#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="e#14686#14757#0" expanded="false" />
+            <element signature="method#getItemViewType#0;class#HeaderViewGridAdapter#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="method#getViewTypeCount#0;class#HeaderViewGridAdapter#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="method#registerDataSetObserver#0;class#HeaderViewGridAdapter#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="method#unregisterDataSetObserver#0;class#HeaderViewGridAdapter#0;class#HeaderGridView#0" expanded="false" />
+            <element signature="method#getFilter#0;class#HeaderViewGridAdapter#0;class#HeaderGridView#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-779">
+          <caret line="647" column="22" selection-start-line="647" selection-start-column="22" selection-end-line="647" selection-end-column="22" />
+          <folding>
+            <element signature="docComment;class#MainActivity#0" expanded="false" />
+            <element signature="class#4547:4667" expanded="false" />
+            <element signature="method#onReceive#0;class#4547:4667" expanded="false" />
+            <element signature="method#onCreate#0;class#MainActivity#0" expanded="false" />
+            <element signature="class#13367:14166" expanded="false" />
+            <element signature="method#beforeTextChanged#0;class#13367:14166" expanded="false" />
+            <element signature="method#onTextChanged#0;class#13367:14166" expanded="false" />
+            <element signature="method#afterTextChanged#0;class#13367:14166" expanded="false" />
+            <element signature="e#20008#20059#0" expanded="false" />
+            <element signature="class#20287:20971" expanded="false" />
+            <element signature="method#doInBackground#0;class#20287:20971" expanded="false" />
+            <element signature="e#20572#20597#0" expanded="false" />
+            <element signature="method#changeMenuButtonImage#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#choseCategory#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onConfigurationChanged#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#updateActivityViewAndAdapter#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#logout#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#openSubscriptionChooser#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#subscribe#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#32265#32288#0" expanded="false" />
+            <element signature="method#hideKeyboard#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#changeSearchViewColor#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onActivityResult#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onResume#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onPause#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onStop#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onDestroy#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#openLibraryFragment#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#openLibraryFragmentWithSearch#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onBackPressed#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onAttachFragment#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onMenuItemClick#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onPrepareOptionsMenu#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onOptionsItemSelected#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#52071#52103#0" expanded="false" />
+            <element signature="method#clearReferences#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#completePurchase#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#complateSearch#0;class#MainActivity#0" expanded="false" />
+            <element signature="class#SearchAdapter#0;class#MainActivity#0" expanded="false" />
+            <element signature="class#MyViewHolder#0;class#SearchAdapter#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#MyViewHolder#0;class#MyViewHolder#0;class#SearchAdapter#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#SearchAdapter#0;class#SearchAdapter#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onCreateViewHolder#0;class#SearchAdapter#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onBindViewHolder#0;class#SearchAdapter#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#58328#58379#0" expanded="false" />
+            <element signature="method#openContentDetail#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#openContentReader#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#setCategoryListWithAll#0;class#MainActivity#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1475">
-          <caret line="279" column="28" selection-start-line="279" selection-start-column="28" selection-end-line="279" selection-end-column="28" />
+        <state relative-caret-position="378">
+          <caret line="238" column="34" selection-start-line="238" selection-start-column="34" selection-end-line="238" selection-end-column="34" />
           <folding>
             <element signature="docComment;class#ContentDetailPopupActivity#0" expanded="false" />
             <element signature="class#ContentHolder#0;class#ContentDetailPopupActivity#0" expanded="false" />
@@ -4936,6 +4903,7 @@
             <element signature="e#6495#6704#0" expanded="true" />
             <element signature="e#6703#6704#0" expanded="true" />
             <element signature="e#14254#14277#0" expanded="false" />
+            <element signature="e#21970#27354#0" expanded="true" />
             <element signature="class#24774:25875" expanded="false" />
             <element signature="method#onAnimationStart#0;class#24774:25875" expanded="false" />
             <element signature="method#onAnimationEnd#0;class#24774:25875" expanded="false" />
@@ -4946,6 +4914,7 @@
             <element signature="method#onAnimationEnd#0;class#26083:27184" expanded="false" />
             <element signature="method#onAnimationCancel#0;class#26083:27184" expanded="false" />
             <element signature="method#onAnimationRepeat#0;class#26083:27184" expanded="false" />
+            <element signature="e#27353#27354#0" expanded="true" />
             <element signature="method#onAnimationStart#0;class#30188:33050" expanded="false" />
             <element signature="method#onAnimationStart#0;class#30758:32848" expanded="false" />
             <element signature="method#onAnimationCancel#0;class#31590:32621" expanded="false" />
@@ -4983,62 +4952,106 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="946" column="8" selection-start-line="946" selection-start-column="8" selection-end-line="946" selection-end-column="8" />
+        <state relative-caret-position="339">
+          <caret line="3122" column="0" selection-start-line="3122" selection-start-column="0" selection-end-line="3122" selection-end-column="0" />
           <folding>
-            <element signature="docComment;class#MainActivity#0" expanded="false" />
-            <element signature="class#4527:4647" expanded="false" />
-            <element signature="method#onReceive#0;class#4527:4647" expanded="false" />
-            <element signature="method#onCreate#0;class#MainActivity#0" expanded="false" />
-            <element signature="class#13301:14100" expanded="false" />
-            <element signature="method#beforeTextChanged#0;class#13301:14100" expanded="false" />
-            <element signature="method#onTextChanged#0;class#13301:14100" expanded="false" />
-            <element signature="method#afterTextChanged#0;class#13301:14100" expanded="false" />
-            <element signature="e#19942#19993#0" expanded="false" />
-            <element signature="class#20221:20905" expanded="false" />
-            <element signature="method#doInBackground#0;class#20221:20905" expanded="false" />
-            <element signature="e#20506#20531#0" expanded="false" />
-            <element signature="method#changeMenuButtonImage#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#choseCategory#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onConfigurationChanged#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#updateActivityViewAndAdapter#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#logout#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#openSubscriptionChooser#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#subscribe#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#32410#32433#0" expanded="false" />
-            <element signature="method#hideKeyboard#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#changeSearchViewColor#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onActivityResult#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onResume#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onPause#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onStop#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onDestroy#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onBackPressed#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onAttachFragment#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onMenuItemClick#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onPrepareOptionsMenu#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onOptionsItemSelected#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#52050#52082#0" expanded="false" />
-            <element signature="method#clearReferences#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#completePurchase#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#complateSearch#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#SearchAdapter#0;class#SearchAdapter#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onCreateViewHolder#0;class#SearchAdapter#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onBindViewHolder#0;class#SearchAdapter#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#58308#58359#0" expanded="false" />
-            <element signature="method#openContentDetail#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#openContentReader#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#setCategoryListWithAll#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#updateCompleted#0;class#DataApi#0" expanded="false" />
+            <element signature="method#isLibraryMustBeEnabled#0;class#DataApi#0" expanded="false" />
+            <element signature="class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
+            <element signature="method#DownloadPdfTask#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
+            <element signature="method#doInBackground#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
+            <element signature="e#9864#9917#0" expanded="false" />
+            <element signature="e#11123#11155#0" expanded="false" />
+            <element signature="method#checkDownloadSuccessfull#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
+            <element signature="method#onProgressUpdate#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
+            <element signature="method#onPreExecute#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
+            <element signature="method#onCancelled#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
+            <element signature="method#onPostExecute#0;class#DownloadPdfTask#0;class#DataApi#0" expanded="false" />
+            <element signature="method#progressUpdate#0;class#DataApi#0" expanded="false" />
+            <element signature="class#StatisticSendTask#0;class#DataApi#0" expanded="false" />
+            <element signature="method#doInBackground#0;class#StatisticSendTask#0;class#DataApi#0" expanded="false" />
+            <element signature="method#onCancelled#0;class#StatisticSendTask#0;class#DataApi#0" expanded="false" />
+            <element signature="method#onCancelled#1;class#StatisticSendTask#0;class#DataApi#0" expanded="false" />
+            <element signature="method#getWebServiceUrlBuilder#0;class#DataApi#0" expanded="false" />
+            <element signature="method#getFullTextSearchWebServiceUrlBuilder#0;class#DataApi#0" expanded="false" />
+            <element signature="method#DataApi#0;class#DataApi#0" expanded="false" />
+            <element signature="method#getDatabaseApi#0;class#DataApi#0" expanded="false" />
+            <element signature="method#isConnectedToInternet#0;class#DataApi#0" expanded="false" />
+            <element signature="method#getDeviceName#0;class#DataApi#0" expanded="false" />
+            <element signature="method#capitalize#0;class#DataApi#0" expanded="false" />
+            <element signature="method#updateApplication#0;class#DataApi#0" expanded="false" />
+            <element signature="method#getMasterContent#0;class#DataApi#0" expanded="false" />
+            <element signature="method#commitStatisticsToDB#0;class#DataApi#0" expanded="false" />
+            <element signature="method#login#0;class#DataApi#0" expanded="false" />
+            <element signature="method#getCustomerApplications#0;class#DataApi#0" expanded="false" />
+            <element signature="method#getAppDetail#0;class#DataApi#0" expanded="false" />
+            <element signature="class#50020:50233" expanded="false" />
+            <element signature="method#onClick#0;class#50020:50233" expanded="false" />
+            <element signature="method#deleteEverythingAndUpdateApplication#0;class#DataApi#0" expanded="false" />
+            <element signature="method#deleteEverything#0;class#DataApi#0" expanded="false" />
+            <element signature="method#downloadFile#0;class#DataApi#0" expanded="false" />
+            <element signature="method#getCoverImage#0;class#DataApi#0" expanded="false" />
+            <element signature="method#cancelDownload#0;class#DataApi#0" expanded="false" />
+            <element signature="method#getPdf#0;class#DataApi#0" expanded="false" />
+            <element signature="method#deletePdf#0;class#DataApi#0" expanded="false" />
+            <element signature="method#downloadPdf#0;class#DataApi#0" expanded="false" />
+            <element signature="method#downloadUpdatedImage#0;class#DataApi#0" expanded="false" />
+            <element signature="class#78704:79296" expanded="false" />
+            <element signature="method#onLoadingStarted#0;class#78704:79296" expanded="false" />
+            <element signature="method#onLoadingFailed#0;class#78704:79296" expanded="false" />
+            <element signature="method#onLoadingComplete#0;class#78704:79296" expanded="false" />
+            <element signature="method#onLoadingCancelled#0;class#78704:79296" expanded="false" />
+            <element signature="method#saveImage#0;class#DataApi#0" expanded="false" />
+            <element signature="class#79431:80526" expanded="false" />
+            <element signature="method#doInBackground#0;class#79431:80526" expanded="false" />
+            <element signature="method#onPostExecute#0;class#79431:80526" expanded="false" />
+            <element signature="method#getCoverImageVersionToUpdate#0;class#DataApi#0" expanded="false" />
+            <element signature="method#startStatisticSend#0;class#DataApi#0" expanded="false" />
+            <element signature="method#stopStatisticSend#0;class#DataApi#0" expanded="false" />
+            <element signature="method#postStatistic#0;class#DataApi#0" expanded="false" />
+            <element signature="method#removeAllConCatsForContent#0;class#DataApi#0" expanded="false" />
+            <element signature="method#createConCat#0;class#DataApi#0" expanded="false" />
+            <element signature="method#getRemoteContent#0;class#DataApi#0" expanded="false" />
+            <element signature="method#getRemoteAppCategories#0;class#DataApi#0" expanded="false" />
+            <element signature="method#restoreContentsAndSubscritonsFromServer#0;class#DataApi#0" expanded="false" />
+            <element signature="method#getRemoteAppContents#0;class#DataApi#0" expanded="false" />
+            <element signature="method#getRemoteApplicationVersion#0;class#DataApi#0" expanded="false" />
+            <element signature="method#updateApplicationVersion#0;class#DataApi#0" expanded="false" />
+            <element signature="method#deleteContent#0;class#DataApi#0" expanded="false" />
+            <element signature="method#deleteFolder#0;class#DataApi#0" expanded="false" />
+            <element signature="method#getViewHolderForContent#0;class#DataApi#0" expanded="false" />
+            <element signature="method#getErrorMessageFromXMLFile#0;class#DataApi#0" expanded="false" />
+            <element signature="method#sendReceipt#0;class#DataApi#0" expanded="false" />
+            <element signature="method#restoreReceipt#0;class#DataApi#0" expanded="false" />
+            <element signature="method#fullTextSearch#0;class#DataApi#0" expanded="false" />
+            <element signature="method#fullTextSearchForReader#0;class#DataApi#0" expanded="false" />
+            <element signature="method#getCustomerApplicationsAndCategories#0;class#DataApi#0" expanded="false" />
+            <element signature="method#getApplicationContents#0;class#DataApi#0" expanded="false" />
+            <element signature="method#saveApplicationCoverImage#0;class#DataApi#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/header_content.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="80" column="40" selection-start-line="80" selection-start-column="40" selection-end-line="80" selection-end-column="40" />
+          <folding>
+            <element signature="e#3770#4104#0" expanded="false" />
+            <element signature="e#4338#5601#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="251" column="0" selection-start-line="251" selection-start-column="0" selection-end-line="251" selection-end-column="0" />
+        <state relative-caret-position="254">
+          <caret line="404" column="66" selection-start-line="404" selection-start-column="66" selection-end-line="404" selection-end-column="66" />
           <folding>
             <element signature="docComment;class#LibraryFragment#0" expanded="false" />
             <element signature="method#setLayoutInflater#0;class#LibraryFragment#0" expanded="false" />
@@ -5052,13 +5065,13 @@
             <element signature="e#10689#11322#0" expanded="true" />
             <element signature="e#11321#11322#0" expanded="true" />
             <element signature="e#11424#11493#0" expanded="true" />
-            <element signature="method#getContents#0;class#LibraryFragment#0" expanded="false" />
+            <element signature="e#15508#15519#0" expanded="true" />
             <element signature="method#displayImage#0;class#LibraryFragment#0" expanded="false" />
-            <element signature="class#22594:23797" expanded="false" />
-            <element signature="method#onLoadingStarted#0;class#22594:23797" expanded="false" />
-            <element signature="method#onLoadingFailed#0;class#22594:23797" expanded="false" />
-            <element signature="method#onLoadingComplete#0;class#22594:23797" expanded="false" />
-            <element signature="method#onLoadingCancelled#0;class#22594:23797" expanded="false" />
+            <element signature="class#22627:23830" expanded="false" />
+            <element signature="method#onLoadingStarted#0;class#22627:23830" expanded="false" />
+            <element signature="method#onLoadingFailed#0;class#22627:23830" expanded="false" />
+            <element signature="method#onLoadingComplete#0;class#22627:23830" expanded="false" />
+            <element signature="method#onLoadingCancelled#0;class#22627:23830" expanded="false" />
             <element signature="method#updateHeaderContent#0;class#LibraryFragment#0" expanded="false" />
             <element signature="class#HeaderContentHolder#0;class#LibraryFragment#0" expanded="false" />
             <element signature="method#refreshImageLoading#0;class#HeaderContentHolder#0;class#LibraryFragment#0" expanded="false" />

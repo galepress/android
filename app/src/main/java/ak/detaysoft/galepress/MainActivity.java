@@ -66,6 +66,7 @@ import com.facebook.login.LoginManager;
 import com.google.android.gcm.GCMRegistrar;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.xml.sax.InputSource;
@@ -107,22 +108,15 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
     AsyncTask<Void, Void, Void> mRegisterTask;
     public Integer content_id = null;
     private ArrayList<Fragment> fragmentList;
-
-
     private SlidingMenu leftMenu;
-
     //Kategori sekmesi
     private LeftMenuCategoryAdapter categoriesAdapter;
     private ListView categoriesListView;
     private List<L_Category> categoryListWithAll;
     private RelativeLayout categoriesTitleLayout;
     private ImageView categoriesListViewCloseIcon;
-
     private ImageView searchClear;
-
     private LinearLayout leftMenuBaseLayout;
-
-
     private Subscription selectedSubscription;
     public ProgressBar searchProgress;
     private LibraryFragment libraryFragment;
@@ -138,7 +132,6 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         }
     };
 
-
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.e("oncreate", "mainActivity");
@@ -151,6 +144,7 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         }
 
         try {
+            unregisterReceiver(mConnReceiver);
             registerReceiver(mConnReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
         } catch (Exception e) {
             Log.e("ConnectivityManager", e.toString());
@@ -500,10 +494,6 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         }
     }
 
-    /*
-        * Renk degismedigi zaman servisten gelen tabbar ikonları invalidate edilmiyor.
-        * Yoksa uygulama icinde her update oldugunda ikonlarda yeniden load edildigi icin kotu gorunuyor
-        */
     public void updateActivityViewAndAdapter() {
 
         leftMenuBaseLayout.setBackgroundColor(ApplicationThemeColor.getInstance().getForegroundColor());
@@ -591,7 +581,6 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         GalePressApplication.getInstance().createUser(false, null);
         ((TextView) findViewById(R.id.left_menu_login_text)).setText(getResources().getText(R.string.login_stand));
     }
-
 
     public void openSubscriptionChooser() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -708,7 +697,6 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         }
 
     }
-
 
     public void hideKeyboard(View view) {
         changeSearchViewColor(false);
@@ -931,23 +919,27 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
     }
 
     public void openLibraryFragment(){
+
         libraryFragment = new LibraryFragment();
         libraryFragment.isDownloaded = applicationFragment.isDownloaded;
         libraryFragment.searchResult = null;
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        //fragmentTransaction.setCustomAnimations(R.animator.fragment_fadein, -1);
         fragmentTransaction.add(R.id.fragment_container, libraryFragment, "LIBRARY").addToBackStack(null);
         fragmentTransaction.commit();
 
     }
 
     public void openLibraryFragmentWithSearch(MenuSearchResult result){
+
         libraryFragment = new LibraryFragment();
         libraryFragment.isDownloaded = false;
         libraryFragment.searchResult = result;
         libraryFragment.isSearchOpened = false;
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        //fragmentTransaction.setCustomAnimations(R.animator.fragment_fadein, -1);
         fragmentTransaction.add(R.id.fragment_container, libraryFragment, "LIBRARY").addToBackStack(null);
         fragmentTransaction.commit();
 
@@ -990,7 +982,6 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         Logout.e("Galepress", "OnPopUpMenuItem Clicked:" + item.getTitle().toString());
         return true;
     }
-
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
@@ -1046,7 +1037,6 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         if (currActivity != null && currActivity.equals(this))
             GalePressApplication.getInstance().setCurrentActivity(null);
     }
-
 
     public void completePurchase() {
         Toast.makeText(this, getResources().getString(R.string.purchase_validation_success), Toast.LENGTH_LONG).show();
@@ -1213,7 +1203,6 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
             this.startActivityForResult(intent, 101);
         }
     }
-
 
     public LeftMenuCategoryAdapter getCategoriesAdapter() {
         return categoriesAdapter;

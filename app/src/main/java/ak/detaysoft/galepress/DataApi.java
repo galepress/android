@@ -96,16 +96,13 @@ import ak.detaysoft.galepress.util.ApplicationThemeColor;
 
 
 public class DataApi extends Object {
-    //http://galepress.com/ws/v100/applications/20/detail
 
     private static final String webServisVersion = "103";
     private static final String domainUrl = "http://www.galepress.com";
     public static final Integer MESSAGE_TYPE_COVER_IMAGE = 1;
     public static final Integer MESSAGE_TYPE_COVER_PDF_DOWNLOAD = 2;
     public boolean isBlockedFromWS = false;
-
     static final String GCM_SENDER_ID = "151896860923";  // Place here your Google project id
-
     private DatabaseApi databaseApi = null;
     public DownloadPdfTask downloadPdfTask;
     public StatisticSendTask statisticSendTask;
@@ -602,7 +599,6 @@ public class DataApi extends Object {
         }
     }
 
-
     private String capitalize(String s) {
         if (s == null || s.length() == 0) {
             return "";
@@ -641,7 +637,6 @@ public class DataApi extends Object {
         if (!GalePressApplication.getInstance().isTestApplication())
             getDatabaseApi().createStatistic(statistic);
     }
-
 
     public void login(final String token, final String userId, final String email, final String name, final String last_name,
                       final Activity activity, boolean isFacebookLogin, String uname, String password) {
@@ -2334,13 +2329,15 @@ public class DataApi extends Object {
 
     public ContentHolderAdapter.ViewHolder getViewHolderForContent(L_Content content) {
 
-        HeaderGridView gridView = GalePressApplication.getInstance().getLibraryFragment().gridview;
-        for (int i = 0; i < gridView.getChildCount(); i++) {
-            View view = gridView.getChildAt(i);
-            if (view != null) {
-                ContentHolderAdapter.ViewHolder viewHolder = (ContentHolderAdapter.ViewHolder) view.getTag();
-                if (viewHolder != null && viewHolder.content != null && viewHolder.content.getId().compareTo(content.getId()) == 0) {
-                    return viewHolder;
+        if(GalePressApplication.getInstance().getMainActivity().getLibraryFragment()!=null) {
+            HeaderGridView gridView = GalePressApplication.getInstance().getMainActivity().getLibraryFragment().gridview;
+            for (int i = 0; i < gridView.getChildCount(); i++) {
+                View view = gridView.getChildAt(i);
+                if (view != null) {
+                    ContentHolderAdapter.ViewHolder viewHolder = (ContentHolderAdapter.ViewHolder) view.getTag();
+                    if (viewHolder != null && viewHolder.content != null && viewHolder.content.getId().compareTo(content.getId()) == 0) {
+                        return viewHolder;
+                    }
                 }
             }
         }
@@ -2509,6 +2506,18 @@ public class DataApi extends Object {
         Uri.Builder uriBuilder = getFullTextSearchWebServiceUrlBuilder();
         uriBuilder.appendQueryParameter("query", text);
         uriBuilder.appendQueryParameter("applicationID", "146");
+
+        /*try{
+            JSONObject base = new JSONObject();
+            JSONArray array = new JSONArray();
+            for(int i = 0; i < 10; i++) {
+                array.put(100+i);
+            }
+            base.put("applicationIds", array);
+            Log.e("asdasdasd", ""+base.toString());
+        } catch (Exception e) {
+
+        }*/
 
         request = new JsonObjectRequest(Request.Method.POST, uriBuilder.build().toString(), null,
                 new Response.Listener<JSONObject>() {
@@ -3223,4 +3232,3 @@ public class DataApi extends Object {
     }
 
 }
-

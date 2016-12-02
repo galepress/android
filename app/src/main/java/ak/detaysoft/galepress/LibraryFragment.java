@@ -351,15 +351,14 @@ public class LibraryFragment extends Fragment {
 
         if (!isDownloaded) {
             List<L_Content> subContents = new ArrayList<L_Content>();
-            subContents.addAll(contents);
+            if(contents != null)
+                subContents.addAll(contents);
             if (subContents.size() > 0)
                 subContents.remove(0);
             return subContents;
         } else {
             return contents;
         }
-
-
     }
 
     public void initHeaderContent() {
@@ -408,10 +407,10 @@ public class LibraryFragment extends Fragment {
                     }
                 }
             });
-            if (application != null && (application.getPlayUrl() == null || application.getPlayUrl().length() == 0)) {
-                ((RelativeLayout) headerContentHolder.playLinkButton.getParent()).setVisibility(View.GONE);
-            } else {
+            if (application != null && application.getPlayUrl() != null && application.getPlayUrl().length() != 0) {
                 ((RelativeLayout) headerContentHolder.playLinkButton.getParent()).setVisibility(View.VISIBLE);
+            } else {
+                ((RelativeLayout) headerContentHolder.playLinkButton.getParent()).setVisibility(View.GONE);
             }
 
             headerContentHolder.loading = (CustomPulseProgress) contentHeader.findViewById(R.id.header_content_image_loading);
