@@ -83,7 +83,6 @@
 
     </RelativeLayout>
 
-
     <RelativeLayout
         android:id="@+id/header_content_right"
         android:layout_width="@dimen/library_header_cell_image_width"
@@ -118,19 +117,20 @@
             android:layout_height="40dp"
             android:orientation="horizontal"
             android:background="@drawable/grid_download_selector"
-            android:layout_centerInParent="true">
+            android:layout_centerInParent="true"
+            android:visibility="gone">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/header_content_download_percentage"
                 android:text="%0"
                 android:textSize="18dp"
                 android:lines="1"
                 android:layout_centerVertical="true"
-                android:gravity="right|center_vertical"
-                android:layout_marginRight="10dp"
-                android:layout_toLeftOf="@+id/header_content_download_cancel"/>
+                android:gravity="center"
+                android:layout_toLeftOf="@+id/header_content_download_cancel"
+                android:layout_marginLeft="20dp" />
 
             <ImageView
                 android:id="@+id/header_content_download_cancel"

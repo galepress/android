@@ -14,7 +14,6 @@
         android:orientation="vertical"
         android:layout_height="220dp">
 
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:id="@+id/cover_image_layout"
@@ -77,16 +76,16 @@
             android:layout_centerInParent="true">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/grid_download_percentage"
                 android:text="%0"
                 android:textSize="18dp"
                 android:lines="1"
                 android:layout_centerVertical="true"
-                android:gravity="right|center_vertical"
-                android:layout_marginRight="10dp"
-                android:layout_toLeftOf="@+id/grid_download_cancel"/>
+                android:layout_toLeftOf="@+id/grid_download_cancel"
+                android:layout_marginLeft="20dp"
+                android:gravity="center" />
 
             <ImageView
                 android:id="@+id/grid_download_cancel"

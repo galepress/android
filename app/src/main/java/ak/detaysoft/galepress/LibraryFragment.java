@@ -53,6 +53,7 @@ import ak.detaysoft.galepress.util.CustomPulseProgress;
  * Created by adem on 31/03/14.
  */
 public class LibraryFragment extends Fragment {
+
     public ContentHolderAdapter contentHolderAdapter;
     public HeaderGridView gridview;
     private LayoutInflater layoutInflater;
@@ -61,7 +62,6 @@ public class LibraryFragment extends Fragment {
     public boolean isSearchOpened = false;
     public List contents;
     private View v;
-
     public final static int BILLING_RESPONSE_RESULT_OK = 0;
     public final static int RESULT_USER_CANCELED = 1;
     public final static int RESULT_BILLING_UNAVAILABLE = 3;
@@ -70,7 +70,6 @@ public class LibraryFragment extends Fragment {
     public final static int RESULT_ERROR = 6;
     public final static int RESULT_ITEM_ALREADY_OWNED = 7;
     public final static int RESULT_ITEM_NOT_OWNED = 8; //For consumable product
-
     private HeaderContentHolder headerContentHolder;
     private View contentHeader;
     private L_CustomerApplication application;
@@ -217,7 +216,6 @@ public class LibraryFragment extends Fragment {
         return headerContentParams;
     }
 
-
     public void updateGridView() {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
@@ -328,7 +326,6 @@ public class LibraryFragment extends Fragment {
             getActivity().startActivityForResult(intent, 101);
         }
     }
-
 
     public void viewContentDetail(L_Content content, float xPoint, float yPoint) {
         if (content != null) {
@@ -577,7 +574,6 @@ public class LibraryFragment extends Fragment {
         public void refreshImageLoading() {
             displayImage(true, coverImageView, loading, content.getSmallCoverImageDownloadPath(), content);
         }
-
     }
 
     public HeaderContentHolder getHeaderContentHolder() {
