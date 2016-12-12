@@ -18,9 +18,9 @@ import com.crashlytics.android.answers.Answers;
 import com.crashlytics.android.answers.CustomEvent;
 import com.edmodo.cropper.CropImageView;
 import java.io.File;
-import ak.detaysoft.galepress.GalePressApplication;
-import ak.detaysoft.galepress.R;
-import ak.detaysoft.galepress.util.ApplicationThemeColor;
+import ak.detaysoft.graff.GalePressApplication;
+import ak.detaysoft.graff.R;
+import ak.detaysoft.graff.util.ApplicationThemeColor;
 
 /**
  * Created by p1025 on 04.02.2016.

@@ -10,7 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import ak.detaysoft.galepress.R;
+import ak.detaysoft.graff.R;
 
 public class ChoosePDFAdapter extends BaseAdapter {
 	private final LinkedList<ChoosePDFItem> mItems;

@@ -12,7 +12,7 @@
         android:orientation="horizontal"
         android:gravity="center">
 
-        <ak.detaysoft.galepress.PopupFixedAspectLayout
+        <ak.detaysoft.graff.PopupFixedAspectLayout
             android:id="@+id/content_detail_popup"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -25,7 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ak.detaysoft.galepress.CoverImageFixedAspectLayout
+                <ak.detaysoft.graff.CoverImageFixedAspectLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
@@ -33,7 +33,7 @@
                     android:layout_alignParentTop="true"
                     android:id="@+id/custom_cover_image_view">
 
-                    <ak.detaysoft.galepress.util.CustomPulseProgress
+                    <ak.detaysoft.graff.util.CustomPulseProgress
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:id="@+id/popup_image_loading"
@@ -125,7 +125,7 @@
                     </RelativeLayout>
 
 
-                </ak.detaysoft.galepress.CoverImageFixedAspectLayout>
+                </ak.detaysoft.graff.CoverImageFixedAspectLayout>
 
                 <LinearLayout
                     android:id="@+id/content_popup_button_layer"
@@ -158,7 +158,7 @@
                             android:layout_marginLeft="8dp"
                             android:layout_toRightOf="@+id/content_detail_delete" />
 
-                        <ak.detaysoft.galepress.util.CustomDownloadButton
+                        <ak.detaysoft.graff.util.CustomDownloadButton
                             android:layout_width="@dimen/content_popup_button_size"
                             android:layout_height="@dimen/content_popup_button_size"
                             android:id="@+id/content_detail_download"
@@ -233,7 +233,7 @@
 
             </RelativeLayout>
 
-        </ak.detaysoft.galepress.PopupFixedAspectLayout>
+        </ak.detaysoft.graff.PopupFixedAspectLayout>
 
     </LinearLayout>
 

@@ -21,7 +21,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.ListView;
 
-import ak.detaysoft.galepress.R;
+import ak.detaysoft.graff.R;
 
 enum Purpose {
 	PickPDF,

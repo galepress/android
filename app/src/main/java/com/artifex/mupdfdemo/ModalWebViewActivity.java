@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import ak.detaysoft.galepress.R;
+import ak.detaysoft.graff.R;
 
 /**
  * Created by adem on 21/05/14.

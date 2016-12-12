@@ -11,8 +11,8 @@ import android.graphics.PointF;
 import android.graphics.RectF;
 import android.util.Log;
 
-import ak.detaysoft.galepress.R;
-import ak.detaysoft.galepress.database_models.L_Content;
+import ak.detaysoft.graff.R;
+import ak.detaysoft.graff.database_models.L_Content;
 
 public class MuPDFCore
 {

@@ -21,9 +21,9 @@ import android.widget.EditText;
 
 import org.xwalk.core.XWalkView;
 
-import ak.detaysoft.galepress.R;
-import ak.detaysoft.galepress.web_views.WebViewAnnotation;
-import ak.detaysoft.galepress.web_views.WebViewAnnotationWithCrosswalk;
+import ak.detaysoft.graff.R;
+import ak.detaysoft.graff.web_views.WebViewAnnotation;
+import ak.detaysoft.graff.web_views.WebViewAnnotationWithCrosswalk;
 
 /* This enum should be kept in line with the cooresponding C enum in mupdf.c */
 enum SignatureState {

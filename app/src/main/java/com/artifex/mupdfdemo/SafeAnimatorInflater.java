@@ -6,7 +6,7 @@ import android.animation.AnimatorSet;
 import android.app.Activity;
 import android.view.View;
 
-import ak.detaysoft.galepress.R;
+import ak.detaysoft.graff.R;
 
 public class SafeAnimatorInflater
 {

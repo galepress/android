@@ -27,7 +27,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_centerInParent="true" />
 
-            <ak.detaysoft.galepress.util.CustomPulseProgress
+            <ak.detaysoft.graff.util.CustomPulseProgress
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:id="@+id/signup_loading"

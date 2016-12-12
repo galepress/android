@@ -6,7 +6,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.PointF;
 import android.os.Build;
-import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,10 +26,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 
-import ak.detaysoft.galepress.GalePressApplication;
-import ak.detaysoft.galepress.R;
-import ak.detaysoft.galepress.database_models.L_Content;
-import ak.detaysoft.galepress.util.ApplicationThemeColor;
+import ak.detaysoft.graff.GalePressApplication;
+import ak.detaysoft.graff.R;
+import ak.detaysoft.graff.database_models.L_Content;
+import ak.detaysoft.graff.util.ApplicationThemeColor;
 
 /**
  * Created by p1025 on 16.04.2015.

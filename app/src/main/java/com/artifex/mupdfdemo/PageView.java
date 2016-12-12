@@ -36,13 +36,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import ak.detaysoft.galepress.*;
-import ak.detaysoft.galepress.web_views.ExtraWebViewActivity;
-import ak.detaysoft.galepress.web_views.ExtraWebViewWithCrosswalkActivity;
-import ak.detaysoft.galepress.web_views.WebViewAnnotation;
-import ak.detaysoft.galepress.web_views.WebViewAnnotationWithCrosswalk;
-import ak.detaysoft.galepress.util.CustomPulseProgress;
-import io.fabric.sdk.android.Fabric;
+import ak.detaysoft.graff.*;
+import ak.detaysoft.graff.web_views.ExtraWebViewActivity;
+import ak.detaysoft.graff.web_views.ExtraWebViewWithCrosswalkActivity;
+import ak.detaysoft.graff.web_views.WebViewAnnotation;
+import ak.detaysoft.graff.web_views.WebViewAnnotationWithCrosswalk;
+import ak.detaysoft.graff.util.CustomPulseProgress;
 
 
 class PatchInfo {
@@ -325,7 +324,7 @@ public abstract class PageView extends ViewGroup {
                     * Ses ve video içeriklerinden auto play olanlar çalışmıyor.
                     * */
 
-                    /*Class.forName("ak.detaysoft.galepress.WebViews.WebViewAnnotationWithCrosswalk")
+                    /*Class.forName("ak.detaysoft.graff.WebViews.WebViewAnnotationWithCrosswalk")
                             .getMethod("pauseTimers", (Class[]) null)
                             .invoke(webView, (Object[]) null);*/
 

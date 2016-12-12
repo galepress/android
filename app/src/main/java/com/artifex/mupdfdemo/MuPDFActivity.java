@@ -70,12 +70,12 @@ import java.util.TimeZone;
 import java.util.UUID;
 import java.util.concurrent.Executor;
 
-import ak.detaysoft.galepress.GalePressApplication;
-import ak.detaysoft.galepress.R;
-import ak.detaysoft.galepress.database_models.L_Content;
-import ak.detaysoft.galepress.database_models.L_Statistic;
-import ak.detaysoft.galepress.search_models.ReaderSearchResult;
-import ak.detaysoft.galepress.util.ApplicationThemeColor;
+import ak.detaysoft.graff.GalePressApplication;
+import ak.detaysoft.graff.R;
+import ak.detaysoft.graff.database_models.L_Content;
+import ak.detaysoft.graff.database_models.L_Statistic;
+import ak.detaysoft.graff.search_models.ReaderSearchResult;
+import ak.detaysoft.graff.util.ApplicationThemeColor;
 
 class ThreadPerTaskExecutor implements Executor {
     public void execute(Runnable r) {

@@ -18,9 +18,9 @@ import java.util.Calendar;
 import java.util.TimeZone;
 import java.util.UUID;
 
-import ak.detaysoft.galepress.GalePressApplication;
-import ak.detaysoft.galepress.database_models.L_Statistic;
-import ak.detaysoft.galepress.util.CustomPulseProgress;
+import ak.detaysoft.graff.GalePressApplication;
+import ak.detaysoft.graff.database_models.L_Statistic;
+import ak.detaysoft.graff.util.CustomPulseProgress;
 
 public class MuPDFReaderView extends ReaderView {
     enum Mode {Viewing, Selecting, Drawing}

@@ -16,7 +16,7 @@ import android.widget.Scroller;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
 
-import ak.detaysoft.galepress.R;
+import ak.detaysoft.graff.R;
 
 public class ReaderView
         extends AdapterView<Adapter>

@@ -4,14 +4,10 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.Handler;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-
-import ak.detaysoft.galepress.R;
+import ak.detaysoft.graff.R;
 
 class ProgressDialogX extends ProgressDialog {
 	public ProgressDialogX(Context context) {

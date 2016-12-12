@@ -28,7 +28,7 @@
                 android:scaleType="fitXY"
                 />
 
-            <ak.detaysoft.galepress.util.CustomPulseProgress
+            <ak.detaysoft.graff.util.CustomPulseProgress
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:id="@+id/grid_image_loading"

@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import ak.detaysoft.galepress.R;
-import ak.detaysoft.galepress.util.ApplicationThemeColor;
+import ak.detaysoft.graff.R;
+import ak.detaysoft.graff.util.ApplicationThemeColor;
 
 public class OutlineAdapter extends BaseAdapter {
 	private final OutlineItem    mItems[];

@@ -58,7 +58,7 @@ public class MuPDFPageAdapter extends BaseAdapter {
 				* Eger parent view init edilmemisse(herzaman olmuyor) burada ekran boyutuna gore bitmap olusturuluyor. (MG)
 				* (https://fabric.io/galepress/android/apps/ak.detaysoft.carrefoursa1/issues/56b278fcf5d3a7f76b8f6164)
 				* (https://fabric.io/galepress/android/apps/ak.detaysoft.carrefoursa1/issues/56d219e3f5d3a7f76b28a8da)
-				* (https://fabric.io/galepress/android/apps/ak.detaysoft.galepressviewer/issues/56f6ac6cffcdc0425028e988)
+				* (https://fabric.io/galepress/android/apps/ak.detaysoft.graffviewer/issues/56f6ac6cffcdc0425028e988)
 				* */
 				if(parent.getWidth() <= 0 || parent.getHeight() <= 0) {
 					Display display = ((Activity)mContext).getWindowManager().getDefaultDisplay();
