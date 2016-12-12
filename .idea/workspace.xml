@@ -19,163 +19,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4591bc09-e445-44c4-a89c-14ca9bceb4e8" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/answers_1_3_6.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_21_0_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/beta_1_1_4.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/bolts_android_1_2_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/crashlytics_2_5_5.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/crashlytics_core_2_3_8.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/cropper_1_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/dd_plist.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/fabric_1_3_10.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/facebook_android_sdk_4_1_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/gcm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/ormlite_android_4_45.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/ormlite_core_4_45.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_4_0_30.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/recyclerview_v7_21_0_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_21_0_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_13_0_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_21_0_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/universal_image_loader_1_9_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/xwalk_core_library_java.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_slidemenulibrary_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_slidemenulibrary_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_slidemenulibrary_compileReleaseJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_slidemenulibrary_compileReleaseJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/slidemenulibrary/build/intermediates/res/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/slidemenulibrary/build/intermediates/res/resources-debug-androidTest.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/slidemenulibrary/build/outputs/aar/slidemenulibrary-debug.aar" afterPath="$PROJECT_DIR$/slidemenulibrary/build/outputs/aar/slidemenulibrary-debug.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/slidemenulibrary/build/outputs/aar/slidemenulibrary-release.aar" afterPath="$PROJECT_DIR$/slidemenulibrary/build/outputs/aar/slidemenulibrary-release.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/resources-debug-androidTest.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/outputs/aar/xwalk_core_library_15-debug.aar" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/outputs/aar/xwalk_core_library_15-debug.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/outputs/aar/xwalk_core_library_15-release.aar" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/outputs/aar/xwalk_core_library_15-release.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/ChoosePDFActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/ChoosePDFActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/ChoosePDFAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/ChoosePDFAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/CropAndShareActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/CropAndShareActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/CustomThumnailAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/CustomThumnailAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/ModalWebViewActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/ModalWebViewActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFCore.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFCore.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFReaderView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFReaderView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/OutlineAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/OutlineAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PageView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PageView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PrintDialogActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PrintDialogActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/ReaderView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/ReaderView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/SafeAnimatorInflater.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/SafeAnimatorInflater.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/SearchTask.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/SearchTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/ThumbnailListAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/ThumbnailListAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-large-land/activity_verification_forgot.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-large-land/activity_verification_forgot.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-large-land/activity_verification_signup.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-large-land/activity_verification_signup.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-large/application_fragment.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-large/application_fragment.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-large/grid_cell.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-large/grid_cell.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-large/library_fragment.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-large/library_fragment.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_launch.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_launch.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_verification_forgot.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_verification_forgot.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_verification_login.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_verification_login.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_verification_signup.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_verification_signup.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/application_fragment.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/application_fragment.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fixed_content_popup_layout.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fixed_content_popup_layout.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/forgot_password_popup.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/forgot_password_popup.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/grid_cell.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/grid_cell.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/header_content.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/header_content.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/library_fragment.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/library_fragment.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/signup_popup.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/signup_popup.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/viewer_login.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/viewer_login.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/slidemenulibrary/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/slidemenulibrary/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/slidemenulibrary/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/slidemenulibrary/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/slidemenulibrary/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/slidemenulibrary/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/slidemenulibrary/slidemenulibrary.iml" afterPath="$PROJECT_DIR$/slidemenulibrary/slidemenulibrary.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/AK_WebViewClient.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/AK_WebViewClient.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ApplicationFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/ApplicationFragment.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ApplicationHolderAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/ApplicationHolderAdapter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/CategoryRecyclerView.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/CategoryRecyclerView.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/ContentDetailPopupActivity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentHolderAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/ContentHolderAdapter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/CoverImageFixedAspectLayout.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/CoverImageFixedAspectLayout.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/DataApi.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseApi.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/DatabaseApi.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseHelper.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/DatabaseHelper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseManager.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/DatabaseManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/Decompress.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/Decompress.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/Foreground.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/Foreground.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GCMIntentService.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/GCMIntentService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/GalePressApplication.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/HeaderGridView.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/HeaderGridView.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LaunchActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/LaunchActivity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuCategoryAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/LeftMenuCategoryAdapter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuSocialAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/LeftMenuSocialAdapter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/LibraryFragment.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LocationUtils.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/LocationUtils.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LoginPopupFixedAspectLayout.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/LoginPopupFixedAspectLayout.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/Logout.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/Logout.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/MainActivity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/PopupFixedAspectLayout.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/PopupFixedAspectLayout.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/UserLoginActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/UserLoginActivity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/VerficationBannerView.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/VerficationBannerView.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ViewerLoginActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/ViewerLoginActivity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/custom_models/ApplicationIds.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/custom_models/ApplicationIds.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/custom_models/ApplicationPlist.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/custom_models/ApplicationPlist.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/custom_models/Subscription.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/custom_models/Subscription.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/custom_models/TabbarItem.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/custom_models/TabbarItem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/custom_models/UserInformations.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/custom_models/UserInformations.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_Application.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/database_models/L_Application.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_ApplicationCategory.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/database_models/L_ApplicationCategory.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_Category.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/database_models/L_Category.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_Content.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/database_models/L_Content.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_ContentCategory.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/database_models/L_ContentCategory.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_CustomerApplication.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/database_models/L_CustomerApplication.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_Statistic.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/database_models/L_Statistic.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/TestApplicationInf.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/database_models/TestApplicationInf.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/search_models/MenuSearchResult.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/search_models/MenuSearchResult.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/search_models/ReaderSearchResult.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/search_models/ReaderSearchResult.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/ByteArrayResponseHandler.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/service_models/ByteArrayResponseHandler.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_AppCategories.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/service_models/R_AppCategories.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_AppContents.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/service_models/R_AppContents.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_AppDetail.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/service_models/R_AppDetail.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_AppVersion.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/service_models/R_AppVersion.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_Category.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/service_models/R_Category.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_Content.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/service_models/R_Content.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_ContentDetail.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/service_models/R_ContentDetail.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_ContentFileUrl.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/service_models/R_ContentFileUrl.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/ApplicationThemeColor.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/util/ApplicationThemeColor.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/CustomCategoryRecyclerView.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/util/CustomCategoryRecyclerView.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/CustomDownloadButton.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/util/CustomDownloadButton.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/CustomPulseProgress.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/util/CustomPulseProgress.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/LeftMenuStateList.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/util/LeftMenuStateList.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/MyImageDecoder.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/util/MyImageDecoder.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/PopupButtonStateList.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/util/PopupButtonStateList.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/ReaderTabbarStateList.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/util/ReaderTabbarStateList.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/SystemUiHider.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/util/SystemUiHider.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/SystemUiHiderBase.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/util/SystemUiHiderBase.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/SystemUiHiderHoneycomb.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/util/SystemUiHiderHoneycomb.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/TabbarStateList.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/util/TabbarStateList.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/VerificationInputStateList.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/util/VerificationInputStateList.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/view/CoverImageView.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/view/CoverImageView.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/view/ProgressWheel.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/view/ProgressWheel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/view/TabBitmap.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/view/TabBitmap.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/BannerAndTabbarWebView.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/web_views/BannerAndTabbarWebView.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/BannerAndTabbarWebViewWithCrosswalk.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/web_views/BannerAndTabbarWebViewWithCrosswalk.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/ExtraWebViewActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/web_views/ExtraWebViewActivity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/ExtraWebViewWithCrosswalkActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/web_views/ExtraWebViewWithCrosswalkActivity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/WebViewAnnotation.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/web_views/WebViewAnnotation.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/WebViewAnnotationWithCrosswalk.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/web_views/WebViewAnnotationWithCrosswalk.java" />
     </list>
     <ignored path="GalepressMerge.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -225,11 +74,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataApi.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DataApi.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/DataApi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="1254" column="0" selection-start-line="1254" selection-start-column="0" selection-end-line="1254" selection-end-column="0" />
+            <state relative-caret-position="135">
+              <caret line="3164" column="63" selection-start-line="3164" selection-start-column="63" selection-end-line="3164" selection-end-column="63" />
               <folding>
                 <element signature="method#updateCompleted#0;class#DataApi#0" expanded="false" />
                 <element signature="method#isLibraryMustBeEnabled#0;class#DataApi#0" expanded="false" />
@@ -300,26 +149,13 @@
                 <element signature="method#getErrorMessageFromXMLFile#0;class#DataApi#0" expanded="false" />
                 <element signature="method#sendReceipt#0;class#DataApi#0" expanded="false" />
                 <element signature="method#restoreReceipt#0;class#DataApi#0" expanded="false" />
+                <element signature="method#fullTextSearch#0;class#DataApi#0" expanded="false" />
                 <element signature="method#fullTextSearchForReader#0;class#DataApi#0" expanded="false" />
                 <element signature="method#getCustomerApplicationsAndCategories#0;class#DataApi#0" expanded="false" />
                 <element signature="method#getApplicationContents#0;class#DataApi#0" expanded="false" />
-                <element signature="method#getApplicationContentDetail#0;class#DataApi#0" expanded="false" />
                 <element signature="method#saveApplicationCoverImage#0;class#DataApi#0" expanded="false" />
                 <marker date="1481533218336" expanded="false" signature="78:2467" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-          <provider editor-type-id="android-manifest">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="45" column="42" selection-start-line="45" selection-start-column="42" selection-end-line="45" selection-end-column="42" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -399,7 +235,25 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
               <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#582#583#0" expanded="false" />
+                <element signature="e#607#608#0" expanded="false" />
+                <element signature="e#643#644#0" expanded="false" />
+                <element signature="e#671#672#0" expanded="false" />
+                <element signature="e#705#706#0" expanded="false" />
+                <element signature="e#735#736#0" expanded="false" />
+                <element signature="e#781#782#0" expanded="false" />
+                <element signature="e#819#820#0" expanded="false" />
+                <element signature="e#854#855#0" expanded="false" />
+                <element signature="e#884#885#0" expanded="false" />
+                <element signature="e#931#932#0" expanded="false" />
+                <element signature="e#969#970#0" expanded="false" />
+                <element signature="e#1003#1004#0" expanded="false" />
+                <element signature="e#1033#1034#0" expanded="false" />
+                <element signature="e#1079#1080#0" expanded="false" />
+                <element signature="e#1117#1118#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -409,7 +263,17 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
               <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#522#523#0" expanded="false" />
+                <element signature="e#547#548#0" expanded="false" />
+                <element signature="e#584#585#0" expanded="false" />
+                <element signature="e#612#613#0" expanded="false" />
+                <element signature="e#647#648#0" expanded="false" />
+                <element signature="e#677#678#0" expanded="false" />
+                <element signature="e#724#725#0" expanded="false" />
+                <element signature="e#762#763#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -4324,7 +4188,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.4978678" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26066098" sideWeight="0.506135" order="2" side_tool="false" content_ui="tabs" x="707" y="139" width="506" height="728" />
@@ -4333,8 +4197,8 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28932893" sideWeight="0.4728145" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28932893" sideWeight="0.5271855" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3542354" sideWeight="0.3411514" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28932893" sideWeight="0.5271855" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24752475" sideWeight="0.47228146" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.4936034" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -4348,7 +4212,7 @@
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3542354" sideWeight="0.66151386" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3542354" sideWeight="0.65884864" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -4396,7 +4260,7 @@
           <option name="timeStamp" value="182" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="634" />
+      <option name="time" value="635" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="app">
@@ -4887,7 +4751,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#582#583#0" expanded="false" />
+            <element signature="e#607#608#0" expanded="false" />
+            <element signature="e#643#644#0" expanded="false" />
+            <element signature="e#671#672#0" expanded="false" />
+            <element signature="e#705#706#0" expanded="false" />
+            <element signature="e#735#736#0" expanded="false" />
+            <element signature="e#781#782#0" expanded="false" />
+            <element signature="e#819#820#0" expanded="false" />
+            <element signature="e#854#855#0" expanded="false" />
+            <element signature="e#884#885#0" expanded="false" />
+            <element signature="e#931#932#0" expanded="false" />
+            <element signature="e#969#970#0" expanded="false" />
+            <element signature="e#1003#1004#0" expanded="false" />
+            <element signature="e#1033#1034#0" expanded="false" />
+            <element signature="e#1079#1080#0" expanded="false" />
+            <element signature="e#1117#1118#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -4902,7 +4784,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#522#523#0" expanded="false" />
+            <element signature="e#547#548#0" expanded="false" />
+            <element signature="e#584#585#0" expanded="false" />
+            <element signature="e#612#613#0" expanded="false" />
+            <element signature="e#647#648#0" expanded="false" />
+            <element signature="e#677#678#0" expanded="false" />
+            <element signature="e#724#725#0" expanded="false" />
+            <element signature="e#762#763#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -4941,10 +4833,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="46" column="11" selection-start-line="46" selection-start-column="11" selection-end-line="46" selection-end-column="11" />
+          <folding>
+            <element signature="e#2269#2287#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/graff/DataApi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="1254" column="0" selection-start-line="1254" selection-start-column="0" selection-end-line="1254" selection-end-column="0" />
+        <state relative-caret-position="135">
+          <caret line="3164" column="63" selection-start-line="3164" selection-start-column="63" selection-end-line="3164" selection-end-column="63" />
           <folding>
             <element signature="method#updateCompleted#0;class#DataApi#0" expanded="false" />
             <element signature="method#isLibraryMustBeEnabled#0;class#DataApi#0" expanded="false" />
@@ -5015,24 +4920,13 @@
             <element signature="method#getErrorMessageFromXMLFile#0;class#DataApi#0" expanded="false" />
             <element signature="method#sendReceipt#0;class#DataApi#0" expanded="false" />
             <element signature="method#restoreReceipt#0;class#DataApi#0" expanded="false" />
+            <element signature="method#fullTextSearch#0;class#DataApi#0" expanded="false" />
             <element signature="method#fullTextSearchForReader#0;class#DataApi#0" expanded="false" />
             <element signature="method#getCustomerApplicationsAndCategories#0;class#DataApi#0" expanded="false" />
             <element signature="method#getApplicationContents#0;class#DataApi#0" expanded="false" />
-            <element signature="method#getApplicationContentDetail#0;class#DataApi#0" expanded="false" />
             <element signature="method#saveApplicationCoverImage#0;class#DataApi#0" expanded="false" />
             <marker date="1481533218336" expanded="false" signature="78:2467" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="45" column="42" selection-start-line="45" selection-start-column="42" selection-end-line="45" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
