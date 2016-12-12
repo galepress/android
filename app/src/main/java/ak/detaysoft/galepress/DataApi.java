@@ -551,6 +551,14 @@ public class DataApi extends Object {
         return builder;
     }
 
+    private Uri.Builder getGraffFullTextSearchWebServiceUrlBuilder() {
+        Uri.Builder builder = new Uri.Builder();
+        builder.scheme("http")
+                .authority("www.galepress.com")
+                .appendPath("searchgraff");
+        return builder;
+    }
+
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -2503,7 +2511,7 @@ public class DataApi extends Object {
         RequestQueue requestQueue = application.getRequestQueue();
         JsonObjectRequest request;
 
-        Uri.Builder uriBuilder = getFullTextSearchWebServiceUrlBuilder();
+        Uri.Builder uriBuilder = getGraffFullTextSearchWebServiceUrlBuilder();
         uriBuilder.appendQueryParameter("query", text);
 
         JSONArray array = new JSONArray();
@@ -2515,7 +2523,7 @@ public class DataApi extends Object {
         } catch (Exception e) {
             array = new JSONArray();
         }
-        uriBuilder.appendQueryParameter("applicationIDs", array.toString());
+        uriBuilder.appendQueryParameter("applicationID", array.toString());
 
         request = new JsonObjectRequest(Request.Method.POST, uriBuilder.build().toString(), null,
                 new Response.Listener<JSONObject>() {

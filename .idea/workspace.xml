@@ -19,27 +19,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4591bc09-e445-44c4-a89c-14ca9bceb4e8" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/answers_1_3_6.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_21_0_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/beta_1_1_4.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/bolts_android_1_2_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/crashlytics_2_5_5.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/crashlytics_core_2_3_8.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/cropper_1_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/dd_plist.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/fabric_1_3_10.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/facebook_android_sdk_4_1_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/gcm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/ormlite_android_4_45.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/ormlite_core_4_45.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_4_0_30.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/recyclerview_v7_21_0_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_21_0_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_13_0_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_21_0_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/universal_image_loader_1_9_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/xwalk_core_library_java.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" />
@@ -49,16 +28,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ApplicationFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ApplicationFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseHelper.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DatabaseHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LaunchActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LaunchActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_CustomerApplication.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_CustomerApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/header_content.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/header_content.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/slidemenulibrary/slidemenulibrary.iml" afterPath="$PROJECT_DIR$/slidemenulibrary/slidemenulibrary.iml" />
     </list>
     <ignored path="GalepressMerge.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -116,8 +86,8 @@
       <file leaf-file-name="DataApi.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
-              <caret line="2515" column="36" selection-start-line="2515" selection-start-column="36" selection-end-line="2515" selection-end-column="36" />
+            <state relative-caret-position="295">
+              <caret line="2513" column="78" selection-start-line="2513" selection-start-column="78" selection-end-line="2513" selection-end-column="78" />
               <folding>
                 <element signature="method#updateCompleted#0;class#DataApi#0" expanded="false" />
                 <element signature="method#isLibraryMustBeEnabled#0;class#DataApi#0" expanded="false" />
@@ -138,6 +108,7 @@
                 <element signature="method#onCancelled#1;class#StatisticSendTask#0;class#DataApi#0" expanded="false" />
                 <element signature="method#getWebServiceUrlBuilder#0;class#DataApi#0" expanded="false" />
                 <element signature="method#getFullTextSearchWebServiceUrlBuilder#0;class#DataApi#0" expanded="false" />
+                <element signature="method#getGraffFullTextSearchWebServiceUrlBuilder#0;class#DataApi#0" expanded="false" />
                 <element signature="method#DataApi#0;class#DataApi#0" expanded="false" />
                 <element signature="method#getDatabaseApi#0;class#DataApi#0" expanded="false" />
                 <element signature="method#isConnectedToInternet#0;class#DataApi#0" expanded="false" />
@@ -149,8 +120,8 @@
                 <element signature="method#login#0;class#DataApi#0" expanded="false" />
                 <element signature="method#getCustomerApplications#0;class#DataApi#0" expanded="false" />
                 <element signature="method#getAppDetail#0;class#DataApi#0" expanded="false" />
-                <element signature="class#50020:50233" expanded="false" />
-                <element signature="method#onClick#0;class#50020:50233" expanded="false" />
+                <element signature="class#50294:50507" expanded="false" />
+                <element signature="method#onClick#0;class#50294:50507" expanded="false" />
                 <element signature="method#deleteEverythingAndUpdateApplication#0;class#DataApi#0" expanded="false" />
                 <element signature="method#deleteEverything#0;class#DataApi#0" expanded="false" />
                 <element signature="method#downloadFile#0;class#DataApi#0" expanded="false" />
@@ -160,15 +131,15 @@
                 <element signature="method#deletePdf#0;class#DataApi#0" expanded="false" />
                 <element signature="method#downloadPdf#0;class#DataApi#0" expanded="false" />
                 <element signature="method#downloadUpdatedImage#0;class#DataApi#0" expanded="false" />
-                <element signature="class#78704:79296" expanded="false" />
-                <element signature="method#onLoadingStarted#0;class#78704:79296" expanded="false" />
-                <element signature="method#onLoadingFailed#0;class#78704:79296" expanded="false" />
-                <element signature="method#onLoadingComplete#0;class#78704:79296" expanded="false" />
-                <element signature="method#onLoadingCancelled#0;class#78704:79296" expanded="false" />
+                <element signature="class#78978:79570" expanded="false" />
+                <element signature="method#onLoadingStarted#0;class#78978:79570" expanded="false" />
+                <element signature="method#onLoadingFailed#0;class#78978:79570" expanded="false" />
+                <element signature="method#onLoadingComplete#0;class#78978:79570" expanded="false" />
+                <element signature="method#onLoadingCancelled#0;class#78978:79570" expanded="false" />
                 <element signature="method#saveImage#0;class#DataApi#0" expanded="false" />
-                <element signature="class#79431:80526" expanded="false" />
-                <element signature="method#doInBackground#0;class#79431:80526" expanded="false" />
-                <element signature="method#onPostExecute#0;class#79431:80526" expanded="false" />
+                <element signature="class#79705:80800" expanded="false" />
+                <element signature="method#doInBackground#0;class#79705:80800" expanded="false" />
+                <element signature="method#onPostExecute#0;class#79705:80800" expanded="false" />
                 <element signature="method#getCoverImageVersionToUpdate#0;class#DataApi#0" expanded="false" />
                 <element signature="method#startStatisticSend#0;class#DataApi#0" expanded="false" />
                 <element signature="method#stopStatisticSend#0;class#DataApi#0" expanded="false" />
@@ -192,7 +163,7 @@
                 <element signature="method#getApplicationContents#0;class#DataApi#0" expanded="false" />
                 <element signature="method#getApplicationContentDetail#0;class#DataApi#0" expanded="false" />
                 <element signature="method#saveApplicationCoverImage#0;class#DataApi#0" expanded="false" />
-                <marker date="1481531629776" expanded="false" signature="82:2483" ph="..." />
+                <marker date="1481531966037" expanded="false" signature="82:2483" ph="..." />
               </folding>
             </state>
           </provider>
@@ -4905,8 +4876,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="2515" column="36" selection-start-line="2515" selection-start-column="36" selection-end-line="2515" selection-end-column="36" />
+        <state relative-caret-position="295">
+          <caret line="2513" column="78" selection-start-line="2513" selection-start-column="78" selection-end-line="2513" selection-end-column="78" />
           <folding>
             <element signature="method#updateCompleted#0;class#DataApi#0" expanded="false" />
             <element signature="method#isLibraryMustBeEnabled#0;class#DataApi#0" expanded="false" />
@@ -4927,6 +4898,7 @@
             <element signature="method#onCancelled#1;class#StatisticSendTask#0;class#DataApi#0" expanded="false" />
             <element signature="method#getWebServiceUrlBuilder#0;class#DataApi#0" expanded="false" />
             <element signature="method#getFullTextSearchWebServiceUrlBuilder#0;class#DataApi#0" expanded="false" />
+            <element signature="method#getGraffFullTextSearchWebServiceUrlBuilder#0;class#DataApi#0" expanded="false" />
             <element signature="method#DataApi#0;class#DataApi#0" expanded="false" />
             <element signature="method#getDatabaseApi#0;class#DataApi#0" expanded="false" />
             <element signature="method#isConnectedToInternet#0;class#DataApi#0" expanded="false" />
@@ -4938,8 +4910,8 @@
             <element signature="method#login#0;class#DataApi#0" expanded="false" />
             <element signature="method#getCustomerApplications#0;class#DataApi#0" expanded="false" />
             <element signature="method#getAppDetail#0;class#DataApi#0" expanded="false" />
-            <element signature="class#50020:50233" expanded="false" />
-            <element signature="method#onClick#0;class#50020:50233" expanded="false" />
+            <element signature="class#50294:50507" expanded="false" />
+            <element signature="method#onClick#0;class#50294:50507" expanded="false" />
             <element signature="method#deleteEverythingAndUpdateApplication#0;class#DataApi#0" expanded="false" />
             <element signature="method#deleteEverything#0;class#DataApi#0" expanded="false" />
             <element signature="method#downloadFile#0;class#DataApi#0" expanded="false" />
@@ -4949,15 +4921,15 @@
             <element signature="method#deletePdf#0;class#DataApi#0" expanded="false" />
             <element signature="method#downloadPdf#0;class#DataApi#0" expanded="false" />
             <element signature="method#downloadUpdatedImage#0;class#DataApi#0" expanded="false" />
-            <element signature="class#78704:79296" expanded="false" />
-            <element signature="method#onLoadingStarted#0;class#78704:79296" expanded="false" />
-            <element signature="method#onLoadingFailed#0;class#78704:79296" expanded="false" />
-            <element signature="method#onLoadingComplete#0;class#78704:79296" expanded="false" />
-            <element signature="method#onLoadingCancelled#0;class#78704:79296" expanded="false" />
+            <element signature="class#78978:79570" expanded="false" />
+            <element signature="method#onLoadingStarted#0;class#78978:79570" expanded="false" />
+            <element signature="method#onLoadingFailed#0;class#78978:79570" expanded="false" />
+            <element signature="method#onLoadingComplete#0;class#78978:79570" expanded="false" />
+            <element signature="method#onLoadingCancelled#0;class#78978:79570" expanded="false" />
             <element signature="method#saveImage#0;class#DataApi#0" expanded="false" />
-            <element signature="class#79431:80526" expanded="false" />
-            <element signature="method#doInBackground#0;class#79431:80526" expanded="false" />
-            <element signature="method#onPostExecute#0;class#79431:80526" expanded="false" />
+            <element signature="class#79705:80800" expanded="false" />
+            <element signature="method#doInBackground#0;class#79705:80800" expanded="false" />
+            <element signature="method#onPostExecute#0;class#79705:80800" expanded="false" />
             <element signature="method#getCoverImageVersionToUpdate#0;class#DataApi#0" expanded="false" />
             <element signature="method#startStatisticSend#0;class#DataApi#0" expanded="false" />
             <element signature="method#stopStatisticSend#0;class#DataApi#0" expanded="false" />
@@ -4981,7 +4953,7 @@
             <element signature="method#getApplicationContents#0;class#DataApi#0" expanded="false" />
             <element signature="method#getApplicationContentDetail#0;class#DataApi#0" expanded="false" />
             <element signature="method#saveApplicationCoverImage#0;class#DataApi#0" expanded="false" />
-            <marker date="1481531629776" expanded="false" signature="82:2483" ph="..." />
+            <marker date="1481531966037" expanded="false" signature="82:2483" ph="..." />
           </folding>
         </state>
       </provider>
