@@ -97,7 +97,7 @@ import ak.detaysoft.galepress.util.ApplicationThemeColor;
 /**
  * Created by adem on 31/03/14.
  */
-public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuItemClickListener {
+public class MainActivity extends FragmentActivity{
 
     public static final int GENEL_CATEGORY_ID = 0;
     public static final int SHOW_ALL_CATEGORY_ID = -1;
@@ -110,7 +110,7 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
     private ArrayList<Fragment> fragmentList;
     private SlidingMenu leftMenu;
     //Kategori sekmesi
-    private LeftMenuCategoryAdapter categoriesAdapter;
+    private LeftMenuCategoryAdapter categoriesAdapter;;
     private ListView categoriesListView;
     private List<L_Category> categoryListWithAll;
     private RelativeLayout categoriesTitleLayout;
@@ -124,30 +124,14 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
     private TextView actionbarTitle;
     private RecyclerView searchList;
 
-
-    private BroadcastReceiver mConnReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-
-        }
-    };
-
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.e("oncreate", "mainActivity");
 
         Intent intent = getIntent();
         if (intent.hasExtra("content_id")) {
             this.content_id = Integer.valueOf(intent.getStringExtra("content_id"));
         } else {
             this.content_id = null;
-        }
-
-        try {
-            unregisterReceiver(mConnReceiver);
-            registerReceiver(mConnReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
-        } catch (Exception e) {
-            Log.e("ConnectivityManager", e.toString());
         }
 
         if (getResources().getBoolean(R.bool.portrait_only)) {
@@ -957,11 +941,6 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
             actionbarTitle.setText(applicationFragment.selectedCategory.getName().toUpperCase());
         } else {
             GalePressApplication.getInstance().destroyBillingServices();
-            try {
-                unregisterReceiver(mConnReceiver);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
             finish();
         }
     }
@@ -975,12 +954,6 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
             if(fragmentList.get(fragmentList.size()-1).getTag() != null && fragment.getTag().compareTo(fragmentList.get(fragmentList.size()-1).getTag()) != 0)
                 fragmentList.add(fragment);
         }
-    }
-
-    @Override
-    public boolean onMenuItemClick(MenuItem item) {
-        Logout.e("Galepress", "OnPopUpMenuItem Clicked:" + item.getTitle().toString());
-        return true;
     }
 
     @Override

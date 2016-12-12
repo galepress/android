@@ -193,7 +193,6 @@ public class GalePressApplication
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.e("oncreate", "galepressApplication");
 
         Fabric.with(this, new Crashlytics());
 

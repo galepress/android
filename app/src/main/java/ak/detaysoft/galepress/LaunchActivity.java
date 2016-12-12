@@ -30,16 +30,12 @@ import org.xwalk.core.XWalkInitializer;
  * @see SystemUiHider
  */
 public class LaunchActivity extends Activity implements  XWalkInitializer.XWalkInitListener {
-    private SystemUiHider mSystemUiHider;
-    boolean running;
     ProgressWheel pw_two;
-    int progress = 0;
     public L_Content masterContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.e("oncreate", "launch");
 
         XWalkInitializer mXWalkInitializer = new XWalkInitializer(this, this);
         mXWalkInitializer.initAsync();

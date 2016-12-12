@@ -2505,19 +2505,17 @@ public class DataApi extends Object {
 
         Uri.Builder uriBuilder = getFullTextSearchWebServiceUrlBuilder();
         uriBuilder.appendQueryParameter("query", text);
-        uriBuilder.appendQueryParameter("applicationID", "146");
 
-        /*try{
-            JSONObject base = new JSONObject();
-            JSONArray array = new JSONArray();
-            for(int i = 0; i < 10; i++) {
-                array.put(100+i);
+        JSONArray array = new JSONArray();
+        try{
+            List<L_CustomerApplication> applications = getDatabaseApi().getAllCustomerApplications();
+            for(L_CustomerApplication app : applications) {
+                array.put(Integer.valueOf(app.getId()).intValue());
             }
-            base.put("applicationIds", array);
-            Log.e("asdasdasd", ""+base.toString());
         } catch (Exception e) {
-
-        }*/
+            array = new JSONArray();
+        }
+        uriBuilder.appendQueryParameter("applicationIDs", array.toString());
 
         request = new JsonObjectRequest(Request.Method.POST, uriBuilder.build().toString(), null,
                 new Response.Listener<JSONObject>() {

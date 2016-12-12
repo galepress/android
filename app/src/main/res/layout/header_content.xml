@@ -54,7 +54,6 @@
                 android:layout_width="match_parent"
                 android:textColor="#ffffff"
                 android:textSize="11dp"
-                android:gravity="left|center_vertical"
                 android:scrollbars="vertical"
                 android:layout_marginTop="@dimen/library_header_cell_padding"/>
 

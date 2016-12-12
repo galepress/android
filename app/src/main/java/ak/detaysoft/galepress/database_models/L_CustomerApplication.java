@@ -11,7 +11,9 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = "Customer_Application")
 public class L_CustomerApplication {
 
-    @DatabaseField (id = true, columnName = "id") private String id;
+    @DatabaseField (id = true, columnName = "id")
+    private String id;
+
     @DatabaseField
     private String appName;
 

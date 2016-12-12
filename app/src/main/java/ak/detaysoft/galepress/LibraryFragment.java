@@ -90,7 +90,6 @@ public class LibraryFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        Log.e("oncreate", "libraryfragment");
         if (((MainActivity) this.getActivity()).content_id != null) {
             viewContent(GalePressApplication.getInstance().getDatabaseApi().getContent(((MainActivity) this.getActivity()).content_id));
             ((MainActivity) this.getActivity()).content_id = null;

@@ -76,7 +76,6 @@ public class ApplicationFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.e("oncreate", "applicationFragment");
     }
 
     @Override
