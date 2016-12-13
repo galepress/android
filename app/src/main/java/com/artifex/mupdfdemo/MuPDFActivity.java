@@ -15,6 +15,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Rect;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.location.Location;
@@ -62,9 +63,7 @@ import android.widget.Toast;
 import android.widget.ViewAnimator;
 
 import com.artifex.mupdfdemo.ReaderView.ViewMapper;
-
-import net.simonvt.menudrawer.ColorDrawable;
-import net.simonvt.menudrawer.MenuDrawer;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -149,7 +148,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
     public L_Content content;
     public Bundle savedInstanceState;
     private boolean isActivityActive = false;
-    private MenuDrawer mDrawer;
+    private SlidingMenu menu;
 
     //private ThumnailHorizontalLayout mPreview;
     private ThumbnailHorizontalListView mPreview;
@@ -790,10 +789,10 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         if (core.hasOutline()) {
             mOutlineButton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    if (mDrawer.isMenuVisible())
-                        mDrawer.closeMenu(true);
+                    if (menu.isMenuShowing())
+                        menu.showContent(true);
                     else
-                        mDrawer.openMenu(true);
+                        menu.showMenu(true);
                 }
             });
         } else {
@@ -829,25 +828,35 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         if (savedInstanceState != null && savedInstanceState.getBoolean("ReflowMode", false))
             reflowModeSet(true);
 
+        // Stick the document view and the buttons overlay into a parent view
+        RelativeLayout layout = new RelativeLayout(this);
+        layout.addView(mDocView);
+        layout.addView(mButtonsView);
+        setContentView(layout);
 
         if (core.hasOutline()) {
-            mDrawer = MenuDrawer.attach(this, MenuDrawer.MENU_DRAG_WINDOW);
-            RelativeLayout layout = new RelativeLayout(this);
-            layout.addView(mDocView);
-            layout.addView(mButtonsView);
-
-            mDrawer.setContentView(layout);
-            mDrawer.setMenuView(R.layout.reader_left_layout);
-            mDrawer.setDropShadowColor(Color.LTGRAY);
-            mDrawer.setDropShadowSize(2);
-            mDrawer.setMenuSize((int) getResources().getDimension(R.dimen.reader_left_menu_size));
-
+            menu = new SlidingMenu(this);
+            menu.setMode(SlidingMenu.LEFT);
+            menu.setVisibility(View.VISIBLE);
+            menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
+            menu.setFadeDegree(0.35f);
+            menu.setBehindWidth((int) getResources().getDimension(R.dimen.left_menu_size));
+            menu.attachToActivity(this, SlidingMenu.SLIDING_WINDOW);
+            menu.setMenu(R.layout.reader_left_layout);
+            menu.setOnClosedListener(new SlidingMenu.OnClosedListener() {
+                @Override
+                public void onClosed() {
+                    if (readerSearchWord != null && readerSearchWord.length() == 0) {
+                        searchModeOff();
+                    }
+                }
+            });
             ListView leftList = (ListView) findViewById(R.id.reader_left_menu_listView);
             leftList.setBackgroundColor(ApplicationThemeColor.getInstance().getForegroundColor());
             leftList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    mDrawer.closeMenu();
+                    menu.showContent(true);
                     int resultCode = core.getOutline()[position].page;
                     if (core.getDisplayPages() == 2) {
                         resultCode = (core.getOutline()[position].page + 1) / 2;
@@ -859,11 +868,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             leftList.setAdapter(new OutlineAdapter(this, getLayoutInflater(), core.getOutline()));
 
         } else {
-            // Stick the document view and the buttons overlay into a parent view
-            RelativeLayout layout = new RelativeLayout(this);
-            layout.addView(mDocView);
-            layout.addView(mButtonsView);
-            setContentView(layout);
+
         }
 
         if (savedInstanceState == null && getIntent().hasExtra("searchPage") && getIntent().getIntExtra("searchPage", -1) != -1) {

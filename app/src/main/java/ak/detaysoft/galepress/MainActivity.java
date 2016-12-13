@@ -12,6 +12,7 @@ import android.content.IntentFilter;
 import android.content.IntentSender;
 import android.content.pm.ActivityInfo;
 import android.content.res.ColorStateList;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -26,12 +27,10 @@ import android.os.Handler;
 import android.os.RemoteException;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
@@ -44,13 +43,11 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -69,8 +66,7 @@ import com.artifex.mupdfdemo.MuPDFActivity;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 import com.google.android.gcm.GCMRegistrar;
-
-import net.simonvt.menudrawer.MenuDrawer;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -106,7 +102,7 @@ import ak.detaysoft.galepress.web_views.ExtraWebViewActivity;
 /**
  * Created by adem on 31/03/14.
  */
-public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuItemClickListener {
+public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuItemClickListener {
 
     public static final int GENEL_CATEGORY_ID = 0;
     public static final int SHOW_ALL_CATEGORY_ID = -1;
@@ -120,36 +116,22 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     private ImageView menuButton;
     AsyncTask<Void, Void, Void> mRegisterTask;
     public Integer content_id = null;
-
-
-    private MenuDrawer mDrawer;
-
-    //Bağlantılar sekmesi
-    private LeftMenuSocialAdapter linksAdapter;
-    private ImageView linksListViewCloseIcon;
-    private RelativeLayout linksTitleLayout;
-    private ListView linksListView;
-
+    private SlidingMenu menu;
 
     //Kategori sekmesi
     private LeftMenuCategoryAdapter categoriesAdapter;
     private ListView categoriesListView;
     private List<L_Category> categoryListWithAll;
-    private RelativeLayout categoriesTitleLayout;
-    private ImageView categoriesListViewCloseIcon;
-
 
     //Üyelik sekmesi
     private LeftMenuMembershipAdapter membershipAdapter;
     private ListView membershipListView;
-    private RelativeLayout membershipTitleLayout;
-    private ImageView membershipListViewCloseIcon;
+
 
     private ImageView searchClear;
-
     private LinearLayout leftMenuBaseLayout;
+    private LinearLayout rightMenuBaseLayout;
     private Button logoutButton;
-
     private ImageButton geriButton;
     private ImageButton ileriButton;
     private ImageButton refreshButton;
@@ -182,9 +164,9 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
 
     public void onCreate(Bundle savedInstanceState) {
-        getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
         super.onCreate(savedInstanceState);
 
+        setContentView(R.layout.activity_main);
         Intent intent = getIntent();
         if (intent.hasExtra("content_id")) {
             this.content_id = Integer.valueOf(intent.getStringExtra("content_id"));
@@ -198,52 +180,22 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             Log.e("ConnectivityManager", e.toString());
         }
 
-
-        getSupportActionBar().setDisplayUseLogoEnabled(false);
-        getSupportActionBar().setDisplayShowHomeEnabled(false);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
         if (getResources().getBoolean(R.bool.portrait_only)) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
 
-        mDrawer = MenuDrawer.attach(this, MenuDrawer.MENU_DRAG_WINDOW);
-        mDrawer.setContentView(R.layout.activity_main);
-        mDrawer.setMenuView(R.layout.left_menu);
-        mDrawer.setDropShadowColor(ApplicationThemeColor.getInstance().getMenuShadowColor());
-        mDrawer.setDropShadowSize(2);
-        mDrawer.setMenuSize((int) getResources().getDimension(R.dimen.left_menu_size));
-        mDrawer.setOnDrawerStateChangeListener(new MenuDrawer.OnDrawerStateChangeListener() {
-            @Override
-            public void onDrawerStateChange(int oldState, int newState) {
-                hideKeyboard(searchEdittext);
-            }
-        });
+        menu = new SlidingMenu(this);
+        menu.setMode(SlidingMenu.LEFT_RIGHT);
+        menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
+        menu.setTouchmodeMarginThreshold(50);
+        menu.setFadeDegree(0.35f);
+        menu.setBehindWidth((int) getResources().getDimension(R.dimen.left_menu_size));
+        menu.attachToActivity(this, SlidingMenu.SLIDING_WINDOW);
+        menu.setMenu(R.layout.left_menu);
+        menu.setSecondaryMenu(R.layout.right_menu);
 
         leftMenuBaseLayout = (LinearLayout) findViewById(R.id.left_menu_layout);
-        categoriesTitleLayout = (RelativeLayout) findViewById(R.id.left_categories_layout);
-        categoriesTitleLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                hideKeyboard(searchEdittext);
-                if (categoriesListView.getVisibility() == View.VISIBLE) {
-                    categoriesListView.setVisibility(View.GONE);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                        categoriesListViewCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
-                    else
-                        categoriesListViewCloseIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
-
-                } else {
-                    categoriesListView.setVisibility(View.VISIBLE);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                        categoriesListViewCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_UP));
-                    else
-                        categoriesListViewCloseIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_UP));
-                }
-
-            }
-        });
+        rightMenuBaseLayout = (LinearLayout) findViewById(R.id.right_menu_layout);
 
         categoryListWithAll = GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent();
         categoryListWithAll.add(0, new L_Category(-1, getString(R.string.show_all)));
@@ -287,89 +239,10 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 categoriesAdapter.notifyDataSetChanged();
             }
         });
-        categoriesListViewCloseIcon = (ImageView) findViewById(R.id.left_menu_categories_close);
 
         categoriesAdapter = new LeftMenuCategoryAdapter(this, categoryListWithAll);
         categoriesListView.setAdapter(categoriesAdapter);
 
-        linksListView = (ListView) findViewById(R.id.left_menu_social_list);
-        linksTitleLayout = (RelativeLayout) findViewById(R.id.left_social_layout);
-        linksTitleLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                hideKeyboard(searchEdittext);
-                if (linksListView.getVisibility() == View.VISIBLE) {
-                    linksListView.setVisibility(View.GONE);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                        linksListViewCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
-                    else
-                        linksListViewCloseIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
-                } else {
-                    linksListView.setVisibility(View.VISIBLE);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                        linksListViewCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_UP));
-                    else
-                        linksListViewCloseIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_UP));
-                }
-            }
-        });
-
-        linksListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                mDrawer.closeMenu(true);
-                ApplicationPlist item = GalePressApplication.getInstance().getApplicationPlist().get(position);
-
-                if (item.getKey().toString().toLowerCase().contains("mail")) {
-                    Intent intent = new Intent(Intent.ACTION_SEND);
-                    intent.setType("message/rfc822");
-                    //intent.setType("text/html");
-                    intent.putExtra(Intent.EXTRA_EMAIL, new String[]{item.getValue().toString()});
-                    intent.putExtra(Intent.EXTRA_SUBJECT, " ");
-                    intent.putExtra(Intent.EXTRA_TEXT, " ");
-                    try {
-                        startActivity(Intent.createChooser(intent, "Send mail..."));
-                    } catch (android.content.ActivityNotFoundException ex) {
-                        Toast.makeText(MainActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Intent intent = new Intent(MainActivity.this, ExtraWebViewActivity.class);
-                    intent.putExtra("url", item.getValue().toString());
-                    intent.putExtra("isMainActivitIntent", true);
-                    startActivity(intent);
-                    overridePendingTransition(R.animator.left_to_right_translate, 0);
-                }
-
-            }
-        });
-
-        linksListViewCloseIcon = (ImageView) findViewById(R.id.left_menu_social_close);
-        linksAdapter = new LeftMenuSocialAdapter(this, GalePressApplication.getInstance().getApplicationPlist());
-        linksListView.setAdapter(linksAdapter);
-
-
-        membershipTitleLayout = (RelativeLayout) findViewById(R.id.left_membership_layout);
-        membershipTitleLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                hideKeyboard(searchEdittext);
-
-                if (membershipListView.getVisibility() == View.VISIBLE) {
-                    membershipListView.setVisibility(View.GONE);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                        membershipListViewCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
-                    else
-                        membershipListViewCloseIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
-
-                } else {
-                    membershipListView.setVisibility(View.VISIBLE);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                        membershipListViewCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_UP));
-                    else
-                        membershipListViewCloseIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_UP));
-                }
-            }
-        });
         membershipListView = (ListView) findViewById(R.id.left_menu_membership_list);
         membershipListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -377,18 +250,9 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 selectMembershipListItem(position);
             }
         });
-        membershipListViewCloseIcon = (ImageView) findViewById(R.id.left_menu_membership_close);
 
         membershipAdapter = new LeftMenuMembershipAdapter(this);
         membershipListView.setAdapter(membershipAdapter);
-
-        View customView = getLayoutInflater().inflate(R.layout.actionbar, null);
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(customView);
-        Toolbar parent =(Toolbar) customView.getParent();
-        parent.setPadding(0,0,0,0);//for tab otherwise give space in tab
-        parent.setContentInsetsAbsolute(0,0);
-        parent.setContentInsetsRelative(0,0);
 
         initDefaultTabs();
 
@@ -520,10 +384,10 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         ((LinearLayout) findViewById(R.id.menu_button_layout)).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                if (mDrawer.isMenuVisible())
-                    mDrawer.closeMenu(true);
+                if (menu.isMenuShowing())
+                    menu.showContent(true);
                 else {
-                    mDrawer.openMenu(true);
+                    menu.showMenu(true);
                 }
             }
         });
@@ -613,6 +477,14 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
 
     }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        menu.setBehindWidth((int) getResources().getDimension(R.dimen.left_menu_size));
+        if(menu.isSecondaryMenuShowing() ||menu.isMenuShowing()){
+            menu.showContent();
+        }
+    }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -631,21 +503,9 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     public void updateActivityViewAndAdapter(boolean isColorChanged) {
 
         leftMenuBaseLayout.setBackgroundColor(ApplicationThemeColor.getInstance().getForegroundColor());
+        rightMenuBaseLayout.setBackgroundColor(ApplicationThemeColor.getInstance().getForegroundColor());
 
         //Kategori sekmesi
-        categoriesTitleLayout.setBackgroundColor(Color.TRANSPARENT);
-        ((TextView) (findViewById(R.id.left_menu_category_text))).setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(this));
-        ((TextView) (findViewById(R.id.left_menu_category_text))).setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            categoriesListViewCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
-        else
-            categoriesListViewCloseIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            ((ImageView) findViewById(R.id.left_menu_category_icon)).setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_CATEGORY));
-        else
-            ((ImageView) findViewById(R.id.left_menu_category_icon)).setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_CATEGORY));
-
         categoryListWithAll = GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent();
         categoryListWithAll.add(0, new L_Category(-1, getString(R.string.show_all)));
 
@@ -653,82 +513,9 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         categoriesAdapter.notifyDataSetChanged();
         categoriesListView.invalidate();
 
-
-        //Bağlantılar sekmesi
-        linksAdapter.notifyDataSetChanged();
-        linksListView.invalidate();
-
-        if (!GalePressApplication.getInstance().isTestApplication()) {
-            ((RelativeLayout) findViewById(R.id.left_social_layout)).setBackgroundColor(Color.TRANSPARENT);
-            ((RelativeLayout) findViewById(R.id.left_membership_layout)).setBackgroundColor(Color.TRANSPARENT);
-        } else {
-            ((RelativeLayout) findViewById(R.id.left_social_layout)).setVisibility(View.GONE);
-            ((RelativeLayout) findViewById(R.id.left_membership_layout)).setVisibility(View.GONE);
-        }
-
-        ((TextView) (findViewById(R.id.left_menu_social_text))).setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(this));
-        ((TextView) (findViewById(R.id.left_menu_social_text))).setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            ((ImageView) findViewById(R.id.left_menu_link_icon)).setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_LINK));
-        else
-            ((ImageView) findViewById(R.id.left_menu_link_icon)).setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_LINK));
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            linksListViewCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
-        else
-            linksListViewCloseIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
-
-
         //Üyelik sekmesi
         membershipAdapter.notifyDataSetChanged();
         membershipListView.invalidate();
-        ((TextView) (findViewById(R.id.left_menu_membership_text))).setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(this));
-        ((TextView) (findViewById(R.id.left_menu_membership_text))).setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            ((ImageView) findViewById(R.id.left_menu_membership_icon)).setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_LINK));
-        else
-            ((ImageView) findViewById(R.id.left_menu_membership_icon)).setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_LINK));
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            membershipListViewCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_UP));
-        else
-            membershipListViewCloseIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_UP));
-
-        //Kategori ve baglantilar listviewlerin height hesaplamasi. Scroll engelleyebilmek icin
-        LayoutInflater mInflater = (LayoutInflater) getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-        View listItemView = mInflater.inflate(R.layout.left_menu_category_item, null);
-        listItemView.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
-
-        int listHeight = 0;
-        for (int i = 0; i < categoryListWithAll.size(); i++) {
-            listHeight += listItemView.getMeasuredHeight();
-        }
-        categoriesListView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listHeight));
-
-        if (!GalePressApplication.getInstance().isTestApplication()) {
-            listHeight = 0;
-            for (int i = 0; i < GalePressApplication.getInstance().getApplicationPlist().size(); i++) {
-                listHeight += listItemView.getMeasuredHeight();
-            }
-            linksListView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listHeight));
-        } else {
-            linksListView.setVisibility(View.GONE);
-        }
-
-
-        View membershipListItemView = mInflater.inflate(R.layout.left_menu_membership_item, null);
-        membershipListItemView.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
-        if (!GalePressApplication.getInstance().isTestApplication()) {
-            listHeight = 0;
-            for (int i = 0; i < GalePressApplication.getInstance().getMembershipMenuList().size(); i++) {
-                listHeight += membershipListItemView.getMeasuredHeight();
-            }
-            membershipListView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listHeight));
-        } else {
-            membershipListView.setVisibility(View.GONE);
-        }
 
         TextView title = (TextView) findViewById(R.id.action_bar_title_text_view);
         title.setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
@@ -848,25 +635,9 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
     }
 
     public void updateMemberListAdapter() {
-
         GalePressApplication.getInstance().prepareMemberShipList();
-
         membershipAdapter.notifyDataSetChanged();
         membershipListView.invalidate();
-
-        int listHeight = 0;
-        LayoutInflater mInflater = (LayoutInflater) getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-        View membershipListItemView = mInflater.inflate(R.layout.left_menu_membership_item, null);
-        membershipListItemView.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
-        if (!GalePressApplication.getInstance().isTestApplication()) {
-            listHeight = 0;
-            for (int i = 0; i < GalePressApplication.getInstance().getMembershipMenuList().size(); i++) {
-                listHeight += membershipListItemView.getMeasuredHeight();
-            }
-            membershipListView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listHeight));
-        } else {
-            membershipListView.setVisibility(View.GONE);
-        }
     }
 
     public void updateTabBars(boolean isColorChanged) {
@@ -1271,7 +1042,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             refreshButton.setVisibility(View.VISIBLE);
             menuButton.setVisibility(View.GONE);
             ((View) menuButton.getParent()).setVisibility(View.GONE);
-            mDrawer.setTouchMode(MenuDrawer.TOUCH_MODE_NONE);
+            menu.setSlidingEnabled(false);
             ((TextView) findViewById(R.id.action_bar_title_text_view)).setVisibility(View.GONE);
         } else {
             ileriButton.setVisibility(View.INVISIBLE);
@@ -1279,7 +1050,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
             refreshButton.setVisibility(View.INVISIBLE);
             menuButton.setVisibility(View.VISIBLE);
             ((View) menuButton.getParent()).setVisibility(View.VISIBLE);
-            mDrawer.setTouchMode(MenuDrawer.FOCUSABLES_TOUCH_MODE);
+            menu.setSlidingEnabled(true);
             ((TextView) findViewById(R.id.action_bar_title_text_view)).setVisibility(View.VISIBLE);
         }
 
@@ -1793,7 +1564,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
         LinearLayout baseView = (LinearLayout) findViewById(R.id.search_result_layout);
         if (GalePressApplication.getInstance().getMenuSearchResult() != null && GalePressApplication.getInstance().getMenuSearchResult().size() > 0) {
             baseView.setVisibility(View.VISIBLE);
-            findViewById(R.id.search_result_layout_divider).setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
             if(searchList.getAdapter() != null) {
                 ((SearchAdapter)searchList.getAdapter()).searchList = GalePressApplication.getInstance().getMenuSearchResult();
                 ((RecyclerView.Adapter)searchList.getAdapter()).notifyDataSetChanged();
@@ -1801,24 +1571,6 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                 SearchAdapter mAdapter = new SearchAdapter(GalePressApplication.getInstance().getMenuSearchResult());
                 searchList.setAdapter(mAdapter);
             }
-
-            LayoutInflater mInflater = (LayoutInflater) getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            View resultItem = mInflater.inflate(R.layout.search_result_item_menu, null);
-            resultItem.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
-            int listHeight;
-            /*
-            * Tablette 15 sonuc telefonda 10 sonuc gosteriyoruz
-            * */
-            int maxItemCount = 15;
-            if (getResources().getBoolean(R.bool.portrait_only)) {
-                maxItemCount = 10;
-            }
-            if(GalePressApplication.getInstance().getMenuSearchResult().size() > maxItemCount) {
-                listHeight = resultItem.getMeasuredHeight()*maxItemCount;
-            } else {
-                listHeight = resultItem.getMeasuredHeight()*GalePressApplication.getInstance().getMenuSearchResult().size();
-            }
-            searchList.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listHeight));
         } else {
             baseView.setVisibility(View.GONE);
             if(showNotFoundMessage)
@@ -1846,10 +1598,10 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                             if (content != null) {
                                 if (content.isPdfDownloaded()) {
                                     openContentReader(content, result.getPage() - 1, GalePressApplication.getInstance().getSearchQuery());
-                                    mDrawer.closeMenu(true);
+                                    menu.showContent(true);
                                 } else {
                                     openContentDetail(content, result.getPage() - 1, GalePressApplication.getInstance().getSearchQuery());
-                                    mDrawer.closeMenu(true);
+                                    menu.showContent(true);
                                 }
                             } else {
                                 Toast.makeText(MainActivity.this, MainActivity.this.getResources().getString(R.string.cannot_open_document), Toast.LENGTH_SHORT).show();
@@ -1858,7 +1610,7 @@ public class MainActivity extends ActionBarActivity implements PopupMenu.OnMenuI
                             L_Content content = GalePressApplication.getInstance().getDatabaseApi().getContent(Integer.valueOf(result.getContentId()));
                             if (content != null) {
                                 openContentDetail(content, -1, "");
-                                mDrawer.closeMenu(true);
+                                menu.showContent(true);
                             } else {
                                 Toast.makeText(MainActivity.this, MainActivity.this.getResources().getString(R.string.cannot_open_document), Toast.LENGTH_SHORT).show();
                             }

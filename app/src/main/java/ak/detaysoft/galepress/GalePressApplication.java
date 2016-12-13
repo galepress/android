@@ -862,8 +862,7 @@ public class GalePressApplication
                     userInformation.setAccessToken(recoveryToken);
                     e.printStackTrace();
                 }
-                if (!isUserHaveActiveSubscription() && applicationHaveActiveSubscription)
-                    membershipMenuList.add(LeftMenuMembershipAdapter.SUBSCRIPTION);
+                membershipMenuList.add(LeftMenuMembershipAdapter.SUBSCRIPTION);
 
                 membershipMenuList.add(LeftMenuMembershipAdapter.RESTORE);
                 membershipMenuList.add(LeftMenuMembershipAdapter.LOGOUT);

@@ -1,3 +1,2 @@
-include ':app'
-include ':menuDrawer'
+include ':app', ':sliding_library'
 include ':xwalk_core_library_15'

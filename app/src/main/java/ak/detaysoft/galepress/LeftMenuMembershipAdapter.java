@@ -52,7 +52,7 @@ public class LeftMenuMembershipAdapter extends BaseAdapter{
         if (convertView == null) {
             LayoutInflater mInflater = (LayoutInflater)
                     mContext.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            convertView = mInflater.inflate(R.layout.left_menu_membership_item, null);
+            convertView = mInflater.inflate(R.layout.left_menu_membership_item, parent, false);
         }
 
         TextView txtTitle = (TextView) convertView.findViewById(R.id.membership_txt);
