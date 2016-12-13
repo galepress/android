@@ -2523,15 +2523,12 @@ public class DataApi extends Object {
         } catch (Exception e) {
             array = new JSONArray();
         }
-        uriBuilder.appendQueryParameter("applicationID", array.toString());
+        uriBuilder.appendQueryParameter("applicationIds", array.toString());
 
         request = new JsonObjectRequest(Request.Method.POST, uriBuilder.build().toString(), null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        /*if(mainActivity.searchDialog.isShowing()) {
-
-                        }*/
                         try {
                             if (response != null && response.getInt("status") == 1) {
                                 GalePressApplication.getInstance().setMenuSearchResult(new ArrayList<MenuSearchResult>());
@@ -2551,7 +2548,7 @@ public class DataApi extends Object {
 
                                                     MenuSearchResult temp = new MenuSearchResult();
                                                     temp.setContentId(jsonObjectItem.getString("contentId"));
-                                                    temp.setApplicationId("146");
+                                                    temp.setApplicationId(jsonObjectItem.getString("applicationId"));
                                                     temp.setContentTitle(jsonObjectItem.getString("contentId"));
                                                     temp.setPage(jsonObjectItem.getInt("page"));
                                                     temp.setText(jsonObjectItem.getString("highlightedText"));
