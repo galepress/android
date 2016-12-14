@@ -17,7 +17,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4591bc09-e445-44c4-a89c-14ca9bceb4e8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/right_menu.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/google_plus.png" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/answers_1_3_6.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_21_0_3.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/beta_1_1_4.xml" afterPath="" />
@@ -35,124 +35,10 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_4_0_30.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/recyclerview_v7_21_0_3.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_21_0_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_13_0_0.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_21_0_3.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/universal_image_loader_1_9_3.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/xwalk_core_library_java.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build.gradle" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/generated/source/buildConfig/androidTest/debug/net/simonvt/menudrawer/test/BuildConfig.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/generated/source/buildConfig/debug/net/simonvt/menudrawer/BuildConfig.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/generated/source/buildConfig/release/net/simonvt/menudrawer/BuildConfig.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/generated/source/r/androidTest/debug/net/simonvt/menudrawer/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/generated/source/r/androidTest/debug/net/simonvt/menudrawer/test/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/generated/source/r/debug/net/simonvt/menudrawer/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/generated/source/r/release/net/simonvt/menudrawer/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/blame/res/androidTest/debug/multi/values.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/bundles/debug/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/bundles/debug/R.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/bundles/debug/res/values/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/bundles/release/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/bundles/release/R.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/bundles/release/classes.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/bundles/release/res/values/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/BottomDrawer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/BottomStaticDrawer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/BuildConfig.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/BuildLayerFrameLayout$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/BuildLayerFrameLayout$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/BuildLayerFrameLayout.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/ColorDrawable$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/ColorDrawable$ColorState.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/ColorDrawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/DraggableDrawer$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/DraggableDrawer$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/DraggableDrawer$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/DraggableDrawer$4.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/DraggableDrawer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/FloatScroller.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/HorizontalDrawer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/LeftDrawer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/LeftStaticDrawer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer$OnDrawerStateChangeListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer$OnInterceptMoveEventListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer$SavedState$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer$SavedState.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/MenuDrawer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/NoClickThroughFrameLayout.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/PeekInterpolator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/Position.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/RightDrawer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/RightStaticDrawer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/Scroller.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/SinusoidalInterpolator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/SmoothInterpolator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/StaticDrawer$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/StaticDrawer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/TopDrawer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/TopStaticDrawer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/classes/release/net/simonvt/menudrawer/VerticalDrawer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental-safeguard/release/tag.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/compileDebugAidl/dependency.store" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/compileDebugAndroidTestAidl/dependency.store" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/compileReleaseAidl/dependency.store" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/mergeDebugAssets/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/mergeDebugShaders/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/mergeReleaseAssets/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/mergeReleaseJniLibFolders/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/mergeReleaseShaders/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/packageDebugResources/merged.dir/values/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/packageDebugResources/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/packageReleaseResources/merged.dir/values/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/packageReleaseResources/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/manifest/androidTest/debug/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/manifests/aapt/debug/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/manifests/aapt/release/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/res/merged/androidTest/debug/values/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/res/resources-debug-androidTest.ap_" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/symbols/androidTest/debug/R.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/outputs/aar/menuDrawer-debug.aar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/outputs/aar/menuDrawer-release.aar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/menuDrawer.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/src/main/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/src/main/java/net/simonvt/menudrawer/BottomDrawer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/src/main/java/net/simonvt/menudrawer/BottomStaticDrawer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/src/main/java/net/simonvt/menudrawer/BuildLayerFrameLayout.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/src/main/java/net/simonvt/menudrawer/ColorDrawable.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/src/main/java/net/simonvt/menudrawer/DraggableDrawer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/src/main/java/net/simonvt/menudrawer/FloatScroller.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/src/main/java/net/simonvt/menudrawer/HorizontalDrawer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/src/main/java/net/simonvt/menudrawer/LeftDrawer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/src/main/java/net/simonvt/menudrawer/LeftStaticDrawer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/src/main/java/net/simonvt/menudrawer/MenuDrawer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/src/main/java/net/simonvt/menudrawer/NoClickThroughFrameLayout.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/src/main/java/net/simonvt/menudrawer/PeekInterpolator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/src/main/java/net/simonvt/menudrawer/Position.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/src/main/java/net/simonvt/menudrawer/RightDrawer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/src/main/java/net/simonvt/menudrawer/RightStaticDrawer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/src/main/java/net/simonvt/menudrawer/Scroller.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/src/main/java/net/simonvt/menudrawer/SinusoidalInterpolator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/src/main/java/net/simonvt/menudrawer/SmoothInterpolator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/src/main/java/net/simonvt/menudrawer/StaticDrawer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/src/main/java/net/simonvt/menudrawer/TopDrawer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/src/main/java/net/simonvt/menudrawer/TopStaticDrawer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/src/main/java/net/simonvt/menudrawer/VerticalDrawer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/src/main/res/values/attrs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/src/main/res/values/colors.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/src/main/res/values/ids.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/src/main/res/values/styles.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" />
@@ -160,33 +46,70 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/resources-debug-androidTest.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/outputs/aar/xwalk_core_library_15-debug.aar" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/outputs/aar/xwalk_core_library_15-debug.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/outputs/aar/xwalk_core_library_15-release.aar" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/outputs/aar/xwalk_core_library_15-release.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_sliding_library_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_sliding_library_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_sliding_library_compileReleaseJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_sliding_library_compileReleaseJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/facebook.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/facebook.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/google_plus.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/google_plus.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/instagram.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/instagram.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/linkedin.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/linkedin.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/mail.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/mail.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/membership_login.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/membership_login.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/membership_logout.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/membership_logout.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/membership_restore.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/membership_restore.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/pinterest.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/pinterest.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/tumblr.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/tumblr.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/twitter.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/twitter.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/web.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/web.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/youtube.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/youtube.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/res/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/res/resources-debug-androidTest.ap_" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/outputs/aar/sliding_library-debug.aar" afterPath="$PROJECT_DIR$/sliding_library/build/outputs/aar/sliding_library-debug.aar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/outputs/aar/sliding_library-release.aar" afterPath="$PROJECT_DIR$/sliding_library/build/outputs/aar/sliding_library-release.aar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LaunchActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LaunchActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuCategoryAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuCategoryAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuMembershipAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuMembershipAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuSocialAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuSocialAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/ApplicationThemeColor.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/ApplicationThemeColor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/left_menu.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/left_menu.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/left_menu_category_item.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/left_menu_category_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/left_menu_membership_item.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/left_menu_membership_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/left_menu_social_item.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/left_menu_social_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values-large/dimens.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-large/dimens.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values-normal/dimens.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-normal/dimens.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values-xlarge/dimens.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-xlarge/dimens.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings.gradle" afterPath="$PROJECT_DIR$/settings.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable-hdpi-v4.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable-hdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable-xhdpi-v4.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable-xhdpi-v4.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/generated/source/buildConfig/androidTest/debug/com/jeremyfeinstein/slidingmenu/lib/test/BuildConfig.java" afterPath="$PROJECT_DIR$/sliding_library/build/generated/source/buildConfig/androidTest/debug/com/jeremyfeinstein/slidingmenu/lib/test/BuildConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/generated/source/buildConfig/debug/com/jeremyfeinstein/slidingmenu/lib/BuildConfig.java" afterPath="$PROJECT_DIR$/sliding_library/build/generated/source/buildConfig/debug/com/jeremyfeinstein/slidingmenu/lib/BuildConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/generated/source/buildConfig/release/com/jeremyfeinstein/slidingmenu/lib/BuildConfig.java" afterPath="$PROJECT_DIR$/sliding_library/build/generated/source/buildConfig/release/com/jeremyfeinstein/slidingmenu/lib/BuildConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/generated/source/r/androidTest/debug/com/jeremyfeinstein/slidingmenu/lib/R.java" afterPath="$PROJECT_DIR$/sliding_library/build/generated/source/r/androidTest/debug/com/jeremyfeinstein/slidingmenu/lib/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/blame/res/androidTest/debug/multi/values.json" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/blame/res/androidTest/debug/multi/values.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/blame/res/androidTest/debug/single/layout.json" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/blame/res/androidTest/debug/single/layout.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/bundles/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/bundles/debug/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/bundles/debug/res/values/values.xml" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/bundles/debug/res/values/values.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/bundles/release/AndroidManifest.xml" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/bundles/release/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/bundles/release/res/values/values.xml" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/bundles/release/res/values/values.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values/values.xml" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values/values.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/mergeDebugAssets/merger.xml" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/mergeDebugAssets/merger.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/mergeDebugShaders/merger.xml" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/mergeDebugShaders/merger.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/mergeReleaseAssets/merger.xml" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/mergeReleaseAssets/merger.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/mergeReleaseJniLibFolders/merger.xml" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/mergeReleaseJniLibFolders/merger.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/mergeReleaseShaders/merger.xml" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/mergeReleaseShaders/merger.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/packageDebugResources/merged.dir/values/values.xml" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/packageDebugResources/merged.dir/values/values.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/packageDebugResources/merger.xml" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/packageDebugResources/merger.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/packageReleaseResources/merged.dir/values/values.xml" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/packageReleaseResources/merged.dir/values/values.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/packageReleaseResources/merger.xml" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/packageReleaseResources/merger.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/manifest/androidTest/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/manifest/androidTest/debug/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/manifests/aapt/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/manifests/aapt/debug/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/manifests/aapt/release/AndroidManifest.xml" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/manifests/aapt/release/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/res/merged/androidTest/debug/values/values.xml" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/res/merged/androidTest/debug/values/values.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/xwalk_core_library_15.iml" afterPath="$PROJECT_DIR$/xwalk_core_library_15/xwalk_core_library_15.iml" />
     </list>
     <ignored path="GalepressMerge.iws" />
@@ -222,15 +145,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="right_menu.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/right_menu.xml">
+      <file leaf-file-name="left_menu.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/left_menu.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
+            <state relative-caret-position="270">
+              <caret line="95" column="49" selection-start-line="95" selection-start-column="49" selection-end-line="95" selection-end-column="49" />
               <folding>
-                <element signature="e#1131#1158#0" expanded="true" />
-                <element signature="e#2143#2159#0" expanded="true" />
-                <element signature="e#2365#2395#0" expanded="true" />
+                <element signature="e#186#209#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -239,29 +160,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="left_menu.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/left_menu.xml">
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="66" column="27" selection-start-line="66" selection-start-column="27" selection-end-line="66" selection-end-column="27" />
+      <file leaf-file-name="SocialListView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/SocialListView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding>
-                <element signature="e#715#1617#0" expanded="false" />
-                <element signature="e#2953#3293#0" expanded="false" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#285#286#0" expanded="true" />
+                <element signature="e#315#316#0" expanded="true" />
+                <element signature="e#381#382#0" expanded="true" />
+                <element signature="e#418#419#0" expanded="true" />
+                <element signature="e#591#592#0" expanded="true" />
+                <element signature="e#625#626#0" expanded="true" />
               </folding>
             </state>
-          </provider>
-          <provider selected="true" editor-type-id="android-designer2">
-            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="652" column="33" selection-start-line="652" selection-start-column="33" selection-end-line="652" selection-end-column="33" />
+            <state relative-caret-position="272">
+              <caret line="530" column="25" selection-start-line="530" selection-start-column="25" selection-end-line="530" selection-end-column="95" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#23355#23425#0" expanded="true" />
                 <element signature="class#SearchAdapter#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#openContentDetail#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#openContentReader#0;class#MainActivity#0" expanded="false" />
@@ -270,35 +194,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GalePressApplication.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java">
+      <file leaf-file-name="LeftMenuSocialAdapter.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuSocialAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="864" column="16" selection-start-line="864" selection-start-column="16" selection-end-line="864" selection-end-column="16" />
+            <state relative-caret-position="87">
+              <caret line="139" column="67" selection-start-line="139" selection-start-column="67" selection-end-line="139" selection-end-column="67" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LeftMenuMembershipAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuMembershipAdapter.java">
+      <file leaf-file-name="left_menu_social_item.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/left_menu_social_item.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="54" column="70" selection-start-line="54" selection-start-column="70" selection-end-line="54" selection-end-column="70" />
+            <state relative-caret-position="136">
+              <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
               <folding />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="left_menu_membership_item.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/left_menu_membership_item.xml">
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="android-designer2">
+          <provider editor-type-id="android-designer2">
             <state />
           </provider>
         </entry>
@@ -309,8 +223,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="resourceFile" />
-        <option value="ASClass" />
         <option value="layoutResourceFile_vertical" />
+        <option value="ASClass" />
       </list>
     </option>
   </component>
@@ -1804,622 +1718,6 @@
             </list>
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/menuDrawer">
-          <value>
-            <list>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="mergeDebugProguardFiles" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the sub-projects of project ':menuDrawer'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="projects" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="packageReleaseResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="validateSigningDebugAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="assembleReleaseUnitTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="prepareDebugDependencies" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles a bundle containing the library in debug." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="bundleDebug" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="copyDebugLint" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="processReleaseJavaRes" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="generateReleaseAssets" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs lint on the Debug build." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="lintDebug" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles a bundle containing the library in release." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="bundleRelease" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="assembleDebugUnitTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Creates a version of android.jar that's suitable for unit tests." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="mockableAndroidJar" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the configuration model of project ':menuDrawer'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="model" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the tasks runnable from project ':menuDrawer'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="tasks" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="compileDebugSources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="packageReleaseRenderscript" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="mergeReleaseProguardFiles" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="incrementalDebugJavaCompilationSafeguard" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs all device checks using Device Providers and Test Servers." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="deviceCheck" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays all dependencies declared in project ':menuDrawer'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="dependencies" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="processDebugResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs lint on all variants." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="lint" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="compileReleaseNdk" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="generateDebugResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="compileDebugJavaWithJavac" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project and all projects it depends on." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="buildNeeded" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="generateDebugAndroidTestBuildConfig" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="processDebugUnitTestJavaRes" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Run unit tests for the release build." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="testReleaseUnitTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="assembleDefault" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="compileDebugAndroidTestShaders" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="mergeDebugShaders" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="transformNative_libsWithMergeJniLibsForDebugAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="compileDebugAndroidTestJavaWithJavac" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the components produced by project ':menuDrawer'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="components" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="compileReleaseRenderscript" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="transformNative_libsWithSyncJniLibsForRelease" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles all Debug builds." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="assembleDebug" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="processDebugAndroidTestManifest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="compileDebugUnitTestJavaWithJavac" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="transformResourcesWithMergeJavaResForReleaseUnitTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="preDebugAndroidTestBuild" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="processDebugAndroidTestJavaRes" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="processReleaseUnitTestJavaRes" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="transformClassesAndResourcesWithSyncLibJarsForRelease" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="compileReleaseShaders" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="generateDebugAndroidTestSources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="prepareDebugAndroidTestDependencies" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="incrementalDebugAndroidTestJavaCompilationSafeguard" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="transformClassesAndResourcesWithSyncLibJarsForDebug" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="checkReleaseManifest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="packageDebugResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="compileDebugAndroidTestSources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="mergeReleaseJniLibFolders" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="prepareReleaseDependencies" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="processReleaseResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Installs and runs instrumentation tests using all Device Providers." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="deviceAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="mergeDebugAndroidTestAssets" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="processReleaseManifest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Uninstalls the android (on device) tests for the Debug build." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="uninstallDebugAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the insight into a specific dependency in project ':menuDrawer'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="dependencyInsight" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="generateReleaseSources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="incrementalReleaseUnitTestJavaCompilationSafeguard" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="preReleaseBuild" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles all variants of all applications and secondary packages." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="assemble" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="incrementalDebugUnitTestJavaCompilationSafeguard" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="incrementalReleaseJavaCompilationSafeguard" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays a help message." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="help" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="compileReleaseUnitTestSources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Installs the android (on device) tests for the Debug build." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="installDebugAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="mergeDebugAssets" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs all device checks on currently connected devices." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="connectedCheck" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Installs and runs the tests for debug on connected devices." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="connectedDebugAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Uninstall all applications." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="uninstallAll" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles all the Test applications." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="assembleAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="processDebugAndroidTestResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="transformNative_libsWithMergeJniLibsForDebug" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="compileDebugAidl" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="preDebugUnitTestBuild" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="compileLint" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="generateDebugAndroidTestResValues" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="mergeReleaseShaders" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the Android dependencies of the project." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="androidDependencies" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="compileDebugAndroidTestNdk" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="compileDebugUnitTestSources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="generateDebugSources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="mergeDebugAndroidTestJniLibFolders" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="extractProguardFiles" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="transformClassesWithDexForDebugAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="assembleDebugAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="copyReleaseLint" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="processDebugJavaRes" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="generateDebugAndroidTestAssets" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="compileReleaseJavaWithJavac" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="transformResourcesWithMergeJavaResForDebugAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="prepareReleaseUnitTestDependencies" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Run unit tests for all variants." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="test" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="compileDebugNdk" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="transformNative_libsWithMergeJniLibsForRelease" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="mergeDebugAndroidTestResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="preReleaseUnitTestBuild" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="generateDebugResValues" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs all checks." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="check" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Run unit tests for the debug build." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="testDebugUnitTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Installs and runs instrumentation tests for all flavors on connected devices." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="connectedAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="preBuild" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="transformResourcesWithMergeJavaResForRelease" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="compileReleaseSources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="compileReleaseUnitTestJavaWithJavac" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="compileDebugShaders" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="transformResourcesWithMergeJavaResForDebug" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="compileReleaseAidl" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs lint on the Release build." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="lintRelease" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project and all projects that depend on it." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="buildDependents" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="generateDebugAssets" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays all buildscript dependencies declared in project ':menuDrawer'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="buildEnvironment" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="checkDebugManifest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="mergeDebugJniLibFolders" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Prints out all the source sets defined in this project." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="sourceSets" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="transformResourcesWithMergeJavaResForDebugUnitTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="mergeReleaseAssets" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="compileDebugRenderscript" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="packageDebugRenderscript" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="generateReleaseBuildConfig" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="prepareDebugUnitTestDependencies" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="generateReleaseResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the signing info for each variant." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="signingReport" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="compileDebugAndroidTestAidl" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="mergeDebugAndroidTestShaders" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Deletes the build directory." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="clean" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="preDebugBuild" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="transformNative_libsWithSyncJniLibsForDebug" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="generateDebugBuildConfig" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="build" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles all Release builds." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="assembleRelease" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="compileDebugAndroidTestRenderscript" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="generateDebugAndroidTestResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="processDebugManifest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="packageDebugAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="generateReleaseResValues" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the properties of project ':menuDrawer'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/menuDrawer" />
-                <option name="name" value="properties" />
-              </ExternalTaskPojo>
-            </list>
-          </value>
-        </entry>
         <entry key="$PROJECT_DIR$/sliding_library">
           <value>
             <list>
@@ -3656,7 +2954,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="D:\GalepressMerge" value="7378481684409" />
+        <entry key="D:\GalepressMerge" value="7378548598172" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -4263,16 +3561,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/ReaderView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/buttons.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values-large-land/dimens.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/reader_search_listview_item.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuSocialAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/search_models/FullTextSearchPageItem.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/search_models/TextSearchResult.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/search_result_page.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/search_result_content.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/search_models/TempResult.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/search_result_temp.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_verification_login.xml" />
@@ -4298,22 +3586,32 @@
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PageView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/ThumbnailListAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/ApplicationThemeColor.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/raw/application.plist" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LaunchActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
         <option value="$PROJECT_DIR$/sliding_library/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/right_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/right_menu.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/left_menu.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuMembershipAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/left_menu_category_item.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values-large/dimens.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values-normal/dimens.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values-xlarge/dimens.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/left_menu_membership_item.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/SocialListView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuCategoryAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/CustomSocialLayoutManager.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/ApplicationThemeColor.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/left_menu.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/left_menu_social_item.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuSocialAdapter.java" />
       </list>
     </option>
   </component>
@@ -4329,6 +3627,39 @@
         <expanded-state>
           <State>
             <id />
+          </State>
+          <State>
+            <id>Android &gt; Lint &gt; Correctness</id>
+          </State>
+          <State>
+            <id>Android &gt; Lint &gt; Performance</id>
+          </State>
+          <State>
+            <id>Data flow issuesJava</id>
+          </State>
+          <State>
+            <id>Groovy</id>
+          </State>
+          <State>
+            <id>Initialization issuesJava</id>
+          </State>
+          <State>
+            <id>J2ME issuesJava</id>
+          </State>
+          <State>
+            <id>Java</id>
+          </State>
+          <State>
+            <id>Memory issuesJava</id>
+          </State>
+          <State>
+            <id>Performance issuesJava</id>
+          </State>
+          <State>
+            <id>Threading issuesGroovy</id>
+          </State>
+          <State>
+            <id>Threading issuesJava</id>
           </State>
         </expanded-state>
         <selected-state>
@@ -4364,6 +3695,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView">
+        <subPane />
+      </pane>
       <pane id="Scope">
         <subPane subId="Problems" />
         <subPane subId="Project Files">
@@ -4374,6 +3708,9 @@
             </PATH_ELEMENT>
           </PATH>
         </subPane>
+      </pane>
+      <pane id="Scratches">
+        <subPane />
       </pane>
       <pane id="PackagesPane">
         <subPane />
@@ -4480,6 +3817,36 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="drawable" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GalepressMerge" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GalepressMerge" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -4516,12 +3883,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="AndroidView">
-        <subPane />
-      </pane>
-      <pane id="Scratches">
-        <subPane />
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -4539,19 +3900,20 @@
     <property name="UI_DESIGNER_EDITOR_MODE.NlPropertiesWindowManager.STATE" value="left" />
     <property name="UI_DESIGNER_EDITOR_MODE.NlPropertiesWindowManager-NlEditorPanel.WIDTH" value="301" />
     <property name="UI_DESIGNER_EDITOR_MODE.NlPropertiesWindowManager-NlEditorPanel.SHOW" value="true" />
-    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="com.android.hv.first.comp.width" value="308" />
-    <property name="com.android.hv.last.comp.width" value="20" />
+    <property name="com.android.hv.first.comp.width" value="0" />
+    <property name="com.android.hv.last.comp.width" value="0" />
     <property name="android.project.structure.last.selected" value="menuDrawer" />
     <property name="android.project.structure.proportion" value="0.15" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\GalepressMerge\app\src\main\res\drawable-xxhdpi" />
+      <recent name="D:\GalepressMerge\app\src\main\res\drawable-xhdpi" />
+      <recent name="D:\GalepressMerge\app\src\main\res\drawable-hdpi" />
       <recent name="D:\GalepressMerge\app\src\main\res\drawable" />
-      <recent name="D:\GalepressMerge\app\src\main\res\layout-large-land" />
-      <recent name="D:\GalepressMerge\app\src\main\res\layout-large" />
-      <recent name="D:\GalepressMerge\app\src\main\assets\fonts" />
+      <recent name="D:\GalepressMerge\app\src\main\res\drawable-ldpi" />
     </key>
   </component>
   <component name="RunManager" selected="Android App.app">
@@ -4881,12 +4243,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26066098" sideWeight="0.506135" order="3" side_tool="false" content_ui="tabs" x="707" y="139" width="506" height="728" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3839384" sideWeight="0.5906183" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3839384" sideWeight="0.40938166" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2640264" sideWeight="0.5986141" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2640264" sideWeight="0.40138593" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -4894,7 +4256,7 @@
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28272828" sideWeight="0.61886996" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.48081023" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.47654584" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -4905,7 +4267,7 @@
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19722815" sideWeight="0.49386504" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2948295" sideWeight="0.32036248" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2948295" sideWeight="0.31556502" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
@@ -4936,7 +4298,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/SearchTask.java</url>
-          <line>132</line>
+          <line>136</line>
           <properties />
           <option name="timeStamp" value="54" />
         </line-breakpoint>
@@ -4960,140 +4322,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFCore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="285" column="17" selection-start-line="285" selection-start-column="17" selection-end-line="285" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ViewerLoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="326" column="41" selection-start-line="326" selection-start-column="41" selection-end-line="326" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Kisisel/Kagithane UI/repo/Android/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="39" selection-start-line="0" selection-start-column="39" selection-end-line="0" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/CoverImageFixedAspectLayout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/LinkInfoExternal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="169" column="16" selection-start-line="169" selection-start-column="16" selection-end-line="169" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/BannerAndTabbarWebView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="86" column="40" selection-start-line="86" selection-start-column="40" selection-end-line="86" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/fabric.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/proguard-rules.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Kisisel/EncodeProject/app/src/main/java/com/gunes/encodeproject/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/ExtraWebViewActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="127" column="42" selection-start-line="127" selection-start-column="42" selection-end-line="127" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="762" column="33" selection-start-line="762" selection-start-column="33" selection-end-line="762" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/WebViewAnnotation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3859">
-          <caret line="246" column="0" selection-start-line="246" selection-start-column="0" selection-end-line="246" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10098">
-          <caret line="657" column="50" selection-start-line="657" selection-start-column="50" selection-end-line="657" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/WebViewAnnotationWithCrosswalk.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3196">
-          <caret line="212" column="30" selection-start-line="212" selection-start-column="30" selection-end-line="212" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/reader_search_popup.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="63" column="36" selection-start-line="63" selection-start-column="36" selection-end-line="63" selection-end-column="36" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/SearchRecyclerView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/home_fragment.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/library_layout.xml" />
-    <entry file="file://$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.11.21_08.50.li" />
     <entry file="file://$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.11.21_08.56.li" />
     <entry file="file://$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.11.21_08.56-1.li" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PageView.java">
@@ -5121,9 +4349,6 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1481549232597" expanded="true" signature="22843:23615" ph="..." />
-          </folding>
         </state>
       </provider>
       <provider selected="true" editor-type-id="android-designer2">
@@ -5140,23 +4365,15 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/ApplicationThemeColor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11084">
-          <caret line="689" column="77" selection-start-line="689" selection-start-column="77" selection-end-line="689" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-manifest">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/raw/application.plist">
@@ -5178,7 +4395,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="105" column="15" selection-start-line="2" selection-start-column="0" selection-end-line="105" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -5189,15 +4405,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="70" column="22" selection-start-line="70" selection-start-column="22" selection-end-line="70" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -5213,12 +4420,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
           <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <element signature="e#377#402#0" expanded="true" />
-            <element signature="e#3572#3590#0" expanded="true" />
-            <element signature="e#3624#3652#0" expanded="true" />
-            <element signature="e#5584#5609#0" expanded="true" />
-          </folding>
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -5233,65 +4434,92 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sliding_library/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="1" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/right_menu.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
-          <folding>
-            <element signature="e#1131#1158#0" expanded="true" />
-            <element signature="e#2143#2159#0" expanded="true" />
-            <element signature="e#2365#2395#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/sliding_library/build.gradle" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8694">
           <caret line="2457" column="30" selection-start-line="2457" selection-start-column="30" selection-end-line="2457" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12954">
+          <caret line="864" column="16" selection-start-line="864" selection-start-column="16" selection-end-line="864" selection-end-column="16" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#34930#35214#0" expanded="true" />
-            <element signature="e#35213#35214#0" expanded="true" />
-            <marker date="1481621456947" expanded="false" signature="39:108" ph="..." />
+            <element signature="imports" expanded="false" />
+            <element signature="e#12720#12721#0" expanded="false" />
+            <element signature="e#12760#12761#0" expanded="false" />
+            <element signature="e#12923#12924#0" expanded="false" />
+            <element signature="e#12982#12983#0" expanded="false" />
+            <element signature="e#13883#13891#0" expanded="false" />
+            <element signature="e#13963#13971#0" expanded="false" />
+            <element signature="e#14468#14469#0" expanded="false" />
+            <element signature="e#14500#14501#0" expanded="false" />
+            <element signature="e#19359#19360#0" expanded="false" />
+            <element signature="e#19400#19401#0" expanded="false" />
+            <element signature="e#19701#19702#0" expanded="false" />
+            <element signature="e#19747#19748#0" expanded="false" />
+            <element signature="e#20087#20088#0" expanded="false" />
+            <element signature="e#20132#20133#0" expanded="false" />
+            <element signature="e#20176#20177#0" expanded="false" />
+            <element signature="e#20214#20215#0" expanded="false" />
+            <element signature="e#22239#22240#0" expanded="false" />
+            <element signature="e#22274#22275#0" expanded="false" />
+            <element signature="e#22776#22777#0" expanded="false" />
+            <element signature="e#22830#22831#0" expanded="false" />
+            <element signature="e#22873#22874#0" expanded="false" />
+            <element signature="e#22927#22928#0" expanded="false" />
+            <element signature="e#22971#22972#0" expanded="false" />
+            <element signature="e#23009#23010#0" expanded="false" />
+            <element signature="e#23474#23475#0" expanded="false" />
+            <element signature="e#23509#23510#0" expanded="false" />
+            <element signature="e#23571#23572#0" expanded="false" />
+            <element signature="e#23619#23620#0" expanded="false" />
+            <element signature="e#25268#25280#0" expanded="false" />
+            <element signature="e#27997#27998#0" expanded="false" />
+            <element signature="e#28033#28034#0" expanded="false" />
+            <element signature="e#28328#28329#0" expanded="false" />
+            <element signature="e#28375#28376#0" expanded="false" />
+            <element signature="e#29011#29012#0" expanded="false" />
+            <element signature="e#29042#29043#0" expanded="false" />
+            <element signature="e#29092#29093#0" expanded="false" />
+            <element signature="e#29127#29128#0" expanded="false" />
+            <element signature="e#29161#29162#0" expanded="false" />
+            <element signature="e#29191#29192#0" expanded="false" />
+            <element signature="e#30267#30268#0" expanded="false" />
+            <element signature="e#30308#30309#0" expanded="false" />
+            <element signature="e#34037#34045#0" expanded="false" />
+            <element signature="e#34112#34120#0" expanded="false" />
+            <element signature="e#36633#36641#0" expanded="false" />
+            <element signature="e#39913#39914#0" expanded="false" />
+            <element signature="e#39965#39966#0" expanded="false" />
+            <element signature="e#40485#40493#0" expanded="false" />
+            <element signature="e#40560#40568#0" expanded="false" />
+            <element signature="e#43246#43254#0" expanded="false" />
+            <element signature="e#50037#50038#0" expanded="false" />
+            <element signature="e#50075#50076#0" expanded="false" />
+            <element signature="e#50258#50259#0" expanded="false" />
+            <element signature="e#50294#50295#0" expanded="false" />
+            <element signature="e#50483#50484#0" expanded="false" />
+            <element signature="e#50522#50523#0" expanded="false" />
+            <element signature="e#50978#50979#0" expanded="false" />
+            <element signature="e#51027#51028#0" expanded="false" />
+            <element signature="e#53167#53168#0" expanded="false" />
+            <element signature="e#53213#53214#0" expanded="false" />
+            <element signature="e#53251#53252#0" expanded="false" />
+            <element signature="e#53285#53286#0" expanded="false" />
+            <element signature="e#53339#53340#0" expanded="false" />
+            <element signature="e#53385#53386#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/left_menu_category_item.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="2451" column="24" selection-start-line="2451" selection-start-column="24" selection-end-line="2451" selection-end-column="24" />
         </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/left_menu.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="66" column="27" selection-start-line="66" selection-start-column="27" selection-end-line="66" selection-end-column="27" />
-          <folding>
-            <element signature="e#715#1617#0" expanded="false" />
-            <element signature="e#2953#3293#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sliding_library/src/com/jeremyfeinstein/slidingmenu/lib/CustomViewBehind.java">
@@ -5302,12 +4530,237 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.14_12.05.li">
+      <provider selected="true" editor-type-id="capture-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.14_12.10.li">
+      <provider selected="true" editor-type-id="capture-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/membership_logout.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuMembershipAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="652" column="33" selection-start-line="652" selection-start-column="33" selection-end-line="652" selection-end-column="33" />
+        <state relative-caret-position="329">
+          <caret line="78" column="86" selection-start-line="78" selection-start-column="86" selection-end-line="78" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-large/dimens.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="46" selection-start-line="4" selection-start-column="46" selection-end-line="4" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-normal/dimens.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="46" selection-start-line="3" selection-start-column="46" selection-end-line="3" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-xlarge/dimens.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="46" selection-start-line="3" selection-start-column="46" selection-end-line="3" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="16" column="46" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/right_menu.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="92" column="55" selection-start-line="92" selection-start-column="55" selection-end-line="92" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/left_menu_membership_item.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+          <folding>
+            <element signature="e#178#211#0" expanded="true" />
+            <element signature="e#725#753#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuCategoryAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="64" column="51" selection-start-line="64" selection-start-column="51" selection-end-line="64" selection-end-column="51" />
+          <folding>
+            <element signature="e#812#813#0" expanded="true" />
+            <element signature="e#851#852#0" expanded="true" />
+            <element signature="e#908#909#0" expanded="true" />
+            <element signature="e#954#955#0" expanded="true" />
+            <element signature="e#1011#1012#0" expanded="true" />
+            <element signature="e#1042#1043#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/custom_models/ApplicationPlist.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.14_14.08.li">
+      <provider selected="true" editor-type-id="capture-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/CustomSocialLayoutManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="38" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#387#388#0" expanded="true" />
+            <element signature="e#417#418#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.14_14.18.li">
+      <provider selected="true" editor-type-id="capture-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.14_14.20.li">
+      <provider selected="true" editor-type-id="capture-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/SocialListView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#285#286#0" expanded="true" />
+            <element signature="e#315#316#0" expanded="true" />
+            <element signature="e#381#382#0" expanded="true" />
+            <element signature="e#418#419#0" expanded="true" />
+            <element signature="e#591#592#0" expanded="true" />
+            <element signature="e#625#626#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/facebook.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/membership_login.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.14_14.36.li">
+      <provider selected="true" editor-type-id="capture-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/util/ApplicationThemeColor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-911">
+          <caret line="1188" column="16" selection-start-line="1188" selection-start-column="16" selection-end-line="1188" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.14_14.41.li">
+      <provider selected="true" editor-type-id="capture-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.14_14.43.li">
+      <provider selected="true" editor-type-id="capture-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.14_14.45.li">
+      <provider selected="true" editor-type-id="capture-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.14_14.49.li">
+      <provider selected="true" editor-type-id="capture-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/left_menu_category_item.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/left_menu.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="95" column="49" selection-start-line="95" selection-start-column="49" selection-end-line="95" selection-end-column="49" />
+          <folding>
+            <element signature="e#186#209#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/left_menu_social_item.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="530" column="25" selection-start-line="530" selection-start-column="25" selection-end-line="530" selection-end-column="95" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#23355#23425#0" expanded="true" />
             <element signature="class#SearchAdapter#0;class#MainActivity#0" expanded="false" />
             <element signature="method#openContentDetail#0;class#MainActivity#0" expanded="false" />
             <element signature="method#openContentReader#0;class#MainActivity#0" expanded="false" />
@@ -5315,55 +4768,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="864" column="16" selection-start-line="864" selection-start-column="16" selection-end-line="864" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuSocialAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-238">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        <state relative-caret-position="87">
+          <caret line="139" column="67" selection-start-line="139" selection-start-column="67" selection-end-line="139" selection-end-column="67" />
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuCategoryAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="48" column="71" selection-start-line="48" selection-start-column="71" selection-end-line="48" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="2451" column="24" selection-start-line="2451" selection-start-column="24" selection-end-line="2451" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LeftMenuMembershipAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="54" column="70" selection-start-line="54" selection-start-column="70" selection-end-line="54" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/left_menu_membership_item.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
   </component>

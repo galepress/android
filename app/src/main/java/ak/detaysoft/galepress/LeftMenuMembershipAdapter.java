@@ -88,7 +88,7 @@ public class LeftMenuMembershipAdapter extends BaseAdapter{
                 image.setBackgroundDrawable(ApplicationThemeColor.getInstance().getLeftMenuIconDrawable(mContext, ApplicationThemeColor.MEMBERSHIP_LOGOUT));
         }
         txtTitle.setTextColor(ApplicationThemeColor.getInstance().leftmenuListViewColorStateList());
-        txtTitle.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(mContext));
+        txtTitle.setTypeface(ApplicationThemeColor.getInstance().getRubikLight(mContext));
 
         return convertView;
     }

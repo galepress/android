@@ -117,6 +117,10 @@ public class ApplicationThemeColor {
     public static final int VERIFICATION_POPUP_CLOSE_BASE = 70;
     public static final int READER_SEARCH_OPEN = 71;
     public static final int READER_SEARCH_CLEAR = 72;
+    public static final int BEHANCE_ICON = 73;
+    public static final int FLICKER_ICON = 73;
+    public static final int FOURSQUARE_ICON = 73;
+    public static final int SWARM_ICON = 73;
 
     public ApplicationThemeColor(){
 
@@ -1203,6 +1207,26 @@ public class ApplicationThemeColor {
             normal = context.getResources().getDrawable(R.drawable.mail);
             pressed = context.getResources().getDrawable(R.drawable.mail);
 
+        } else if(resourceType == BEHANCE_ICON){
+
+            normal = context.getResources().getDrawable(R.drawable.behance);
+            pressed = context.getResources().getDrawable(R.drawable.behance);
+
+        }  else if(resourceType == FLICKER_ICON){
+
+            normal = context.getResources().getDrawable(R.drawable.flickr);
+            pressed = context.getResources().getDrawable(R.drawable.flickr);
+
+        }  else if(resourceType == SWARM_ICON){
+
+            normal = context.getResources().getDrawable(R.drawable.swarm);
+            pressed = context.getResources().getDrawable(R.drawable.swarm);
+
+        }  else if(resourceType == FOURSQUARE_ICON){
+
+            normal = context.getResources().getDrawable(R.drawable.foursquare);
+            pressed = context.getResources().getDrawable(R.drawable.foursquare);
+
         } else if(resourceType == GOOGLE_PLUS_ICON){
 
             normal = context.getResources().getDrawable(R.drawable.google_plus);
@@ -1224,11 +1248,11 @@ public class ApplicationThemeColor {
 
             normal = context.getResources().getDrawable(R.drawable.membership_login);
             pressed = context.getResources().getDrawable(R.drawable.membership_login);
-        }else if(resourceType == MEMBERSHIP_LOGIN){
+        }else if(resourceType == MEMBERSHIP_RESTORE){
 
             normal = context.getResources().getDrawable(R.drawable.membership_restore);
             pressed = context.getResources().getDrawable(R.drawable.membership_restore);
-        }else if(resourceType == MEMBERSHIP_LOGIN){
+        }else if(resourceType == MEMBERSHIP_SUBSCRIPTION){
 
             normal = context.getResources().getDrawable(R.drawable.membership_subscription);
             pressed = context.getResources().getDrawable(R.drawable.membership_subscription);
@@ -1392,6 +1416,22 @@ public class ApplicationThemeColor {
     public Typeface getGothamLight(Context context){
         try{
             return Typeface.createFromAsset(context.getAssets(), "fonts/GothamRnd-Light.otf");
+        } catch (Exception e) {
+            return Typeface.DEFAULT;
+        }
+    }
+
+    public Typeface getRubikLight(Context context){
+        try{
+            return Typeface.createFromAsset(context.getAssets(), "fonts/Rubik-Light.ttf");
+        } catch (Exception e) {
+            return Typeface.DEFAULT;
+        }
+    }
+
+    public Typeface getRubikRegular(Context context){
+        try{
+            return Typeface.createFromAsset(context.getAssets(), "fonts/Rubik-Regular.ttf");
         } catch (Exception e) {
             return Typeface.DEFAULT;
         }

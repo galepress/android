@@ -123,10 +123,14 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
     private ListView categoriesListView;
     private List<L_Category> categoryListWithAll;
 
-    //Üyelik sekmesi
+    //Uyelik sekmesi
     private LeftMenuMembershipAdapter membershipAdapter;
     private ListView membershipListView;
 
+    //Baglantilar sekmesi
+    private SocialListView socialListView;
+    private CustomSocialLayoutManager mLayoutManager;
+    private LeftMenuSocialAdapter socialAdapter;
 
     private ImageView searchClear;
     private LinearLayout leftMenuBaseLayout;
@@ -253,6 +257,13 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
 
         membershipAdapter = new LeftMenuMembershipAdapter(this);
         membershipListView.setAdapter(membershipAdapter);
+
+
+        socialListView = (SocialListView) findViewById(R.id.social_recycler_view);
+        mLayoutManager = new CustomSocialLayoutManager(socialListView, this, LinearLayoutManager.HORIZONTAL, false);
+        socialListView.setLayoutManager(mLayoutManager);
+        socialAdapter = new LeftMenuSocialAdapter(this, GalePressApplication.getInstance().getApplicationPlist());
+        socialListView.setAdapter(socialAdapter);
 
         initDefaultTabs();
 
@@ -517,6 +528,13 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         membershipAdapter.notifyDataSetChanged();
         membershipListView.invalidate();
 
+        int listHeight = getResources().getDimensionPixelSize(R.dimen.left_menu_list_item_size)*GalePressApplication.getInstance().getMembershipMenuList().size();
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, listHeight);
+        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        membershipListView.setLayoutParams(params);
+
+        findViewById(R.id.left_menu_listview_divider).setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(30));
+
         TextView title = (TextView) findViewById(R.id.action_bar_title_text_view);
         title.setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
         title.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
@@ -638,6 +656,11 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         GalePressApplication.getInstance().prepareMemberShipList();
         membershipAdapter.notifyDataSetChanged();
         membershipListView.invalidate();
+        int listHeight = getResources().getDimensionPixelSize(R.dimen.left_menu_list_item_size)*GalePressApplication.getInstance().getMembershipMenuList().size();
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, listHeight);
+        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        membershipListView.setLayoutParams(params);
+
     }
 
     public void updateTabBars(boolean isColorChanged) {
@@ -847,14 +870,10 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         LoginManager.getInstance().logOut();
         GalePressApplication.getInstance().editMemberShipList(false, null);
         membershipAdapter.notifyDataSetChanged();
-        LayoutInflater mInflater = (LayoutInflater) getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-        View membershipListItemView = mInflater.inflate(R.layout.left_menu_membership_item, null);
-        membershipListItemView.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
-        int listHeight = 0;
-        for (int i = 0; i < GalePressApplication.getInstance().getMembershipMenuList().size(); i++) {
-            listHeight += membershipListItemView.getMeasuredHeight();
-        }
-        membershipListView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listHeight));
+        int listHeight = getResources().getDimensionPixelSize(R.dimen.left_menu_list_item_size)*GalePressApplication.getInstance().getMembershipMenuList().size();
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, listHeight);
+        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        membershipListView.setLayoutParams(params);
         membershipListView.invalidate();
     }
 
@@ -1255,14 +1274,10 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
 
     public void updateMembership() {
         membershipAdapter.notifyDataSetChanged();
-        LayoutInflater mInflater = (LayoutInflater) getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-        View membershipListItemView = mInflater.inflate(R.layout.left_menu_membership_item, null);
-        membershipListItemView.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
-        int listHeight = 0;
-        for (int i = 0; i < GalePressApplication.getInstance().getMembershipMenuList().size(); i++) {
-            listHeight += membershipListItemView.getMeasuredHeight();
-        }
-        membershipListView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listHeight));
+        int listHeight = getResources().getDimensionPixelSize(R.dimen.left_menu_list_item_size)*GalePressApplication.getInstance().getMembershipMenuList().size();
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, listHeight);
+        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        membershipListView.setLayoutParams(params);
         membershipListView.invalidate();
 
         getLibraryFragment().updateGridView();
