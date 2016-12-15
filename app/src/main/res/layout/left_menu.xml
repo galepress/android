@@ -16,7 +16,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            
+
             <LinearLayout
                 android:id="@+id/left_menu_app_icon_base"
                 android:layout_width="match_parent"
@@ -82,20 +82,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:orientation="vertical"
-                android:layout_alignParentBottom="true"
-                android:gravity="bottom">
+                android:gravity="bottom|center_horizontal"
+                android:layout_alignParentBottom="true">
 
-
-                <ak.detaysoft.galepress.SocialListView
-                    android:id="@+id/social_recycler_view"
-                    android:scrollbars="none"
-                    android:scrollbarSize="0dp"
-                    android:layout_width="match_parent"
+                <org.lucasr.twowayview.TwoWayView
+                    android:id="@+id/left_menu_social_list"
+                    style="@style/TwoWayView"
+                    android:layout_width="wrap_content"
                     android:layout_height="60dp"
+                    android:drawSelectorOnTop="false"
+                    android:listSelector="@android:color/transparent"
                     android:layout_marginLeft="2dp"
-                    android:layout_marginRight="2dp"
-                    android:orientation="horizontal"
-                    app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
+                    android:layout_marginRight="2dp"/>
             </LinearLayout>
 
         </RelativeLayout>

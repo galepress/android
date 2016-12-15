@@ -70,6 +70,7 @@ import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.lucasr.twowayview.TwoWayView;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 import org.xwalk.core.XWalkNavigationHistory;
@@ -114,6 +115,7 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
     public FragmentTabHost mTabHost;
     private EditText searchEdittext;
     private ImageView menuButton;
+    private ImageView searchButton;
     AsyncTask<Void, Void, Void> mRegisterTask;
     public Integer content_id = null;
     private SlidingMenu menu;
@@ -128,8 +130,7 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
     private ListView membershipListView;
 
     //Baglantilar sekmesi
-    private SocialListView socialListView;
-    private CustomSocialLayoutManager mLayoutManager;
+    private TwoWayView socialListView;
     private LeftMenuSocialAdapter socialAdapter;
 
     private ImageView searchClear;
@@ -259,9 +260,7 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         membershipListView.setAdapter(membershipAdapter);
 
 
-        socialListView = (SocialListView) findViewById(R.id.social_recycler_view);
-        mLayoutManager = new CustomSocialLayoutManager(socialListView, this, LinearLayoutManager.HORIZONTAL, false);
-        socialListView.setLayoutManager(mLayoutManager);
+        socialListView = (TwoWayView) findViewById(R.id.left_menu_social_list);
         socialAdapter = new LeftMenuSocialAdapter(this, GalePressApplication.getInstance().getApplicationPlist());
         socialListView.setAdapter(socialAdapter);
 
@@ -392,13 +391,25 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         searchList.setLayoutManager(mLayoutManager);
 
         menuButton = (ImageView) findViewById(R.id.menu_button);
-        ((LinearLayout) findViewById(R.id.menu_button_layout)).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.menu_button_layout).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
                 if (menu.isMenuShowing())
                     menu.showContent(true);
                 else {
                     menu.showMenu(true);
+                }
+            }
+        });
+
+        searchButton = (ImageView)findViewById(R.id.search_button);
+        findViewById(R.id.search_button_layout).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                if (menu.isSecondaryMenuShowing())
+                    menu.showContent(true);
+                else {
+                    menu.showSecondaryMenu(true);
                 }
             }
         });
@@ -537,10 +548,10 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
 
         TextView title = (TextView) findViewById(R.id.action_bar_title_text_view);
         title.setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
-        title.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
+        title.setTypeface(ApplicationThemeColor.getInstance().getRubikRegular(this));
         title.setText(title.getText().toString().toUpperCase());
 
-        ((LinearLayout) findViewById(R.id.custom_actionbar_layout)).setBackgroundColor(ApplicationThemeColor.getInstance().getActionAndTabBarColorWithAlpha(98));
+        findViewById(R.id.custom_actionbar_layout).setBackgroundColor(ApplicationThemeColor.getInstance().getActionAndTabBarColorWithAlpha(98));
 
         searchEdittext.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(this));
         searchEdittext.setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
@@ -565,6 +576,13 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
             menuButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.MENU_ICON));
         else
             menuButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.MENU_ICON));
+
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+            searchButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.SEARCH_MENU_ICON));
+        else
+            searchButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.SEARCH_MENU_ICON));
 
         logoutButton.setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
         logoutButton.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(this));
@@ -1060,7 +1078,9 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
             geriButton.setVisibility(View.VISIBLE);
             refreshButton.setVisibility(View.VISIBLE);
             menuButton.setVisibility(View.GONE);
+            searchButton.setVisibility(View.GONE);
             ((View) menuButton.getParent()).setVisibility(View.GONE);
+            ((View) searchButton.getParent()).setVisibility(View.GONE);
             menu.setSlidingEnabled(false);
             ((TextView) findViewById(R.id.action_bar_title_text_view)).setVisibility(View.GONE);
         } else {
@@ -1068,7 +1088,8 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
             geriButton.setVisibility(View.INVISIBLE);
             refreshButton.setVisibility(View.INVISIBLE);
             menuButton.setVisibility(View.VISIBLE);
-            ((View) menuButton.getParent()).setVisibility(View.VISIBLE);
+            searchButton.setVisibility(View.VISIBLE);
+            ((View) searchButton.getParent()).setVisibility(View.VISIBLE);
             menu.setSlidingEnabled(true);
             ((TextView) findViewById(R.id.action_bar_title_text_view)).setVisibility(View.VISIBLE);
         }

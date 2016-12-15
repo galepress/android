@@ -121,6 +121,7 @@ public class ApplicationThemeColor {
     public static final int FLICKER_ICON = 73;
     public static final int FOURSQUARE_ICON = 73;
     public static final int SWARM_ICON = 73;
+    public static final int SEARCH_MENU_ICON = 74;
 
     public ApplicationThemeColor(){
 
@@ -746,6 +747,9 @@ public class ApplicationThemeColor {
         } else if(resourceType == VERIFICATION_POPUP_CLOSE_BASE){
             myIcon = context.getResources().getDrawable(R.drawable.popup_close_base_circle);
             myIcon.setColorFilter(getDarkThemeColorFilterWithAlpha((float)0.5));
+        }  else if(resourceType == SEARCH_MENU_ICON){
+            myIcon = context.getResources().getDrawable(R.drawable.library_menu_search);
+            myIcon.setColorFilter(getForegroundColorFilter());
         } else {
             myIcon = context.getResources().getDrawable(R.drawable.popup_cancel);
             myIcon.setColorFilter(getReverseThemeColorFilter());

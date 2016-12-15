@@ -7,110 +7,103 @@
     android:orientation="vertical">
 
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/actionbar_height"
-        android:weightSum="100"
-        android:orientation="vertical"
-        android:id="@+id/custom_actionbar_layout">
+    <RelativeLayout
+        android:id="@+id/custom_actionbar_layout"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
 
-        <RelativeLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="59dp">
-
-            <LinearLayout
-                android:id="@+id/menu_button_layout"
-                android:layout_width="49dp"
-                android:layout_height="49dp"
-                android:background="@android:color/transparent"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:gravity="center_vertical|right">
-
-                <ImageView
-                    android:id="@+id/menu_button"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:adjustViewBounds="true"
-                    />
-
-            </LinearLayout>
-
-            <ImageButton
-                android:layout_width="29dp"
-                android:layout_height="29dp"
-                android:id="@+id/main_webview_geri_button"
-                android:layout_alignParentTop="false"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:background="@android:color/transparent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="3dp"
-                android:clickable="true"
-                android:visibility="gone" />
-
-            <ImageButton
-                android:layout_width="29dp"
-                android:layout_height="29dp"
-                android:id="@+id/main_webview_ileri_button"
-                android:background="@android:color/transparent"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/main_webview_geri_button"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:clickable="true"
-                android:visibility="gone" />
-
-            <ImageButton
-                android:layout_width="29dp"
-                android:layout_height="29dp"
-                android:id="@+id/main_webview_refresh_button"
-                android:background="@android:color/transparent"
-                android:layout_toRightOf="@+id/main_webview_ileri_button"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:clickable="true"
-                android:padding="0dp"
-                android:baselineAlignBottom="true"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/action_bar_title_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:background="@android:color/transparent"
-                android:layout_gravity="center"
-                android:text="@string/app_name"
-                android:textSize="@dimen/actionbar_text_size"
-                android:gravity="center"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/menu_button_layout"
-                android:layout_marginLeft="10dp" />
-
-
-            <LinearLayout
-                android:id="@+id/test_setting_icon_layout"
-                android:layout_width="49dp"
-                android:layout_height="49dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:orientation="vertical"></LinearLayout>
-
-        </RelativeLayout>
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
+        <LinearLayout
+            android:id="@+id/menu_button_layout"
+            android:layout_width="45dp"
+            android:layout_height="60dp"
             android:background="@android:color/transparent"
-            android:alpha="0.2"
-            android:adjustViewBounds="false" />
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/menu_button"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:adjustViewBounds="true"
+                />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/main_webview_geri_button"
+            android:layout_alignParentTop="false"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="3dp"
+            android:clickable="true"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/main_webview_ileri_button"
+            android:background="@android:color/transparent"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/main_webview_geri_button"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:clickable="true"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/main_webview_refresh_button"
+            android:background="@android:color/transparent"
+            android:layout_toRightOf="@+id/main_webview_ileri_button"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:clickable="true"
+            android:padding="0dp"
+            android:baselineAlignBottom="true"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/action_bar_title_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/transparent"
+            android:layout_gravity="center"
+            android:text="@string/app_name"
+            android:textSize="@dimen/actionbar_text_size"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/menu_button_layout" />
 
 
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/search_button_layout"
+            android:layout_width="45dp"
+            android:layout_height="60dp"
+            android:background="@android:color/transparent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/search_button"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:adjustViewBounds="true"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
     <android.support.v4.app.FragmentTabHost
         android:id="@+id/tabhost"
