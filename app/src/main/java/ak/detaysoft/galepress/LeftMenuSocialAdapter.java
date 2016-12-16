@@ -53,9 +53,9 @@ public class LeftMenuSocialAdapter extends BaseAdapter {
         ImageView icon = (ImageView)convertView.findViewById(R.id.social_icon);
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) icon.getLayoutParams();
         if(position == 0 || position == mList.size()){
-            params.setMargins(0, 30, 0, 30);
+            params.setMargins(0, 0, 0, 0);
         } else {
-            params.setMargins(30, 30, 0, 30);
+            params.setMargins(20, 0, 0, 0);
         }
         icon.setLayoutParams(params);
         icon.setVisibility(View.VISIBLE);

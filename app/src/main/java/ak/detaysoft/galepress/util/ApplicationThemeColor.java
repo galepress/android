@@ -175,6 +175,15 @@ public class ApplicationThemeColor {
     }
 
 
+    public int getLibraryGridViewColor(){
+        if(getInstance().themeType == DARK_THEME_TYPE){
+            return Color.parseColor("#313131"); //Dark Theme
+        } else {
+            return Color.parseColor("#E8E8E8"); //Light Theme
+        }
+    }
+
+
     public int getLightThemeColor(){
         return Color.parseColor("#E8E8E8"); //Light Theme
     }
@@ -204,7 +213,7 @@ public class ApplicationThemeColor {
         if(getInstance().themeType == LIGHT_THEME_TYPE){
             return Color.parseColor("#404040"); //Light Theme
         } else {
-            return Color.parseColor("#DBDBDB"); //Dark Theme
+            return Color.parseColor("#EAEAEA"); //Dark Theme
         }
     }
 
@@ -249,9 +258,9 @@ public class ApplicationThemeColor {
 
     public int getActionAndTabBarColor(){
         if(getInstance().themeType == DARK_THEME_TYPE){
-            return Color.parseColor("#282828"); //Light Theme
+            return Color.parseColor("#282828"); //Dark Theme
         } else {
-            return Color.parseColor("#F7F7F7"); //Dark Theme
+            return Color.parseColor("#F7F7F7"); //Light Theme
         }
     }
 
@@ -265,9 +274,9 @@ public class ApplicationThemeColor {
 
     public int getCoverImageBackgroundColor(){
         if(getInstance().themeType == DARK_THEME_TYPE){
-            return Color.parseColor("#575757"); //Light Theme
+            return Color.parseColor("#7c7c7c"); //Dark Theme
         } else {
-            return Color.parseColor("#FFFFFF"); //Dark Theme
+            return Color.parseColor("#FFFFFF"); //Light Theme
         }
     }
 
@@ -1363,6 +1372,15 @@ public class ApplicationThemeColor {
     }
 
 
+    public int getDownloadProgressColorWithAlpha(int alpha){
+        if(getInstance().themeType == DARK_THEME_TYPE){
+            return Color.parseColor(convertIntAlphaToHex(alpha)+"000000"); //Dark Theme
+        } else {
+            return Color.parseColor(convertIntAlphaToHex(alpha)+"FFFFFF"); //Light Theme
+        }
+    }
+
+
 
     /*
     * (MG)
@@ -1436,6 +1454,14 @@ public class ApplicationThemeColor {
     public Typeface getRubikRegular(Context context){
         try{
             return Typeface.createFromAsset(context.getAssets(), "fonts/Rubik-Regular.ttf");
+        } catch (Exception e) {
+            return Typeface.DEFAULT;
+        }
+    }
+
+    public Typeface getRubikMedium(Context context){
+        try{
+            return Typeface.createFromAsset(context.getAssets(), "fonts/Rubik-Medium.ttf");
         } catch (Exception e) {
             return Typeface.DEFAULT;
         }

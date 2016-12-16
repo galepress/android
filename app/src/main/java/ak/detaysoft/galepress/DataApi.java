@@ -460,8 +460,7 @@ public class DataApi extends Object {
 
                 if (viewHolder != null) {
                     if (viewHolder.content.getId().compareTo(content.getId()) == 0) {
-                        viewHolder.progressBar.setVisibility(View.VISIBLE);
-                        viewHolder.progressBar.setProgress((int) (total * 100 / fileLength));
+                        viewHolder.progressUpdate(total, fileLength);
                     }
                 }
             }

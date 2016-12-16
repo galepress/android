@@ -32,7 +32,6 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/login_input_height"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:paddingLeft="20dp"
@@ -88,14 +87,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="visible"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp">
         <LinearLayout
             android:id="@+id/search_result_item_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp">
+            android:orientation="vertical">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/search_recycler_view"

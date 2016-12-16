@@ -553,7 +553,7 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
 
         findViewById(R.id.custom_actionbar_layout).setBackgroundColor(ApplicationThemeColor.getInstance().getActionAndTabBarColorWithAlpha(98));
 
-        searchEdittext.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(this));
+        searchEdittext.setTypeface(ApplicationThemeColor.getInstance().getRubikLight(this));
         searchEdittext.setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
         searchEdittext.setHintTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
 
@@ -603,7 +603,7 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         }
 
         if (getDownloadedLibraryFragment() != null && getDownloadedLibraryFragment().gridview != null) {
-            getDownloadedLibraryFragment().gridview.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
+            getDownloadedLibraryFragment().gridview.setBackgroundColor(ApplicationThemeColor.getInstance().getLibraryGridViewColor());
             getDownloadedLibraryFragment().getContentHolderAdapter().notifyDataSetChanged();
         }
 
@@ -1680,18 +1680,18 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
             holder.result = searchList.get(position);
             if(searchList.get(position).getPage() == -1) {
                 holder.text.setText(searchList.get(position).getContentTitle());
-                holder.text.setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
-                holder.text.setTypeface(ApplicationThemeColor.getInstance().getOpenSansBold(MainActivity.this));
+                holder.text.setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(70));
+                holder.text.setTypeface(ApplicationThemeColor.getInstance().getRubikRegular(MainActivity.this));
 
                 holder.page.setText("");
             } else {
-                holder.text.setText(Html.fromHtml(searchList.get(position).getText()));
+                holder.text.setText(Html.fromHtml(searchList.get(position).getText()).toString());
                 holder.text.setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
-                holder.text.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(MainActivity.this));
+                holder.text.setTypeface(ApplicationThemeColor.getInstance().getRubikRegular(MainActivity.this));
 
                 holder.page.setText(""+searchList.get(position).getPage());
                 holder.page.setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
-                holder.page.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(MainActivity.this));
+                holder.page.setTypeface(ApplicationThemeColor.getInstance().getRubikLight(MainActivity.this));
             }
 
 
