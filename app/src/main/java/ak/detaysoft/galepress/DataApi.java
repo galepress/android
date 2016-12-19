@@ -467,7 +467,7 @@ public class DataApi extends Object {
         } else if (GalePressApplication.getInstance().getContentDetailPopupActivity() != null
                 && GalePressApplication.getInstance().getContentDetailPopupActivity().content.getId().compareTo(content.getId()) == 0) {
             ContentDetailPopupActivity act = GalePressApplication.getInstance().getContentDetailPopupActivity();
-            act.contentHolder.progressBar.setProgress((int) (total * 100 / fileLength));
+            act.progressUpdate(total, fileLength);
         }
     }
 

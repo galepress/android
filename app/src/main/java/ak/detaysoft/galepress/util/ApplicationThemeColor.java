@@ -122,6 +122,8 @@ public class ApplicationThemeColor {
     public static final int FOURSQUARE_ICON = 73;
     public static final int SWARM_ICON = 73;
     public static final int SEARCH_MENU_ICON = 74;
+    public static final int POPUP_DESCRIPTION_OPEN = 75;
+    public static final int POPUP_DESCRIPTION_CLOSE = 76;
 
     public ApplicationThemeColor(){
 
@@ -1178,6 +1180,16 @@ public class ApplicationThemeColor {
                 normal = context.getResources().getDrawable(R.drawable.popup_download_bg_light);
                 pressed = context.getResources().getDrawable(R.drawable.popup_download_bg_dark);
             }
+        }  else if(resourceType == POPUP_DESCRIPTION_OPEN){
+
+            normal = context.getResources().getDrawable(R.drawable.swipe_open);
+            pressed = context.getResources().getDrawable(R.drawable.swipe_open);
+
+        }   else if(resourceType == POPUP_DESCRIPTION_CLOSE){
+
+            normal = context.getResources().getDrawable(R.drawable.swipe_close);
+            pressed = context.getResources().getDrawable(R.drawable.swipe_close);
+
         } else {
             if(getInstance().themeType == DARK_THEME_TYPE){
                 normal = context.getResources().getDrawable(R.drawable.popup_purchase_download_bg_dark);

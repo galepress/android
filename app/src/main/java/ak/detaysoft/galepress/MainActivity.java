@@ -1043,17 +1043,17 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         View tabIndicator = LayoutInflater.from(this).inflate(R.layout.tab_indicator, mTabHost.getTabWidget(), false);
         tabIndicator.setBackgroundColor(Color.TRANSPARENT);
         tabIndicator.setLayoutParams(new FrameLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 70, getResources().getDisplayMetrics())
-                , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50, getResources().getDisplayMetrics())));
+                , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 45, getResources().getDisplayMetrics())));
         ImageView imgIcon = (ImageView) tabIndicator.findViewById(R.id.image_view_tab_icon);
-        imgIcon.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())
-                , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 32, getResources().getDisplayMetrics())));
+        imgIcon.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 30, getResources().getDisplayMetrics())
+                , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 30, getResources().getDisplayMetrics())));
 
         TextView title = (TextView) tabIndicator.findViewById(R.id.text_view_tab_title);
         title.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())
-                , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 18, getResources().getDisplayMetrics())));
+                , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 15, getResources().getDisplayMetrics())));
         title.setTextColor(createTabTitleColorStateList());
         title.setClickable(true);
-        title.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
+        title.setTypeface(ApplicationThemeColor.getInstance().getRubikLight(this));
         title.setText(titleText);
         title.setOnTouchListener(new View.OnTouchListener() {
             @Override

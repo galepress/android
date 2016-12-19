@@ -1,5 +1,6 @@
 package ak.detaysoft.galepress;
 
+import android.animation.Animator;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
@@ -20,7 +21,9 @@ import android.provider.Settings;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
@@ -55,6 +58,7 @@ import ak.detaysoft.galepress.database_models.L_Statistic;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
 import ak.detaysoft.galepress.util.CustomDownloadButton;
 import ak.detaysoft.galepress.util.CustomPulseProgress;
+import ak.detaysoft.galepress.view.ProgressWheel;
 
 /**
  * Created by p1025 on 27.03.2015.
@@ -65,7 +69,8 @@ public class ContentDetailPopupActivity extends Activity{
     public LinearLayout baseView;
     public PopupFixedAspectLayout popup;
     public TextView nameLabel;
-    public TextView detailLabel;
+    public TextView descriptionLabel;
+    public ImageView descriptionIcon;
     public TextView monthLabel;
     public L_Content content;
     public ImageView image;
@@ -73,7 +78,8 @@ public class ContentDetailPopupActivity extends Activity{
     public Button viewButton;
     public Button deleteButton;
     public CustomDownloadButton downloadButton;
-    public ProgressBar progressBar;
+    public ProgressWheel progressBar;
+    public ImageView overlay;
     public CustomPulseProgress loading;
     public Button cancelButton;
     public ContentHolder contentHolder;
@@ -93,24 +99,34 @@ public class ContentDetailPopupActivity extends Activity{
     private int searchPage = -1;
     private String searchQuery;
 
+    private boolean isDescriptionShowing = true;
+    private LinearLayout descriptionBase;
+    private float descriptionTopYClose;
+    private float descriptionTopYOpen;
+    float touchDownY = 0;
+    float touchUpY = 0;
+
     public class ContentHolder{
         Button updateButton;
         Button viewButton;
         Button deleteButton;
         CustomDownloadButton downloadButton;
-        ProgressBar progressBar;
+        ImageView overlay;
+        ProgressWheel progressBar;
         Button cancelButton;
         public ContentHolder(Button updateButton,
                              Button viewButton,
                              Button deleteButton,
                              CustomDownloadButton downloadButton,
-                             ProgressBar progressBar,
+                             ProgressWheel progressBar,
+                             ImageView overlay,
                              Button cancelButton){
             this.updateButton = updateButton;
             this.viewButton = viewButton;
             this.deleteButton = deleteButton;
             this.downloadButton = downloadButton;
             this.progressBar = progressBar;
+            this.overlay = overlay;
             this.cancelButton = cancelButton;
         }
     }
@@ -179,7 +195,7 @@ public class ContentDetailPopupActivity extends Activity{
             }
         });
 
-        ((RelativeLayout)findViewById(R.id.content_popup_button_layer)).setBackgroundColor(ApplicationThemeColor.getInstance().getForegroundColor());
+        ((LinearLayout)findViewById(R.id.content_popup_button_layer)).setBackgroundColor(ApplicationThemeColor.getInstance().getForegroundColor());
 
         //content name ve detail gibi text detaylarinin oldugu layer icin radius
         GradientDrawable gradient =  new GradientDrawable();
@@ -208,11 +224,6 @@ public class ContentDetailPopupActivity extends Activity{
         nameLabel.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
         nameLabel.setTextColor(ApplicationThemeColor.getInstance().getPopupTextColor());
         nameLabel.setText(content.getName());
-
-        detailLabel = (TextView)findViewById(R.id.content_detail_detail_label);
-        detailLabel.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
-        detailLabel.setTextColor(ApplicationThemeColor.getInstance().getPopupTextColor());
-        detailLabel.setText(content.getDetail());
 
         monthLabel = (TextView)findViewById(R.id.content_detail_month_label);
         monthLabel.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
@@ -382,28 +393,153 @@ public class ContentDetailPopupActivity extends Activity{
 
 
         //progress
-        progressBar = (ProgressBar)findViewById(R.id.content_detail_progress_bar);
+        progressBar = (ProgressWheel)findViewById(R.id.content_detail_progress_bar);
+        overlay = (ImageView)findViewById(R.id.content_detail_download_overlay);
+        overlay.setBackgroundColor(ApplicationThemeColor.getInstance().getDownloadProgressColorWithAlpha(70));
 
-        GradientDrawable pbBg = new GradientDrawable();
-        pbBg.setCornerRadii(new float[]{0,0,0,0, 2,2,2,2});
-        pbBg.setColor(ApplicationThemeColor.getInstance().getProgressbarBackgroundColor());
-        pbBg.setStroke(0, ApplicationThemeColor.getInstance().getProgressbarBackgroundColor());
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            progressBar.setBackground(pbBg);
-        else
-            progressBar.setBackgroundDrawable(pbBg);
-
-        GradientDrawable shape = new GradientDrawable();
-        shape.setCornerRadii(new float[]{0,0,0,0, 2,2,2,2});
-        shape.setColor(Color.parseColor(ApplicationThemeColor.getInstance().getForegroundHexColor()));
-        shape.setStroke(0, ApplicationThemeColor.getInstance().getForegroundColor());
-        ClipDrawable progress = new ClipDrawable(shape, Gravity.LEFT, ClipDrawable.HORIZONTAL);
-        progressBar.setProgressDrawable(progress);
+        progressBar.setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
+        progressBar.setBarColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
+        progressBar.setRimColor(ApplicationThemeColor.getInstance().getReverseThemeColorWithAlpha(20));
+        progressBar.setContourColor(Color.TRANSPARENT);
 
         loading = (CustomPulseProgress)findViewById(R.id.popup_image_loading);
         loading.startAnim();
-        //loading.setIndeterminate(true);
-        //loading.getIndeterminateDrawable().setColorFilter(ApplicationThemeColor.getInstance().getForegroundColor(), android.graphics.PorterDuff.Mode.MULTIPLY);
+
+        descriptionBase = (LinearLayout) findViewById(R.id.description_base);
+        if(content.getDetail() == null || content.getDetail().length() == 0){
+            descriptionBase.setVisibility(View.GONE);
+        }
+        descriptionBase.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                float threshold = (descriptionTopYClose - descriptionTopYOpen)/4;
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        touchDownY = event.getRawY();
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        if(isDescriptionShowing) {
+                            float y = descriptionTopYOpen + event.getRawY()- touchDownY;
+                            if(y >= descriptionTopYOpen && y <= descriptionTopYClose)
+                                descriptionBase.setY(y);
+                        } else {
+                            float y = descriptionTopYClose + event.getRawY()- touchDownY;
+                            if(y >= descriptionTopYOpen && y <= descriptionTopYClose)
+                                descriptionBase.setY(y);
+                        }
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        touchUpY = event.getRawY();
+
+                        if(touchDownY > touchUpY) {
+                            if(touchDownY - touchUpY >= threshold) {
+                                descriptionBase.setY(descriptionTopYOpen);
+                                isDescriptionShowing = true;
+                                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                                    descriptionIcon.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(ContentDetailPopupActivity.this, ApplicationThemeColor.POPUP_DESCRIPTION_CLOSE));
+                                else
+                                    descriptionIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(ContentDetailPopupActivity.this, ApplicationThemeColor.POPUP_DESCRIPTION_CLOSE));
+                            } else {
+                                descriptionBase.setY(descriptionTopYClose);
+                                isDescriptionShowing = false;
+                                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                                    descriptionIcon.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(ContentDetailPopupActivity.this, ApplicationThemeColor.POPUP_DESCRIPTION_OPEN));
+                                else
+                                    descriptionIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(ContentDetailPopupActivity.this, ApplicationThemeColor.POPUP_DESCRIPTION_OPEN));
+                            }
+                        } else if(touchDownY < touchUpY) {
+                            if(touchUpY - touchDownY >= threshold) {
+                                descriptionBase.setY(descriptionTopYClose);
+                                isDescriptionShowing = false;
+                                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                                    descriptionIcon.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(ContentDetailPopupActivity.this, ApplicationThemeColor.POPUP_DESCRIPTION_OPEN));
+                                else
+                                    descriptionIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(ContentDetailPopupActivity.this, ApplicationThemeColor.POPUP_DESCRIPTION_OPEN));
+                            } else {
+                                descriptionBase.setY(descriptionTopYOpen);
+                                isDescriptionShowing = true;
+                                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                                    descriptionIcon.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(ContentDetailPopupActivity.this, ApplicationThemeColor.POPUP_DESCRIPTION_CLOSE));
+                                else
+                                    descriptionIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(ContentDetailPopupActivity.this, ApplicationThemeColor.POPUP_DESCRIPTION_CLOSE));
+                            }
+                        } else {
+
+                            if(isDescriptionShowing) {
+                                descriptionBase.animate().y(descriptionTopYClose).setInterpolator(new AccelerateInterpolator()).setDuration(500).setListener(new Animator.AnimatorListener() {
+                                    @Override
+                                    public void onAnimationStart(Animator animation) {
+                                        descriptionBase.setEnabled(false);
+                                    }
+
+                                    @Override
+                                    public void onAnimationEnd(Animator animation) {
+                                        descriptionBase.setEnabled(true);
+                                        isDescriptionShowing = false;
+                                        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                                            descriptionIcon.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(ContentDetailPopupActivity.this, ApplicationThemeColor.POPUP_DESCRIPTION_OPEN));
+                                        else
+                                            descriptionIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(ContentDetailPopupActivity.this, ApplicationThemeColor.POPUP_DESCRIPTION_OPEN));
+                                    }
+
+                                    @Override
+                                    public void onAnimationCancel(Animator animation) {
+
+                                    }
+
+                                    @Override
+                                    public void onAnimationRepeat(Animator animation) {
+
+                                    }
+                                }).start();
+                            } else {
+                                descriptionBase.animate().y(descriptionTopYOpen).setInterpolator(new AccelerateInterpolator()).setDuration(500).setListener(new Animator.AnimatorListener() {
+                                    @Override
+                                    public void onAnimationStart(Animator animation) {
+                                        descriptionBase.setEnabled(false);
+                                    }
+
+                                    @Override
+                                    public void onAnimationEnd(Animator animation) {
+                                        descriptionBase.setEnabled(true);
+                                        isDescriptionShowing = true;
+                                        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                                            descriptionIcon.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(ContentDetailPopupActivity.this, ApplicationThemeColor.POPUP_DESCRIPTION_CLOSE));
+                                        else
+                                            descriptionIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(ContentDetailPopupActivity.this, ApplicationThemeColor.POPUP_DESCRIPTION_CLOSE));
+                                    }
+
+                                    @Override
+                                    public void onAnimationCancel(Animator animation) {
+
+                                    }
+
+                                    @Override
+                                    public void onAnimationRepeat(Animator animation) {
+
+                                    }
+                                }).start();
+                            }
+                        }
+
+
+                        break;
+                }
+                return true;
+            }
+        });
+
+        descriptionLabel = (TextView)findViewById(R.id.content_detail_description_label);
+        descriptionLabel.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
+        descriptionLabel.setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
+        descriptionLabel.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(80));
+        descriptionLabel.setText(content.getDetail());
+
+        descriptionIcon = ((ImageView)findViewById(R.id.popup_swipe_icon));
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+            descriptionIcon.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this, ApplicationThemeColor.POPUP_DESCRIPTION_CLOSE));
+        else
+            descriptionIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(this, ApplicationThemeColor.POPUP_DESCRIPTION_CLOSE));
 
         update();
 
@@ -451,6 +587,7 @@ public class ContentDetailPopupActivity extends Activity{
                 deleteButton,
                 downloadButton,
                 progressBar,
+                overlay,
                 cancelButton);
 
         if(isFirstOpen){
@@ -468,6 +605,52 @@ public class ContentDetailPopupActivity extends Activity{
                     ScaleAnimation scaleLast = new ScaleAnimation(1.05f, 1f, 1.05f, 1f, Animation.RELATIVE_TO_SELF, animationStartX, Animation.RELATIVE_TO_SELF, animationStartY);
                     scaleLast.setFillAfter(true);
                     scaleLast.setDuration(100);
+                    scaleLast.setAnimationListener(new Animation.AnimationListener() {
+                        @Override
+                        public void onAnimationStart(Animation animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
+                            if(content.getDetail() != null && content.getDetail().length() > 0){
+                                descriptionTopYOpen = descriptionBase.getY();
+                                isDescriptionShowing = false;
+                                descriptionTopYClose = descriptionTopYOpen + descriptionBase.getHeight()-findViewById(R.id.popup_swipe_open).getHeight();
+
+                                descriptionBase.animate().y(descriptionTopYClose).setInterpolator(new AccelerateInterpolator()).setDuration(750).setListener(new Animator.AnimatorListener() {
+                                    @Override
+                                    public void onAnimationStart(Animator animation) {
+                                        descriptionBase.setEnabled(false);
+                                    }
+
+                                    @Override
+                                    public void onAnimationEnd(Animator animation) {
+                                        descriptionBase.setEnabled(true);
+                                        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                                            descriptionIcon.setBackground(ApplicationThemeColor.getInstance().getPopupButtonDrawable(ContentDetailPopupActivity.this, ApplicationThemeColor.POPUP_DESCRIPTION_OPEN));
+                                        else
+                                            descriptionIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().getPopupButtonDrawable(ContentDetailPopupActivity.this, ApplicationThemeColor.POPUP_DESCRIPTION_OPEN));
+                                    }
+
+                                    @Override
+                                    public void onAnimationCancel(Animator animation) {
+
+                                    }
+
+                                    @Override
+                                    public void onAnimationRepeat(Animator animation) {
+
+                                    }
+                                }).start();
+                            }
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) {
+
+                        }
+                    });
                     popup.startAnimation(scaleLast);
                 }
 
@@ -803,6 +986,7 @@ public class ContentDetailPopupActivity extends Activity{
             deleteButton.setEnabled(true);
 
             progressBar.setVisibility(View.INVISIBLE);
+            overlay.setVisibility(View.INVISIBLE);
             cancelButton.setVisibility(View.GONE);
             cancelButton.setEnabled(false);
             downloadButton.stopAnim();
@@ -820,6 +1004,7 @@ public class ContentDetailPopupActivity extends Activity{
                     cancelButton.setVisibility(View.VISIBLE);
                     downloadButton.stopAnim();
                     progressBar.setVisibility(View.VISIBLE);
+                    overlay.setVisibility(View.VISIBLE);
                     updateButton.setVisibility(View.GONE);
                     deleteButton.setVisibility(View.GONE);
                 }
@@ -836,6 +1021,7 @@ public class ContentDetailPopupActivity extends Activity{
                 cancelButton.setVisibility(View.VISIBLE);
                 cancelButton.setEnabled(true);
                 progressBar.setVisibility(View.VISIBLE);
+                overlay.setVisibility(View.VISIBLE);
                 downloadButton.setEnabled(false);
                 downloadButton.setVisibility(View.GONE);
                 downloadButton.stopAnim();
@@ -851,6 +1037,7 @@ public class ContentDetailPopupActivity extends Activity{
                 updateButton.setVisibility(View.GONE);
                 viewButton.setVisibility(View.GONE);
                 progressBar.setVisibility(View.INVISIBLE);
+                overlay.setVisibility(View.INVISIBLE);
                 cancelButton.setVisibility(View.GONE);
                 cancelButton.setEnabled(false);
             }
@@ -858,11 +1045,24 @@ public class ContentDetailPopupActivity extends Activity{
 
         if(viewButton.getVisibility() == View.VISIBLE){
             progressBar.setVisibility(View.INVISIBLE);
+            overlay.setVisibility(View.INVISIBLE);
             cancelButton.setVisibility(View.GONE);
             cancelButton.setEnabled(false);
             downloadButton.stopAnim();
         }
         baseView.invalidate();
+    }
+
+    public void progressUpdate(long total, long fileLength){
+        if(progressBar.getVisibility() != View.VISIBLE){
+            progressBar.setVisibility(View.VISIBLE);
+        }
+
+        if(overlay.getVisibility() != View.VISIBLE){
+           overlay.setVisibility(View.VISIBLE);
+        }
+        progressBar.setProgress((int)((total*360)/fileLength));
+        progressBar.setText("%"+(int) (total * 100 / fileLength));
     }
 
     public L_Content getContent() {
