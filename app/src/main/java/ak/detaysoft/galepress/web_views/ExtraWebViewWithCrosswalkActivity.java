@@ -200,6 +200,15 @@ public class ExtraWebViewWithCrosswalkActivity extends Activity {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(webView!=null) {
+            webView.pauseTimers();
+            webView.onDestroy();
+        }
+    }
+
     class MyXWalkResourceClient extends XWalkResourceClient {
 
 
