@@ -47,7 +47,7 @@ public class LeftMenuCategoryAdapter extends BaseAdapter {
         if (convertView == null) {
             LayoutInflater mInflater = (LayoutInflater)
                     mContext.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            convertView = mInflater.inflate(R.layout.left_menu_category_item, null);
+            convertView = mInflater.inflate(R.layout.left_menu_category_item, parent, false);
         }
 
         TextView txtTitle = (TextView) convertView.findViewById(R.id.category_title);

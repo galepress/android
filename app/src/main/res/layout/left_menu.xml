@@ -32,57 +32,119 @@
                     android:src="@drawable/app_logo"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginBottom="30dp"
-                    android:padding="10dp"/>
+                    android:layout_marginTop="10dp"
+                    android:padding="10dp"
+                    android:layout_marginBottom="10dp" />
 
             </LinearLayout>
 
-            <RelativeLayout
-                android:id="@+id/left_menu_category_base"
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@android:color/transparent"
                 android:layout_below="@+id/left_menu_app_icon_base"
                 android:layout_above="@+id/left_menu_links_base">
 
-                <ListView
-                    android:id="@+id/left_menu_category_list"
+                <LinearLayout
+                    android:id="@+id/left_menu_category_base"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:divider="@android:color/transparent"
-                    android:listSelector="@android:color/transparent"
-                    android:layout_alignParentTop="true"
-                    android:layout_above="@+id/left_menu_listview_divider">
-                </ListView>
+                    android:orientation="vertical">
+                    <RelativeLayout
+                        android:id="@+id/left_categories_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="15dp"
+                        android:gravity="center"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp">
 
-                <ImageView
-                    android:id="@+id/left_menu_listview_divider"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_above="@+id/left_menu_membership_list"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="20dp"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/left_menu_category_text"
+                            android:textSize="@dimen/left_menu_text_size"
+                            android:layout_marginLeft="25dp"
+                            android:text="@string/KATEGORILER"
+                            android:background="@android:color/transparent"
+                            android:gravity="center_vertical|left"
+                            android:layout_toLeftOf="@+id/left_menu_categories_close" />
 
-                <ListView
-                    android:id="@+id/left_menu_membership_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="105dp"
-                    android:divider="@android:color/transparent"
-                    android:listSelector="@android:color/transparent"
-                    android:clickable="false"
-                    android:layout_alignParentBottom="true">
-                </ListView>
-            </RelativeLayout>
+                        <ImageView
+                            android:id="@+id/left_menu_categories_close"
+                            android:adjustViewBounds="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="25dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_height="20dp"
+                            android:layout_width="20dp" />
+
+                    </RelativeLayout>
+
+                    <ListView
+                        android:id="@+id/left_menu_category_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:divider="@android:color/transparent"
+                        android:listSelector="@android:color/transparent"
+                        android:layout_marginLeft="25dp">
+                    </ListView>
+
+
+                    <RelativeLayout
+                        android:id="@+id/left_membership_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/left_menu_membership_text"
+                            android:textSize="@dimen/left_menu_text_size"
+                            android:text="@string/membership"
+                            android:layout_marginLeft="25dp"
+                            android:background="@android:color/transparent"
+                            android:gravity="center_vertical|left"
+                            android:layout_toLeftOf="@+id/left_menu_membership_close" />
+
+                        <ImageView
+                            android:adjustViewBounds="true"
+                            android:id="@+id/left_menu_membership_close"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="25dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp" />
+
+                    </RelativeLayout>
+
+                    <ListView
+                        android:id="@+id/left_menu_membership_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:divider="@android:color/transparent"
+                        android:listSelector="@android:color/transparent"
+                        android:clickable="false"
+                        android:layout_marginLeft="25dp">
+                    </ListView>
+                </LinearLayout>
+            </ScrollView>
+
 
 
             <LinearLayout
                 android:id="@+id/left_menu_links_base"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
                 android:orientation="vertical"
                 android:gravity="bottom|center_horizontal"
-                android:layout_alignParentBottom="true">
+                android:layout_alignParentBottom="true"
+                android:layout_height="80dp">
 
                 <org.lucasr.twowayview.TwoWayView
                     android:id="@+id/left_menu_social_list"

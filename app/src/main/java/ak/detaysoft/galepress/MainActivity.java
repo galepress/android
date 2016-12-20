@@ -124,10 +124,14 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
     private LeftMenuCategoryAdapter categoriesAdapter;
     private ListView categoriesListView;
     private List<L_Category> categoryListWithAll;
+    private RelativeLayout categoriesTitleLayout;
+    private ImageView categoriesListViewCloseIcon;
 
     //Uyelik sekmesi
     private LeftMenuMembershipAdapter membershipAdapter;
     private ListView membershipListView;
+    private RelativeLayout membershipTitleLayout;
+    private ImageView membershipListViewCloseIcon;
 
     //Baglantilar sekmesi
     private TwoWayView socialListView;
@@ -202,6 +206,29 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         leftMenuBaseLayout = (LinearLayout) findViewById(R.id.left_menu_layout);
         rightMenuBaseLayout = (LinearLayout) findViewById(R.id.right_menu_layout);
 
+        categoriesTitleLayout = (RelativeLayout) findViewById(R.id.left_categories_layout);
+        categoriesTitleLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hideKeyboard(searchEdittext);
+                if (categoriesListView.getVisibility() == View.VISIBLE) {
+                    categoriesListView.setVisibility(View.GONE);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                        categoriesListViewCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
+                    else
+                        categoriesListViewCloseIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
+
+                } else {
+                    categoriesListView.setVisibility(View.VISIBLE);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                        categoriesListViewCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_UP));
+                    else
+                        categoriesListViewCloseIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_UP));
+                }
+
+            }
+        });
+
         categoryListWithAll = GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent();
         categoryListWithAll.add(0, new L_Category(-1, getString(R.string.show_all)));
         categoriesListView = (ListView) findViewById(R.id.left_menu_category_list);
@@ -245,8 +272,35 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
             }
         });
 
+        categoriesListViewCloseIcon = (ImageView) findViewById(R.id.left_menu_categories_close);
+
         categoriesAdapter = new LeftMenuCategoryAdapter(this, categoryListWithAll);
         categoriesListView.setAdapter(categoriesAdapter);
+
+        membershipTitleLayout = (RelativeLayout) findViewById(R.id.left_membership_layout);
+        membershipTitleLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hideKeyboard(searchEdittext);
+
+                if (membershipListView.getVisibility() == View.VISIBLE) {
+                    membershipListView.setVisibility(View.GONE);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                        membershipListViewCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
+                    else
+                        membershipListViewCloseIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
+
+                } else {
+                    membershipListView.setVisibility(View.VISIBLE);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                        membershipListViewCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_UP));
+                    else
+                        membershipListViewCloseIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_UP));
+                }
+            }
+        });
+
+        membershipListViewCloseIcon = (ImageView) findViewById(R.id.left_menu_membership_close);
 
         membershipListView = (ListView) findViewById(R.id.left_menu_membership_list);
         membershipListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -263,6 +317,7 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         socialListView = (TwoWayView) findViewById(R.id.left_menu_social_list);
         socialAdapter = new LeftMenuSocialAdapter(this, GalePressApplication.getInstance().getApplicationPlist());
         socialListView.setAdapter(socialAdapter);
+
 
         initDefaultTabs();
 
@@ -528,8 +583,16 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         rightMenuBaseLayout.setBackgroundColor(ApplicationThemeColor.getInstance().getForegroundColor());
 
         //Kategori sekmesi
+        ((TextView) (findViewById(R.id.left_menu_category_text))).setTypeface(ApplicationThemeColor.getInstance().getRubikRegular(this));
+        ((TextView) (findViewById(R.id.left_menu_category_text))).setTextColor(ApplicationThemeColor.getInstance().getThemeColor());
+        categoriesTitleLayout.setBackgroundColor(Color.TRANSPARENT);
         categoryListWithAll = GalePressApplication.getInstance().getDatabaseApi().getCategoriesOnlyHaveContent();
         categoryListWithAll.add(0, new L_Category(-1, getString(R.string.show_all)));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+            categoriesListViewCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_UP));
+        else
+            categoriesListViewCloseIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_UP));
 
         categoriesAdapter.setmCategory(categoryListWithAll);
         categoriesAdapter.notifyDataSetChanged();
@@ -538,13 +601,44 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         //Üyelik sekmesi
         membershipAdapter.notifyDataSetChanged();
         membershipListView.invalidate();
+        ((TextView) (findViewById(R.id.left_menu_membership_text))).setTypeface(ApplicationThemeColor.getInstance().getRubikRegular(this));
+        ((TextView) (findViewById(R.id.left_menu_membership_text))).setTextColor(ApplicationThemeColor.getInstance().getThemeColor());
 
-        int listHeight = getResources().getDimensionPixelSize(R.dimen.left_menu_list_item_size)*GalePressApplication.getInstance().getMembershipMenuList().size();
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, listHeight);
-        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        membershipListView.setLayoutParams(params);
 
-        findViewById(R.id.left_menu_listview_divider).setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(30));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+            membershipListViewCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_UP));
+        else
+            membershipListViewCloseIcon.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_UP));
+
+        //Kategori ve baglantilar listviewlerin height hesaplamasi. Scroll engelleyebilmek icin
+        if(categoryListWithAll != null && categoryListWithAll.size() > 0) {
+            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) categoriesListView.getLayoutParams();
+            params.width = LinearLayout.LayoutParams.MATCH_PARENT;
+            params.height = getResources().getDimensionPixelSize(R.dimen.left_menu_list_item_size)*categoryListWithAll.size();
+            categoriesListView.setLayoutParams(params);
+        } else {
+            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) categoriesListView.getLayoutParams();
+            params.width = LinearLayout.LayoutParams.MATCH_PARENT;
+            params.height = 0;
+            categoriesListView.setLayoutParams(params);
+        }
+
+        if (!GalePressApplication.getInstance().isTestApplication()) {
+            if(GalePressApplication.getInstance().getMembershipMenuList() != null && GalePressApplication.getInstance().getMembershipMenuList().size() > 0) {
+                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) membershipListView.getLayoutParams();
+                params.width = LinearLayout.LayoutParams.MATCH_PARENT;
+                params.height = getResources().getDimensionPixelSize(R.dimen.left_menu_list_item_size)*GalePressApplication.getInstance().getMembershipMenuList().size();
+                membershipListView.setLayoutParams(params);
+            } else {
+                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) membershipListView.getLayoutParams();
+                params.width = LinearLayout.LayoutParams.MATCH_PARENT;
+                params.height = 0;
+                membershipListView.setLayoutParams(params);
+            }
+        } else {
+            membershipListView.setVisibility(View.GONE);
+        }
+
 
         TextView title = (TextView) findViewById(R.id.action_bar_title_text_view);
         title.setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
@@ -675,8 +769,9 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         membershipAdapter.notifyDataSetChanged();
         membershipListView.invalidate();
         int listHeight = getResources().getDimensionPixelSize(R.dimen.left_menu_list_item_size)*GalePressApplication.getInstance().getMembershipMenuList().size();
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, listHeight);
-        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) membershipListView.getLayoutParams();
+        params.width = LinearLayout.LayoutParams.MATCH_PARENT;
+        params.height = listHeight;
         membershipListView.setLayoutParams(params);
 
     }
@@ -889,8 +984,9 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         GalePressApplication.getInstance().editMemberShipList(false, null);
         membershipAdapter.notifyDataSetChanged();
         int listHeight = getResources().getDimensionPixelSize(R.dimen.left_menu_list_item_size)*GalePressApplication.getInstance().getMembershipMenuList().size();
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, listHeight);
-        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) membershipListView.getLayoutParams();
+        params.width = LinearLayout.LayoutParams.MATCH_PARENT;
+        params.height = listHeight;
         membershipListView.setLayoutParams(params);
         membershipListView.invalidate();
     }
@@ -1296,8 +1392,9 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
     public void updateMembership() {
         membershipAdapter.notifyDataSetChanged();
         int listHeight = getResources().getDimensionPixelSize(R.dimen.left_menu_list_item_size)*GalePressApplication.getInstance().getMembershipMenuList().size();
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, listHeight);
-        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) membershipListView.getLayoutParams();
+        params.width = LinearLayout.LayoutParams.MATCH_PARENT;
+        params.height = listHeight;
         membershipListView.setLayoutParams(params);
         membershipListView.invalidate();
 

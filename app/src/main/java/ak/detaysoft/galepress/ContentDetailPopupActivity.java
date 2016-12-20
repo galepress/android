@@ -221,12 +221,12 @@ public class ContentDetailPopupActivity extends Activity{
 
         //setText
         nameLabel = (TextView)findViewById(R.id.content_detail_name_label);
-        nameLabel.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
+        nameLabel.setTypeface(ApplicationThemeColor.getInstance().getRubikRegular(this));
         nameLabel.setTextColor(ApplicationThemeColor.getInstance().getPopupTextColor());
         nameLabel.setText(content.getName());
 
         monthLabel = (TextView)findViewById(R.id.content_detail_month_label);
-        monthLabel.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
+        monthLabel.setTypeface(ApplicationThemeColor.getInstance().getRubikRegular(this));
         monthLabel.setTextColor(ApplicationThemeColor.getInstance().getPopupTextColor());
         monthLabel.setText(content.getMonthlyName());
 
@@ -530,9 +530,9 @@ public class ContentDetailPopupActivity extends Activity{
         });
 
         descriptionLabel = (TextView)findViewById(R.id.content_detail_description_label);
-        descriptionLabel.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
+        descriptionLabel.setTypeface(ApplicationThemeColor.getInstance().getRubikLight(this));
         descriptionLabel.setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
-        descriptionLabel.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(80));
+        descriptionLabel.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(90));
         descriptionLabel.setText(content.getDetail());
 
         descriptionIcon = ((ImageView)findViewById(R.id.popup_swipe_icon));

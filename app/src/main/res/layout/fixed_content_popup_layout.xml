@@ -48,10 +48,7 @@
                         android:id="@+id/content_detail_image"
                         android:layout_gravity="center_horizontal"
                         android:adjustViewBounds="true"
-                        android:scaleType="fitXY"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginRight="4dp"
-                        android:layout_marginLeft="4dp"/>
+                        android:scaleType="fitXY"/>
 
                     <LinearLayout
                         android:id="@+id/description_base"
@@ -127,9 +124,8 @@
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="@dimen/content_popup_detail"
-                        android:gravity="center"
-                        android:paddingRight="5dp">
+                        android:layout_height="match_parent"
+                        android:gravity="center">
                         <Button
                             android:layout_width="@dimen/content_popup_button_size"
                             android:layout_height="@dimen/content_popup_button_size"
@@ -153,7 +149,6 @@
                             android:id="@+id/content_detail_download"
                             android:background="@android:color/transparent"
                             android:layout_alignParentRight="true"
-                            android:layout_marginLeft="8dp"
                             android:layout_toLeftOf="@+id/content_detail_delete" />
 
                         <Button
@@ -169,8 +164,7 @@
                             android:layout_height="@dimen/content_popup_button_size"
                             android:id="@+id/content_detail_cancel"
                             android:background="@android:color/transparent"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginLeft="8dp" />
+                            android:layout_alignParentRight="true" />
 
                     </RelativeLayout>
 
@@ -189,8 +183,7 @@
                         android:orientation="vertical"
                         android:gravity="center"
                         android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="10dp">
+                        android:layout_centerVertical="true">
 
                         <TextView
                             android:id="@+id/content_detail_name_label"
@@ -201,11 +194,7 @@
                             android:textSize="@dimen/content_popup_large_textsize"
                             android:lines="1"
                             android:ellipsize="end"
-                            android:gravity="center_vertical|left"
-                            android:layout_alignParentLeft="true"
-                            android:paddingRight="20dp"
-                            android:layout_alignParentTop="false"
-                            android:layout_centerHorizontal="true" />
+                            android:gravity="center"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -215,12 +204,8 @@
                             android:textSize="@dimen/content_popup_small_textsize"
                             android:lines="1"
                             android:ellipsize="end"
-                            android:gravity="left|top"
-                            android:layout_alignParentLeft="true"
-                            android:layout_below="@+id/content_detail_name_label"
-                            android:paddingRight="20dp"
-                            android:layout_alignParentTop="false"
-                            android:layout_centerHorizontal="true" />
+                            android:gravity="center"
+                            android:layout_marginTop="2.5dp" />
 
                     </LinearLayout>
 

@@ -44,9 +44,6 @@ public class CoverImageFixedAspectLayout extends RelativeLayout {
             w = (int)(h/aspect);
         }
 
-        //fixed_content_popup_layout xml de verilen padding burda ayarlaniyor
-        h = h - (int)(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources().getDisplayMetrics()));
-
         super.onMeasure(
                 MeasureSpec.makeMeasureSpec(w,
                         MeasureSpec.getMode(widthMeasureSpec)),
