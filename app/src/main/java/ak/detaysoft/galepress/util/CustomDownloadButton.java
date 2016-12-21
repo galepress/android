@@ -60,7 +60,7 @@ public class CustomDownloadButton extends RelativeLayout{
         if(this.type == PURCHASE_DOWNLOAD){
             RelativeLayout.LayoutParams downloadButtonParams = (RelativeLayout.LayoutParams)getLayoutParams();
             defaultWith = downloadButtonParams.width;
-            downloadButtonParams.width = downloadButtonParams.width * 3+10;  //Burada width tipe göre belirlenecek
+            downloadButtonParams.width = downloadButtonParams.width * 3;  //Burada width tipe göre belirlenecek
             setLayoutParams(downloadButtonParams);
         }
 

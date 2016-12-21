@@ -93,7 +93,7 @@ public class ApplicationThemeColor {
     public static final int DOWNLOAD_CONTENT = 48;
     public static final int HOME_ICON = 49;
     public static final int HOME_ICON_SELECTED = 50;
-    public static final int READER_MENU_OPEN = 51;
+    public static final int READER_MENU_OPEN1 = 51;
     public static final int READER_MENU_OPEN2 = 52;
     public static final int READER_MENU_OPEN_OK = 53;
     public static final int CUSTOM_PROGRESS_PULSE = 54;
@@ -194,7 +194,7 @@ public class ApplicationThemeColor {
         return Color.parseColor("#333333"); //Dark Theme
     }
 
-    //alpha degeri 0-255 arası olmali convertIntAlphaToHex metodunda hex hesaplamasi yapiliyor
+
     public int getThemeColorWithAlpha(int alpha){
         if(getInstance().themeType == DARK_THEME_TYPE){
             return Color.parseColor(convertIntAlphaToHex(alpha)+"333333"); //Dark Theme
@@ -216,6 +216,14 @@ public class ApplicationThemeColor {
             return Color.parseColor("#404040"); //Light Theme
         } else {
             return Color.parseColor("#EAEAEA"); //Dark Theme
+        }
+    }
+
+    public int getLibraryItemTextColorWithAlpha(int alpha){
+        if(getInstance().themeType == LIGHT_THEME_TYPE){
+            return Color.parseColor(convertIntAlphaToHex(alpha)+"404040"); //Light Theme
+        } else {
+            return Color.parseColor(convertIntAlphaToHex(alpha)+"EAEAEA"); //Dark Theme
         }
     }
 
@@ -295,6 +303,14 @@ public class ApplicationThemeColor {
             return Color.parseColor("#333333"); //Light Theme
         } else {
             return Color.parseColor("#E9E9E9"); //Dark Theme
+        }
+    }
+
+    public int getPopupTextColorWithAlpha(int alpha){
+        if(getInstance().themeType == LIGHT_THEME_TYPE){
+            return Color.parseColor(convertIntAlphaToHex(alpha)+"333333"); //Light Theme
+        } else {
+            return Color.parseColor(convertIntAlphaToHex(alpha)+"E9E9E9"); //Dark Theme
         }
     }
 
@@ -694,23 +710,20 @@ public class ApplicationThemeColor {
             myIcon = context.getResources().getDrawable(R.drawable.tab_home);
             myIcon.setColorFilter(getForeGroundColorFilterWithAlpha((float)0.5));
         } else if(resourceType == READER_SEARCH_OPEN) {
-            myIcon = context.getResources().getDrawable(R.drawable.reader_search);
+            myIcon = context.getResources().getDrawable(R.drawable.library_menu_search);
             myIcon.setColorFilter(getForegroundColorFilter());
         } else if(resourceType == READER_SEARCH_CLEAR) {
             myIcon = context.getResources().getDrawable(R.drawable.reader_search_clear);
             myIcon.setColorFilter(getThemeColorFilter());
-        } else if(resourceType == READER_MENU_OPEN){
+        } else if(resourceType == READER_MENU_OPEN1){
             if(themeType == DARK_THEME_TYPE) {
-                myIcon = context.getResources().getDrawable(R.drawable.b);
+                myIcon = context.getResources().getDrawable(R.drawable.reader_thumb_menu_dark);
             } else {
-                myIcon = context.getResources().getDrawable(R.drawable.s);
+                myIcon = context.getResources().getDrawable(R.drawable.reader_thumb_menu_light);
             }
         } else if(resourceType == READER_MENU_OPEN2){
-            if(themeType == DARK_THEME_TYPE) {
-                myIcon = context.getResources().getDrawable(R.drawable.ks);
-            } else {
-                myIcon = context.getResources().getDrawable(R.drawable.kb);
-            }
+            myIcon = context.getResources().getDrawable(R.drawable.reader_thumb_menu_arrow);
+            myIcon.setColorFilter(getForegroundColorFilter());
         } else if(resourceType == READER_MENU_OPEN_OK){
             myIcon = context.getResources().getDrawable(R.drawable.reader_bottom_ok);
             myIcon.setColorFilter(getForegroundColorFilter());
@@ -1367,6 +1380,15 @@ public class ApplicationThemeColor {
     public int getDownloadProgressColorWithAlpha(int alpha){
         if(getInstance().themeType == DARK_THEME_TYPE){
             return Color.parseColor(convertIntAlphaToHex(alpha)+"000000"); //Dark Theme
+        } else {
+            return Color.parseColor(convertIntAlphaToHex(alpha)+"FFFFFF"); //Light Theme
+        }
+    }
+
+    //alpha degeri 0-255 arası olmali convertIntAlphaToHex metodunda hex hesaplamasi yapiliyor
+    public int getPoupDescritionColorWithAlpha(int alpha){
+        if(getInstance().themeType == DARK_THEME_TYPE){
+            return Color.parseColor(convertIntAlphaToHex(alpha)+"333333"); //Dark Theme
         } else {
             return Color.parseColor(convertIntAlphaToHex(alpha)+"FFFFFF"); //Light Theme
         }

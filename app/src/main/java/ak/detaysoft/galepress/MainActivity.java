@@ -1380,7 +1380,9 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
                 updateMembership();
             }
         } else if (requestCode == 103) { //contentdetailactivity ekraninda kullanici login degilse kullaniciyi logine gönderiyoruz
-            if (resultCode == 103) {
+            if (resultCode == 101) {
+                selectedReaderTabIndex = data.getIntExtra("SelectedTab", 0);
+            } else if (resultCode == 103) {
                 Intent intent = new Intent(this, UserLoginActivity.class);
                 intent.putExtra("action", UserLoginActivity.ACTION_MENU);
                 intent.putExtra("isLaunchOpen", false);

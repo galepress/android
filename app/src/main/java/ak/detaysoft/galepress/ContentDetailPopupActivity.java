@@ -227,7 +227,7 @@ public class ContentDetailPopupActivity extends Activity{
 
         monthLabel = (TextView)findViewById(R.id.content_detail_month_label);
         monthLabel.setTypeface(ApplicationThemeColor.getInstance().getRubikRegular(this));
-        monthLabel.setTextColor(ApplicationThemeColor.getInstance().getPopupTextColor());
+        monthLabel.setTextColor(ApplicationThemeColor.getInstance().getPopupTextColorWithAlpha(50));
         monthLabel.setText(content.getMonthlyName());
 
         //setButtons
@@ -532,7 +532,7 @@ public class ContentDetailPopupActivity extends Activity{
         descriptionLabel = (TextView)findViewById(R.id.content_detail_description_label);
         descriptionLabel.setTypeface(ApplicationThemeColor.getInstance().getRubikLight(this));
         descriptionLabel.setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
-        descriptionLabel.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(90));
+        descriptionLabel.setBackgroundColor(ApplicationThemeColor.getInstance().getPoupDescritionColorWithAlpha(90));
         descriptionLabel.setText(content.getDetail());
 
         descriptionIcon = ((ImageView)findViewById(R.id.popup_swipe_icon));
@@ -876,7 +876,14 @@ public class ContentDetailPopupActivity extends Activity{
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1001) {
+        if(requestCode == 101) {
+            if (resultCode == 101) {
+                Intent intent = getIntent();
+                intent.putExtra("SelectedTab", data.getIntExtra("SelectedTab", 0));
+                setResult(101, intent);
+                finish();
+            }
+        } else if (requestCode == 1001) {
             int responseCode = data.getIntExtra("RESPONSE_CODE", 0);
             String purchaseData = data.getStringExtra("INAPP_PURCHASE_DATA");
             String dataSignature = data.getStringExtra("INAPP_DATA_SIGNATURE");

@@ -154,7 +154,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
     private ThumbnailHorizontalListView mPreview;
     private RelativeLayout bottomButton;
     private ImageView bottomButtonImg1;
-    private RelativeLayout bottomButtonImg2;
+    private ImageView bottomButtonImg2;
     private RelativeLayout mPreviewBarHolder;
     //private CustomThumnailAdapter thumnailAdapter;
     private ThumbnailListAdapter thumnailAdapter;
@@ -663,14 +663,14 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         });*/
 
         // Activate the search-preparing button
-        mSearchButton.setOnClickListener(new View.OnClickListener() {
+        ((LinearLayout)mSearchButton.getParent()).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 openSearchPopup();
                 searchModeOn();
             }
         });
 
-        shareButton.setOnClickListener(new View.OnClickListener() {
+        ((LinearLayout)shareButton.getParent()).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String filePath = GalePressApplication.getInstance().getFilesDir().getAbsolutePath() + File.separator + "capturedImage.png";
                 cropAndShareCurrentPage(filePath);
@@ -787,7 +787,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         });
 
         if (core.hasOutline()) {
-            mOutlineButton.setOnClickListener(new View.OnClickListener() {
+            ((LinearLayout)mOutlineButton.getParent()).setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     if (menu.isMenuShowing())
                         menu.showContent(true);
@@ -1455,7 +1455,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
                                                     }
                                                 });
-                                                bottomButtonImg2.startAnimation(s32);
+                                                bottomButton.startAnimation(s32);
                                             }
 
                                             @Override
@@ -1463,7 +1463,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
                                             }
                                         });
-                                        bottomButtonImg2.startAnimation(s31);
+                                        bottomButton.startAnimation(s31);
                                     }
 
                                     @Override
@@ -1471,7 +1471,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
                                     }
                                 });
-                                bottomButtonImg2.startAnimation(s22);
+                                bottomButton.startAnimation(s22);
                             }
 
                             @Override
@@ -1479,7 +1479,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
                             }
                         });
-                        bottomButtonImg2.startAnimation(s21);
+                        bottomButton.startAnimation(s21);
                     }
 
                     @Override
@@ -1487,7 +1487,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
                     }
                 });
-                bottomButtonImg2.startAnimation(s12);
+                bottomButton.startAnimation(s12);
             }
 
             @Override
@@ -1495,7 +1495,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
             }
         });
-        bottomButtonImg2.startAnimation(s11);
+        bottomButton.startAnimation(s11);
 
 
     }
@@ -1939,9 +1939,9 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
         bottomButtonImg1 = (ImageView) mButtonsView.findViewById(R.id.reader_bottom_page_img1);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            bottomButtonImg1.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_MENU_OPEN));
+            bottomButtonImg1.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_MENU_OPEN1));
         else
-            bottomButtonImg1.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_MENU_OPEN));
+            bottomButtonImg1.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_MENU_OPEN1));
         bottomButtonImg1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -1949,7 +1949,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             }
         });
 
-        bottomButtonImg2 = (RelativeLayout) mButtonsView.findViewById(R.id.reader_bottom_page_img2);
+        bottomButtonImg2 = (ImageView) mButtonsView.findViewById(R.id.reader_bottom_page_img2);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
             bottomButtonImg2.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_MENU_OPEN2));
         else
@@ -1960,10 +1960,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                 showButtons();
             }
         });
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            ((ImageView) mButtonsView.findViewById(R.id.reader_bottom_page_img_ok)).setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_MENU_OPEN_OK));
-        else
-            ((ImageView) mButtonsView.findViewById(R.id.reader_bottom_page_img_ok)).setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_MENU_OPEN_OK));
+
 
         mPreview = (ThumbnailHorizontalListView) mButtonsView.findViewById(R.id.reader_preview_bar_listView);
         mPreview.setBackgroundColor(ApplicationThemeColor.getInstance().getActionAndTabBarColor());
@@ -1988,8 +1985,8 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                 ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.HOME_ICON)));
 
         TextView reader_home_txt = ((TextView) mButtonsView.findViewById(R.id.reader_home_txt));
-        reader_home_txt.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())
-                , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 18, getResources().getDisplayMetrics())));
+        reader_home_txt.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 70, getResources().getDisplayMetrics())
+                , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 15, getResources().getDisplayMetrics())));
         reader_home_txt.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
         reader_home_txt.setTextColor(createTabTitleColorStateList());
         reader_home_txt.setText(getResources().getString(R.string.HOME));
@@ -2007,8 +2004,8 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
         //KUTUPHANE
         TextView reader_library_txt = ((TextView) mButtonsView.findViewById(R.id.reader_library_txt));
-        reader_library_txt.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())
-                , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 18, getResources().getDisplayMetrics())));
+        reader_library_txt.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 70, getResources().getDisplayMetrics())
+                , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 15, getResources().getDisplayMetrics())));
         reader_library_txt.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
         reader_library_txt.setText(getResources().getString(R.string.LIBRARY));
 
@@ -2037,8 +2034,8 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
         //INDIRILENLER
         TextView reader_download_txt = ((TextView) mButtonsView.findViewById(R.id.reader_download_txt));
-        reader_download_txt.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())
-                , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 18, getResources().getDisplayMetrics())));
+        reader_download_txt.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 70, getResources().getDisplayMetrics())
+                , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 15, getResources().getDisplayMetrics())));
         reader_download_txt.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
         reader_download_txt.setText(getResources().getString(R.string.DOWNLOADED));
 
@@ -2063,34 +2060,13 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             }
         });
 
-
-        //HAKKINDA
-        ((ImageView) mButtonsView.findViewById(R.id.reader_info)).setImageDrawable(createDrawable(false, ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.INFO_ICON_SELECTED),
-                ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.INFO_ICON)));
-
-        TextView reader_info_txt = ((TextView) mButtonsView.findViewById(R.id.reader_info_txt));
-        reader_info_txt.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())
-                , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 18, getResources().getDisplayMetrics())));
-        reader_info_txt.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
-        reader_info_txt.setTextColor(createTabTitleColorStateList());
-        reader_info_txt.setText(getResources().getString(R.string.INFO));
-
-        ((LinearLayout) mButtonsView.findViewById(R.id.reader_info_layout)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tabItemClick(3);
-            }
-        });
-
-        ((LinearLayout) mButtonsView.findViewById(R.id.reader_info_layout)).setVisibility(View.GONE);
-
         //Custom tabbar buttons
         if (GalePressApplication.getInstance().getDataApi().isConnectedToInternet() && GalePressApplication.getInstance().getTabList() != null) {
             int index = 0;
             for (TabbarItem item : GalePressApplication.getInstance().getTabList()) {
                 LinearLayout layout = new LinearLayout(this);
                 layout.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 70, getResources().getDisplayMetrics())
-                        , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50, getResources().getDisplayMetrics())));
+                        , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 45, getResources().getDisplayMetrics())));
                 layout.setGravity(Gravity.CENTER);
                 layout.setId(100 + index);
                 layout.setOrientation(LinearLayout.VERTICAL);
@@ -2107,13 +2083,13 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
                 ImageView img = new ImageView(this);
                 img.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())
-                        , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 32, getResources().getDisplayMetrics())));
+                        , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 30, getResources().getDisplayMetrics())));
                 ApplicationThemeColor.getInstance().paintRemoteIcon(this, item, img);
                 layout.addView(img);
 
                 TextView txt = new TextView(this);
                 txt.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics())
-                        , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 18, getResources().getDisplayMetrics())));
+                        , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 15, getResources().getDisplayMetrics())));
                 txt.setSingleLine();
                 txt.setMaxLines(1);
                 txt.setEllipsize(TextUtils.TruncateAt.END);
@@ -2161,7 +2137,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         mTopBarSwitcher.setBackgroundColor(ApplicationThemeColor.getInstance().getActionAndTabBarColor());
 
         ((TextView) mButtonsView.findViewById(R.id.reader_title)).setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
-        ((TextView) mButtonsView.findViewById(R.id.reader_title)).setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
+        ((TextView) mButtonsView.findViewById(R.id.reader_title)).setTypeface(ApplicationThemeColor.getInstance().getRubikRegular(this));
         ((TextView) mButtonsView.findViewById(R.id.reader_title)).setText(((TextView) mButtonsView.findViewById(R.id.reader_title)).getText().toString().toUpperCase());
 
         mSearchBack = (ImageButton) mButtonsView.findViewById(R.id.searchBack);
@@ -2230,9 +2206,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
     }
 
     private void tabItemClick(int type) {
-        if (GalePressApplication.getInstance().getContentDetailPopupActivity() != null)
-            GalePressApplication.getInstance().getContentDetailPopupActivity().finish();
-
         if (GalePressApplication.getInstance().getDataApi().isLibraryMustBeEnabled()) {
             Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
             String udid = UUID.randomUUID().toString();

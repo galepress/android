@@ -114,7 +114,7 @@ public class ContentHolderAdapter extends BaseAdapter  {
         ((RelativeLayout)viewHolder.detailLayout.getParent()).setBackgroundColor(ApplicationThemeColor.getInstance().getCoverImageBackgroundColor());
         viewHolder.nameLabel.setTextColor(ApplicationThemeColor.getInstance().getLibraryItemTextColor());
         viewHolder.detailLabel.setTextColor(ApplicationThemeColor.getInstance().getLibraryItemTextColor());
-        viewHolder.monthLabel.setTextColor(ApplicationThemeColor.getInstance().getLibraryItemTextColor());
+        viewHolder.monthLabel.setTextColor(ApplicationThemeColor.getInstance().getLibraryItemTextColorWithAlpha(50));
         viewHolder.overlay.setBackgroundColor(ApplicationThemeColor.getInstance().getDownloadProgressColorWithAlpha(70));
 
         viewHolder.progressBar.setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());

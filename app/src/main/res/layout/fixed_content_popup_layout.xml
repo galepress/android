@@ -47,7 +47,7 @@
                         android:layout_height="match_parent"
                         android:id="@+id/content_detail_image"
                         android:layout_gravity="center_horizontal"
-                        android:adjustViewBounds="true"
+                        android:adjustViewBounds="false"
                         android:scaleType="fitXY"/>
 
                     <LinearLayout
