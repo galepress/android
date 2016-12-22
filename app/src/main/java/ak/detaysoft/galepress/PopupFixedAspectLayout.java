@@ -22,7 +22,7 @@ public class PopupFixedAspectLayout extends FrameLayout {
     private void init(Context context, AttributeSet attrs) {
         TypedArray a = context.obtainStyledAttributes(attrs,
                 R.styleable.PopupFixedAspectLayout);
-        aspect = a.getFloat(R.styleable.PopupFixedAspectLayout_aspectRatio, 1.3333f);
+        aspect = a.getFloat(R.styleable.PopupFixedAspectLayout_aspectRatio, 0.75f);
     }
 
     @Override
@@ -40,13 +40,13 @@ public class PopupFixedAspectLayout extends FrameLayout {
         int h = MeasureSpec.getSize(heightMeasureSpec);
         if(w > h){
             h -=pxh;
-            w = (int)(((h)/aspect) - padding);
-            h = (int)(w*aspect);
+            w = (int)(((h)*aspect) - padding);
+            h = (int)(w/aspect);
             h += (pxh);
         } else {
             w -= padding;
-            h = (int)((w)*aspect);
-            w = (int)(h/aspect);
+            h = (int)((w)/aspect);
+            w = (int)(h*aspect);
             h += (pxh);
         }
 

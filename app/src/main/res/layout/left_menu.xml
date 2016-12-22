@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:background="@android:color/transparent">
 
-        <RelativeLayout
+    <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -136,8 +136,6 @@
                 </LinearLayout>
             </ScrollView>
 
-
-
             <LinearLayout
                 android:id="@+id/left_menu_links_base"
                 android:layout_width="match_parent"
@@ -168,7 +166,7 @@
             android:layout_gravity="center_horizontal|bottom"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
-            android:layout_marginBottom="25dp"
+            android:layout_marginBottom="10dp"
             android:textSize="@dimen/login_button_text_size"
             android:layout_alignParentBottom="true"
             android:visibility="gone"

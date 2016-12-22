@@ -867,8 +867,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             });
             leftList.setAdapter(new OutlineAdapter(this, getLayoutInflater(), core.getOutline()));
 
-        } else {
-
         }
 
         if (savedInstanceState == null && getIntent().hasExtra("searchPage") && getIntent().getIntExtra("searchPage", -1) != -1) {
@@ -2455,10 +2453,10 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         popupSearchText = ((EditText) layout.findViewById(R.id.popup_searchText));
         if (readerSearchWord != null)
             popupSearchText.setText(readerSearchWord);
-        popupSearchText.setTextColor(ApplicationThemeColor.getInstance().getReaderSearchResultTextColor());
-        popupSearchText.setHintTextColor(ApplicationThemeColor.getInstance().getReaderSearchResultTextColor());
+        popupSearchText.setTextColor(ApplicationThemeColor.getInstance().getReaderSearchTextColor());
+        popupSearchText.setHintTextColor(ApplicationThemeColor.getInstance().getReaderSearchTextColor());
         popupSearchText.requestFocus();
-        popupSearchText.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(this));
+        popupSearchText.setTypeface(ApplicationThemeColor.getInstance().getRubikLight(this));
         popupSearchText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE  && popupSearchText.getText().length() > 0) {
@@ -2493,13 +2491,16 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             layout.findViewById(R.id.popup_clearSearch).setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(MuPDFActivity.this, ApplicationThemeColor.READER_SEARCH_CLEAR));
 
         searchProgressBase = (LinearLayout) layout.findViewById(R.id.popup_progress_search_base);
-        ((ProgressBar)layout.findViewById(R.id.popup_search_progress)).getIndeterminateDrawable().setColorFilter(ApplicationThemeColor.getInstance().getThemeColor(), android.graphics.PorterDuff.Mode.MULTIPLY);
+        ((ProgressBar)layout.findViewById(R.id.popup_search_progress)).getIndeterminateDrawable().setColorFilter(ApplicationThemeColor.getInstance().getReaderSearchTextColor(), android.graphics.PorterDuff.Mode.MULTIPLY);
 
-        //input background
+        //textview background
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
             ((RelativeLayout) popupSearchText.getParent()).setBackground(ApplicationThemeColor.getInstance().getReaderSearchViewDrawable(MuPDFActivity.this));
         else
             ((RelativeLayout) popupSearchText.getParent()).setBackgroundDrawable(ApplicationThemeColor.getInstance().getReaderSearchViewDrawable(MuPDFActivity.this));
+
+        //input background
+        ((LinearLayout)popupSearchText.getParent().getParent()).setBackgroundColor(ApplicationThemeColor.getInstance().getReaderSearchTextColor());
 
         searchClearBase = (LinearLayout) layout.findViewById(R.id.popup_clear_search_base);
         searchClearBase.setOnClickListener(new View.OnClickListener() {
@@ -2625,15 +2626,15 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             }
             ReaderSearchResult pageItem = textSearchList.get(position);
             TextView title = ((TextView) convertView.findViewById(R.id.reader_search_result_page_title));
-            title.setText(Html.fromHtml(pageItem.getText()));
+            title.setText(Html.fromHtml(pageItem.getText()).toString());
             title.setTextColor(ApplicationThemeColor.getInstance().getReaderSearchResultTextColor());
-            title.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(mContext));
+            title.setTypeface(ApplicationThemeColor.getInstance().getRubikRegular(mContext));
 
 
             TextView page = ((TextView) convertView.findViewById(R.id.reader_search_result_page_page));
             page.setText("" + (pageItem.getPage()));
             page.setTextColor(ApplicationThemeColor.getInstance().getReaderSearchResultTextColor());
-            page.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(mContext));
+            page.setTypeface(ApplicationThemeColor.getInstance().getRubikLight(mContext));
 
             return convertView;
         }

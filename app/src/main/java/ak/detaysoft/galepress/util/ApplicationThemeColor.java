@@ -554,6 +554,24 @@ public class ApplicationThemeColor {
     }
 
 
+    public ColorFilter getReaderSearchColorFilter(){
+        int color;
+        if(getInstance().themeType == DARK_THEME_TYPE){
+            color = Color.parseColor("#444444");
+        } else {
+            color = Color.parseColor("#C2C2C2");
+        }
+        int red = (color & 0xFF0000) / 0xFFFF;
+        int green = (color & 0xFF00) / 0xFF;
+        int blue = color & 0xFF;
+        float[] matrix = { 0, 0, 0, 0, red
+                , 0, 0, 0, 0, green
+                , 0, 0, 0, 0, blue
+                , 0, 0, 0, 1, 0 };
+        return new ColorMatrixColorFilter(matrix);
+    }
+
+
     public ColorFilter getDarkThemeColorFilterWithAlpha(float alpha){
         int color = Color.parseColor("#333333");
         int red = (color & 0xFF0000) / 0xFFFF;
@@ -714,7 +732,7 @@ public class ApplicationThemeColor {
             myIcon.setColorFilter(getForegroundColorFilter());
         } else if(resourceType == READER_SEARCH_CLEAR) {
             myIcon = context.getResources().getDrawable(R.drawable.reader_search_clear);
-            myIcon.setColorFilter(getThemeColorFilter());
+            myIcon.setColorFilter(getReaderSearchColorFilter());
         } else if(resourceType == READER_MENU_OPEN1){
             if(themeType == DARK_THEME_TYPE) {
                 myIcon = context.getResources().getDrawable(R.drawable.reader_thumb_menu_dark);
@@ -875,7 +893,7 @@ public class ApplicationThemeColor {
     public Drawable getLogoutButtonDrawable(Context context) {
         GradientDrawable normal =  new GradientDrawable();
         normal.setCornerRadius(context.getResources().getDimension(R.dimen.login_input_height));
-        normal.setColor(getReverseThemeColor());
+        normal.setColor(getThemeColor());
         normal.setStroke(0, Color.TRANSPARENT);
 
         GradientDrawable pressed =  new GradientDrawable();
@@ -1355,6 +1373,15 @@ public class ApplicationThemeColor {
     }
 
 
+    public int getReaderSearchTextColor(){
+        if(themeType == DARK_THEME_TYPE) {
+            return Color.parseColor("#444444");
+        } else {
+            return Color.parseColor("#C2C2C2");
+        }
+    }
+
+
     public int getReaderPopupColor(){
         if(getInstance().themeType == DARK_THEME_TYPE){
             return Color.parseColor("#333333"); //Dark Theme
@@ -1366,13 +1393,13 @@ public class ApplicationThemeColor {
     //reader menu search tiklandiginda search view in arka planini degistirmek icin bu metod kullaniliyor
     public Drawable getReaderSearchViewDrawable(Context context) {
         GradientDrawable drawable =  new GradientDrawable();
-        drawable.setCornerRadius(10);
+        drawable.setCornerRadius(20);
         if(themeType == DARK_THEME_TYPE) {
-            drawable.setColor(Color.parseColor("#424242"));
+            drawable.setColor(Color.parseColor("#707271"));
         } else {
-            drawable.setColor(Color.parseColor("#767676"));
+            drawable.setColor(Color.parseColor("#E9E9E9"));
         }
-        drawable.setStroke(0, getThemeColor());
+        drawable.setStroke(0, Color.parseColor("#E9E9E9"));
         return drawable;
     }
 

@@ -193,7 +193,7 @@ public class UserLoginActivity extends Activity {
         else
             unameField.setBackgroundDrawable(ApplicationThemeColor.getInstance().getVerificationLoginInputDrawable(this));
         unameField.setTextColor(ApplicationThemeColor.getInstance().defaultLightAlphaPressedDarkStateList());
-        unameField.setTypeface(ApplicationThemeColor.getInstance().getGothamLight(this));
+        unameField.setTypeface(ApplicationThemeColor.getInstance().getRubikLight(this));
         unameField.setHintTextColor(ApplicationThemeColor.getInstance().defaultLightAlphaPressedDarkStateList());
 
 
@@ -203,14 +203,14 @@ public class UserLoginActivity extends Activity {
         else
             passwordField.setBackgroundDrawable(ApplicationThemeColor.getInstance().getVerificationLoginInputDrawable(this));
         passwordField.setTextColor(ApplicationThemeColor.getInstance().defaultLightAlphaPressedDarkStateList());
-        passwordField.setTypeface(ApplicationThemeColor.getInstance().getGothamLight(this));
+        passwordField.setTypeface(ApplicationThemeColor.getInstance().getRubikLight(this));
         passwordField.setHintTextColor(ApplicationThemeColor.getInstance().defaultLightAlphaPressedDarkStateList());
 
 
 
         TextView forgot = ((TextView)findViewById(R.id.verification_forgot_password));
         forgot.setTextColor(ApplicationThemeColor.getInstance().defaultLightPressedDarkStateList());
-        forgot.setTypeface(ApplicationThemeColor.getInstance().getGothamLight(this));
+        forgot.setTypeface(ApplicationThemeColor.getInstance().getRubikLight(this));
         forgot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -254,7 +254,7 @@ public class UserLoginActivity extends Activity {
         else
             login.setBackgroundDrawable(ApplicationThemeColor.getInstance().getVerificationLoginButtonDrawable(this));
         login.setTextColor(ApplicationThemeColor.getInstance().defaultLightPressedDarkStateList());
-        login.setTypeface(ApplicationThemeColor.getInstance().getGothamLight(this));
+        login.setTypeface(ApplicationThemeColor.getInstance().getRubikLight(this));
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -318,7 +318,7 @@ public class UserLoginActivity extends Activity {
         else
             signup.setBackgroundDrawable(ApplicationThemeColor.getInstance().getVerificationSignupButtonDrawable(this));
         signup.setTextColor(ApplicationThemeColor.getInstance().defaultLightPressedDarkStateList());
-        signup.setTypeface(ApplicationThemeColor.getInstance().getGothamLight(this));
+        signup.setTypeface(ApplicationThemeColor.getInstance().getRubikLight(this));
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -359,7 +359,7 @@ public class UserLoginActivity extends Activity {
 
         TextView connect_with_txt = ((TextView)findViewById(R.id.verification_connect_with_txt));
         connect_with_txt.setTextColor(ApplicationThemeColor.getInstance().getLightThemeColor());
-        connect_with_txt.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
+        connect_with_txt.setTypeface(ApplicationThemeColor.getInstance().getRubikLight(this));
 
         TextView facebook_txt = ((TextView)findViewById(R.id.verification_facebook_txt));
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
@@ -367,7 +367,7 @@ public class UserLoginActivity extends Activity {
         else
             facebook_txt.setBackgroundDrawable(ApplicationThemeColor.getInstance().getVerificationFacebookButtonDrawable(this));
         facebook_txt.setTextColor(ApplicationThemeColor.getInstance().getLightThemeColor());
-        facebook_txt.setTypeface(ApplicationThemeColor.getInstance().getGothamLight(this));
+        facebook_txt.setTypeface(ApplicationThemeColor.getInstance().getRubikLight(this));
 
         FrameLayout facebook = ((FrameLayout)findViewById(R.id.verification_facebook_button_base));
         facebook.setOnClickListener(new View.OnClickListener() {
@@ -401,7 +401,7 @@ public class UserLoginActivity extends Activity {
 
         TextView skip = ((TextView)findViewById(R.id.verification_skip));
         skip.setTextColor(ApplicationThemeColor.getInstance().defaultLightPressedDarkStateList());
-        skip.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
+        skip.setTypeface(ApplicationThemeColor.getInstance().getRubikLight(this));
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

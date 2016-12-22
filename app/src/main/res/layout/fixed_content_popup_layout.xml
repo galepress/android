@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            app:aspectRatio="1.3333">
+            app:aspectRatio="0.75">
 
             <RelativeLayout
                 android:orientation="vertical"
@@ -31,7 +31,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    app:aspectRatio="1.3333"
+                    app:aspectRatio="0.75"
                     android:layout_alignParentTop="true"
                     android:id="@+id/custom_cover_image_view">
 

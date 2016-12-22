@@ -637,6 +637,8 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
             }
         } else {
             membershipListView.setVisibility(View.GONE);
+            socialListView.setVisibility(View.GONE);
+            findViewById(R.id.left_membership_layout).setVisibility(View.GONE);
         }
 
 
@@ -672,14 +674,13 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
             menuButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.MENU_ICON));
 
 
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
             searchButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.SEARCH_MENU_ICON));
         else
             searchButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.SEARCH_MENU_ICON));
 
-        logoutButton.setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
-        logoutButton.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(this));
+        logoutButton.setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
+        logoutButton.setTypeface(ApplicationThemeColor.getInstance().getRubikLight(this));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
             logoutButton.setBackground(ApplicationThemeColor.getInstance().getLogoutButtonDrawable(this));
         else
@@ -765,14 +766,20 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
     }
 
     public void updateMemberListAdapter() {
-        GalePressApplication.getInstance().prepareMemberShipList();
-        membershipAdapter.notifyDataSetChanged();
-        membershipListView.invalidate();
-        int listHeight = getResources().getDimensionPixelSize(R.dimen.left_menu_list_item_size)*GalePressApplication.getInstance().getMembershipMenuList().size();
-        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) membershipListView.getLayoutParams();
-        params.width = LinearLayout.LayoutParams.MATCH_PARENT;
-        params.height = listHeight;
-        membershipListView.setLayoutParams(params);
+        if (!GalePressApplication.getInstance().isTestApplication()){
+            GalePressApplication.getInstance().prepareMemberShipList();
+            membershipAdapter.notifyDataSetChanged();
+            membershipListView.invalidate();
+            int listHeight = getResources().getDimensionPixelSize(R.dimen.left_menu_list_item_size)*GalePressApplication.getInstance().getMembershipMenuList().size();
+            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) membershipListView.getLayoutParams();
+            params.width = LinearLayout.LayoutParams.MATCH_PARENT;
+            params.height = listHeight;
+            membershipListView.setLayoutParams(params);
+        } else {
+            membershipListView.setVisibility(View.GONE);
+            socialListView.setVisibility(View.GONE);
+            findViewById(R.id.left_membership_layout).setVisibility(View.GONE);
+        }
 
     }
 
@@ -1392,15 +1399,22 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
     }
 
     public void updateMembership() {
-        membershipAdapter.notifyDataSetChanged();
-        int listHeight = getResources().getDimensionPixelSize(R.dimen.left_menu_list_item_size)*GalePressApplication.getInstance().getMembershipMenuList().size();
-        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) membershipListView.getLayoutParams();
-        params.width = LinearLayout.LayoutParams.MATCH_PARENT;
-        params.height = listHeight;
-        membershipListView.setLayoutParams(params);
-        membershipListView.invalidate();
 
-        getLibraryFragment().updateGridView();
+        if (!GalePressApplication.getInstance().isTestApplication()){
+            membershipAdapter.notifyDataSetChanged();
+            int listHeight = getResources().getDimensionPixelSize(R.dimen.left_menu_list_item_size)*GalePressApplication.getInstance().getMembershipMenuList().size();
+            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) membershipListView.getLayoutParams();
+            params.width = LinearLayout.LayoutParams.MATCH_PARENT;
+            params.height = listHeight;
+            membershipListView.setLayoutParams(params);
+            membershipListView.invalidate();
+            getLibraryFragment().updateGridView();
+        } else {
+            membershipListView.setVisibility(View.GONE);
+            socialListView.setVisibility(View.GONE);
+            findViewById(R.id.left_membership_layout).setVisibility(View.GONE);
+        }
+
     }
 
     /*@Override

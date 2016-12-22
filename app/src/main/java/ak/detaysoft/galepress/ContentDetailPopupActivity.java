@@ -281,7 +281,6 @@ public class ContentDetailPopupActivity extends Activity{
             public void onClick(View v) {
                 if(DataApi.isConnectedToInternet()){
 
-
                     if(content.isBuyable()) {
                         if(content.isContentBought() || GalePressApplication.getInstance().isUserHaveActiveSubscription()) {
                             if (GalePressApplication.getInstance().getDataApi().downloadPdfTask == null
