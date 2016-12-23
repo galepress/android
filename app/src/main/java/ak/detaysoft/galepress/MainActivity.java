@@ -317,6 +317,33 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         socialListView = (TwoWayView) findViewById(R.id.left_menu_social_list);
         socialAdapter = new LeftMenuSocialAdapter(this, GalePressApplication.getInstance().getApplicationPlist());
         socialListView.setAdapter(socialAdapter);
+        socialListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                menu.showContent();
+                ApplicationPlist item = GalePressApplication.getInstance().getApplicationPlist().get(position);
+
+                if (item.getKey().toString().toLowerCase().contains("mail")) {
+                    Intent intent = new Intent(Intent.ACTION_SEND);
+                    intent.setType("message/rfc822");
+                    //intent.setType("text/html");
+                    intent.putExtra(Intent.EXTRA_EMAIL, new String[]{item.getValue().toString()});
+                    intent.putExtra(Intent.EXTRA_SUBJECT, " ");
+                    intent.putExtra(Intent.EXTRA_TEXT, " ");
+                    try {
+                        startActivity(Intent.createChooser(intent, "Send mail..."));
+                    } catch (android.content.ActivityNotFoundException ex) {
+                        Toast.makeText(MainActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Intent intent = new Intent(MainActivity.this, ExtraWebViewActivity.class);
+                    intent.putExtra("url", item.getValue().toString());
+                    intent.putExtra("isMainActivitIntent", true);
+                    startActivity(intent);
+                    overridePendingTransition(R.animator.left_to_right_translate, 0);
+                }
+            }
+        });
 
 
         initDefaultTabs();

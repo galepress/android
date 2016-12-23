@@ -88,7 +88,7 @@ public class ExtraWebViewWithCrosswalkActivity extends Activity {
 
         TextView titleTextView = (TextView) findViewById(R.id.crosswalk_extra_web_view_title);
         titleTextView.setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
-        titleTextView.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(ExtraWebViewWithCrosswalkActivity.this));
+        titleTextView.setTypeface(ApplicationThemeColor.getInstance().getRubikRegular(ExtraWebViewWithCrosswalkActivity.this));
 
 
         if (isModal) {
