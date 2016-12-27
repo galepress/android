@@ -1985,7 +1985,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         TextView reader_home_txt = ((TextView) mButtonsView.findViewById(R.id.reader_home_txt));
         reader_home_txt.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 70, getResources().getDisplayMetrics())
                 , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 15, getResources().getDisplayMetrics())));
-        reader_home_txt.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
+        reader_home_txt.setTypeface(ApplicationThemeColor.getInstance().getRubikLight(this));
         reader_home_txt.setTextColor(createTabTitleColorStateList());
         reader_home_txt.setText(getResources().getString(R.string.HOME));
 
@@ -2004,7 +2004,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         TextView reader_library_txt = ((TextView) mButtonsView.findViewById(R.id.reader_library_txt));
         reader_library_txt.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 70, getResources().getDisplayMetrics())
                 , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 15, getResources().getDisplayMetrics())));
-        reader_library_txt.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
+        reader_library_txt.setTypeface(ApplicationThemeColor.getInstance().getRubikLight(this));
         reader_library_txt.setText(getResources().getString(R.string.LIBRARY));
 
 
@@ -2034,7 +2034,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         TextView reader_download_txt = ((TextView) mButtonsView.findViewById(R.id.reader_download_txt));
         reader_download_txt.setLayoutParams(new LinearLayout.LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 70, getResources().getDisplayMetrics())
                 , (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 15, getResources().getDisplayMetrics())));
-        reader_download_txt.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
+        reader_download_txt.setTypeface(ApplicationThemeColor.getInstance().getRubikLight(this));
         reader_download_txt.setText(getResources().getString(R.string.DOWNLOADED));
 
         //icerik indirildigi zaman downloaded ekrani aciksa update etmek icin
@@ -2092,7 +2092,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                 txt.setMaxLines(1);
                 txt.setEllipsize(TextUtils.TruncateAt.END);
                 txt.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 9.5f);
-                txt.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
+                txt.setTypeface(ApplicationThemeColor.getInstance().getRubikLight(this));
                 txt.setTextColor(createTabTitleColorStateList());
                 txt.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
                 txt.setText(item.getTitle());
@@ -2112,7 +2112,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         else
             mSearchButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.READER_SEARCH_OPEN));
 
-        ((Button) mButtonsView.findViewById(R.id.cancelSearch)).setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
+        ((Button) mButtonsView.findViewById(R.id.cancelSearch)).setTypeface(ApplicationThemeColor.getInstance().getRubikLight(this));
         ((Button) mButtonsView.findViewById(R.id.cancelSearch)).setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
 
         mOutlineButton = (ImageButton) mButtonsView.findViewById(R.id.outlineButton);
@@ -2143,7 +2143,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         mSearchText = (EditText) mButtonsView.findViewById(R.id.searchText);
         mSearchText.setTextColor(ApplicationThemeColor.getInstance().getThemeColor());
         mSearchText.setHintTextColor(ApplicationThemeColor.getInstance().getThemeColor());
-        mSearchText.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(this));
+        mSearchText.setTypeface(ApplicationThemeColor.getInstance().getRubikLight(this));
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
             ((RelativeLayout) mSearchText.getParent()).setBackground(ApplicationThemeColor.getInstance().getReaderSearchViewDrawable(MuPDFActivity.this));

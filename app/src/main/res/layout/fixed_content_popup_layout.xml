@@ -98,7 +98,7 @@
                         android:orientation="vertical"
                         android:gravity="center">
 
-                        <ak.detaysoft.galepress.view.ProgressWheel
+                        <ak.detaysoft.galepress.util.ProgressWheel
                             android:id="@+id/content_detail_progress_bar"
                             android:layout_height="match_parent"
                             android:layout_width="100dp"

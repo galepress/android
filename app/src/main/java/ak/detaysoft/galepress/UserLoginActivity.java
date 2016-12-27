@@ -15,7 +15,6 @@ import android.graphics.drawable.shapes.RectShape;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.ConsoleMessage;
@@ -45,7 +44,7 @@ import org.json.JSONObject;
 import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
 import ak.detaysoft.galepress.util.CustomPulseProgress;
-import ak.detaysoft.galepress.view.ProgressWheel;
+import ak.detaysoft.galepress.util.ProgressWheel;
 
 /**
  * Created by p1025 on 07.04.2016.

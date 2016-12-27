@@ -9,13 +9,11 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RectShape;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 
 import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.util.SystemUiHider;
-import ak.detaysoft.galepress.view.ProgressWheel;
+import ak.detaysoft.galepress.util.ProgressWheel;
 
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 

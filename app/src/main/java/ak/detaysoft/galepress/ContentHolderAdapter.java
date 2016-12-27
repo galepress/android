@@ -2,17 +2,13 @@ package ak.detaysoft.galepress;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.ClipDrawable;
-import android.graphics.drawable.ShapeDrawable;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -26,7 +22,7 @@ import java.io.File;
 import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
 import ak.detaysoft.galepress.util.CustomPulseProgress;
-import ak.detaysoft.galepress.view.ProgressWheel;
+import ak.detaysoft.galepress.util.ProgressWheel;
 
 /**
  * Created by adem on 13/01/14.

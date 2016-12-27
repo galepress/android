@@ -9,7 +9,6 @@ import android.content.IntentSender;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.ClipDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.location.Location;
 import android.net.Uri;
@@ -18,8 +17,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.provider.Settings;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -31,7 +28,6 @@ import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,7 +54,7 @@ import ak.detaysoft.galepress.database_models.L_Statistic;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
 import ak.detaysoft.galepress.util.CustomDownloadButton;
 import ak.detaysoft.galepress.util.CustomPulseProgress;
-import ak.detaysoft.galepress.view.ProgressWheel;
+import ak.detaysoft.galepress.util.ProgressWheel;
 
 /**
  * Created by p1025 on 27.03.2015.
@@ -221,7 +217,7 @@ public class ContentDetailPopupActivity extends Activity{
 
         //setText
         nameLabel = (TextView)findViewById(R.id.content_detail_name_label);
-        nameLabel.setTypeface(ApplicationThemeColor.getInstance().getRubikRegular(this));
+        nameLabel.setTypeface(ApplicationThemeColor.getInstance().getRubikMedium(this));
         nameLabel.setTextColor(ApplicationThemeColor.getInstance().getPopupTextColor());
         nameLabel.setText(content.getName());
 
