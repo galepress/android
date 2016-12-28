@@ -2,9 +2,10 @@
 
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ProgressWheel="http://schemas.android.com/apk/res-auto"
     android:id="@+id/grid_row_content"
     android:layout_width="165dp"
-    android:layout_height="269dp"
+    android:layout_height="275dp"
     android:descendantFocusability="blocksDescendants"
     android:padding="0dp"
     android:gravity="center"
@@ -12,15 +13,14 @@
 
     <RelativeLayout
         android:layout_width="165dp"
-        android:layout_height="269dp"
+        android:layout_height="275dp"
         android:orientation="vertical">
 
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="206dp"
-            android:id="@+id/cover_image_layout"
-            android:layout_margin="4dp">
+            android:layout_height="220dp"
+            android:id="@+id/cover_image_layout">
 
             <ImageView
                 android:id="@+id/coverImage"
@@ -39,71 +39,74 @@
                 android:layout_alignParentBottom="false" />
         </RelativeLayout>
 
-        <RelativeLayout
+        <ImageView
+            android:id="@+id/grid_download_overlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/detailLayout"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ak.detaysoft.galepress.util.ProgressWheel
+                android:id="@+id/progress_bar"
+                android:layout_height="match_parent"
+                ProgressWheel:textSize="15dp"
+                ProgressWheel:barLength="110dp"
+                ProgressWheel:barWidth="15dp"
+                ProgressWheel:rimWidth="15dp"
+                ProgressWheel:contourSize="0dp"
+                android:elevation="1dp"
+                android:layout_width="100dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
             android:id = "@+id/detailLayout"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_below="@+id/cover_image_layout"
-            android:layout_alignParentBottom="true">
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:orientation="vertical">
             <TextView
                 android:id="@+id/nameLabel"
-                android:text=""
-                android:layout_height="18dp"
                 android:layout_width="match_parent"
-                android:editable="false"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="13dp"
-                android:paddingLeft="2dp"
-                android:gravity="bottom|left"
+                android:layout_height="wrap_content"
                 android:maxLines="1"
+                android:gravity="center_vertical|left"
                 android:ellipsize="end"
-                android:singleLine="true"
-                android:paddingRight="2dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp" />
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:textSize="13dp"/>
 
             <TextView
                 android:id="@+id/detailLabel"
-                android:text=""
-                android:layout_height="18dp"
                 android:layout_width="match_parent"
-                android:editable="false"
-                android:textColor="@color/text_color_cyan"
-                android:textSize="13dp"
-                android:paddingLeft="2dp"
+                android:layout_height="wrap_content"
                 android:maxLines="1"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:paddingRight="2dp"
-                android:layout_below="@+id/nameLabel"
                 android:gravity="center_vertical|left"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp" />
+                android:ellipsize="end"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:textSize="13dp"/>
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="18dp"
                 android:id="@+id/monthLabel"
-                android:maxLines="1"
-                android:textSize="10dp"
-                android:layout_below="@+id/detailLabel"
-                android:paddingLeft="2dp"
-                android:gravity="left|top"
-                android:singleLine="true"
-                android:ellipsize="end"
-                android:paddingRight="2dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp" />
-
-            <ProgressBar
-                android:id="@+id/progress_bar"
-                style="@android:style/Widget.ProgressBar.Horizontal"
-                android:progressDrawable="@drawable/custom_progressbar"
-                android:layout_height="3dp"
                 android:layout_width="match_parent"
-                android:layout_alignParentBottom="true" />
-        </RelativeLayout>
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:gravity="center_vertical|left"
+                android:ellipsize="end"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:textSize="10dp"/>
+
+        </LinearLayout>
 
     </RelativeLayout>
 

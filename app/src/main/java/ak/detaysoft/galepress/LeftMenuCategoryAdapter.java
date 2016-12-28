@@ -47,19 +47,13 @@ public class LeftMenuCategoryAdapter extends BaseAdapter {
         if (convertView == null) {
             LayoutInflater mInflater = (LayoutInflater)
                     mContext.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            convertView = mInflater.inflate(R.layout.left_menu_category_item, null);
+            convertView = mInflater.inflate(R.layout.left_menu_category_item, parent, false);
         }
 
         TextView txtTitle = (TextView) convertView.findViewById(R.id.category_title);
         txtTitle.setText(mCategory.get(position).getCategoryName());
         txtTitle.setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
-        txtTitle.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(mContext));
-
-        ImageView image = (ImageView)convertView.findViewById(R.id.category_icon);
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            image.setBackground(ApplicationThemeColor.getInstance().paintIcons(mContext, ApplicationThemeColor.CATEGORY_UNSELECT));
-        else
-            image.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(mContext, ApplicationThemeColor.CATEGORY_UNSELECT));
+        txtTitle.setTypeface(ApplicationThemeColor.getInstance().getRubikLight(mContext));
 
 
         /*
@@ -74,10 +68,6 @@ public class LeftMenuCategoryAdapter extends BaseAdapter {
             for (int i = 0; i < ((MainActivity)(mContext)).getLibraryFragment().selectedCategories.size(); i++){
                 L_Category item = ((MainActivity)(mContext)).getLibraryFragment().selectedCategories.get(i);
                 if(item.getCategoryID().compareTo(mCategory.get(position).categoryID) == 0){
-                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                        image.setBackground(ApplicationThemeColor.getInstance().paintIcons(mContext, ApplicationThemeColor.CATEGORY_SELECT));
-                    else
-                        image.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(mContext, ApplicationThemeColor.CATEGORY_SELECT));
                     txtTitle.setTextColor(ApplicationThemeColor.getInstance().getThemeColor());
                 }
             }

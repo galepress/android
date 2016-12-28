@@ -2,16 +2,13 @@ package ak.detaysoft.galepress;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.ClipDrawable;
-import android.graphics.drawable.ShapeDrawable;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -25,6 +22,7 @@ import java.io.File;
 import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
 import ak.detaysoft.galepress.util.CustomPulseProgress;
+import ak.detaysoft.galepress.util.ProgressWheel;
 
 /**
  * Created by adem on 13/01/14.
@@ -56,17 +54,30 @@ public class ContentHolderAdapter extends BaseAdapter  {
 
     public class ViewHolder
     {
-        public RelativeLayout detailLayout;
+        public LinearLayout detailLayout;
         public ImageView coverImageView;
         public TextView nameLabel;
         public TextView detailLabel;
         public TextView monthLabel;
-        public ProgressBar progressBar;
+        public ProgressWheel progressBar;
+        public ImageView overlay;
         public CustomPulseProgress loading;
         public L_Content content;
 
         public void refreshImageLoading(){
             displayImage(true, coverImageView, loading, content.getSmallCoverImageDownloadPath(), content);
+        }
+
+        public void progressUpdate(long total, long fileLength){
+            if(progressBar.getVisibility() != View.VISIBLE){
+                progressBar.setVisibility(View.VISIBLE);
+            }
+
+            if(overlay.getVisibility() != View.VISIBLE){
+                overlay.setVisibility(View.VISIBLE);
+            }
+            progressBar.setProgress((int)((total*360)/fileLength));
+            progressBar.setText("%"+(int) (total * 100 / fileLength));
         }
 
     }
@@ -80,12 +91,13 @@ public class ContentHolderAdapter extends BaseAdapter  {
         if (convertView == null) {  // if it's not recycled, initialize some attributes
             viewHolder = new ViewHolder();
             convertView = libraryFragment.getLayoutInflater().inflate(R.layout.grid_cell, null);
-            viewHolder.detailLayout = (RelativeLayout)convertView.findViewById(R.id.detailLayout);
+            viewHolder.detailLayout = (LinearLayout)convertView.findViewById(R.id.detailLayout);
             viewHolder.coverImageView= (ImageView)convertView.findViewById(R.id.coverImage);
             viewHolder.monthLabel = (TextView)convertView.findViewById(R.id.monthLabel);
             viewHolder.nameLabel = (TextView)convertView.findViewById(R.id.nameLabel);
             viewHolder.detailLabel = (TextView)convertView.findViewById(R.id.detailLabel);
-            viewHolder.progressBar = (ProgressBar)convertView.findViewById(R.id.progress_bar);
+            viewHolder.progressBar = (ProgressWheel)convertView.findViewById(R.id.progress_bar);
+            viewHolder.overlay = (ImageView) convertView.findViewById(R.id.grid_download_overlay);
             viewHolder.loading = (CustomPulseProgress)convertView.findViewById(R.id.grid_image_loading);
             viewHolder.loading.startAnim();
             //viewHolder.loading.setIndeterminate(true);
@@ -98,7 +110,13 @@ public class ContentHolderAdapter extends BaseAdapter  {
         ((RelativeLayout)viewHolder.detailLayout.getParent()).setBackgroundColor(ApplicationThemeColor.getInstance().getCoverImageBackgroundColor());
         viewHolder.nameLabel.setTextColor(ApplicationThemeColor.getInstance().getLibraryItemTextColor());
         viewHolder.detailLabel.setTextColor(ApplicationThemeColor.getInstance().getLibraryItemTextColor());
-        viewHolder.monthLabel.setTextColor(ApplicationThemeColor.getInstance().getLibraryItemTextColor());
+        viewHolder.monthLabel.setTextColor(ApplicationThemeColor.getInstance().getLibraryItemTextColorWithAlpha(50));
+        viewHolder.overlay.setBackgroundColor(ApplicationThemeColor.getInstance().getDownloadProgressColorWithAlpha(70));
+
+        viewHolder.progressBar.setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
+        viewHolder.progressBar.setBarColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
+        viewHolder.progressBar.setRimColor(ApplicationThemeColor.getInstance().getReverseThemeColorWithAlpha(20));
+        viewHolder.progressBar.setContourColor(Color.TRANSPARENT);
 
         File coverImageFile = new File(GalePressApplication.getInstance().getFilesDir(), content.getCoverImageFileName());
         if(coverImageFile.exists()){
@@ -110,19 +128,13 @@ public class ContentHolderAdapter extends BaseAdapter  {
         }
 
         viewHolder.nameLabel.setText(content.getName());
-        viewHolder.nameLabel.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(libraryFragment.getActivity()));
+        viewHolder.nameLabel.setTypeface(ApplicationThemeColor.getInstance().getRubikMedium(libraryFragment.getActivity()));
         viewHolder.detailLabel.setText(content.getDetail());
-        viewHolder.detailLabel.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(libraryFragment.getActivity()));
+        viewHolder.detailLabel.setTypeface(ApplicationThemeColor.getInstance().getRubikLight(libraryFragment.getActivity()));
         viewHolder.monthLabel.setText(content.getMonthlyName());
-        viewHolder.monthLabel.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(libraryFragment.getActivity()));
-
-        viewHolder.progressBar.setVisibility(View.INVISIBLE);
-
-        ShapeDrawable pgDrawable = new ShapeDrawable();
-        pgDrawable.getPaint().setColor(Color.parseColor(ApplicationThemeColor.getInstance().getForegroundHexColor()));
-        ClipDrawable progress = new ClipDrawable(pgDrawable, Gravity.LEFT, ClipDrawable.HORIZONTAL);
-        viewHolder.progressBar.setProgressDrawable(progress);
-        viewHolder.progressBar.setBackgroundColor(ApplicationThemeColor.getInstance().getProgressbarBackgroundColor());
+        viewHolder.monthLabel.setTypeface(ApplicationThemeColor.getInstance().getRubikRegular(libraryFragment.getActivity()));
+        viewHolder.progressBar.setVisibility(View.GONE);
+        viewHolder.overlay.setVisibility(View.GONE);
 
         boolean downloaded = content.isPdfDownloaded();
         boolean updateAvailable = content.isPdfUpdateAvailable();
@@ -135,6 +147,7 @@ public class ContentHolderAdapter extends BaseAdapter  {
                 if(downloading){
                     // update downloading
                     viewHolder.progressBar.setVisibility(View.VISIBLE);
+                    viewHolder.overlay.setVisibility(View.VISIBLE);
 
                 }
             }
@@ -148,6 +161,7 @@ public class ContentHolderAdapter extends BaseAdapter  {
                 // Content is not downloaded but downloading
 
                 viewHolder.progressBar.setVisibility(View.VISIBLE);
+                viewHolder.overlay.setVisibility(View.VISIBLE);
             }
             else{
                 // Content Download edilmemis. ilk acildigi durum.
@@ -199,4 +213,6 @@ public class ContentHolderAdapter extends BaseAdapter  {
             }
         });
     }
+
+
 }

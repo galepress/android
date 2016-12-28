@@ -51,9 +51,8 @@ repositories {
 
 dependencies {
     compile files('../dd-plist.jar')
-    compile fileTree(dir: 'src/main/lib', include: '*.*')
+    compile fileTree(include: '*.*', dir: 'src/main/lib')
     compile files('src/main/lib/gcm.jar')
-    compile project(':menuDrawer')
     compile files('src/main/lib/universal-image-loader-1.9.3.jar')
     compile 'com.android.support:appcompat-v7:21.+'
     compile 'com.android.support:recyclerview-v7:21.+'
@@ -66,4 +65,6 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
         transitive = true
     }
+    compile project(':sliding_library')
+    compile 'org.lucasr.twowayview:twowayview:0.1.4'
 }

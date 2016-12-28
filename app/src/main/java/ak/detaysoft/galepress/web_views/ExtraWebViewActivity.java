@@ -81,7 +81,7 @@ public class ExtraWebViewActivity extends Activity {
 
         TextView titleTextView = (TextView) findViewById(R.id.extra_web_view_title);
         titleTextView.setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
-        titleTextView.setTypeface(ApplicationThemeColor.getInstance().getFont(ExtraWebViewActivity.this));
+        titleTextView.setTypeface(ApplicationThemeColor.getInstance().getRubikRegular(ExtraWebViewActivity.this));
 
         if(isModal){
             ileriButton.setVisibility(View.GONE);
@@ -169,6 +169,14 @@ public class ExtraWebViewActivity extends Activity {
         });
 
     }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(webView!=null) {
+            webView.pauseTimers();
+            webView.destroy();
+        }
+    }
 
     @Override
     protected void onDestroy() {
@@ -212,7 +220,6 @@ public class ExtraWebViewActivity extends Activity {
 
 
     }
-
 
 
     /*

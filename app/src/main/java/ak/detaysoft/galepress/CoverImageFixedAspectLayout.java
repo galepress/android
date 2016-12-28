@@ -29,7 +29,7 @@ public class CoverImageFixedAspectLayout extends RelativeLayout {
     private void init(Context context, AttributeSet attrs) {
         TypedArray a = context.obtainStyledAttributes(attrs,
                 R.styleable.CoverImageFixedAspectLayout);
-        aspect = a.getFloat(R.styleable.CoverImageFixedAspectLayout_aspectRatioCover, 1.3333f);
+        aspect = a.getFloat(R.styleable.CoverImageFixedAspectLayout_aspectRatioCover, 0.75f);
     }
 
     @Override
@@ -37,15 +37,12 @@ public class CoverImageFixedAspectLayout extends RelativeLayout {
         int w = MeasureSpec.getSize(widthMeasureSpec);
         int h = MeasureSpec.getSize(heightMeasureSpec);
         if(w > h){
-            w = ((int)((h)/aspect));
-            h = (int)(w*aspect);
+            w = ((int)((h)*aspect));
+            h = (int)(w/aspect);
         } else {
-            h = (int)((w)*aspect);
-            w = (int)(h/aspect);
+            h = (int)((w)/aspect);
+            w = (int)(h*aspect);
         }
-
-        //fixed_content_popup_layout xml de verilen padding burda ayarlaniyor
-        h = h - (int)(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources().getDisplayMetrics()));
 
         super.onMeasure(
                 MeasureSpec.makeMeasureSpec(w,

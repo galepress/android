@@ -86,7 +86,7 @@
 
 
         <LinearLayout
-            android:id="@+id/test_setting_icon_layout"
+            android:id="@+id/test_search_icon_layout"
             android:layout_width="49dp"
             android:layout_height="49dp"
             android:layout_alignParentRight="true"

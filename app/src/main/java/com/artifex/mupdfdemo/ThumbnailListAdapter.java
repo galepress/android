@@ -151,7 +151,7 @@ public class ThumbnailListAdapter extends BaseAdapter {
                 .findViewById(R.id.PreviewPageNumber);
         pageNumber.setText(String.valueOf(position + 1));
         pageNumber.setTextColor(ApplicationThemeColor.getInstance().getThemeColor());
-        pageNumber.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(mContext));
+        pageNumber.setTypeface(ApplicationThemeColor.getInstance().getRubikLight(mContext));
         pageNumberList.set(position, pageNumber);
         if(position == mDocView.getDisplayedViewIndex())
             pageNumber.setVisibility(View.VISIBLE);

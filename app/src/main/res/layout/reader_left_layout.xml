@@ -6,10 +6,12 @@
         android:id="@+id/reader_left_menu_listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:divider="@android:color/transparent">
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:divider="@android:color/transparent"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
 
-        </ListView>
+    </ListView>
 
 </LinearLayout>

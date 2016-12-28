@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.artifex.mupdfdemo.MuPDFActivity;
 
@@ -51,27 +52,37 @@ public class HomeFragment extends Fragment {
 
     public void openMaster(){
         L_Content content = GalePressApplication.getInstance().getDataApi().getMasterContent();
-        File samplePdfFile = new File(content.getPdfPath(),"file.pdf");
-        if(content!=null && content.isPdfDownloaded() && samplePdfFile.exists()){
+        if(content != null) {
+            File samplePdfFile = new File(content.getPdfPath(),"file.pdf");
+            if(samplePdfFile.exists()) {
+                if(content.isPdfDownloaded()){
 
-            Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
-            String udid = UUID.randomUUID().toString();
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            Calendar cal = Calendar.getInstance();
-            dateFormat .setTimeZone(TimeZone.getTimeZone("GMT"));
-            Location location = GalePressApplication.getInstance().location;
-            L_Statistic statistic = new L_Statistic(udid, content.getId(), location!=null?location.getLatitude():null,location!=null?location.getLongitude():null, null, dateFormat.format(cal.getTime()),L_Statistic.STATISTIC_contentOpened, null,null,null);
-            GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
+                    Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+                    String udid = UUID.randomUUID().toString();
+                    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    Calendar cal = Calendar.getInstance();
+                    dateFormat .setTimeZone(TimeZone.getTimeZone("GMT"));
+                    Location location = GalePressApplication.getInstance().location;
+                    L_Statistic statistic = new L_Statistic(udid, content.getId(), location!=null?location.getLatitude():null,location!=null?location.getLongitude():null, null, dateFormat.format(cal.getTime()),L_Statistic.STATISTIC_contentOpened, null,null,null);
+                    GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
 
-            Uri uri = Uri.parse(samplePdfFile.getAbsolutePath());
-            Intent intent = new Intent(getActivity(), MuPDFActivity.class);
-            intent.putExtra("content", content);
-            intent.putExtra("isHomeOpen", true);
-            intent.setAction(Intent.ACTION_VIEW);
-            intent.setData(uri);
-            getActivity().startActivityForResult(intent, 101);
+                    Uri uri = Uri.parse(samplePdfFile.getAbsolutePath());
+                    Intent intent = new Intent(getActivity(), MuPDFActivity.class);
+                    intent.putExtra("content", content);
+                    intent.putExtra("isHomeOpen", true);
+                    intent.setAction(Intent.ACTION_VIEW);
+                    intent.setData(uri);
+                    getActivity().startActivityForResult(intent, 101);
+                } else {
+                    Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.WARNING_102), Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.WARNING_102), Toast.LENGTH_SHORT).show();
+            }
+
         } else {
-
+            Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.WARNING_102), Toast.LENGTH_SHORT).show();
         }
+
     }
 }

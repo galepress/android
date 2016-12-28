@@ -137,7 +137,7 @@ public class LibraryFragment extends Fragment {
         v = inflater.inflate(R.layout.library_layout, container, false);
 
         gridview = (HeaderGridView) v.findViewById(R.id.gridview);
-        gridview.setBackgroundColor(ApplicationThemeColor.getInstance().getThemeColor());
+        gridview.setBackgroundColor(ApplicationThemeColor.getInstance().getLibraryGridViewColor());
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -315,6 +315,7 @@ public class LibraryFragment extends Fragment {
         if (holder != null) {
             if (!content.isPdfDownloading()) {
                 holder.progressBar.setVisibility(View.GONE);
+                holder.overlay.setVisibility(View.GONE);
                 holder.progressBar.invalidate();
             }
             holder.content = content;

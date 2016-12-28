@@ -9,9 +9,9 @@
     <ViewAnimator
 		android:id="@+id/switcher"
 		android:layout_width="wrap_content"
-		android:layout_height="60dp"
 		android:layout_alignParentTop="true"
-		android:layout_centerHorizontal="true">
+		android:layout_centerHorizontal="true"
+		android:layout_height="55dp">
 
 		<RelativeLayout
 			android:id="@+id/topBar0Main"
@@ -55,35 +55,49 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_centerVertical="true"
-				android:layout_toLeftOf="@+id/outlineButton"
+				android:layout_toLeftOf="@+id/outlineButtonBase"
 				android:contentDescription="@string/toggle_reflow_mode"
 				android:background="@drawable/button"
 				android:src="@drawable/ic_reflow"
                 android:visibility="gone"/>
 
-			<ImageButton
-				android:id="@+id/outlineButton"
+			<LinearLayout
+				android:id="@+id/outlineButtonBase"
 				android:layout_width="35dp"
 				android:layout_height="35dp"
-				android:layout_centerVertical="true"
-                android:layout_alignParentLeft="true"
-				android:contentDescription="@string/outline_title"
-                android:background="@android:color/transparent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp" />
-
-			<ImageButton
-				android:id="@+id/searchButton"
-				android:layout_width="35dp"
-				android:layout_height="35dp"
-				android:layout_centerVertical="true"
-				android:layout_toLeftOf="@+id/mailButton"
-				android:contentDescription="@string/search_document"
-				android:background="@android:color/transparent"
-				android:layout_marginBottom="10dp"
+				android:orientation="vertical"
+				android:gravity="center"
+				android:layout_alignParentLeft="true"
 				android:layout_marginLeft="10dp"
-				android:scaleType="centerInside"/>
+				android:layout_centerVertical="true">
+				<ImageButton
+					android:id="@+id/outlineButton"
+					android:layout_width="25dp"
+					android:layout_height="25dp"
+					android:contentDescription="@string/outline_title"
+					android:background="@android:color/transparent"
+					android:clickable="false"/>
+			</LinearLayout>
+
+
+			<LinearLayout
+				android:id="@+id/searchButtonBase"
+				android:layout_width="35dp"
+				android:layout_height="35dp"
+				android:orientation="vertical"
+				android:gravity="center"
+				android:layout_toLeftOf="@+id/mailButtonBase"
+				android:layout_marginLeft="10dp"
+				android:layout_centerVertical="true">
+				<ImageButton
+					android:id="@+id/searchButton"
+					android:layout_width="25dp"
+					android:layout_height="25dp"
+					android:background="@android:color/transparent"
+					android:scaleType="centerInside"
+					android:clickable="false"/>
+			</LinearLayout>
+
 
 			<ImageButton
 				android:id="@+id/imageButton"
@@ -94,22 +108,28 @@
 				android:background="@android:color/transparent"
 				android:onClick="OnMoreButtonClick"
 				android:layout_marginRight="10dp"
-				android:layout_marginLeft="15dp"
-				android:layout_marginTop="10dp"
-				android:layout_marginBottom="10dp" />
+				android:layout_marginLeft="15dp" />
 
-			<ImageButton
-                android:id="@+id/mailButton"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:background="@android:color/transparent"
-                android:onClick="OnMoreButtonClick"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp" />
+
+			<LinearLayout
+				android:id="@+id/mailButtonBase"
+				android:layout_width="35dp"
+				android:layout_height="35dp"
+				android:orientation="vertical"
+				android:gravity="center"
+				android:layout_alignParentRight="true"
+				android:layout_marginLeft="5dp"
+				android:layout_centerVertical="true"
+				android:layout_marginRight="10dp">
+
+				<ImageButton
+					android:id="@+id/mailButton"
+					android:layout_width="25dp"
+					android:layout_height="25dp"
+					android:background="@android:color/transparent"
+					android:clickable="false"/>
+			</LinearLayout>
+
 
             <ImageButton
                 android:id="@+id/moreButton"
@@ -131,11 +151,11 @@
                 android:layout_centerVertical="true"
                 android:layout_gravity="center"
                 android:textSize="@dimen/actionbar_text_size"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:gravity="center"
-                android:layout_toRightOf="@+id/outlineButton"
-                android:layout_marginLeft="10dp" />
+				android:gravity="center"
+                android:layout_toRightOf="@+id/outlineButtonBase"
+                android:layout_marginLeft="10dp"
+				android:layout_marginBottom="5dp"
+				android:layout_marginTop="5dp" />
 
         </RelativeLayout>
 
@@ -437,32 +457,18 @@
         android:visibility="invisible">
 
         <ImageView
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:id="@+id/reader_bottom_page_img1"
             android:layout_centerInParent="true" />
 
+		<ImageView
+			android:layout_width="45dp"
+			android:layout_height="45dp"
+			android:id="@+id/reader_bottom_page_img2"
+			android:layout_centerInParent="true" />
 
-        <RelativeLayout
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:id="@+id/reader_bottom_page_img2"
-            android:layout_centerInParent="true" >
-
-            <ImageView
-                android:layout_width="17dp"
-                android:layout_height="23dp"
-                android:id="@+id/reader_bottom_page_img_ok"
-                android:layout_centerInParent="true" />
-
-            </RelativeLayout>
-
-
-
-
-
-
-        </RelativeLayout>
+	</RelativeLayout>
 
 
 	<TextView
@@ -494,109 +500,79 @@
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="70dp"
-                android:layout_height="50dp"
-                android:gravity="center"
-                android:id="@+id/reader_home_layout">
+				android:gravity="center"
+                android:id="@+id/reader_home_layout"
+				android:layout_height="45dp">
 
                 <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="32dp"
-                    android:id="@+id/reader_home"
-                    android:adjustViewBounds="true" />
+					android:id="@+id/reader_home"
+                    android:adjustViewBounds="true"
+					android:layout_width="30dp"
+					android:layout_height="30dp" />
                 <TextView
                     android:id="@+id/reader_home_txt"
                     android:layout_width="60dp"
-                    android:layout_height="18dp"
-                    android:gravity="center_horizontal|bottom"
+					android:gravity="bottom|center_horizontal"
                     android:textColor="@drawable/tab_text_indicator"
                     android:textSize="9.5dp"
-                    android:textStyle="bold"
-                    android:maxLines="1"
-                    android:singleLine="true"
+					android:maxLines="1"
+					android:lines="1"
                     android:text="TEST TEST TEST"
-                    android:ellipsize="end" />
+                    android:ellipsize="end"
+					android:layout_height="15dp" />
             </LinearLayout>
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="70dp"
-                android:layout_height="50dp"
-                android:gravity="center"
-                android:id="@+id/reader_library_layout">
+				android:gravity="center"
+                android:id="@+id/reader_library_layout"
+				android:layout_height="45dp">
 
                 <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="32dp"
-                    android:id="@+id/reader_library"
-                    android:adjustViewBounds="true" />
+					android:id="@+id/reader_library"
+                    android:adjustViewBounds="true"
+					android:layout_width="30dp"
+					android:layout_height="30dp" />
 
                 <TextView
                     android:id="@+id/reader_library_txt"
                     android:layout_width="60dp"
-                    android:layout_height="18dp"
-                    android:gravity="center_horizontal|bottom"
+					android:gravity="bottom|center_horizontal"
                     android:textColor="@drawable/tab_text_indicator"
                     android:textSize="9.5dp"
-                    android:textStyle="bold"
-                    android:maxLines="1"
-                    android:singleLine="true"
+					android:maxLines="1"
+					android:lines="1"
                     android:text="TEST TEST TEST"
-                    android:ellipsize="end" />
+                    android:ellipsize="end"
+					android:layout_height="15dp" />
             </LinearLayout>
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="70dp"
-                android:layout_height="50dp"
-                android:gravity="center"
-                android:id="@+id/reader_download_layout">
+				android:gravity="center"
+                android:id="@+id/reader_download_layout"
+				android:layout_height="45dp">
 
                 <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="32dp"
-                    android:id="@+id/reader_download"
-                    android:adjustViewBounds="true" />
+					android:id="@+id/reader_download"
+                    android:adjustViewBounds="true"
+					android:layout_width="30dp"
+					android:layout_height="30dp" />
 
 
                 <TextView
                     android:id="@+id/reader_download_txt"
                     android:layout_width="60dp"
-                    android:layout_height="18dp"
-                    android:gravity="center_horizontal|bottom"
+					android:gravity="bottom|center_horizontal"
                     android:textColor="@drawable/tab_text_indicator"
                     android:textSize="9.5dp"
-                    android:textStyle="bold"
-                    android:maxLines="1"
-                    android:singleLine="true"
+					android:maxLines="1"
+					android:lines="1"
                     android:text="TEST TEST TEST"
-                    android:ellipsize="end" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="70dp"
-                android:layout_height="50dp"
-                android:gravity="center"
-                android:id="@+id/reader_info_layout">
-
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="32dp"
-                    android:id="@+id/reader_info"
-                    android:adjustViewBounds="true" />
-
-                <TextView
-                    android:id="@+id/reader_info_txt"
-                    android:layout_width="60dp"
-                    android:layout_height="18dp"
-                    android:gravity="center_horizontal|bottom"
-                    android:textColor="@drawable/tab_text_indicator"
-                    android:textSize="9.5dp"
-                    android:textStyle="bold"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:text="TEST TEST TEST"
-                    android:ellipsize="end" />
+                    android:ellipsize="end"
+					android:layout_height="15dp" />
             </LinearLayout>
 
         </LinearLayout>

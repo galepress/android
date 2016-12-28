@@ -60,13 +60,13 @@ public class CustomDownloadButton extends RelativeLayout{
         if(this.type == PURCHASE_DOWNLOAD){
             RelativeLayout.LayoutParams downloadButtonParams = (RelativeLayout.LayoutParams)getLayoutParams();
             defaultWith = downloadButtonParams.width;
-            downloadButtonParams.width = downloadButtonParams.width * 3+10;  //Burada width tipe göre belirlenecek
+            downloadButtonParams.width = downloadButtonParams.width * 3;  //Burada width tipe göre belirlenecek
             setLayoutParams(downloadButtonParams);
         }
 
         if(this.type == PURCHASE_DOWNLOAD){
             priceTextView  = new TextView(context);
-            priceTextView.setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(context));
+            priceTextView.setTypeface(ApplicationThemeColor.getInstance().getRubikLight(context));
             priceTextView.setTextColor(ApplicationThemeColor.getInstance().downloadButtonPriceColorStateList());
             priceTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, context.getResources().getDimension(R.dimen.content_popup_small_textsize));
             priceTextView.setId(R.id.price_text);
