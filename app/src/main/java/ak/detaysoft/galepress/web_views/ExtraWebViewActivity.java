@@ -178,15 +178,6 @@ public class ExtraWebViewActivity extends Activity {
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if(webView!=null) {
-            webView.pauseTimers();
-            webView.destroy();
-        }
-    }
-
     public void enableDisableNavigationButtons(WebView webView) {
         // if has previous page, enable the back button
         if(webView.canGoBack()){
