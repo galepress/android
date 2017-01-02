@@ -297,7 +297,7 @@ public class DataApi extends Object {
                                 Calendar cal = Calendar.getInstance();
                                 dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
                                 Location location = GalePressApplication.getInstance().location;
-                                L_Statistic statistic = new L_Statistic(udid, content.getId(), location != null ? location.getLatitude() : null, location != null ? location.getLongitude() : null, null, dateFormat.format(cal.getTime()), L_Statistic.STATISTIC_contentUpdated, null, null, null);
+                                L_Statistic statistic = new L_Statistic(udid, content.getId(), Integer.valueOf(content.getApplicationId()), location != null ? location.getLatitude() : null, location != null ? location.getLongitude() : null, null, dateFormat.format(cal.getTime()), L_Statistic.STATISTIC_contentUpdated, null, null, null);
                                 GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
                             } else {
                                 Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
@@ -306,7 +306,7 @@ public class DataApi extends Object {
                                 Calendar cal = Calendar.getInstance();
                                 dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
                                 Location location = GalePressApplication.getInstance().location;
-                                L_Statistic statistic = new L_Statistic(udid, content.getId(), location != null ? location.getLatitude() : null, location != null ? location.getLongitude() : null, null, dateFormat.format(cal.getTime()), L_Statistic.STATISTIC_contentDownloaded, null, null, null);
+                                L_Statistic statistic = new L_Statistic(udid, content.getId(), Integer.valueOf(content.getApplicationId()), location != null ? location.getLatitude() : null, location != null ? location.getLongitude() : null, null, dateFormat.format(cal.getTime()), L_Statistic.STATISTIC_contentDownloaded, null, null, null);
                                 GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
                             }
 
@@ -1276,7 +1276,7 @@ public class DataApi extends Object {
                         Calendar cal = Calendar.getInstance();
                         dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
                         Location location = GalePressApplication.getInstance().location;
-                        L_Statistic statistic = new L_Statistic(udid, content.getId(), location != null ? location.getLatitude() : null, location != null ? location.getLongitude() : null, null, dateFormat.format(cal.getTime()), L_Statistic.STATISTIC_contentDeleted, null, null, null);
+                        L_Statistic statistic = new L_Statistic(udid, content.getId(), Integer.valueOf(content.getApplicationId()), location != null ? location.getLatitude() : null, location != null ? location.getLongitude() : null, null, dateFormat.format(cal.getTime()), L_Statistic.STATISTIC_contentDeleted, null, null, null);
                         GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
 
                         L_Application application = getDatabaseApi().getApplication(GalePressApplication.getInstance().getApplicationId());
@@ -1555,19 +1555,12 @@ public class DataApi extends Object {
 
     private void postStatistic(final L_Statistic statistic) {
         GalePressApplication application = GalePressApplication.getInstance();
-        Integer applicationId = null;
         RequestQueue requestQueue = application.getRequestQueue4Statistic();
         JsonObjectRequest request;
         RequestFuture<JSONObject> future = RequestFuture.newFuture();
 
-        if (GalePressApplication.getInstance().isTestApplication()) {
-            applicationId = new Integer(application.getTestApplicationLoginInf().getApplicationId());
-        } else {
-            applicationId = application.getApplicationId();
-        }
-
         Uri.Builder uriBuilder = getWebServiceUrlBuilder();
-        uriBuilder.appendPath("statistics");
+        uriBuilder.appendPath("graff_statistics");
 
         final String gcmRegisterId = GCMRegistrar.getRegistrationId(GalePressApplication.getInstance().getApplicationContext());
 
@@ -1578,7 +1571,7 @@ public class DataApi extends Object {
         uriBuilder.appendQueryParameter("lat", statistic.getLat() != null ? statistic.getLat().toString() : "");
         uriBuilder.appendQueryParameter("lon", statistic.getLon() != null ? statistic.getLon().toString() : "");
         uriBuilder.appendQueryParameter("deviceID", gcmRegisterId);
-        uriBuilder.appendQueryParameter("applicationID", applicationId.toString());
+        uriBuilder.appendQueryParameter("applicationID", statistic.getApplicationId() != null ? statistic.getApplicationId().toString() : "");
         uriBuilder.appendQueryParameter("contentID", statistic.getContentId() != null ? statistic.getContentId().toString() : "");
         uriBuilder.appendQueryParameter("page", statistic.getPage() != null ? statistic.getPage().toString() : "");
         uriBuilder.appendQueryParameter("param5", statistic.getParam5() != null ? statistic.getParam5() : "");

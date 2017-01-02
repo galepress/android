@@ -193,10 +193,16 @@ public class ApplicationFragment extends Fragment {
         categoryAdapter = new CategoryAdapter(categories);
         categoryView.setAdapter(categoryAdapter);
 
+        int selectedCategoryIndex = 1;
         if (selectedCategory == null && ((MainActivity)getActivity()).getCategoryListWithAll() != null && ((MainActivity)getActivity()).getCategoryListWithAll().size() > 2)
             selectedCategory = ((MainActivity)getActivity()).getCategoryListWithAll().get(1);
 
-        ((MainActivity)getActivity()).choseCategory(1);
+        if(selectedCategory == null){
+            selectedCategory = ((MainActivity)getActivity()).getCategoryListWithAll().get(0);
+            selectedCategoryIndex = 0;
+        }
+
+        ((MainActivity)getActivity()).choseCategory(selectedCategoryIndex);
 
         applications = GalePressApplication.getInstance().getDatabaseApi().getApplicationCategoryByCategory(selectedCategory, isDownloaded);
         this.contentHolderAdapter = new ApplicationHolderAdapter(this);
@@ -317,8 +323,8 @@ public class ApplicationFragment extends Fragment {
         private ArrayList<L_Category> categories;
         private CategoryAdapter.MyViewHolder selectedItem;
 
-        public CategoryAdapter(ArrayList<L_Category> searchList) {
-            this.categories = searchList;
+        public CategoryAdapter(ArrayList<L_Category> categories) {
+            this.categories = categories;
         }
 
         public class MyViewHolder extends RecyclerView.ViewHolder {

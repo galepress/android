@@ -310,7 +310,7 @@ public class LibraryFragment extends Fragment {
             Calendar cal = Calendar.getInstance();
             dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
             Location location = GalePressApplication.getInstance().location;
-            L_Statistic statistic = new L_Statistic(udid, content.getId(), location != null ? location.getLatitude() : null, location != null ? location.getLongitude() : null, null, dateFormat.format(cal.getTime()), L_Statistic.STATISTIC_contentOpened, null, null, null);
+            L_Statistic statistic = new L_Statistic(udid, content.getId(), Integer.valueOf(content.getApplicationId()), location != null ? location.getLatitude() : null, location != null ? location.getLongitude() : null, null, dateFormat.format(cal.getTime()), L_Statistic.STATISTIC_contentOpened, null, null, null);
             GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
 
             Uri uri = Uri.parse(samplePdfFile.getAbsolutePath());

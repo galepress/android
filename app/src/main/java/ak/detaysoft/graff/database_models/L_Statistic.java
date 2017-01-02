@@ -12,6 +12,7 @@ public class L_Statistic {
 
     @DatabaseField (id = true, columnName = "id") private String id;
     @DatabaseField private Integer contentId;
+    @DatabaseField private Integer applicationId;
     @DatabaseField private Double lat;
     @DatabaseField private Double lon;
     @DatabaseField private Integer page;
@@ -36,9 +37,10 @@ public class L_Statistic {
         this.param5 = "android";
     }
 
-    public L_Statistic(String id, Integer contentId, Double lat, Double lon, Integer page, String time, Integer type, String param5, String param6, String param7) {
+    public L_Statistic(String id, Integer contentId, Integer applicationId, Double lat, Double lon, Integer page, String time, Integer type, String param5, String param6, String param7) {
         this.id = id;
         this.contentId = contentId;
+        this.applicationId = applicationId;
         this.lat = lat;
         this.lon = lon;
         this.page = page;
@@ -63,6 +65,14 @@ public class L_Statistic {
 
     public void setContentId(Integer contentId) {
         this.contentId = contentId;
+    }
+
+    public Integer getApplicationId() {
+        return applicationId;
+    }
+
+    public void setApplicationId(Integer applicationId) {
+        this.applicationId = applicationId;
     }
 
     public Double getLat() {
@@ -131,8 +141,8 @@ public class L_Statistic {
 
     @Override
     public String toString() {
-        String resultString = "";
-        String typeString = "";
+        String resultString;
+        String typeString;
         switch (type){
             case STATISTIC_applicationActive:
                 typeString = "STATISTIC_applicationActive";
@@ -168,6 +178,7 @@ public class L_Statistic {
         resultString =  "\nid: "+id;
         resultString += "\ntype:"+typeString;
         resultString += "\ncontent:"+contentId;
+        resultString += "\napplication:"+applicationId;
         resultString += "\nPage : "+page;
         resultString += "\ntime: "+time;
         resultString += "\nlat:"+(lat!=null ?lat.toString():"null");

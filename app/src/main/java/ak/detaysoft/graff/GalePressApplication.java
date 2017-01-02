@@ -152,7 +152,8 @@ public class GalePressApplication
 
     Foreground.Listener myListener = new Foreground.Listener() {
         public void onBecameForeground() {
-            mLocationClient.connect();
+            if(!mLocationClient.isConnected() && !mLocationClient.isConnecting())
+                mLocationClient.connect();
             startUpdates();
 
             Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
@@ -160,7 +161,7 @@ public class GalePressApplication
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Calendar cal = Calendar.getInstance();
             dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
-            L_Statistic statistic = new L_Statistic(udid, null, location != null ? location.getLatitude() : null, location != null ? location.getLongitude() : null, null, dateFormat.format(cal.getTime()), L_Statistic.STATISTIC_applicationActive, null, null, null);
+            L_Statistic statistic = new L_Statistic(udid, null, getApplicationId(), location != null ? location.getLatitude() : null, location != null ? location.getLongitude() : null, null, dateFormat.format(cal.getTime()), L_Statistic.STATISTIC_applicationActive, null, null, null);
             GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
             GalePressApplication.getInstance().getDataApi().startStatisticSend();
 
@@ -183,7 +184,7 @@ public class GalePressApplication
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Calendar cal = Calendar.getInstance();
             dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
-            L_Statistic statistic = new L_Statistic(udid, null, location != null ? location.getLatitude() : null, location != null ? location.getLongitude() : null, null, dateFormat.format(cal.getTime()), L_Statistic.STATISTIC_applicationPassive, null, null, null);
+            L_Statistic statistic = new L_Statistic(udid, null, getApplicationId(), location != null ? location.getLatitude() : null, location != null ? location.getLongitude() : null, null, dateFormat.format(cal.getTime()), L_Statistic.STATISTIC_applicationPassive, null, null, null);
             GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
             GalePressApplication.getInstance().getDataApi().stopStatisticSend();
         }

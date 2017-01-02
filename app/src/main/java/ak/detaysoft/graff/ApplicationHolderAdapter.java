@@ -29,7 +29,7 @@ public class ApplicationHolderAdapter extends BaseAdapter {
 
     private ApplicationFragment applicationFragment;
 
-    public ApplicationHolderAdapter(ApplicationFragment applicationFragment){
+    public ApplicationHolderAdapter(ApplicationFragment applicationFragment) {
         this.applicationFragment = applicationFragment;
     }
 
@@ -47,11 +47,10 @@ public class ApplicationHolderAdapter extends BaseAdapter {
     }
 
     public long getItemId(int position) {
-        return Long.parseLong(((L_ApplicationCategory)applicationFragment.getApplications().get(position)).getApplication().getId());
+        return Long.parseLong(((L_ApplicationCategory) applicationFragment.getApplications().get(position)).getApplication().getId());
     }
 
-    public class ViewHolder
-    {
+    public class ViewHolder {
         public LinearLayout detailLayout;
         public ImageView coverImageView;
         public TextView nameLabel;
@@ -72,42 +71,42 @@ public class ApplicationHolderAdapter extends BaseAdapter {
         if (convertView == null) {  // if it's not recycled, initialize some attributes
             viewHolder = new ApplicationHolderAdapter.ViewHolder();
             convertView = applicationFragment.getLayoutInflater().inflate(R.layout.grid_cell, null);
-            viewHolder.detailLayout = (LinearLayout)convertView.findViewById(R.id.detailLayout);
-            viewHolder.coverImageView= (ImageView)convertView.findViewById(R.id.coverImage);
-            viewHolder.nameLabel = (TextView)convertView.findViewById(R.id.nameLabel);
+            viewHolder.detailLayout = (LinearLayout) convertView.findViewById(R.id.detailLayout);
+            viewHolder.coverImageView = (ImageView) convertView.findViewById(R.id.coverImage);
+            viewHolder.nameLabel = (TextView) convertView.findViewById(R.id.nameLabel);
             viewHolder.downloadStatus = (RelativeLayout) convertView.findViewById(R.id.grid_download_status);
             viewHolder.downloadPercentage = (TextView) convertView.findViewById(R.id.grid_download_percentage);
-            viewHolder.loading = (CustomPulseProgress)convertView.findViewById(R.id.grid_image_loading);
+            viewHolder.loading = (CustomPulseProgress) convertView.findViewById(R.id.grid_image_loading);
             viewHolder.overlay = (ImageView) convertView.findViewById(R.id.grid_download_overlay);
             viewHolder.loading.startAnim();
             //viewHolder.loading.setIndeterminate(true);
             //viewHolder.loading.getIndeterminateDrawable().setColorFilter(ApplicationThemeColor.getInstance().getForegroundColor(), android.graphics.PorterDuff.Mode.MULTIPLY);
             convertView.setTag(viewHolder);
         } else {
-            viewHolder = (ApplicationHolderAdapter.ViewHolder)convertView.getTag();
+            viewHolder = (ApplicationHolderAdapter.ViewHolder) convertView.getTag();
         }
         viewHolder.detailLayout.setBackgroundColor(ApplicationThemeColor.getInstance().getHolderDetailBackround());
         viewHolder.nameLabel.setTextColor(ApplicationThemeColor.getInstance().getGridItemNameLabelColor());
         viewHolder.downloadPercentage.setTextColor(ApplicationThemeColor.getInstance().getGridItemDetailLabelColor());
 
-        if(applicationFragment.isDownloaded) {
+        if (applicationFragment.isDownloaded) {
             /*
             * Uygulama kategorilerinden ilk cover image gosteriliyor.
             * */
-            File coverImageFile = new File(GalePressApplication.getInstance().getFilesDir(), application.getApplication().getId()+"_"+application.getCategory().getId());
-            if(coverImageFile.exists()){
-                displayImage(false, viewHolder.coverImageView, viewHolder.loading, "file://"+coverImageFile.getPath(), application.getApplication().getId()+"_"+application.getCategory().getId(), application);
-            } else if (application.getCoverImageUrl() != null){
-                displayImage(true, viewHolder.coverImageView, viewHolder.loading, application.getCoverImageUrl(), application.getApplication().getId()+"_"+application.getCategory().getId(), application);
+            File coverImageFile = new File(GalePressApplication.getInstance().getFilesDir(), application.getApplication().getId() + "_" + application.getCategory().getId());
+            if (coverImageFile.exists()) {
+                displayImage(false, viewHolder.coverImageView, viewHolder.loading, "file://" + coverImageFile.getPath(), application.getApplication().getId() + "_" + application.getCategory().getId(), application);
+            } else if (application.getCoverImageUrl() != null) {
+                displayImage(true, viewHolder.coverImageView, viewHolder.loading, application.getCoverImageUrl(), application.getApplication().getId() + "_" + application.getCategory().getId(), application);
             } else {
                 Log.e("imageDisplayed", "noimage");
             }
         } else {
-            File coverImageFile = new File(GalePressApplication.getInstance().getFilesDir(), application.getApplication().getId()+"_"+application.getCategory().getId());
-            if(coverImageFile.exists()){
-                displayImage(false, viewHolder.coverImageView, viewHolder.loading, "file://"+coverImageFile.getPath(), application.getApplication().getId()+"_"+application.getCategory().getId(), application);
-            } else if (application.getCoverImageUrl() != null){
-                displayImage(true, viewHolder.coverImageView, viewHolder.loading, application.getCoverImageUrl(), application.getApplication().getId()+"_"+application.getCategory().getId(), application);
+            File coverImageFile = new File(GalePressApplication.getInstance().getFilesDir(), application.getApplication().getId() + "_" + application.getCategory().getId());
+            if (coverImageFile.exists()) {
+                displayImage(false, viewHolder.coverImageView, viewHolder.loading, "file://" + coverImageFile.getPath(), application.getApplication().getId() + "_" + application.getCategory().getId(), application);
+            } else if (application.getCoverImageUrl() != null) {
+                displayImage(true, viewHolder.coverImageView, viewHolder.loading, application.getCoverImageUrl(), application.getApplication().getId() + "_" + application.getCategory().getId(), application);
             } else {
                 Log.e("imageDisplayed", "noimage");
             }
@@ -125,7 +124,9 @@ public class ApplicationHolderAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public void displayImage(final boolean isDownload, final ImageView image, final CustomPulseProgress loading, final String imagePath, final String fileName, final L_ApplicationCategory application){
+    public void displayImage(final boolean isDownload, final ImageView image
+            , final CustomPulseProgress loading, final String imagePath
+            , final String fileName, final L_ApplicationCategory application) {
         DisplayImageOptions displayConfig;
         if (isDownload) {
             displayConfig = new DisplayImageOptions.Builder()
@@ -162,4 +163,33 @@ public class ApplicationHolderAdapter extends BaseAdapter {
             }
         });
     }
+
+    /*public void displayImageWithPicasso(final boolean isDownload, final ImageView image
+            , final CustomPulseProgress loading, final String imagePath
+            , final String fileName, final L_ApplicationCategory application)  {
+        Picasso.with(applicationFragment.getActivity()).load(imagePath).into(new Target() {
+            @Override
+            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                loading.setVisibility(View.GONE);
+                image.setImageBitmap(bitmap);
+                image.invalidate();
+                *//*if (isDownload)
+                    GalePressApplication.getInstance().getDataApi().saveApplicationCoverImage(bitmap, fileName, application);*//*
+                Log.e("imageloadertest", "ok");
+            }
+
+            @Override
+            public void onBitmapFailed(Drawable errorDrawable) {
+                loading.setVisibility(View.GONE);
+                Log.e("imageloadertest", "fail");
+            }
+
+            @Override
+            public void onPrepareLoad(Drawable placeHolderDrawable) {
+                image.setImageBitmap(null);
+                loading.setVisibility(View.VISIBLE);
+                loading.startAnim();
+            }
+        });
+    }*/
 }

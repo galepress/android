@@ -2320,7 +2320,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                 Calendar cal = Calendar.getInstance();
                 dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
                 Location location = GalePressApplication.getInstance().location;
-                L_Statistic statistic = new L_Statistic(udid, this.content.getId(), location != null ? location.getLatitude() : null, location != null ? location.getLongitude() : null, null, dateFormat.format(cal.getTime()), L_Statistic.STATISTIC_contentClosed, null, null, null);
+                L_Statistic statistic = new L_Statistic(udid, this.content.getId(), Integer.valueOf(this.content.getApplicationId()), location != null ? location.getLatitude() : null, location != null ? location.getLongitude() : null, null, dateFormat.format(cal.getTime()), L_Statistic.STATISTIC_contentClosed, null, null, null);
                 GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
             }
 
@@ -2392,7 +2392,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                             Calendar cal = Calendar.getInstance();
                             dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
                             Location location = GalePressApplication.getInstance().location;
-                            L_Statistic statistic = new L_Statistic(udid, this.content.getId(), location != null ? location.getLatitude() : null, location != null ? location.getLongitude() : null, null, dateFormat.format(cal.getTime()), L_Statistic.STATISTIC_contentClosed, null, null, null);
+                            L_Statistic statistic = new L_Statistic(udid, this.content.getId(), Integer.valueOf(this.content.getApplicationId()), location != null ? location.getLatitude() : null, location != null ? location.getLongitude() : null, null, dateFormat.format(cal.getTime()), L_Statistic.STATISTIC_contentClosed, null, null, null);
                             GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
                         }
 

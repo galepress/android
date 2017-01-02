@@ -291,12 +291,11 @@ public class MuPDFReaderView extends ReaderView {
 
                     if (core.getDisplayPages() == 1) {
                         // Portrait
-                        statistic = new L_Statistic(udid, core.content.getId(), location != null ? location.getLatitude() : null, location != null ? location.getLongitude() : null, pages[j], dateFormat.format(cal.getTime()), L_Statistic.STATISTIC_pageOpenedPortrait, null, null, null);
+                        statistic = new L_Statistic(udid, core.content.getId(), Integer.valueOf(core.content.getApplicationId()), location != null ? location.getLatitude() : null, location != null ? location.getLongitude() : null, pages[j], dateFormat.format(cal.getTime()), L_Statistic.STATISTIC_pageOpenedPortrait, null, null, null);
                     } else {
                         //landscape
-                        statistic = new L_Statistic(udid, core.content.getId(), location != null ? location.getLatitude() : null, location != null ? location.getLongitude() : null, pages[j], dateFormat.format(cal.getTime()), L_Statistic.STATISTIC_pageOpenedLandscape, null, null, null);
+                        statistic = new L_Statistic(udid, core.content.getId(), Integer.valueOf(core.content.getApplicationId()), location != null ? location.getLatitude() : null, location != null ? location.getLongitude() : null, pages[j], dateFormat.format(cal.getTime()), L_Statistic.STATISTIC_pageOpenedLandscape, null, null, null);
                     }
-
                     GalePressApplication.getInstance().getDataApi().commitStatisticsToDB(statistic);
                 }
 
