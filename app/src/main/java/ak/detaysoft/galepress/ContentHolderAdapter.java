@@ -90,7 +90,7 @@ public class ContentHolderAdapter extends BaseAdapter  {
         final L_Content content = (L_Content) libraryFragment.getContents().get(position);
         if (convertView == null) {  // if it's not recycled, initialize some attributes
             viewHolder = new ViewHolder();
-            convertView = libraryFragment.getLayoutInflater().inflate(R.layout.grid_cell, null);
+            convertView = libraryFragment.getLayoutInflater().inflate(R.layout.grid_cell, parent, false);
             viewHolder.detailLayout = (LinearLayout)convertView.findViewById(R.id.detailLayout);
             viewHolder.coverImageView= (ImageView)convertView.findViewById(R.id.coverImage);
             viewHolder.monthLabel = (TextView)convertView.findViewById(R.id.monthLabel);

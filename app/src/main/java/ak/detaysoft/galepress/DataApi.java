@@ -30,7 +30,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -46,7 +45,6 @@ import com.google.android.gcm.GCMRegistrar;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -54,7 +52,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -70,10 +67,8 @@ import java.util.List;
 import java.util.TimeZone;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-
 import ak.detaysoft.galepress.custom_models.ApplicationIds;
 import ak.detaysoft.galepress.database_models.L_Application;
 import ak.detaysoft.galepress.database_models.L_Category;
@@ -1069,12 +1064,8 @@ public class DataApi extends Object {
                                 } else {
                                     content.updateWithImageDownloadUrl(contentCoverImage.getUrl(), false);
                                     getDatabaseApi().updateContent(content, false);
-
-
                                 }
-
                                 getCoverImageVersionToUpdate(content.getId(), true, false);
-
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -1381,7 +1372,7 @@ public class DataApi extends Object {
         });
     }
 
-    public void saveImage(Bitmap bitmap, String fileName, int id, boolean isLarge) {
+    public void saveImage(final Bitmap bitmap, final String fileName, final int id, final boolean isLarge) {
         File f = new File(GalePressApplication.getInstance().getFilesDir(), fileName);
         try {
             f.createNewFile();
@@ -1395,7 +1386,6 @@ public class DataApi extends Object {
             fos.write(bitmapdata);
             fos.flush();
             fos.close();
-
             getCoverImageVersionToUpdate(id, false, isLarge);
         } catch (Exception e) {
             f.delete();
@@ -1608,7 +1598,7 @@ public class DataApi extends Object {
                                     }
 
                                     getCoverImage(localContent, 0, (int) (480 * scale), (int) (640 * scale));
-                                    getCoverImage(localContent, 1, (int) (155 * scale), (int) (206 * scale));
+                                    getCoverImage(localContent, 1, (int) (165 * scale), (int) (220 * scale));
                                 } else {
                                     // Content Detail update edildi.
                                     localContent.setVersion(remoteContent.getContentVersion());
