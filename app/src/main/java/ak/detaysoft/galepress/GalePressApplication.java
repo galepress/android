@@ -204,7 +204,7 @@ public class GalePressApplication
         parseApplicationPlist();
 
         DisplayImageOptions displayConfig = new DisplayImageOptions.Builder()
-                .cacheInMemory(true).build();
+                .cacheOnDisk(true).build();
         ImageLoaderConfiguration loaderConfig = new ImageLoaderConfiguration.Builder(this)
                 .imageDecoder(new MyImageDecoder(true))
                 .defaultDisplayImageOptions(displayConfig).build();

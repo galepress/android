@@ -543,28 +543,15 @@ public class ContentDetailPopupActivity extends Activity{
 
         File coverImageFile = new File(GalePressApplication.getInstance().getFilesDir(), content.getBigCoverImageFileName());
 
-        if(content.getRemoteLargeCoverImageVersion() < content.getCoverImageVersion()){
-            if(content.getRemoteCoverImageVersion() < content.getCoverImageVersion()) {
-                displayImage(true, false, image, loading, content.getLargeCoverImageDownloadPath());
-            } else {
+        if(coverImageFile.exists()){
+            displayImage(false, false, image, loading, "file://"+coverImageFile.getPath());
+        } else if(content.getLargeCoverImageDownloadPath() != null){
+            if(content.getSmallCoverImageDownloadPath() != null){
                 File thumnailFile = new File(GalePressApplication.getInstance().getFilesDir(), content.getCoverImageFileName());
                 if(thumnailFile.exists()){
                     displayImage(false, true, image, loading, "file://"+thumnailFile.getPath());
                 } else {
                     displayImage(true, false, image, loading, content.getLargeCoverImageDownloadPath());
-                }
-            }
-        } else {
-            if(coverImageFile.exists()){
-                displayImage(false, false, image, loading, "file://"+coverImageFile.getPath());
-            } else if(content.getLargeCoverImageDownloadPath() != null){
-                if(content.getSmallCoverImageDownloadPath() != null){
-                    File thumnailFile = new File(GalePressApplication.getInstance().getFilesDir(), content.getCoverImageFileName());
-                    if(thumnailFile.exists()){
-                        displayImage(false, true, image, loading, "file://"+thumnailFile.getPath());
-                    } else {
-                        displayImage(true, false, image, loading, content.getLargeCoverImageDownloadPath());
-                    }
                 }
             }
         }
@@ -765,16 +752,11 @@ public class ContentDetailPopupActivity extends Activity{
             public void onLoadingComplete(String s, View view, Bitmap bitmap) {
                 loading.setVisibility(View.GONE);
                 if(isDownload) {
-                    GalePressApplication.getInstance().getDataApi().saveImage(bitmap, content.getBigCoverImageFileName(), content.getId(), true);
+                    GalePressApplication.getInstance().getDataApi().saveImage(bitmap, content.getBigCoverImageFileName());
                 }
                 if(isThumnail && GalePressApplication.getInstance().getDataApi().isConnectedToInternet()) {
                     displayImage(true, false, image, loading, content.getLargeCoverImageDownloadPath());
                 }
-
-                if(!isDownload && (content.getRemoteLargeCoverImageVersion() < content.getCoverImageVersion()))
-                    GalePressApplication.getInstance().getDataApi().downloadUpdatedImage(content.getLargeCoverImageDownloadPath()
-                            , content.getBigCoverImageFileName()
-                            , content.getId(), true);
             }
 
             @Override

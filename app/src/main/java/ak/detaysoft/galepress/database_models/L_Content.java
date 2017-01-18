@@ -49,8 +49,6 @@ public class L_Content implements Serializable {
     @DatabaseField private double currency;
     @DatabaseField private String price;
     @DatabaseField private Integer coverImageVersion;
-    @DatabaseField private Integer remoteCoverImageVersion;
-    @DatabaseField private Integer remoteLargeCoverImageVersion;
     @DatabaseField private Integer status;
     @DatabaseField private Integer version;
     @DatabaseField private Integer contentOrientation;
@@ -162,22 +160,6 @@ public class L_Content implements Serializable {
 
     public Integer getVersion() {
         return version;
-    }
-
-    public Integer getRemoteCoverImageVersion() {
-        return remoteCoverImageVersion;
-    }
-
-    public void setCoverImageRemoteVersion(Integer remoteCoverImageVersion) {
-        this.remoteCoverImageVersion = remoteCoverImageVersion;
-    }
-
-    public Integer getRemoteLargeCoverImageVersion() {
-        return remoteLargeCoverImageVersion;
-    }
-
-    public void setRemoteLargeCoverImageVersion(Integer remoteLargeCoverImageVersion) {
-        this.remoteLargeCoverImageVersion = remoteLargeCoverImageVersion;
     }
 
     public ArrayList<L_Category> getCategories() {
@@ -410,13 +392,11 @@ public class L_Content implements Serializable {
         this.id = remoteContent.getContentID();
         this.pdfFileName = UUID.randomUUID().toString();
         this.dirName = UUID.randomUUID().toString();
-        this.coverImageFileName = UUID.randomUUID().toString();
-        this.bigCoverImageFileName = UUID.randomUUID().toString();
+        this.coverImageFileName = ""+id+"_thumbnail.png";
+        this.bigCoverImageFileName = ""+id+"_large.png";
         this.coverImageVersion  = -1;
         this.pdfVersion = -1;
         this.version = -1;
-        this.remoteCoverImageVersion = -1;
-        this.remoteLargeCoverImageVersion = -1;
         this.isPdfDownloaded = false;
         /*
         for (R_Category remoteCategory : remoteContent.getContentCategories()){
@@ -531,8 +511,6 @@ public class L_Content implements Serializable {
                 ", coverImageVersion=" + coverImageVersion +
                 ", status=" + status +
                 ", version=" + version +
-                ", remoteCoverImageVersion=" + remoteCoverImageVersion +
-                ", remoteLargeCoverImageVersion=" + remoteLargeCoverImageVersion +
                 ", categories=" + categories +
                 ", pdfPath='" + pdfPath + '\'' +
                 ", gridThumbCoverImagePath='" + gridThumbCoverImagePath + '\'' +

@@ -2,7 +2,10 @@ package ak.detaysoft.galepress;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +19,12 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+import com.nostra13.universalimageloader.core.process.BitmapProcessor;
+import com.squareup.picasso.LruCache;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import java.io.File;
 
@@ -177,7 +186,7 @@ public class ContentHolderAdapter extends BaseAdapter  {
         if (isDownload) {
             displayConfig = new DisplayImageOptions.Builder()
                 .showImageOnFail(ApplicationThemeColor.getInstance().paintIcons(libraryFragment.getActivity(), ApplicationThemeColor.INTERNET_CONNECTION_ERROR))
-                    .cacheInMemory(true).build();
+                    .cacheOnDisk(true).build();
         } else {
             displayConfig = new DisplayImageOptions.Builder()
                     .cacheInMemory(true).build();
@@ -200,11 +209,7 @@ public class ContentHolderAdapter extends BaseAdapter  {
             public void onLoadingComplete(String s, View view, Bitmap bitmap) {
                 loading.setVisibility(View.GONE);
                 if (isDownload)
-                    GalePressApplication.getInstance().getDataApi().saveImage(bitmap, content.getCoverImageFileName(), content.getId(), false);
-                else if (content.getRemoteCoverImageVersion() < content.getCoverImageVersion())
-                    GalePressApplication.getInstance().getDataApi().downloadUpdatedImage(content.getSmallCoverImageDownloadPath()
-                            , content.getCoverImageFileName()
-                            , content.getId(), false);
+                    GalePressApplication.getInstance().getDataApi().saveImage(bitmap, content.getCoverImageFileName());
             }
 
             @Override
@@ -212,7 +217,35 @@ public class ContentHolderAdapter extends BaseAdapter  {
                 loading.setVisibility(View.GONE);
             }
         });
-    }
 
+        /*Target target = new Target() {
+            @Override
+            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                image.setImageBitmap(bitmap);
+                loading.setVisibility(View.GONE);
+                *//*if (isDownload)
+                    GalePressApplication.getInstance().getDataApi().saveImage(bitmap, content.getCoverImageFileName());*//*
+            }
+
+            @Override
+            public void onBitmapFailed(Drawable errorDrawable) {
+                loading.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onPrepareLoad(Drawable placeHolderDrawable) {
+                image.setImageBitmap(null);
+                loading.setVisibility(View.VISIBLE);
+                loading.startAnim();
+            }
+        };
+        Picasso p = new Picasso.Builder(libraryFragment.getActivity())
+                .memoryCache(new LruCache(24000))
+                .build();
+        p.load(Uri.parse(imagePath))
+                .error(ApplicationThemeColor.getInstance().paintIcons(libraryFragment.getActivity(), ApplicationThemeColor.INTERNET_CONNECTION_ERROR))
+                .resize(150,200).config(Bitmap.Config.RGB_565).into(target);*/
+
+    }
 
 }

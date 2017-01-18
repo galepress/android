@@ -96,9 +96,7 @@ public class DataApi extends Object {
     public static final Integer MESSAGE_TYPE_COVER_IMAGE = 1;
     public static final Integer MESSAGE_TYPE_COVER_PDF_DOWNLOAD = 2;
     public boolean isBlockedFromWS = false;
-
     static final String GCM_SENDER_ID = "151896860923";  // Place here your Google project id
-
     private DatabaseApi databaseApi = null;
     public DownloadPdfTask downloadPdfTask;
     public StatisticSendTask statisticSendTask;
@@ -517,17 +515,6 @@ public class DataApi extends Object {
         return builder;
     }
 
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (msg.what == MESSAGE_TYPE_COVER_IMAGE) {
-                getCoverImageVersionToUpdate(msg.arg2, false, false);
-            } else if (msg.what == MESSAGE_TYPE_COVER_PDF_DOWNLOAD) {
-            }
-
-        }
-    };
-
     public DataApi() {
     }
 
@@ -564,7 +551,6 @@ public class DataApi extends Object {
             return capitalize(manufacturer) + " " + model;
         }
     }
-
 
     private String capitalize(String s) {
         if (s == null || s.length() == 0) {
@@ -604,7 +590,6 @@ public class DataApi extends Object {
         if (!GalePressApplication.getInstance().isTestApplication())
             getDatabaseApi().createStatistic(statistic);
     }
-
 
     public void login(final String token, final String userId, final String email, final String name, final String last_name,
                       final Activity activity, boolean isFacebookLogin, String uname, String password) {
@@ -1033,59 +1018,6 @@ public class DataApi extends Object {
         }
     }
 
-    public void getCoverImage(L_Content content, final int type, int width, int height) {
-        GalePressApplication application = GalePressApplication.getInstance();
-        RequestQueue requestQueue = application.getRequestQueue();
-        JsonObjectRequest request;
-
-        Uri.Builder uriBuilder = getWebServiceUrlBuilder();
-        uriBuilder.appendPath("contents");
-        uriBuilder.appendPath(content.getId().toString());
-        uriBuilder.appendPath("cover-image");
-        uriBuilder.appendQueryParameter("size", Integer.toString(type));
-        uriBuilder.appendQueryParameter("width", Integer.toString(width));
-        uriBuilder.appendQueryParameter("height", Integer.toString(height));
-
-        request = new JsonObjectRequest(Request.Method.GET, uriBuilder.build().toString(), null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            R_ContentFileUrl contentCoverImage = new R_ContentFileUrl(response);
-                            if (contentCoverImage.getError() != "") {
-                                L_Content content = getDatabaseApi().getContent(contentCoverImage.getContentID());
-                                if (type == 0) {
-                                    content.updateWithImageDownloadUrl(contentCoverImage.getUrl(), true);
-                                    getDatabaseApi().updateContent(content, false);
-
-                                    if (GalePressApplication.getInstance().getLibraryActivity() != null)
-                                        GalePressApplication.getInstance().getLibraryActivity().updateAdapterList(content, true);
-
-                                } else {
-                                    content.updateWithImageDownloadUrl(contentCoverImage.getUrl(), false);
-                                    getDatabaseApi().updateContent(content, false);
-                                }
-                                getCoverImageVersionToUpdate(content.getId(), true, false);
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        if (error != null && error.getMessage() != null) {
-                            Logout.e("Galepress", "Error : " + error.getMessage());
-                            VolleyLog.e("Error: ", error.getMessage());
-                        }
-
-                    }
-                }
-        );
-        request.setShouldCache(Boolean.FALSE);
-        requestQueue.add(request);
-    }
 
     public void cancelDownload(Boolean confirmed, final Context context, final L_Content content) {
         if (confirmed) {
@@ -1346,107 +1278,40 @@ public class DataApi extends Object {
         requestQueue.add(request);
     }
 
-    public void downloadUpdatedImage(String url, final String fileName, final int id, final boolean isLarge) {
-        ImageLoader.getInstance().loadImage(url, new ImageLoadingListener() {
+    public void saveImage(final Bitmap bitmap, final String fileName) {
+
+        AsyncTask<Void,Void,Boolean> saveImage = new AsyncTask<Void, Void, Boolean>() {
             @Override
-            public void onLoadingStarted(String s, View view) {
-                Log.e("downloadTry", "" + id);
-            }
+            protected Boolean doInBackground(Void... params) {
+                File f = new File(GalePressApplication.getInstance().getFilesDir(), fileName);
+                try {
+                    f.createNewFile();
+                    //Convert bitmap to byte array
+                    ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
+                    byte[] bitmapdata = bos.toByteArray();
 
-            @Override
-            public void onLoadingFailed(String s, View view, FailReason failReason) {
-
-            }
-
-            @Override
-            public void onLoadingComplete(String s, View view, Bitmap bitmap) {
-                saveImage(bitmap, fileName, id, isLarge);
-                ImageLoader.getInstance().getMemoryCache().clear();
-                Log.e("imageUpdate", "" + isLarge);
-            }
-
-            @Override
-            public void onLoadingCancelled(String s, View view) {
-
-            }
-        });
-    }
-
-    public void saveImage(final Bitmap bitmap, final String fileName, final int id, final boolean isLarge) {
-        File f = new File(GalePressApplication.getInstance().getFilesDir(), fileName);
-        try {
-            f.createNewFile();
-            //Convert bitmap to byte array
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
-            byte[] bitmapdata = bos.toByteArray();
-
-            //write the bytes in file
-            FileOutputStream fos = new FileOutputStream(f);
-            fos.write(bitmapdata);
-            fos.flush();
-            fos.close();
-            getCoverImageVersionToUpdate(id, false, isLarge);
-        } catch (Exception e) {
-            f.delete();
-        }
-    }
-
-    public void getCoverImageVersionToUpdate(Integer id, final boolean islocalVersionUpdate, final boolean isLarge) {
-        GalePressApplication application = GalePressApplication.getInstance();
-        RequestQueue requestQueue = application.getRequestQueue();
-
-        JsonObjectRequest request;
-
-        Uri.Builder uriBuilder = getWebServiceUrlBuilder();
-        uriBuilder.appendPath("contents");
-        uriBuilder.appendPath(id.toString());
-        uriBuilder.appendPath("detail");
-
-        request = new JsonObjectRequest(Request.Method.GET, uriBuilder.build().toString(), null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            R_ContentDetail remoteContent = new R_ContentDetail(response);
-                            L_Content localContent = getDatabaseApi().getContent(remoteContent.getContentID());
-                            if (islocalVersionUpdate) {
-                                localContent.setCoverImageVersion(remoteContent.getContentCoverImageVersion());
-                                if (localContent.getRemoteCoverImageVersion() == -1) {
-                                    localContent.setCoverImageRemoteVersion(remoteContent.getContentCoverImageVersion());
-                                }
-                                if (localContent.getRemoteLargeCoverImageVersion() == -1) {
-                                    localContent.setRemoteLargeCoverImageVersion(remoteContent.getContentCoverImageVersion());
-                                }
-
-                            } else {
-                                if (isLarge)
-                                    localContent.setRemoteLargeCoverImageVersion(remoteContent.getContentCoverImageVersion());
-                                else
-                                    localContent.setCoverImageRemoteVersion(remoteContent.getContentCoverImageVersion());
-                            }
-                            localContent.setVersion(remoteContent.getContentVersion());
-                            getDatabaseApi().updateContent(localContent, true);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        if (error != null && error.getMessage() != null) {
-                            Logout.e("Galepress", "Error : " + error.getMessage());
-                            VolleyLog.e("Error: ", error.getMessage());
-                        }
-
-                    }
+                    //write the bytes in file
+                    FileOutputStream fos = new FileOutputStream(f);
+                    fos.write(bitmapdata);
+                    fos.flush();
+                    fos.close();
+                    return true;
+                } catch (Exception e) {
+                    f.delete();
+                    return false;
                 }
-        );
-        request.setShouldCache(Boolean.FALSE);
-        requestQueue.add(request);
-    }
+            }
 
+            @Override
+            protected void onPostExecute(Boolean aBoolean) {
+                super.onPostExecute(aBoolean);
+            }
+        };
+        saveImage.execute();
+
+
+    }
 
     public void startStatisticSend() {
         if ((statisticSendTask == null || statisticSendTask.getStatus() != AsyncTask.Status.RUNNING) && isConnectedToInternet() && !GalePressApplication.getInstance().isTestApplication()) {
@@ -1554,12 +1419,28 @@ public class DataApi extends Object {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
+                            float scale;
+                            try {
+                                DisplayMetrics metrics = GalePressApplication.getInstance().getApplicationContext().getResources().getDisplayMetrics();
+                                scale = metrics.density > 1 ? metrics.density : 1;
+                            } catch (Exception e) {
+                                scale = 1;
+                            }
+
                             R_ContentDetail remoteContent = new R_ContentDetail(response);
                             L_Content localContent = getDatabaseApi().getContent(remoteContent.getContentID());
                             if (localContent == null) {
                                 if (!remoteContent.isForceDelete()) {
                                     localContent = new L_Content(remoteContent);
+                                    String largeUrl = "http://www.galepress.com/tr/icerikler/talep?W="+(int) (480 * scale)+"&H="+(int) (640 * scale)+"&RequestTypeID="+1101+"&ContentID="+localContent.getId();
+                                    //largeUrl = "http://www.haberler.com/gazete-mansetleri/haberturk-gazetesi/bugun.jpg";
+                                    localContent.setLargeCoverImageDownloadPath(largeUrl);
+
+                                    String thumbUrl = "http://www.galepress.com/tr/icerikler/talep?W="+240+"&H="+320+"&RequestTypeID="+1102+"&ContentID="+localContent.getId();
+                                    //thumbUrl = "http://www.haberler.com/gazete-mansetleri/haberturk-gazetesi/bugun.jpg";
+                                    localContent.setSmallCoverImageDownloadPath(thumbUrl);
                                     getDatabaseApi().createContent(localContent);
+
                                     createConCat(remoteContent, localContent);
                                 }
                             } else {
@@ -1572,9 +1453,9 @@ public class DataApi extends Object {
                                     localContent.updateWithRemoteContent(remoteContent);
                                     getDatabaseApi().updateContent(localContent, true);
                                     removeAllConCatsForContent(localContent);
+
                                     createConCat(remoteContent, localContent);
                                 }
-
                             }
 
                             if (!remoteContent.isForceDelete()) {
@@ -1587,23 +1468,22 @@ public class DataApi extends Object {
                                     getDatabaseApi().updateContent(localContent, true);
                                 }
 
-                                if (localContent.getCoverImageVersion() < remoteContent.getContentCoverImageVersion()) {
-                                    // cover image must be updated.
-                                    float scale;
-                                    try {
-                                        DisplayMetrics metrics = GalePressApplication.getInstance().getApplicationContext().getResources().getDisplayMetrics();
-                                        scale = metrics.density > 1 ? metrics.density : 1;
-                                    } catch (Exception e) {
-                                        scale = 1;
+
+                                if(remoteContent.getContentCoverImageVersion() != localContent.getCoverImageVersion()){
+                                    File thumbnailCoverImageFile = new File(GalePressApplication.getInstance().getFilesDir(), localContent.getCoverImageFileName());
+                                    if(thumbnailCoverImageFile.exists()){
+                                        thumbnailCoverImageFile.delete();
                                     }
 
-                                    getCoverImage(localContent, 0, (int) (480 * scale), (int) (640 * scale));
-                                    getCoverImage(localContent, 1, (int) (165 * scale), (int) (220 * scale));
-                                } else {
-                                    // Content Detail update edildi.
-                                    localContent.setVersion(remoteContent.getContentVersion());
-                                    getDatabaseApi().updateContent(localContent, true);
+                                    File largeCoverImageFile = new File(GalePressApplication.getInstance().getFilesDir(), localContent.getBigCoverImageFileName());
+                                    if(largeCoverImageFile.exists()){
+                                        largeCoverImageFile.delete();
+                                    }
+                                    localContent.setCoverImageVersion(remoteContent.getContentCoverImageVersion());
+                                    ImageLoader.getInstance().getMemoryCache().clear();
                                 }
+                                localContent.setVersion(remoteContent.getContentVersion());
+                                getDatabaseApi().updateContent(localContent, true);
                                 if (GalePressApplication.getInstance().getLibraryActivity() != null) {
                                     GalePressApplication.getInstance().getLibraryActivity().getContentHolderAdapter().notifyDataSetChanged();
                                 }
@@ -2424,7 +2304,6 @@ public class DataApi extends Object {
         requestQueue.add(request);
     }
 
-
     public void fullTextSearch(final String text, final MainActivity mainActivity){
         GalePressApplication application = GalePressApplication.getInstance();
         Integer applicationId;
@@ -2600,7 +2479,6 @@ public class DataApi extends Object {
         requestQueue.add(request);
     }
 
-
     public void fullTextSearchForReader(final String text, final String contentId, final MuPDFActivity muPDFActivity) {
         GalePressApplication application = GalePressApplication.getInstance();
         Integer applicationId;
@@ -2673,4 +2551,3 @@ public class DataApi extends Object {
         requestQueue.add(request);
     }
 }
-
