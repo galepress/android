@@ -12,6 +12,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\GalepressMerge\sliding_library\unspecified\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="21.0.1"
+        sha1="652495086c020ddce0edcfd515b83ec9ebcf2b0e">
+        <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\GalepressMerge-sliding_library-unspecified_99518dcbccf664b550d9c43eaf29ca39ff8a3ddd.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\org.lucasr.twowayview\twowayview\0.1.4\jars\classes.jar"
         jumboMode="false"
         optimize="true"
@@ -27,6 +36,15 @@
         revision="21.0.1"
         sha1="3b0fb927b680e244106145d6ecc59e4ae21c7e5d">
         <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\com.facebook.android-facebook-android-sdk-4.1.1_9e980d12902c09164da36258bf2ce4178fd99981.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.crashlytics.sdk.android\crashlytics-core\2.3.8\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="21.0.1"
+        sha1="c9ef45dcbd082cd63aac09a5e2cd443adb5df837">
+        <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\com.crashlytics.sdk.android-crashlytics-core-2.3.8_f53680a851f371099c8ffcbb26b95e403a678637.jar" />
     </item>
     <item
         is-multidex="false"
@@ -54,96 +72,6 @@
         revision="21.0.1"
         sha1="2a2837634e09c4e8c13a26d17942b4575d27f755">
         <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\xwalk_core_library_java_f3b3b91541267f70d8906b7f9f183ad446ea0b2e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\GalepressMerge\app\src\main\lib\dd-plist.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="21.0.1"
-        sha1="d39b131d5aaf8bf6e53ff8dfd28f5cf2521c6d10">
-        <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\dd-plist_a69a0c828b93f8c7b48cdd2b4146cd4bc21212e7.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\libs\internal_impl-21.0.3.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="21.0.1"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3_b5dd6b61c62b9f8d52a0adb71f6bbd9ad1e4b232.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\p1025\.gradle\caches\modules-2\files-2.1\com.j256.ormlite\ormlite-core\4.45\3db7b73aecea723803e10b068777cf09ed42d4be\ormlite-core-4.45.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="21.0.1"
-        sha1="3db7b73aecea723803e10b068777cf09ed42d4be">
-        <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\ormlite-core-4.45_459c624c4fa26b5a2b20b6a9dbe76a6dca97cffd.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.crashlytics.sdk.android\crashlytics\2.5.5\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="21.0.1"
-        sha1="611605b6b640c1558f9bdea41de8ff837ab68ca8">
-        <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\com.crashlytics.sdk.android-crashlytics-2.5.5_7aa2603565681ec1b67a2686f5b87aed4fedee85.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\GalepressMerge\xwalk_core_library_15\unspecified\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="21.0.1"
-        sha1="f27d0cffb6edd7f9c0dd32474876c7399d02be29">
-        <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\GalepressMerge-xwalk_core_library_15-unspecified_48ab877d2b32a8446911907f5c24da95bc12beb5.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.crashlytics.sdk.android\beta\1.1.4\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="21.0.1"
-        sha1="ad5bb101ced4d3939225c9b57e5a3d81547c1fbb">
-        <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\com.crashlytics.sdk.android-beta-1.1.4_38d4c174eab49bc8375f469d552c2fa32223d792.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\p1025\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="21.0.1"
-        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3_31d4185809440a6744ef65d2534345f9425dd224.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\p1025\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.5.2\7446d06ec8d4f7ffcc53f1da37c95f200dcb9387\picasso-2.5.2.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="21.0.1"
-        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
-        <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\picasso-2.5.2_2c0f56e1644e0c24167742df3778165a93c7ec43.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\GalepressMerge\sliding_library\unspecified\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="21.0.1"
-        sha1="652495086c020ddce0edcfd515b83ec9ebcf2b0e">
-        <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\GalepressMerge-sliding_library-unspecified_99518dcbccf664b550d9c43eaf29ca39ff8a3ddd.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.crashlytics.sdk.android\crashlytics-core\2.3.8\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="21.0.1"
-        sha1="c9ef45dcbd082cd63aac09a5e2cd443adb5df837">
-        <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\com.crashlytics.sdk.android-crashlytics-core-2.3.8_f53680a851f371099c8ffcbb26b95e403a678637.jar" />
     </item>
     <item
         is-multidex="false"
@@ -192,6 +120,24 @@
     </item>
     <item
         is-multidex="false"
+        jar="D:\GalepressMerge\app\src\main\lib\dd-plist.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="21.0.1"
+        sha1="d39b131d5aaf8bf6e53ff8dfd28f5cf2521c6d10">
+        <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\dd-plist_a69a0c828b93f8c7b48cdd2b4146cd4bc21212e7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="21.0.1"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3_b5dd6b61c62b9f8d52a0adb71f6bbd9ad1e4b232.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.edmodo\cropper\1.0.1\jars\classes.jar"
         jumboMode="false"
         optimize="true"
@@ -210,12 +156,57 @@
     </item>
     <item
         is-multidex="false"
+        jar="C:\Users\p1025\.gradle\caches\modules-2\files-2.1\com.j256.ormlite\ormlite-core\4.45\3db7b73aecea723803e10b068777cf09ed42d4be\ormlite-core-4.45.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="21.0.1"
+        sha1="3db7b73aecea723803e10b068777cf09ed42d4be">
+        <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\ormlite-core-4.45_459c624c4fa26b5a2b20b6a9dbe76a6dca97cffd.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.crashlytics.sdk.android\answers\1.3.6\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="21.0.1"
         sha1="9af3b9b8114e685291aa00e6572b0a9131244956">
         <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\com.crashlytics.sdk.android-answers-1.3.6_cb352b619b318e6b7ea59c145cf3f5a3cb792da4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.crashlytics.sdk.android\crashlytics\2.5.5\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="21.0.1"
+        sha1="611605b6b640c1558f9bdea41de8ff837ab68ca8">
+        <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\com.crashlytics.sdk.android-crashlytics-2.5.5_7aa2603565681ec1b67a2686f5b87aed4fedee85.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\GalepressMerge\xwalk_core_library_15\unspecified\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="21.0.1"
+        sha1="f27d0cffb6edd7f9c0dd32474876c7399d02be29">
+        <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\GalepressMerge-xwalk_core_library_15-unspecified_48ab877d2b32a8446911907f5c24da95bc12beb5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.crashlytics.sdk.android\beta\1.1.4\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="21.0.1"
+        sha1="ad5bb101ced4d3939225c9b57e5a3d81547c1fbb">
+        <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\com.crashlytics.sdk.android-beta-1.1.4_38d4c174eab49bc8375f469d552c2fa32223d792.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\p1025\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="21.0.1"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3_31d4185809440a6744ef65d2534345f9425dd224.jar" />
     </item>
 
 </items>

@@ -24,6 +24,7 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/ormlite_android_4_45.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/ormlite_core_4_45.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/picasso_2_5_2.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_4_0_30.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/recyclerview_v7_21_0_3.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_21_0_3.xml" afterPath="" />
@@ -32,140 +33,19 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/twowayview_0_1_4.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/universal_image_loader_1_9_3.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/xwalk_core_library_java.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/Trace_2015.11.25_13.55.32.trace" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/Trace_2016.01.13_12.06.31.trace" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/Trace_2016.01.13_12.07.18.trace" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/Trace_2016.01.13_12.07.54.trace" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.07.28_11.07.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.07.28_11.08.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.07.28_11.09.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.08.15_11.31.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.08.16_15.51-1.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.08.16_15.51.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.08.16_15.54.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.08.16_15.55.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.08.16_15.56.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.08.17_16.55.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.08.18_17.10.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.08.18_17.13.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.08.22_12.18.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.08.25_17.02.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.08.26_11.06.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.08.26_11.09.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.08.26_15.27-1.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.08.26_15.27.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.08.29_12.48.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.08.29_13.12-1.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.08.29_13.12.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.08.29_15.21.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.08.29_15.27.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.08.31_12.29.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.08.31_16.09.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.09.20_12.12.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.09.20_14.25.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.09.20_14.28.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.11.21_08.50.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.11.21_08.56-1.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.11.21_08.56.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.14_12.05.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.14_12.10.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.14_14.08.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.14_14.18.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.14_14.20.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.14_14.36.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.14_14.41.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.14_14.43.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.14_14.45.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.14_14.49.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.15_09.53.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.15_09.58.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.15_10.53.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.15_16.55-1.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.15_16.55-2.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.15_16.55.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.15_17.01.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.16_11.53.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.16_11.55.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.16_12.00.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.16_14.16.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.16_14.28.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.16_15.04.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.16_16.04.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.16_16.06.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.16_16.08.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.16_16.11.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.16_16.15.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.16_16.21.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.16_16.23.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.19_08.46.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.19_10.12.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.19_10.20.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.19_10.26.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.19_10.28.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.19_11.07.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.19_11.13.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.19_11.17.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.19_15.33-1.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.19_15.33.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.20_09.11-1.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.20_09.11.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.20_12.07.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.20_13.54.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.21_09.21.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.21_09.50.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.21_09.51-1.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.21_09.51.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.21_11.55.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.21_12.02-1.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.21_12.02-2.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.21_12.02.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.21_12.11-1.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.21_12.11.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.21_14.29.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.21_14.55.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.21_15.43.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.22_08.45.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.22_08.50.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/captures/ak.detaysoft.galepress_2016.12.22_11.58.li" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dd-plist.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/intermediates/res/resources-debug-androidTest.ap_" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/menuDrawer/build/outputs/aar/menuDrawer-release.aar" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_sliding_library_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_sliding_library_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_sliding_library_compileReleaseJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_sliding_library_compileReleaseJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/res/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/res/resources-debug-androidTest.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/outputs/aar/sliding_library-debug.aar" afterPath="$PROJECT_DIR$/sliding_library/build/outputs/aar/sliding_library-debug.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/outputs/aar/sliding_library-release.aar" afterPath="$PROJECT_DIR$/sliding_library/build/outputs/aar/sliding_library-release.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/resources-debug-androidTest.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/outputs/aar/xwalk_core_library_15-debug.aar" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/outputs/aar/xwalk_core_library_15-debug.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/outputs/aar/xwalk_core_library_15-release.aar" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/outputs/aar/xwalk_core_library_15-release.aar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentDetailPopupActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentHolderAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentHolderAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_Content.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/database_models/L_Content.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable-hdpi-v4.json" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable-hdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" />
     </list>
     <ignored path="GalepressMerge.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -264,7 +144,7 @@
       <file leaf-file-name="DataApi.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
+            <state relative-caret-position="1972">
               <caret line="1428" column="0" selection-start-line="1428" selection-start-column="0" selection-end-line="1428" selection-end-column="0" />
               <folding>
                 <element signature="method#updateCompleted#0;class#DataApi#0" expanded="false" />
@@ -333,7 +213,7 @@
       <file leaf-file-name="GalePressApplication.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
+            <state relative-caret-position="493">
               <caret line="29" column="11" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="11" />
               <folding>
                 <element signature="method#destroyBillingServices#0;class#GalePressApplication#0" expanded="false" />
@@ -342,27 +222,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ContentHolderAdapter.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ContentHolderAdapter.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentHolderAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="193" column="0" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
+            <state relative-caret-position="201">
+              <caret line="208" column="21" selection-start-line="208" selection-start-column="21" selection-end-line="208" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="class#ViewHolder#0;class#ContentHolderAdapter#0" expanded="false" />
                 <element signature="method#getView#0;class#ContentHolderAdapter#0" expanded="false" />
-                <marker date="1484738449928" expanded="false" signature="10457:10476" ph=" { " />
-                <marker date="1484738449928" expanded="false" signature="10509:10523" ph=" }" />
+                <marker date="1484743316934" expanded="false" signature="10190:10209" ph=" { " />
+                <marker date="1484743316934" expanded="false" signature="10242:10256" ph=" }" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="473">
-              <caret line="48" column="50" selection-start-line="48" selection-start-column="50" selection-end-line="48" selection-end-column="50" />
+            <state relative-caret-position="388">
+              <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -3106,7 +2986,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="D:\GalepressMerge" value="7385101226991" />
+        <entry key="D:\GalepressMerge" value="7385102201398" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -3557,8 +3437,8 @@
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentHolderAdapter.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentHolderAdapter.java" />
       </list>
     </option>
   </component>
@@ -3593,12 +3473,12 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane />
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -4037,8 +3917,8 @@
             <element signature="imports" expanded="true" />
             <element signature="class#ViewHolder#0;class#ContentHolderAdapter#0" expanded="false" />
             <element signature="method#getView#0;class#ContentHolderAdapter#0" expanded="false" />
-            <marker date="1484738449928" expanded="false" signature="10457:10476" ph=" { " />
-            <marker date="1484738449928" expanded="false" signature="10509:10523" ph=" }" />
+            <marker date="1484743316934" expanded="false" signature="10190:10209" ph=" { " />
+            <marker date="1484743316934" expanded="false" signature="10242:10256" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -4047,7 +3927,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="986">
           <caret line="77" column="5" selection-start-line="77" selection-start-column="5" selection-end-line="77" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4166,8 +4045,8 @@
             <element signature="imports" expanded="true" />
             <element signature="class#ViewHolder#0;class#ContentHolderAdapter#0" expanded="false" />
             <element signature="method#getView#0;class#ContentHolderAdapter#0" expanded="false" />
-            <marker date="1484738449928" expanded="false" signature="10457:10476" ph=" { " />
-            <marker date="1484738449928" expanded="false" signature="10509:10523" ph=" }" />
+            <marker date="1484743316934" expanded="false" signature="10190:10209" ph=" { " />
+            <marker date="1484743316934" expanded="false" signature="10242:10256" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -4176,7 +4055,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="986">
           <caret line="77" column="5" selection-start-line="77" selection-start-column="5" selection-end-line="77" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4295,8 +4173,8 @@
             <element signature="imports" expanded="true" />
             <element signature="class#ViewHolder#0;class#ContentHolderAdapter#0" expanded="false" />
             <element signature="method#getView#0;class#ContentHolderAdapter#0" expanded="false" />
-            <marker date="1484738449928" expanded="false" signature="10457:10476" ph=" { " />
-            <marker date="1484738449928" expanded="false" signature="10509:10523" ph=" }" />
+            <marker date="1484743316934" expanded="false" signature="10190:10209" ph=" { " />
+            <marker date="1484743316934" expanded="false" signature="10242:10256" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -4305,7 +4183,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6528">
           <caret line="415" column="5" selection-start-line="415" selection-start-column="5" selection-end-line="415" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4424,8 +4301,8 @@
             <element signature="imports" expanded="true" />
             <element signature="class#ViewHolder#0;class#ContentHolderAdapter#0" expanded="false" />
             <element signature="method#getView#0;class#ContentHolderAdapter#0" expanded="false" />
-            <marker date="1484738449928" expanded="false" signature="10457:10476" ph=" { " />
-            <marker date="1484738449928" expanded="false" signature="10509:10523" ph=" }" />
+            <marker date="1484743316934" expanded="false" signature="10190:10209" ph=" { " />
+            <marker date="1484743316934" expanded="false" signature="10242:10256" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -4583,23 +4460,23 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-large/grid_cell.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
           <caret line="27" column="48" selection-start-line="27" selection-start-column="48" selection-end-line="28" selection-end-column="41" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/grid_cell.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/grid_cell.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sliding_library/src/com/jeremyfeinstein/slidingmenu/lib/CustomViewAbove.java">
@@ -4613,7 +4490,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="986">
           <caret line="77" column="5" selection-start-line="77" selection-start-column="5" selection-end-line="77" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4679,13 +4555,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/reader_search_popup.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="48" column="50" selection-start-line="48" selection-start-column="50" selection-end-line="48" selection-end-column="50" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://D:/Kisisel/Kişisel uygulama dosyaları/BesPro/screens/device-2017-01-17-151919.png" />
@@ -4698,7 +4574,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
+        <state relative-caret-position="1972">
           <caret line="1428" column="0" selection-start-line="1428" selection-start-column="0" selection-end-line="1428" selection-end-column="0" />
           <folding>
             <element signature="method#updateCompleted#0;class#DataApi#0" expanded="false" />
@@ -4765,7 +4641,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
+        <state relative-caret-position="493">
           <caret line="29" column="11" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="11" />
           <folding>
             <element signature="method#destroyBillingServices#0;class#GalePressApplication#0" expanded="false" />
@@ -4773,25 +4649,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/ContentHolderAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="193" column="0" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
+        <state relative-caret-position="201">
+          <caret line="208" column="21" selection-start-line="208" selection-start-column="21" selection-end-line="208" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="class#ViewHolder#0;class#ContentHolderAdapter#0" expanded="false" />
             <element signature="method#getView#0;class#ContentHolderAdapter#0" expanded="false" />
-            <marker date="1484738449928" expanded="false" signature="10457:10476" ph=" { " />
-            <marker date="1484738449928" expanded="false" signature="10509:10523" ph=" }" />
+            <marker date="1484743316934" expanded="false" signature="10190:10209" ph=" { " />
+            <marker date="1484743316934" expanded="false" signature="10242:10256" ph=" }" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="48" column="50" selection-start-line="48" selection-start-column="50" selection-end-line="48" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
