@@ -1,0 +1,15 @@
+<!-- [ Mirror metadata ] generatedAt: 1484919754942 -->
+<!-- Generated screen file. Fill the id tags below with content with
+which to populate your previewed layout. For a complete specification
+of sample data, please see http://jimulabs.com/sample-data-specifications/ 
+
+Valid attributes on <screen> tag: theme="@style/someTheme" inEditMode="false" overlay="@drawable/mockup" -->
+<screen>
+    <_content layout="@layout/multi_field_time_picker_dialog">
+        <!-- TextView Examples:
+        <second_colon text="@string/string_resource" />
+        <second_colon text="Text literal" textSize="14sp" /> -->
+        <second_colon />
+        <second_dot />
+    </_content>
+</screen>

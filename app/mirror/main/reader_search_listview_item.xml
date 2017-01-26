@@ -1,0 +1,15 @@
+<!-- [ Mirror metadata ] generatedAt: 1484919754654 -->
+<!-- Generated screen file. Fill the id tags below with content with
+which to populate your previewed layout. For a complete specification
+of sample data, please see http://jimulabs.com/sample-data-specifications/ 
+
+Valid attributes on <screen> tag: theme="@style/someTheme" inEditMode="false" overlay="@drawable/mockup" -->
+<screen>
+    <_content layout="@layout/reader_search_listview_item">
+        <!-- TextView Examples:
+        <reader_search_result_page_title text="@string/string_resource" />
+        <reader_search_result_page_title text="Text literal" textSize="14sp" /> -->
+        <reader_search_result_page_title />
+        <reader_search_result_page_page />
+    </_content>
+</screen>

@@ -967,6 +967,7 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
                 }
             }
         }
+
     }
 
     private void addTab(String title, String tag, Drawable drawable, Class classy, TabbarItem item) {

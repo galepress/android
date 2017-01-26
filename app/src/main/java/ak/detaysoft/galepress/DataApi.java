@@ -43,8 +43,6 @@ import com.android.volley.toolbox.RequestFuture;
 import com.artifex.mupdfdemo.MuPDFActivity;
 import com.google.android.gcm.GCMRegistrar;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -1433,11 +1431,9 @@ public class DataApi extends Object {
                                 if (!remoteContent.isForceDelete()) {
                                     localContent = new L_Content(remoteContent);
                                     String largeUrl = "http://www.galepress.com/tr/icerikler/talep?W="+(int) (480 * scale)+"&H="+(int) (640 * scale)+"&RequestTypeID="+1101+"&ContentID="+localContent.getId();
-                                    //largeUrl = "http://www.haberler.com/gazete-mansetleri/haberturk-gazetesi/bugun.jpg";
                                     localContent.setLargeCoverImageDownloadPath(largeUrl);
 
                                     String thumbUrl = "http://www.galepress.com/tr/icerikler/talep?W="+240+"&H="+320+"&RequestTypeID="+1102+"&ContentID="+localContent.getId();
-                                    //thumbUrl = "http://www.haberler.com/gazete-mansetleri/haberturk-gazetesi/bugun.jpg";
                                     localContent.setSmallCoverImageDownloadPath(thumbUrl);
                                     getDatabaseApi().createContent(localContent);
 

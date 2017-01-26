@@ -1,0 +1,21 @@
+<!-- [ Mirror metadata ] generatedAt: 1484919754837 -->
+<!-- Generated screen file. Fill the id tags below with content with
+which to populate your previewed layout. For a complete specification
+of sample data, please see http://jimulabs.com/sample-data-specifications/ 
+
+Valid attributes on <screen> tag: theme="@style/someTheme" inEditMode="false" overlay="@drawable/mockup" -->
+<screen>
+    <_content layout="@layout/activity_verification_login">
+        <!-- ImageView Examples:
+        <verification_login_logo src="@drawable/image_resource" />
+        <verification_login_logo src="relative_path/image.jpg" /> -->
+        <verification_login_logo />
+        <!-- TextView Examples:
+        <verification_forgot_password text="@string/string_resource" />
+        <verification_forgot_password text="Text literal" textSize="14sp" /> -->
+        <verification_forgot_password />
+        <verification_connect_with_txt />
+        <verification_facebook_txt />
+        <verification_skip />
+    </_content>
+</screen>
