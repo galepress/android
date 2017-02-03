@@ -3,15 +3,6 @@
 
     <item
         is-multidex="false"
-        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\io.fabric.sdk.android\fabric\1.3.10\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="21.0.1"
-        sha1="a5db9a2dd46d84285ef737f65030b74b6e8ee2a4">
-        <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\io.fabric.sdk.android-fabric-1.3.10_7d14525ef2b232687e94da2b714cab7f75c01e89.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\GalepressMerge\sliding_library\unspecified\jars\classes.jar"
         jumboMode="false"
         optimize="true"
@@ -39,12 +30,30 @@
     </item>
     <item
         is-multidex="false"
-        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.crashlytics.sdk.android\crashlytics-core\2.3.8\jars\classes.jar"
+        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.crashlytics.sdk.android\crashlytics-core\2.3.15\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="21.0.1"
-        sha1="c9ef45dcbd082cd63aac09a5e2cd443adb5df837">
-        <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\com.crashlytics.sdk.android-crashlytics-core-2.3.8_f53680a851f371099c8ffcbb26b95e403a678637.jar" />
+        sha1="6ef01b734d9d89338a932928c237c7b741f007af">
+        <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\com.crashlytics.sdk.android-crashlytics-core-2.3.15_231b37d49f8be3abc6c0ebdb64545ce76f0860b2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\io.fabric.sdk.android\fabric\1.3.15\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="21.0.1"
+        sha1="4803488041c259d0b6d81ca4255379ab8a7e8dfe">
+        <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\io.fabric.sdk.android-fabric-1.3.15_5c17f6eaf7e437339c320835c80d235740c295fe.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.crashlytics.sdk.android\beta\1.2.3\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="21.0.1"
+        sha1="a76b07a416089228adc86fecc86d0a6e2d71e409">
+        <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\com.crashlytics.sdk.android-beta-1.2.3_bcda383dade908d76287bb14d769c9a86f8f1d33.jar" />
     </item>
     <item
         is-multidex="false"
@@ -147,6 +156,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.crashlytics.sdk.android\crashlytics\2.6.6\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="21.0.1"
+        sha1="7780b9aba418f4e22878f48cd77372a7688bb0b7">
+        <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\com.crashlytics.sdk.android-crashlytics-2.6.6_70f4d1c5be35e73571c207fbf3f16dbe62ac503b.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\jars\classes.jar"
         jumboMode="false"
         optimize="true"
@@ -165,24 +183,6 @@
     </item>
     <item
         is-multidex="false"
-        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.crashlytics.sdk.android\answers\1.3.6\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="21.0.1"
-        sha1="9af3b9b8114e685291aa00e6572b0a9131244956">
-        <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\com.crashlytics.sdk.android-answers-1.3.6_cb352b619b318e6b7ea59c145cf3f5a3cb792da4.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.crashlytics.sdk.android\crashlytics\2.5.5\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="21.0.1"
-        sha1="611605b6b640c1558f9bdea41de8ff837ab68ca8">
-        <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\com.crashlytics.sdk.android-crashlytics-2.5.5_7aa2603565681ec1b67a2686f5b87aed4fedee85.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\GalepressMerge\xwalk_core_library_15\unspecified\jars\classes.jar"
         jumboMode="false"
         optimize="true"
@@ -192,12 +192,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.crashlytics.sdk.android\beta\1.1.4\jars\classes.jar"
+        jar="D:\GalepressMerge\app\build\intermediates\exploded-aar\com.crashlytics.sdk.android\answers\1.3.11\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="21.0.1"
-        sha1="ad5bb101ced4d3939225c9b57e5a3d81547c1fbb">
-        <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\com.crashlytics.sdk.android-beta-1.1.4_38d4c174eab49bc8375f469d552c2fa32223d792.jar" />
+        sha1="cfa40983f47c1b9a9f2ac940ee6da130cd03c6e1">
+        <dex dex="D:\GalepressMerge\app\build\intermediates\pre-dexed\debug\com.crashlytics.sdk.android-answers-1.3.11_310d98f16acd5649bb05304223a24526e1604e17.jar" />
     </item>
     <item
         is-multidex="false"
