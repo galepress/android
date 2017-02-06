@@ -76,6 +76,12 @@ public class BannerAndTabbarWebView extends WebView {
             public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
                 callback.invoke(origin, true, false);
             }
+
+            @Override
+            public void onProgressChanged(WebView view, int newProgress) {
+                super.onProgressChanged(view, newProgress);
+            }
+
         });
         this.setWebViewClient(new MyWebClient());
 
@@ -167,19 +173,26 @@ public class BannerAndTabbarWebView extends WebView {
                                     context.startActivity(intent);
                                     return true;
                                 }
+                            } else {
+                                return false;
                             }
+                        } else {
                             return false;
                         }
+                    } else {
                         return false;
                     }
+                } else {
                     return false;
                 }
-                return false;
+
             } else {
                 return super.shouldOverrideUrlLoading(view, url);
             }
         }
     }
+
+
 
     public void loadBannerUrl(String url) {
         isBannerUrlUpdated = true;

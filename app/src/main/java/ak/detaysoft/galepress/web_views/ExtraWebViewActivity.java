@@ -173,7 +173,7 @@ public class ExtraWebViewActivity extends Activity {
     protected void onDestroy() {
         super.onDestroy();
         if(webView!=null) {
-            webView.pauseTimers();
+            //webView.pauseTimers();
             webView.destroy();
         }
     }
