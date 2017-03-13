@@ -2,211 +2,211 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
-        jar="/Users/mac/.gradle/caches/modules-2/files-2.1/com.j256.ormlite/ormlite-core/4.45/3db7b73aecea723803e10b068777cf09ed42d4be/ormlite-core-4.45.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="21.0.1"
-        sha1="3db7b73aecea723803e10b068777cf09ed42d4be">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/pre-dexed/debug/ormlite-core-4.45_1c44dad74d109101b6e917fd4ba9814b70e43aaa.jar" />
-    </item>
-    <item
-        is-multidex="false"
+        is-multidex="true"
         jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/21.0.3/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="21.0.1"
         sha1="4b8945fc23a7461c6fdde15753456d64b0a9358b">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-21.0.3_0ed94cf085e7a958121b79b7878ce5066582a4b0.jar" />
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-21.0.3_0ed94cf085e7a958121b79b7878ce5066582a4b0/classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="21.0.1"
-        sha1="2665f5f5f39fa240de8fbd1e13ee2b317a3dbb2f">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/pre-dexed/debug/instant-run_fcc1c5a31116707189132baa578777ffbdbdc21d.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.1.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="21.0.1"
-        sha1="3b0fb927b680e244106145d6ecc59e4ae21c7e5d">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/pre-dexed/debug/com.facebook.android-facebook-android-sdk-4.1.1_4b77168e2088bdeeae2cc682640557a7905bd31e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="21.0.1"
-        sha1="2a3875ad1d337ed95ee78139168c23130eedcb09">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/pre-dexed/debug/instant-run-bootstrap_8768dceacecfb3956f005b58482fa136cb0c2dde.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/exploded-aar/com.crashlytics.sdk.android/crashlytics/2.6.6/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="21.0.1"
-        sha1="7780b9aba418f4e22878f48cd77372a7688bb0b7">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/pre-dexed/debug/com.crashlytics.sdk.android-crashlytics-2.6.6_5613432318703ba661184e502ae1c5ca1bed0a30.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="21.0.1"
-        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-21.0.3_9390c31538c445c0a75ac9de1c914966375d939c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/exploded-aar/com.crashlytics.sdk.android/crashlytics-core/2.3.15/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="21.0.1"
-        sha1="6ef01b734d9d89338a932928c237c7b741f007af">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/pre-dexed/debug/com.crashlytics.sdk.android-crashlytics-core-2.3.15_31c00b3a574d34f0d5a9d82f598fc7936ed96275.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="21.0.1"
-        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-21.0.3_8b9f004736b3cd6d6d957d2fd3cdabf2a5f6c240.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/mac/projeler/galepress_android/galepress/app/src/main/lib/universal-image-loader-1.9.3.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="21.0.1"
-        sha1="a85588bec3e2c4584d593d3f15df1677321bca72">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/pre-dexed/debug/universal-image-loader-1.9.3_b7eb4717ef8266c0d0723696b4238d7f2be6dde9.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/exploded-aar/org.lucasr.twowayview/twowayview/0.1.4/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="21.0.1"
-        sha1="1a2a997b75e4c94dac7051557be6b95a06566291">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/pre-dexed/debug/org.lucasr.twowayview-twowayview-0.1.4_1ef5839f9f067483476fdaeba0866afa16e832f0.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/exploded-aar/com.crashlytics.sdk.android/beta/1.2.3/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="21.0.1"
-        sha1="a76b07a416089228adc86fecc86d0a6e2d71e409">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/pre-dexed/debug/com.crashlytics.sdk.android-beta-1.2.3_146b97e5a04bbdf7639b2eaff6ccf016fd4a55eb.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/mac/projeler/galepress_android/galepress/app/src/main/lib/gcm.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="21.0.1"
-        sha1="a6d7bce795a14c7f86111756c4ceb44b79de14aa">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/pre-dexed/debug/gcm_19bad616d7f3ec7080899eb635e8c405ddc7ab67.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/exploded-aar/io.fabric.sdk.android/fabric/1.3.15/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="21.0.1"
-        sha1="4803488041c259d0b6d81ca4255379ab8a7e8dfe">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/pre-dexed/debug/io.fabric.sdk.android-fabric-1.3.15_91ea17fc2f8a5d3d06a4fa971cddf5a3024f3cb1.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.0.30/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="21.0.1"
-        sha1="cebe8e4a3a469c4623addcca1dc571407ff3a08e">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-4.0.30_cc158f036ffa69ff82f2c42cb10873e853dfa367.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/exploded-aar/galepress/xwalk_core_library_15/unspecified/jars/libs/xwalk_core_library_java.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="21.0.1"
-        sha1="2a2837634e09c4e8c13a26d17942b4575d27f755">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/pre-dexed/debug/xwalk_core_library_java_3db717cca0a03b86165dfd6ab1426c62563ca055.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/mac/.gradle/caches/modules-2/files-2.1/com.j256.ormlite/ormlite-android/4.45/8ff8c21e8d0162333559f35cafd6a2238a33e5ba/ormlite-android-4.45.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="21.0.1"
-        sha1="8ff8c21e8d0162333559f35cafd6a2238a33e5ba">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/pre-dexed/debug/ormlite-android-4.45_c4716be93956d8e894f66ff237b8e6733d99ecc3.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/exploded-aar/com.edmodo/cropper/1.0.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="21.0.1"
-        sha1="66467578c335f7a6babdbe01f7f0ac63230f578e">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/pre-dexed/debug/com.edmodo-cropper-1.0.1_40a1492b5a707de30af1ef6313a92084acc10d6d.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/mac/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="21.0.1"
-        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3_e2493a76c5db00c85422b927024315e9561ca8d8.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/mac/projeler/galepress_android/galepress/app/src/main/lib/dd-plist.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="21.0.1"
-        sha1="d39b131d5aaf8bf6e53ff8dfd28f5cf2521c6d10">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/pre-dexed/debug/dd-plist_c3e83eeb00c264567a5fbc7b639eb8de617780dc.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/jars/libs/internal_impl-21.0.3.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="21.0.1"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3_7ec80c201aa8402c7d955ea12ad7095f43f4b800.jar" />
-    </item>
-    <item
-        is-multidex="false"
+        is-multidex="true"
         jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/exploded-aar/com.crashlytics.sdk.android/answers/1.3.11/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="21.0.1"
         sha1="cfa40983f47c1b9a9f2ac940ee6da130cd03c6e1">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/pre-dexed/debug/com.crashlytics.sdk.android-answers-1.3.11_0b4c50b9e4f1ef3a120b4db35f70ea440709db50.jar" />
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.crashlytics.sdk.android-answers-1.3.11_0b4c50b9e4f1ef3a120b4db35f70ea440709db50/classes.dex" />
     </item>
     <item
-        is-multidex="false"
+        is-multidex="true"
+        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/exploded-aar/com.crashlytics.sdk.android/crashlytics/2.6.6/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.0.1"
+        sha1="7780b9aba418f4e22878f48cd77372a7688bb0b7">
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.crashlytics.sdk.android-crashlytics-2.6.6_5613432318703ba661184e502ae1c5ca1bed0a30/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/projeler/galepress_android/galepress/app/src/main/lib/gcm.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.0.1"
+        sha1="a6d7bce795a14c7f86111756c4ceb44b79de14aa">
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/2/gcm_19bad616d7f3ec7080899eb635e8c405ddc7ab67/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.0.1"
+        sha1="68b4d5895bd6f3a21308d6e2f5d3e86fc6d0a547">
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_fcc1c5a31116707189132baa578777ffbdbdc21d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.0.1"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-21.0.3_8b9f004736b3cd6d6d957d2fd3cdabf2a5f6c240/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/projeler/galepress_android/galepress/app/src/main/lib/universal-image-loader-1.9.3.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.0.1"
+        sha1="a85588bec3e2c4584d593d3f15df1677321bca72">
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/2/universal-image-loader-1.9.3_b7eb4717ef8266c0d0723696b4238d7f2be6dde9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.0.1"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-21.0.3_9390c31538c445c0a75ac9de1c914966375d939c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/exploded-aar/io.fabric.sdk.android/fabric/1.3.15/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.0.1"
+        sha1="4803488041c259d0b6d81ca4255379ab8a7e8dfe">
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/io.fabric.sdk.android-fabric-1.3.15_91ea17fc2f8a5d3d06a4fa971cddf5a3024f3cb1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.0.1"
+        sha1="87d811655468f28f4e781d1a3e0d93f09f5304ca">
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_8768dceacecfb3956f005b58482fa136cb0c2dde/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/exploded-aar/com.edmodo/cropper/1.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.0.1"
+        sha1="66467578c335f7a6babdbe01f7f0ac63230f578e">
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.edmodo-cropper-1.0.1_40a1492b5a707de30af1ef6313a92084acc10d6d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/projeler/galepress_android/galepress/app/src/main/lib/dd-plist.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.0.1"
+        sha1="d39b131d5aaf8bf6e53ff8dfd28f5cf2521c6d10">
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/2/dd-plist_c3e83eeb00c264567a5fbc7b639eb8de617780dc/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/exploded-aar/org.lucasr.twowayview/twowayview/0.1.4/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.0.1"
+        sha1="1a2a997b75e4c94dac7051557be6b95a06566291">
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/org.lucasr.twowayview-twowayview-0.1.4_1ef5839f9f067483476fdaeba0866afa16e832f0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/exploded-aar/com.crashlytics.sdk.android/crashlytics-core/2.3.15/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.0.1"
+        sha1="6ef01b734d9d89338a932928c237c7b741f007af">
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.crashlytics.sdk.android-crashlytics-core-2.3.15_31c00b3a574d34f0d5a9d82f598fc7936ed96275/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/.gradle/caches/modules-2/files-2.1/com.j256.ormlite/ormlite-core/4.45/3db7b73aecea723803e10b068777cf09ed42d4be/ormlite-core-4.45.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.0.1"
+        sha1="3db7b73aecea723803e10b068777cf09ed42d4be">
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/ormlite-core-4.45_1c44dad74d109101b6e917fd4ba9814b70e43aaa/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.0.1"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-21.0.3_e2493a76c5db00c85422b927024315e9561ca8d8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/.gradle/caches/modules-2/files-2.1/com.j256.ormlite/ormlite-android/4.45/8ff8c21e8d0162333559f35cafd6a2238a33e5ba/ormlite-android-4.45.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.0.1"
+        sha1="8ff8c21e8d0162333559f35cafd6a2238a33e5ba">
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/ormlite-android-4.45_c4716be93956d8e894f66ff237b8e6733d99ecc3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/mac/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.2.0/6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd/bolts-android-1.2.0.jar"
         jumboMode="true"
         optimize="true"
         revision="21.0.1"
         sha1="6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/pre-dexed/debug/bolts-android-1.2.0_6ae56583de6c8162c03d4da7079d05d81a96866e.jar" />
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/bolts-android-1.2.0_6ae56583de6c8162c03d4da7079d05d81a96866e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/exploded-aar/com.crashlytics.sdk.android/beta/1.2.3/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.0.1"
+        sha1="a76b07a416089228adc86fecc86d0a6e2d71e409">
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.crashlytics.sdk.android-beta-1.2.3_146b97e5a04bbdf7639b2eaff6ccf016fd4a55eb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/exploded-aar/galepress/xwalk_core_library_15/unspecified/jars/libs/xwalk_core_library_java.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.0.1"
+        sha1="2a2837634e09c4e8c13a26d17942b4575d27f755">
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/8/xwalk_core_library_java_3db717cca0a03b86165dfd6ab1426c62563ca055/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.0.30/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.0.1"
+        sha1="cebe8e4a3a469c4623addcca1dc571407ff3a08e">
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-4.0.30_cc158f036ffa69ff82f2c42cb10873e853dfa367/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.0.1"
+        sha1="3b0fb927b680e244106145d6ecc59e4ae21c7e5d">
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.facebook.android-facebook-android-sdk-4.1.1_4b77168e2088bdeeae2cc682640557a7905bd31e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/jars/libs/internal_impl-21.0.3.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.0.1"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-21.0.3_7ec80c201aa8402c7d955ea12ad7095f43f4b800/classes.dex" />
     </item>
 
 </items>
