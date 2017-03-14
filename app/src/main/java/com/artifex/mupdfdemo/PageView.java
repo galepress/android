@@ -329,8 +329,8 @@ public abstract class PageView extends ViewGroup {
                             .getMethod("pauseTimers", (Class[]) null)
                             .invoke(webView, (Object[]) null);*/
 
-				} catch (Exception cnfe) {
-					cnfe.printStackTrace();
+				} catch (Exception excp) {
+					excp.printStackTrace();
 				}
 
 				webView.onDestroy();
@@ -341,14 +341,18 @@ public abstract class PageView extends ViewGroup {
 		}
 
 		//webview mediaplayer durdurmak için
-		((AudioManager) mContext.getSystemService(
-				Context.AUDIO_SERVICE)).requestAudioFocus(
-				new AudioManager.OnAudioFocusChangeListener() {
-					@Override
-					public void onAudioFocusChange(int focusChange) {
-					}
-				}, AudioManager.STREAM_MUSIC,
-				AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
+		// Burayi kaldirmak zorunda kaldim eger ses ve video gibi icerikler sayfa gecisinde acilmassa yada sorun cikarirsa burdan kaynaklaniyor olabilir.
+		// Kaldirmadan once sorunsuz calisiyodu eger sorun cikarsa buraya bakmak lazim
+		// Eger bu kismi commentlemezsek reader acildiginda cihazda calan herhangi bir muzik varsa duruyordu. Bu konuda musterilerden istek geldi. Degistirmek zorunda kaldim.
+
+//		((AudioManager) mContext.getSystemService(
+//				Context.AUDIO_SERVICE)).requestAudioFocus(
+//				new AudioManager.OnAudioFocusChangeListener() {
+//					@Override
+//					public void onAudioFocusChange(int focusChange) {
+//					}
+//				}, AudioManager.STREAM_MUSIC,
+//				AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
 	}
 
 	/*
