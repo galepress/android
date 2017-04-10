@@ -413,10 +413,8 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
 
                 if (s.length() == 0) {
                     searchClear.setVisibility(View.GONE);
-                    findViewById(R.id.left_menu_search_icon).setVisibility(View.VISIBLE);
                 } else {
                     searchClear.setVisibility(View.VISIBLE);
-                    findViewById(R.id.left_menu_search_icon).setVisibility(View.GONE);
                 }
                 changeSearchViewColor(true);
 

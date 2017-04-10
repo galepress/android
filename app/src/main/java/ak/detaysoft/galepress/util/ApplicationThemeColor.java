@@ -1499,7 +1499,7 @@ public class ApplicationThemeColor {
         GradientDrawable drawable = new GradientDrawable();
         drawable.setCornerRadius(context.getResources().getDimension(R.dimen.login_input_height));
         drawable.setColor(Color.TRANSPARENT);
-        drawable.setStroke(1, getThemeColor());
+        drawable.setStroke(2, getThemeColor());
         return drawable;
     }
 
@@ -1508,7 +1508,7 @@ public class ApplicationThemeColor {
         GradientDrawable drawable = new GradientDrawable();
         drawable.setCornerRadius(context.getResources().getDimension(R.dimen.login_input_height));
         drawable.setColor(Color.TRANSPARENT);
-        drawable.setStroke(1, getThemeColorWithAlpha(50));
+        drawable.setStroke(2, getThemeColorWithAlpha(50));
         return drawable;
     }
 

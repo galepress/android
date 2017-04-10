@@ -31,45 +31,46 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/login_input_height"
-        android:orientation="horizontal"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingTop="8dp"
+        android:gravity="bottom"
+        android:orientation="horizontal"
         android:paddingBottom="8dp"
-        android:gravity="bottom">
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="8dp">
+
         <ImageView
-            android:layout_width="22dp"
-            android:layout_height="20dp"
-            android:adjustViewBounds="true"
             android:id="@+id/left_menu_search_icon"
-            android:layout_alignParentLeft="false"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true" />
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true" />
 
         <EditText
+            android:id="@+id/left_menu_search_edit_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/left_menu_search_edit_text"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
+            android:gravity="left|center_vertical"
             android:hint="@string/search"
-            android:inputType="text"
             android:imeOptions="actionDone"
+            android:inputType="text"
             android:textColorHint="@color/black"
-            android:layout_marginRight="25dp"
-            android:textSize="@dimen/left_menu_search_size"
-            android:layout_alignParentBottom="false" />
+            android:textSize="@dimen/left_menu_search_size" />
 
         <ImageView
             android:id="@+id/left_menu_search_clear"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:visibility="invisible"
-            android:adjustViewBounds="true"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true" />
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"
+            android:visibility="invisible" />
 
         <ProgressBar
             android:id="@+id/search_progress"
@@ -77,7 +78,7 @@
             android:layout_height="20dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
     </RelativeLayout>
 
