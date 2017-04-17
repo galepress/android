@@ -4,7 +4,7 @@ buildscript {
         maven { url 'https://maven.fabric.io/public' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.0'
+        classpath 'com.android.tools.build:gradle:2.3.1'
         // The Fabric Gradle plugin uses an open ended version to react
         // quickly to Android tooling updates
         classpath 'io.fabric.tools:gradle:1.+'
@@ -19,9 +19,10 @@ android {
     /*
      * compileSdkVersion 19 dan 20 ye cekildi.
      * Eger webviewlerle ilgili bir sorun olursa yada kompanentler yuklenmezse bundan olabilir buraya dikkat etmek lazım
+     * Gradle versin 2.3.1 e update edilgigi icin buildToolsVersion version 25.0.0 a cekildi sikinti olursa bakmak lazim.
      */
     compileSdkVersion 21
-    buildToolsVersion '21.0.1'
+    buildToolsVersion '25.0.0'
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 19
