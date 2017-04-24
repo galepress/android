@@ -246,21 +246,21 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0215edbc8ddaab017f2eac14981fc829ff8a79c1">
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_8768dceacecfb3956f005b58482fa136cb0c2dde/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/mac/projeler/galepress_android/galepress/app/src/main/lib/dd-plist.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
         sha1="d39b131d5aaf8bf6e53ff8dfd28f5cf2521c6d10">
         <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/2/dd-plist_c3e83eeb00c264567a5fbc7b639eb8de617780dc/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="4e537c24475574ff7a75794c15408ddf627ea150">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_8768dceacecfb3956f005b58482fa136cb0c2dde/classes.dex" />
     </item>
     <item
         is-multidex="false"

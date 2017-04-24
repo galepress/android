@@ -110,7 +110,9 @@
 	<string name="WARNING_131">Die Applikation ist nicht aktiv. Sie kann abgelaufen oder blockiert sein.</string>
 	<string name="WARNING_140">Benutzerdaten sind fehlerhaft.</string>
 	<string name="WARNING_141">You must create an account on www.galepress.com with Facebook username. </string>
-
+	<string name="WARNING_160">Kein Benutzer gefunden</string>
+	<string name="WARNING_161">Passwort wurde nicht angenommen</string>
+	<string name="WARNING_162">Ist Grenze falsche Passworteingabe erreicht wurde. Warten Sie 2 Stunden für Ihr Konto wieder aktiviert werden</string>
 
 	<string name="action_settings">Einstellungen</string>
 
@@ -187,7 +189,6 @@
     <string name="forgot_password"><u>Passwort Vergessen</u></string>
     <string name="signup">Anmelden</string>
 
-    <string name="WARNING_160">Benutzer nicht gefunden</string>
 
     <string name="cannot_load">Konnte webseite nicht geladen</string>
 

@@ -650,18 +650,32 @@ public class DataApi extends Object {
                                     }
                                 } else if (!response.isNull("status")) {
                                     int code = response.getInt("status");
-                                    if (code == 160) {
-                                        if (activity instanceof UserLoginActivity) {
-                                            ((UserLoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_160));
-                                        }
-                                    } else if (code == 140) {
-                                        if (activity instanceof UserLoginActivity) {
-                                            ((UserLoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_140));
-                                        }
-                                    } else {
-                                        if (activity instanceof UserLoginActivity) {
-                                            ((UserLoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_0));
-                                        }
+                                    switch (code) {
+                                        case 140 :
+                                            if (activity instanceof UserLoginActivity) {
+                                                ((UserLoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_140));
+                                            }
+                                            break;
+                                        case 160 :
+                                            if (activity instanceof UserLoginActivity) {
+                                                ((UserLoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_160));
+                                            }
+                                            break;
+                                        case 161 :
+                                            if (activity instanceof UserLoginActivity) {
+                                                ((UserLoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_161));
+                                            }
+                                            break;
+                                        case 162 :
+                                            if (activity instanceof UserLoginActivity) {
+                                                ((UserLoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_162));
+                                            }
+                                            break;
+                                        default:
+                                            if (activity instanceof UserLoginActivity) {
+                                                ((UserLoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_0));
+                                            }
+                                            break;
                                     }
                                 } else {
                                     GalePressApplication.getInstance().editMemberShipList(false, null);
@@ -689,19 +703,28 @@ public class DataApi extends Object {
                         public void onErrorResponse(VolleyError error) {
 
                             if (error != null && error.getMessage() != null) {
-                                if (error.getMessage().toLowerCase().contains("160")) {
+                                if (error.getMessage().toLowerCase().contains("140")) {
+                                    if (activity instanceof UserLoginActivity) {
+                                        ((UserLoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_140));
+                                    }
+                                } else if (error.getMessage().toLowerCase().contains("160")) {
                                     if (activity instanceof UserLoginActivity) {
                                         ((UserLoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_160));
                                     }
-                                } else if (error.getMessage().toLowerCase().contains("140")) {
+                                } else if (error.getMessage().toLowerCase().contains("161")) {
                                     if (activity instanceof UserLoginActivity) {
-                                        ((UserLoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_140));
+                                        ((UserLoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_161));
+                                    }
+                                } else if (error.getMessage().toLowerCase().contains("162")) {
+                                    if (activity instanceof UserLoginActivity) {
+                                        ((UserLoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_162));
                                     }
                                 } else {
                                     if (activity instanceof UserLoginActivity) {
                                         ((UserLoginActivity) activity).customFailLoginWarning(activity.getResources().getString(R.string.WARNING_0));
                                     }
                                 }
+
                                 VolleyLog.e("Error: ", error.getMessage());
                             }
                             GalePressApplication.getInstance().editMemberShipList(false, null);
