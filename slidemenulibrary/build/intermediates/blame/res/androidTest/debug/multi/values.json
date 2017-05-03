@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "D:\\GalepressMerge\\slidemenulibrary\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
+        "outputFile": "/Users/mac/projeler/galepress_android/galepress/slidemenulibrary/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values/values.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,31 @@
                     "endOffset": 1130
                 },
                 "from": {
-                    "file": "D:\\GalepressMerge\\slidemenulibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "/Users/mac/projeler/galepress_android/galepress/slidemenulibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 1092,
+                        "endColumn": 42,
+                        "endOffset": 1130
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "/Users/mac/projeler/galepress_android/galepress/D:\\GalepressMerge\\slidemenulibrary\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 1092,
+                    "endColumn": 42,
+                    "endOffset": 1130
+                },
+                "from": {
+                    "file": "/Users/mac/projeler/galepress_android/galepress/D:\\GalepressMerge\\slidemenulibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 14,
                         "startColumn": 4,

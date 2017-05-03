@@ -2558,7 +2558,7 @@ public class DataApi extends Object {
                                                 if (content != null && content.isContentStatus()) {
                                                     MenuSearchResult temp = new MenuSearchResult();
                                                     temp.setContentId(content.getId().toString());
-                                                    temp.setApplicationId("146");
+                                                    temp.setApplicationId(jsonObjectItem.getString("applicationId"));
                                                     temp.setContentTitle(content.getName());
                                                     temp.setPage(-1);
                                                     GalePressApplication.getInstance().getMenuSearchResult().add(temp);
@@ -2566,7 +2566,7 @@ public class DataApi extends Object {
 
                                                     MenuSearchResult temp2 = new MenuSearchResult();
                                                     temp2.setContentId(content.getId().toString());
-                                                    temp2.setApplicationId("146");
+                                                    temp2.setApplicationId(jsonObjectItem.getString("applicationId"));
                                                     temp2.setContentTitle(content.getName());
                                                     temp2.setPage(jsonObjectItem.getInt("page"));
                                                     temp2.setText(jsonObjectItem.getString("highlightedText"));
@@ -2578,7 +2578,7 @@ public class DataApi extends Object {
                                             if (content != null && content.isContentStatus()) {
                                                 MenuSearchResult temp = new MenuSearchResult();
                                                 temp.setContentId(content.getId().toString());
-                                                temp.setApplicationId("146");
+                                                temp.setApplicationId(jsonObjectItem.getString("applicationId"));
                                                 temp.setContentTitle(content.getName());
                                                 temp.setPage(-1);
                                                 GalePressApplication.getInstance().getMenuSearchResult().add(temp);
@@ -2586,7 +2586,7 @@ public class DataApi extends Object {
 
                                                 MenuSearchResult temp2 = new MenuSearchResult();
                                                 temp2.setContentId(content.getId().toString());
-                                                temp2.setApplicationId("146");
+                                                temp2.setApplicationId(jsonObjectItem.getString("applicationId"));
                                                 temp2.setContentTitle(content.getName());
                                                 temp2.setPage(jsonObjectItem.getInt("page"));
                                                 temp2.setText(jsonObjectItem.getString("highlightedText"));
