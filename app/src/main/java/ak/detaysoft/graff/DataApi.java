@@ -682,6 +682,7 @@ public class DataApi extends Object {
                 uriBuilder.appendQueryParameter("facebookToken", token);
                 uriBuilder.appendQueryParameter("facebookUserId", userId);
                 uriBuilder.appendQueryParameter("facebookEmail", email);
+                uriBuilder.appendQueryParameter("facebookAppId", activity.getResources().getString(R.string.facebook_app_id));
                 uriBuilder.appendQueryParameter("name", name);
                 uriBuilder.appendQueryParameter("surname", last_name);
             }
