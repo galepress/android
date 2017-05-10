@@ -101,11 +101,11 @@
                         <ak.detaysoft.galepress.util.ProgressWheel
                             android:id="@+id/content_detail_progress_bar"
                             android:layout_height="match_parent"
-                            android:layout_width="100dp"
-                            ProgressWheel:textSize="15dp"
+                            android:layout_width="120dp"
+                            ProgressWheel:textSize="20dp"
                             ProgressWheel:barLength="110dp"
-                            ProgressWheel:barWidth="15dp"
-                            ProgressWheel:rimWidth="15dp"
+                            ProgressWheel:barWidth="10dp"
+                            ProgressWheel:rimWidth="10dp"
                             ProgressWheel:contourSize="0dp"
                             android:elevation="1dp"
                              />
