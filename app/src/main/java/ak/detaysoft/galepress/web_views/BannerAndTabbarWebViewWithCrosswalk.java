@@ -127,7 +127,6 @@ public class BannerAndTabbarWebViewWithCrosswalk extends XWalkView {
                         /*
                         * isBannerUrlUpdated kontrolu yapilmazsa yeni banner url geldiginde onu ExtraWebviewActivity de aciyor. (MG)
                         * */
-                        isBannerUrlUpdated = false;
                         if(!url.contains("file:///")){
                             if(url.compareTo(GalePressApplication.getInstance().getBannerLink()) != 0){
                                 //4.4
@@ -149,6 +148,7 @@ public class BannerAndTabbarWebViewWithCrosswalk extends XWalkView {
                         }
                         return false;
                     }
+                    isBannerUrlUpdated = false;
                     return false;
                 }
                 return false;
@@ -194,6 +194,7 @@ public class BannerAndTabbarWebViewWithCrosswalk extends XWalkView {
             * isFirstInit kontrolu yapilmazsa ilk acilista redirect edilen sayfalar  ExtraWebviewActivity de aciyor. (MG)
             * */
             isFirstInit = false;
+            isBannerUrlUpdated = false;
             view.setVisibility(VISIBLE);
         }
 

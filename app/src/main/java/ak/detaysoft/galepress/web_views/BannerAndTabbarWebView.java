@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.GeolocationPermissions;
@@ -124,6 +125,7 @@ public class BannerAndTabbarWebView extends WebView {
             * isFirstInit kontrolu yapilmazsa ilk acilista redirect edilen sayfalar  ExtraWebviewActivity de aciyor. (MG)
             * */
             isFirstInit = false;
+            isBannerUrlUpdated = false;
             view.setVisibility(VISIBLE);
         }
 
@@ -156,7 +158,6 @@ public class BannerAndTabbarWebView extends WebView {
                         /*
                         * isBannerUrlUpdated kontrolu yapilmazsa yeni banner url geldiginde onu ExtraWebviewActivity de aciyor. (MG)
                         * */
-                        isBannerUrlUpdated = false;
                         if(!url.contains("file:///")){
                             if(url.compareTo(GalePressApplication.getInstance().getBannerLink()) != 0){
                                 //4.4
@@ -180,6 +181,7 @@ public class BannerAndTabbarWebView extends WebView {
                             return false;
                         }
                     } else {
+                        isBannerUrlUpdated = false;
                         return false;
                     }
                 } else {
