@@ -1219,6 +1219,7 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
             menuButton.setVisibility(View.VISIBLE);
             searchButton.setVisibility(View.VISIBLE);
             ((View) searchButton.getParent()).setVisibility(View.VISIBLE);
+            ((View) menuButton.getParent()).setVisibility(View.VISIBLE);
             menu.setSlidingEnabled(true);
             ((TextView) findViewById(R.id.action_bar_title_text_view)).setVisibility(View.VISIBLE);
         }
