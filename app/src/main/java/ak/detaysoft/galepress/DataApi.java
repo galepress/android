@@ -901,7 +901,6 @@ public class DataApi extends Object {
                                 R_AppDetail appDetail = new R_AppDetail(response);
 
                                 GalePressApplication.getInstance().prepareSubscriptions(response);
-                                appDetail.setForce(R_AppDetail.FORCE_BLOCK_APP);
                                 if (appDetail.getForce() == R_AppDetail.FORCE_WARN) {
                                     isBlockedFromWS = false;
                                     // Warn user to update app.

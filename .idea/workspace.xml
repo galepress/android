@@ -10,702 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9993c066-5024-490b-bc24-0580aff9b21f" name="Default" comment="- signup ve forgot password linkleri yenilendi">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/xwalk_core_library_java.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/assets/webviewchromium.pak" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/BannerAndTabbarWebViewWithCrosswalk.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/ExtraWebViewWithCrosswalkActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/WebViewAnnotationWithCrosswalk.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build.gradle" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/generated/source/buildConfig/androidTest/debug/org/xwalk/core/test/BuildConfig.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/generated/source/buildConfig/debug/org/xwalk/core/BuildConfig.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/generated/source/buildConfig/release/org/xwalk/core/BuildConfig.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/generated/source/r/androidTest/debug/org/xwalk/core/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/generated/source/r/androidTest/debug/org/xwalk/core/test/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/generated/source/r/debug/org/xwalk/core/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/generated/source/r/release/org/xwalk/core/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-am.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-ar.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-bg.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-ca.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-cs.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-da.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-de.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-el.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-en-rGB.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-es-rUS.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-es.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-fa.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-fi.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-fr.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-hi.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-hr.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-hu.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-in.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-it.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-iw.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-ja.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-ko.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-lt.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-lv.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-nb.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-nl.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-pl.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-pt-rBR.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-pt-rPT.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-ro.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-ru.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-sk.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-sl.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-sr.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-sv.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-sw.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-th.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-tl.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-tr.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-uk.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-v17.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-v21.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-vi.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-zh-rCN.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values-zh-rTW.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/multi/values.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable-hdpi-v4.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable-xhdpi-v4.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable-xxhdpi-v4.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable-xxxhdpi-v4.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/drawable.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/layout-land.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/layout-v17.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/layout.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/menu.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/blame/res/androidTest/debug/single/raw.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/R.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable-hdpi-v4/bubble.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable-hdpi-v4/bubble_arrow_up.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable-hdpi-v4/color_picker_advanced_select_handle.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable-hdpi-v4/dropdown_popup_background_down.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable-hdpi-v4/dropdown_popup_background_up.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable-hdpi-v4/ic_menu_share_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable-hdpi-v4/ic_search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable-hdpi-v4/ic_warning.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable-hdpi-v4/ondemand_overlay.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable-hdpi-v4/verify_checkmark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/bubble.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/bubble_arrow_up.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/color_picker_advanced_select_handle.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/dropdown_popup_background_down.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/dropdown_popup_background_up.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/ic_menu_share_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/ic_search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/ic_warning.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/ondemand_overlay.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/verify_checkmark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable-xxhdpi-v4/ic_menu_share_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable-xxhdpi-v4/ic_search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable-xxhdpi-v4/ic_warning.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable-xxhdpi-v4/verify_checkmark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable-xxxhdpi-v4/ic_menu_share_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable-xxxhdpi-v4/ic_search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable-xxxhdpi-v4/ic_warning.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable-xxxhdpi-v4/verify_checkmark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable/bubble.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable/bubble_arrow_up.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable/color_button_background.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable/color_picker_advanced_select_handle.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable/color_picker_border.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable/dropdown_popup_background.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable/dropdown_popup_background_down.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable/dropdown_popup_background_up.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable/ic_menu_share_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable/ic_search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable/ic_warning.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable/ondemand_overlay.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/drawable/verify_checkmark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/layout-land/date_time_picker_dialog.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/layout-v17/autofill_suggestion_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/layout-v17/color_picker_advanced_component.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/layout-v17/color_picker_dialog_content.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/layout-v17/color_picker_dialog_title.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/layout-v17/date_time_suggestion.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/layout-v17/dropdown_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/layout-v17/multi_field_time_picker_dialog.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/layout-v17/two_field_date_picker.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/layout-v17/validation_message_bubble.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/layout/autofill_suggestion_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/layout/color_picker_advanced_component.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/layout/color_picker_dialog_content.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/layout/color_picker_dialog_title.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/layout/date_time_picker_dialog.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/layout/date_time_suggestion.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/layout/dropdown_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/layout/multi_field_time_picker_dialog.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/layout/two_field_date_picker.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/layout/validation_message_bubble.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/menu/select_action_menu.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/raw/contacts_api.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/raw/device_capabilities_api.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/raw/icudtl.dat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/raw/launch_screen_api.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/raw/messaging_api.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/raw/presentation_api.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/raw/xwalk.pak" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-am/values-am.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-ar/values-ar.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-bg/values-bg.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-ca/values-ca.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-cs/values-cs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-da/values-da.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-de/values-de.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-el/values-el.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-en-rGB/values-en-rGB.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-es-rUS/values-es-rUS.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-es/values-es.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-fa/values-fa.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-fi/values-fi.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-fr/values-fr.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-hi/values-hi.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-hr/values-hr.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-hu/values-hu.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-in/values-in.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-it/values-it.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-iw/values-iw.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-ja/values-ja.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-ko/values-ko.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-lt/values-lt.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-lv/values-lv.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-nb/values-nb.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-nl/values-nl.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-pl/values-pl.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-pt-rBR/values-pt-rBR.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-pt-rPT/values-pt-rPT.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-ro/values-ro.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-ru/values-ru.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-sk/values-sk.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-sl/values-sl.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-sr/values-sr.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-sv/values-sv.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-sw/values-sw.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-th/values-th.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-tl/values-tl.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-tr/values-tr.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-uk/values-uk.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-v17/values-v17.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-v21/values-v21.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-vi/values-vi.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-zh-rCN/values-zh-rCN.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values-zh-rTW/values-zh-rTW.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/bundles/debug/res/values/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/release/org/xwalk/core/BuildConfig.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/release/org/xwalk/core/R$array.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/release/org/xwalk/core/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/release/org/xwalk/core/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/release/org/xwalk/core/R$dimen.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/release/org/xwalk/core/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/release/org/xwalk/core/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/release/org/xwalk/core/R$layout.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/release/org/xwalk/core/R$menu.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/release/org/xwalk/core/R$raw.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/release/org/xwalk/core/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/release/org/xwalk/core/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/classes/release/org/xwalk/core/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental-safeguard/release/tag.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/compileDebugAidl/dependency.store" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/compileDebugAndroidTestAidl/dependency.store" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/compileReleaseAidl/dependency.store" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-am/values-am.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-ar/values-ar.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-bg/values-bg.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-ca/values-ca.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-cs/values-cs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-da/values-da.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-de/values-de.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-el/values-el.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-en-rGB/values-en-rGB.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-es-rUS/values-es-rUS.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-es/values-es.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-fa/values-fa.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-fi/values-fi.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-fr/values-fr.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-hi/values-hi.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-hr/values-hr.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-hu/values-hu.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-in/values-in.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-it/values-it.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-iw/values-iw.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-ja/values-ja.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-ko/values-ko.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-lt/values-lt.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-lv/values-lv.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-nb/values-nb.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-nl/values-nl.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-pl/values-pl.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-pt-rBR/values-pt-rBR.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-pt-rPT/values-pt-rPT.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-ro/values-ro.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-ru/values-ru.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-sk/values-sk.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-sl/values-sl.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-sr/values-sr.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-sv/values-sv.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-sw/values-sw.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-th/values-th.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-tl/values-tl.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-tr/values-tr.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-uk/values-uk.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-v17/values-v17.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-v21/values-v21.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-vi/values-vi.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-zh-rCN/values-zh-rCN.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-zh-rTW/values-zh-rTW.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugAssets/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeDebugShaders/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeReleaseAssets/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeReleaseJniLibFolders/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/mergeReleaseShaders/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-am/values-am.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-ar/values-ar.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-bg/values-bg.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-ca/values-ca.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-cs/values-cs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-da/values-da.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-de/values-de.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-el/values-el.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-en-rGB/values-en-rGB.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-es-rUS/values-es-rUS.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-es/values-es.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-fa/values-fa.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-fi/values-fi.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-fr/values-fr.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-hi/values-hi.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-hr/values-hr.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-hu/values-hu.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-in/values-in.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-it/values-it.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-iw/values-iw.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-ja/values-ja.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-ko/values-ko.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-lt/values-lt.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-lv/values-lv.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-nb/values-nb.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-nl/values-nl.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-pl/values-pl.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-pt-rBR/values-pt-rBR.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-pt-rPT/values-pt-rPT.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-ro/values-ro.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-ru/values-ru.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-sk/values-sk.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-sl/values-sl.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-sr/values-sr.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-sv/values-sv.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-sw/values-sw.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-th/values-th.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-tl/values-tl.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-tr/values-tr.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-uk/values-uk.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-v17/values-v17.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-v21/values-v21.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-vi/values-vi.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-zh-rCN/values-zh-rCN.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values-zh-rTW/values-zh-rTW.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merged.dir/values/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageDebugResources/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-am/values-am.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-ar/values-ar.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-bg/values-bg.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-ca/values-ca.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-cs/values-cs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-da/values-da.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-de/values-de.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-el/values-el.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-en-rGB/values-en-rGB.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-es-rUS/values-es-rUS.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-es/values-es.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-fa/values-fa.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-fi/values-fi.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-fr/values-fr.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-hi/values-hi.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-hr/values-hr.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-hu/values-hu.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-in/values-in.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-it/values-it.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-iw/values-iw.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-ja/values-ja.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-ko/values-ko.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-lt/values-lt.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-lv/values-lv.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-nb/values-nb.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-nl/values-nl.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-pl/values-pl.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-pt-rBR/values-pt-rBR.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-pt-rPT/values-pt-rPT.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-ro/values-ro.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-ru/values-ru.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-sk/values-sk.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-sl/values-sl.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-sr/values-sr.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-sv/values-sv.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-sw/values-sw.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-th/values-th.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-tl/values-tl.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-tr/values-tr.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-uk/values-uk.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-v17/values-v17.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-v21/values-v21.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-vi/values-vi.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-zh-rCN/values-zh-rCN.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values-zh-rTW/values-zh-rTW.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merged.dir/values/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/incremental/packageReleaseResources/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/jniLibs/release/armeabi-v7a/libxwalkcore.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/jniLibs/release/armeabi-v7a/libxwalkdummy.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/jniLibs/release/x86/libxwalkcore.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/jniLibs/release/x86/libxwalkdummy.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/manifest/androidTest/debug/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/manifests/aapt/debug/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/manifests/aapt/release/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/bubble.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/bubble_arrow_up.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/color_picker_advanced_select_handle.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/dropdown_popup_background_down.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/dropdown_popup_background_up.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ic_menu_share_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ic_search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ic_warning.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ondemand_overlay.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/verify_checkmark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/bubble.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/bubble_arrow_up.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/color_picker_advanced_select_handle.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/dropdown_popup_background_down.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/dropdown_popup_background_up.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/ic_menu_share_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/ic_search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/ic_warning.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/ondemand_overlay.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/verify_checkmark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xxhdpi-v4/ic_menu_share_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xxhdpi-v4/ic_search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xxhdpi-v4/ic_warning.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xxhdpi-v4/verify_checkmark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xxxhdpi-v4/ic_menu_share_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xxxhdpi-v4/ic_search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xxxhdpi-v4/ic_warning.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable-xxxhdpi-v4/verify_checkmark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable/bubble.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable/bubble_arrow_up.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable/color_button_background.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable/color_picker_advanced_select_handle.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable/color_picker_border.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable/dropdown_popup_background.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable/dropdown_popup_background_down.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable/dropdown_popup_background_up.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable/ic_menu_share_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable/ic_search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable/ic_warning.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable/ondemand_overlay.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/drawable/verify_checkmark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/layout-land/date_time_picker_dialog.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/layout-v17/autofill_suggestion_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/layout-v17/color_picker_advanced_component.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/layout-v17/color_picker_dialog_content.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/layout-v17/color_picker_dialog_title.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/layout-v17/date_time_suggestion.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/layout-v17/dropdown_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/layout-v17/multi_field_time_picker_dialog.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/layout-v17/two_field_date_picker.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/layout-v17/validation_message_bubble.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/layout/autofill_suggestion_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/layout/color_picker_advanced_component.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/layout/color_picker_dialog_content.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/layout/color_picker_dialog_title.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/layout/date_time_picker_dialog.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/layout/date_time_suggestion.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/layout/dropdown_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/layout/multi_field_time_picker_dialog.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/layout/two_field_date_picker.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/layout/validation_message_bubble.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/menu/select_action_menu.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/raw/contacts_api.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/raw/device_capabilities_api.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/raw/icudtl.dat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/raw/launch_screen_api.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/raw/messaging_api.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/raw/presentation_api.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/raw/xwalk.pak" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-am/values-am.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-ar/values-ar.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-bg/values-bg.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-ca/values-ca.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-cs/values-cs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-da/values-da.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-de/values-de.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-el/values-el.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-en-rGB/values-en-rGB.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-es-rUS/values-es-rUS.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-es/values-es.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-fa/values-fa.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-fi/values-fi.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-fr/values-fr.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-hi/values-hi.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-hr/values-hr.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-hu/values-hu.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-in/values-in.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-it/values-it.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-iw/values-iw.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-ja/values-ja.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-ko/values-ko.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-lt/values-lt.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-lv/values-lv.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-nb/values-nb.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-nl/values-nl.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-pl/values-pl.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-pt-rBR/values-pt-rBR.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-pt-rPT/values-pt-rPT.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-ro/values-ro.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-ru/values-ru.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-sk/values-sk.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-sl/values-sl.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-sr/values-sr.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-sv/values-sv.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-sw/values-sw.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-th/values-th.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-tl/values-tl.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-tr/values-tr.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-uk/values-uk.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-v17/values-v17.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-v21/values-v21.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-vi/values-vi.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-zh-rCN/values-zh-rCN.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values-zh-rTW/values-zh-rTW.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/merged/androidTest/debug/values/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/res/resources-debug-androidTest.ap_" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/sourceFolderJavaResources/release/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/symbols/androidTest/debug/R.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/transforms/mergeJavaRes/release/folders/2/3/main/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/transforms/mergeJniLibs/release/folders/2000/3/main/lib/armeabi-v7a/libxwalkcore.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/transforms/mergeJniLibs/release/folders/2000/3/main/lib/armeabi-v7a/libxwalkdummy.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/transforms/mergeJniLibs/release/folders/2000/3/main/lib/x86/libxwalkcore.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/intermediates/transforms/mergeJniLibs/release/folders/2000/3/main/lib/x86/libxwalkdummy.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/outputs/aar/xwalk_core_library_15-debug.aar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/build/outputs/aar/xwalk_core_library_15-release.aar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/libs/xwalk_core_library_java.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/jniLibs/armeabi-v7a/libxwalkcore.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/jniLibs/armeabi-v7a/libxwalkdummy.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/jniLibs/x86/libxwalkcore.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/jniLibs/x86/libxwalkdummy.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable-hdpi/bubble.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable-hdpi/bubble_arrow_up.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable-hdpi/color_picker_advanced_select_handle.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable-hdpi/dropdown_popup_background_down.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable-hdpi/dropdown_popup_background_up.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable-hdpi/ic_menu_share_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable-hdpi/ic_search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable-hdpi/ic_warning.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable-hdpi/ondemand_overlay.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable-hdpi/verify_checkmark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable-xhdpi/bubble.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable-xhdpi/bubble_arrow_up.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable-xhdpi/color_picker_advanced_select_handle.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable-xhdpi/dropdown_popup_background_down.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable-xhdpi/dropdown_popup_background_up.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable-xhdpi/ic_menu_share_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable-xhdpi/ic_search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable-xhdpi/ic_warning.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable-xhdpi/ondemand_overlay.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable-xhdpi/verify_checkmark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable-xxhdpi/ic_menu_share_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable-xxhdpi/ic_search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable-xxhdpi/ic_warning.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable-xxhdpi/verify_checkmark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable-xxxhdpi/ic_menu_share_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable-xxxhdpi/ic_search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable-xxxhdpi/ic_warning.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable-xxxhdpi/verify_checkmark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable/bubble.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable/bubble_arrow_up.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable/color_button_background.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable/color_picker_advanced_select_handle.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable/color_picker_border.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable/dropdown_popup_background.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable/dropdown_popup_background_down.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable/dropdown_popup_background_up.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable/ic_menu_share_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable/ic_search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable/ic_warning.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable/ondemand_overlay.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/drawable/verify_checkmark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/layout-land/date_time_picker_dialog.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/layout-v17/autofill_suggestion_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/layout-v17/color_picker_advanced_component.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/layout-v17/color_picker_dialog_content.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/layout-v17/color_picker_dialog_title.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/layout-v17/date_time_suggestion.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/layout-v17/dropdown_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/layout-v17/multi_field_time_picker_dialog.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/layout-v17/two_field_date_picker.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/layout-v17/validation_message_bubble.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/layout/autofill_suggestion_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/layout/color_picker_advanced_component.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/layout/color_picker_dialog_content.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/layout/color_picker_dialog_title.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/layout/date_time_picker_dialog.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/layout/date_time_suggestion.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/layout/dropdown_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/layout/multi_field_time_picker_dialog.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/layout/two_field_date_picker.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/layout/validation_message_bubble.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/menu/select_action_menu.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/raw/contacts_api.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/raw/device_capabilities_api.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/raw/icudtl.dat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/raw/launch_screen_api.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/raw/messaging_api.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/raw/presentation_api.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/raw/xwalk.pak" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-am/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-am/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-ar/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-ar/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-bg/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-bg/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-ca/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-ca/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-cs/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-cs/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-da/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-da/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-de/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-de/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-el/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-el/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-en-rGB/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-en-rGB/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-es-rUS/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-es-rUS/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-es/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-es/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-fa/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-fa/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-fi/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-fi/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-fr/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-fr/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-hi/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-hi/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-hr/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-hr/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-hu/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-hu/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-in/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-in/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-it/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-it/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-iw/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-iw/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-ja/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-ja/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-ko/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-ko/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-lt/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-lt/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-lv/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-lv/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-nb/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-nb/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-nl/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-nl/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-pl/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-pl/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-pt-rBR/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-pt-rBR/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-pt-rPT/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-pt-rPT/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-ro/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-ro/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-ru/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-ru/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-sk/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-sk/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-sl/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-sl/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-sr/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-sr/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-sv/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-sv/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-sw/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-sw/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-th/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-th/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-tl/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-tl/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-tr/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-tr/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-uk/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-uk/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-v17/styles.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-v17/ui_java_styles.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-v21/styles.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-vi/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-vi/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-zh-rCN/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-zh-rCN/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-zh-rTW/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values-zh-rTW/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values/android_content_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values/android_ui_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values/android_xwalk_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values/attrs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values/colors.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values/dimens.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values/strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values/styles.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values/ui_java_dimens.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values/ui_java_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values/ui_java_styles.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values/xwalk_app_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values/xwalk_core_internal_java_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values/xwalk_core_java_strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/res/values/xwalk_resources_list.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/src/main/resources/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xwalk_core_library_15/xwalk_core_library_15.iml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/outputs/aar/sliding_library-debug.aar" afterPath="$PROJECT_DIR$/sliding_library/build/outputs/aar/sliding_library-debug.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/outputs/aar/sliding_library-release.aar" afterPath="$PROJECT_DIR$/sliding_library/build/outputs/aar/sliding_library-release.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/CustomTabFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/CustomTabFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/GalePressApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LaunchActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LaunchActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/LibraryFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/UserLoginActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/UserLoginActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_AppDetail.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_AppDetail.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/BannerAndTabbarWebView.java" afterPath="$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/BannerAndTabbarWebView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFPageView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFReaderView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/MuPDFReaderView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PageView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/PageView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values-de/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-de/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values-tr/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-tr/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings.gradle" afterPath="$PROJECT_DIR$/settings.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/sliding_library/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliding_library/sliding_library.iml" afterPath="$PROJECT_DIR$/sliding_library/sliding_library.iml" />
     </list>
     <ignored path="GalepressMerge.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -803,27 +109,73 @@
       <file leaf-file-name="DataApi.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="1267" column="39" selection-start-line="1267" selection-start-column="39" selection-end-line="1267" selection-end-column="39" />
+            <state relative-caret-position="249">
+              <caret line="902" column="98" selection-start-line="902" selection-start-column="98" selection-end-line="902" selection-end-column="98" />
               <folding>
-                <element signature="e#45800#53857#0" expanded="true" />
-                <element signature="e#47192#47273#0" expanded="true" />
-                <element signature="e#47343#47442#0" expanded="true" />
-                <element signature="e#47520#47606#0" expanded="true" />
-                <element signature="e#47608#48834#0" expanded="true" />
-                <element signature="e#48833#48834#0" expanded="true" />
-                <element signature="e#48911#48971#0" expanded="true" />
-                <element signature="e#48973#49282#0" expanded="true" />
-                <element signature="e#49281#49282#0" expanded="true" />
-                <element signature="e#50621#50702#0" expanded="true" />
-                <element signature="e#50772#50870#0" expanded="true" />
-                <element signature="e#51025#51111#0" expanded="true" />
-                <element signature="e#51113#52769#0" expanded="true" />
-                <element signature="e#52496#52589#0" expanded="true" />
-                <element signature="e#52768#52769#0" expanded="true" />
-                <element signature="e#53856#53857#0" expanded="true" />
-                <element signature="e#53879#54250#0" expanded="true" />
-                <element signature="e#54249#54250#0" expanded="true" />
+                <element signature="e#25185#25270#0" expanded="true" />
+                <element signature="e#28583#28635#0" expanded="true" />
+                <element signature="e#29016#29075#0" expanded="true" />
+                <element signature="e#30066#30117#0" expanded="true" />
+                <element signature="e#30642#30695#0" expanded="true" />
+                <element signature="e#31219#31274#0" expanded="true" />
+                <element signature="e#31616#31671#0" expanded="true" />
+                <element signature="e#32013#32068#0" expanded="true" />
+                <element signature="e#32410#32465#0" expanded="true" />
+                <element signature="e#32805#32858#0" expanded="true" />
+                <element signature="e#33316#33369#0" expanded="true" />
+                <element signature="e#33925#33978#0" expanded="true" />
+                <element signature="e#34808#34863#0" expanded="true" />
+                <element signature="e#35174#35229#0" expanded="true" />
+                <element signature="e#35540#35595#0" expanded="true" />
+                <element signature="e#35906#35961#0" expanded="true" />
+                <element signature="e#36218#36271#0" expanded="true" />
+                <element signature="e#39535#39606#0" expanded="true" />
+                <element signature="e#39675#39725#0" expanded="true" />
+                <element signature="e#41641#41708#0" expanded="true" />
+                <element signature="e#41853#41906#0" expanded="true" />
+                <element signature="e#42424#42479#0" expanded="true" />
+                <element signature="e#42632#42687#0" expanded="true" />
+                <element signature="e#42786#42839#0" expanded="true" />
+                <element signature="e#43010#43063#0" expanded="true" />
+                <element signature="e#47111#47192#0" expanded="true" />
+                <element signature="e#47262#47361#0" expanded="true" />
+                <element signature="e#47439#47525#0" expanded="true" />
+                <element signature="e#48830#48890#0" expanded="true" />
+                <element signature="e#50540#50621#0" expanded="true" />
+                <element signature="e#50691#50789#0" expanded="true" />
+                <element signature="e#50944#51030#0" expanded="true" />
+                <element signature="e#52415#52508#0" expanded="true" />
+                <element signature="e#56780#56861#0" expanded="true" />
+                <element signature="e#56899#56936#0" expanded="true" />
+                <element signature="e#56982#57014#0" expanded="true" />
+                <element signature="e#57265#57298#0" expanded="true" />
+                <element signature="e#58684#58765#0" expanded="true" />
+                <element signature="e#58803#58888#0" expanded="true" />
+                <element signature="e#58934#59014#0" expanded="true" />
+                <element signature="e#60228#60309#0" expanded="true" />
+                <element signature="e#60700#60781#0" expanded="true" />
+                <element signature="e#60817#60902#0" expanded="true" />
+                <element signature="e#62856#62937#0" expanded="true" />
+                <element signature="e#62979#63064#0" expanded="true" />
+                <element signature="e#63114#63194#0" expanded="true" />
+                <element signature="e#67651#67732#0" expanded="true" />
+                <element signature="e#68489#68541#0" expanded="true" />
+                <element signature="e#70914#70995#0" expanded="true" />
+                <element signature="e#71202#71283#0" expanded="true" />
+                <element signature="e#92715#92770#0" expanded="true" />
+                <element signature="e#93524#93579#0" expanded="true" />
+                <element signature="e#94806#94887#0" expanded="true" />
+                <element signature="e#94953#95048#0" expanded="true" />
+                <element signature="e#95121#95199#0" expanded="true" />
+                <element signature="e#103396#103477#0" expanded="true" />
+                <element signature="e#103539#103634#0" expanded="true" />
+                <element signature="e#103703#103781#0" expanded="true" />
+                <element signature="e#124150#124237#0" expanded="true" />
+                <element signature="e#124344#124431#0" expanded="true" />
+                <element signature="e#124538#124625#0" expanded="true" />
+                <element signature="e#124732#124819#0" expanded="true" />
+                <element signature="e#127836#127904#0" expanded="true" />
+                <element signature="e#128325#128393#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -842,7 +194,7 @@
       <file leaf-file-name="R_AppDetail.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_AppDetail.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
+            <state relative-caret-position="1425">
               <caret line="123" column="41" selection-start-line="123" selection-start-column="41" selection-end-line="123" selection-end-column="41" />
               <folding>
                 <element signature="e#3558#3559#0" expanded="true" />
@@ -3062,657 +2414,11 @@
             </list>
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/xwalk_core_library_15">
-          <value>
-            <list>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="mergeDebugProguardFiles" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the sub-projects of project ':xwalk_core_library_15'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="projects" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="packageReleaseResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="validateSigningDebugAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="transformNativeLibsWithSyncJniLibsForRelease" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="assembleReleaseUnitTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="prepareDebugDependencies" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles a bundle containing the library in debug." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="bundleDebug" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="copyDebugLint" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="processReleaseJavaRes" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="generateReleaseAssets" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs lint on the Debug build." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="lintDebug" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles a bundle containing the library in release." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="bundleRelease" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="assembleDebugUnitTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Creates a version of android.jar that's suitable for unit tests." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="mockableAndroidJar" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the configuration model of project ':xwalk_core_library_15'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="model" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the tasks runnable from project ':xwalk_core_library_15'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="tasks" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="compileDebugSources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="packageReleaseRenderscript" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="mergeReleaseProguardFiles" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="incrementalDebugJavaCompilationSafeguard" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs all device checks using Device Providers and Test Servers." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="deviceCheck" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays all dependencies declared in project ':xwalk_core_library_15'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="dependencies" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="processDebugResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs lint on all variants." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="lint" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="compileReleaseNdk" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="generateDebugResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="compileDebugJavaWithJavac" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project and all projects it depends on." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="buildNeeded" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="generateDebugAndroidTestBuildConfig" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="processDebugUnitTestJavaRes" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Run unit tests for the release build." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="testReleaseUnitTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Deletes the build cache directory." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="cleanBuildCache" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="assembleDefault" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="compileDebugAndroidTestShaders" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="mergeDebugShaders" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="compileDebugAndroidTestJavaWithJavac" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the components produced by project ':xwalk_core_library_15'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="components" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="compileReleaseRenderscript" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles all Debug builds." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="assembleDebug" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="processDebugAndroidTestManifest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="compileDebugUnitTestJavaWithJavac" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="transformResourcesWithMergeJavaResForReleaseUnitTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="preDebugAndroidTestBuild" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="processDebugAndroidTestJavaRes" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="processReleaseUnitTestJavaRes" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="javaPreCompileDebugAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="transformClassesAndResourcesWithSyncLibJarsForRelease" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="compileReleaseShaders" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="generateDebugAndroidTestSources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="prepareDebugAndroidTestDependencies" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="incrementalDebugAndroidTestJavaCompilationSafeguard" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="transformClassesAndResourcesWithSyncLibJarsForDebug" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="checkReleaseManifest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="javaPreCompileDebugUnitTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="packageDebugResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="transformNativeLibsWithSyncJniLibsForDebug" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="compileDebugAndroidTestSources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="mergeReleaseJniLibFolders" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="prepareReleaseDependencies" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="processReleaseResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Installs and runs instrumentation tests using all Device Providers." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="deviceAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="mergeDebugAndroidTestAssets" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="processReleaseManifest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Uninstalls the android (on device) tests for the Debug build." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="uninstallDebugAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the insight into a specific dependency in project ':xwalk_core_library_15'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="dependencyInsight" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="generateReleaseSources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="incrementalReleaseUnitTestJavaCompilationSafeguard" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="preReleaseBuild" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles all variants of all applications and secondary packages." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="assemble" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="incrementalDebugUnitTestJavaCompilationSafeguard" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="incrementalReleaseJavaCompilationSafeguard" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays a help message." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="help" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="compileReleaseUnitTestSources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Installs the android (on device) tests for the Debug build." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="installDebugAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="mergeDebugAssets" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="javaPreCompileReleaseUnitTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="javaPreCompileRelease" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs all device checks on currently connected devices." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="connectedCheck" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Installs and runs the tests for debug on connected devices." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="connectedDebugAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Uninstall all applications." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="uninstallAll" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="transformNativeLibsWithMergeJniLibsForDebug" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles all the Test applications." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="assembleAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="processDebugAndroidTestResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="compileDebugAidl" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="preDebugUnitTestBuild" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="compileLint" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="generateDebugAndroidTestResValues" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="transformNativeLibsWithMergeJniLibsForDebugAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="mergeReleaseShaders" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the Android dependencies of the project." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="androidDependencies" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="compileDebugAndroidTestNdk" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="compileDebugUnitTestSources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="transformNativeLibsWithMergeJniLibsForRelease" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="generateDebugSources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="mergeDebugAndroidTestJniLibFolders" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="extractProguardFiles" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="transformClassesWithDexForDebugAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="assembleDebugAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="copyReleaseLint" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="processDebugJavaRes" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="generateDebugAndroidTestAssets" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="compileReleaseJavaWithJavac" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="transformResourcesWithMergeJavaResForDebugAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="prepareReleaseUnitTestDependencies" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Run unit tests for all variants." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="test" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="compileDebugNdk" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="mergeDebugAndroidTestResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="preReleaseUnitTestBuild" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="generateDebugResValues" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs all checks." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="check" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="javaPreCompileDebug" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Run unit tests for the debug build." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="testDebugUnitTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Installs and runs instrumentation tests for all flavors on connected devices." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="connectedAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="preBuild" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="transformResourcesWithMergeJavaResForRelease" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="compileReleaseSources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="compileReleaseUnitTestJavaWithJavac" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="compileDebugShaders" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="transformResourcesWithMergeJavaResForDebug" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="compileReleaseAidl" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs lint on the Release build." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="lintRelease" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project and all projects that depend on it." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="buildDependents" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="generateDebugAssets" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the dependent components of components in project ':xwalk_core_library_15'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="dependentComponents" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays all buildscript dependencies declared in project ':xwalk_core_library_15'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="buildEnvironment" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="checkDebugManifest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="mergeDebugJniLibFolders" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Prints out all the source sets defined in this project." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="sourceSets" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="transformResourcesWithMergeJavaResForDebugUnitTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="mergeReleaseAssets" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="compileDebugRenderscript" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="packageDebugRenderscript" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="generateReleaseBuildConfig" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="prepareDebugUnitTestDependencies" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="generateReleaseResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the signing info for each variant." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="signingReport" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="compileDebugAndroidTestAidl" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="mergeDebugAndroidTestShaders" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Deletes the build directory." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="clean" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="preDebugBuild" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="generateDebugBuildConfig" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="build" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles all Release builds." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="assembleRelease" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="compileDebugAndroidTestRenderscript" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="generateDebugAndroidTestResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="processDebugManifest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="packageDebugAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="generateReleaseResValues" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the properties of project ':xwalk_core_library_15'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/xwalk_core_library_15" />
-                <option name="name" value="properties" />
-              </ExternalTaskPojo>
-            </list>
-          </value>
-        </entry>
       </map>
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="5984558810000" />
+        <entry key="$PROJECT_DIR$" value="5987380716000" />
         <entry key="D:\GalepressMerge" value="7396263317481" />
       </map>
     </option>
@@ -4376,10 +3082,11 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane />
       </pane>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -4463,7 +3170,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -4964,26 +3670,25 @@
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32973805" sideWeight="0.49841145" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32819724" sideWeight="0.44757745" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32819724" sideWeight="0.4459889" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32819724" sideWeight="0.5524226" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32742682" sideWeight="0.5540111" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28659475" sideWeight="0.4499603" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32819724" sideWeight="0.49841145" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32819724" sideWeight="0.49841145" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3179318" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17712471" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23497689" sideWeight="0.4150119" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29661018" sideWeight="0.7402701" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29661018" sideWeight="0.7402701" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -4995,6 +3700,7 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19705999" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23497689" sideWeight="0.4150119" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Mirror" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -5053,20 +3759,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/WebViewAnnotationWithCrosswalk.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="48" column="17" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/ExtraWebViewWithCrosswalkActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="219" column="54" selection-start-line="219" selection-start-column="54" selection-end-line="219" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/WebViewAnnotationWithCrosswalk.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/ExtraWebViewWithCrosswalkActivity.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/artifex/mupdfdemo/ReaderView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8445">
@@ -5151,20 +3845,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/xwalk_core_library_15/xwalk_core_library_15.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xwalk_core_library_15/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/xwalk_core_library_15/xwalk_core_library_15.iml" />
+    <entry file="file://$PROJECT_DIR$/xwalk_core_library_15/build.gradle" />
     <entry file="file://$PROJECT_DIR$/sliding_library/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -5212,13 +3894,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/Test.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/BannerAndTabbarWebViewWithCrosswalk.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1605">
-          <caret line="132" column="50" selection-start-line="132" selection-start-column="50" selection-end-line="132" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/web_views/BannerAndTabbarWebViewWithCrosswalk.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fixed_content_popup_layout.xml">
       <provider editor-type-id="android-designer2">
         <state />
@@ -5266,9 +3942,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="370">
           <caret line="169" column="32" selection-start-line="169" selection-start-column="32" selection-end-line="169" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -5410,7 +4083,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/service_models/R_AppDetail.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
+        <state relative-caret-position="1425">
           <caret line="123" column="41" selection-start-line="123" selection-start-column="41" selection-end-line="123" selection-end-column="41" />
           <folding>
             <element signature="e#3558#3559#0" expanded="true" />
@@ -5429,27 +4102,73 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ak/detaysoft/galepress/DataApi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="1267" column="39" selection-start-line="1267" selection-start-column="39" selection-end-line="1267" selection-end-column="39" />
+        <state relative-caret-position="249">
+          <caret line="902" column="98" selection-start-line="902" selection-start-column="98" selection-end-line="902" selection-end-column="98" />
           <folding>
-            <element signature="e#45800#53857#0" expanded="true" />
-            <element signature="e#47192#47273#0" expanded="true" />
-            <element signature="e#47343#47442#0" expanded="true" />
-            <element signature="e#47520#47606#0" expanded="true" />
-            <element signature="e#47608#48834#0" expanded="true" />
-            <element signature="e#48833#48834#0" expanded="true" />
-            <element signature="e#48911#48971#0" expanded="true" />
-            <element signature="e#48973#49282#0" expanded="true" />
-            <element signature="e#49281#49282#0" expanded="true" />
-            <element signature="e#50621#50702#0" expanded="true" />
-            <element signature="e#50772#50870#0" expanded="true" />
-            <element signature="e#51025#51111#0" expanded="true" />
-            <element signature="e#51113#52769#0" expanded="true" />
-            <element signature="e#52496#52589#0" expanded="true" />
-            <element signature="e#52768#52769#0" expanded="true" />
-            <element signature="e#53856#53857#0" expanded="true" />
-            <element signature="e#53879#54250#0" expanded="true" />
-            <element signature="e#54249#54250#0" expanded="true" />
+            <element signature="e#25185#25270#0" expanded="true" />
+            <element signature="e#28583#28635#0" expanded="true" />
+            <element signature="e#29016#29075#0" expanded="true" />
+            <element signature="e#30066#30117#0" expanded="true" />
+            <element signature="e#30642#30695#0" expanded="true" />
+            <element signature="e#31219#31274#0" expanded="true" />
+            <element signature="e#31616#31671#0" expanded="true" />
+            <element signature="e#32013#32068#0" expanded="true" />
+            <element signature="e#32410#32465#0" expanded="true" />
+            <element signature="e#32805#32858#0" expanded="true" />
+            <element signature="e#33316#33369#0" expanded="true" />
+            <element signature="e#33925#33978#0" expanded="true" />
+            <element signature="e#34808#34863#0" expanded="true" />
+            <element signature="e#35174#35229#0" expanded="true" />
+            <element signature="e#35540#35595#0" expanded="true" />
+            <element signature="e#35906#35961#0" expanded="true" />
+            <element signature="e#36218#36271#0" expanded="true" />
+            <element signature="e#39535#39606#0" expanded="true" />
+            <element signature="e#39675#39725#0" expanded="true" />
+            <element signature="e#41641#41708#0" expanded="true" />
+            <element signature="e#41853#41906#0" expanded="true" />
+            <element signature="e#42424#42479#0" expanded="true" />
+            <element signature="e#42632#42687#0" expanded="true" />
+            <element signature="e#42786#42839#0" expanded="true" />
+            <element signature="e#43010#43063#0" expanded="true" />
+            <element signature="e#47111#47192#0" expanded="true" />
+            <element signature="e#47262#47361#0" expanded="true" />
+            <element signature="e#47439#47525#0" expanded="true" />
+            <element signature="e#48830#48890#0" expanded="true" />
+            <element signature="e#50540#50621#0" expanded="true" />
+            <element signature="e#50691#50789#0" expanded="true" />
+            <element signature="e#50944#51030#0" expanded="true" />
+            <element signature="e#52415#52508#0" expanded="true" />
+            <element signature="e#56780#56861#0" expanded="true" />
+            <element signature="e#56899#56936#0" expanded="true" />
+            <element signature="e#56982#57014#0" expanded="true" />
+            <element signature="e#57265#57298#0" expanded="true" />
+            <element signature="e#58684#58765#0" expanded="true" />
+            <element signature="e#58803#58888#0" expanded="true" />
+            <element signature="e#58934#59014#0" expanded="true" />
+            <element signature="e#60228#60309#0" expanded="true" />
+            <element signature="e#60700#60781#0" expanded="true" />
+            <element signature="e#60817#60902#0" expanded="true" />
+            <element signature="e#62856#62937#0" expanded="true" />
+            <element signature="e#62979#63064#0" expanded="true" />
+            <element signature="e#63114#63194#0" expanded="true" />
+            <element signature="e#67651#67732#0" expanded="true" />
+            <element signature="e#68489#68541#0" expanded="true" />
+            <element signature="e#70914#70995#0" expanded="true" />
+            <element signature="e#71202#71283#0" expanded="true" />
+            <element signature="e#92715#92770#0" expanded="true" />
+            <element signature="e#93524#93579#0" expanded="true" />
+            <element signature="e#94806#94887#0" expanded="true" />
+            <element signature="e#94953#95048#0" expanded="true" />
+            <element signature="e#95121#95199#0" expanded="true" />
+            <element signature="e#103396#103477#0" expanded="true" />
+            <element signature="e#103539#103634#0" expanded="true" />
+            <element signature="e#103703#103781#0" expanded="true" />
+            <element signature="e#124150#124237#0" expanded="true" />
+            <element signature="e#124344#124431#0" expanded="true" />
+            <element signature="e#124538#124625#0" expanded="true" />
+            <element signature="e#124732#124819#0" expanded="true" />
+            <element signature="e#127836#127904#0" expanded="true" />
+            <element signature="e#128325#128393#0" expanded="true" />
           </folding>
         </state>
       </provider>
