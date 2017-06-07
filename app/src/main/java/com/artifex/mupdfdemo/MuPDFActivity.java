@@ -460,7 +460,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         //uygulamaya tekrar açıldığında
         if (!isActivityActive && mDocView != null && (MuPDFPageView) mDocView.getChildAt(0) != null) {
             ((MuPDFPageView) mDocView.getChildAt(0)).resumeCurrentPageWebAnnotationsMedia();
-            ((MuPDFPageView) mDocView.getChildAt(0)).resumeTimers();
             isActivityActive = true;
         }
     }
@@ -1031,7 +1030,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                 if (mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null) {
                     ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
                     ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
-                    ((MuPDFPageView) mDocView.getChildAt(0)).destroyTimers();
                 }
 
                 /*if(mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null ) {
@@ -1077,7 +1075,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
             if (mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null) {
                 ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
                 ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
-                ((MuPDFPageView) mDocView.getChildAt(0)).destroyTimers();
             }
 
 
@@ -1109,7 +1106,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
     protected void onUserLeaveHint() {
         if (mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null) {
             ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
-            ((MuPDFPageView) mDocView.getChildAt(0)).pauseTimers();
         }
 
         isActivityActive = false;
@@ -2328,7 +2324,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                 if (mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null) {
                     ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
                     ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
-                    ((MuPDFPageView) mDocView.getChildAt(0)).destroyTimers();
                 }
 
 
@@ -2355,7 +2350,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                     if (mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null) {
                         ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
                         ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
-                        ((MuPDFPageView) mDocView.getChildAt(0)).destroyTimers();
                     }
 
 
@@ -2400,7 +2394,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                             if (mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null) {
                                 ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
                                 ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
-                                ((MuPDFPageView) mDocView.getChildAt(0)).destroyTimers();
                             }
 
                         /*for(int i =0; i < mDocView.getChildCount(); i++){
@@ -2426,7 +2419,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
                                 if (mDocView != null && ((MuPDFPageView) mDocView.getChildAt(0)) != null) {
                                     ((MuPDFPageView) mDocView.getChildAt(0)).stopAllWebAnnotationsMedia();
                                     ((MuPDFPageView) mDocView.getChildAt(0)).clearWebAnnotations(((MuPDFPageView) mDocView.getChildAt(0)));
-                                    ((MuPDFPageView) mDocView.getChildAt(0)).destroyTimers();
                                 }
 
 

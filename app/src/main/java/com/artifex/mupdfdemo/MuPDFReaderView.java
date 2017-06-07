@@ -10,8 +10,6 @@ import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.webkit.WebView;
 
-import org.xwalk.core.XWalkView;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -358,7 +356,7 @@ public class MuPDFReaderView extends ReaderView {
         for (int i = 0; i < pageView.getChildCount(); i++) {
             View view = pageView.getChildAt(i);
 
-            if (view instanceof WebView || view instanceof XWalkView) { //Annotation viewlar WebView-XWalkView
+            if (view instanceof WebView) { //Annotation viewlar WebView
                 float original_x;
                 float original_y;
                 LinkInfo[] links = pageView.mLinks;

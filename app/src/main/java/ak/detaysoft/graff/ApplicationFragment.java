@@ -27,8 +27,6 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 
-import org.xwalk.core.XWalkView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +35,6 @@ import ak.detaysoft.graff.database_models.L_Category;
 import ak.detaysoft.graff.util.ApplicationThemeColor;
 import ak.detaysoft.graff.util.CustomCategoryRecyclerView;
 import ak.detaysoft.graff.web_views.BannerAndTabbarWebView;
-import ak.detaysoft.graff.web_views.BannerAndTabbarWebViewWithCrosswalk;
 
 /**
  * Created by p1025 on 08.11.2016.
@@ -52,7 +49,6 @@ public class ApplicationFragment extends Fragment {
     private List applications;
     public LinearLayout banner;
     public BannerAndTabbarWebView bannerWebView;
-    public BannerAndTabbarWebViewWithCrosswalk bannerWebViewWithCrosswalk;
     L_Category selectedCategory = null;
     public int selectedCategoryPosition = 0;
     private int categoriesItemWidth = 0;
@@ -150,17 +146,10 @@ public class ApplicationFragment extends Fragment {
 
         banner = (LinearLayout) LayoutInflater.from(this.getActivity()).inflate(R.layout.slider_banner, null, false);
         //4.4
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            bannerWebView = new BannerAndTabbarWebView(this.getActivity());
-            bannerWebView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-            bannerWebView.loadUrl(GalePressApplication.getInstance().getBannerLink());
-            banner.addView(bannerWebView);
-        } else {
-            bannerWebViewWithCrosswalk = new BannerAndTabbarWebViewWithCrosswalk(this.getActivity());
-            bannerWebViewWithCrosswalk.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-            bannerWebViewWithCrosswalk.load(GalePressApplication.getInstance().getBannerLink(), null);
-            banner.addView(bannerWebViewWithCrosswalk);
-        }
+        bannerWebView = new BannerAndTabbarWebView(this.getActivity());
+        bannerWebView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+        bannerWebView.loadUrl(GalePressApplication.getInstance().getBannerLink());
+        banner.addView(bannerWebView);
 
 
         if (GalePressApplication.getInstance().getBannerLink().length() > 0 && GalePressApplication.getInstance().getDataApi().isConnectedToInternet()) {
@@ -290,14 +279,8 @@ public class ApplicationFragment extends Fragment {
         if (!getResources().getBoolean(R.bool.portrait_only) &&
                 (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE || newConfig.orientation == Configuration.ORIENTATION_PORTRAIT)) {
             banner.setLayoutParams(resizeSliderBanner());
-            //4.4
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                bannerWebView.reload();
-                bannerWebView.setVisibility(View.INVISIBLE);
-            } else {
-                bannerWebViewWithCrosswalk.reload(XWalkView.RELOAD_NORMAL);
-                bannerWebViewWithCrosswalk.setVisibility(View.INVISIBLE);
-            }
+            bannerWebView.reload();
+            bannerWebView.setVisibility(View.INVISIBLE);
         }
     }
 

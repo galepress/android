@@ -117,20 +117,11 @@ public class BannerAndTabbarWebView extends WebView {
                     isBannerUrlUpdated = false;
                     if(!url.contains("file:///")){
                         if(url.compareTo(GalePressApplication.getInstance().getBannerLink()) != 0){
-                            //4.4
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                                Intent intent = new Intent(context, ExtraWebViewActivity.class);
-                                intent.putExtra("url", url);
-                                intent.putExtra("isMainActivitIntent", false);
-                                context.startActivity(intent);
-                                return true;
-                            } else {
-                                Intent intent = new Intent(context, ExtraWebViewWithCrosswalkActivity.class);
-                                intent.putExtra("url", url);
-                                intent.putExtra("isMainActivitIntent", false);
-                                context.startActivity(intent);
-                                return true;
-                            }
+                            Intent intent = new Intent(context, ExtraWebViewActivity.class);
+                            intent.putExtra("url", url);
+                            intent.putExtra("isMainActivitIntent", false);
+                            context.startActivity(intent);
+                            return true;
                         }
                         return false;
                     }

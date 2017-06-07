@@ -29,18 +29,13 @@ import android.widget.Toast;
 import com.crashlytics.android.answers.Answers;
 import com.crashlytics.android.answers.CustomEvent;
 
-import org.xwalk.core.XWalkView;
-import org.xwalk.core.internal.XWalkViewBridge;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import ak.detaysoft.graff.*;
 import ak.detaysoft.graff.web_views.ExtraWebViewActivity;
-import ak.detaysoft.graff.web_views.ExtraWebViewWithCrosswalkActivity;
 import ak.detaysoft.graff.web_views.WebViewAnnotation;
-import ak.detaysoft.graff.web_views.WebViewAnnotationWithCrosswalk;
 import ak.detaysoft.graff.util.CustomPulseProgress;
 
 
@@ -309,32 +304,6 @@ public abstract class PageView extends ViewGroup {
 				webView.destroy();
 				pageView.removeView(view);
 				pageView.invalidate();
-			} else if (view instanceof XWalkView) {
-				XWalkView webView = (XWalkView) view;
-				webView.load("", null);
-				webView.stopLoading();
-
-				try {
-
-                    /*
-                    * Burası commetlenmediği zaman crosswalk kütüphanesinde sorun çıkıyor.
-                    * İçerik açıldı daha sonra kapatıldı tekrar açıldığı zaman
-                    * Video ses animasyon gibi içerikler çalışmıyor.
-                    * Load ediyor fakat animasyon başlamıyor, video ve ses üzerine tıklandığında başlamıyor.
-                    * Ses ve video içeriklerinden auto play olanlar çalışmıyor.
-                    * */
-
-                    /*Class.forName("ak.detaysoft.graff.WebViews.WebViewAnnotationWithCrosswalk")
-                            .getMethod("pauseTimers", (Class[]) null)
-                            .invoke(webView, (Object[]) null);*/
-
-				} catch (Exception cnfe) {
-					cnfe.printStackTrace();
-				}
-
-				webView.onDestroy();
-				pageView.removeView(view);
-				pageView.invalidate();
 			}
 
 		}
@@ -380,8 +349,7 @@ public abstract class PageView extends ViewGroup {
 			View view = (View) pageView.getChildAt(i);
 			if (view instanceof WebView) {
 				gpAnnotations.add(view);
-			} else if (view instanceof XWalkView)
-				gpAnnotations.add(view);
+			}
 		}
 		return gpAnnotations;
 	}
@@ -663,18 +631,10 @@ public abstract class PageView extends ViewGroup {
 												((MuPDFPageView)((MuPDFActivity)mContext).mDocView.getChildAt(0)).resumeCurrentPageWebAnnotationsMedia();
 											}
 
-											//4.4
-											if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-												Intent intent = new Intent(mContext, ExtraWebViewActivity.class);
-												intent.putExtra("url", linkInfoExternal.getSourceUrlPath(mContext)); // daha once linkInfoExternal.sourceurl vardi o nedenle modal acilmiyordu
-												intent.putExtra("isModal", true);
-												mContext.startActivity(intent);
-											} else {
-												Intent intent = new Intent(mContext, ExtraWebViewWithCrosswalkActivity.class);
-												intent.putExtra("url", linkInfoExternal.getSourceUrlPath(mContext)); // daha once linkInfoExternal.sourceurl vardi o nedenle modal acilmiyordu
-												intent.putExtra("isModal", true);
-												mContext.startActivity(intent);
-											}
+											Intent intent = new Intent(mContext, ExtraWebViewActivity.class);
+											intent.putExtra("url", linkInfoExternal.getSourceUrlPath(mContext)); // daha once linkInfoExternal.sourceurl vardi o nedenle modal acilmiyordu
+											intent.putExtra("isModal", true);
+											mContext.startActivity(intent);
 										}
 									});
 									addView(modalButton);
@@ -682,48 +642,20 @@ public abstract class PageView extends ViewGroup {
 								else{
 									String url = linkInfoExternal.getSourceUrlPath(mContext);
 
-									//4.4
-									if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-										// Web Annotations
-										final WebViewAnnotation web = new WebViewAnnotation(mContext, linkInfoExternal, progressBar);
-										web.layout(left, top, right, bottom);
-										web.setLayoutParams(new ViewGroup.LayoutParams(right - left, bottom - top));
-										web.readerView = ((MuPDFActivity) mContext).mDocView;
-										web.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+									// Web Annotations
+									final WebViewAnnotation web = new WebViewAnnotation(mContext, linkInfoExternal, progressBar);
+									web.layout(left, top, right, bottom);
+									web.setLayoutParams(new ViewGroup.LayoutParams(right - left, bottom - top));
+									web.readerView = ((MuPDFActivity) mContext).mDocView;
+									web.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
 
-										web.setId(atomicInteger.incrementAndGet());
-										linkInfoExternal.webViewId = web.getId();
+									web.setId(atomicInteger.incrementAndGet());
+									linkInfoExternal.webViewId = web.getId();
 
-										if (linkInfoExternal.isWebAnnotation()) {
-											web.loadUrl(url);
-										}
-										addView(web);
-									} else {
-
-										if(GalePressApplication.getInstance().isXWalkInitializer()) {
-											final WebViewAnnotationWithCrosswalk web = new WebViewAnnotationWithCrosswalk(mContext, linkInfoExternal, progressBar);
-											web.layout(left, top, right, bottom);
-
-											//Crosswalk wiew içindeki tüm chil viewlar için .layout metodu set edilmezse load edilen sayfa görünmüyor. Viewgroup da böyle bi sorun var.(MG)
-											web.getChildAt(0).layout(0, 0, right - left, bottom - top);
-											((ViewGroup) web.getChildAt(0)).getChildAt(0).layout(0, 0, right - left, bottom - top);
-											((ViewGroup) web.getChildAt(0)).getChildAt(1).layout(0, 0, right - left, bottom - top);
-											(((ViewGroup) ((XWalkViewBridge) web.getChildAt(0)).getChildAt(0))).getChildAt(0).layout(0, 0, right - left, bottom - top);
-
-
-											web.readerView = ((MuPDFActivity) mContext).mDocView;
-
-											web.setId(atomicInteger.incrementAndGet());
-											linkInfoExternal.webViewId = web.getId();
-
-											if (linkInfoExternal.isWebAnnotation()) {
-												web.load(url, null);
-											}
-
-											addView(web);
-										}
-
+									if (linkInfoExternal.isWebAnnotation()) {
+										web.loadUrl(url);
 									}
+									addView(web);
 
 								}
 							}
@@ -744,44 +676,17 @@ public abstract class PageView extends ViewGroup {
 								builder.appendQueryParameter("mapType",String.valueOf(linkInfoExternal.mapType));
 								String mapUrl = builder.build().toString();
 
+								// Web Annotations
+								final WebViewAnnotation web = new WebViewAnnotation(mContext, linkInfoExternal, progressBar);
+								web.layout(left, top, right, bottom);
+								web.setLayoutParams(new ViewGroup.LayoutParams(right - left, bottom - top));
+								web.readerView = ((MuPDFActivity) mContext).mDocView;
+								web.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
 
-								//4.4
-								if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-									// Web Annotations
-									final WebViewAnnotation web = new WebViewAnnotation(mContext, linkInfoExternal, progressBar);
-									web.layout(left, top, right, bottom);
-									web.setLayoutParams(new ViewGroup.LayoutParams(right - left, bottom - top));
-									web.readerView = ((MuPDFActivity) mContext).mDocView;
-									web.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
-
-									web.setId(atomicInteger.incrementAndGet());
-									linkInfoExternal.webViewId = web.getId();
-									web.loadUrl(mapUrl);
-									addView(web);
-								} else {
-
-									if(GalePressApplication.getInstance().isXWalkInitializer()) {
-										final WebViewAnnotationWithCrosswalk web = new WebViewAnnotationWithCrosswalk(mContext, linkInfoExternal, progressBar);
-										web.layout(left, top, right, bottom);
-
-										//Crosswalk wiew içindeki tüm chil viewlar için .layout metodu set edilmezse load edilen sayfa görünmüyor. Viewgroup da böyle bi sorun var.(MG)
-										web.getChildAt(0).layout(0, 0, right - left, bottom - top);
-										((ViewGroup) web.getChildAt(0)).getChildAt(0).layout(0, 0, right - left, bottom - top);
-										((ViewGroup) web.getChildAt(0)).getChildAt(1).layout(0, 0, right - left, bottom - top);
-										(((ViewGroup) ((XWalkViewBridge) web.getChildAt(0)).getChildAt(0))).getChildAt(0).layout(0, 0, right - left, bottom - top);
-
-
-										web.readerView = ((MuPDFActivity) mContext).mDocView;
-										final String url2 = linkInfoExternal.getSourceUrlPath(mContext);
-
-										web.setId(atomicInteger.incrementAndGet());
-										linkInfoExternal.webViewId = web.getId();
-
-										web.load(mapUrl, null);
-										addView(web);
-									}
-
-								}
+								web.setId(atomicInteger.incrementAndGet());
+								linkInfoExternal.webViewId = web.getId();
+								web.loadUrl(mapUrl);
+								addView(web);
 							}
 							else if(((LinkInfoExternal) link).componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_WEBLINK){
 								final boolean isMailto = ((LinkInfoExternal) link).isMailto;

@@ -41,7 +41,6 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.xwalk.core.XWalkPreferences;
 
 import java.io.InputStream;
 import java.text.DateFormat;
@@ -195,13 +194,6 @@ public class GalePressApplication
         super.onCreate();
 
         Fabric.with(this, new Crashlytics());
-
-        XWalkPreferences.setValue("enable-javascript", true);
-        XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, true);
-        XWalkPreferences.setValue(XWalkPreferences.ALLOW_UNIVERSAL_ACCESS_FROM_FILE, true);
-        XWalkPreferences.setValue(XWalkPreferences.JAVASCRIPT_CAN_OPEN_WINDOW, true);
-        XWalkPreferences.setValue(XWalkPreferences.SUPPORT_MULTIPLE_WINDOWS, true);
-        XWalkPreferences.setValue(XWalkPreferences.ANIMATABLE_XWALK_VIEW, true);
 
         sInstance = this;
         parseApplicationPlist();

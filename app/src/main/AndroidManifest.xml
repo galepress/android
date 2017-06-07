@@ -86,10 +86,6 @@
             android:label="@string/app_name"
             android:theme="@style/ExtraWebView"></activity>
         <activity
-            android:name="ak.detaysoft.graff.web_views.ExtraWebViewWithCrosswalkActivity"
-            android:label="@string/app_name"
-            android:theme="@style/ExtraWebView"></activity>
-        <activity
             android:name="ak.detaysoft.graff.ContentDetailPopupActivity"
             android:theme="@style/ContentPopupTheme"></activity>
 

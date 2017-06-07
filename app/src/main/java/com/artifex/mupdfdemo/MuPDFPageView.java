@@ -19,11 +19,8 @@ import android.view.inputmethod.EditorInfo;
 import android.webkit.WebBackForwardList;
 import android.widget.EditText;
 
-import org.xwalk.core.XWalkView;
-
 import ak.detaysoft.graff.R;
 import ak.detaysoft.graff.web_views.WebViewAnnotation;
-import ak.detaysoft.graff.web_views.WebViewAnnotationWithCrosswalk;
 
 /* This enum should be kept in line with the cooresponding C enum in mupdf.c */
 enum SignatureState {
@@ -644,73 +641,6 @@ public class MuPDFPageView extends PageView implements MuPDFView {
 						}
 					}
 
-				} else if(view instanceof WebViewAnnotationWithCrosswalk){
-					WebViewAnnotationWithCrosswalk webView = (WebViewAnnotationWithCrosswalk)view;
-					if(!webView.linkInfoExternal.isModal && webView.linkInfoExternal.isWebAnnotation()
-							&& (webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_SES)) {
-						//webView.loadUrl("");
-						if(!webView.isLoadingFinished)
-							webView.stopLoading();
-						webView.load("javascript:" + stopScriptAudio, null);
-					} else if(!webView.linkInfoExternal.isModal && webView.linkInfoExternal.isWebAnnotation()
-							&& (webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_VIDEO
-							|| webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_WEB)) {
-						//webView.loadUrl("");
-						if(!webView.isLoadingFinished)
-							webView.stopLoading();
-						webView.setLoadingFinished(false);
-						webView.load("javascript:" + stopScriptVideo, null );
-					}
-				}
-			}
-		}
-
-	}
-
-	public void resumeTimers(){
-		for(int i =0; i < ((MuPDFActivity)(mContext)).mDocView.getChildCount(); i++){
-			MuPDFPageView muPDFPageView = (MuPDFPageView) ((MuPDFActivity)(mContext)).mDocView.getChildAt(i);
-			ArrayList<View> gpAnnotations = getGPAnnotations(muPDFPageView);
-			for(int j = 0; j < gpAnnotations.size(); j++){
-				View view = gpAnnotations.get(j);
-
-				if(view instanceof WebViewAnnotationWithCrosswalk){
-					WebViewAnnotationWithCrosswalk webView = (WebViewAnnotationWithCrosswalk)view;
-					webView.resumeTimers();
-					webView.onShow();
-				}
-			}
-		}
-	}
-
-	public void pauseTimers(){
-		for(int i =0; i < ((MuPDFActivity)(mContext)).mDocView.getChildCount(); i++){
-			MuPDFPageView muPDFPageView = (MuPDFPageView) ((MuPDFActivity)(mContext)).mDocView.getChildAt(i);
-			ArrayList<View> gpAnnotations = getGPAnnotations(muPDFPageView);
-			for(int j = 0; j < gpAnnotations.size(); j++){
-				View view = gpAnnotations.get(j);
-
-				if(view instanceof WebViewAnnotationWithCrosswalk){
-					WebViewAnnotationWithCrosswalk webView = (WebViewAnnotationWithCrosswalk)view;
-					webView.pauseTimers();
-					webView.onHide();
-
-				}
-			}
-		}
-	}
-
-	public void destroyTimers(){
-		for(int i =0; i < ((MuPDFActivity)(mContext)).mDocView.getChildCount(); i++){
-			MuPDFPageView muPDFPageView = (MuPDFPageView) ((MuPDFActivity)(mContext)).mDocView.getChildAt(i);
-			ArrayList<View> gpAnnotations = getGPAnnotations(muPDFPageView);
-			for(int j = 0; j < gpAnnotations.size(); j++){
-				View view = gpAnnotations.get(j);
-
-				if(view instanceof WebViewAnnotationWithCrosswalk){
-					WebViewAnnotationWithCrosswalk webView = (WebViewAnnotationWithCrosswalk)view;
-					webView.onDestroy();
-
 				}
 			}
 		}
@@ -753,13 +683,6 @@ public class MuPDFPageView extends PageView implements MuPDFView {
 						webView.clearCache(true);
 						webView.reload();
 					}
-				}
-			} else if(view instanceof WebViewAnnotationWithCrosswalk){
-				WebViewAnnotationWithCrosswalk webView = (WebViewAnnotationWithCrosswalk)view;
-				if(webView.linkInfoExternal.componentAnnotationTypeId == LinkInfoExternal.COMPONENT_TYPE_ID_ANIMATION){
-					webView.setVisibility(GONE);
-					webView.clearCache(true);
-					webView.reload(XWalkView.RELOAD_NORMAL);
 				}
 			}
 		}
