@@ -23,8 +23,6 @@ import android.widget.LinearLayout;
 
 import com.artifex.mupdfdemo.MuPDFActivity;
 
-import org.xwalk.core.XWalkView;
-
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -39,7 +37,6 @@ import ak.detaysoft.galepress.database_models.L_Content;
 import ak.detaysoft.galepress.database_models.L_Statistic;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
 import ak.detaysoft.galepress.web_views.BannerAndTabbarWebView;
-import ak.detaysoft.galepress.web_views.BannerAndTabbarWebViewWithCrosswalk;
 
 /**
  * Created by adem on 31/03/14.
@@ -49,7 +46,6 @@ public class LibraryFragment extends Fragment {
     public HeaderGridView gridview;
     public LinearLayout banner;
     public BannerAndTabbarWebView bannerWebView;
-    public BannerAndTabbarWebViewWithCrosswalk bannerWebViewWithCrosswalk;
     private LayoutInflater layoutInflater;
     public boolean isOnlyDownloaded;
     private List contents;
@@ -95,14 +91,8 @@ public class LibraryFragment extends Fragment {
         if (!getResources().getBoolean(R.bool.portrait_only) &&
                 (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE || newConfig.orientation == Configuration.ORIENTATION_PORTRAIT)) {
             banner.setLayoutParams(prepareBannerSize());
-            //4.4
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                bannerWebView.reload();
-                bannerWebView.setVisibility(View.INVISIBLE);
-            } else {
-                bannerWebViewWithCrosswalk.reload(XWalkView.RELOAD_NORMAL);
-                bannerWebViewWithCrosswalk.setVisibility(View.INVISIBLE);
-            }
+            bannerWebView.reload();
+            bannerWebView.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -153,18 +143,10 @@ public class LibraryFragment extends Fragment {
         });
 
         banner = (LinearLayout) LayoutInflater.from(this.getActivity()).inflate(R.layout.library_banner, null, false);
-        //4.4
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            bannerWebView = new BannerAndTabbarWebView(this.getActivity());
-            bannerWebView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-            bannerWebView.loadUrl(GalePressApplication.getInstance().getBannerLink());
-            banner.addView(bannerWebView);
-        } else {
-            bannerWebViewWithCrosswalk = new BannerAndTabbarWebViewWithCrosswalk(this.getActivity());
-            bannerWebViewWithCrosswalk.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-            bannerWebViewWithCrosswalk.load(GalePressApplication.getInstance().getBannerLink(), null);
-            banner.addView(bannerWebViewWithCrosswalk);
-        }
+        bannerWebView = new BannerAndTabbarWebView(this.getActivity());
+        bannerWebView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+        bannerWebView.loadUrl(GalePressApplication.getInstance().getBannerLink());
+        banner.addView(bannerWebView);
 
         banner.setLayoutParams(prepareBannerSize());
         gridview.addHeaderView(banner);
@@ -196,13 +178,7 @@ public class LibraryFragment extends Fragment {
 
     public void updateBanner() {
         banner.setLayoutParams(prepareBannerSize());
-
-        //4.4
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            bannerWebView.loadBannerUrl(GalePressApplication.getInstance().getBannerLink());
-        } else {
-            bannerWebViewWithCrosswalk.loadBannerUrl(GalePressApplication.getInstance().getBannerLink());
-        }
+        bannerWebView.loadBannerUrl(GalePressApplication.getInstance().getBannerLink());
         gridview.invalidateViews();
     }
 

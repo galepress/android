@@ -81,11 +81,6 @@
             android:configChanges="orientation|screenSize"
             android:theme="@style/ExtraWebView"></activity>
         <activity
-            android:name=".web_views.ExtraWebViewWithCrosswalkActivity"
-            android:label="@string/app_name"
-            android:configChanges="orientation|screenSize"
-            android:theme="@style/ExtraWebView"></activity>
-        <activity
             android:name=".ContentDetailPopupActivity"
             android:theme="@style/ContentPopupTheme"></activity>
 

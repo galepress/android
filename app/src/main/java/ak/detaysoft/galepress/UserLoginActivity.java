@@ -344,14 +344,11 @@ public class UserLoginActivity extends Activity {
                         });
                         alertDialog.show();
                     } else {
-                        openSignupView();
+
                     }
                 } else {
                     Toast.makeText(UserLoginActivity.this, getResources().getString(R.string.WARNING_1), Toast.LENGTH_SHORT).show();
                 }
-
-
-
 
             }
         });
@@ -487,7 +484,7 @@ public class UserLoginActivity extends Activity {
             openLoginView();
         }
 
-        web.loadUrl("http://www.galepress.com/tr/mobil-kullanici/kayitol/"+applicationID);
+        web.loadUrl("http://www.galepress.com/"+getResources().getString(R.string.language_code)+"/mobile-user/register/"+applicationID);
     }
 
     public void openForgotView(){
@@ -529,8 +526,7 @@ public class UserLoginActivity extends Activity {
             openLoginView();
         }
 
-
-        web.loadUrl("http://www.galepress.com/tr/mobil-kullanici/sifremi-unuttum/"+applicationID);
+        web.loadUrl("http://www.galepress.com/"+getResources().getString(R.string.language_code)+"/mobile-user/forgot-password/"+applicationID);
     }
 
     private void runAction(){

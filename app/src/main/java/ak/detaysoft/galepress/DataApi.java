@@ -12,6 +12,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.location.Location;
 import android.net.ConnectivityManager;
@@ -899,66 +901,82 @@ public class DataApi extends Object {
                                 R_AppDetail appDetail = new R_AppDetail(response);
 
                                 GalePressApplication.getInstance().prepareSubscriptions(response);
+                                appDetail.setForce(R_AppDetail.FORCE_BLOCK_APP);
                                 if (appDetail.getForce() == R_AppDetail.FORCE_WARN) {
                                     isBlockedFromWS = false;
                                     // Warn user to update app.
-                                    final String marketUrl = appDetail.getAndroidLink();
-                                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(GalePressApplication.getInstance().getLibraryActivity().getActivity());
-                                    alertDialog.setTitle(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.UYARI));
-                                    alertDialog.setMessage(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.forceUpdateWarnMessage));
+                                    try {
+                                        PackageInfo pInfo = GalePressApplication.getInstance().getPackageManager().getPackageInfo(GalePressApplication.getInstance().getPackageName(), 0);
+                                        String version = pInfo.versionName;
+                                        if(version.compareTo(appDetail.getAndroidVersion()) != 0) {
+                                            final String marketUrl = appDetail.getAndroidLink();
+                                            AlertDialog.Builder alertDialog = new AlertDialog.Builder(GalePressApplication.getInstance().getLibraryActivity().getActivity());
+                                            alertDialog.setTitle(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.UYARI));
+                                            alertDialog.setMessage(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.forceUpdateBlockMessage));
 
-                                    alertDialog.setPositiveButton(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.TAMAM), new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            if (marketUrl != null && !marketUrl.isEmpty()) {
-                                                try {
-                                                    String packageName = marketUrl.substring(marketUrl.indexOf("?id=") + 4, marketUrl.length());
-                                                    Uri marketUri = Uri.parse("market://details?id=" + packageName);
-                                                    Intent marketIntent = new Intent(Intent.ACTION_VIEW, marketUri);
-                                                    GalePressApplication.getInstance().getLibraryActivity().startActivity(marketIntent);
-                                                } catch (Exception e) {
-                                                    e.printStackTrace();
+                                            alertDialog.setPositiveButton(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.goToMarket), new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    if (marketUrl != null && !marketUrl.isEmpty()) {
+                                                        try {
+                                                            String packageName = marketUrl.substring(marketUrl.indexOf("?id=") + 4, marketUrl.length());
+                                                            Uri marketUri = Uri.parse("market://details?id=" + packageName);
+                                                            Intent marketIntent = new Intent(Intent.ACTION_VIEW, marketUri);
+                                                            GalePressApplication.getInstance().getLibraryActivity().startActivity(marketIntent);
+                                                        } catch (Exception e) {
+                                                            e.printStackTrace();
+                                                        }
+
+                                                    }
+
                                                 }
-
-                                            }
-
+                                            });
+                                            alertDialog.setNegativeButton(GalePressApplication.getInstance().getString(R.string.IPTAL), new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    dialog.cancel();
+                                                }
+                                            });
+                                            alertDialog.show();
                                         }
-                                    });
-                                    alertDialog.setNegativeButton(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.HAYIR), new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog, int which) {
-
-                                        }
-                                    });
-                                    alertDialog.show();
+                                    } catch (PackageManager.NameNotFoundException e) {
+                                        e.printStackTrace();
+                                    }
                                 } else if (appDetail.getForce() == R_AppDetail.FORCE_BLOCK_APP || appDetail.getForce() == R_AppDetail.FORCE_BLOCK_AND_DELETE) {
                                     // App is blocked. Lock all content features.
+
                                     isBlockedFromWS = true;
-                                    final String marketUrl = appDetail.getAndroidLink();
-                                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(GalePressApplication.getInstance().getLibraryActivity().getActivity());
-                                    alertDialog.setTitle(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.UYARI));
-                                    alertDialog.setMessage(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.forceUpdateBlockMessage));
+                                    try {
+                                        PackageInfo pInfo = GalePressApplication.getInstance().getPackageManager().getPackageInfo(GalePressApplication.getInstance().getPackageName(), 0);
+                                        String version = pInfo.versionName;
+                                        if(version.compareTo(appDetail.getAndroidVersion()) != 0) {
+                                            final String marketUrl = appDetail.getAndroidLink();
+                                            AlertDialog.Builder alertDialog = new AlertDialog.Builder(GalePressApplication.getInstance().getLibraryActivity().getActivity());
+                                            alertDialog.setTitle(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.UYARI));
+                                            alertDialog.setMessage(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.forceUpdateWarnMessage));
+                                            alertDialog.setCancelable(false);
+                                            alertDialog.setPositiveButton(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.goToMarket), new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    if (marketUrl != null && !marketUrl.isEmpty()) {
+                                                        try {
+                                                            String packageName = marketUrl.substring(marketUrl.indexOf("?id=") + 4, marketUrl.length());
+                                                            Uri marketUri = Uri.parse("market://details?id=" + packageName);
+                                                            Intent marketIntent = new Intent(Intent.ACTION_VIEW, marketUri);
+                                                            GalePressApplication.getInstance().getLibraryActivity().startActivity(marketIntent);
+                                                            GalePressApplication.getInstance().getLibraryActivity().getActivity().finish();
+                                                        } catch (Exception e) {
+                                                            e.printStackTrace();
+                                                        }
+                                                    } else {
+                                                        Toast.makeText(GalePressApplication.getInstance(), GalePressApplication.getInstance().getResources().getString(R.string.no_customer_application), Toast.LENGTH_SHORT).show();
+                                                    }
 
-                                    alertDialog.setPositiveButton(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.goToMarket), new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            if (marketUrl != null && !marketUrl.isEmpty()) {
-                                                try {
-                                                    String packageName = marketUrl.substring(marketUrl.indexOf("?id=") + 4, marketUrl.length());
-                                                    Uri marketUri = Uri.parse("market://details?id=" + packageName);
-                                                    Intent marketIntent = new Intent(Intent.ACTION_VIEW, marketUri);
-                                                    GalePressApplication.getInstance().getLibraryActivity().startActivity(marketIntent);
-                                                } catch (Exception e) {
-                                                    e.printStackTrace();
                                                 }
-
-                                            }
-
+                                            });
+                                            alertDialog.show();
                                         }
-                                    });
-                                    alertDialog.setNegativeButton(GalePressApplication.getInstance().getString(R.string.IPTAL), new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            dialog.cancel();
-                                        }
-                                    });
-                                    alertDialog.show();
+                                    } catch (PackageManager.NameNotFoundException e) {
+                                        e.printStackTrace();
+                                    }
+
                                     if (appDetail.getForce() == R_AppDetail.FORCE_BLOCK_AND_DELETE) {
                                         // Delete all content
                                         deleteEverything();
@@ -2242,6 +2260,11 @@ public class DataApi extends Object {
                                         ((MainActivity) activity).completePurchase();
                                     else
                                         ((ContentDetailPopupActivity) activity).completePurchase();
+                                    dialog.dismiss();
+                                }
+                            } else {
+                                Toast.makeText(activity, response.getString("error"), Toast.LENGTH_LONG).show();
+                                if (dialog != null) {
                                     dialog.dismiss();
                                 }
                             }

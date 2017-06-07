@@ -17,13 +17,11 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import ak.detaysoft.galepress.web_views.BannerAndTabbarWebView;
-import ak.detaysoft.galepress.web_views.BannerAndTabbarWebViewWithCrosswalk;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
 
 public class CustomTabFragment extends Fragment{
 
     public BannerAndTabbarWebView tabbarWebView;
-    public BannerAndTabbarWebViewWithCrosswalk tabbarWebViewWithCrosswalk;
     private ProgressBar progressBar;
 
     @Override
@@ -45,48 +43,25 @@ public class CustomTabFragment extends Fragment{
         progressBar = (ProgressBar)v.findViewById(R.id.custom_web_view_progress_bar);
         ((LinearLayout)progressBar.getParent()).setBackgroundColor(ApplicationThemeColor.getInstance().getTransperentPopupColor());
 
-        //4.4
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            tabbarWebView = new BannerAndTabbarWebView(this.getActivity(), progressBar,  false);
-            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
-            tabbarWebView.setLayoutParams(params);
-            if (savedInstanceState == null)
-                tabbarWebView.loadUrl(GalePressApplication.getInstance().getTabList().get(Integer.parseInt(getTag())).getWebUrl());
-            else
-                tabbarWebView.restoreState(savedInstanceState);
+        tabbarWebView = new BannerAndTabbarWebView(this.getActivity(), progressBar,  false);
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
+        tabbarWebView.setLayoutParams(params);
+        if (savedInstanceState == null)
+            tabbarWebView.loadUrl(GalePressApplication.getInstance().getTabList().get(Integer.parseInt(getTag())).getWebUrl());
+        else
+            tabbarWebView.restoreState(savedInstanceState);
 
-            v.addView(tabbarWebView);
+        v.addView(tabbarWebView);
 
-            ((LinearLayout)progressBar.getParent()).bringToFront();
-            ((LinearLayout)progressBar.getParent()).setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    return true;
-                }
-            });
+        ((LinearLayout)progressBar.getParent()).bringToFront();
+        ((LinearLayout)progressBar.getParent()).setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
 
-            ((MainActivity) this.getActivity()).prepareActionBarForCustomTab(tabbarWebView, true, false);
-        } else {
-            tabbarWebViewWithCrosswalk = new BannerAndTabbarWebViewWithCrosswalk(this.getActivity(), progressBar,  false);
-            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
-            tabbarWebViewWithCrosswalk.setLayoutParams(params);
-            if (savedInstanceState == null)
-                tabbarWebViewWithCrosswalk.load(GalePressApplication.getInstance().getTabList().get(Integer.parseInt(getTag())).getWebUrl(), null);
-            else
-                tabbarWebViewWithCrosswalk.restoreState(savedInstanceState);
-
-            v.addView(tabbarWebViewWithCrosswalk);
-
-            ((LinearLayout)progressBar.getParent()).bringToFront();
-            ((LinearLayout)progressBar.getParent()).setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    return true;
-                }
-            });
-
-            ((MainActivity) this.getActivity()).prepareActionBarForCustomTab(tabbarWebViewWithCrosswalk, true, false);
-        }
+        ((MainActivity) this.getActivity()).prepareActionBarForCustomTab(tabbarWebView, true, false);
 
 
         return v;
@@ -100,13 +75,6 @@ public class CustomTabFragment extends Fragment{
     }
 
     public View getWebview() {
-
-        //4.4
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            return tabbarWebView;
-        } else {
-            return tabbarWebViewWithCrosswalk;
-        }
-
+        return tabbarWebView;
     }
 }

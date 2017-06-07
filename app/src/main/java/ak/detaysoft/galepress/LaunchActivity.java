@@ -19,15 +19,13 @@ import android.view.View;
 
 import com.facebook.FacebookSdk;
 
-import org.xwalk.core.XWalkInitializer;
-
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  *
  * @see SystemUiHider
  */
-public class LaunchActivity extends Activity implements  XWalkInitializer.XWalkInitListener {
+public class LaunchActivity extends Activity {
     private SystemUiHider mSystemUiHider;
     boolean running;
     ProgressWheel pw_two;
@@ -38,8 +36,6 @@ public class LaunchActivity extends Activity implements  XWalkInitializer.XWalkI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        XWalkInitializer mXWalkInitializer = new XWalkInitializer(this, this);
-        mXWalkInitializer.initAsync();
         setContentView(R.layout.activity_launch);
         pw_two = (ProgressWheel) findViewById(R.id.progressBarTwo);
         pw_two.setVisibility(View.INVISIBLE);
@@ -200,28 +196,6 @@ public class LaunchActivity extends Activity implements  XWalkInitializer.XWalkI
         Activity currActivity = GalePressApplication.getInstance().getCurrentActivity();
         if (currActivity != null && currActivity.equals(this))
             GalePressApplication.getInstance().setCurrentActivity(null);
-    }
-
-
-    @Override
-    public void onXWalkInitStarted() {
-        Log.e("CroswalkInit", "start");
-    }
-
-    @Override
-    public void onXWalkInitCancelled() {
-        Log.e("CroswalkInit", "cancel");
-    }
-
-    @Override
-    public void onXWalkInitFailed() {
-        Log.e("CroswalkInit", "fail");
-    }
-
-    @Override
-    public void onXWalkInitCompleted() {
-        Log.e("CroswalkInit","complete");
-        GalePressApplication.getInstance().setXWalkInitializer(true);
     }
 
 }

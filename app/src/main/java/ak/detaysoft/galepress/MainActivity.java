@@ -73,8 +73,6 @@ import org.json.JSONObject;
 import org.lucasr.twowayview.TwoWayView;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
-import org.xwalk.core.XWalkNavigationHistory;
-import org.xwalk.core.XWalkView;
 
 import java.io.File;
 import java.io.InputStream;
@@ -746,31 +744,16 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         ileriButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //4.4
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                    if (((WebView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).canGoForward()) {
-                        ((WebView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).goForward();
-                    }
-                } else {
-                    if (((XWalkView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).getNavigationHistory().canGoForward()) {
-                        ((XWalkView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).getNavigationHistory().navigate(XWalkNavigationHistory.Direction.FORWARD, 1);
-                    }
+                if (((WebView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).canGoForward()) {
+                    ((WebView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).goForward();
                 }
-
             }
         });
         geriButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //4.4
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                    if (((WebView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).canGoBack()) {
-                        ((WebView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).goBack();
-                    }
-                } else {
-                    if (((XWalkView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).getNavigationHistory().canGoBack()) {
-                        ((XWalkView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).getNavigationHistory().navigate(XWalkNavigationHistory.Direction.BACKWARD, 1);
-                    }
+                if (((WebView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).canGoBack()) {
+                    ((WebView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).goBack();
                 }
 
             }
@@ -778,13 +761,7 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         refreshButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //4.4
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                    ((WebView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).reload();
-                } else {
-                    ((XWalkView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).reload(XWalkView.RELOAD_NORMAL);
-                }
-
+                ((WebView) GalePressApplication.getInstance().getCustomTabFragment().getWebview()).reload();
             }
         });
 
@@ -1234,68 +1211,35 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
 
         if (webView != null) {
 
-            //4.4
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) { //default webview
-                // if has previous page, enable the back button
-                if (((WebView) webView).canGoBack()) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                        geriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK));
-                    else
-                        geriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK));
-                } else {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                        geriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK_DISABLE));
-                    else
-                        geriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK_DISABLE));
-                }
-                // if has next page, enable the next button
-                if (((WebView) webView).canGoForward()) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                        ileriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT));
-                    else
-                        ileriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT));
-                } else {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                        ileriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT_DISABLE));
-                    else
-                        ileriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT_DISABLE));
-                }
-
+            // if has previous page, enable the back button
+            if (((WebView) webView).canGoBack()) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                    refreshButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_REFRESH));
+                    geriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK));
                 else
-                    refreshButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_REFRESH));
-            } else {  //crosswalk
-                // if has previous page, enable the back button
-                if (((XWalkView) webView).getNavigationHistory().canGoBack()) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                        geriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK));
-                    else
-                        geriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK));
-                } else {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                        geriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK_DISABLE));
-                    else
-                        geriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK_DISABLE));
-                }
-                // if has next page, enable the next button
-                if (((XWalkView) webView).getNavigationHistory().canGoForward()) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                        ileriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT));
-                    else
-                        ileriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT));
-                } else {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                        ileriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT_DISABLE));
-                    else
-                        ileriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT_DISABLE));
-                }
-
+                    geriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK));
+            } else {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                    refreshButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_REFRESH));
+                    geriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK_DISABLE));
                 else
-                    refreshButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_REFRESH));
+                    geriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_BACK_DISABLE));
             }
+            // if has next page, enable the next button
+            if (((WebView) webView).canGoForward()) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                    ileriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT));
+                else
+                    ileriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT));
+            } else {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                    ileriButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT_DISABLE));
+                else
+                    ileriButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_NEXT_DISABLE));
+            }
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                refreshButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_REFRESH));
+            else
+                refreshButton.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.WEBVIEW_REFRESH));
         }
     }
 

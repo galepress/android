@@ -8,7 +8,6 @@ import android.graphics.Color;
 import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.GeolocationPermissions;
@@ -160,20 +159,11 @@ public class BannerAndTabbarWebView extends WebView {
                         * */
                         if(!url.contains("file:///")){
                             if(url.compareTo(GalePressApplication.getInstance().getBannerLink()) != 0){
-                                //4.4
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                                    Intent intent = new Intent(context, ExtraWebViewActivity.class);
-                                    intent.putExtra("url", url);
-                                    intent.putExtra("isMainActivitIntent", false);
-                                    context.startActivity(intent);
-                                    return true;
-                                } else {
-                                    Intent intent = new Intent(context, ExtraWebViewWithCrosswalkActivity.class);
-                                    intent.putExtra("url", url);
-                                    intent.putExtra("isMainActivitIntent", false);
-                                    context.startActivity(intent);
-                                    return true;
-                                }
+                                Intent intent = new Intent(context, ExtraWebViewActivity.class);
+                                intent.putExtra("url", url);
+                                intent.putExtra("isMainActivitIntent", false);
+                                context.startActivity(intent);
+                                return true;
                             } else {
                                 return false;
                             }

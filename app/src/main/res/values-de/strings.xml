@@ -158,7 +158,7 @@
 	<string name="hide_all">Alles anzeigen</string>
 	<string name="backDescription">Zurück in die Bibliothek</string>
 	<string name="email">E-Mail</string>
-	<string name="forceUpdateWarnMessage">Möchten Sie Anwendung aus Google Play aktualisieren möchten.</string>
+	<string name="forceUpdateWarnMessage">Sie müssen die Anwendung von Google Play aktualisieren.</string>
 	<string name="forceUpdateBlockMessage">Anwendung blockiert. Bitte aktualisieren Sie Anwendung.</string>
 	<string name="goToMarket">Zum Laden gehen</string>
 	<string name="latitude_longitude"><![CDATA[<string name=\"latitude_longitude\">%1$.8f, %2$.8f</string>]]></string>
@@ -210,5 +210,6 @@
 	<string name="product_price_error">Die Produktpreise konnten nicht erreicht werden.</string>
 	<string name="skip">Überspringen Konto anmelden</string>
 	<string name="connect_with">Verbindung mit</string>
+	<string name="language_code">de</string>
 
 </resources>

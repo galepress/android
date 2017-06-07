@@ -148,7 +148,7 @@
     <string name="show_all">Tümünü Göster</string>
     <string name="hide_all">Tümünü Gizle</string>
     <string name="backDescription">Kütüphane ekranı</string>
-    <string name="forceUpdateWarnMessage" >Güncel uygulamayı marketten indirmek ister misiniz ?</string>
+    <string name="forceUpdateWarnMessage" >Güncel uygulamayı marketten indirmelisiniz ?</string>
     <string name="forceUpdateBlockMessage">Uygulama engellenmiştir. Lütfen uygulamayı güncelleyiniz.</string>
     <string name="goToMarket">Markete Git</string>
     <string name="links">Bağlantılar</string>
@@ -199,6 +199,6 @@
     <string name="product_price_error">Ürün fiyatına ulaşılamadı.</string>
     <string name="skip">Üye girişi olmadan devam et</string>
     <string name="connect_with">Şununla bağlan</string>
-
+    <string name="language_code">tr</string>
 
 </resources>

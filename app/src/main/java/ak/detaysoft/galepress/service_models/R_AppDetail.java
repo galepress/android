@@ -22,9 +22,9 @@ public class R_AppDetail {
     private String applicationName;
     private String applicationDetail;
     private String applicationExpirationDate;
-    private Integer iOSVersion;
+    private String iOSVersion;
     private String iOSLink;
-    private Integer androidVersion;
+    private String androidVersion;
     private String androidLink;
     private boolean applicationBlocked;
     private boolean applicationStatus;
@@ -43,9 +43,9 @@ public class R_AppDetail {
         this.applicationName = json.optString("ApplicationName");
         this.applicationDetail = json.optString("ApplicationDetail");
         this.applicationExpirationDate = json.optString("ApplicationExpirationDate");
-        this.iOSVersion = json.optInt("IOSVersion");
+        this.iOSVersion = json.optString("IOSVersion");
         this.iOSLink = json.optString("IOSLink");
-        this.androidVersion = json.optInt("AndroidVersion");
+        this.androidVersion = json.optString("AndroidVersion");
         this.androidLink = json.optString("AndroidLink");
         this.applicationBlocked = json.optBoolean("ApplicationBlocked");
         this.applicationStatus = json.optBoolean("ApplicationStatus");
@@ -109,11 +109,11 @@ public class R_AppDetail {
         this.applicationExpirationDate = applicationExpirationDate;
     }
 
-    public Integer getiOSVersion() {
+    public String getiOSVersion() {
         return iOSVersion;
     }
 
-    public void setiOSVersion(Integer iOSVersion) {
+    public void setiOSVersion(String iOSVersion) {
         this.iOSVersion = iOSVersion;
     }
 
@@ -125,11 +125,11 @@ public class R_AppDetail {
         this.iOSLink = iOSLink;
     }
 
-    public Integer getAndroidVersion() {
+    public String getAndroidVersion() {
         return androidVersion;
     }
 
-    public void setAndroidVersion(Integer androidVersion) {
+    public void setAndroidVersion(String androidVersion) {
         this.androidVersion = androidVersion;
     }
 

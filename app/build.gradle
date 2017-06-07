@@ -24,10 +24,10 @@ android {
     compileSdkVersion 21
     buildToolsVersion '25.0.0'
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion 19
         targetSdkVersion 19
-        versionCode 58
-        versionName '3.7.8'
+        versionCode 60
+        versionName '3.8.0'
     }
     buildTypes {
         release {
@@ -60,7 +60,6 @@ dependencies {
     compile 'com.j256.ormlite:ormlite-core:4.45@jar'
     compile 'com.facebook.android:facebook-android-sdk:4.1.1'
     compile 'com.google.android.gms:play-services:4.0.30'
-    compile project(':xwalk_core_library_15')
     compile 'com.edmodo:cropper:1.0.1'
     compile('com.crashlytics.sdk.android:crashlytics:2.6.6@aar') {
         transitive = true
