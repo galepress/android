@@ -945,7 +945,8 @@ public class DataApi extends Object {
                                             final String marketUrl = appDetail.getAndroidLink();
                                             AlertDialog.Builder alertDialog = new AlertDialog.Builder(DataApi.this.mContext);
                                             alertDialog.setTitle(DataApi.this.mContext.getString(R.string.UYARI));
-                                            alertDialog.setMessage(DataApi.this.mContext.getString(R.string.forceUpdateBlockMessage));
+                                            alertDialog.setCancelable(false);
+                                            alertDialog.setMessage(DataApi.this.mContext.getString(R.string.forceUpdateWarnMessage));
 
                                             alertDialog.setPositiveButton(DataApi.this.mContext.getString(R.string.goToMarket), new DialogInterface.OnClickListener() {
                                                 public void onClick(DialogInterface dialog, int which) {
@@ -955,6 +956,9 @@ public class DataApi extends Object {
                                                             Uri marketUri = Uri.parse("market://details?id=" + packageName);
                                                             Intent marketIntent = new Intent(Intent.ACTION_VIEW, marketUri);
                                                             DataApi.this.mContext.startActivity(marketIntent);
+                                                            if(GalePressApplication.getInstance().getCurrentActivity().getClass().equals(MainActivity.class)){
+                                                                (GalePressApplication.getInstance().getCurrentActivity()).finish();
+                                                            }
                                                         } catch (Exception e) {
                                                             e.printStackTrace();
                                                         }
@@ -962,11 +966,6 @@ public class DataApi extends Object {
                                                     } else {
                                                         Toast.makeText(DataApi.this.mContext, DataApi.this.mContext.getResources().getString(R.string.no_customer_application), Toast.LENGTH_SHORT).show();
                                                     }
-                                                }
-                                            });
-                                            alertDialog.setNegativeButton(DataApi.this.mContext.getString(R.string.IPTAL), new DialogInterface.OnClickListener() {
-                                                public void onClick(DialogInterface dialog, int which) {
-                                                    dialog.cancel();
                                                 }
                                             });
                                             alertDialog.show();
@@ -984,7 +983,7 @@ public class DataApi extends Object {
                                             final String marketUrl = appDetail.getAndroidLink();
                                             AlertDialog.Builder alertDialog = new AlertDialog.Builder(DataApi.this.mContext);
                                             alertDialog.setTitle(DataApi.this.mContext.getString(R.string.UYARI));
-                                            alertDialog.setMessage(DataApi.this.mContext.getString(R.string.forceUpdateWarnMessage));
+                                            alertDialog.setMessage(DataApi.this.mContext.getString(R.string.forceUpdateBlockMessage));
                                             alertDialog.setCancelable(false);
                                             alertDialog.setPositiveButton(DataApi.this.mContext.getString(R.string.goToMarket), new DialogInterface.OnClickListener() {
                                                 public void onClick(DialogInterface dialog, int which) {
