@@ -911,7 +911,8 @@ public class DataApi extends Object {
                                             final String marketUrl = appDetail.getAndroidLink();
                                             AlertDialog.Builder alertDialog = new AlertDialog.Builder(GalePressApplication.getInstance().getLibraryActivity().getActivity());
                                             alertDialog.setTitle(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.UYARI));
-                                            alertDialog.setMessage(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.forceUpdateBlockMessage));
+                                            alertDialog.setCancelable(false);
+                                            alertDialog.setMessage(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.forceUpdateWarnMessage));
 
                                             alertDialog.setPositiveButton(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.goToMarket), new DialogInterface.OnClickListener() {
                                                 public void onClick(DialogInterface dialog, int which) {
@@ -921,17 +922,13 @@ public class DataApi extends Object {
                                                             Uri marketUri = Uri.parse("market://details?id=" + packageName);
                                                             Intent marketIntent = new Intent(Intent.ACTION_VIEW, marketUri);
                                                             GalePressApplication.getInstance().getLibraryActivity().startActivity(marketIntent);
+                                                            GalePressApplication.getInstance().getLibraryActivity().getActivity().finish();
                                                         } catch (Exception e) {
                                                             e.printStackTrace();
                                                         }
 
                                                     }
 
-                                                }
-                                            });
-                                            alertDialog.setNegativeButton(GalePressApplication.getInstance().getString(R.string.IPTAL), new DialogInterface.OnClickListener() {
-                                                public void onClick(DialogInterface dialog, int which) {
-                                                    dialog.cancel();
                                                 }
                                             });
                                             alertDialog.show();
@@ -950,7 +947,7 @@ public class DataApi extends Object {
                                             final String marketUrl = appDetail.getAndroidLink();
                                             AlertDialog.Builder alertDialog = new AlertDialog.Builder(GalePressApplication.getInstance().getLibraryActivity().getActivity());
                                             alertDialog.setTitle(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.UYARI));
-                                            alertDialog.setMessage(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.forceUpdateWarnMessage));
+                                            alertDialog.setMessage(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.forceUpdateBlockMessage));
                                             alertDialog.setCancelable(false);
                                             alertDialog.setPositiveButton(GalePressApplication.getInstance().getLibraryActivity().getString(R.string.goToMarket), new DialogInterface.OnClickListener() {
                                                 public void onClick(DialogInterface dialog, int which) {
