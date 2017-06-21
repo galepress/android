@@ -163,7 +163,7 @@ public class ViewerLoginActivity extends Activity {
         unameField.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, ApplicationThemeColor.getInstance().paintIcons(this
                 , ApplicationThemeColor.VIEWER_USERNAME_ACTIVE_INPUT_ICON), null);
         unameField.setTextColor(ApplicationThemeColor.getInstance().getThemeColor());
-        unameField.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(this));
+        unameField.setTypeface(ApplicationThemeColor.getInstance().getGothamLight(this));
         unameField.setHintTextColor(ApplicationThemeColor.getInstance().getThemeColor());
 
         passwordField = (EditText)findViewById(R.id.login_password);
@@ -174,12 +174,12 @@ public class ViewerLoginActivity extends Activity {
         passwordField.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, ApplicationThemeColor.getInstance().paintIcons(this
                 , ApplicationThemeColor.VIEWER_PASSWORD_ACTIVE_INPUT_ICON), null);
         passwordField.setTextColor(ApplicationThemeColor.getInstance().getThemeColor());
-        passwordField.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(this));
+        passwordField.setTypeface(ApplicationThemeColor.getInstance().getGothamLight(this));
         passwordField.setHintTextColor(ApplicationThemeColor.getInstance().getThemeColor());
 
         submit = (Button)findViewById(R.id.login_submit);
         submit.setTextColor(ApplicationThemeColor.getInstance().getReverseThemeColor());
-        submit.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(this));
+        submit.setTypeface(ApplicationThemeColor.getInstance().getGothamLight(this));
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
             submit.setBackground(ApplicationThemeColor.getInstance().getLoginButtonDrawable(this));
         else

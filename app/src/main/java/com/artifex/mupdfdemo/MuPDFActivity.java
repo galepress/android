@@ -1949,7 +1949,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
         mTopBarSwitcher.setBackgroundColor(ApplicationThemeColor.getInstance().getActionAndTabBarColor());
 
         ((TextView) mButtonsView.findViewById(R.id.reader_title)).setTextColor(ApplicationThemeColor.getInstance().getForegroundColor());
-        ((TextView) mButtonsView.findViewById(R.id.reader_title)).setTypeface(ApplicationThemeColor.getInstance().getOpenSansRegular(this));
+        ((TextView) mButtonsView.findViewById(R.id.reader_title)).setTypeface(ApplicationThemeColor.getInstance().getGothamMedium(this));
         ((TextView) mButtonsView.findViewById(R.id.reader_title)).setText(((TextView) mButtonsView.findViewById(R.id.reader_title)).getText().toString().toUpperCase());
 
         mLinkButton = (ImageButton) mButtonsView.findViewById(R.id.linkButton);

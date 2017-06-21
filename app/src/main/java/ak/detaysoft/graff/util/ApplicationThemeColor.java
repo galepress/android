@@ -1335,49 +1335,10 @@ public class ApplicationThemeColor {
     * Try catch koymamım sebebi lollipop versiyonunda font bulunamadı hatası almamız
     * https://fabric.io/galepress/android/apps/ak.detaysoft.ekinyayincilikdis/issues/56e18957ffcdc04250b80d10
     * */
-    public Typeface getFont(Context context){
-        try{
-            return Typeface.createFromAsset(context.getAssets(), "fonts/Avenir-Light.otf");
-        } catch (Exception e) {
-            return Typeface.DEFAULT;
-        }
-    }
-
-    public Typeface getMediumFont(Context context){
-        try{
-            return Typeface.createFromAsset(context.getAssets(), "fonts/Avenir-Medium.otf");
-        } catch (Exception e) {
-            return Typeface.DEFAULT;
-        }
-    }
-
-    public Typeface getOpenSansLight(Context context){
-        try{
-            return Typeface.createFromAsset(context.getAssets(), "fonts/OpenSans-Light.ttf");
-        } catch (Exception e) {
-            return Typeface.DEFAULT;
-        }
-    }
-
-    public Typeface getOpenSansRegular(Context context){
-        try{
-            return Typeface.createFromAsset(context.getAssets(), "fonts/OpenSans-Regular.ttf");
-        } catch (Exception e) {
-            return Typeface.DEFAULT;
-        }
-    }
-
-    public Typeface getOpenSansBold(Context context){
-        try{
-            return Typeface.createFromAsset(context.getAssets(), "fonts/OpenSans-Bold.ttf");
-        } catch (Exception e) {
-            return Typeface.DEFAULT;
-        }
-    }
 
     public Typeface getGothamBook(Context context){
         try{
-            return Typeface.createFromAsset(context.getAssets(), "fonts/GothamRounded-Book.otf");
+            return Typeface.createFromAsset(context.getAssets(), "fonts/Quicksand-Medium.ttf");
         } catch (Exception e) {
             return Typeface.DEFAULT;
         }
@@ -1385,7 +1346,7 @@ public class ApplicationThemeColor {
 
     public Typeface getGothamLight(Context context){
         try{
-            return Typeface.createFromAsset(context.getAssets(), "fonts/GothamRounded-Light.otf");
+            return Typeface.createFromAsset(context.getAssets(), "fonts/Quicksand-Regular.ttf");
         } catch (Exception e) {
             return Typeface.DEFAULT;
         }
@@ -1393,33 +1354,10 @@ public class ApplicationThemeColor {
 
     public Typeface getGothamMedium(Context context){
         try{
-            return Typeface.createFromAsset(context.getAssets(), "fonts/GothamRounded-Medium.otf");
+            return Typeface.createFromAsset(context.getAssets(), "fonts/Quicksand-Bold.ttf");
         } catch (Exception e) {
             return Typeface.DEFAULT;
         }
     }
 
-    public Typeface getGothamBookItalic(Context context){
-        try{
-            return Typeface.createFromAsset(context.getAssets(), "fonts/GothamRounded-BookItalic.otf");
-        } catch (Exception e) {
-            return Typeface.DEFAULT;
-        }
-    }
-
-    public Typeface getGothamLightItalic(Context context){
-        try{
-            return Typeface.createFromAsset(context.getAssets(), "fonts/GothamRounded-LightItalic.otf");
-        } catch (Exception e) {
-            return Typeface.DEFAULT;
-        }
-    }
-
-    public Typeface getGothamMediumItalic(Context context){
-        try{
-            return Typeface.createFromAsset(context.getAssets(), "fonts/GothamRounded-MediumItalic.otf");
-        } catch (Exception e) {
-            return Typeface.DEFAULT;
-        }
-    }
 }

@@ -53,7 +53,7 @@ public class LeftMenuSocialAdapter extends BaseAdapter {
         TextView txtTitle = (TextView) convertView.findViewById(R.id.social_title);
         txtTitle.setText((mList.get(position).getKey()));
         txtTitle.setTextColor(ApplicationThemeColor.getInstance().leftmenuListViewColorStateList());
-        txtTitle.setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(mContext));
+        txtTitle.setTypeface(ApplicationThemeColor.getInstance().getGothamLight(mContext));
 
         ImageView image = (ImageView)convertView.findViewById(R.id.social_icon);
         image.setVisibility(View.VISIBLE);

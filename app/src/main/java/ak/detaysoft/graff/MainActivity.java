@@ -473,7 +473,7 @@ public class MainActivity extends FragmentActivity{
 
         //Kategori sekmesi
         categoriesTitleLayout.setBackgroundColor(Color.TRANSPARENT);
-        ((TextView) (findViewById(R.id.left_menu_category_text))).setTypeface(ApplicationThemeColor.getInstance().getOpenSansLight(this));
+        ((TextView) (findViewById(R.id.left_menu_category_text))).setTypeface(ApplicationThemeColor.getInstance().getGothamLight(this));
         ((TextView) (findViewById(R.id.left_menu_category_text))).setTextColor(ApplicationThemeColor.getInstance().getThemeColorWithAlpha(50));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
             categoriesListViewCloseIcon.setBackground(ApplicationThemeColor.getInstance().paintIcons(MainActivity.this, ApplicationThemeColor.LEFT_MENU_DOWN));
