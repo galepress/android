@@ -21,78 +21,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="/Users/mac/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.2.0/6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd/bolts-android-1.2.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/bolts-android-1.2.0_6ae56583de6c8162c03d4da7079d05d81a96866e/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/mac/.android/build-cache/002aae9c2af00aef235578bfea41f5e1c74225f4/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="4803488041c259d0b6d81ca4255379ab8a7e8dfe">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_2234de4a7fbc42f1ea1b6d44663ed6390558d344/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/mac/.android/build-cache/53c9572d64f121753955d12fc9a14ab4223864c7/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="4b8945fc23a7461c6fdde15753456d64b0a9358b">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e77fc7eed45ae86262acda9d90240d6e081beb1c/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/mac/projeler/galepress_android/galepress/app/src/main/lib/universal-image-loader-1.9.3.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="a85588bec3e2c4584d593d3f15df1677321bca72">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/2/universal-image-loader-1.9.3_b7eb4717ef8266c0d0723696b4238d7f2be6dde9/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/mac/.android/build-cache/2357414b0da38856c7f5ddd26c76ec1f3793fee8/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="6ef01b734d9d89338a932928c237c7b741f007af">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_4d222aed3e0ebc5f0d9faf560f11a6c934e0760c/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/mac/.android/build-cache/c59f077136c60644b343eefe63a2debd4f678ee5/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ec990d67b8cb7f3c559844682779ed93d9657130/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_fcc1c5a31116707189132baa578777ffbdbdc21d/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/mac/.android/build-cache/fa41ba7b2c575af3e79f1a0bf40cc579c95fefd0/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="7780b9aba418f4e22878f48cd77372a7688bb0b7">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_95f61f31bec844f054aa2bccc8a1b6d8f432d973/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/Users/mac/.android/build-cache/c59f077136c60644b343eefe63a2debd4f678ee5/output/jars/libs/internal_impl-21.0.3.jar"
         jumboMode="true"
         optimize="true"
@@ -111,12 +39,39 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/mac/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.2.0/6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd/bolts-android-1.2.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd">
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/bolts-android-1.2.0_6ae56583de6c8162c03d4da7079d05d81a96866e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/.android/build-cache/002aae9c2af00aef235578bfea41f5e1c74225f4/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4803488041c259d0b6d81ca4255379ab8a7e8dfe">
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_2234de4a7fbc42f1ea1b6d44663ed6390558d344/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/mac/.android/build-cache/c448ef9ff106b4a0353768f4c0d930ac7b15f73e/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
         sha1="3b0fb927b680e244106145d6ecc59e4ae21c7e5d">
         <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_72896917c55a7035a43e3c9c48e85d1505752304/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="73ba5744a719e558325ae0d891a784fea246ca14">
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_8768dceacecfb3956f005b58482fa136cb0c2dde/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -129,12 +84,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jar="/Users/mac/.android/build-cache/53c9572d64f121753955d12fc9a14ab4223864c7/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="65a87fb7e132bb574db18a45cf63db377b8c26e8">
-        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_8768dceacecfb3956f005b58482fa136cb0c2dde/classes.dex" />
+        sha1="4b8945fc23a7461c6fdde15753456d64b0a9358b">
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e77fc7eed45ae86262acda9d90240d6e081beb1c/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -153,6 +108,24 @@
         revision="25.0.0"
         sha1="3db7b73aecea723803e10b068777cf09ed42d4be">
         <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/ormlite-core-4.45_1c44dad74d109101b6e917fd4ba9814b70e43aaa/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/projeler/galepress_android/galepress/app/src/main/lib/universal-image-loader-1.9.3.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="a85588bec3e2c4584d593d3f15df1677321bca72">
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/2/universal-image-loader-1.9.3_b7eb4717ef8266c0d0723696b4238d7f2be6dde9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/.android/build-cache/2357414b0da38856c7f5ddd26c76ec1f3793fee8/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6ef01b734d9d89338a932928c237c7b741f007af">
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_4d222aed3e0ebc5f0d9faf560f11a6c934e0760c/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -183,6 +156,15 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/mac/.android/build-cache/c59f077136c60644b343eefe63a2debd4f678ee5/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ec990d67b8cb7f3c559844682779ed93d9657130/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/mac/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
         jumboMode="true"
         optimize="true"
@@ -198,6 +180,24 @@
         revision="25.0.0"
         sha1="cebe8e4a3a469c4623addcca1dc571407ff3a08e">
         <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_db1a73c78574183fc719dec7fe14265bd9a65f38/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_fcc1c5a31116707189132baa578777ffbdbdc21d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/.android/build-cache/fa41ba7b2c575af3e79f1a0bf40cc579c95fefd0/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7780b9aba418f4e22878f48cd77372a7688bb0b7">
+        <dex dex="/Users/mac/projeler/galepress_android/galepress/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_95f61f31bec844f054aa2bccc8a1b6d8f432d973/classes.dex" />
     </item>
 
 </items>

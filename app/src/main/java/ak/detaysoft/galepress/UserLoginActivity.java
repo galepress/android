@@ -344,7 +344,7 @@ public class UserLoginActivity extends Activity {
                         });
                         alertDialog.show();
                     } else {
-
+                        openSignupView();
                     }
                 } else {
                     Toast.makeText(UserLoginActivity.this, getResources().getString(R.string.WARNING_1), Toast.LENGTH_SHORT).show();
