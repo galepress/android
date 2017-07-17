@@ -1480,7 +1480,7 @@ public class DataApi extends Object {
                             } else {
                                 if (remoteContent.isForceDelete()) {
                                     /*
-                                    * Buraya contentbought kontrolu yapilip eger contentBought true ise silinmicek
+                                    * TODO Buraya contentbought kontrolu yapilip eger contentBought true ise silinmicek
                                     * */
                                     deleteContent(localContent);
                                 } else {
@@ -1515,6 +1515,7 @@ public class DataApi extends Object {
                                     }
                                     localContent.setCoverImageVersion(remoteContent.getContentCoverImageVersion());
                                     ImageLoader.getInstance().getMemoryCache().clear();
+                                    ImageLoader.getInstance().getDiskCache().clear();
                                 }
                                 localContent.setVersion(remoteContent.getContentVersion());
                                 getDatabaseApi().updateContent(localContent, true);

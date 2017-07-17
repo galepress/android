@@ -55,8 +55,8 @@
                 android:layout_height="match_parent"
                 ProgressWheel:textSize="15dp"
                 ProgressWheel:barLength="110dp"
-                ProgressWheel:barWidth="15dp"
-                ProgressWheel:rimWidth="15dp"
+                ProgressWheel:barWidth="13dp"
+                ProgressWheel:rimWidth="13dp"
                 ProgressWheel:contourSize="0dp"
                 android:elevation="1dp"
                 android:layout_width="100dp" />
