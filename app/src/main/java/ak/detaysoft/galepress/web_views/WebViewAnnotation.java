@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.GeolocationPermissions;
@@ -119,6 +120,8 @@ public class WebViewAnnotation extends WebView {
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     public WebViewAnnotation(Context context, LinkInfoExternal lie, CustomPulseProgress loading) {
         super(context);
+
+        Log.e("testtest", ""+lie.url);
         this.loading = loading;
         this.linkInfoExternal = lie;
         this.context = context;
