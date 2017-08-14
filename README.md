@@ -1,4 +1,6 @@
 
+    PDF Viewer based on MuPDF optimized for working together with our application.
+    
     Copyright (C) 2014-2017  Detaysoft Detay Danışmanlık Bilgisayar Hizmetleri Sanayi ve Dış Ticaret A.Ş.
 
     This program is free software: you can redistribute it and/or modify
