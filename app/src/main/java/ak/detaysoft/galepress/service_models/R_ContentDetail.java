@@ -46,7 +46,7 @@ public class R_ContentDetail {
         this.contentCurrency = json.optDouble("ContentCurrency");
         this.contentDetail = json.optString("ContentDetail");
         this.contentCategoryID = json.optInt("ContentCategoryID"); // Bu data servisten gelmiyor
-        this.contentIdentifier = json.optString("ContentIdentifier");
+        this.contentIdentifier = json.optString("ContentIdentifier").toLowerCase();
         this.contentIsProtected = json.optBoolean("ContentIsProtected");
         this.contentPrice = "";//json.optString("ContentPrice");
         this.error = json.optString("error");
