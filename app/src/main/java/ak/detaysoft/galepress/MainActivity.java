@@ -33,7 +33,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.Html;
+import android.text.SpannableString;
+import android.text.TextPaint;
 import android.text.TextWatcher;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.KeyEvent;
@@ -149,6 +152,7 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
     private String selectedTabTag = "";
     public ProgressBar searchProgress;
     private RecyclerView searchList;
+    private Button usedLibraries;
 
 
     /*
@@ -468,6 +472,16 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         searchList.setLayoutManager(mLayoutManager);
 
+
+        usedLibraries = (Button) findViewById(R.id.usedLibraries);
+        usedLibraries.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, UsedLibrariesActivity.class);
+                startActivity(intent);
+            }
+        });
+
         menuButton = (ImageView) findViewById(R.id.menu_button);
         findViewById(R.id.menu_button_layout).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -690,6 +704,9 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
             searchClear.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.SEARCH_CLEAR));
         else
             searchClear.setBackgroundDrawable(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.SEARCH_CLEAR));
+
+        usedLibraries.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.MENU_INFO));
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
             menuButton.setBackground(ApplicationThemeColor.getInstance().paintIcons(this, ApplicationThemeColor.MENU_ICON));

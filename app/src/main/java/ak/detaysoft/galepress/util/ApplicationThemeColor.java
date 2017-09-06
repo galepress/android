@@ -123,6 +123,7 @@ public class ApplicationThemeColor {
     public static final int SEARCH_MENU_ICON = 77;
     public static final int POPUP_DESCRIPTION_OPEN = 78;
     public static final int POPUP_DESCRIPTION_CLOSE = 79;
+    public static final int MENU_INFO = 80;
 
     public ApplicationThemeColor() {
 
@@ -888,6 +889,11 @@ public class ApplicationThemeColor {
             case SEARCH_MENU_ICON:
                 myIcon = context.getResources().getDrawable(R.drawable.library_menu_search);
                 myIcon.setColorFilter(getForegroundColorFilter());
+                break;
+
+            case MENU_INFO:
+                myIcon = context.getResources().getDrawable(R.drawable.menu_info);
+                myIcon.setColorFilter(getThemeColorFilter());
                 break;
 
             default:

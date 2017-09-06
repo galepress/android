@@ -83,6 +83,9 @@
         <activity
             android:name=".ContentDetailPopupActivity"
             android:theme="@style/ContentPopupTheme"></activity>
+        <activity
+            android:name=".UsedLibrariesActivity"
+            android:theme="@style/ExtraWebView"></activity>
 
         <!--<activity-->
         <!--android:name="com.artifex.mupdfdemo.ChoosePDFActivity"-->

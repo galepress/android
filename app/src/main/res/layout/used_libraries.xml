@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/usedLibraries_header"
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+
+        <TextView
+            android:id="@+id/usedLibraries_title"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:alpha="1"
+            android:lines="1"
+            android:maxLines="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="@dimen/actionbar_text_size"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:gravity="center" />
+
+        <ImageButton
+            android:id="@+id/usedLibraries_close"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/transparent"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:layout_width="25dp"
+            android:layout_height="25dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/usedLibraries_body"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/usedLibraries_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:textSize="13dp"
+            android:autoLink="web"
+            android:gravity="top|center_horizontal"
+            android:text="@string/licence"/>
+
+
+    </RelativeLayout>
+
+</LinearLayout>
