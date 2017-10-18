@@ -103,12 +103,26 @@ public class DatabaseApi {
 
     public List getCategoriesOnlyHaveContent(){
         try {
-            List all = categoriesDao.queryForAll();
+            QueryBuilder<L_Category, Integer> categoryQuery = categoriesDao.queryBuilder();
+            List all = categoryQuery.orderBy("categoryName",true).query();
+
             List result = new ArrayList();
+            L_Category generalCategory = null;
             for(int i = 0; i <all.size(); i++) {
-                if(getAllContentsByCategory((L_Category)all.get(i)).size() > 0)
+                if(getAllContentsByCategory((L_Category)all.get(i)).size() > 0) {
+                    if(((L_Category)all.get(i)).categoryID.intValue() == 0) {
+                        generalCategory = ((L_Category)all.get(i));
+                    }
                     result.add(all.get(i));
+                }
             }
+
+            if(generalCategory != null && result != null && result.size() > 0){
+                result.remove(generalCategory);
+            }
+            result.add(0, generalCategory);
+
+
             return result;
         } catch (SQLException e) {
             e.printStackTrace();
