@@ -22,7 +22,7 @@ android {
      * Gradle versin 2.3.1 e update edilgigi icin buildToolsVersion version 25.0.0 a cekildi sikinti olursa bakmak lazim.
      */
     compileSdkVersion 21
-    buildToolsVersion '25.0.0'
+    buildToolsVersion '26.0.2'
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 19
