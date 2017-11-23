@@ -1669,10 +1669,11 @@ public class DataApi extends Object {
                             } else {
                                 if (remoteContent.isForceDelete()) {
                                     /*
-                                    * Buraya contentbought kontrolu yapilip eger contentBought true ise silinmicek
+                                    * Buraya contentbought kontrolu yapilip eger contentBoughtOngraff true ise silinmicek
                                     * */
                                     deleteContent(localContent);
                                 } else {
+
                                     localContent.updateWithRemoteContent(remoteContent);
                                     getDatabaseApi().updateContent(localContent, true);
                                     removeAllConCatsForContent(localContent);
@@ -1862,8 +1863,8 @@ public class DataApi extends Object {
                                     GalePressApplication.getInstance().setUserHaveActiveSubscription(false); // Kullanici yoksa server abonelik false
                                     List<L_Content> localContents = databaseApi.getAllContents(null);
                                     for (L_Content l_content : localContents) {
-                                        if (l_content.isContentBought()) {
-                                            l_content.setContentBought(false);
+                                        if (l_content.isContentBoughtOnGraff()) {
+                                            l_content.setContentBoughtOnGraff(false);
                                             getDatabaseApi().updateContent(l_content, false);
                                             isUpdate = true;
                                         }
@@ -1914,9 +1915,9 @@ public class DataApi extends Object {
                                 for (L_Content l_content : localContents) {
                                     for (R_Content r_content : RAppContents.getContents()) {
                                         if (l_content.getId().compareTo(r_content.getContentID()) == 0) {
-                                            if (l_content.isContentBought() != r_content.isContentBought()) {
-                                                l_content.setContentBought(r_content.isContentBought());
-                                                l_content.setBuyable(r_content.isBuyable());
+                                            if (l_content.isContentBoughtOnGraff() != r_content.isContentBoughtOnGraff()) {
+                                                l_content.setContentBoughtOnGraff(r_content.isContentBoughtOnGraff());
+                                                l_content.setBuyableOnGraff(r_content.isBuyableOnGraff());
                                                 getDatabaseApi().updateContent(l_content, false);
                                                 isUpdate = true;
                                             }
@@ -2050,7 +2051,7 @@ public class DataApi extends Object {
                                     for (R_Content content : RAppContents.getContents()) {
                                         L_Content localContent = getDatabaseApi().getContent(content.getContentID());
                                         if (content.isForceDelete()) {
-                                            if (localContent != null && !localContent.isContentBought()) {
+                                            if (localContent != null && !localContent.isContentBoughtOnGraff()) {
                                                 removeAllConCatsForContent(localContent);
                                                 deleteContent(localContent);
                                                 numberOfContentWillBeUpdated++;
@@ -2085,7 +2086,7 @@ public class DataApi extends Object {
                                 for (R_Content content : RAppContents.getContents()) {
                                     L_Content localContent = getDatabaseApi().getContent(content.getContentID());
                                     if (content.isForceDelete()) {
-                                        if (localContent != null && !localContent.isContentBought()) {
+                                        if (localContent != null && !localContent.isContentBoughtOnGraff()) {
                                             removeAllConCatsForContent(localContent);
                                             deleteContent(localContent);
                                             numberOfContentWillBeUpdated++;

@@ -346,7 +346,20 @@ public class MainActivity extends FragmentActivity{
         });
 
 
-        findViewById(R.id.left_menu_login).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.left_menu_setting_base).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(findViewById(R.id.left_menu_login_base).getVisibility() == View.GONE){
+                    findViewById(R.id.left_menu_login_base).setVisibility(View.VISIBLE);
+                    findViewById(R.id.left_menu_restore_base).setVisibility(View.VISIBLE);
+                } else {
+                    findViewById(R.id.left_menu_login_base).setVisibility(View.GONE);
+                    findViewById(R.id.left_menu_restore_base).setVisibility(View.GONE);
+                }
+            }
+        });
+
+        findViewById(R.id.left_menu_login_base).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -366,9 +379,28 @@ public class MainActivity extends FragmentActivity{
             }
         });
 
+        findViewById(R.id.left_menu_restore_base).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         TextView userInfo = ((TextView) findViewById(R.id.left_menu_login_text));
         userInfo.setTextColor(Color.WHITE);
+
+        TextView setting = ((TextView) findViewById(R.id.left_menu_setting_text));
+        setting.setTextColor(Color.WHITE);
+
+        TextView restore = ((TextView) findViewById(R.id.left_menu_restore_text));
+        restore.setTextColor(Color.WHITE);
+
+
         userInfo.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
+        setting.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
+        restore.setTypeface(ApplicationThemeColor.getInstance().getGothamBook(this));
+
+
         if (GalePressApplication.getInstance().getUserInformation() != null) {
             userInfo.setText(GalePressApplication.getInstance().getUserInformation().getUserName());
         } else {

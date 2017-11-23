@@ -31,21 +31,50 @@
             android:scaleType="centerInside"
             android:src="@drawable/left_menu_logo" />
 
-        <RelativeLayout
-            android:id="@+id/left_menu_login"
+        <LinearLayout
+            android:id="@+id/left_menu_top_menu_base"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/menu_category_item_size"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_below="@+id/left_menu_app_icon"
             android:layout_marginBottom="10dp">
 
 
             <LinearLayout
+                android:id="@+id/left_menu_setting_base"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/menu_category_item_size"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:gravity="center_vertical|left"
                 android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/left_menu_setting" />
+
+                <TextView
+                    android:id="@+id/left_menu_setting_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|left"
+                    android:lines="1"
+                    android:text="@string/setting_stand"
+                    android:textSize="@dimen/menu_category_text_size" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/left_menu_login_base"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/menu_category_item_size"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center_vertical|left"
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <ImageView
                     android:layout_width="30dp"
@@ -64,19 +93,46 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/left_menu_restore_base"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/menu_category_item_size"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center_vertical|left"
+                android:orientation="horizontal"
+                android:visibility="gone">
 
-        </RelativeLayout>
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/left_menu_restore" />
+
+                <TextView
+                    android:id="@+id/left_menu_restore_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|left"
+                    android:lines="1"
+                    android:text="@string/restore_stand"
+                    android:textSize="@dimen/menu_category_text_size" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_below="@+id/left_menu_login"
+            android:layout_below="@+id/left_menu_top_menu_base"
             android:background="#80FFFFFF"
             android:layout_height="0.40dp" />
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/left_menu_login"
+            android:layout_below="@+id/left_menu_top_menu_base"
             android:layout_marginTop="10dp"
             android:background="@android:color/transparent">
 

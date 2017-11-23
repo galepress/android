@@ -43,8 +43,8 @@
 4) Satın alınan içeirkler ve abonelikler gpserver a gönderiliyor.
 5) Kullanıcı aboneliğinin aktif olup olmadığını gpserver tafından anlıyoruz. Eğer gpserver abonelik var derse kullanıcıya abonelik var diyoruz.
 6) Eğer gpserver ücretli içeriği kullanıcıya ücretisz verirse free indirmesini sağlıyoruz.
-7) Download butonu init edilirken eğer içerik ücretsizse kutu üstünde ok olan butonu gösteriyoruz. Eğer aboneliği varsa yada contentBought true ise bulut ikonu çıkıyor.
-   Eğer içerik ücretliyse ve abonelik yoksa yada contentBought false ise ok yanında fiyat yazan ikonu gösteriyoruz.
+7) Download butonu init edilirken eğer içerik ücretsizse kutu üstünde ok olan butonu gösteriyoruz. Eğer aboneliği varsa yada contentBoughtOnGraff true ise bulut ikonu çıkıyor.
+   Eğer içerik ücretliyse ve abonelik yoksa yada contentBoughtOnGraff false ise ok yanında fiyat yazan ikonu gösteriyoruz.
 8) Sol menüde kullanıcı login değilse sadece login butonu olacak. Eğer loginse ve aktif aboneliği varsa logout-restore olacak.
    Eğer loginse ve aktif aboneliği yoksa loguot-restore-subscription butonları olacak.
 
