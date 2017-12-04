@@ -274,8 +274,8 @@ public class ContentDetailPopupActivity extends Activity{
                 if(DataApi.isConnectedToInternet()){
                     downloadButton.setEnabled(false);
                     downloadButton.setClickable(false);
-                    if(content.isBuyableOnGraff()) {
-                        if(content.isContentBoughtOnGraff() || GalePressApplication.getInstance().isUserHaveActiveSubscription()) {
+                    if(content.isBuyable()) {
+                        if(content.isContentBought() || GalePressApplication.getInstance().isUserHaveActiveSubscription()) {
                             if (GalePressApplication.getInstance().getDataApi().downloadPdfTask == null
                                     || (GalePressApplication.getInstance().getDataApi().downloadPdfTask.getStatus() != AsyncTask.Status.RUNNING)){
                                 downloadButton.startAnim();
@@ -629,8 +629,8 @@ public class ContentDetailPopupActivity extends Activity{
     private void initDownloadButton(){
 
 
-        if(content.isBuyableOnGraff()) {
-            if(content.isContentBoughtOnGraff() || GalePressApplication.getInstance().isUserHaveActiveSubscription()) {
+        if(content.isBuyable()) {
+            if(content.isContentBought() || GalePressApplication.getInstance().isUserHaveActiveSubscription()) {
                 downloadButton.init(CustomDownloadButton.RESTORE, "");
             } else {
                 AsyncTask<Void, Void ,String> getPrice = new AsyncTask<Void, Void, String>() {

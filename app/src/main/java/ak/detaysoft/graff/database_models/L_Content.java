@@ -41,7 +41,6 @@ public class L_Content implements Serializable {
     @DatabaseField private String coverImageFileName;
     @DatabaseField private String bigCoverImageFileName;
     @DatabaseField private boolean buyable;
-    @DatabaseField private boolean buyableOnGraff;
     @DatabaseField private boolean isProtected;
     @DatabaseField private boolean isMaster;
     @DatabaseField private String password;
@@ -62,7 +61,6 @@ public class L_Content implements Serializable {
     @DatabaseField private String categoryIds;
     @DatabaseField private String marketPrice;
     @DatabaseField private boolean contentBought;
-    @DatabaseField private boolean contentBoughtOnGraff;
     @DatabaseField private boolean contentStatus;
     @DatabaseField private String applicationId;
     @DatabaseField(dataType= DataType.SERIALIZABLE, columnName = "categoryList") private ArrayList<L_Category> categorList;
@@ -421,23 +419,6 @@ public class L_Content implements Serializable {
     public void setCategorList(ArrayList<L_Category> categorList) {
         this.categorList = categorList;
     }
-
-    public boolean isBuyableOnGraff() {
-        return buyableOnGraff;
-    }
-
-    public void setBuyableOnGraff(boolean buyableOnGraff) {
-        this.buyableOnGraff = buyableOnGraff;
-    }
-
-    public boolean isContentBoughtOnGraff() {
-        return contentBoughtOnGraff;
-    }
-
-    public void setContentBoughtOnGraff(boolean contentBoughtOnGraff) {
-        this.contentBoughtOnGraff = contentBoughtOnGraff;
-    }
-
     // Model Methods
 
     public L_Content(R_ContentDetail remoteContent){
@@ -468,7 +449,6 @@ public class L_Content implements Serializable {
         this.isPdfUpdateAvailable = false;
         this.isPdfDownloaded = false;
         this.buyable = remoteContent.isBuyable();
-        this.buyableOnGraff = remoteContent.isBuyableOnGraff();
         this.isProtected = remoteContent.getContentIsProtected();
         this.name = remoteContent.getContentName();
         this.name_asc = Normalizer.normalize(remoteContent.getContentName(), Normalizer.Form.NFD)
@@ -515,7 +495,6 @@ public class L_Content implements Serializable {
         this.monthlyName = remoteContent.getContentMonthlyName();
         this.detail = remoteContent.getContentDetail();
         this.buyable = remoteContent.isBuyable();
-        this.buyableOnGraff = remoteContent.isBuyableOnGraff();
         this.isProtected = remoteContent.getContentIsProtected();
         this.name = remoteContent.getContentName();
         this.name_asc = Normalizer.normalize(remoteContent.getContentName(), Normalizer.Form.NFD)
@@ -560,7 +539,6 @@ public class L_Content implements Serializable {
                 ", coverImageFileName='" + coverImageFileName + '\'' +
                 ", bigCoverImageFileName='" + bigCoverImageFileName + '\'' +
                 ", buyable=" + buyable +
-                ", buyableOnGraff=" + buyableOnGraff +
                 ", isProtected=" + isProtected +
                 ", password='" + password + '\'' +
                 ", currency=" + currency +
@@ -582,7 +560,6 @@ public class L_Content implements Serializable {
                 ", isForceDetele=" + isForceDetele +
                 ", contentStatus=" + contentStatus +
                 ", contentBought=" + contentBought +
-                ", contentBoughtOnGraff=" + contentBoughtOnGraff +
                 ", identifier='"+identifier+'\''+
                 ", isOwnedProduct=" + isOwnedProduct +
                 ", categoryIds='" + categoryIds+'\''+

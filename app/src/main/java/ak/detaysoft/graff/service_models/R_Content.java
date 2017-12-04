@@ -15,9 +15,7 @@ public class R_Content {
     private Integer contentOrderNo;
     private boolean isForceDelete;
     private boolean contentBought;
-    private boolean contentBoughtOnGraff;
     private boolean buyable;
-    private boolean buyableOnGraff;
 
     public R_Content() {
 
@@ -34,10 +32,8 @@ public class R_Content {
         this.contentIsMaster = json.optBoolean("ContentIsMaster");
         this.contentOrderNo = json.optInt("ContentOrderNo");
         this.isForceDelete = json.optBoolean("RemoveFromMobile");
-        this.contentBought = json.optBoolean("ContentBought");
-        this.contentBoughtOnGraff = json.optBoolean("contentBoughtOnGraff");
-        this.buyable = json.optBoolean("ContentIsBuyable");
-        this.buyableOnGraff = json.optBoolean("buyableOnGraff");
+        this.contentBought = json.optBoolean("ContentBoughtOnGraff");
+        this.buyable = json.optBoolean("ContentIsBuyableOnGraff");
     }
 
     public String getContentName() {
@@ -127,21 +123,5 @@ public class R_Content {
     public boolean isBuyable() {
 
         return buyable;
-    }
-
-    public boolean isBuyableOnGraff() {
-        return buyableOnGraff;
-    }
-
-    public void setBuyableOnGraff(boolean buyableOnGraff) {
-        this.buyableOnGraff = buyableOnGraff;
-    }
-
-    public boolean isContentBoughtOnGraff() {
-        return contentBoughtOnGraff;
-    }
-
-    public void setContentBoughtOnGraff(boolean contentBoughtOnGraff) {
-        this.contentBoughtOnGraff = contentBoughtOnGraff;
     }
 }

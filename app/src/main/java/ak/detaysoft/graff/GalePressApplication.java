@@ -1102,7 +1102,7 @@ public class GalePressApplication
                     Bundle querySkus = new Bundle();
                     for (int i = 0; i < localContents.size(); i++) {
                         L_Content content = localContents.get(i);
-                        if (content.isBuyableOnGraff()) {
+                        if (content.isBuyable()) {
                             //Satin alinabilen urunse fiyati kontrol ediliyor
                             skuList.add(content.getIdentifier());
                             querySkus.putStringArrayList("ITEM_ID_LIST", skuList);

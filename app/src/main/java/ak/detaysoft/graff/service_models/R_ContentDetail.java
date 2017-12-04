@@ -23,7 +23,6 @@ public class R_ContentDetail {
     private String contentName;
     private boolean contentStatus;
     private boolean buyable;
-    private boolean buyableOnGraff;
     private Integer contentVersion;
     private Integer contentPdfVersion;
     private Integer contentCoverImageVersion;
@@ -54,8 +53,7 @@ public class R_ContentDetail {
         this.contentAutoDownload = json.optBoolean("ContentAutoDownload");
         this.contentName = json.optString("ContentName");
         this.contentStatus = json.optBoolean("ContentStatus");
-        this.buyable = json.optBoolean("ContentIsBuyable");
-        this.buyableOnGraff = json.optBoolean("buyableOnGraff");
+        this.buyable = json.optBoolean("ContentIsBuyableOnGraff");
         this.contentVersion = json.optInt("ContentVersion");
         this.contentPdfVersion = json.optInt("ContentPdfVersion");
         this.contentCoverImageVersion = json.optInt("ContentCoverImageVersion");
@@ -278,11 +276,4 @@ public class R_ContentDetail {
         this.isForceDelete = isForceDelete;
     }
 
-    public boolean isBuyableOnGraff() {
-        return buyableOnGraff;
-    }
-
-    public void setBuyableOnGraff(boolean buyableOnGraff) {
-        this.buyableOnGraff = buyableOnGraff;
-    }
 }
