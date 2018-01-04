@@ -1416,8 +1416,6 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
 
         *//*
         * onActivityResult icinden buraya tasidim
-        * https://fabric.io/galepress/android/apps/ak.detaysoft.carrefoursa1/issues/56afae00f5d3a7f76b80ee4d
-        * Bu hata activity onresume a dusmeden islem yaptigimiz icin olabilir. Devam ederse hata kaldiracagim. (MG)
         * *//*
              if(selectedReaderTabIndex != -1){
                 if (selectedReaderTabIndex == 0) {
@@ -1436,11 +1434,6 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
             }
     }*/
 
-
-    /*TODO eger  3.4.10 versiyonundan sonra aynı hatayı almaya devam edersek eski commente donmek gerekebilir
-    * https://fabric.io/galepress/android/apps/ak.detaysoft.carrefoursa1/issues/56afae00f5d3a7f76b80ee4d
-    * */
-
     @Override
     protected void onResumeFragments() {
         super.onResumeFragments();
@@ -1450,10 +1443,6 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         }
 
 
-        /* onActivityResult icinden buraya tasidim
-           https://fabric.io/galepress/android/apps/ak.detaysoft.carrefoursa1/issues/56afae00f5d3a7f76b80ee4d
-           Bu hata activity onresume a dusmeden islem yaptigimiz icin olabilir. Devam ederse hata kaldiracagim. (MG)
-        */
         if (selectedReaderTabIndex != -1) {
             if (selectedReaderTabIndex == 0) {
                 selectedTabTag = HOME_TAB_TAG;
@@ -1491,10 +1480,6 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
     protected void onResume() {
         super.onResume();
         GalePressApplication.getInstance().setCurrentActivity(this);
-        /*
-        * https://www.fabric.io/galepress/android/apps/ak.detaysoft.carrefoursa1/issues/56afae00f5d3a7f76b80ee4d
-        * bu crash e cozum icin bu yontem belirtilmis
-        * */
         mTabHost.getTabWidget().setEnabled(true);
 
 
@@ -1502,10 +1487,6 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
 
     protected void onPause() {
         clearReferences();
-        /*
-        * https://www.fabric.io/galepress/android/apps/ak.detaysoft.carrefoursa1/issues/56afae00f5d3a7f76b80ee4d
-        * bu crash e cozum icin bu yontem belirtilmis
-        * */
         mTabHost.getTabWidget().setEnabled(false);
         super.onPause();
     }
@@ -1513,10 +1494,6 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
     @Override
     protected void onStop() {
         clearReferences();
-        /*
-        * https://www.fabric.io/galepress/android/apps/ak.detaysoft.carrefoursa1/issues/56afae00f5d3a7f76b80ee4d
-        * bu crash e cozum icin bu yontem belirtilmis
-        * */
         mTabHost.getTabWidget().setEnabled(false);
         super.onStop();
     }

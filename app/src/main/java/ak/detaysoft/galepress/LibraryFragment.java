@@ -347,11 +347,6 @@ public class LibraryFragment extends Fragment {
     }
 
 
-    /*
-    * LeftMenuCategoryAdapter classinda kullanildi.
-    * https://fabric.io/galepress/android/apps/ak.detaysoft.yeryuzudergidis/issues/56d3205ff5d3a7f76b2cef6d
-    * Seklinde bi hata vardi. selectedCategories null olmasi ihtimaline karsi bende ilk createde oldugu gibi genel kategorisini set ettim
-    * */
     public void repairSelectedCategories() {
         //Ilk secilen kategori genel oldugu icin ilk create icin listeye eklendi (MG)
         selectedCategories = new ArrayList<L_Category>();

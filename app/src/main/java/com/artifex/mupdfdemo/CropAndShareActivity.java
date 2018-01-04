@@ -15,9 +15,6 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
-import com.crashlytics.android.answers.Answers;
-import com.crashlytics.android.answers.CustomEvent;
 import com.edmodo.cropper.CropImageView;
 
 import java.io.ByteArrayOutputStream;
@@ -85,13 +82,6 @@ public class CropAndShareActivity extends Activity {
                     shareIntent.putExtra(Intent.EXTRA_STREAM, bmpUri);
                     shareIntent.setType("image/png");
                     startActivity(shareIntent);
-                } else {
-                    /*
-                     * https://fabric.io/galepress/android/apps/ak.detaysoft.feyz/issues/5758483affcdc0425003898f
-                     * Bu hata cok nadirende olsa oluyor takip edilecek crash oldugu zaman fabric-answers uzerinden tespit edilecek
-                     * */
-                    Answers.getInstance().logCustom(new CustomEvent("cropandShareImageUrl").putCustomAttribute("url", ""+pathofBmp));
-                    Toast.makeText(CropAndShareActivity.this, CropAndShareActivity.this.getResources().getText(R.string.WARNING_0), Toast.LENGTH_SHORT).show();
                 }
             }
         });

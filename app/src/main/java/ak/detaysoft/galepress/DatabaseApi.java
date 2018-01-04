@@ -496,12 +496,6 @@ public class DatabaseApi {
     {
         try {
             if (searchQuery == null) {
-                /*
-                * TODO burada crash var bunun icin issue actim takip edecez
-                * https://fabric.io/galepress/android/apps/ak.detaysoft.yeryuzudergidis/issues/574be8b2ffcdc0425091f437
-                * https://github.com/j256/ormlite-android/issues/55
-                * http://stackoverflow.com/questions/37540960/cursor-window-allocation-of-2048-kb-failed
-                * */
                 return contentsDao.queryForAll();
             } else {
                 if (contentsQuery == null) {

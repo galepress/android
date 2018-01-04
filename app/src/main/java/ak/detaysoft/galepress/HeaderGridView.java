@@ -30,7 +30,6 @@ import android.widget.GridView;
 import android.widget.ListAdapter;
 import android.widget.WrapperListAdapter;
 
-import com.crashlytics.android.Crashlytics;
 
 import java.util.ArrayList;
 /**

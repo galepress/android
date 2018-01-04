@@ -1576,13 +1576,6 @@ public class ApplicationThemeColor {
         }
     }
 
-
-    /*
-    * (MG)
-    * Try catch koymamım sebebi lollipop versiyonunda font bulunamadı hatası almamız
-    * https://fabric.io/galepress/android/apps/ak.detaysoft.ekinyayincilikdis/issues/56e18957ffcdc04250b80d10
-    * */
-
     public Typeface getRubikLight(Context context) {
         try {
             return Typeface.createFromAsset(context.getAssets(), "fonts/Rubik-Light.ttf");

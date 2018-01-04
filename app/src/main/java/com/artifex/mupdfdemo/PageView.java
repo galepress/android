@@ -26,9 +26,6 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.crashlytics.android.answers.Answers;
-import com.crashlytics.android.answers.CustomEvent;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -978,17 +975,13 @@ public abstract class PageView extends ViewGroup {
             }
         } else {
 
-			/*
-			* TODO https://fabric.io/galepress/android/apps/ak.detaysoft.carrefoursa1/issues/574a0317ffcdc042508305d1 hatasi var takip edilecek neden kaynaklandigi bulunamadi.
-			* */
+
             boolean isNull = false;
             if(viewArea == null) {
-                Answers.getInstance().logCustom(new CustomEvent("PageView crash").putCustomAttribute("viewArea", "null"));
                 isNull = true;
             }
 
             if(mParentSize == null) {
-                Answers.getInstance().logCustom(new CustomEvent("PageView crash").putCustomAttribute("mParentSize", "null"));
                 isNull = true;
             }
 

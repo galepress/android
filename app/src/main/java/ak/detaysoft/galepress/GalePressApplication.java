@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -25,15 +26,8 @@ import com.android.volley.RequestQueue;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.Volley;
 import com.artifex.mupdfdemo.MuPDFActivity;
-import com.crashlytics.android.Crashlytics;
 import com.dd.plist.NSDictionary;
 import com.dd.plist.PropertyListParser;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesClient;
-import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.location.LocationClient;
-import com.google.android.gms.location.LocationListener;
-import com.google.android.gms.location.LocationRequest;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -63,14 +57,11 @@ import ak.detaysoft.galepress.database_models.TestApplicationInf;
 import ak.detaysoft.galepress.search_models.MenuSearchResult;
 import ak.detaysoft.galepress.util.ApplicationThemeColor;
 import ak.detaysoft.galepress.util.MyImageDecoder;
-import io.fabric.sdk.android.Fabric;
-
 /**
  * Created by adem on 11/02/14.
  */
 public class GalePressApplication
-        extends Application
-        implements LocationListener, GooglePlayServicesClient.ConnectionCallbacks, GooglePlayServicesClient.OnConnectionFailedListener {
+        extends Application{
 
     /**
      * Log or request TAG
@@ -100,8 +91,6 @@ public class GalePressApplication
 
 
     public Location location;
-    private LocationRequest mLocationRequest;
-    private LocationClient mLocationClient;
     SharedPreferences mPrefs;
     private ContentDetailPopupActivity contentDetailPopupActivity;
     SharedPreferences.Editor mEditor;
@@ -149,8 +138,6 @@ public class GalePressApplication
 
     Foreground.Listener myListener = new Foreground.Listener() {
         public void onBecameForeground() {
-            mLocationClient.connect();
-            startUpdates();
 
             Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
             String udid = UUID.randomUUID().toString();
@@ -165,15 +152,6 @@ public class GalePressApplication
         }
 
         public void onBecameBackground() {
-            // ... whatever you want to do
-
-            // If the client is connected
-            if (mLocationClient.isConnected()) {
-                stopUpdates();
-            }
-
-            // After disconnect() is called, the client is considered "dead".
-            mLocationClient.disconnect();
 
             Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
             String udid = UUID.randomUUID().toString();
@@ -190,7 +168,8 @@ public class GalePressApplication
     public void onCreate() {
         super.onCreate();
 
-        Fabric.with(this, new Crashlytics());
+        LocationManager locationManager = (LocationManager) getApplicationContext().getSystemService(LOCATION_SERVICE);
+        location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
         sInstance = this;
         parseApplicationPlist();
@@ -228,14 +207,9 @@ public class GalePressApplication
 
         Foreground.get(this).addListener(myListener);
 
-        mLocationRequest = LocationRequest.create();
-        mLocationRequest.setInterval(LocationUtils.UPDATE_INTERVAL_IN_MILLISECONDS);
-        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        mLocationRequest.setFastestInterval(LocationUtils.FAST_INTERVAL_CEILING_IN_MILLISECONDS);
         mUpdatesRequested = false;
         mPrefs = getSharedPreferences(LocationUtils.SHARED_PREFERENCES, Context.MODE_PRIVATE);
         mEditor = mPrefs.edit();
-        mLocationClient = new LocationClient(this, this, this);
         requestCount = -101;
     }
 
@@ -266,63 +240,6 @@ public class GalePressApplication
                 Logout.e(LocationUtils.APPTAG, getString(R.string.unknown_activity_request_code, requestCode));
                 break;
         }
-    }
-
-    private boolean servicesConnected() {
-        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
-        if (ConnectionResult.SUCCESS == resultCode) {
-            Logout.e(LocationUtils.APPTAG, getString(R.string.play_services_available));
-            return true;
-        } else {
-            Logout.e(LocationUtils.APPTAG, "Google Play services is not available");
-            return false;
-        }
-    }
-
-    public Location getLocation() {
-        if (servicesConnected()) {
-            location = mLocationClient.getLastLocation();
-        }
-        return location;
-    }
-
-    public void startUpdates() {
-        mUpdatesRequested = true;
-        if (servicesConnected() && mLocationClient.isConnected()) {
-            startPeriodicUpdates();
-        }
-    }
-
-    public void stopUpdates() {
-        mUpdatesRequested = false;
-        if (servicesConnected()) {
-            stopPeriodicUpdates();
-        }
-    }
-
-
-    @Override
-    public void onLocationChanged(Location location) {
-        this.location = location;
-    }
-
-    private void startPeriodicUpdates() {
-        mLocationClient.requestLocationUpdates(mLocationRequest, this);
-    }
-
-    private void stopPeriodicUpdates() {
-        mLocationClient.removeLocationUpdates(this);
-    }
-
-    @Override
-    public void onConnected(Bundle bundle) {
-        if (mUpdatesRequested) {
-            startPeriodicUpdates();
-        }
-    }
-
-    @Override
-    public void onDisconnected() {
     }
 
     public void parseApplicationPlist() {
@@ -569,21 +486,6 @@ public class GalePressApplication
             }
         }
         wakeLock = null;
-    }
-
-
-    /*
-     * Called by Location Services if the attempt to
-     * Location Services fails.
-     */
-    @Override
-    public void onConnectionFailed(ConnectionResult connectionResult) {
-        if (connectionResult.hasResolution()) {
-            //connectionResult.startResolutionForResult(this.getLibraryActivity(),LocationUtils.CONNECTION_FAILURE_RESOLUTION_REQUEST);
-            Logout.e("Galepress", "startResolutionForResult: ");
-        } else {
-            Logout.e("Galepress", "Error Code : " + connectionResult.getErrorCode());
-        }
     }
 
     public int getRequestCount() {

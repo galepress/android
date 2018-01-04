@@ -56,10 +56,6 @@ public class LeftMenuCategoryAdapter extends BaseAdapter {
         txtTitle.setTypeface(ApplicationThemeColor.getInstance().getRubikLight(mContext));
 
 
-        /*
-         * https://fabric.io/galepress/android/apps/ak.detaysoft.yeryuzudergidis/issues/56d3205ff5d3a7f76b2cef6d
-         * Seklinde bi hata vardi. selectedCategories null olmasi ihtimaline karsi bende ilk createde oldugu gibi genel kategorisini set ettim
-         * */
         if(((MainActivity)(mContext)).getLibraryFragment() != null) {
             if(((MainActivity)(mContext)).getLibraryFragment().selectedCategories == null) {
                 ((MainActivity)(mContext)).getLibraryFragment().repairSelectedCategories();
