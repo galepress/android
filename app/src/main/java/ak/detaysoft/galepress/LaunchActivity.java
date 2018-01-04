@@ -26,10 +26,7 @@ import com.facebook.FacebookSdk;
  * @see SystemUiHider
  */
 public class LaunchActivity extends Activity {
-    private SystemUiHider mSystemUiHider;
-    boolean running;
     ProgressWheel pw_two;
-    int progress = 0;
     public L_Content masterContent;
 
     @Override
