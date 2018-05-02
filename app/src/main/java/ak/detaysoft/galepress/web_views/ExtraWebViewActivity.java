@@ -15,6 +15,8 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.lang.reflect.InvocationTargetException;
+
 import ak.detaysoft.galepress.AK_WebViewClient;
 import ak.detaysoft.galepress.GalePressApplication;
 import ak.detaysoft.galepress.R;
@@ -176,6 +178,22 @@ public class ExtraWebViewActivity extends Activity {
             //webView.pauseTimers();
             webView.destroy();
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(webView != null){
+            webView.onResume();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        webView.onPause();
+
     }
 
     public void enableDisableNavigationButtons(WebView webView) {

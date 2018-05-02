@@ -67,6 +67,23 @@ public class CustomTabFragment extends Fragment{
         return v;
     }
 
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(tabbarWebView != null){
+            tabbarWebView.onResume();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        tabbarWebView.onPause();
+
+    }
+
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);

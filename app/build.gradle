@@ -2,6 +2,7 @@ buildscript {
     repositories {
         jcenter()
         maven { url 'https://maven.fabric.io/public' }
+        google()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
@@ -22,12 +23,12 @@ android {
      * Gradle versin 2.3.1 e update edilgigi icin buildToolsVersion version 25.0.0 a cekildi sikinti olursa bakmak lazim.
      */
     compileSdkVersion 21
-    buildToolsVersion '26.0.2'
+    buildToolsVersion '27.0.3'
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 19
-        versionCode 67
-        versionName '3.8.7'
+        versionCode 68
+        versionName '3.8.8'
     }
     buildTypes {
         release {
@@ -48,6 +49,7 @@ android {
 repositories {
     mavenCentral()
     maven { url 'https://maven.fabric.io/public' }
+    google()
 }
 
 dependencies {
