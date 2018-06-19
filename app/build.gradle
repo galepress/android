@@ -44,6 +44,8 @@ android {
         checkReleaseBuilds false
         abortOnError false
     }
+
+    useLibrary 'org.apache.http.legacy'
 }
 
 repositories {

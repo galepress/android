@@ -55,11 +55,6 @@ public class LibraryFragment extends Fragment {
     private View v;
     final int KITKAT = 19; // Android 5.0
 
-
-    public LayoutInflater getLayoutInflater() {
-        return layoutInflater;
-    }
-
     public void setLayoutInflater(LayoutInflater layoutInflater) {
         this.layoutInflater = layoutInflater;
     }

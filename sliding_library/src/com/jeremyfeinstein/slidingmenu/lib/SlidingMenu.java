@@ -14,7 +14,6 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.os.Handler;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.AttributeSet;
@@ -99,8 +98,6 @@ public class SlidingMenu extends RelativeLayout {
 	 * component's <code>addOnOpenedListener<code> method. When
 	 * the onOpened event occurs, that object's appropriate
 	 * method is invoked.
-	 *
-	 * @see OnOpenedEvent
 	 */
 	public interface OnOpenedListener {
 
@@ -118,8 +115,6 @@ public class SlidingMenu extends RelativeLayout {
 	 * component's <code>addOnCloseListener<code> method. When
 	 * the onClose event occurs, that object's appropriate
 	 * method is invoked.
-	 *
-	 * @see OnCloseEvent
 	 */
 	public interface OnCloseListener {
 
@@ -137,8 +132,6 @@ public class SlidingMenu extends RelativeLayout {
 	 * component's <code>addOnClosedListener<code> method. When
 	 * the onClosed event occurs, that object's appropriate
 	 * method is invoked.
-	 *
-	 * @see OnClosedEvent
 	 */
 	public interface OnClosedListener {
 
@@ -377,8 +370,6 @@ public class SlidingMenu extends RelativeLayout {
 
 	/**
 	 * Set the behind view (menu) content to the given View.
-	 *
-	 * @param view The desired content to display.
 	 */
 	public void setMenu(View v) {
 		mViewBehind.setContent(v);
@@ -404,8 +395,6 @@ public class SlidingMenu extends RelativeLayout {
 
 	/**
 	 * Set the secondary behind view (right menu) content to the given View.
-	 *
-	 * @param view The desired content to display.
 	 */
 	public void setSecondaryMenu(View v) {
 		mViewBehind.setSecondaryContent(v);

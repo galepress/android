@@ -33,10 +33,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.Html;
-import android.text.SpannableString;
-import android.text.TextPaint;
 import android.text.TextWatcher;
-import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.KeyEvent;
@@ -589,6 +586,7 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         GalePressApplication.getInstance().setMainActivity(this);
         GalePressApplication.getInstance().getDataApi().getAppDetail(this);
 
+
     }
 
     @Override
@@ -598,16 +596,6 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         if(menu.isSecondaryMenuShowing() ||menu.isMenuShowing()){
             menu.showContent();
         }
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        /*
-        * Eger super cagrilirsa initCustomTabs() metodunda mTabHost.setCurrentTabByTag(LIBRARY_TAB_TAG); satirinda crash oluyor uygulama.
-        * Bu durum her zaman olmuyor sadece eger o sirada baska bi activity aciksa internet state degisirse crash oluyor.
-        * (MG)
-        * */
-        //super.onSaveInstanceState(outState);
     }
 
     /*
