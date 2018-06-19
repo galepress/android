@@ -22,13 +22,13 @@ android {
      * Eger webviewlerle ilgili bir sorun olursa yada kompanentler yuklenmezse bundan olabilir buraya dikkat etmek lazım
      * Gradle versin 2.3.1 e update edilgigi icin buildToolsVersion version 25.0.0 a cekildi sikinti olursa bakmak lazim.
      */
-    compileSdkVersion 21
+    compileSdkVersion 26
     buildToolsVersion '27.0.3'
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 19
-        versionCode 68
-        versionName '3.8.8'
+        targetSdkVersion 26
+        versionCode 69
+        versionName '3.8.9'
     }
     buildTypes {
         release {
@@ -53,20 +53,20 @@ repositories {
 }
 
 dependencies {
-    compile fileTree(include: '*.*', dir: 'src/main/lib')
-    compile files('src/main/lib/gcm.jar')
-    compile files('src/main/lib/universal-image-loader-1.9.3.jar')
-    compile 'com.android.support:appcompat-v7:21.+'
-    compile 'com.android.support:recyclerview-v7:21.+'
-    compile 'com.j256.ormlite:ormlite-android:4.45@jar'
-    compile 'com.j256.ormlite:ormlite-core:4.45@jar'
-    compile 'com.facebook.android:facebook-android-sdk:4.1.1'
-    compile 'com.google.android.gms:play-services:4.0.30'
-    compile 'com.edmodo:cropper:1.0.1'
-    compile('com.crashlytics.sdk.android:crashlytics:2.6.6@aar') {
+    implementation fileTree(include: '*.*', dir: 'src/main/lib')
+    implementation files('src/main/lib/gcm.jar')
+    implementation files('src/main/lib/universal-image-loader-1.9.3.jar')
+    implementation 'com.android.support:appcompat-v7:26.+'
+    implementation 'com.android.support:recyclerview-v7:26.+'
+    implementation 'com.j256.ormlite:ormlite-android:4.45@jar'
+    implementation 'com.j256.ormlite:ormlite-core:4.45@jar'
+    implementation 'com.facebook.android:facebook-android-sdk:4.1.1'
+    implementation 'com.google.android.gms:play-services:4.0.30'
+    implementation 'com.edmodo:cropper:1.0.1'
+    implementation('com.crashlytics.sdk.android:crashlytics:2.6.6@aar') {
         transitive = true
     }
-    compile project(':sliding_library')
-    compile 'org.lucasr.twowayview:twowayview:0.1.4'
-    compile files('src/main/lib/dd-plist.jar')
+    implementation project(':sliding_library')
+    implementation 'org.lucasr.twowayview:twowayview:0.1.4'
+    implementation files('src/main/lib/dd-plist.jar')
 }
