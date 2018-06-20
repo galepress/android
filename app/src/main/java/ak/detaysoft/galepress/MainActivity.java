@@ -583,6 +583,7 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         updateActivityViewAndAdapter(true);
 
         GalePressApplication.getInstance().setCurrentActivity(this);
+        GalePressApplication.getInstance().requestPermissions();
         GalePressApplication.getInstance().setMainActivity(this);
         GalePressApplication.getInstance().getDataApi().getAppDetail(this);
 

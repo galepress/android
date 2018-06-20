@@ -71,4 +71,5 @@ dependencies {
     implementation project(':sliding_library')
     implementation 'org.lucasr.twowayview:twowayview:0.1.4'
     implementation files('src/main/lib/dd-plist.jar')
+    implementation 'com.karumi:dexter:4.2.0'
 }

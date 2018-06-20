@@ -34,7 +34,7 @@ public class LaunchActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_launch);
-        pw_two = (ProgressWheel) findViewById(R.id.progressBarTwo);
+        pw_two = findViewById(R.id.progressBarTwo);
         pw_two.setVisibility(View.INVISIBLE);
         GalePressApplication.getInstance().setCurrentActivity(this);
         FacebookSdk.sdkInitialize(this.getApplicationContext());

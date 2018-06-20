@@ -1,5 +1,6 @@
 package ak.detaysoft.galepress;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.Application;
 import android.app.ProgressDialog;
@@ -8,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -16,6 +18,7 @@ import android.os.PowerManager;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -34,6 +37,11 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -149,8 +157,10 @@ public class GalePressApplication
 
     Foreground.Listener myListener = new Foreground.Listener() {
         public void onBecameForeground() {
-            mLocationClient.connect();
-            startUpdates();
+            if(mLocationClient != null) {
+                mLocationClient.connect();
+                startUpdates();
+            }
 
             Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
             String udid = UUID.randomUUID().toString();
@@ -167,13 +177,16 @@ public class GalePressApplication
         public void onBecameBackground() {
             // ... whatever you want to do
 
-            // If the client is connected
-            if (mLocationClient.isConnected()) {
-                stopUpdates();
+            if(mLocationClient != null) {
+                // If the client is connected
+                if (mLocationClient.isConnected()) {
+                    stopUpdates();
+                }
+
+                // After disconnect() is called, the client is considered "dead".
+                mLocationClient.disconnect();
             }
 
-            // After disconnect() is called, the client is considered "dead".
-            mLocationClient.disconnect();
 
             Settings.Secure.getString(GalePressApplication.getInstance().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
             String udid = UUID.randomUUID().toString();
@@ -226,17 +239,38 @@ public class GalePressApplication
                     preferences.getString("FacebookEmail", ""), preferences.getString("FacebookUserId", ""), false);
         }
 
-        Foreground.get(this).addListener(myListener);
+        Foreground.get(GalePressApplication.this).addListener(myListener);
 
-        mLocationRequest = LocationRequest.create();
-        mLocationRequest.setInterval(LocationUtils.UPDATE_INTERVAL_IN_MILLISECONDS);
-        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        mLocationRequest.setFastestInterval(LocationUtils.FAST_INTERVAL_CEILING_IN_MILLISECONDS);
-        mUpdatesRequested = false;
-        mPrefs = getSharedPreferences(LocationUtils.SHARED_PREFERENCES, Context.MODE_PRIVATE);
-        mEditor = mPrefs.edit();
-        mLocationClient = new LocationClient(this, this, this);
-        requestCount = -101;
+    }
+
+    public void requestPermissions(){
+        Dexter.withActivity(currentActivity).withPermissions(
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION
+        ).withListener(new MultiplePermissionsListener() {
+            @Override
+            public void onPermissionsChecked(MultiplePermissionsReport report) {
+                if(report.areAllPermissionsGranted()){
+
+                    mLocationRequest = LocationRequest.create();
+                    mLocationRequest.setInterval(LocationUtils.UPDATE_INTERVAL_IN_MILLISECONDS);
+                    mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+                    mLocationRequest.setFastestInterval(LocationUtils.FAST_INTERVAL_CEILING_IN_MILLISECONDS);
+                    mUpdatesRequested = false;
+                    mPrefs = getSharedPreferences(LocationUtils.SHARED_PREFERENCES, Context.MODE_PRIVATE);
+                    mEditor = mPrefs.edit();
+                    mLocationClient = new LocationClient(GalePressApplication.this, GalePressApplication.this, GalePressApplication.this);
+                    requestCount = -101;
+                } else {
+                    requestPermissions();
+                }
+            }
+
+            @Override
+            public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+                token.continuePermissionRequest();
+            }
+        }).check();
     }
 
     public void destroyBillingServices() {
@@ -307,7 +341,8 @@ public class GalePressApplication
     }
 
     private void startPeriodicUpdates() {
-        mLocationClient.requestLocationUpdates(mLocationRequest, this);
+        mLocationClient.requestLocationUpdates(mLocationRequest, GalePressApplication.this);
+
     }
 
     private void stopPeriodicUpdates() {
