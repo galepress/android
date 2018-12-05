@@ -119,9 +119,8 @@ public class DatabaseApi {
 
             if(generalCategory != null && result != null && result.size() > 0){
                 result.remove(generalCategory);
+                result.add(0, generalCategory);
             }
-            result.add(0, generalCategory);
-
 
             return result;
         } catch (SQLException e) {
