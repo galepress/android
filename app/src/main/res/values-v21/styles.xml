@@ -3,4 +3,22 @@
     <style name="LibraryTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:windowDrawsSystemBarBackgrounds">false</item>
     </style>
+    <style name="ReaderTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
+    </style>
+    <style name="Theme.Translucent.NoTitleBar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
+    </style>
+    <style name="Theme.Light.NoTitleBar.Fullscreen" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
+    </style>
+    <style name="ExtraWebView" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
+    </style>
+    <style name="LoginTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
+    </style>
+    <style name="ContentPopupTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
+    </style>
 </resources>
