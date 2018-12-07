@@ -169,8 +169,16 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
 
         }
     };
-
-
+/*
+    private int getNavigationBarHeight() {
+        Resources resources = getResources();
+        int resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            return resources.getDimensionPixelSize(resourceId);
+        }
+        return 0;
+    }
+*/
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -201,7 +209,15 @@ public class MainActivity extends FragmentActivity implements PopupMenu.OnMenuIt
         menu.attachToActivity(this, SlidingMenu.SLIDING_WINDOW);
         menu.setMenu(R.layout.left_menu);
         menu.setSecondaryMenu(R.layout.right_menu);
-
+/*
+        // Lolipop versiyonundan itibaren sisteme ait yazılımsal nav barın viewları ezmesi sorununu çözmek için eklendi
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            int navBarHeight = getNavigationBarHeight();
+            findViewById(R.id.tabhost).setPadding(0,0,0, navBarHeight);
+            findViewById(R.id.left_menu_layout).setPadding(0, 0, 0, navBarHeight);
+            findViewById(R.id.right_menu_layout).setPadding(0, 0, 0, navBarHeight);
+        }
+*/
         leftMenuBaseLayout = (LinearLayout) findViewById(R.id.left_menu_layout);
         rightMenuBaseLayout = (LinearLayout) findViewById(R.id.right_menu_layout);
 
